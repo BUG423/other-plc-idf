@@ -37,6 +37,10 @@ _AUTOSHOP_LAUNCH_PS = (
     "Where-Object { $_.MainWindowHandle -ne 0 } | Select-Object -First 1 } "
     "while (-not $p -and (Get-Date) -lt $dl); "
     "if (-not $p) { throw 'AutoShop main window not ready in 90s' } "
+    "try { Add-Type -AssemblyName UIAutomationClient,UIAutomationTypes; "
+    "$el=[System.Windows.Automation.AutomationElement]::FromHandle($p.MainWindowHandle); "
+    "$t=$el.GetCurrentPattern([System.Windows.Automation.TransformPattern]::Pattern); "
+    "$t.Move(60,60) } catch { } "
     "Write-Output ('PID=' + $p.Id)"
 )
 
@@ -74,6 +78,11 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
 
     def _usbipd_list_argv(self) -> list[str]:
         return [self.cfg.device["usbipd_exe"], "list"]
+
+    def _sleep_argv(self, seconds: int) -> list[str]:
+        """等待步（下载/编译落盘需要时间）。"""
+        return [self.cfg.bridge["powershell_exe"], "-NoProfile", "-Command",
+                f"Start-Sleep -Seconds {seconds}"]
 
     def _launch_autoshop_argv(self) -> list[str]:
         """冷启动 AutoShop 的 interop 调用（幂等：已在运行则只等主窗口）。"""
@@ -165,20 +174,20 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
             *_plan_spacer(2, "打开工程 BESS 项目"),
             *self._plan_open_project(request, 3),
             *_plan_spacer(7, "下载到 PLC（真机写操作，仅在本解锁路径出现）"),
-            PlanStep(8, "定位 PLC 下载菜单入口", "interop",
-                     self._powershell_argv("menus"),
-                     "menus 动作：定位 PLC->写入/下载 入口（P2 现场校准点）"),
-            PlanStep(9, "触发 PLC 下载", "interop",
-                     self._powershell_argv("keys", "%p+d"),
-                     "keys 动作：Alt+P,D 菜单序列（P2 现场校准点）"),
-            PlanStep(10, "确认下载警示对话框", "interop",
-                     self._powershell_argv("accept", "确定"),
-                     "accept 动作：进入下载模式的确认框（P2 现场校准点）"),
-            PlanStep(11, "等待并确认下载完成对话框", "interop",
-                     self._powershell_argv(
-                         "accept", self.cfg.bridge["accept_download_text"]),
-                     f"accept 动作：等待含“{self.cfg.bridge['accept_download_text']}”"
-                     "的成功弹窗（P2 现场校准点）"),
+            # 4.12 菜单栏为自绘控件（Win32/UIA 均不可见）且 Alt+P,D 会被中文输入法劫持，
+            # 实测 F8 = 下载设置（编程手册 p59-65），ENTER 确认默认焦点[确定]后直接开始下载
+            PlanStep(8, "清除输入法候选/焦点残留", "interop",
+                     self._powershell_argv("keys", "{ESC}{ESC}"),
+                     "keys 动作：两下 ESC，防止字母键进入 IME 组合"),
+            PlanStep(9, "触发 PLC 下载（F8 下载设置）", "interop",
+                     self._powershell_argv("keys", "{F8}"),
+                     "keys 动作：F8 打开下载设置对话框"),
+            PlanStep(10, "确认下载设置并开始下载", "interop",
+                     self._powershell_argv("keys", "{ENTER}"),
+                     "keys 动作：默认焦点[确定]，ENTER 后即开始 USB 下载"),
+            PlanStep(11, "等待下载完成", "interop",
+                     self._sleep_argv(10),
+                     "下载走 USB，实测数秒完成；等 10s 再取证据"),
             *self._plan_read_logs(12),
             PlanStep(14, "下载后复核", "verify", [],
                      "复核 PLC 在线与运行状态（只读监测链路复核寄存器）",

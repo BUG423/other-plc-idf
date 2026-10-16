@@ -56,10 +56,13 @@ def test_parse_ignores_headers_and_persisted():
     assert not any("GUID" in e.description for e in entries)
 
 
-def test_find_plc_entry_by_busid(tmp_path):
-    cfg = load_config()
+def test_find_plc_entry_by_busid():
+    # 显式配置而非 load_config()：测试不得依赖开发者本机的 .plcidf.toml
+    class _Cfg:
+        device = {"busid": "6-4", "vidpid": "0471:a531"}
+
     entries = parse_usbipd_list(USBIPD_SAMPLE)
-    plc = find_plc_entry(cfg, entries)
+    plc = find_plc_entry(_Cfg(), entries)
     assert plc is not None and plc.busid == "6-4"
 
 
