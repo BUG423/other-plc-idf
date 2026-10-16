@@ -1,0 +1,41 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===== 本地运行产物（监测 JSONL 落盘、日志等）=====
+*.jsonl
+*.log
+
+# ===== Windows / Office 临时文件 =====
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+~$*
+.~lock.*
+
+# ===== macOS =====
+.DS_Store
+
+# ===== 本地运行配置（只提交 .plcidf.toml.example 模板）=====
+.plcidf.toml
+
+# ===== 编辑器 / 本地工具状态 =====
+.idea/
+.vscode/
+.mimocode/
+
+# ============================================================
+# 证据与验收数据：一律入库，绝不忽略（也不被上面任何规则波及）
+# - wsl-probe/        USB/RTU 证伪与 TUN 假连接的原始探测数据
+#                     （含大文件 plc_discover_run2_INVALID_tun_fakeaccept.json，须保留）
+# - plc/easy521/evidence/  硬件验收截图与清单（烧录/编译验收证据）
+# ============================================================
+!wsl-probe/**
+!plc/easy521/evidence/**

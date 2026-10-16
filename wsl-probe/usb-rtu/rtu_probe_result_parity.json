@@ -1,0 +1,46 @@
+{
+  "port": "/dev/ttyACM0",
+  "scope": "READ-ONLY FC03 id=1 parity/stopbit matrix",
+  "results": [
+    {
+      "combo": [
+        9600,
+        "E",
+        1
+      ],
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "combo": [
+        9600,
+        "N",
+        2
+      ],
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "combo": [
+        19200,
+        "E",
+        1
+      ],
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "combo": [
+        115200,
+        "E",
+        1
+      ],
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "combo": [
+        115200,
+        "N",
+        2
+      ],
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    }
+  ]
+}

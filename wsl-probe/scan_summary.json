@@ -1,0 +1,16 @@
+{
+  "range": "10.185.16.1-254",
+  "ports": [502, 80, 8080, 4840, 1217, 2455, 20256, 20257, 44818],
+  "method": "TCP connect only, 0.4s timeout, 200 workers, no fingerprinting",
+  "run1": {
+    "at": "2026-10-16T13:04+0800",
+    "result": "0 open ports out of 2274 probes (254 hosts x 9 ports)",
+    "validity": "VALID - executed before proxy TUN interception began; corroborated by Windows ARP table (only 10.185.16.100 reachable on WLAN, a randomized-MAC device with zero of the scanned ports open)"
+  },
+  "run2": {
+    "at": "2026-10-16T13:06:20+0800",
+    "result": "2247/2286 'open' across 252 hosts incl. reserved TEST-NET-3 203.0.113.7:502",
+    "validity": "INVALID - Meta proxy TUN (0.0.0.0/0 via 198.18.0.2, RouteMetric 0) fake-accepts all TCP connects; proof: TEST-NET-3 and unused 10.255.255.1 'open' in 0-4ms. Raw data in plc_discover_run2_INVALID_tun_fakeaccept.json. Interception confirmed still active at 13:09."
+  },
+  "conclusion": "PLC not present on 10.185.16.0/24 (expected: PLC currently USB-only, no Ethernet cable)."
+}

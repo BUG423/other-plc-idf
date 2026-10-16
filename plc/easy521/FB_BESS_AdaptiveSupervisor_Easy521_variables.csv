@@ -1,0 +1,59 @@
+scope,name,data_type,initial_value,power_failure_retain,description
+Input,xEnable,BOOL,FALSE,No,Controller enable
+Input,xReset,BOOL,FALSE,No,Synchronous reset
+Input,xInputValid,BOOL,FALSE,No,Atomic measurement snapshot valid
+Input,rVpu,REAL,0.0,No,BUS18 voltage pu
+Input,rPline,REAL,0.0,No,Line active power pu
+Input,rQline,REAL,0.0,No,Line reactive power pu
+Input,rLoading,REAL,0.0,No,Line loading ratio
+Input,rSOC,REAL,0.0,No,Battery SOC 0 to 1
+Input,rPess,REAL,0.0,No,Measured BESS active power pu
+Input,rQess,REAL,0.0,No,Measured BESS reactive power pu
+Output,rPcmd,REAL,0.0,No,Active power command pu
+Output,rQcmd,REAL,0.0,No,Reactive power command pu
+Output,iMode,INT,0,No,0 normal 1 low V 2 forward overload 3 reverse overload
+Output,rSensVP,REAL,0.0,No,Estimated dV per dPess
+Output,rSensVQ,REAL,0.0,No,Estimated dV per dQess
+Output,rInfluenceP,REAL,0.0,No,Estimated minus dPline per dPess
+Output,rInfluenceQ,REAL,0.0,No,Estimated minus dQline per dQess
+Output,rConfidence,REAL,0.0,No,Estimator confidence 0 to 1
+Output,xReady,BOOL,FALSE,No,Initialized after first valid scan
+Local,xLow,BOOL,FALSE,No,Low voltage state
+Local,iRecoverCount,INT,0,No,Healthy voltage consecutive scan count
+Local,iDirection,INT,0,No,Overload direction minus 1 zero plus 1
+Local,iUvCount,INT,0,No,Reactive saturation scan count
+Local,xQLatched,BOOL,FALSE,No,Reactive saturation latch
+Local,rAnchorV,REAL,0.0,No,Estimator voltage anchor
+Local,rAnchorPline,REAL,0.0,No,Estimator line P anchor
+Local,rAnchorQline,REAL,0.0,No,Estimator line Q anchor
+Local,rAnchorPess,REAL,0.0,No,Estimator BESS P anchor
+Local,rAnchorQess,REAL,0.0,No,Estimator BESS Q anchor
+Local,iEstimatorCount,INT,0,No,Estimator window scan count
+Local,rSVP,REAL,0.0,No,Voltage active-power sensitivity
+Local,rSVQ,REAL,0.0,No,Voltage reactive-power sensitivity
+Local,rKP,REAL,0.0,No,Line active-power coupling
+Local,rKQ,REAL,0.0,No,Line reactive-power coupling
+Local,rCVP,REAL,0.0,No,sVP confidence accumulator
+Local,rCVQ,REAL,0.0,No,sVQ confidence accumulator
+Local,rCKP,REAL,0.0,No,kP confidence accumulator
+Local,rCKQ,REAL,0.0,No,kQ confidence accumulator
+Local,xInitialized,BOOL,FALSE,No,First valid scan completed
+Local,rDV,REAL,0.0,No,Working value
+Local,rDPL,REAL,0.0,No,Working value
+Local,rDQL,REAL,0.0,No,Working value
+Local,rDP,REAL,0.0,No,Working value
+Local,rDQ,REAL,0.0,No,Working value
+Local,rSample,REAL,0.0,No,Working value
+Local,rVnativeEstimate,REAL,0.0,No,Working value
+Local,rPnative,REAL,0.0,No,Working value
+Local,rQnative,REAL,0.0,No,Working value
+Local,rSnative,REAL,0.0,No,Working value
+Local,rSline,REAL,0.0,No,Working value
+Local,rNativeLoading,REAL,0.0,No,Working value
+Local,rSlimit,REAL,0.0,No,Working value
+Local,rEV,REAL,0.0,No,Working value
+Local,rRawQ,REAL,0.0,No,Working value
+Local,rPvoltage,REAL,0.0,No,Working value
+Local,rQafter,REAL,0.0,No,Working value
+Local,rPtarget,REAL,0.0,No,Working value
+Local,rPover,REAL,0.0,No,Working value

@@ -1,0 +1,21 @@
+scope,name,data_type,initial_value,power_failure_retain,description
+FB instance,fbBESS,FB_BESS_AdaptiveSupervisor_Easy521,,No,Adaptive supervisor instance
+Global,g_xBESS_Enable,BOOL,FALSE,No,Controller enable
+Global,g_xBESS_Reset,BOOL,FALSE,No,Controller reset
+Global,g_xBESS_MeasurementsValid,BOOL,FALSE,No,Measurement frame valid
+Global,g_rBESS_Vpu,REAL,0.0,No,BUS18 voltage pu
+Global,g_rBESS_Pline,REAL,0.0,No,Line active power pu
+Global,g_rBESS_Qline,REAL,0.0,No,Line reactive power pu
+Global,g_rBESS_Loading,REAL,0.0,No,Line loading ratio
+Global,g_rBESS_SOC,REAL,0.0,No,Battery SOC
+Global,g_rBESS_Pess,REAL,0.0,No,Measured BESS active power pu
+Global,g_rBESS_Qess,REAL,0.0,No,Measured BESS reactive power pu
+Global,g_rBESS_Pcmd,REAL,0.0,No,Active power command pu
+Global,g_rBESS_Qcmd,REAL,0.0,No,Reactive power command pu
+Global,g_iBESS_Mode,INT,0,No,Controller mode
+Global,g_rBESS_SensVP,REAL,0.0,No,Estimated dV per dPess
+Global,g_rBESS_SensVQ,REAL,0.0,No,Estimated dV per dQess
+Global,g_rBESS_InfluenceP,REAL,0.0,No,Estimated P coupling
+Global,g_rBESS_InfluenceQ,REAL,0.0,No,Estimated Q coupling
+Global,g_rBESS_Confidence,REAL,0.0,No,Estimator confidence
+Global,g_xBESS_ControllerReady,BOOL,FALSE,No,Controller ready

@@ -1,0 +1,943 @@
+(* ISOLATED HARDWARE BENCH ONLY. Not a field application.
+   Explicit overwrite permission and isolated loads required.
+   No physical I/O writes and no outbound device commands.
+   Same production FB and 28 fixed vendor acceptance vectors.
+   M8002 restarts on the first RUN scan; revision 3 rejects stale SIM data.
+   D500=passed D501=failed D502=total D503=first failed case
+   D504=521 finished D505=case D506=acceptance scans D514=failed step
+   D523=3 hardware bench; D524=1 confirms completion reset/zero state.
+   D601..D628=per-case result; restore disabled DEV after testing. *)
+IF M8002 OR (D523 <> 3) THEN
+    D510 := 0; D504 := 0; D523 := 3; D524 := 0;
+    D601 := 0;
+    D602 := 0;
+    D603 := 0;
+    D604 := 0;
+    D605 := 0;
+    D606 := 0;
+    D607 := 0;
+    D608 := 0;
+    D609 := 0;
+    D610 := 0;
+    D611 := 0;
+    D612 := 0;
+    D613 := 0;
+    D614 := 0;
+    D615 := 0;
+    D616 := 0;
+    D617 := 0;
+    D618 := 0;
+    D619 := 0;
+    D620 := 0;
+    D621 := 0;
+    D622 := 0;
+    D623 := 0;
+    D624 := 0;
+    D625 := 0;
+    D626 := 0;
+    D627 := 0;
+    D628 := 0;
+END_IF;
+IF D504 = 521 THEN
+    g_xBESS_Enable := FALSE;
+    g_xBESS_MeasurementsValid := FALSE;
+    g_xBESS_Reset := TRUE;
+    fbBESS(
+        xEnable := g_xBESS_Enable,
+        xReset := g_xBESS_Reset,
+        xInputValid := g_xBESS_MeasurementsValid,
+        rVpu := g_rBESS_Vpu,
+        rPline := g_rBESS_Pline,
+        rQline := g_rBESS_Qline,
+        rLoading := g_rBESS_Loading,
+        rSOC := g_rBESS_SOC,
+        rPess := g_rBESS_Pess,
+        rQess := g_rBESS_Qess
+    );
+    
+    g_rBESS_Pcmd := fbBESS.rPcmd;
+    g_rBESS_Qcmd := fbBESS.rQcmd;
+    g_iBESS_Mode := fbBESS.iMode;
+    g_rBESS_SensVP := fbBESS.rSensVP;
+    g_rBESS_SensVQ := fbBESS.rSensVQ;
+    g_rBESS_InfluenceP := fbBESS.rInfluenceP;
+    g_rBESS_InfluenceQ := fbBESS.rInfluenceQ;
+    g_rBESS_Confidence := fbBESS.rConfidence;
+    g_xBESS_ControllerReady := fbBESS.xReady;
+    D524 := 0;
+    IF (g_rBESS_Pcmd = 0.0) AND (g_rBESS_Qcmd = 0.0)
+        AND (g_iBESS_Mode = 0) AND (NOT g_xBESS_ControllerReady) THEN
+        D524 := 1;
+    END_IF;
+    RETURN;
+END_IF;
+IF D510 = 0 THEN
+    D500 := 0; D501 := 0; D502 := 0; D503 := 0; D504 := 0;
+    D505 := 1; D506 := 0; D509 := 0; D514 := -1; D520 := 1; D510 := 1;
+END_IF;
+g_rBESS_Vpu := 1.0;
+g_rBESS_Pline := 0.5;
+g_rBESS_Qline := 0.2;
+g_rBESS_Loading := 0.5;
+g_rBESS_SOC := 0.6;
+g_rBESS_Pess := 0.0;
+g_rBESS_Qess := 0.0;
+g_xBESS_Enable := TRUE;
+g_xBESS_MeasurementsValid := TRUE;
+g_xBESS_Reset := FALSE;
+IF D509 = 0 THEN
+    g_xBESS_Reset := TRUE;
+ELSE
+    CASE D505 OF
+    1: (* reset_priority_and_startup *)
+        D511 := 2;
+        IF D509 = 1 THEN
+            g_xBESS_Reset := TRUE;
+            g_xBESS_Enable := FALSE;
+            g_xBESS_MeasurementsValid := FALSE;
+        END_IF;
+    2: (* normal *)
+        D511 := 1;
+    3: (* low_voltage_reactive_first *)
+        D511 := 1;
+        IF D509 = 1 THEN
+            g_rBESS_Vpu := 0.94;
+        END_IF;
+    4: (* forward_overload *)
+        D511 := 1;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 1.1;
+        END_IF;
+    5: (* reverse_overload *)
+        D511 := 1;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := -1.2;
+            g_rBESS_Loading := 1.1;
+        END_IF;
+    6: (* strict_voltage_entry_threshold *)
+        D511 := 2;
+        IF D509 = 1 THEN
+            g_rBESS_Vpu := 0.95;
+        END_IF;
+        IF D509 = 2 THEN
+            g_rBESS_Vpu := 0.949;
+        END_IF;
+    7: (* strict_overload_entry_threshold *)
+        D511 := 2;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 1.0;
+        END_IF;
+        IF D509 = 2 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 1.0001;
+        END_IF;
+    8: (* soc_discharge_boundary *)
+        D511 := 2;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 1.1;
+            g_rBESS_SOC := 0.12;
+        END_IF;
+        IF D509 = 2 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 1.1;
+            g_rBESS_SOC := 0.13;
+        END_IF;
+    9: (* soc_charge_boundary *)
+        D511 := 2;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := -1.2;
+            g_rBESS_Loading := 1.1;
+            g_rBESS_SOC := 0.88;
+        END_IF;
+        IF D509 = 2 THEN
+            g_rBESS_Pline := -1.2;
+            g_rBESS_Loading := 1.1;
+            g_rBESS_SOC := 0.87;
+        END_IF;
+    10: (* positive_power_limit *)
+        D511 := 1;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := 2.5;
+            g_rBESS_Qline := 0.0;
+            g_rBESS_Loading := 2.0;
+        END_IF;
+    11: (* negative_power_limit *)
+        D511 := 1;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := -2.5;
+            g_rBESS_Qline := 0.0;
+            g_rBESS_Loading := 2.0;
+        END_IF;
+    12: (* reactive_power_limit *)
+        D511 := 1;
+        IF D509 = 1 THEN
+            g_rBESS_Vpu := 0.8;
+        END_IF;
+    13: (* reactive_saturation_latch_exactly_10_calls *)
+        D511 := 10;
+        IF (D509 >= 1) AND (D509 <= 9) THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+        IF D509 = 10 THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+    14: (* recovery_exactly_10_healthy_calls *)
+        D511 := 11;
+        IF D509 = 1 THEN
+            g_rBESS_Vpu := 0.94;
+        END_IF;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            g_rBESS_Vpu := 0.98;
+        END_IF;
+        IF D509 = 11 THEN
+            g_rBESS_Vpu := 0.98;
+        END_IF;
+    15: (* invalid_snapshot_zero_and_freeze *)
+        D511 := 30;
+        IF (D509 >= 1) AND (D509 <= 5) THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+        IF (D509 >= 6) AND (D509 <= 25) THEN
+            g_xBESS_MeasurementsValid := FALSE;
+            g_rBESS_Vpu := 0.0;
+            g_rBESS_Pline := 0.0;
+            g_rBESS_Qline := 0.0;
+            g_rBESS_Loading := 0.0;
+            g_rBESS_SOC := 0.0;
+            g_rBESS_Pess := 0.0;
+            g_rBESS_Qess := 0.0;
+        END_IF;
+        IF (D509 >= 26) AND (D509 <= 29) THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+        IF D509 = 30 THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+    16: (* disabled_zero_and_freeze *)
+        D511 := 30;
+        IF (D509 >= 1) AND (D509 <= 5) THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+        IF (D509 >= 6) AND (D509 <= 25) THEN
+            g_xBESS_Enable := FALSE;
+        END_IF;
+        IF (D509 >= 26) AND (D509 <= 29) THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+        IF D509 = 30 THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+    17: (* invalid_before_initialization *)
+        D511 := 4;
+        IF (D509 >= 1) AND (D509 <= 3) THEN
+            g_xBESS_MeasurementsValid := FALSE;
+        END_IF;
+    18: (* interrupted_recovery_restarts_count *)
+        D511 := 21;
+        IF D509 = 1 THEN
+            g_rBESS_Vpu := 0.94;
+        END_IF;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            g_rBESS_Vpu := 0.98;
+        END_IF;
+        IF D509 = 11 THEN
+            g_rBESS_Vpu := 0.97;
+        END_IF;
+        IF (D509 >= 12) AND (D509 <= 20) THEN
+            g_rBESS_Vpu := 0.98;
+        END_IF;
+        IF D509 = 21 THEN
+            g_rBESS_Vpu := 0.98;
+        END_IF;
+    19: (* forward_overload_exit_hysteresis *)
+        D511 := 4;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 1.1;
+        END_IF;
+        IF D509 = 2 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 1.0;
+        END_IF;
+        IF D509 = 3 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 0.95;
+        END_IF;
+        IF D509 = 4 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 0.94;
+        END_IF;
+    20: (* reverse_overload_exit_hysteresis *)
+        D511 := 4;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := -1.2;
+            g_rBESS_Loading := 1.1;
+        END_IF;
+        IF D509 = 2 THEN
+            g_rBESS_Pline := -1.2;
+            g_rBESS_Loading := 1.0;
+        END_IF;
+        IF D509 = 3 THEN
+            g_rBESS_Pline := -1.2;
+            g_rBESS_Loading := 0.95;
+        END_IF;
+        IF D509 = 4 THEN
+            g_rBESS_Pline := -1.2;
+            g_rBESS_Loading := 0.94;
+        END_IF;
+    21: (* active_estimator_window_and_update *)
+        D511 := 11;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            g_rBESS_Vpu := 1.002;
+            g_rBESS_Pline := 0.49;
+            g_rBESS_Pess := 0.01;
+        END_IF;
+        IF D509 = 11 THEN
+            g_rBESS_Vpu := 1.002;
+            g_rBESS_Pline := 0.49;
+            g_rBESS_Pess := 0.01;
+        END_IF;
+    22: (* reactive_estimator_window_and_update *)
+        D511 := 11;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            g_rBESS_Vpu := 1.0015;
+            g_rBESS_Qline := 0.19;
+            g_rBESS_Qess := 0.01;
+        END_IF;
+        IF D509 = 11 THEN
+            g_rBESS_Vpu := 1.0015;
+            g_rBESS_Qline := 0.19;
+            g_rBESS_Qess := 0.01;
+        END_IF;
+    23: (* estimator_rejects_out_of_range_slope *)
+        D511 := 11;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            g_rBESS_Vpu := 1.005;
+            g_rBESS_Pline := 0.49;
+            g_rBESS_Pess := 0.01;
+        END_IF;
+        IF D509 = 11 THEN
+            g_rBESS_Vpu := 1.005;
+            g_rBESS_Pline := 0.49;
+            g_rBESS_Pess := 0.01;
+        END_IF;
+    24: (* zero_loading_and_zero_line_magnitude *)
+        D511 := 2;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := 0.0;
+            g_rBESS_Qline := 0.0;
+            g_rBESS_Loading := 0.0;
+        END_IF;
+        IF D509 = 2 THEN
+            g_rBESS_Pline := 0.0;
+            g_rBESS_Qline := 0.0;
+            g_rBESS_Loading := 1.1;
+        END_IF;
+    25: (* low_voltage_overrides_overload *)
+        D511 := 1;
+        IF D509 = 1 THEN
+            g_rBESS_Pline := 1.2;
+            g_rBESS_Loading := 1.1;
+            g_rBESS_Vpu := 0.94;
+        END_IF;
+    26: (* low_voltage_active_support_soc_gate *)
+        D511 := 11;
+        IF (D509 >= 1) AND (D509 <= 10) THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+            g_rBESS_SOC := 0.12;
+        END_IF;
+        IF D509 = 11 THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+            g_rBESS_SOC := 0.13;
+        END_IF;
+    27: (* nonconsecutive_saturation_counter_decays *)
+        D511 := 16;
+        IF (D509 >= 1) AND (D509 <= 5) THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+        IF (D509 >= 6) AND (D509 <= 8) THEN
+            g_rBESS_Vpu := 0.94;
+        END_IF;
+        IF (D509 >= 9) AND (D509 <= 15) THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+        IF D509 = 16 THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+    28: (* reset_clears_latch_and_estimator *)
+        D511 := 12;
+        IF (D509 >= 1) AND (D509 <= 10) THEN
+            g_rBESS_Vpu := 0.94;
+            g_rBESS_Qess := 0.4;
+        END_IF;
+        IF D509 = 11 THEN
+            g_xBESS_Reset := TRUE;
+        END_IF;
+    END_CASE;
+END_IF;
+fbBESS(
+    xEnable := g_xBESS_Enable,
+    xReset := g_xBESS_Reset,
+    xInputValid := g_xBESS_MeasurementsValid,
+    rVpu := g_rBESS_Vpu,
+    rPline := g_rBESS_Pline,
+    rQline := g_rBESS_Qline,
+    rLoading := g_rBESS_Loading,
+    rSOC := g_rBESS_SOC,
+    rPess := g_rBESS_Pess,
+    rQess := g_rBESS_Qess
+);
+
+g_rBESS_Pcmd := fbBESS.rPcmd;
+g_rBESS_Qcmd := fbBESS.rQcmd;
+g_iBESS_Mode := fbBESS.iMode;
+g_rBESS_SensVP := fbBESS.rSensVP;
+g_rBESS_SensVQ := fbBESS.rSensVQ;
+g_rBESS_InfluenceP := fbBESS.rInfluenceP;
+g_rBESS_InfluenceQ := fbBESS.rInfluenceQ;
+g_rBESS_Confidence := fbBESS.rConfidence;
+g_xBESS_ControllerReady := fbBESS.xReady;
+D506 := D506 + 1;
+D521 := 1;
+IF NOT ((g_rBESS_Pcmd >= -0.800002) AND (g_rBESS_Pcmd <= 0.800002)
+    AND (g_rBESS_Qcmd >= 0.0) AND (g_rBESS_Qcmd <= 0.400002)
+    AND (g_iBESS_Mode >= 0) AND (g_iBESS_Mode <= 3)
+    AND (g_rBESS_Confidence >= 0.0) AND (g_rBESS_Confidence <= 1.000002)) THEN
+    D521 := 0;
+END_IF;
+IF D509 = 0 THEN
+    IF NOT ((g_rBESS_Pcmd = 0.0) AND (g_rBESS_Qcmd = 0.0)
+        AND (g_iBESS_Mode = 0) AND (NOT g_xBESS_ControllerReady)
+        AND (g_rBESS_SensVP = 0.0) AND (g_rBESS_SensVQ = 0.0)
+        AND (g_rBESS_InfluenceP = 0.0) AND (g_rBESS_InfluenceQ = 0.0)
+        AND (g_rBESS_Confidence = 0.0)) THEN D521 := 0; END_IF;
+ELSE
+    CASE D505 OF
+    1:
+        IF D509 = 1 THEN
+            IF NOT (
+                (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+                AND (g_iBESS_Mode = 0)
+                AND (NOT g_xBESS_ControllerReady)
+                AND (ABS(g_rBESS_SensVP - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 2 THEN
+            IF NOT (
+                (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+                AND (g_iBESS_Mode = 0)
+                AND (g_xBESS_ControllerReady)
+                AND (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+                AND (ABS(g_rBESS_SensVQ - 0.1) <= 0.000002)
+                AND (ABS(g_rBESS_InfluenceP - 1.0) <= 0.000002)
+                AND (ABS(g_rBESS_InfluenceQ - 1.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    2:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+                AND (g_xBESS_ControllerReady)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    3:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.3) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    4:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 2)
+                AND (ABS(g_rBESS_Pcmd - 0.168552329238) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    5:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 3)
+                AND (ABS(g_rBESS_Pcmd - -0.168552329238) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    6:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 2 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    7:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 2 THEN
+            IF NOT (
+                (g_iBESS_Mode = 2)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    8:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 2 THEN
+            IF NOT (
+                (g_iBESS_Mode = 2)
+                AND (ABS(g_rBESS_Pcmd - 0.168552329238) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    9:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 2 THEN
+            IF NOT (
+                (g_iBESS_Mode = 3)
+                AND (ABS(g_rBESS_Pcmd - -0.168552329238) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    10:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 2)
+                AND (ABS(g_rBESS_Pcmd - 0.8) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    11:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 3)
+                AND (ABS(g_rBESS_Pcmd - -0.8) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    12:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.4) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    13:
+        IF (D509 >= 1) AND (D509 <= 9) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.4) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 10 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.2166666667) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.4) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    14:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 11 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    15:
+        IF (D509 >= 1) AND (D509 <= 5) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 6) AND (D509 <= 25) THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+                AND (g_xBESS_ControllerReady)
+                AND (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 26) AND (D509 <= 29) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 30 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.2166666667) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    16:
+        IF (D509 >= 1) AND (D509 <= 5) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 6) AND (D509 <= 25) THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+                AND (g_xBESS_ControllerReady)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 26) AND (D509 <= 29) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 30 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.2166666667) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    17:
+        IF (D509 >= 1) AND (D509 <= 3) THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+                AND (NOT g_xBESS_ControllerReady)
+                AND (ABS(g_rBESS_SensVP - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 4 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+                AND (g_xBESS_ControllerReady)
+                AND (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    18:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 11 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 12) AND (D509 <= 20) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 21 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    19:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 2)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 2 THEN
+            IF NOT (
+                (g_iBESS_Mode = 2)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 3 THEN
+            IF NOT (
+                (g_iBESS_Mode = 2)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 4 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    20:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 3)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 2 THEN
+            IF NOT (
+                (g_iBESS_Mode = 3)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 3 THEN
+            IF NOT (
+                (g_iBESS_Mode = 3)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 4 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    21:
+        IF D509 = 1 THEN
+            IF NOT (
+                (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+                AND (ABS(g_rBESS_InfluenceP - 1.0) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            IF NOT (
+                (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 11 THEN
+            IF NOT (
+                (ABS(g_rBESS_SensVP - 0.1264) <= 0.000002)
+                AND (ABS(g_rBESS_InfluenceP - 1.0) <= 0.000002)
+                AND (ABS(g_rBESS_SensVQ - 0.1) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.025) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    22:
+        IF D509 = 1 THEN
+            IF NOT (
+                (ABS(g_rBESS_SensVQ - 0.1) <= 0.000002)
+                AND (ABS(g_rBESS_InfluenceQ - 1.0) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            IF NOT (
+                (ABS(g_rBESS_SensVQ - 0.1) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 11 THEN
+            IF NOT (
+                (ABS(g_rBESS_SensVQ - 0.104) <= 0.000002)
+                AND (ABS(g_rBESS_InfluenceQ - 1.0) <= 0.000002)
+                AND (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.025) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    23:
+        IF D509 = 1 THEN
+            IF NOT (
+                (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 2) AND (D509 <= 10) THEN
+            IF NOT (
+                (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 11 THEN
+            IF NOT (
+                (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+                AND (ABS(g_rBESS_InfluenceP - 1.0) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0125) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    24:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 2 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    25:
+        IF D509 = 1 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.3) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    26:
+        IF (D509 >= 1) AND (D509 <= 10) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.4) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 11 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.2166666667) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    27:
+        IF (D509 >= 1) AND (D509 <= 5) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 6) AND (D509 <= 8) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.3) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF (D509 >= 9) AND (D509 <= 15) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 16 THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Pcmd - 0.2166666667) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    28:
+        IF (D509 >= 1) AND (D509 <= 10) THEN
+            IF NOT (
+                (g_iBESS_Mode = 1)
+                AND (ABS(g_rBESS_Qcmd - 0.4) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 11 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+                AND (NOT g_xBESS_ControllerReady)
+                AND (ABS(g_rBESS_SensVP - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_SensVQ - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_InfluenceP - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_InfluenceQ - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+        IF D509 = 12 THEN
+            IF NOT (
+                (g_iBESS_Mode = 0)
+                AND (ABS(g_rBESS_Pcmd - 0.0) <= 0.000002)
+                AND (ABS(g_rBESS_Qcmd - 0.0) <= 0.000002)
+                AND (g_xBESS_ControllerReady)
+                AND (ABS(g_rBESS_SensVP - 0.12) <= 0.000002)
+                AND (ABS(g_rBESS_Confidence - 0.0) <= 0.000002)
+            ) THEN D521 := 0; END_IF;
+        END_IF;
+    END_CASE;
+END_IF;
+IF D521 = 0 THEN
+    D520 := 0;
+    IF D503 = 0 THEN D503 := D505; D514 := D509; END_IF;
+END_IF;
+IF (D509 > 0) AND (D509 >= D511) THEN
+    D502 := D502 + 1;
+    IF D520 = 1 THEN D500 := D500 + 1;
+    ELSE D501 := D501 + 1; END_IF;
+    CASE D505 OF
+    1: D601 := D520;
+    2: D602 := D520;
+    3: D603 := D520;
+    4: D604 := D520;
+    5: D605 := D520;
+    6: D606 := D520;
+    7: D607 := D520;
+    8: D608 := D520;
+    9: D609 := D520;
+    10: D610 := D520;
+    11: D611 := D520;
+    12: D612 := D520;
+    13: D613 := D520;
+    14: D614 := D520;
+    15: D615 := D520;
+    16: D616 := D520;
+    17: D617 := D520;
+    18: D618 := D520;
+    19: D619 := D520;
+    20: D620 := D520;
+    21: D621 := D520;
+    22: D622 := D520;
+    23: D623 := D520;
+    24: D624 := D520;
+    25: D625 := D520;
+    26: D626 := D520;
+    27: D627 := D520;
+    28: D628 := D520;
+    END_CASE;
+    D505 := D505 + 1; D509 := 0; D520 := 1;
+    IF D505 > 28 THEN D504 := 521; END_IF;
+ELSE
+    D509 := D509 + 1;
+END_IF;

@@ -1,0 +1,24 @@
+test_six_second_bess_and_feeder_scenario (__main__.ClosedLoopPlantSimulationTests.test_six_second_bess_and_feeder_scenario)
+Exercise the controller with the SLX BESS dynamics in closed loop. ... ok
+test_estimator_active_and_reactive_dominant_windows (__main__.DirectedBehaviorTests.test_estimator_active_and_reactive_dominant_windows) ... ok
+test_estimator_rejects_small_large_and_out_of_range_samples (__main__.DirectedBehaviorTests.test_estimator_rejects_small_large_and_out_of_range_samples) ... ok
+test_four_operating_modes (__main__.DirectedBehaviorTests.test_four_operating_modes) ... ok
+test_low_voltage_entry_and_exit_strict_boundaries (__main__.DirectedBehaviorTests.test_low_voltage_entry_and_exit_strict_boundaries) ... ok
+test_overload_hysteresis_boundaries (__main__.DirectedBehaviorTests.test_overload_hysteresis_boundaries) ... ok
+test_q_saturation_counter_decays_and_requires_both_actual_and_command (__main__.DirectedBehaviorTests.test_q_saturation_counter_decays_and_requires_both_actual_and_command) ... ok
+test_q_saturation_latches_at_exactly_50_ms (__main__.DirectedBehaviorTests.test_q_saturation_latches_at_exactly_50_ms) ... ok
+test_reset_disable_and_invalid_input_are_fail_safe_and_freeze_state (__main__.DirectedBehaviorTests.test_reset_disable_and_invalid_input_are_fail_safe_and_freeze_state) ... ok
+test_soc_margin_strict_boundaries (__main__.DirectedBehaviorTests.test_soc_margin_strict_boundaries) ... ok
+test_zero_loading_and_zero_line_power_are_division_safe (__main__.DirectedBehaviorTests.test_zero_loading_and_zero_line_power_are_division_safe) ... ok
+test_100k_scan_differential_and_invariants (__main__.RandomDifferentialAndPropertyTests.test_100k_scan_differential_and_invariants) ... ok
+test_all_34_used_parameters_match_reference_vector (__main__.RequirementsAndStaticTests.test_all_34_used_parameters_match_reference_vector) ... ok
+test_binary64_register_round_trip (__main__.RequirementsAndStaticTests.test_binary64_register_round_trip) ... ok
+test_modbus_map_is_contiguous_and_binary64 (__main__.RequirementsAndStaticTests.test_modbus_map_is_contiguous_and_binary64) ... ok
+test_st_structure_is_balanced_and_complete (__main__.RequirementsAndStaticTests.test_st_structure_is_balanced_and_complete) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 4.073s
+
+OK
+
+Executed 16 test methods including 100,000 differential scans in 4.073 s

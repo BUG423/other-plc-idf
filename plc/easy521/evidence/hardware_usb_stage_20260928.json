@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-28",
+  "time_zone": "Asia/Shanghai",
+  "evidence_method": "Transcribed from official AutoShop USB GUI; screenshots archived. Not a Modbus hardware register dump.",
+  "target": {"model": "Easy521", "version": "6.11.0.1", "transport": "USB"},
+  "authorizations": {"overwrite_confirmed": true, "load_isolation_user_confirmed": true},
+  "current_hardware_project": "BESS_E521_DEV",
+  "download": {"time": "15:15:34", "success": true, "evidence": "Easy521_DEV_USB_download.png"},
+  "vendor_program_consistency": {"time": "15:16:14", "match": true, "evidence": "Easy521_DEV_checksum_dialog.png"},
+  "run_attempts": [
+    {"time": "15:19:15", "success": false, "message": "未能正确切换至运行状态"},
+    {"time": "15:22:50", "success": false, "message": "未能正确切换至运行状态"}
+  ],
+  "hardware_monitor_observation": {
+    "state": "STOP", "Enable": false, "MeasurementsValid": false,
+    "Ready": false, "Pcmd": 0, "Qcmd": 0, "mode": 0,
+    "displayed_scan_ms": 10.0,
+    "new_program_cycle_verified": false,
+    "note": "STOP values do not prove algorithm execution or 5 ms timing."
+  },
+  "fault_diagnosis": {"displayed_total": 0, "evidence": "Easy521_faults_STOP.png"},
+  "bench": {
+    "project": "BESS_E521_BENCH", "compile_time": "15:26:47", "compile_errors": 0,
+    "main_source_lines": 943, "variables": 121, "downloaded": false,
+    "hardware_cases_executed": false, "hardware_results": null
+  },
+  "external_action_needed": "Check physical RUN/STOP switch and RUN/ERR LEDs; cause not confirmed.",
+  "field_communication_commissioned": false
+}

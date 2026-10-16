@@ -1,0 +1,146 @@
+{
+  "pymodbus_connect": true,
+  "station_id": 1,
+  "fc03_ok": true,
+  "fc03_raw_registers_0_17": [
+    17244,
+    32768,
+    16252,
+    45718,
+    15534,
+    32086,
+    16093,
+    15414,
+    16195,
+    61761,
+    48640,
+    0,
+    15394,
+    13212,
+    16217,
+    39322,
+    48793,
+    39322
+  ],
+  "decode": [
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "ABCD_bigendian": 220.5,
+      "BADC_wordswap": -2.4163990718817146e-41,
+      "expected": 220.5
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "ABCD_bigendian": 0.9871000051498413,
+      "BADC_wordswap": -1.7491167625394155e-08,
+      "expected": 0.9871
+    },
+    {
+      "pair": [
+        4,
+        5
+      ],
+      "ABCD_bigendian": 0.021299999207258224,
+      "BADC_wordswap": 1.7798116128047195e+37,
+      "expected": 0.0213
+    },
+    {
+      "pair": [
+        6,
+        7
+      ],
+      "ABCD_bigendian": 0.43209999799728394,
+      "BADC_wordswap": 0.011123386211693287,
+      "expected": 0.4321
+    },
+    {
+      "pair": [
+        8,
+        9
+      ],
+      "ABCD_bigendian": 0.7653999924659729,
+      "BADC_wordswap": -9.569133699313548e+29,
+      "expected": 0.7654
+    },
+    {
+      "pair": [
+        10,
+        11
+      ],
+      "ABCD_bigendian": -0.125,
+      "BADC_wordswap": 6.81591573047591e-41,
+      "expected": -0.125
+    },
+    {
+      "pair": [
+        12,
+        13
+      ],
+      "ABCD_bigendian": 0.00989999994635582,
+      "BADC_wordswap": 7.275254176875023e-08,
+      "expected": 0.0099
+    },
+    {
+      "pair": [
+        14,
+        15
+      ],
+      "ABCD_bigendian": 0.8500000238418579,
+      "BADC_wordswap": -1.594881270624572e-23,
+      "expected": 0.85
+    },
+    {
+      "pair": [
+        16,
+        17
+      ],
+      "ABCD_bigendian": -0.30000001192092896,
+      "BADC_wordswap": -1.600020857194268e-23,
+      "expected": -0.3
+    }
+  ],
+  "fc01_coils_ok": true,
+  "fc01_coils_bits_0_15": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    false,
+    true
+  ],
+  "fc02_discrete_ok": true,
+  "fc02_discrete_bits_0_15": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    true,
+    false,
+    true,
+    true,
+    false,
+    false,
+    false,
+    true,
+    true,
+    true,
+    false
+  ]
+}

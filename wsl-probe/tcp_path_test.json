@@ -1,0 +1,17 @@
+[
+  {
+    "target": "172.18.96.1:5020",
+    "note": "WSL gateway = Windows vEthernet (WSL)",
+    "connect": "TIMEOUT (filtered, likely firewall drop)"
+  },
+  {
+    "target": "172.18.96.1:5021",
+    "note": "gateway closed-port baseline",
+    "connect": "TIMEOUT (filtered, likely firewall drop)"
+  },
+  {
+    "target": "10.185.16.82:5020",
+    "note": "Windows WLAN physical NIC",
+    "connect": "TIMEOUT (filtered, likely firewall drop)"
+  }
+]

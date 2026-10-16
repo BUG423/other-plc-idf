@@ -1,0 +1,10 @@
+direction,logical_value,holding_registers,register_count,encoding,unit_or_range,notes
+input,Vpu,0-1,2,IEEE-754 binary32 big-endian ABCD,pu,Node voltage
+input,Pline,2-3,2,IEEE-754 binary32 big-endian ABCD,pu,Feeder active power
+input,Qline,4-5,2,IEEE-754 binary32 big-endian ABCD,pu,Feeder reactive power
+input,loading,6-7,2,IEEE-754 binary32 big-endian ABCD,0..1+,Line loading ratio
+input,SOC,8-9,2,IEEE-754 binary32 big-endian ABCD,0..1,Battery state of charge
+input,Pess,10-11,2,IEEE-754 binary32 big-endian ABCD,pu,Measured BESS active power
+input,Qess,12-13,2,IEEE-754 binary32 big-endian ABCD,pu,Measured BESS reactive power
+output,Pcmd,14-15,2,IEEE-754 binary32 big-endian ABCD,pu,Active-power command
+output,Qcmd,16-17,2,IEEE-754 binary32 big-endian ABCD,pu,Reactive-power command

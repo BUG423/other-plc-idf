@@ -1,0 +1,14 @@
+test_exact_10_scan_latch_and_recovery (__main__.DirectedReal32Tests.test_exact_10_scan_latch_and_recovery) ... ok
+test_fail_safe_freezes_state (__main__.DirectedReal32Tests.test_fail_safe_freezes_state) ... ok
+test_modes_and_expected_commands (__main__.DirectedReal32Tests.test_modes_and_expected_commands) ... ok
+test_six_second_real32_closed_loop (__main__.DirectedReal32Tests.test_six_second_real32_closed_loop) ... ok
+test_long_running_real32_invariants (__main__.NumericalComparisonTests.test_long_running_real32_invariants) ... ok
+test_real32_against_original_double_controller (__main__.NumericalComparisonTests.test_real32_against_original_double_controller) ... ok
+test_body_uses_only_easy521_supported_data_types (__main__.SourceCompatibilityTests.test_body_uses_only_easy521_supported_data_types) ... ok
+test_real32_modbus_map (__main__.SourceCompatibilityTests.test_real32_modbus_map) ... ok
+test_variable_tables_use_supported_types (__main__.SourceCompatibilityTests.test_variable_tables_use_supported_types) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.207s
+
+OK

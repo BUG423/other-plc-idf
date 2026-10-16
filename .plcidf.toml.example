@@ -1,0 +1,64 @@
+# .plcidf.toml.example — PLC-IDF（plcidf）配置模板
+#
+# 用法: cp .plcidf.toml.example .plcidf.toml  （放项目根，plcidf 自动发现）
+# 所有键都有内置默认值；缺省任何节/键都安全。路径默认值基于项目根自动发现。
+# 也可用环境变量 PLCIDF_CONFIG 指定配置文件（旧名 PY2PLC_CONFIG 仍被识别）。
+#
+# ⚠️ 安全默认：bridge.enabled = false。build/flash 真执行需要
+#    [bridge] enabled=true 与命令行 --i-have-authorized 双因子，缺一即拒。
+
+# ---------- 桥式 AutoShop 后端（build/flash 真执行的总开关） ----------
+[bridge]
+enabled = false                          # ← 双因子之一：true 才允许真执行
+project = "BESS_E521_DEV"                # 工程名（对应 <dir>\<project>.hcp）
+windows_project = 'E:\PLCProjects\BESS_E521_DEV'   # Windows 侧工程目录
+# autoshop_ui.ps1 的 Windows 可见路径；缺省自动用
+# \\wsl.localhost\<发行版>\<项目根>\plc\tools\autoshop_ui.ps1
+# （下面的注释示例按本机实际目录写，路径里的 workspace\py2plc 是磁盘目录名，
+#   项目更名 PLC-IDF 后磁盘目录暂未改名，以实际为准）
+# tools_ps1_windows = '\\wsl.localhost\Ubuntu\home\zss\workspace\py2plc\plc\tools\autoshop_ui.ps1'
+powershell_exe = '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe'
+accept_compile_text = "编译"              # 编译成功弹窗文案（P2 现场校准点）
+accept_download_text = "成功"             # 下载成功弹窗文案（P2 现场校准点）
+
+# ---------- USB 设备 / usbipd ----------
+[device]
+busid = "6-4"                            # H5U USB Device（usbipd list 实测）
+vidpid = "0471:a531"
+tty_glob = "/dev/ttyACM*"                # attach 后 WSL 侧 CDC 串口
+usbipd_exe = '/mnt/c/Program Files/usbipd-win/usbipd.exe'
+attach_settle_s = 3.0                    # attach/detach 后状态收敛等待上限
+
+# ---------- 只读监测（monitor 子命令默认参数） ----------
+[monitor]
+transport = "tcp"                        # tcp | serial
+host = "127.0.0.1"                       # 真机网口为 PLC 的 IP
+port = 1502                              # 虚拟从站 1502；真机 502
+device = "/dev/ttyUSB0"                  # serial 传输的串口
+baud = 9600
+unit_id = 1
+interval = 1.0                           # 轮询间隔（秒）
+timeout = 3.0                            # 单次读超时（秒）
+calibrate = false                        # 启动时是否自动判别 REAL32 字序
+# word_order = "abcd"                    # 缺省=自动/ABCD；可强制 "badc"
+
+# ---------- 虚拟从站（sim 子命令默认参数） ----------
+[sim]
+host = "127.0.0.1"                       # 约束：仅回环
+port = 1502                              # --with-monitor 缺省自动选空闲端口
+scenario = "steady"                      # steady | low_voltage | overload
+word_order = "abcd"
+tick = 0.1
+hold_dip = 10.0
+ready_timeout = 15.0                     # --with-monitor 等从站 READY 上限（秒）
+monitor_exec_timeout = 60.0              # 闭环里监测子进程硬超时（秒）
+
+# ---------- 网络/interop 超时与重试上限 ----------
+[net]
+timeout_s = 10.0                         # 单次 usbipd/powershell 调用超时
+retries = 2                              # 失败重试上限（总尝试 = retries + 1）
+retry_backoff_s = 1.0
+
+# ---------- 证据日志 ----------
+[log]
+evidence = "logs/evidence.jsonl"         # JSONL：ts/command/params/result；相对项目根

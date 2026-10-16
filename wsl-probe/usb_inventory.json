@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-16T13:12+0800",
+  "plc_usb_device": {
+    "present": true,
+    "status": "OK",
+    "friendly_name": "H5U USB Device",
+    "pnp_class": "PlcUsb",
+    "vid": "0471",
+    "pid": "A531",
+    "instance_id": "USB\\VID_0471&PID_A531\\7&83714DF&0&4",
+    "com_port_mapped": null,
+    "note": "Vendor 'PlcUsb' class driver, NOT a USB-CDC serial device. Windows has zero COM ports (HKLM\\HARDWARE\\DEVICEMAP\\SERIALCOMM missing), so no COMx mapping and no Modbus RTU-over-COM path via this USB connection."
+  },
+  "wsl_side": {
+    "dev_ttyACM": "none",
+    "dev_ttyUSB": "none",
+    "dev_bus_usb": "missing entirely - no USB passthrough into WSL2"
+  },
+  "usbipd": {
+    "installed_on_windows": false,
+    "where_usbipd": "not found",
+    "usbipd_list": "not executable (tool absent); bind/attach forbidden by task red line anyway"
+  },
+  "other_usb_devices_of_note": [
+    {"status": "Error", "name": "USB Device(VID_1f3a_PID_efe8)", "note": "Allwinner VID, error state, unrelated to PLC"},
+    {"status": "OK", "note": "Logitech receiver 046D:C52B, camera 174F:181D, HID 1EA7:0066 / 24AE:2015, BT 0489:E0CD, hubs 05E3 - none PLC-related"}
+  ],
+  "context": "Hardware commissioning report (plc/easy521/HARDWARE_COMMISSIONING_REPORT.md) records a successful full project download via AutoShop USB on 2026-09-28; PWR on, switch in RUN per coordinator 2026-10-16."
+}

@@ -1,0 +1,58 @@
+{
+  "port": "/dev/ttyACM0",
+  "port_openable": true,
+  "time": "2026-10-16 13:38:56",
+  "scope": "READ-ONLY FC03 addr 0-17, devid 1/2, baud scan",
+  "results": [
+    {
+      "baud": 115200,
+      "devid": 1,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "baud": 115200,
+      "devid": 2,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "baud": 57600,
+      "devid": 1,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "baud": 57600,
+      "devid": 2,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "baud": 38400,
+      "devid": 1,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "baud": 38400,
+      "devid": 2,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "baud": 19200,
+      "devid": 1,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "baud": 19200,
+      "devid": 2,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "baud": 9600,
+      "devid": 1,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    },
+    {
+      "baud": 9600,
+      "devid": 2,
+      "result": "exception: ModbusIOException: Modbus Error: [Input/Output] No response received after 3 retries, continue with next request"
+    }
+  ]
+}
