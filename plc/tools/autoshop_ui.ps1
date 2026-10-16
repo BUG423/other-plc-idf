@@ -1,4 +1,4 @@
-param(
+﻿param(
     [ValidateSet('inspect','screenshot','desktop','tree','keys','click','paste','background','menus','text','file','accept','log','diagnostics','maximize')]
     [string]$Action = 'inspect',
     [string]$Value = '',
@@ -185,12 +185,21 @@ switch ($Action) {
         $list=$all|Where-Object {$_.Current.ClassName -eq 'ListBox' -and $_.Current.BoundingRectangle.Width -gt 1000}|Select-Object -First 1
         if(!$list){throw 'AutoShop compile log not found.'}
         $listHandle=[IntPtr]$list.Current.NativeWindowHandle
-        if(([AutoShopUI]::GetWindowLong($listHandle,-16) -band 0x40) -eq 0){throw 'Owner-drawn compile log does not expose text through LB_GETTEXT; use a screenshot.'}
-        $count=[AutoShopUI]::SendMessage($listHandle,0x18B,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32()
-        for($i=0;$i -lt $count;$i++){
-            $line=New-Object System.Text.StringBuilder 16384
-            [void][AutoShopUI]::SendMessage($listHandle,0x189,[IntPtr]$i,$line)
-            Write-Output $line.ToString()
+        if(([AutoShopUI]::GetWindowLong($listHandle,-16) -band 0x40) -ne 0){
+            $count=[AutoShopUI]::SendMessage($listHandle,0x18B,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32()
+            for($i=0;$i -lt $count;$i++){
+                $line=New-Object System.Text.StringBuilder 16384
+                [void][AutoShopUI]::SendMessage($listHandle,0x189,[IntPtr]$i,$line)
+                Write-Output $line.ToString()
+            }
+        } else {
+            $rect=New-Object AutoShopUI+RECT
+            $oldDpi=[AutoShopUI]::SetThreadDpiAwarenessContext([IntPtr](-1))
+            try{[void][AutoShopUI]::GetWindowRect($listHandle,[ref]$rect)}finally{[void][AutoShopUI]::SetThreadDpiAwarenessContext($oldDpi)}
+            $w=$rect.Right-$rect.Left;$h=$rect.Bottom-$rect.Top
+            $bmp=New-Object System.Drawing.Bitmap $w,$h;$g=[System.Drawing.Graphics]::FromImage($bmp)
+            try{$dc=$g.GetHdc();try{[void][AutoShopUI]::PrintWindow($listHandle,$dc,2)}finally{$g.ReleaseHdc($dc)};$shot='C:\Users\12646\Downloads\autoshop_logpane.png';$bmp.Save($shot,[System.Drawing.Imaging.ImageFormat]::Png)}finally{$g.Dispose();$bmp.Dispose()}
+            Write-Output ('SCREENSHOT:' + $shot)
         }
     }
     'diagnostics' {
@@ -234,10 +243,16 @@ switch ($Action) {
     'file' {
         $windows=@([System.Windows.Automation.AutomationElement]::RootElement.FindAll([System.Windows.Automation.TreeScope]::Children,[System.Windows.Automation.Condition]::TrueCondition))
         $windows+=@($root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::ControlTypeProperty),([System.Windows.Automation.ControlType]::Window))))
-        $dialog=$windows|Where-Object {$_.Current.ProcessId -eq $app.Id -and $_.Current.ClassName -eq '#32770' -and $_.Current.IsEnabled -and $_.Current.Name -match '^(另存为|打开|导入|导出)$'}|Select-Object -First 1
+        $dialog=$null
+        for($i=0;$i -lt 10 -and -not $dialog;$i++){
+            $windows=@([System.Windows.Automation.AutomationElement]::RootElement.FindAll([System.Windows.Automation.TreeScope]::Children,[System.Windows.Automation.Condition]::TrueCondition))
+            $windows+=@($root.FindAll([System.Windows.Automation.TreeScope]::Descendants,(New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::ControlTypeProperty),([System.Windows.Automation.ControlType]::Window))))
+            $dialog=$windows|Where-Object {$_.Current.ProcessId -eq $app.Id -and $_.Current.ClassName -eq '#32770' -and $_.Current.IsEnabled -and $_.Current.Name -match '^(另存为|打开|导入|导出)$'}|Select-Object -First 1
+            if(-not $dialog){Start-Sleep -Milliseconds 1000}
+        }
         if(!$dialog){throw 'No AutoShop file dialog found.'}
         $controls=$dialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
-        $edit=$controls|Where-Object {$_.Current.ClassName -eq 'Edit' -and $_.Current.BoundingRectangle.Width -gt 400}|Select-Object -First 1
+        $edit=$controls|Where-Object {$_.Current.ClassName -eq 'Edit' -and $_.Current.BoundingRectangle.Width -gt 200}|Select-Object -First 1
         $button=$controls|Where-Object {$_.Current.ClassName -eq 'Button' -and $_.Current.Name -match '^(保存|打开|导入)'}|Select-Object -First 1
         if(!$edit -or !$button){throw 'File dialog controls not found.'}
         [void][AutoShopUI]::SendMessage([IntPtr]$edit.Current.NativeWindowHandle,12,[IntPtr]::Zero,$Value)

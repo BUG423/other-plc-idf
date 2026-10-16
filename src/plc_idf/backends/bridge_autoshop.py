@@ -27,6 +27,19 @@ from .base import (BackendResult, BuildBackend, FlashBackend, OperationRequest,
 #: 真执行时单步 GUI 动作的超时（AutoShop 弹窗/编译等待比普通 interop 长）
 GUI_STEP_TIMEOUT_S = 120.0
 
+#: 冷启动 AutoShop：未运行则拉起，90s 内等主窗口句柄（单引号脚本，便于 argv 传递）
+_AUTOSHOP_LAUNCH_PS = (
+    "$p = Get-Process AutoShop -ErrorAction SilentlyContinue | Select-Object -First 1; "
+    "if (-not $p) { Start-Process '<EXE>' } "
+    "$dl = (Get-Date).AddSeconds(90); "
+    "do { Start-Sleep -Milliseconds 800; "
+    "$p = Get-Process AutoShop -ErrorAction SilentlyContinue | "
+    "Where-Object { $_.MainWindowHandle -ne 0 } | Select-Object -First 1 } "
+    "while (-not $p -and (Get-Date) -lt $dl); "
+    "if (-not $p) { throw 'AutoShop main window not ready in 90s' } "
+    "Write-Output ('PID=' + $p.Id)"
+)
+
 
 class BridgeAutoshopBackend(BuildBackend, FlashBackend):
     """桥式后端：一个后端同时实现 Build 与 Flash 两条管线。"""
@@ -62,19 +75,31 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
     def _usbipd_list_argv(self) -> list[str]:
         return [self.cfg.device["usbipd_exe"], "list"]
 
+    def _launch_autoshop_argv(self) -> list[str]:
+        """冷启动 AutoShop 的 interop 调用（幂等：已在运行则只等主窗口）。"""
+        return [
+            self.cfg.bridge["powershell_exe"],
+            "-NoProfile", "-ExecutionPolicy", "Bypass",
+            "-Command", _AUTOSHOP_LAUNCH_PS.replace(
+                "<EXE>", self.cfg.bridge["autoshop_exe"]),
+        ]
+
     # ---------- 调用链规划 ----------
 
     def _plan_open_project(self, request: OperationRequest, start: int) -> list[PlanStep]:
-        """打开工程的公共三步（键击唤出对话框 -> 填路径 -> 校验加载）。"""
+        """打开工程的公共四步（冷启动 -> 键击唤出对话框 -> 填路径 -> 校验加载）。"""
         hcp = request.hcp_path
         return [
-            PlanStep(start, "唤出 AutoShop 打开文件对话框", "interop",
+            PlanStep(start, "冷启动 AutoShop（未运行则拉起并等主窗口）", "interop",
+                     self._launch_autoshop_argv(),
+                     "Get-Process 探测 + Start-Process 拉起 + 90s 内等主窗口句柄"),
+            PlanStep(start + 1, "唤出 AutoShop 打开文件对话框", "interop",
                      self._powershell_argv("keys", "^o"),
                      "keys 动作：激活主窗口并发送 Ctrl+O"),
-            PlanStep(start + 1, "在文件对话框填入工程路径并确认", "interop",
+            PlanStep(start + 2, "在文件对话框填入工程路径并确认", "interop",
                      self._powershell_argv("file", hcp),
                      "file 动作：向 #32770 对话框 Edit 填路径并点击 打开"),
-            PlanStep(start + 2, "校验工程已加载（主窗口标题含工程名）", "interop",
+            PlanStep(start + 3, "校验工程已加载（主窗口标题含工程名）", "interop",
                      self._powershell_argv("inspect"),
                      f"inspect 动作：期望标题含 {request.project}"),
         ]
@@ -98,33 +123,39 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
 
 
     def plan_build(self, request: OperationRequest) -> list[PlanStep]:
-        """编译调用链：校验设备 -> 打开工程 -> 编译 -> 确认 -> 日志/产物。"""
+        """编译调用链：校验设备 -> 打开工程 -> 编译 -> （可选确认弹窗）-> 日志/产物。"""
         request = self._request(request)
         win_dir = request.windows_project
-        return [
+        steps: list[PlanStep] = [
             self._plan_verify_device(1),
             *_plan_spacer(2, "打开工程 BESS 项目"),
             *self._plan_open_project(request, 3),
-            *_plan_spacer(6, "编译"),
-            PlanStep(7, "定位编译菜单入口", "interop",
+            *_plan_spacer(7, "编译"),
+            PlanStep(8, "定位编译菜单入口", "interop",
                      self._powershell_argv("menus"),
                      "menus 动作：导出菜单树定位 编译/Compile（P2 现场校准点）"),
-            PlanStep(8, "触发编译", "interop",
+            PlanStep(9, "触发编译", "interop",
                      self._powershell_argv("keys", "{F7}"),
                      "keys 动作：编译快捷键（P2 现场校准点，按菜单树结果修正）"),
-            PlanStep(9, "等待并确认编译结果对话框", "interop",
-                     self._powershell_argv(
-                         "accept", self.cfg.bridge["accept_compile_text"]),
-                     f"accept 动作：等待含“{self.cfg.bridge['accept_compile_text']}”"
-                     "的成功弹窗并点确定（P2 现场校准点）"),
-            *self._plan_read_logs(10),
-            PlanStep(12, "校验编译产物", "verify", [],
-                     "预期产物：编译输出目录与工程文件更新时间",
-                     expected_artifacts=(
-                         win_dir + r"\Compile",
-                         hcp_mtime_artifact(request),
-                     )),
         ]
+        idx = 10
+        if self.cfg.bridge["compile_success_dialog"]:
+            # 4.11 及以前：编译成功弹模态框，需 accept 确认
+            steps.append(PlanStep(10, "等待并确认编译结果对话框", "interop",
+                                  self._powershell_argv(
+                                      "accept", self.cfg.bridge["accept_compile_text"]),
+                                  f"accept 动作：等待含“{self.cfg.bridge['accept_compile_text']}”"
+                                  "的成功弹窗并点确定（P2 现场校准点）"))
+            idx = 11
+        # 4.12+ 无编译成功弹窗：跳过 accept，由日志面板（log/diagnostics）+产物校验判定
+        steps += [*self._plan_read_logs(idx),
+                  PlanStep(idx + 2, "校验编译产物", "verify", [],
+                           "预期产物：编译输出目录与工程文件更新时间",
+                           expected_artifacts=(
+                               win_dir + r"\Compile",
+                               hcp_mtime_artifact(request),
+                           ))]
+        return steps
 
     def plan_flash(self, request: OperationRequest) -> list[PlanStep]:
         """下载调用链：校验设备 -> 打开工程 -> PLC 下载 -> 确认 -> 日志复核。"""
@@ -133,23 +164,23 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
             self._plan_verify_device(1),
             *_plan_spacer(2, "打开工程 BESS 项目"),
             *self._plan_open_project(request, 3),
-            *_plan_spacer(6, "下载到 PLC（真机写操作，仅在本解锁路径出现）"),
-            PlanStep(7, "定位 PLC 下载菜单入口", "interop",
+            *_plan_spacer(7, "下载到 PLC（真机写操作，仅在本解锁路径出现）"),
+            PlanStep(8, "定位 PLC 下载菜单入口", "interop",
                      self._powershell_argv("menus"),
                      "menus 动作：定位 PLC->写入/下载 入口（P2 现场校准点）"),
-            PlanStep(8, "触发 PLC 下载", "interop",
+            PlanStep(9, "触发 PLC 下载", "interop",
                      self._powershell_argv("keys", "%p+d"),
                      "keys 动作：Alt+P,D 菜单序列（P2 现场校准点）"),
-            PlanStep(9, "确认下载警示对话框", "interop",
+            PlanStep(10, "确认下载警示对话框", "interop",
                      self._powershell_argv("accept", "确定"),
                      "accept 动作：进入下载模式的确认框（P2 现场校准点）"),
-            PlanStep(10, "等待并确认下载完成对话框", "interop",
+            PlanStep(11, "等待并确认下载完成对话框", "interop",
                      self._powershell_argv(
                          "accept", self.cfg.bridge["accept_download_text"]),
                      f"accept 动作：等待含“{self.cfg.bridge['accept_download_text']}”"
                      "的成功弹窗（P2 现场校准点）"),
-            *self._plan_read_logs(11),
-            PlanStep(13, "下载后复核", "verify", [],
+            *self._plan_read_logs(12),
+            PlanStep(14, "下载后复核", "verify", [],
                      "复核 PLC 在线与运行状态（只读监测链路复核寄存器）",
                      expected_artifacts=(
                          "logs/evidence.jsonl（本次下载全链证据）",

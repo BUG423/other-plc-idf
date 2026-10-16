@@ -69,6 +69,11 @@ DEFAULTS: dict = {
         "powershell_exe": "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
         "accept_compile_text": "编译",         # 编译成功对话框文案（P2 现场校准点）
         "accept_download_text": "成功",        # 下载成功对话框文案（P2 现场校准点）
+        # AutoShop 本体（冷启动步用；管线发现未运行时自动拉起）
+        "autoshop_exe": r"E:\Software\AutoShop\AutoShop.exe",
+        # 编译成功是否弹模态对话框：4.11 及以前弹，4.12 起只写信息输出窗格。
+        # false 时 build 链跳过 accept 步，以日志面板+产物校验判定成功（flash 不受影响）
+        "compile_success_dialog": True,
     },
     "net": {
         "timeout_s": 10.0,                    # 单次 interop/网络操作超时

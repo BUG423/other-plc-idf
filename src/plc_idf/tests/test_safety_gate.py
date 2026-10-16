@@ -110,10 +110,12 @@ def test_unlocked_reaches_call_point_but_no_real_exec(tmp_cfg_unlocked, capsys,
     out = capsys.readouterr().out
     assert "门禁通过" in out
 
-    # 调用点确已触达：至少一条 usbipd 校验 + 多条 powershell GUI 步
+    # 调用点确已触达：至少一条 usbipd 校验 + 多条 powershell interop 步
+    # （冷启动步是 powershell -Command 内联脚本，其余 GUI 步走 autoshop_ui.ps1 -File）
     assert any(a[-1] == "list" and "usbipd" in " ".join(a) for a in fake.calls)
     ps_calls = [a for a in fake.calls if a[-1] != "list"]
-    assert ps_calls and all("autoshop_ui.ps1" in " ".join(a) for a in ps_calls)
+    assert ps_calls and all("powershell" in " ".join(a) for a in ps_calls)
+    assert any("autoshop_ui.ps1" in " ".join(a) for a in ps_calls)
 
     # 证据日志：逐步 bridge.<sub>.step + 收尾 done
     ev_path = tmp_cfg_unlocked.parent / "evidence.jsonl"
@@ -125,19 +127,20 @@ def test_unlocked_reaches_call_point_but_no_real_exec(tmp_cfg_unlocked, capsys,
     assert "argv" in step_event["params"] and "ts" in step_event
 
 
-def test_unlocked_verify_aborts_when_plc_offline(tmp_path, clean_env, monkeypatch,
-                                                 capsys):
-    """已解锁但 USB 不在场：verify 步必须中止且不触碰任何 GUI 步。"""
+def test_unlocked_verify_aborts_when_plc_absent(tmp_path, clean_env, monkeypatch,
+                                                capsys):
+    """已解锁但 USB 设备完全缺席：verify 步必须中止且不触碰任何 GUI 步。"""
     monkeypatch.chdir(tmp_path)     # 项目根无所谓，配置全显式
     cfg_path = write_cfg(tmp_path / "c.toml", tmp_path / "ev.jsonl",
-                         extra="[bridge]\nenabled = true\n"
-                               f'[device]\ntty_glob = "{(tmp_path / "nofake*").as_posix()}"\n')
-    offline_sample = USBIPD_SAMPLE.replace("Attached", "Not shared")
+                         extra="[bridge]\nenabled = true\n")
+    absent_sample = "\n".join(
+        ln for ln in USBIPD_SAMPLE_ONWIN.splitlines()
+        if not ln.startswith("6-4")) + "\n"
     calls: list[list[str]] = []
 
     def runner(argv, timeout=None, cwd=None, **_kw):
         calls.append(list(argv))
-        stdout = offline_sample if argv[-1] == "list" else "GUI-ok"
+        stdout = absent_sample if argv[-1] == "list" else "GUI-ok"
         return InteropResult(argv=list(argv), returncode=0, stdout=stdout,
                              stderr="", attempts=1)
 
@@ -147,6 +150,32 @@ def test_unlocked_verify_aborts_when_plc_offline(tmp_path, clean_env, monkeypatc
     assert rc == 2                                  # verify 失败按安全拒绝处理
     assert "前置校验失败" in capsys.readouterr().err
     assert all(a[-1] == "list" for a in calls)     # 只做了只读校验，没碰 GUI
+
+
+def test_unlocked_verify_aborts_when_plc_still_in_wsl(tmp_path, clean_env,
+                                                      monkeypatch, capsys):
+    """已解锁但设备仍挂载在 WSL（Attached）：verify 必须拒绝并提示 detach。
+
+    桥式 build/flash 由 Windows 侧 AutoShop 执行，设备挂在 WSL 时
+    AutoShop 反而看不到它——这正是 USB 所有权互斥的机器可检查面。"""
+    monkeypatch.chdir(tmp_path)
+    cfg_path = write_cfg(tmp_path / "c.toml", tmp_path / "ev.jsonl",
+                         extra="[bridge]\nenabled = true\n")
+    calls: list[list[str]] = []
+
+    def runner(argv, timeout=None, cwd=None, **_kw):
+        calls.append(list(argv))
+        stdout = USBIPD_SAMPLE if argv[-1] == "list" else "GUI-ok"
+        return InteropResult(argv=list(argv), returncode=0, stdout=stdout,
+                             stderr="", attempts=1)
+
+    monkeypatch.setattr(bridge_mod, "run_command", runner)
+    rc = cli.main(["build", "--execute", "--i-have-authorized",
+                   "--config", str(cfg_path)])
+    assert rc == 2
+    err = capsys.readouterr().err
+    assert "前置校验失败" in err and "detach" in err
+    assert all(a[-1] == "list" for a in calls)
 
 
 # ---------- 只读强制 ----------
