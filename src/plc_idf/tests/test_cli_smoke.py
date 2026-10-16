@@ -70,7 +70,7 @@ def test_flash_dry_run_contains_chain_elements(tmp_cfg, capsys):
     assert rc == 0
     out = capsys.readouterr().out
     assert "下载到 PLC" in out
-    assert "accept" in out                        # 弹窗确认步
+    assert "{F8}" in out                         # 下载触发步（4.12 实测路径）
     assert "BESS_E521_DEV.hcp" in out             # 打开工程步
     assert "解锁真执行" in out
 
