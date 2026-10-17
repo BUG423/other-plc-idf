@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-10-17T15:00:01.719614+00:00",
+  "label": "system-info-view",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "inspect"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "PID=21248|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [_SYS_INFO]\nControlType.Window|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [_SYS_INFO]|Afx:00400000:8:00010003:00000000:009B0C75|396572|True|-16,-16,3872,2096\nControlType.Pane||SysTreeView32|330656|True|2,278,396,1476\nControlType.Pane||Button|724032|True|6,1984,26,26\nControlType.Pane||Button|330808|True|38,1984,26,26\nControlType.Pane||Button|330836|True|70,1984,26,26\nControlType.Pane||Button|331010|True|102,1984,26,26\nControlType.Pane||ListBox|330976|True|6,1824,3828,154\nControlType.Window|_SYS_INFO|Afx:00400000:b:00010003:00000006:02C014C3|1183216|True|398,216,2944,1550\nControlType.Pane||VSFlexGrid8N|3937350|True|418,282,2904,1464\nControlType.Window|MAIN|Afx:00400000:b:00010003:00000006:000D0864|4525090|True|398,216,2944,1550\nControlType.Pane|<ST editor>|Scintilla|4592044|True|432,282,2890,1464\nControlType.Window|变量表|Afx:00400000:b:00010003:00000006:02C014C3|2495066|True|398,216,2944,1550\nControlType.Pane||VSFlexGrid8N|1250168|True|418,282,2904,1464\nControlType.Pane||Button|593072|False|410,234,30,30\nControlType.Pane||Button|461976|False|3288,234,30,30\nControlType.Pane|本地|Button|4788524|False|1878,172,84,40\nControlType.Pane|未登录::USB|Button|1773630|False|1974,172,164,40\nControlType.Pane|变量共享:|Button|3936202|False|2286,112,152,40\nControlType.Pane|未连接|Button|3018762|False|2450,112,90,40\nControlType.Pane||VSFlexGrid8N|658718|True|3350,286,478,1406\n",
+  "stderr": ""
+}

@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-10-17T14:44:26.685857+00:00",
+  "label": "probe1-download-log",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "log-data",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "----------------------------------  AutoShop : 通讯消息  ----------------------------------\n信息  (2026-10-17 22:44:13)  开始下载\n信息  (2026-10-17 22:44:13)  下载project 成功\n信息  (2026-10-17 22:44:13)  下载userprog.foid 成功\n信息  (2026-10-17 22:44:13)  下载stprog.o 成功\n信息  (2026-10-17 22:44:13)  下载stuserprog.o 成功\n信息  (2026-10-17 22:44:13)  下载symbol.sym 成功\n信息  (2026-10-17 22:44:13)  下载varsinfo.foid 成功\n信息  (2026-10-17 22:44:13)  下载syscfg.foid 成功\n信息  (2026-10-17 22:44:13)  下载ethercat.foid 成功\n信息  (2026-10-17 22:44:13)  下载modbus.foid 成功\n信息  (2026-10-17 22:44:13)  下载canlink.foid 成功\n信息  (2026-10-17 22:44:13)  下载modcfg.foid 成功\n信息  (2026-10-17 22:44:13)  下载EIP.dat 成功\n信息  (2026-10-17 22:44:13)  下载EIPIns.foid 成功\n信息  (2026-10-17 22:44:13)  下载ecttrans.foid 成功\n信息  (2026-10-17 22:44:13)  下载dataLog.foid 成功\n信息  (2026-10-17 22:44:13)  下载OpcUAServer.dat 成功\n信息  (2026-10-17 22:44:14)  下载sftpserver.foid 成功\n信息  (2026-10-17 22:44:14)  下载Ecam.foid 成功\n信息  (2026-10-17 22:44:14)  下载成功！\n",
+  "stderr": ""
+}

@@ -3,6 +3,15 @@ include wsl-tools/e521_monitor.py
 include wsl-tools/virtual_easy521.py
 include wsl-tools/e521_regs.py
 include plc/tools/autoshop_ui.ps1
+include plc/tools/read_autoshop_online.ps1
+include plc/tools/compile_vendor_st.ps1
+include examples/easy521_native_probe/MAIN_plus1_body.st
+include examples/easy521_native_probe/MAIN_plus2_body.st
+include examples/easy521_native_probe/README.md
+include examples/easy521_native_probe/source-review.json
+include plc/easy521/MAIN_5ms_variables.csv
+include plc/easy521/autoshop_global_import.csv
+include plc/easy521/autoshop/BESS_E521_DEV/VarNameAndAddr.csv
 include examples/open_linux/counter/main.st
 include examples/open_linux/motor/main.st
 include examples/open_linux/motor/plcidf.json

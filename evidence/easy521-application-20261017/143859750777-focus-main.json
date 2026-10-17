@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-10-17T14:38:59.750754+00:00",
+  "label": "focus-main",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "click",
+    "-X",
+    "1200",
+    "-Y",
+    "600"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": ""
+}

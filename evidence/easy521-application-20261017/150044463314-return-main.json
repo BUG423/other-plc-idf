@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-10-17T15:00:44.463288+00:00",
+  "label": "return-main",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "click",
+    "-X",
+    "550",
+    "-Y",
+    "266"
+  ],
+  "returncode": 1,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "AutoShop is not foreground; no input was sent.\n所在位置 \\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1:241 字符: 36\n+ ...  -ne $app.Id){throw 'AutoShop is not foreground; no input was sent.'}\n+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (AutoShop is not...input was sent.:String) [], RuntimeException\n    + FullyQualifiedErrorId : AutoShop is not foreground; no input was sent.\n \n"
+}

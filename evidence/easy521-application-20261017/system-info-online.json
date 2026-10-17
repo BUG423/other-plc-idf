@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "ok": false,
+  "status": "unverified",
+  "values_read": false,
+  "online": false,
+  "plc_state": "unverified",
+  "state_source": null,
+  "values": {},
+  "raw_values": {},
+  "missing_variables": [
+    "M8000",
+    "M8001"
+  ],
+  "errors": [
+    "missing readable online variables: M8000, M8001"
+  ],
+  "captured_at_utc": "2026-10-17T15:00:11.7497338Z",
+  "process_id": 21248,
+  "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+  "connection_evidence": null,
+  "limitations": [
+    "UI table snapshots need not be atomic across rows",
+    "USB/device provenance is supplied separately, not established by this parser",
+    "no PLC state inferred from pixel colors, icons or UI request return codes"
+  ]
+}

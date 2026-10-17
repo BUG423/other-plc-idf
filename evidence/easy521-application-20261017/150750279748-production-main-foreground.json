@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-10-17T15:07:50.279717+00:00",
+  "label": "production-main-foreground",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "maximize"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": ""
+}

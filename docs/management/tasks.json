@@ -127,7 +127,7 @@
       "title": "绑定部署产物与设备身份并实现互斥和可靠证据",
       "priority": "P0",
       "milestone": "M2",
-      "role": "系统与部署工程角色（待接单）",
+      "role": "系统与部署AI代理、CLI代理与统筹复核",
       "depends_on": [
         "T02",
         "T05"
@@ -140,7 +140,7 @@
         "跨进程设备/AutoShop 租约阻止并发，陈旧锁恢复有证据",
         "证据不可写时在副作用前停止；超时保留未知状态且不自动再下载"
       ],
-      "delivery": "部署计划、严格设备匹配、租约、证据和负向用例",
+      "delivery": "NativeDeploy+AutoShopVendorAdapter+CLI/严格证据已实现；真实下载确认已执行。厂商自动重编导致精确二进制身份追溯未通过，保持开放",
       "issue_number": 7,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/7"
     },
@@ -149,7 +149,7 @@
       "title": "验收真机只读监测和数据质量",
       "priority": "P1",
       "milestone": "M3",
-      "role": "通信测试角色与用户现场（待网络条件）",
+      "role": "只读监测AI代理与统筹真机联调",
       "depends_on": [
         "T05"
       ],
@@ -161,7 +161,7 @@
         "验证断连、异常值和陈旧数据；只用读功能码",
         "区分变量数采、CPU运行状态、故障与周期监控的实际覆盖范围"
       ],
-      "delivery": "真机只读报告、原始样本、异常路径证据",
+      "delivery": "USB UI当前值已真实读取12个探针量；独立在线身份、M8000/M8001与鲜度仍未核验，CLI非零；网口Modbus与字序仍待验收",
       "issue_number": 8,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/8"
     },
@@ -170,7 +170,7 @@
       "title": "完成实验机应用下载、一致性与运行验收",
       "priority": "P1",
       "milestone": "M3",
-      "role": "PLC 联调测试角色与用户现场（待前置验收）",
+      "role": "部署AI代理与统筹独占真机操作、用户现场供电",
       "depends_on": [
         "T06",
         "T07",
@@ -184,7 +184,7 @@
         "RUN/STOP、5ms任务周期和错误恢复各有真实证据；未测不写通过",
         "失败或未知状态停止，不自动重试下载、不推断恢复成功"
       ],
-      "delivery": "一次完整可复现闭环记录、程序一致性证据、运行与周期验收",
+      "delivery": "两个内存探针USB下载及厂商一致性正反校验通过；RUN请求拒绝。设备保留revision2，未恢复原BESS。需额定24V下复核、实际扫描/停止与规则变化、精确二进制追溯，详见EASY521_APPLICATION_2026-10-17.md",
       "issue_number": 9,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/9"
     },
@@ -193,7 +193,7 @@
       "title": "研究原生厂商编译 ABI 与下载协议",
       "priority": "research",
       "milestone": "RX",
-      "role": "编译 ABI 与协议研究角色（首轮文献完成，原型待接单）",
+      "role": "厂商编译器研究AI代理与统筹复核",
       "depends_on": [],
       "estimate": "首轮原型时间盒 3–5 工程日",
       "acceptance": [
@@ -202,7 +202,7 @@
         "下载协议研究先离线分析合法样本，真实抓包与写操作另需现场授权",
         "最小原型或否决证据支持桥接保留/原生投入决定，未发现不等于不存在"
       ],
-      "delivery": "本轮 docs/research/firmware/03-* 与 ELF JSON；后续 ABI/协议最小原型及决定记录",
+      "delivery": "docs/research/firmware/09-*、10-*；真实脱离GUI的StLang IPC容器→ARM对象、worker及正负验证；文本预处理/完整链接/下载协议仍开放",
       "issue_number": 10,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/10"
     },
@@ -320,5 +320,5 @@
     "number": 12,
     "url": "https://github.com/BUG423/other-plc-idf/issues/12"
   },
-  "scope_update": "2026-10-17 用户要求优先完善直接AI PLC编程，T13实现通用类型化I/O与一键场景验收；Easy521下载/运行及跨目标比较仍独立验收。状态以GitHub Issue为准。"
+  "scope_update": "2026-10-17 真机USB应用下载与厂商一致性正反校验已执行，RUN拒绝、缺额定24V且根因未证实；部署自动重编追溯及运行保持开放。R01取得无GUI的Windows StLang ARM对象编译证据，非完整无Windows设备闭环。状态以GitHub Issue为准。"
 }

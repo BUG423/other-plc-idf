@@ -1,0 +1,269 @@
+{
+  "schema": "plcidf.easy521-native-probe.review.v1",
+  "reviews": [
+    {
+      "ok": true,
+      "status": "ready-for-vendor-compilation",
+      "validation": "offline-source-and-repository-binding-check",
+      "compiled": false,
+      "hardware_verified": false,
+      "revision": 1,
+      "marker": 52101,
+      "source_sha256": "0546c0173ce67a065ed8041ccd29b8f666f5463f1db83fa30fa5844f5106db07",
+      "source_path": "examples/easy521_native_probe/MAIN_plus1_body.st",
+      "bindings": {
+        "g_xBESS_Enable": {
+          "type": "BOOL",
+          "native_symbol": {
+            "symbol_address": "0X2100000",
+            "bits": "1"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_xBESS_Reset": {
+          "type": "BOOL",
+          "native_symbol": {
+            "symbol_address": "0X2100001",
+            "bits": "1"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_xBESS_MeasurementsValid": {
+          "type": "BOOL",
+          "native_symbol": {
+            "symbol_address": "0X2100002",
+            "bits": "1"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_Pcmd": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X21000F0",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_Qcmd": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X2100110",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_iBESS_Mode": {
+          "type": "INT",
+          "native_symbol": {
+            "symbol_address": "0X2100130",
+            "bits": "16"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_Confidence": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X21001C0",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_SensVP": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X2100140",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_SensVQ": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X2100160",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_xBESS_ControllerReady": {
+          "type": "BOOL",
+          "native_symbol": {
+            "symbol_address": "0X2100003",
+            "bits": "1"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_InfluenceP": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X2100180",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_InfluenceQ": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X21001A0",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        }
+      },
+      "errors": [],
+      "evidence_hashes": {
+        "/home/zss/workspace/py2plc/plc/easy521/MAIN_5ms_variables.csv": "1a5afad0c4bae154cafd2d7aa5329b63d179cae1cbbec3014f9a7a2590d14d6e",
+        "/home/zss/workspace/py2plc/plc/easy521/autoshop_global_import.csv": "2ec0225aaa9be79e57f2780ddbdbfdd174d90b778dc225bc532040c361ce89bc",
+        "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/VarNameAndAddr.csv": "ebdd331ebf5732c6377c09db368862d75ab73ad14b5f44d5a3776ee7a17e6e75"
+      },
+      "limitations": [
+        "repository bindings are historical, not current device identity",
+        "no D/M Modbus addresses inferred from internal symbol values",
+        "current project bindings and absence of other I/O programs require live review"
+      ]
+    },
+    {
+      "ok": true,
+      "status": "ready-for-vendor-compilation",
+      "validation": "offline-source-and-repository-binding-check",
+      "compiled": false,
+      "hardware_verified": false,
+      "revision": 2,
+      "marker": 52102,
+      "source_sha256": "392ae08c3e1e2bbed430af326d287e042bf15d3dc8f674712a6ed748f40acc09",
+      "source_path": "examples/easy521_native_probe/MAIN_plus2_body.st",
+      "bindings": {
+        "g_xBESS_Enable": {
+          "type": "BOOL",
+          "native_symbol": {
+            "symbol_address": "0X2100000",
+            "bits": "1"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_xBESS_Reset": {
+          "type": "BOOL",
+          "native_symbol": {
+            "symbol_address": "0X2100001",
+            "bits": "1"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_xBESS_MeasurementsValid": {
+          "type": "BOOL",
+          "native_symbol": {
+            "symbol_address": "0X2100002",
+            "bits": "1"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_Pcmd": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X21000F0",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_Qcmd": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X2100110",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_iBESS_Mode": {
+          "type": "INT",
+          "native_symbol": {
+            "symbol_address": "0X2100130",
+            "bits": "16"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_Confidence": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X21001C0",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_SensVP": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X2100140",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_SensVQ": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X2100160",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_xBESS_ControllerReady": {
+          "type": "BOOL",
+          "native_symbol": {
+            "symbol_address": "0X2100003",
+            "bits": "1"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_InfluenceP": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X2100180",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        },
+        "g_rBESS_InfluenceQ": {
+          "type": "REAL",
+          "native_symbol": {
+            "symbol_address": "0X21001A0",
+            "bits": "32"
+          },
+          "explicit_soft_element": null,
+          "modbus_register": null
+        }
+      },
+      "errors": [],
+      "evidence_hashes": {
+        "/home/zss/workspace/py2plc/plc/easy521/MAIN_5ms_variables.csv": "1a5afad0c4bae154cafd2d7aa5329b63d179cae1cbbec3014f9a7a2590d14d6e",
+        "/home/zss/workspace/py2plc/plc/easy521/autoshop_global_import.csv": "2ec0225aaa9be79e57f2780ddbdbfdd174d90b778dc225bc532040c361ce89bc",
+        "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/VarNameAndAddr.csv": "ebdd331ebf5732c6377c09db368862d75ab73ad14b5f44d5a3776ee7a17e6e75"
+      },
+      "limitations": [
+        "repository bindings are historical, not current device identity",
+        "no D/M Modbus addresses inferred from internal symbol values",
+        "current project bindings and absence of other I/O programs require live review"
+      ]
+    }
+  ]
+}

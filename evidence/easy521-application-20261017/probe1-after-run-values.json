@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "ok": false,
+  "status": "unverified",
+  "values_read": true,
+  "online": true,
+  "plc_state": "unverified",
+  "state_source": null,
+  "values": {
+    "g_xBESS_Enable": false,
+    "g_xBESS_Reset": false,
+    "g_xBESS_MeasurementsValid": false,
+    "g_rBESS_Pcmd": 0.0,
+    "g_rBESS_Qcmd": 0.0,
+    "g_iBESS_Mode": 0,
+    "g_rBESS_SensVP": 0.0,
+    "g_rBESS_SensVQ": 0.0,
+    "g_rBESS_InfluenceP": 0.0,
+    "g_rBESS_InfluenceQ": 0.0,
+    "g_rBESS_Confidence": 0.0,
+    "g_xBESS_ControllerReady": false
+  },
+  "raw_values": {
+    "g_xBESS_Enable": [
+      {
+        "value": false,
+        "raw": "OFF",
+        "grid_handle": 1250168,
+        "row": "Row 1"
+      }
+    ],
+    "g_xBESS_Reset": [
+      {
+        "value": false,
+        "raw": "OFF",
+        "grid_handle": 1250168,
+        "row": "Row 2"
+      }
+    ],
+    "g_xBESS_MeasurementsValid": [
+      {
+        "value": false,
+        "raw": "OFF",
+        "grid_handle": 1250168,
+        "row": "Row 3"
+      }
+    ],
+    "g_rBESS_Pcmd": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 11"
+      }
+    ],
+    "g_rBESS_Qcmd": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 12"
+      }
+    ],
+    "g_iBESS_Mode": [
+      {
+        "value": 0,
+        "raw": "0",
+        "grid_handle": 1250168,
+        "row": "Row 13"
+      }
+    ],
+    "g_rBESS_SensVP": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 14"
+      }
+    ],
+    "g_rBESS_SensVQ": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 15"
+      }
+    ],
+    "g_rBESS_InfluenceP": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 16"
+      }
+    ],
+    "g_rBESS_InfluenceQ": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 17"
+      }
+    ],
+    "g_rBESS_Confidence": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 18"
+      }
+    ],
+    "g_xBESS_ControllerReady": [
+      {
+        "value": false,
+        "raw": "OFF",
+        "grid_handle": 1250168,
+        "row": "Row 19"
+      }
+    ]
+  },
+  "missing_variables": [],
+  "errors": [],
+  "captured_at_utc": "2026-10-17T14:47:08.0677465Z",
+  "process_id": 21248,
+  "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+  "connection_evidence": {
+    "online": true,
+    "transport": "usb",
+    "evidence_id": "probe1-vendor-program-compare"
+  },
+  "limitations": [
+    "UI table snapshots need not be atomic across rows",
+    "USB/device provenance is supplied separately, not established by this parser",
+    "no PLC state inferred from pixel colors, icons or UI request return codes"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "comparison": "after F8 download before independent program compare",
+  "diff": [
+    {
+      "path": "steps.dat",
+      "status": "missing"
+    },
+    {
+      "artifact": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.o",
+      "status": "changed"
+    },
+    {
+      "artifact": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+      "status": "changed"
+    }
+  ]
+}

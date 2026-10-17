@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-10-17T14:32:00.483635+00:00",
+  "label": "close-device-info",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "accept",
+    "-Value",
+    "产品型号：Easy521"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "厂商名称：汇川技术\n产品系列：PLC\n产品型号：Easy521\n产品版本：6.11.0.1\n\n",
+  "stderr": ""
+}

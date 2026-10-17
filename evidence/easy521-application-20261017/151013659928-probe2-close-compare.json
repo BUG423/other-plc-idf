@@ -1,0 +1,26 @@
+{
+  "timestamp_utc": "2026-10-17T15:10:13.659888+00:00",
+  "label": "probe2-close-compare",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "button",
+    "-ExpectedDialog",
+    "AutoShop",
+    "-ExpectedText",
+    "当前工程与PLC中程序校验一致！",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+    "-Value",
+    "确定"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "{\"outcome_verified\":false,\"dialog\":\"AutoShop\",\"invocation_posted\":true,\"button\":\"确定\"}\n",
+  "stderr": ""
+}

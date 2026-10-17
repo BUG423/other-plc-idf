@@ -1,0 +1,102 @@
+[
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/e16be77815334a3190633218671f8749-download-usbipd-list.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/e16be77815334a3190633218671f8749-download-usbipd-list.json",
+    "sha256": "0f4bd7673f5f6981af1c19cab66bbd8641d428285463b14b2ab41f84b2569aa2"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/480d1c83fc91439e85a0200845691bdf-download-editor-read.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/480d1c83fc91439e85a0200845691bdf-download-editor-read.json",
+    "sha256": "906ae642278d85c10c77a85c88188b5133255f4a565c42c3722d8755671417a5"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/c89da43d460f49408cf47a763625ad62-download-inspect.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/c89da43d460f49408cf47a763625ad62-download-inspect.json",
+    "sha256": "a58011b069e08d75b2c8b16c80c7d0f0272085a505aabbfec4d8d3129ad38ccb"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/a35625ebfcc04a29886ac18833323cf9-download-diagnostics.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/a35625ebfcc04a29886ac18833323cf9-download-diagnostics.json",
+    "sha256": "b259cd78474b2420be3ca13980c2896949aebe308937fb089d77dcca8478295c"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/ab5f4430d69c4095af7d11ef809a8f39-download-log-data.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/ab5f4430d69c4095af7d11ef809a8f39-download-log-data.json",
+    "sha256": "d30a9f1178f9aa4966a8d7e244b499bb184fd74bc0e5edf832f27b026bf16e81"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/cc1a72fbace54c999a526bceb25700c3-download-intent-keys.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/cc1a72fbace54c999a526bceb25700c3-download-intent-keys.json",
+    "sha256": "b7c0ac81698d3ec9f486f812ef6e54fcd3d70ae38d562020b488ad36b350c4af"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/d1671e7d341248e387ed38a5cf4417c8-download-keys.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/d1671e7d341248e387ed38a5cf4417c8-download-keys.json",
+    "sha256": "91406f713be6acc8ae556f535c9909f1efa6027019bd07dd6a1787929ac0e363"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/f1d036495dba45c8895d5ba757214a5f-download-dialog.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/f1d036495dba45c8895d5ba757214a5f-download-dialog.json",
+    "sha256": "b0f1c8fb13b18fc014c22abeb0df5bc01296cd3912c37f93a1ba79e5eb3fb7be"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/36c3d4a2dffe4a338a19e85f934559ef-download-intent-button.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/36c3d4a2dffe4a338a19e85f934559ef-download-intent-button.json",
+    "sha256": "fb7887dbc773144b37b65eab373e330f4e706dbb216ad4e3de63ec2ed0efae6f"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/49c3370155ec4a168dce05430f9b65ac-download-button.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/49c3370155ec4a168dce05430f9b65ac-download-button.json",
+    "sha256": "480810cb2c5248a4814b13c7b037539b8e21696576e7f13fd6c87742bafe584c"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/85e041b10724421d89011f82b2ffd06d-download-log-data.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/85e041b10724421d89011f82b2ffd06d-download-log-data.json",
+    "sha256": "cdc3ce0c02c2107f6b305536f55062e38ecfbc9d09c4869f5a843eb579235d4e"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/19aaf8e35c1d4818ae3755e5755b10ed-download-decision.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/19aaf8e35c1d4818ae3755e5755b10ed-download-decision.json",
+    "sha256": "a025fa96f5d1712107fb751c9f86e023c2f3f6a837488be0982696ffbfbe8fb8"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/52025da3f67d4dce8935d80bf827035f-preflight-usbipd-list.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/52025da3f67d4dce8935d80bf827035f-preflight-usbipd-list.json",
+    "sha256": "782a8663c4e30f7f8fef16fc1e797280ccfb037e512d97674188c742c5e4009a"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/ba54a5ef726f4eb6aec21235a8753816-preflight-editor-read.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/ba54a5ef726f4eb6aec21235a8753816-preflight-editor-read.json",
+    "sha256": "79b1a34ecb7058895eec94a0640d4862b302ff863a322d39e970c19fecd98031"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/1134bd321325429f8aa122b3f26d03be-preflight-inspect.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/1134bd321325429f8aa122b3f26d03be-preflight-inspect.json",
+    "sha256": "08e28f66063ab86af98b79f1ddd7f7f0f526f077e049e9c239054a29d87c9429"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/4fbffbe4f6f74c8bb7e9acf288d43ea5-preflight-diagnostics.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/4fbffbe4f6f74c8bb7e9acf288d43ea5-preflight-diagnostics.json",
+    "sha256": "fdd6cd0860826a40149b2cc0d24888569d6c5c12d5fd3456fb6150410cadcb17"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/8eff241cb04549d6a89eb0bc821e584a-preflight-decision.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/8eff241cb04549d6a89eb0bc821e584a-preflight-decision.json",
+    "sha256": "a524bb27f6a51d84771500b8b5191089d801a62e85de9cb67599212ae0afa8de"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/22949df02ff546c7ad06ea02bf42dcfa-observe-usbipd-list.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/22949df02ff546c7ad06ea02bf42dcfa-observe-usbipd-list.json",
+    "sha256": "22743d05b5881983cc32a2ad474eadfd384fd68a8542cbd5d5910db70f7b0f6f"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/b81f8e72529f49c697b57216cf564594-observe-status.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/b81f8e72529f49c697b57216cf564594-observe-status.json",
+    "sha256": "8fcf3a9e46b31493fa77afc6da606ead0a89a8344d0c4e2e42f3418c94ba0d85"
+  },
+  {
+    "original_path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/2610af59913742699a2ffe7e289479e6-observe-decision.json",
+    "retained_path": "evidence/easy521-application-20261017/adapter-records/2610af59913742699a2ffe7e289479e6-observe-decision.json",
+    "sha256": "779a4a7f94b6b72ac3fbe5264f3b54f2f1b74105916f99cd59ab42a271fac75f"
+  }
+]

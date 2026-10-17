@@ -1,0 +1,26 @@
+{
+  "schema": "plcidf.easy521-session.v1",
+  "date": "2026-10-17",
+  "power_source": "usb-only",
+  "power_24v_connected": false,
+  "physical_mode_switch": "RUN",
+  "physical_run_led": "off as reported by user",
+  "device": {
+    "model": "Easy521",
+    "firmware": "6.11.0.1",
+    "busid": "6-3",
+    "vidpid": "0471:a531"
+  },
+  "device_application": "memory-only probe revision 2, MAIN_plus2_body.st",
+  "vendor_download_result": "success 23:08:47 China time; reconciled by read-only log after CLI returned unknown",
+  "vendor_program_comparison": "consistent 23:09:45 China time",
+  "cli_deployment_result": "unknown; selected build invalidated by vendor auto-compile and log pane switch",
+  "runtime": "unverified; revision1 RUN requests refused twice; no further RUN requests after that",
+  "physical_io": "unverified; no connected output loads",
+  "restore_tested": false,
+  "firmware_replaced": false,
+  "backup_record": "backup-record.json",
+  "ui_final": "working copy MAIN revision2, saved/offline, read_only=false",
+  "next_hardware_step": "user supplies rated external24V; refresh observations before testing execution",
+  "software_gap": "vendor auto-compile must be bound to actual download artifact identity, not silently rehashed"
+}

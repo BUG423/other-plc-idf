@@ -10,7 +10,7 @@
     以下 Easy521 默认入口保留，其 Windows/硬件验证与 open-linux 分别报告：
     build    桥式 AutoShop 后端编译管线  —— 管道就绪，默认 dry-run，真执行需双因子
     flash    桥式 AutoShop 后端下载管线  —— 管道就绪，默认 dry-run，真执行需双因子
-    monitor  只读 Modbus 监测            —— 真实可用（封装 e521_monitor.py）
+    monitor  Modbus / vendor-usb 只读快照 —— 厂商UI不足以证明在线/运行时返回未核验
     sim      虚拟从站 / 一键闭环演示     —— 真实可用（封装 virtual_easy521.py）
     devices  USB 设备在线状态表          —— 真实可用（usbipd list 只读 interop）
     new/init 文本工程脚手架              —— 离线，不生成原生 AutoShop 工程
@@ -24,11 +24,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
+import ntpath
 import os
 import shlex
 import subprocess
 import sys
 from pathlib import Path
+from time import monotonic
 
 from . import __version__
 from .backends.base import OperationRequest
@@ -82,8 +85,7 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--execute", action="store_true",
                        help="真执行调用链（默认 dry-run 只打印）")
         p.add_argument("--i-have-authorized", action="store_true",
-                       help="操作者当次显式授权；真执行还需配置 bridge.enabled=true"
-                            "（双因子，缺一即拒）")
+                       help="操作者当次显式授权；旧桥接与原生构建还需 bridge.enabled=true")
         p.add_argument("--json", action="store_true", help="输出版本化 JSON 结果")
         p.add_argument("--target", choices=("easy521", "open-linux"), default="easy521",
                        help="编译/部署目标；本地 Linux 包不适用于 Easy521")
@@ -94,6 +96,8 @@ def build_parser() -> argparse.ArgumentParser:
             p.add_argument("--working-project", metavar="WINDOWS_PATH",
                            help="明确的 Windows 工程副本目录，须与配置和当前窗口一致")
             p.add_argument("--manifest", metavar="FILE", help="真实编译通过后保存产物清单")
+            p.add_argument("--build-record", metavar="FILE",
+                           help="Easy521 真实编译通过后保存完整 verified 编译记录，供原生部署使用")
             p.add_argument("--compile-timeout", type=float, default=None,
                            help="等待真实新产物的上限，秒")
             p.add_argument("--build-dir", metavar="DIR", help="open-linux 构建输出目录")
@@ -101,16 +105,22 @@ def build_parser() -> argparse.ArgumentParser:
                            help="open-linux 扫描周期（需与 ST 的 TASK 声明一致）")
         else:
             p.add_argument("--manifest", metavar="FILE", help="open-linux 构建清单（部署输入）")
+            p.add_argument("--build-record", metavar="FILE", help="Easy521 完整 verified 编译记录")
+            p.add_argument("--backup-record", metavar="FILE", help="Easy521 PLC 上载备份及哈希记录 JSON")
+            p.add_argument("--field-facts", metavar="FILE", help="Easy521 当前供电、输出隔离和物理开关观察记录 JSON")
+            p.add_argument("--working-project", metavar="WINDOWS_PATH", help="Easy521 精确的 Windows 工作工程目录")
+            p.add_argument("--deploy-timeout", type=float, default=None,
+                           help="Easy521 单次下载及独立校验总期限，秒（最长600秒）")
         _add_config_option(p)
         p.set_defaults(handler=_make_bridge_handler(action), action=action)
 
     # ---- monitor：只读监测透传 ----
     m = sub.add_parser(
-        "monitor", help="观测本地 ST 运行实例或只读 Modbus 寄存器",
+        "monitor", help="观测本地 ST、只读 Modbus 或厂商 USB 在线变量表",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     m.add_argument("--host", default=None, help="[tcp] PLC 地址")
     m.add_argument("--port", type=int, default=None, help="[tcp] 端口")
-    m.add_argument("--transport", choices=("tcp", "serial"), default=None)
+    m.add_argument("--transport", choices=("tcp", "serial", "vendor-usb"), default=None)
     m.add_argument("--device", default=None, help="[serial] 串口路径")
     m.add_argument("--baud", type=int, default=None, help="[serial] 波特率")
     m.add_argument("--unit-id", dest="unit_id", type=int, default=None, help="站号")
@@ -130,7 +140,10 @@ def build_parser() -> argparse.ArgumentParser:
     m.add_argument("--run-id", help="open-linux 运行实例 ID")
     m.add_argument("--state-dir", help="open-linux 本机运行时目录")
     m.add_argument("--toolchain-dir", help="open-linux 工具链目录")
-    m.add_argument("--json", action="store_true", help="open-linux 输出结构化运行快照")
+    m.add_argument("--working-project", help="vendor-usb 精确的 Windows 工程目录；默认配置值")
+    m.add_argument("--process-id", type=int, default=None, help="vendor-usb AutoShop PID；0自动选择唯一精确工程")
+    m.add_argument("--grid-handle", type=int, default=None, help="vendor-usb 限定当前可见监测表句柄")
+    m.add_argument("--json", action="store_true", help="输出结构化运行快照（vendor-usb总是JSON）")
     m.add_argument("extra", nargs=argparse.REMAINDER, metavar="-- 透传参数",
                    help="其余参数原样透传给 e521_monitor.py（写作: -- 参数）")
     _add_config_option(m)
@@ -270,21 +283,37 @@ def _make_bridge_handler(action: str):
     def handler(args: argparse.Namespace, cfg, evidence: EvidenceLogger) -> int:
         if args.target == "open-linux":
             return _cmd_open_operation(args, cfg, evidence)
-        if args.toolchain_dir or args.state_dir or (action == "build" and
-                (args.build_dir or args.cycle_ms is not None)) or (action == "flash" and args.manifest):
+        if args.toolchain_dir is not None or args.state_dir is not None or (action == "build" and
+                (args.build_dir is not None or args.cycle_ms is not None)) or (action == "flash" and args.manifest is not None):
             raise ValueError("open-linux-only options cannot be used for an Easy521 operation")
-        if action == "build" and args.source:
+        if action == "build" and args.source is not None:
+            if not args.source or any(value == "" for value in (args.manifest, args.build_record)):
+                raise ValueError("native source and record paths must be nonempty")
+            if args.project is not None:
+                raise ValueError("Easy521 --source uses --working-project; --project would be ignored")
+            destinations = [Path(value).expanduser().resolve() for value in (args.manifest, args.build_record) if value]
+            if len(set(destinations)) != len(destinations) or Path(args.source).expanduser().resolve() in destinations:
+                raise ValueError("build records and raw manifest must have distinct paths from the source")
             backend = NativeAutoShop(cfg, evidence=StrictEvidenceLogger(evidence_path(cfg)))
             result = backend.compile(args.source, execute=args.execute,
                                      authorized=args.i_have_authorized,
                                      working_project=args.working_project,
                                      timeout_s=args.compile_timeout if args.compile_timeout is not None else 30.0)
             if result.get("ok") and result.get("manifest") and args.manifest:
-                write_record(args.manifest, result["manifest"])
-                result["manifest_path"] = str(Path(args.manifest).resolve())
+                write_record(Path(args.manifest).expanduser(), result["manifest"])
+                result["manifest_path"] = str(Path(args.manifest).expanduser().resolve())
+            if result.get("ok") is True and result.get("status") == "verified" and args.build_record:
+                write_record(Path(args.build_record).expanduser(), result)
+                result["build_record_path"] = str(Path(args.build_record).expanduser().resolve())
             result["command"] = "build"
             _emit_operation(args, result)
             return 0 if result["ok"] else 1
+        if action == "build" and any(getattr(args, key) is not None for key in
+                ("working_project", "manifest", "compile_timeout", "build_record")):
+            raise ValueError("Easy521 native build options require --source")
+        if action == "flash" and any(getattr(args, key) is not None for key in
+                ("build_record", "backup_record", "field_facts", "working_project", "deploy_timeout")):
+            return _cmd_native_deploy(args, cfg, evidence)
         request = OperationRequest(
             project=args.project or cfg.bridge["project"],
             windows_project=cfg.bridge["windows_project"],
@@ -346,6 +375,55 @@ def _emit_operation(args, result):
             print(f"[plcidf] build_hash={result['manifest']['build_hash']}")
 
 
+def _read_json_record(path):
+    """Read a record as an object; reject duplicate keys and nonfinite numbers."""
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError("duplicate JSON key in record: " + key)
+            result[key] = value
+        return result
+    def invalid(value):
+        raise ValueError("nonfinite JSON number in record: " + value)
+    def finite(value):
+        number = float(value)
+        return number if math.isfinite(number) else invalid(value)
+    record = json.loads(Path(path).expanduser().read_text(encoding="utf-8-sig"),
+                        object_pairs_hook=unique, parse_constant=invalid, parse_float=finite)
+    if not isinstance(record, dict):
+        raise ValueError("deployment record must be a JSON object: " + str(path))
+    return record
+
+
+def _cmd_native_deploy(args, cfg, evidence):
+    if args.project is not None:
+        raise ValueError("Easy521 native flash requires --working-project; --project would be ignored")
+    missing = ["--" + key.replace("_", "-") for key in
+               ("build_record", "backup_record", "field_facts", "working_project") if not getattr(args, key)]
+    if missing:
+        raise ValueError("Easy521 native flash requires " + ", ".join(missing))
+    timeout = args.deploy_timeout if args.deploy_timeout is not None else 120.0
+    if not math.isfinite(timeout) or not 0 < timeout <= 600:
+        raise ValueError("Easy521 deploy timeout must be finite and in (0, 600] seconds")
+    build, backup, facts = (_read_json_record(value) for value in
+                            (args.build_record, args.backup_record, args.field_facts))
+    from .native_deploy import NativeDeploy
+    result = NativeDeploy(cfg, evidence=StrictEvidenceLogger(evidence_path(cfg)),
+                          adapter=_vendor_adapter(cfg)).deploy(
+        build, working_project=args.working_project, backup=backup, preflight=facts,
+        execute=args.execute, authorized=args.i_have_authorized,
+        timeout_s=timeout)
+    result.update(command="flash", target_profile="easy521")
+    _emit_operation(args, result)
+    return 0 if result.get("ok") is True else 1
+
+
+def _vendor_adapter(cfg):
+    from .autoshop_vendor import AutoShopVendorAdapter
+    return AutoShopVendorAdapter(cfg)
+
+
 def _cmd_sync(args, cfg, evidence):
     result = NativeAutoShop(cfg, evidence=StrictEvidenceLogger(evidence_path(cfg))).sync(
         args.source, execute=args.execute, authorized=args.i_have_authorized)
@@ -368,12 +446,17 @@ def _cmd_monitor(args: argparse.Namespace, cfg, evidence: EvidenceLogger) -> int
         # Reject Easy521 connection parameters instead of silently dropping them.
         if any(getattr(args, key, None) is not None for key in
                ("host", "port", "transport", "device", "baud", "unit_id", "word_order",
-                "interval", "timeout", "jsonl", "project_revision", "exec_timeout")) \
-                or args.calibrate or args.with_bits or args.extra:
+                "interval", "timeout", "jsonl", "project_revision", "exec_timeout",
+                "working_project", "process_id", "grid_handle")) \
+                or args.once or args.calibrate or args.with_bits or args.extra:
             raise ValueError("Modbus transport/options are not supported by open-linux monitor")
         result = _open_backend(args).monitor(args.run_id)
         return _emit_open(args, result)
-    if args.run_id or args.state_dir or args.toolchain_dir or args.json:
+    if args.transport == "vendor-usb":
+        return _cmd_vendor_usb_monitor(args, cfg, evidence)
+    if any(getattr(args, key) is not None for key in ("working_project", "process_id", "grid_handle")):
+        raise ValueError("native AutoShop project/process/grid options require --transport vendor-usb")
+    if any(value is not None for value in (args.run_id, args.state_dir, args.toolchain_dir)) or args.json:
         raise ValueError("local runtime options require --target open-linux")
     opts = {key: getattr(args, key) for key in _MONITOR_KEYS}
     extra = [a for a in (args.extra or []) if a != "--"]
@@ -396,6 +479,57 @@ def _cmd_monitor(args: argparse.Namespace, cfg, evidence: EvidenceLogger) -> int
         rc = 124
     evidence.log("monitor.done", params={}, result={"rc": rc})
     return rc
+
+
+def _cmd_vendor_usb_monitor(args, cfg, evidence):
+    """One bounded read-only native snapshot, with independently queried USB."""
+    if any(getattr(args, key) is not None for key in
+           ("host", "port", "device", "baud", "unit_id", "word_order", "interval",
+            "jsonl", "project_revision", "exec_timeout", "run_id", "state_dir", "toolchain_dir")) \
+            or args.calibrate or args.with_bits or args.extra:
+        raise ValueError("vendor-usb monitor does not accept Modbus/local-runtime/passthrough options")
+    timeout = args.timeout if args.timeout is not None else 20.0
+    if not math.isfinite(timeout) or not 0 < timeout <= 30:
+        raise ValueError("vendor-usb timeout must be finite and in (0, 30] seconds")
+    process_id, grid_handle = args.process_id or 0, args.grid_handle or 0
+    if process_id < 0 or grid_handle < 0:
+        raise ValueError("vendor-usb process ID and grid handle must be nonnegative")
+    project = args.working_project if args.working_project is not None else cfg.bridge["windows_project"]
+    if ntpath.normcase(ntpath.normpath(project)) != ntpath.normcase(ntpath.normpath(cfg.bridge["windows_project"])):
+        raise ValueError("vendor-usb working project must match the exact configured project")
+    from .autoshop_online import read_online_snapshot
+    deadline = monotonic() + timeout
+    connection = _vendor_adapter(cfg).observe_connection(timeout_s=timeout)
+    if not isinstance(connection, dict):
+        raise ValueError("vendor connection observation must be a JSON object")
+    connection = dict(connection)
+    connection_verified = (connection.get("ok") is True and connection.get("status") == "verified"
+                           and connection.get("connection_verified") is True
+                           and connection.get("online") is True and connection.get("transport") == "usb"
+                           and bool(connection.get("evidence_id")))
+    # The production adapter establishes these facts from fresh observations;
+    # an online label alone is deliberately insufficient at the CLI boundary.
+    if not connection_verified:
+        connection["online"] = False
+    # A successful UI property read cannot establish USB/device provenance.
+    remaining = deadline - monotonic()
+    if remaining <= 0:
+        connection_verified = False
+        result = {"schema_version": 1, "ok": False, "status": "unverified",
+                  "values_read": False, "online": False, "plc_state": "unverified",
+                  "connection_evidence": connection, "budget_exhausted": True,
+                  "errors": ["vendor-usb total time budget exhausted before UI value capture"]}
+    else:
+        result = read_online_snapshot(expected_project=project, process_id=process_id,
+                                      grid_handle=grid_handle, timeout_s=remaining,
+                                      powershell_exe=cfg.bridge["powershell_exe"],
+                                      connection_evidence=connection)
+    result.update(command="monitor", target="easy521", transport="vendor-usb")
+    result["connection_verified"] = connection_verified
+    evidence.log("monitor.vendor-usb", params={"project": project, "process_id": process_id,
+                 "grid_handle": grid_handle}, result=result)
+    print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    return 0 if result.get("ok") is True else 1
 
 
 # =====================【sim】=====================
@@ -542,11 +676,15 @@ def _emit_open(args, result):
 
 
 def _cmd_open_operation(args, cfg, evidence):
+    if args.build_record is not None or args.i_have_authorized or (args.command == "flash" and
+            any(getattr(args, key) is not None for key in
+                ("backup_record", "field_facts", "working_project", "deploy_timeout"))):
+        raise ValueError("Easy521 vendor records/authorization options cannot be used for open-linux")
     profile = get_profile(args.target)
     profile.require(args.command)
     backend = _open_backend(args)
     if args.command == "flash":
-        if args.project:
+        if args.project is not None:
             raise ValueError("open-linux flash uses --manifest, not --project")
         if not args.manifest:
             raise ValueError("open-linux flash requires --manifest")
@@ -555,7 +693,7 @@ def _cmd_open_operation(args, cfg, evidence):
     else:
         if args.compile_timeout is not None:
             raise ValueError("--compile-timeout is an AutoShop option; open-linux compiler stages have bounded timeouts")
-        if args.working_project:
+        if args.working_project is not None:
             raise ValueError("open-linux does not use a Windows working project")
         if args.source and args.project:
             raise ValueError("choose --source or --project for open-linux build")
@@ -669,7 +807,8 @@ def _cmd_toolchain(args, cfg, evidence):
 
 
 def _report_error(args: argparse.Namespace, code: str, message: str, rc: int) -> int:
-    if getattr(args, "json", False):
+    if getattr(args, "json", False) or (args.command == "monitor" and
+                                       getattr(args, "transport", None) == "vendor-usb"):
         print(json.dumps({"schema_version": 1, "command": args.command, "ok": False,
                           "diagnostics": [{"code": code, "message": message,
                                            "severity": "error"}]}, ensure_ascii=False))

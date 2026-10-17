@@ -1,0 +1,17 @@
+{
+  "argv": [
+    ".venv/bin/plcidf",
+    "monitor",
+    "--transport",
+    "vendor-usb",
+    "--working-project",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+    "--grid-handle",
+    "1250168",
+    "--timeout",
+    "20",
+    "--json"
+  ],
+  "returncode": 1,
+  "stderr": ""
+}

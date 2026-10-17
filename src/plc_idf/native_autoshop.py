@@ -175,6 +175,8 @@ class NativeAutoShop:
                   "project": self.expected_project, "autoshop_version": editor["version"]}
         if not execute:
             return result
+        if editor.get("read_only") is True:
+            raise NativeAutoShopError("AutoShop ST editor is read-only; exit online monitoring before synchronizing")
         if before != wanted:
             with tempfile.NamedTemporaryFile(mode="w", suffix=".st", encoding="utf-8",
                                              newline="\n") as staged:

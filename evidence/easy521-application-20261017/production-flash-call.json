@@ -1,0 +1,22 @@
+{
+  "argv": [
+    ".venv/bin/plcidf",
+    "flash",
+    "--build-record",
+    "evidence/easy521-application-20261017/production-build-record.json",
+    "--backup-record",
+    "evidence/easy521-application-20261017/backup-record.json",
+    "--field-facts",
+    "evidence/easy521-application-20261017/field-facts.json",
+    "--working-project",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+    "--execute",
+    "--i-have-authorized",
+    "--deploy-timeout",
+    "90",
+    "--json"
+  ],
+  "returncode": 1,
+  "stderr": "",
+  "timed_out": false
+}

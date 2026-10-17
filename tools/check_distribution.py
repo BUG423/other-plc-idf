@@ -25,6 +25,15 @@ ASSETS = (
     "wsl-tools/virtual_easy521.py",
     "wsl-tools/e521_regs.py",
     "plc/tools/autoshop_ui.ps1",
+    "plc/tools/read_autoshop_online.ps1",
+    "plc/tools/compile_vendor_st.ps1",
+    "examples/easy521_native_probe/MAIN_plus1_body.st",
+    "examples/easy521_native_probe/MAIN_plus2_body.st",
+    "examples/easy521_native_probe/README.md",
+    "examples/easy521_native_probe/source-review.json",
+    "plc/easy521/MAIN_5ms_variables.csv",
+    "plc/easy521/autoshop_global_import.csv",
+    "plc/easy521/autoshop/BESS_E521_DEV/VarNameAndAddr.csv",
     "examples/open_linux/counter/main.st",
     "examples/open_linux/motor/main.st",
     "examples/open_linux/motor/plcidf.json",
@@ -43,6 +52,10 @@ OPEN_LINUX_SOURCES = (
     OPEN_LINUX_TEMPLATE,
     "examples/open_linux/motor/main.st",
     "examples/open_linux/analog_hysteresis/main.st",
+)
+EASY521_SOURCES = (
+    "examples/easy521_native_probe/MAIN_plus1_body.st",
+    "examples/easy521_native_probe/MAIN_plus2_body.st",
 )
 
 
@@ -85,7 +98,7 @@ def main() -> int:
             templates = sorted(name for name in archive.namelist()
                                if name.startswith("plc_idf/_resources/")
                                and name.lower().endswith(".st"))
-            if templates != sorted("plc_idf/_resources/" + item for item in OPEN_LINUX_SOURCES):
+            if templates != sorted("plc_idf/_resources/" + item for item in (*OPEN_LINUX_SOURCES, *EASY521_SOURCES)):
                 raise RuntimeError(f"Wheel must contain each canonical ST source exactly once: {templates}")
             for asset in ASSETS:
                 source = (ROOT / asset).read_bytes()
@@ -102,9 +115,16 @@ def main() -> int:
         probe = run([str(python), "-c", "\n".join([
             "import json, pathlib, plc_idf, pymodbus, serial",
             "from plc_idf.config import load_config, runtime_asset, evidence_path",
+            "from plc_idf.autoshop_online import SCRIPT as online_reader",
+            "from plc_idf.autoshop_vendor import AutoShopVendorAdapter",
+            "from plc_idf.easy521_probe import PROBE_DIRECTORY, inspect_probe",
             "cfg = load_config()",
+            "vendor_metadata = AutoShopVendorAdapter(cfg).describe()",
+            "assert isinstance(vendor_metadata, dict) and vendor_metadata.get('name')",
+            "assert isinstance(vendor_metadata.get('capabilities'), dict)",
             "root = pathlib.Path(cfg.paths.project_root)",
             "bridge = runtime_asset(root, 'plc/tools/autoshop_ui.ps1')",
+            "vendor_compiler = runtime_asset(root, 'plc/tools/compile_vendor_st.ps1')",
             "bootstrap = runtime_asset(root, 'tools/bootstrap_open_linux.py')",
             "template = runtime_asset(root, 'examples/open_linux/counter/main.st')",
             "motor = runtime_asset(root, 'examples/open_linux/motor/main.st').parent",
@@ -113,15 +133,22 @@ def main() -> int:
             "installed_templates = sorted(p for p in (package / '_resources').rglob('*')",
             "    if p.is_file() and p.suffix.lower() == '.st')",
             "assert bridge.is_file()",
+            "assert online_reader.is_file() and online_reader.is_relative_to(package)",
+            "assert vendor_compiler.is_file() and vendor_compiler.is_relative_to(package)",
             "assert bootstrap.is_file() and bootstrap.is_relative_to(package)",
             "assert template.is_file() and template.is_relative_to(package)",
-            "assert installed_templates == sorted([template, motor / 'main.st', analog / 'main.st'])",
+            "probe_templates = [PROBE_DIRECTORY / ('MAIN_plus' + str(i) + '_body.st') for i in (1, 2)]",
+            "assert installed_templates == sorted([template, motor / 'main.st', analog / 'main.st', *probe_templates])",
+            "assert PROBE_DIRECTORY.is_relative_to(package)",
+            "assert all(inspect_probe(path, i)['ok'] for i, path in enumerate(probe_templates, 1))",
             "for example in (motor, analog):",
             "    assert example.is_relative_to(package)",
             "    assert all((example / name).is_file() for name in ('main.st', 'plcidf.json', 'scenarios.json', 'README.md', 'AGENTS.md'))",
             "assert root == pathlib.Path.cwd()",
             "print(json.dumps({'module': plc_idf.__file__, 'root': str(root),",
             "'monitor_dir': cfg.paths.wsl_tools, 'bridge': str(bridge),",
+            "'online_reader': str(online_reader), 'vendor_compiler': str(vendor_compiler),",
+            "'vendor_adapter_metadata': vendor_metadata,",
             "'bridge_windows': cfg.bridge.tools_ps1_windows,",
             "'evidence_path': str(evidence_path(cfg)),",
             "'bootstrap': str(bootstrap), 'st_template': str(template),",

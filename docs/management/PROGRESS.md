@@ -1,5 +1,17 @@
 # 进展记录
 
+## 2026-10-17：Easy521 真机应用下装、运行拒绝与独立编译研究
+
+用户确认 USB-only、没有外接 24V、输出无负载、物理开关 RUN，RUN 灯灭。本轮完成真实应用下装，未把下装成功当作 CPU 运行成功；[设备报告](EASY521_APPLICATION_2026-10-17.md)、[CLI 用法](../EASY521_CLI.md) 与 [会话摘要](../../evidence/easy521-application-20261017/session-summary.json) 已记录。
+
+- **T09 部分交付**：两个内存探针均实际经 USB 下载，下载后厂商独立校验一致。加 2 版编译后、下载前比较明确检出 ST 不一致。加 1 版两次 RUN 请求均拒绝，故障诊断数量为 0；未证明拒绝根因，未再 RUN。最终设备保留加 2 探针，原 BESS 备份保留，恢复未演练。
+- **T07/T09 部署入口**：完整 verified 编译记录、精确工程、源/产物哈希、USB 双重身份、备份、现场事实、租约和严格证据接入 CLI；动作不自动重放。真实生产调用发出一次下载确认后返回 unknown，后续只读对账确定实际下载成功。厂商 F8/独立比较会重编译改变对象/删除生成文件，精确二进制追溯缺口仍保留，不能静默采用新哈希。
+- **T08 部分交付**：只读 MSAA 从原生表格当前值列获取探针 12 个变量，真实 CLI 为 values_read=true；缺独立在线身份及有效状态位时 online/connection_verified=false、plc_state=unverified、退出 1。当前数据质量不等于真实扫描、鲜度或网口 Modbus 验收。
+- **R01 新证据**：宿主 IPC 已可脱离 AutoShop GUI，把合法冻结 STTemp 容器用两个本机厂商 StLang 版本编成新 ARM `.o`。31 项 worker 测试与实际正负实验通过；lexer error 优先于伪 Success。普通文本预处理、完整链接/包装、独立设备协议尚未打通，仍依赖 Windows 编译器。见 [研究 09](../research/firmware/09-vendor-headless-interfaces-2026-10-17.md)、[研究 10](../research/firmware/10-stlang-headless-compiler-2026-10-17.md)。
+- **供电结论**：厂商额定主电源为 24VDC ±10%；Type-C 可进行用户程序上传/下载。手册明确 USB-only 不支持掉电保持，未找到 USB-only 必定禁止 RUN 的明文，因此缺少 24V 不是已证实的唯一故障原因。
+
+最终源码/监测/工具合并回归 **788 passed、51 skipped、1 deselected**，另 499 个 subtest 通过；与分项测试重叠，不相加。独立 sdist→wheel→全新 venv→仓库外软件场景与资源检查通过。具体结果见 `docs/management/evidence/easy521-software-validation-20261017.json` 与 `distribution-easy521-20261017.json`。适配器仅标定 AutoShop 4.12.0.2 的当前布局，未宣称其他型号、无 Windows 完整设备闭环、物理 I/O 或工业实时性通过。三个 AI 技术代理分别实施部署、CLI/监测、编译器研究；统筹代理独占设备操作并复核真实正负结果、分发和 GitHub。T09/T08/R01 保持开放。
+
 ## 2026-10-17：通用输入输出与 AI 一键验收交付
 
 用户确认当前只有 Easy521，优先完善 WSL/Linux 中可由 AI 直接创建、修改、编译与验证的工作流。[交付报告](AI_WORKFLOW_DELIVERY_2026-10-17.md) 与 [操作说明](../AI_PROGRAMMING.md) 已补齐。

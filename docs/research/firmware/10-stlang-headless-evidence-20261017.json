@@ -1,0 +1,985 @@
+{
+  "schema": "plcidf.stlang-headless-evidence.v1",
+  "observed_date": "2026-10-17",
+  "scope": "host-only isolated copies; no device communication, download, firmware operation or AutoShop GUI action",
+  "experiment_root_windows": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2",
+  "artifact_policy": "Vendor executables, intermediate ST containers, objects, original manuals and raw disassembly remain local; this metadata contains hashes and experiment observations only.",
+  "tools": [
+    {
+      "variant": "STLang",
+      "name": "StLang.exe",
+      "bytes": 25144320,
+      "sha256": "b69439a1bb91f8dc6d982760023518671eff80e4cb0e90cc509c56e87e4f424a"
+    },
+    {
+      "variant": "STLang",
+      "name": "Kernel.dll",
+      "bytes": 289280,
+      "sha256": "8f3381f791134e6df7691b776fe18912ae3ee5e3ffd134c631f2430d6d1e7bf0"
+    },
+    {
+      "variant": "STLang_New",
+      "name": "StLang.exe",
+      "bytes": 25144320,
+      "sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847"
+    },
+    {
+      "variant": "STLang_New",
+      "name": "Kernel.dll",
+      "bytes": 289280,
+      "sha256": "e9b675b79ced087c7e7e1a897ea889d692536056f2f45d2b813e98239906edcd"
+    }
+  ],
+  "observed_invocation": {
+    "argv": [
+      "StLang.exe",
+      "Local\\plcidf_STLang_<unique>",
+      "0",
+      "0",
+      "0"
+    ],
+    "mapping_layout": "u32_le cwd_bytes; cwd; u32_le configuration_bytes; configuration; u32_le tasks_bytes; u8 global_flag; task records",
+    "task_record": {
+      "strings_nul_terminated": [
+        "MAIN",
+        "ST",
+        "MAIN.st",
+        "MAIN.o"
+      ],
+      "file_id_u32_le": 0,
+      "program_flag_u8": 1,
+      "debug_flag_u8": 0,
+      "started_done_success_u8_initial": [
+        0,
+        0,
+        0
+      ]
+    },
+    "cwd_encoding_verified": "ASCII paths only",
+    "configuration_bytes": 0,
+    "global_flag": 0,
+    "capacity_bytes": 65536,
+    "timeout_ms": 4000
+  },
+  "conclusions": {
+    "sttemp_to_arm_object_without_gui": "observed for both variants, repeated byte-identical per compiler",
+    "plain_iec_text_to_sttemp_container": "not implemented; direct plain input failed",
+    "whole_project_link_download_and_execution": "not established by these compiler experiments",
+    "physical_soc_or_operating_system": "unknown",
+    "compiler_status_alone_sufficient_for_success": false,
+    "reason": "An empty vendor container produced lexer error and later success status/rst/object in the same invocation; consumers must reject any captured compiler error."
+  },
+  "cases": [
+    {
+      "variant": "STLang",
+      "case": "file-cl",
+      "record_sha256": "f31ad9e99b5aa057e22585b722b5b0345b67504c3d03f89beee4c17e17f31fdf",
+      "pid": 14040,
+      "exit_code": 0,
+      "elapsed_ms": 53,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        },
+        {
+          "name": "SBR_001.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "SBR_001.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang",
+      "case": "file-only",
+      "record_sha256": "5d31b7cadd9e19188b42067c2c132991075196edd95f581e827d50a07f4dd590",
+      "pid": 20596,
+      "exit_code": 0,
+      "elapsed_ms": 89,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        },
+        {
+          "name": "SBR_001.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "SBR_001.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang",
+      "case": "file-output-arm",
+      "record_sha256": "3f0994f9104bf6e9fd3bfffd9bdde3705f3a17911b35abb1b1271295c4337159",
+      "pid": 24380,
+      "exit_code": 0,
+      "elapsed_ms": 42,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        },
+        {
+          "name": "SBR_001.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "SBR_001.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang",
+      "case": "file-output",
+      "record_sha256": "612cf145804bec8f9654ba06ad862efe7adbdb9895e834700dd487629772961a",
+      "pid": 20992,
+      "exit_code": 0,
+      "elapsed_ms": 45,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        },
+        {
+          "name": "SBR_001.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "SBR_001.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang",
+      "case": "help",
+      "record_sha256": "6517afdf294ca1a5d0f6c313b3219b208209061a18483b58ca10d9c5bd577756",
+      "pid": 46068,
+      "exit_code": 0,
+      "elapsed_ms": 182,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": []
+    },
+    {
+      "variant": "STLang",
+      "case": "ipc-main-cl",
+      "record_sha256": "c2ff1c9af548a1da99f73552df162e1b8bb79c17f91bb3bc34775621f1c6f8a2",
+      "pid": 37672,
+      "exit_code": 1,
+      "elapsed_ms": 92,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5",
+      "status": [
+        1,
+        1,
+        1
+      ],
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.o",
+          "bytes": 3900,
+          "sha256": "221101871d7177b3a71f6f2271b52550053bc171e9b7b4a322da7f771209d1ba",
+          "elf": {
+            "magic": "7f454c46",
+            "class": 1,
+            "data": 1,
+            "machine": 40,
+            "type": 1,
+            "flags": "0x05000000"
+          }
+        },
+        {
+          "name": "MAIN.rst",
+          "bytes": 10,
+          "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+          "diagnostic": "Success!\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        }
+      ]
+    },
+    {
+      "variant": "STLang",
+      "case": "ipc-main-repeat",
+      "record_sha256": "3bcfb48def068a1786a4905273cdd69da0e6f1a61ab6d49b097632658c6f90f8",
+      "pid": 44800,
+      "exit_code": 1,
+      "elapsed_ms": 104,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5",
+      "status": [
+        1,
+        1,
+        1
+      ],
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.o",
+          "bytes": 3900,
+          "sha256": "221101871d7177b3a71f6f2271b52550053bc171e9b7b4a322da7f771209d1ba",
+          "elf": {
+            "magic": "7f454c46",
+            "class": 1,
+            "data": 1,
+            "machine": 40,
+            "type": 1,
+            "flags": "0x05000000"
+          }
+        },
+        {
+          "name": "MAIN.rst",
+          "bytes": 10,
+          "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+          "diagnostic": "Success!\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        }
+      ]
+    },
+    {
+      "variant": "STLang",
+      "case": "ipc-main",
+      "record_sha256": "45c606bbb697de7ae6ff8732d519977c9a2dafba8677fdded54fd38b0ea17704",
+      "pid": 19208,
+      "exit_code": 1,
+      "elapsed_ms": 132,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5",
+      "status": [
+        1,
+        1,
+        0
+      ],
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.rst",
+          "bytes": 20,
+          "sha256": "13b9a330f719c0c2dfee4a229d4bcdf0d1b2afa30affe1c769a5ac85fa7e4fe9",
+          "diagnostic": "MAIN.cl not exist!\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        }
+      ]
+    },
+    {
+      "variant": "STLang",
+      "case": "ipc-own-plain",
+      "record_sha256": "113d29311b617be4b6344f00fa68d27f7eeb7853ec9a74c94eba3f4e30a65ffa",
+      "pid": 32252,
+      "exit_code": 1,
+      "elapsed_ms": 95,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "6e2dd9a0f24868705aec3a2bcd731668d8b4a1effbf66bd8f9f62c0b8a8d2297",
+      "status": [
+        1,
+        1,
+        0
+      ],
+      "stdout_has_lexer_error": true,
+      "stdout_has_syntax_error": true,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.rst",
+          "bytes": 7,
+          "sha256": "54f8a63958ba98891d47d9d73953961d5224d43bd54eb456f9fdfdf66fc0302d",
+          "diagnostic": "1,11,\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 68,
+          "sha256": "6e2dd9a0f24868705aec3a2bcd731668d8b4a1effbf66bd8f9f62c0b8a8d2297"
+        }
+      ]
+    },
+    {
+      "variant": "STLang",
+      "case": "ipc-sbr-control",
+      "record_sha256": "88fae19d543ecf8ffb19eaec341be4f71d6280ce88da459899b1b87c73faeac0",
+      "pid": 26572,
+      "exit_code": 1,
+      "elapsed_ms": 119,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4",
+      "status": [
+        1,
+        1,
+        1
+      ],
+      "stdout_has_lexer_error": true,
+      "stdout_has_syntax_error": true,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.o",
+          "bytes": 1788,
+          "sha256": "6a7bad4e73bf1c195137352cff3bc5430249a15839578958d2ab6a592b069825",
+          "elf": {
+            "magic": "7f454c46",
+            "class": 1,
+            "data": 1,
+            "machine": 40,
+            "type": 1,
+            "flags": "0x05000000"
+          }
+        },
+        {
+          "name": "MAIN.rst",
+          "bytes": 10,
+          "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+          "diagnostic": "Success!\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang",
+      "case": "no-args",
+      "record_sha256": "6d4970619366f28d24b5f034e84b2440d976ada3e34aed35be05a78ff0d7ee2f",
+      "pid": 8972,
+      "exit_code": 0,
+      "elapsed_ms": 67,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": []
+    },
+    {
+      "variant": "STLang_New",
+      "case": "file-cl",
+      "record_sha256": "09fc5f0bbe8b578c3e64f7e941c8ef1cda91974788ac3181d525b481ff7b8606",
+      "pid": 33548,
+      "exit_code": 0,
+      "elapsed_ms": 45,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        },
+        {
+          "name": "SBR_001.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "SBR_001.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang_New",
+      "case": "file-only",
+      "record_sha256": "dfbf22cff8f9b765c806176c9f6ba8e41640b475625c9ed7afb37d23a26b9988",
+      "pid": 34548,
+      "exit_code": 0,
+      "elapsed_ms": 47,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        },
+        {
+          "name": "SBR_001.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "SBR_001.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang_New",
+      "case": "file-output-arm",
+      "record_sha256": "029b16badc0db037afd251cd188a57ebee2a74f009e6b1b2f74f90d50759aca2",
+      "pid": 33896,
+      "exit_code": 0,
+      "elapsed_ms": 48,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        },
+        {
+          "name": "SBR_001.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "SBR_001.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang_New",
+      "case": "file-output",
+      "record_sha256": "08749404d5a1ec8f1d04383e21b47e883dd495a922f088d6c8ccf45a14af1eb7",
+      "pid": 39804,
+      "exit_code": 0,
+      "elapsed_ms": 44,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        },
+        {
+          "name": "SBR_001.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "SBR_001.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang_New",
+      "case": "help",
+      "record_sha256": "dbdc522459d268282ed0b4a6f60816c99601b1fd2d6e75ece1ea921e54edaf17",
+      "pid": 28108,
+      "exit_code": 0,
+      "elapsed_ms": 91,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": []
+    },
+    {
+      "variant": "STLang_New",
+      "case": "ipc-main-cl",
+      "record_sha256": "c0af01745a722d3a50b50be064d8f9c6298307e8e9155cec41111190ffcab2dc",
+      "pid": 33004,
+      "exit_code": 1,
+      "elapsed_ms": 62,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5",
+      "status": [
+        1,
+        1,
+        1
+      ],
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.o",
+          "bytes": 3948,
+          "sha256": "b74fd3a84f911f612be9d17c8ce54e733ae133aa65a97c14d740130b64053bde",
+          "elf": {
+            "magic": "7f454c46",
+            "class": 1,
+            "data": 1,
+            "machine": 40,
+            "type": 1,
+            "flags": "0x05000000"
+          }
+        },
+        {
+          "name": "MAIN.rst",
+          "bytes": 10,
+          "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+          "diagnostic": "Success!\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        }
+      ]
+    },
+    {
+      "variant": "STLang_New",
+      "case": "ipc-main-repeat",
+      "record_sha256": "74c330b6bbfa25bc926a5879842b31a021df05b8facdce50b70dc783a64fcc7a",
+      "pid": 17856,
+      "exit_code": 1,
+      "elapsed_ms": 75,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5",
+      "status": [
+        1,
+        1,
+        1
+      ],
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.o",
+          "bytes": 3948,
+          "sha256": "b74fd3a84f911f612be9d17c8ce54e733ae133aa65a97c14d740130b64053bde",
+          "elf": {
+            "magic": "7f454c46",
+            "class": 1,
+            "data": 1,
+            "machine": 40,
+            "type": 1,
+            "flags": "0x05000000"
+          }
+        },
+        {
+          "name": "MAIN.rst",
+          "bytes": 10,
+          "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+          "diagnostic": "Success!\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        }
+      ]
+    },
+    {
+      "variant": "STLang_New",
+      "case": "ipc-main",
+      "record_sha256": "84bd57d15db0b9bf6f5d984447d9aeb23a525d605fb04f70ad7d97ccf73d1631",
+      "pid": 10048,
+      "exit_code": 1,
+      "elapsed_ms": 88,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5",
+      "status": [
+        1,
+        1,
+        0
+      ],
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.rst",
+          "bytes": 20,
+          "sha256": "13b9a330f719c0c2dfee4a229d4bcdf0d1b2afa30affe1c769a5ac85fa7e4fe9",
+          "diagnostic": "MAIN.cl not exist!\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 1715,
+          "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5"
+        }
+      ]
+    },
+    {
+      "variant": "STLang_New",
+      "case": "ipc-own-plain",
+      "record_sha256": "52f788e3ee69f4eb432b837276ee4543f9d78fc64e642e1005ede62c7a2db39d",
+      "pid": 5764,
+      "exit_code": 1,
+      "elapsed_ms": 52,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "6e2dd9a0f24868705aec3a2bcd731668d8b4a1effbf66bd8f9f62c0b8a8d2297",
+      "status": [
+        1,
+        1,
+        0
+      ],
+      "stdout_has_lexer_error": true,
+      "stdout_has_syntax_error": true,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.rst",
+          "bytes": 7,
+          "sha256": "54f8a63958ba98891d47d9d73953961d5224d43bd54eb456f9fdfdf66fc0302d",
+          "diagnostic": "1,11,\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 68,
+          "sha256": "6e2dd9a0f24868705aec3a2bcd731668d8b4a1effbf66bd8f9f62c0b8a8d2297"
+        }
+      ]
+    },
+    {
+      "variant": "STLang_New",
+      "case": "ipc-sbr-control",
+      "record_sha256": "7bf316af691cb4d4321c87964ce1d0fc5e50ccff88c6a1d84d7ed7e9f564898e",
+      "pid": 7768,
+      "exit_code": 1,
+      "elapsed_ms": 82,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4",
+      "status": [
+        1,
+        1,
+        1
+      ],
+      "stdout_has_lexer_error": true,
+      "stdout_has_syntax_error": true,
+      "stderr_empty": true,
+      "files": [
+        {
+          "name": "MAIN.cl",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "MAIN.o",
+          "bytes": 1788,
+          "sha256": "d834aaa57aad5e7aed2fedb8620ba543693abe5917ee4d0db322695df89512d0",
+          "elf": {
+            "magic": "7f454c46",
+            "class": 1,
+            "data": 1,
+            "machine": 40,
+            "type": 1,
+            "flags": "0x05000000"
+          }
+        },
+        {
+          "name": "MAIN.rst",
+          "bytes": 10,
+          "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+          "diagnostic": "Success!\n"
+        },
+        {
+          "name": "MAIN.st",
+          "bytes": 32,
+          "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+        }
+      ]
+    },
+    {
+      "variant": "STLang_New",
+      "case": "no-args",
+      "record_sha256": "ce45ca2151079c3fb7ea7883ef5f79a5872962dc90867f8db512782d4d8d13fe",
+      "pid": 44868,
+      "exit_code": 0,
+      "elapsed_ms": 66,
+      "completed_before_timeout": true,
+      "terminated_own_pid": false,
+      "source_sha256_before": null,
+      "status": null,
+      "stdout_has_lexer_error": false,
+      "stdout_has_syntax_error": false,
+      "stderr_empty": true,
+      "files": []
+    }
+  ],
+  "manuals_searched": [
+    {
+      "name": "Easy系列可编程逻辑控制器用户手册.PDF",
+      "bytes": 85041859,
+      "sha256": "e793971a545f5b4c89e067957ac73973546f6df354f586a62c041995df5dc5da"
+    },
+    {
+      "name": "H5U&Easy系列可编程逻辑控制器编程手册-中文.pdf",
+      "bytes": 63657532,
+      "sha256": "799760718dd7b7fe48e92034fddba767d54d3b3040b64eefb07d6e36c237f03d"
+    },
+    {
+      "name": "AutoShop V4.12.0.0版本说明书-中文.pdf",
+      "bytes": 4308469,
+      "sha256": "178afce07c8dcd0a1c4ecdb366d06d9b51fe347732597c775a3841a8887f5318"
+    },
+    {
+      "name": "H5U and Easy Series Programmable Logic Controller Programming Guide-EN.pdf",
+      "bytes": 66227027,
+      "sha256": "7bf5d0d26727ec074b4893bce980e3edcba1b843c6f72cebe0693d3139f5e590"
+    }
+  ],
+  "usb_only_runtime_constraint": {
+    "status": "not confirmed by searched manuals or resource messages",
+    "known_manual_fact": "User manual page 138 discusses USB-only power and disables power-loss retention; it does not state CPU RUN prohibition.",
+    "resource_search": {
+      "xml_ini_txt_files": 880,
+      "matched_main_unit_usb_run_constraint": false,
+      "generic_run_transition_error_found": [
+        "AutoShop.exe",
+        "ChsRes.dll",
+        "CommunicaterModule.dll"
+      ],
+      "enum_values_verified": false
+    }
+  },
+  "published_adapter": {
+    "powershell": "plc/tools/compile_vendor_st.ps1",
+    "python": "tools/compile_vendor_st.py",
+    "powershell_sha256": "1dd95f471bcb225f8bde3e9fe70f7e3287555e7e988c1c6745e18d22f78d26d9",
+    "python_sha256": "fcdc7e9d7db33a37582402adbc3a705427d57f27b24727c6382be415851922d2",
+    "unit_tests_passed": 31,
+    "real_windows_cases": [
+      {
+        "case": "positive-new",
+        "raw_record_sha256": "5a1dfad53560f8d9bfcfa449a637852977397125fb7b54e1f6d310c5ca9cfc56",
+        "ok": true,
+        "status": "verified",
+        "stage": "complete",
+        "ipc": {
+          "success": 1,
+          "started": 1,
+          "done": 1
+        },
+        "diagnostics": [],
+        "object_files": [
+          {
+            "name": "MAIN.o",
+            "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\adapter-python-new-01\\MAIN.o",
+            "bytes": 3948,
+            "sha256": "b74fd3a84f911f612be9d17c8ce54e733ae133aa65a97c14d740130b64053bde",
+            "elf": {
+              "class": "ELF32",
+              "entry_symbol": "MAIN",
+              "type": "REL",
+              "machine": "ARM",
+              "byte_order": "little",
+              "eabi_flags": "0x05000000"
+            }
+          }
+        ],
+        "helper_sha256": "1dd95f471bcb225f8bde3e9fe70f7e3287555e7e988c1c6745e18d22f78d26d9"
+      },
+      {
+        "case": "lexer-negative",
+        "raw_record_sha256": "f5d4e3a913709c792a0b51ecb12b2c6e3d7714018319a45ef96567d48ab700ce",
+        "ok": false,
+        "status": "failed",
+        "stage": "validate",
+        "ipc": {
+          "success": 1,
+          "started": 1,
+          "done": 1
+        },
+        "diagnostics": [
+          {
+            "message": "Compiler emitted error diagnostics, regardless of later success markers",
+            "code": "E_VENDOR_OBJECT",
+            "stage": "validate"
+          }
+        ],
+        "object_files": [],
+        "helper_sha256": null
+      },
+      {
+        "case": "plain-negative",
+        "raw_record_sha256": "adf2320fa21ba564f434aa936871be0e1216107c53be6eb2bc54aa259f5fd61e",
+        "ok": false,
+        "status": "failed",
+        "stage": "preflight",
+        "ipc": null,
+        "diagnostics": [
+          {
+            "message": "Only an existing vendor STTemp MAIN.st container is accepted; plain IEC text requires vendor preprocessing",
+            "code": "E_VENDOR_OBJECT",
+            "stage": "preflight"
+          }
+        ],
+        "object_files": [],
+        "helper_sha256": null
+      }
+    ]
+  }
+}

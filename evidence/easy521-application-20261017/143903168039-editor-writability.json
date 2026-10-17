@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-10-17T14:39:03.168017+00:00",
+  "label": "editor-writability",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "editor-read",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "{\"read_only\":true,\"title\":\"AutoShop V4.12.0.2  E:\\\\PLCProjects\\\\PLCIDF_LAB_20261017\\\\BESS_E521_DEV - [MAIN]\",\"editor_handle\":4592044,\"source\":\"(* AutoShop MAIN/ST body. Configure this program block for a 5 ms constant cycle. *)\\n\\nfbBESS(\\n    xEnable := g_xBESS_Enable\\u0006\\u0006\\u0006\\u0006\\u0006,\\n    xReset := g_xBESS_Reset\\u0006\\u0006\\u0006\\u0006\\u0006,\\n    xInputValid := g_xBESS_MeasurementsValid\\u0006\\u0006\\u0006\\u0006\\u0006,\\n    rVpu := g_rBESS_Vpu\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006,\\n    rPline := g_rBESS_Pline\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006,\\n    rQline := g_rBESS_Qline\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006,\\n    rLoading := g_rBESS_Loading\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006,\\n    rSOC := g_rBESS_SOC\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006,\\n    rPess := g_rBESS_Pess\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006,\\n    rQess := g_rBESS_Qess\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\n);\\n\\ng_rBESS_Pcmd\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006 := fbBESS.rPcmd\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006;\\ng_rBESS_Qcmd\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006 := fbBESS.rQcmd\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006;\\ng_iBESS_Mode\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006 := fbBESS.iMode\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006;\\ng_rBESS_SensVP\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006 := fbBESS.rSensVP\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006;\\ng_rBESS_SensVQ\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006 := fbBESS.rSensVQ\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006;\\ng_rBESS_InfluenceP\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006 := fbBESS.rInfluenceP\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006;\\ng_rBESS_InfluenceQ\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006 := fbBESS.rInfluenceQ\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006;\\ng_rBESS_Confidence\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006 := fbBESS.rConfidence\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006\\u0006;\\ng_xBESS_ControllerReady\\u0006\\u0006\\u0006\\u0006\\u0006 := fbBESS.xReady\\u0006\\u0006\\u0006\\u0006\\u0006;\\n\"}\n",
+  "stderr": ""
+}

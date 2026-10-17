@@ -40,6 +40,7 @@ class FakeUI:
         self.ops = []
         self.set_mismatch = False
         self.timeout_compile = False
+        self.read_only = False
 
     def __call__(self, argv, timeout=None, cwd=None):
         action = argv[argv.index("-Action") + 1]
@@ -54,7 +55,8 @@ class FakeUI:
             self.dirty = True
         if action.startswith("editor-"):
             return SimpleNamespace(returncode=0, stderr="", stdout=json.dumps({
-                "title": self.window_title or title(dirty=self.dirty), "source": self.source}))
+                "title": self.window_title or title(dirty=self.dirty), "source": self.source,
+                "read_only": self.read_only}))
         if action == "keys" and value == "^s":
             self.dirty = False
             (self.directory / "MAIN.ST").write_bytes(b"AutoShop-native-source:" + self.source.encode())
@@ -124,6 +126,15 @@ def test_sync_exact_readback_then_save(native):
     actions = [action for action, value in fake.ops]
     assert actions == ["editor-read", "editor-set", "editor-read", "keys", "editor-read"]
     assert b"x := 2;" in (backend.project_dir / "MAIN.ST").read_bytes()
+
+
+def test_online_editor_refused_before_any_write_or_compile(native):
+    backend, fake, source = native
+    fake.read_only = True
+    with pytest.raises(NativeAutoShopError, match="exit online monitoring"):
+        compile_now(backend, source)
+    assert fake.ops == [("editor-read", "")]
+    assert (backend.project_dir / "MAIN.ST").read_bytes() == b"original-native-source"
 
 
 def test_mismatched_readback_never_saves(native):

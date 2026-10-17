@@ -1,5 +1,5 @@
 ﻿param(
-    [ValidateSet('inspect','screenshot','desktop','tree','keys','click','paste','background','menus','text','file','accept','log','log-data','diagnostics','maximize','editor-read','editor-set')]
+    [ValidateSet('inspect','status','dialog','button','check','close-dialog','screenshot','desktop','tree','keys','click','paste','background','menus','text','file','accept','log','log-data','diagnostics','maximize','editor-read','editor-set')]
     [string]$Action = 'inspect',
     [string]$Value = '',
     [int]$X = 0,
@@ -7,6 +7,9 @@
     [int]$Handle = 0,
     [int]$Message = 0,
     [string]$ExpectedProject = '',
+    [string]$ExpectedDialog = '',
+    [string]$ExpectedText = '',
+    [ValidateSet(-1,0,1)][int]$CheckState = -1,
     [switch]$Right,
     [switch]$Double
 )
@@ -121,6 +124,8 @@ public static class AutoShopUI {
      int page=SendMessage(editor,2137,IntPtr.Zero,IntPtr.Zero).ToInt32();
      Encoding encoding=page==65001?new UTF8Encoding(false,true):Encoding.GetEncoding(page==0?936:page);
      if(replace) {
+       if(SendMessage(editor,2140,IntPtr.Zero,IntPtr.Zero).ToInt32()!=0)
+         throw new InvalidOperationException("AutoShop ST editor is read-only; exit online monitoring before editing.");
        byte[] data=encoding.GetBytes(replacement+"\0");
        if(data.Length>1048576)throw new InvalidOperationException("Editor replacement exceeds 1MiB");
        remote=VirtualAllocEx(process,IntPtr.Zero,(UIntPtr)data.Length,0x3000,4);
@@ -185,6 +190,19 @@ function Get-AutoShopTitle {
     }
     return $titleBuffer.ToString()
 }
+function Get-ExactDialog {
+    if(!$ExpectedDialog){throw 'An exact expected dialog title is required.'}
+    $windows=@([System.Windows.Automation.AutomationElement]::RootElement.FindAll([System.Windows.Automation.TreeScope]::Children,[System.Windows.Automation.Condition]::TrueCondition))
+    $windows+=@($root.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition))
+    $dialogs=@($windows|Where-Object {$_.Current.ProcessId -eq $app.Id -and $_.Current.ClassName -eq '#32770' -and $_.Current.Name -ceq $ExpectedDialog -and $_.Current.IsEnabled -and !$_.Current.IsOffscreen}|Sort-Object {$_.Current.NativeWindowHandle} -Unique)
+    if($dialogs.Count -ne 1){throw 'Expected one exact active AutoShop dialog; no input sent.'}
+    if($ExpectedProject){Assert-AutoShopTitle -Title (Get-AutoShopTitle) -ExpectedProject $ExpectedProject}
+    $controls=@($dialogs[0].FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition))
+    if($ExpectedText -and !($controls|Where-Object {$_.Current.ClassName -eq 'Static' -and $_.Current.Name.Contains($ExpectedText)})){
+        throw 'Expected dialog message is absent; no input sent.'
+    }
+    return $dialogs[0]
+}
 if($ExpectedProject -and $Action -in @('keys','editor-read','editor-set','log','log-data')){
     Assert-AutoShopTitle -Title (Get-AutoShopTitle) -ExpectedProject $ExpectedProject
 }
@@ -224,6 +242,50 @@ function Activate-AutoShop {
 }
 
 switch ($Action) {
+    'close-dialog' {
+        $dialog=Get-ExactDialog
+        [void][AutoShopUI]::PostMessage([IntPtr]$dialog.Current.NativeWindowHandle,16,[IntPtr]::Zero,[IntPtr]::Zero)
+        @{dialog=$ExpectedDialog;close_posted=$true}|ConvertTo-Json -Compress
+    }
+    'dialog' {
+        $dialog=Get-ExactDialog
+        $controls=@($dialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)|ForEach-Object {
+            $checked=$null;$style=$null
+            if($_.Current.ClassName -eq 'Button'){
+                $style=[AutoShopUI]::GetWindowLong([IntPtr]$_.Current.NativeWindowHandle,-16) -band 15
+                $checked=[AutoShopUI]::SendMessage([IntPtr]$_.Current.NativeWindowHandle,240,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32()
+            }
+            @{name=$_.Current.Name;class=$_.Current.ClassName;handle=$_.Current.NativeWindowHandle;enabled=$_.Current.IsEnabled;checked=$checked;button_type=$style}
+        })
+        @{title=$dialog.Current.Name;handle=$dialog.Current.NativeWindowHandle;project=(Get-AutoShopTitle);controls=$controls}|ConvertTo-Json -Depth 5 -Compress
+    }
+    {$_ -in @('button','check')} {
+        $dialog=Get-ExactDialog
+        if(!$Value){throw 'An exact control name is required.'}
+        $buttons=@($dialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)|Where-Object {$_.Current.ClassName -eq 'Button' -and $_.Current.Name -ceq $Value -and $_.Current.IsEnabled})
+        if($buttons.Count -ne 1){throw 'Expected one exact enabled dialog button; no input sent.'}
+        $buttonHandle=[IntPtr]$buttons[0].Current.NativeWindowHandle
+        $kind=[AutoShopUI]::GetWindowLong($buttonHandle,-16) -band 15
+        if($Action -eq 'check'){
+            if($CheckState -eq -1 -or $kind -notin @(2,3,5,6)){throw 'An explicit check state and a checkbox control are required.'}
+            $before=[AutoShopUI]::SendMessage($buttonHandle,240,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32()
+            if($before -ne $CheckState){[void][AutoShopUI]::SendMessage($buttonHandle,245,[IntPtr]::Zero,[IntPtr]::Zero)}
+            $after=[AutoShopUI]::SendMessage($buttonHandle,240,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32()
+            if($after -ne $CheckState){throw 'Checkbox readback differs; do not repeat the operation.'}
+            @{dialog=$ExpectedDialog;button=$Value;before=$before;after=$after}|ConvertTo-Json -Compress
+        }else{
+            if($kind -notin @(0,1)){throw 'The requested control is not a push button.'}
+            [void][AutoShopUI]::PostMessage($buttonHandle,245,[IntPtr]::Zero,[IntPtr]::Zero)
+            @{dialog=$ExpectedDialog;button=$Value;invocation_posted=$true;outcome_verified=$false}|ConvertTo-Json -Compress
+        }
+    }
+    'status' {
+        $all=@($root.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition))
+        $items=@($all|Where-Object {$_.Current.ControlType -eq [System.Windows.Automation.ControlType]::StatusBar -or $_.Current.ClassName -match 'status|Static|VSFlex|Button'}|ForEach-Object {
+            @{name=$_.Current.Name;class=$_.Current.ClassName;handle=$_.Current.NativeWindowHandle;enabled=$_.Current.IsEnabled;offscreen=$_.Current.IsOffscreen;type=$_.Current.ControlType.ProgrammaticName}
+        })
+        @{title=(Get-AutoShopTitle);process_id=$app.Id;controls=$items}|ConvertTo-Json -Depth 5 -Compress
+    }
     'log-data' {
         if(!$root.Current.Name.StartsWith('AutoShop V4.12.0.2 ')){throw 'Owner-drawn log adapter is calibrated only for AutoShop 4.12.0.2.'}
         $all=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
@@ -247,7 +309,7 @@ switch ($Action) {
             Assert-AutoShopTitle -Title (Get-AutoShopTitle) -ExpectedProject $ExpectedProject -RequireMain -RequireClean
         }
         $source=[AutoShopUI]::EditorText([IntPtr]$editors[0].Current.NativeWindowHandle,$replacement,($Action -eq 'editor-set'))
-        @{title=(Get-AutoShopTitle);source=$source;editor_handle=$editors[0].Current.NativeWindowHandle}|ConvertTo-Json -Depth 3 -Compress
+        @{title=(Get-AutoShopTitle);source=$source;editor_handle=$editors[0].Current.NativeWindowHandle;read_only=([AutoShopUI]::SendMessage([IntPtr]$editors[0].Current.NativeWindowHandle,2140,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32() -ne 0)}|ConvertTo-Json -Depth 3 -Compress
     }
     'inspect' {
         Write-Output ("PID="+$app.Id+"|"+$root.Current.Name)

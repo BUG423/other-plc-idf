@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "ok": false,
+  "status": "unverified",
+  "values_read": true,
+  "online": false,
+  "plc_state": "unverified",
+  "state_source": null,
+  "values": {
+    "g_xBESS_Enable": false,
+    "g_xBESS_Reset": false,
+    "g_xBESS_MeasurementsValid": false,
+    "g_rBESS_Pcmd": 0.0,
+    "g_rBESS_Qcmd": 0.0,
+    "g_iBESS_Mode": 0,
+    "g_rBESS_SensVP": 0.0,
+    "g_rBESS_SensVQ": 0.0,
+    "g_rBESS_InfluenceP": 0.0,
+    "g_rBESS_InfluenceQ": 0.0,
+    "g_rBESS_Confidence": 0.0,
+    "g_xBESS_ControllerReady": false
+  },
+  "raw_values": {
+    "g_xBESS_Enable": [
+      {
+        "value": false,
+        "raw": "OFF",
+        "grid_handle": 1250168,
+        "row": "Row 1"
+      }
+    ],
+    "g_xBESS_Reset": [
+      {
+        "value": false,
+        "raw": "OFF",
+        "grid_handle": 1250168,
+        "row": "Row 2"
+      }
+    ],
+    "g_xBESS_MeasurementsValid": [
+      {
+        "value": false,
+        "raw": "OFF",
+        "grid_handle": 1250168,
+        "row": "Row 3"
+      }
+    ],
+    "g_rBESS_Pcmd": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 11"
+      }
+    ],
+    "g_rBESS_Qcmd": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 12"
+      }
+    ],
+    "g_iBESS_Mode": [
+      {
+        "value": 0,
+        "raw": "0",
+        "grid_handle": 1250168,
+        "row": "Row 13"
+      }
+    ],
+    "g_rBESS_SensVP": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 14"
+      }
+    ],
+    "g_rBESS_SensVQ": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 15"
+      }
+    ],
+    "g_rBESS_InfluenceP": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 16"
+      }
+    ],
+    "g_rBESS_InfluenceQ": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 17"
+      }
+    ],
+    "g_rBESS_Confidence": [
+      {
+        "value": 0.0,
+        "raw": "0.000000",
+        "grid_handle": 1250168,
+        "row": "Row 18"
+      }
+    ],
+    "g_xBESS_ControllerReady": [
+      {
+        "value": false,
+        "raw": "OFF",
+        "grid_handle": 1250168,
+        "row": "Row 19"
+      }
+    ]
+  },
+  "missing_variables": [],
+  "errors": [],
+  "captured_at_utc": "2026-10-17T15:10:31.6862137Z",
+  "process_id": 21248,
+  "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+  "connection_evidence": {
+    "ok": false,
+    "status": "unverified",
+    "online": false,
+    "connection_verified": false,
+    "transport": "usb",
+    "evidence_id": "99a499d276714a9f8a4d68c0ec5a0e5c",
+    "target": {
+      "busid": "6-3",
+      "vidpid": "0471:a531"
+    },
+    "vendor_info": {},
+    "usb": {
+      "busid": "6-3",
+      "vidpid": "0471:a531",
+      "state": "Not shared",
+      "description": "H5U USB Device"
+    },
+    "ui_project_verified": true,
+    "document": "变量表",
+    "reason": "Read-only UI exposes no independently calibrated PLC model/version and online state",
+    "evidence": [
+      {
+        "path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/22949df02ff546c7ad06ea02bf42dcfa-observe-usbipd-list.json",
+        "sha256": "22743d05b5881983cc32a2ad474eadfd384fd68a8542cbd5d5910db70f7b0f6f",
+        "source": "usbipd-list"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/b81f8e72529f49c697b57216cf564594-observe-status.json",
+        "sha256": "8fcf3a9e46b31493fa77afc6da606ead0a89a8344d0c4e2e42f3418c94ba0d85",
+        "source": "status"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/logs/autoshop-vendor/2610af59913742699a2ffe7e289479e6-observe-decision.json",
+        "sha256": "779a4a7f94b6b72ac3fbe5264f3b54f2f1b74105916f99cd59ab42a271fac75f",
+        "source": "decision"
+      }
+    ]
+  },
+  "limitations": [
+    "UI table snapshots need not be atomic across rows",
+    "USB/device provenance is supplied separately, not established by this parser",
+    "no PLC state inferred from pixel colors, icons or UI request return codes"
+  ],
+  "command": "monitor",
+  "target": "easy521",
+  "transport": "vendor-usb",
+  "connection_verified": false
+}
