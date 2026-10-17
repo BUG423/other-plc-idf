@@ -4,6 +4,10 @@
 
 - [平台路线与固件可行性复核](firmware/03-feasibility-assessment-2026-10-17.md)：四条路线、事实/推断/TBD、历史调查勘误及研究门槛。
 - [ARM ELF 离线证据](firmware/20261017-offline-elf-inspection.json)：工具版本、目标属性、原始输出、文件哈希。
+- [官方固件与芯片来源复核](firmware/04-official-sources-2026-10-17.md)：四核官方表述、可获取固件元数据与缺失的准确 SoC/BSP；未取得 Easy521 系统镜像。
+- [本机工具链拆解](firmware/05-local-toolchain-2026-10-17.md)：Windows ST 前端、ARM ELF 库、Linux 烧录库存在性线索与实际缺口；未发布厂商原文件。
+- [Linux 链接实验](firmware/06-linux-link-experiment-2026-10-17.md)：用原生 Linux LLD 对已有厂商 ARM 对象做可重定位链接，保留失败对照；不是 ST 编译或真机部署验收。
+- [原生多目标架构决定](../architecture/ADR-0002-native-multitarget.md)：两条路线、目标接口、六项有界任务与逐层验收。
 - `firmware/01-manual-facts.md`、`02-sunxi-ecosystem.md`：2026-10-16 历史资料，保留原文；结论采用最新复核的限定。
 - [实施计划](../management/PLAN.md) 中 R01/R02：下一批研究工作，独立于主线桥接交付。
 

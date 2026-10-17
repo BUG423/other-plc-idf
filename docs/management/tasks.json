@@ -224,10 +224,78 @@
       "delivery": "四路线比较、镜像离线报告、开放平台验证、投入/退出决定",
       "issue_number": 11,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/11"
+    },
+    {
+      "id": "T10",
+      "title": "分离目标 profile、设备实例与传输并迁移通用接口",
+      "priority": "P1",
+      "milestone": "M4",
+      "role": "目标模型与架构实现角色（设计完成，实装待执行）",
+      "depends_on": [
+        "T04",
+        "T05",
+        "T07"
+      ],
+      "estimate": "首轮1–2工程日，不是成功或日历承诺",
+      "acceptance": [
+        "定义版本化v2目标/能力schema，保留v1严格解析，不放宽已有USB设备校验",
+        "Easy521兼容与Open Linux两种profile不再共同强制Windows工程路径或USB身份",
+        "编译兼容目标、设备实例与传输定位分开，设备变化不伪造构建兼容性",
+        "不支持的类型、任务、I/O与部署能力明确拒绝，后端不静默丢弃请求",
+        "CLI选择后端后可结构化解释宿主平台、目标/运行时版本及验证等级"
+      ],
+      "delivery": "ADR-0002 N1；schema、接口迁移、两种profile与拒绝用例；当前仅设计交付",
+      "issue_number": 14,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/14"
+    },
+    {
+      "id": "T11",
+      "title": "验证无 Windows 的开放 ST 编译、执行与变量观测",
+      "priority": "P1",
+      "milestone": "M4",
+      "role": "Linux与PLC运行时实现角色（源码核查完成，原型待执行）",
+      "depends_on": [
+        "T04"
+      ],
+      "estimate": "首轮概念验证上限2–3工程日，不预设通过",
+      "acceptance": [
+        "固定开放编译器/运行时与依赖版本；首候选Beremiz，替代选型须记录证据",
+        "Linux本地隔离环境真实编译并执行最小ST，不调用Windows或AutoShop，不使用固定寄存器播放器替代",
+        "故意错误源码被拒绝，正向应用有源码/产物/加载程序身份连续证据",
+        "观察到属于本次源码的计数/心跳变量变化，并保存运行与停止的独立证据",
+        "只绑定本机测试环境；未接入物理I/O时不声称实时性、工业现场适用或Easy521兼容"
+      ],
+      "delivery": "ADR-0002 N4；固定版本构建/运行环境、最小ST和正负执行证据；当前尚未运行候选runtime",
+      "issue_number": 15,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/15"
+    },
+    {
+      "id": "T12",
+      "title": "建立跨目标 ST 语义与能力差异验收集",
+      "priority": "P1",
+      "milestone": "M4",
+      "role": "PLC语义与测试角色（任务待执行）",
+      "depends_on": [
+        "T10",
+        "T11",
+        "T09"
+      ],
+      "estimate": "首轮1–2工程日，依赖目标可执行条件",
+      "acceptance": [
+        "同一受限逻辑在两类目标上对逐扫描输入/输出向量进行比较",
+        "覆盖布尔逻辑、限幅、固定宽度类型边界与声明的任务周期语义",
+        "方言、溢出、计时器、保持和I/O差异明确记录；未支持项拒绝而非静默降级",
+        "证据绑定各自源码/编译器/runtime/设备实例，区分软件功能与真实I/O/实时性",
+        "不以相同Modbus数值、同CPU或同IEC语言声明推断二进制兼容"
+      ],
+      "delivery": "ADR-0002 N5；共同子集、对照向量、差异及实际运行记录；当前未执行",
+      "issue_number": 16,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/16"
     }
   ],
   "tracking_issue": {
     "number": 12,
     "url": "https://github.com/BUG423/other-plc-idf/issues/12"
-  }
+  },
+  "scope_update": "2026-10-17 用户明确多PLC/去Windows方向；T10–T12与R01/R02并行，按ADR-0002逐目标验收。状态仍以GitHub Issue为准。"
 }

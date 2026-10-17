@@ -11,6 +11,8 @@
 
 2026-10-17 最新实测：[现场验证报告](docs/management/LIVE_VALIDATION_2026-10-17.md) · [实施计划与验收](docs/management/PLAN.md) · [进展](docs/management/PROGRESS.md) · [基线实现审计](docs/reviews/IMPLEMENTATION_AUDIT_2026-10-17.md) · [底层固件复核](docs/research/firmware/03-feasibility-assessment-2026-10-17.md)。已通过 USB 确认 Easy521/6.11.0.1，并在独立 Windows 工程副本完成 CLI 正负编译验证；网口物理链路仍断开，下载及运行未验收。
 
+后续方向已扩展为 **原生终端、多目标 PLC 工具链**：Easy521 是首个兼容目标，AutoShop 桥接保留；并行研究厂商运行时的 ABI/编程协议，以及自控 Linux 目标上的开放 ST 运行时。共享接口与独立验收见 [ADR-0002](docs/architecture/ADR-0002-native-multitarget.md)，不承诺不同 PLC 共用系统固件。
+
 ---
 
 ## 🌟 项目简介

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-17T10:56:28.728549+00:00",
+  "scope": "Unauthenticated public source metadata only; no firmware download, binary execution, hardware access, authentication bypass or external contact.",
+  "sources": [
+    {
+      "url": "https://www.inoplanet.com/developerResources/details/firmware-001-002",
+      "publisher": "汇川技术星球",
+      "retrieval": "public HTML plus public page detail request without authentication",
+      "raw_local_files": [
+        {
+          "path": "/tmp/plcidf-firmware-research/inoplanet-firmware-page.html",
+          "bytes": 18820,
+          "sha256": "1d19aeef2db799510967e99172a0d8c7bdc1f5325199fcb2077bd0807094831e"
+        },
+        {
+          "path": "/tmp/plcidf-firmware-research/firmware-detail-INFO.json",
+          "bytes": 15052,
+          "sha256": "84210877e4833f17915391f5b50500ba2c1c152b5cb269e2fa3735b667f163b0"
+        },
+        {
+          "path": "/tmp/plcidf-firmware-research/firmware-detail-HIS.json",
+          "bytes": 15051,
+          "sha256": "78a8fc0df91632ed333ef0726d35e7cf75b6a2dc0a3f7eaec92a0aea082362f9"
+        },
+        {
+          "path": "/tmp/plcidf-firmware-research/page-c13935464d30dcb8.js",
+          "bytes": 76791,
+          "sha256": "fc5f8c074dac85b9473068fb87e1ae415602c8677c2da6385e1e5d2a13c61d1c"
+        },
+        {
+          "path": "/tmp/plcidf-firmware-research/6064-ec55803d815f835c.js",
+          "bytes": 10554,
+          "sha256": "b48e7098d28a56a1f741b016ddcd9975624fe831fdd9bb0fb00110289ced1e37"
+        }
+      ],
+      "detail_request": {
+        "url": "https://inoplanet.com/api/home/backend/resource/search/detail",
+        "method": "POST",
+        "body": {
+          "resourceId": "firmware-001-002",
+          "tab": "INFO"
+        },
+        "http_status": 200,
+        "application_code": 200
+      },
+      "resource_metadata": {
+        "resourceId": "firmware-001-002",
+        "name": "AutoShop固件",
+        "resourceVersionNew": "V6.12.0.5",
+        "resourceType": "firmware",
+        "softPlatform": "AutoShop",
+        "paymentType": "FREE",
+        "editTime": "2026-07-24 00:00:00"
+      },
+      "advertised_archive": {
+        "file_name": "6.12.0.5固件.7z",
+        "version": "V6.12.0.5",
+        "reported_file_size": 144.095,
+        "reported_file_size_unit": null,
+        "updated": "2026-07-24 00:00:00",
+        "downloaded": false,
+        "actual_bytes": null,
+        "sha256": null,
+        "binary_format_verified": false,
+        "easy521_specific_compatibility_verified": false
+      },
+      "acquisition_conditions": {
+        "registration_required": true,
+        "learning_and_research_use_stated": true,
+        "commercial_resale_prohibited_by_page": true,
+        "source_decompilation_prohibited_by_page": true,
+        "terms_assessment": "Observed publisher statement only; no legal interpretation.",
+        "download_endpoint_called": false,
+        "direct_storage_file_access_attempted": false
+      }
+    },
+    {
+      "url": "https://www.inovance.com/global/content/details_816_556159.html",
+      "publisher": "Inovance",
+      "retrieval": "public HTML",
+      "raw_local_files": [
+        {
+          "path": "/tmp/plcidf-firmware-research/easy521-official-product-page.html",
+          "bytes": 138825,
+          "sha256": "4d955c2c2ae0a5aeff1c201776799d30acec64ee7452957f41113c158b830dd9"
+        }
+      ],
+      "observed_claims": [
+        "Quad-core processor",
+        "Dual Ethernet ports",
+        "Modbus TCP, EtherNet/IP and CANopen support"
+      ],
+      "exact_soc_model_disclosed_in_page": false,
+      "operating_system_disclosed_in_page": false
+    }
+  ],
+  "firmware_samples_acquired": [],
+  "unverified": [
+    "Exact Easy521 SoC, board revision and processor topology",
+    "Operating system, BSP, bootloader and I/O hardware mapping",
+    "V6.12.0.5 archive contents and compatibility with actual Easy521 running V6.11.0.1",
+    "Firmware archive bytes, magic, signature, encryption, partition structure and hashes",
+    "A matching public Easy521 GPL source package or native Linux compilation SDK"
+  ],
+  "search_scope": {
+    "date": "2026-10-17",
+    "domains": [
+      "inovance.com",
+      "inovance.eu",
+      "inoplanet.com"
+    ],
+    "queries": [
+      "Easy521 CPU Cortex Linux SDK BSP 固件",
+      "Easy521 编译",
+      "AutoShop Linux",
+      "H5U SDK",
+      "GPL",
+      "open source PLC"
+    ],
+    "negative_result_interpretation": "No matching source package or native Linux SDK was verified in this bounded search; not proof of nonexistence."
+  }
+}

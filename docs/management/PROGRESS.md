@@ -1,5 +1,17 @@
 # 进展记录
 
+## 2026-10-17：原生工具链与多 PLC 范围扩展
+
+用户明确要求探索绕过 Windows AutoShop，并支持多种 PLC。已采纳 [ADR-0002](../architecture/ADR-0002-native-multitarget.md) 的双路线：保留厂商运行时的兼容研究与自控开放运行时并行；已有桥接保留为对照和兼容路径。
+
+- **新增离线实验**：[Linux LLD 部分链接](../research/firmware/06-linux-link-experiment-2026-10-17.md) 成功处理本轮 ARM 对象；完整三库组合因重复符号失败，排除重复占位对象后可部分链接，仍有 46 个未解析名字。没有完成 LiteST 前端、完整 ABI、包装、下载或运行兼容。
+- **新增本机证据**：[工具链台账](../research/firmware/05-local-toolchain-2026-10-17.md) 区分 Windows ST 前端、ARM 目标库及宿主 x86-64 Linux 库；本机附带说明提及 Linux 烧录库，但没有取得对应主库或验证 Easy521 适用性。未复制厂商原库、接口文档或定义到公开仓库。
+- **新增官方来源**：[公开来源复核](../research/firmware/04-official-sources-2026-10-17.md) 找到官方固件归档元数据，未下载系统镜像；公开的另一 Easy521 型号页面写明四核，不足以确认本机 SoC、OS、BSP 或 I/O。
+- **任务与接口**：新增 M4 与 [T10 / #14](https://github.com/BUG423/other-plc-idf/issues/14)、[T11 / #15](https://github.com/BUG423/other-plc-idf/issues/15)、[T12 / #16](https://github.com/BUG423/other-plc-idf/issues/16)。分别落实目标/设备/传输解耦、无 Windows 的真实 ST 闭环、跨目标语义对照；均为待执行任务。R01/R02 继续追踪厂商 ABI/协议及板级/系统固件研究。
+- **实际执行边界**：本轮仅公开资料、主机文件分析和原生 Linux 链接实验，没有 AutoShop/Windows 进程、USB、PLC 或固件操作，没有运行候选开放 PLC runtime。既有真机下载/运行与网口验收仍未完成。
+
+执行角色为固件来源研究、可移植架构及编译器实验 AI 代理，由统筹交叉复核。新增 JSON、来源哈希、链接输入输出/重定位与预期失败证据已复核；这次不修改应用软件，持续集成结果随提交更新。
+
 ## 2026-10-17：双线接入后的实施与现场复核
 
 最新报告：[LIVE_VALIDATION_2026-10-17.md](LIVE_VALIDATION_2026-10-17.md)。以下首轮审计记录保留为时间快照，当前能力以此更新为准。
