@@ -230,7 +230,7 @@
       "title": "分离目标 profile、设备实例与传输并迁移通用接口",
       "priority": "P1",
       "milestone": "M4",
-      "role": "目标模型与架构实现角色（设计完成，实装待执行）",
+      "role": "目标模型与CLI统筹实现角色（本轮部分交付）",
       "depends_on": [
         "T04",
         "T05",
@@ -244,7 +244,7 @@
         "不支持的类型、任务、I/O与部署能力明确拒绝，后端不静默丢弃请求",
         "CLI选择后端后可结构化解释宿主平台、目标/运行时版本及验证等级"
       ],
-      "delivery": "ADR-0002 N1；schema、接口迁移、两种profile与拒绝用例；当前仅设计交付",
+      "delivery": "targets.py / BuildRequestV2 / schema2 open-linux文本工程 / 统一CLI已交付；后端注册、设备实例v2和完整产物迁移仍开放",
       "issue_number": 14,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/14"
     },
@@ -253,7 +253,7 @@
       "title": "验证无 Windows 的开放 ST 编译、执行与变量观测",
       "priority": "P1",
       "milestone": "M4",
-      "role": "Linux与PLC运行时实现角色（源码核查完成，原型待执行）",
+      "role": "开放ST运行时AI技术代理与统筹复核（本轮交付待合并）",
       "depends_on": [
         "T04"
       ],
@@ -265,7 +265,7 @@
         "观察到属于本次源码的计数/心跳变量变化，并保存运行与停止的独立证据",
         "只绑定本机测试环境；未接入物理I/O时不声称实时性、工业现场适用或Easy521兼容"
       ],
-      "delivery": "ADR-0002 N4；固定版本构建/运行环境、最小ST和正负执行证据；当前尚未运行候选runtime",
+      "delivery": "固定MatIEC→C→GCC、本地scan runtime、统一CLI及正负实际执行证据；见OPEN_LINUX_RUNTIME.md和PARALLEL_DELIVERY_2026-10-17.md；不代表Easy521固件或物理I/O兼容",
       "issue_number": 15,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/15"
     },
@@ -297,5 +297,5 @@
     "number": 12,
     "url": "https://github.com/BUG423/other-plc-idf/issues/12"
   },
-  "scope_update": "2026-10-17 用户明确多PLC/去Windows方向；T10–T12与R01/R02并行，按ADR-0002逐目标验收。状态仍以GitHub Issue为准。"
+  "scope_update": "2026-10-17 用户确认三路线并行、路线2优先；T11首个本地原生ST后端交付，T10部分实装，T12及R01/R02继续按独立门槛验收。状态以GitHub Issue为准。"
 }

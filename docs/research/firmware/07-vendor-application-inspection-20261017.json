@@ -1,0 +1,2243 @@
+{
+  "schema_version": 1,
+  "tool": "inspect_vendor_application",
+  "recorded_at_utc": "2026-10-17T12:26:10.170016+00:00",
+  "inspection_ok": true,
+  "limits": {
+    "max_file_bytes": 33554432,
+    "max_total_bytes": 134217728,
+    "max_table_entries": 200000
+  },
+  "files": [
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.rst",
+      "inspection_status": "observed",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+      "format": "compiler-success-marker",
+      "observations": {
+        "prefix_hex": "5375636365",
+        "prefix_bytes": 5,
+        "embedded_elf_magic_offsets": [],
+        "length_equalities": []
+      },
+      "marker": "Success!",
+      "marker_does_not_prove_build": true
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o",
+      "inspection_status": "parsed",
+      "size": 34284,
+      "sha256": "10b84e22569143dd04e24490d8d33d05b004fa383f60e3350fc7a20988627ea9",
+      "format": "elf",
+      "observations": {
+        "prefix_hex": "7f454c46010101000000000000000000",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [
+          0
+        ],
+        "length_equalities": []
+      },
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000000",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 12,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 31704,
+            "size": 2098,
+            "flags": 0
+          },
+          {
+            "index": 2,
+            "name": ".text",
+            "type": 1,
+            "offset": 56,
+            "size": 16356,
+            "flags": 6
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 18760,
+            "size": 12912,
+            "flags": 0
+          },
+          {
+            "index": 4,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 16412,
+            "size": 8,
+            "flags": 130
+          },
+          {
+            "index": 5,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 31672,
+            "size": 16,
+            "flags": 0
+          },
+          {
+            "index": 6,
+            "name": ".bss",
+            "type": 8,
+            "offset": 16424,
+            "size": 264,
+            "flags": 3
+          },
+          {
+            "index": 7,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 16424,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 16424,
+            "size": 52,
+            "flags": 0
+          },
+          {
+            "index": 9,
+            "name": ".debug_frame",
+            "type": 1,
+            "offset": 16476,
+            "size": 92,
+            "flags": 0
+          },
+          {
+            "index": 10,
+            "name": ".rel.debug_frame",
+            "type": 9,
+            "offset": 31688,
+            "size": 16,
+            "flags": 0
+          },
+          {
+            "index": 11,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 16568,
+            "size": 2192,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 52,
+            "sha256": "c2a5b84bf88fe0936d4b64ce696c31c98f1104baa2f5c122012dda0958690d3d",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 82,
+          "unique_count": 82,
+          "names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_FB_FBBESS^IDIRECTION",
+            "_FB_FBBESS^IESTIMATORCOUNT",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^IRECOVERCOUNT",
+            "_FB_FBBESS^IUVCOUNT",
+            "_FB_FBBESS^RANCHORPESS",
+            "_FB_FBBESS^RANCHORPLINE",
+            "_FB_FBBESS^RANCHORQESS",
+            "_FB_FBBESS^RANCHORQLINE",
+            "_FB_FBBESS^RANCHORV",
+            "_FB_FBBESS^RCKP",
+            "_FB_FBBESS^RCKQ",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RCVP",
+            "_FB_FBBESS^RCVQ",
+            "_FB_FBBESS^RDP",
+            "_FB_FBBESS^RDPL",
+            "_FB_FBBESS^RDQ",
+            "_FB_FBBESS^RDQL",
+            "_FB_FBBESS^RDV",
+            "_FB_FBBESS^REV",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RKP",
+            "_FB_FBBESS^RKQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RNATIVELOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RPNATIVE",
+            "_FB_FBBESS^RPOVER",
+            "_FB_FBBESS^RPTARGET",
+            "_FB_FBBESS^RPVOLTAGE",
+            "_FB_FBBESS^RQAFTER",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RQNATIVE",
+            "_FB_FBBESS^RRAWQ",
+            "_FB_FBBESS^RSAMPLE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSLIMIT",
+            "_FB_FBBESS^RSLINE",
+            "_FB_FBBESS^RSNATIVE",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RSVP",
+            "_FB_FBBESS^RSVQ",
+            "_FB_FBBESS^RVNATIVEESTIMATE",
+            "_FB_FBBESS^RVPU",
+            "_HC_EMPTYFUC",
+            "_HC_FLOAT_MAX",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_INTERRUPTFCBYST",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "_HC_ROUND",
+            "_ST_DOUBLE_ADD",
+            "_ST_DOUBLE_DIV",
+            "_ST_DOUBLE_MUL",
+            "_ST_DOUBLE_SUB",
+            "_ST_INT64_ADD",
+            "_ST_INT64_SUB",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "MAIN"
+          ]
+        },
+        "relocations": {
+          "entries": 1618,
+          "types": {
+            "R_ARM_ABS32": 282,
+            "R_ARM_NONE": 1,
+            "R_ARM_PREL31": 1,
+            "R_ARM_THM_MOVT_ABS": 667,
+            "R_ARM_THM_MOVW_ABS_NC": 667
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 1614,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 2,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.debug_frame",
+              "entries": 2,
+              "target_section": ".debug_frame",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_FB_FBBESS^IDIRECTION",
+            "_FB_FBBESS^IESTIMATORCOUNT",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^IRECOVERCOUNT",
+            "_FB_FBBESS^IUVCOUNT",
+            "_FB_FBBESS^RANCHORPESS",
+            "_FB_FBBESS^RANCHORPLINE",
+            "_FB_FBBESS^RANCHORQESS",
+            "_FB_FBBESS^RANCHORQLINE",
+            "_FB_FBBESS^RANCHORV",
+            "_FB_FBBESS^RCKP",
+            "_FB_FBBESS^RCKQ",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RCVP",
+            "_FB_FBBESS^RCVQ",
+            "_FB_FBBESS^RDP",
+            "_FB_FBBESS^RDPL",
+            "_FB_FBBESS^RDQ",
+            "_FB_FBBESS^RDQL",
+            "_FB_FBBESS^RDV",
+            "_FB_FBBESS^REV",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RKP",
+            "_FB_FBBESS^RKQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RNATIVELOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RPNATIVE",
+            "_FB_FBBESS^RPOVER",
+            "_FB_FBBESS^RPTARGET",
+            "_FB_FBBESS^RPVOLTAGE",
+            "_FB_FBBESS^RQAFTER",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RQNATIVE",
+            "_FB_FBBESS^RRAWQ",
+            "_FB_FBBESS^RSAMPLE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSLIMIT",
+            "_FB_FBBESS^RSLINE",
+            "_FB_FBBESS^RSNATIVE",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RSVP",
+            "_FB_FBBESS^RSVQ",
+            "_FB_FBBESS^RVNATIVEESTIMATE",
+            "_FB_FBBESS^RVPU",
+            "_HC_EMPTYFUC",
+            "_HC_FLOAT_MAX",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_INTERRUPTFCBYST",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "_HC_ROUND",
+            "_ST_DOUBLE_ADD",
+            "_ST_DOUBLE_DIV",
+            "_ST_DOUBLE_MUL",
+            "_ST_DOUBLE_SUB",
+            "_ST_INT64_ADD",
+            "_ST_INT64_SUB",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        }
+      }
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.o",
+      "inspection_status": "parsed",
+      "size": 4472,
+      "sha256": "391ac85bffa6f5399c02fbe537bf98a2e32748c9c09cf0ec58936ea4b33643db",
+      "format": "elf",
+      "observations": {
+        "prefix_hex": "7f454c46010101000000000000000000",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [
+          0
+        ],
+        "length_equalities": []
+      },
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000000",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 12,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 2808,
+            "size": 1182,
+            "flags": 0
+          },
+          {
+            "index": 2,
+            "name": ".text",
+            "type": 1,
+            "offset": 52,
+            "size": 732,
+            "flags": 6
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 2136,
+            "size": 640,
+            "flags": 0
+          },
+          {
+            "index": 4,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 784,
+            "size": 8,
+            "flags": 130
+          },
+          {
+            "index": 5,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 2776,
+            "size": 16,
+            "flags": 0
+          },
+          {
+            "index": 6,
+            "name": ".bss",
+            "type": 8,
+            "offset": 792,
+            "size": 264,
+            "flags": 3
+          },
+          {
+            "index": 7,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 792,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 792,
+            "size": 52,
+            "flags": 0
+          },
+          {
+            "index": 9,
+            "name": ".debug_frame",
+            "type": 1,
+            "offset": 844,
+            "size": 60,
+            "flags": 0
+          },
+          {
+            "index": 10,
+            "name": ".rel.debug_frame",
+            "type": 9,
+            "offset": 2792,
+            "size": 16,
+            "flags": 0
+          },
+          {
+            "index": 11,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 904,
+            "size": 1232,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 52,
+            "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 36,
+          "unique_count": 36,
+          "names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_CALL_FB_00000000",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RVPU",
+            "_HC_EMPTYFUC",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_ST_INT64_ADD",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "MAIN"
+          ]
+        },
+        "relocations": {
+          "entries": 84,
+          "types": {
+            "R_ARM_ABS32": 22,
+            "R_ARM_NONE": 1,
+            "R_ARM_PREL31": 1,
+            "R_ARM_THM_MOVT_ABS": 30,
+            "R_ARM_THM_MOVW_ABS_NC": 30
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 80,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 2,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.debug_frame",
+              "entries": 2,
+              "target_section": ".debug_frame",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_CALL_FB_00000000",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RVPU",
+            "_HC_EMPTYFUC",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_ST_INT64_ADD",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        }
+      }
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o",
+      "inspection_status": "parsed",
+      "size": 155376,
+      "sha256": "6500e740c7ea380fdb8c0b30d2b69ba3007ad27ee03a2f56bd449ca6e553af56",
+      "format": "elf",
+      "observations": {
+        "prefix_hex": "7f454c46010101000000000000000000",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [
+          0
+        ],
+        "length_equalities": []
+      },
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000200",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 13,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".text",
+            "type": 1,
+            "offset": 56,
+            "size": 78012,
+            "flags": 6
+          },
+          {
+            "index": 2,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 78068,
+            "size": 432,
+            "flags": 130
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 78500,
+            "size": 40800,
+            "flags": 64
+          },
+          {
+            "index": 4,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 119300,
+            "size": 864,
+            "flags": 64
+          },
+          {
+            "index": 5,
+            "name": ".bss",
+            "type": 8,
+            "offset": 120176,
+            "size": 13936,
+            "flags": 3
+          },
+          {
+            "index": 6,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 120176,
+            "size": 52,
+            "flags": 0
+          },
+          {
+            "index": 7,
+            "name": ".debug_frame",
+            "type": 1,
+            "offset": 120228,
+            "size": 2960,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".rel.debug_frame",
+            "type": 9,
+            "offset": 123188,
+            "size": 864,
+            "flags": 64
+          },
+          {
+            "index": 9,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 124052,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 10,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 124052,
+            "size": 28000,
+            "flags": 0
+          },
+          {
+            "index": 11,
+            "name": ".shstrtab",
+            "type": 3,
+            "offset": 152052,
+            "size": 136,
+            "flags": 0
+          },
+          {
+            "index": 12,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 152188,
+            "size": 2666,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 52,
+            "sha256": "c2a5b84bf88fe0936d4b64ce696c31c98f1104baa2f5c122012dda0958690d3d",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 83,
+          "unique_count": 83,
+          "names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_FB_FBBESS^IDIRECTION",
+            "_FB_FBBESS^IESTIMATORCOUNT",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^IRECOVERCOUNT",
+            "_FB_FBBESS^IUVCOUNT",
+            "_FB_FBBESS^RANCHORPESS",
+            "_FB_FBBESS^RANCHORPLINE",
+            "_FB_FBBESS^RANCHORQESS",
+            "_FB_FBBESS^RANCHORQLINE",
+            "_FB_FBBESS^RANCHORV",
+            "_FB_FBBESS^RCKP",
+            "_FB_FBBESS^RCKQ",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RCVP",
+            "_FB_FBBESS^RCVQ",
+            "_FB_FBBESS^RDP",
+            "_FB_FBBESS^RDPL",
+            "_FB_FBBESS^RDQ",
+            "_FB_FBBESS^RDQL",
+            "_FB_FBBESS^RDV",
+            "_FB_FBBESS^REV",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RKP",
+            "_FB_FBBESS^RKQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RNATIVELOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RPNATIVE",
+            "_FB_FBBESS^RPOVER",
+            "_FB_FBBESS^RPTARGET",
+            "_FB_FBBESS^RPVOLTAGE",
+            "_FB_FBBESS^RQAFTER",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RQNATIVE",
+            "_FB_FBBESS^RRAWQ",
+            "_FB_FBBESS^RSAMPLE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSLIMIT",
+            "_FB_FBBESS^RSLINE",
+            "_FB_FBBESS^RSNATIVE",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RSVP",
+            "_FB_FBBESS^RSVQ",
+            "_FB_FBBESS^RVNATIVEESTIMATE",
+            "_FB_FBBESS^RVPU",
+            "_HC_DINT_MOD",
+            "_HC_EXPT",
+            "_HC_FLOAT_MAX",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_INTERRUPTFCBYST",
+            "_HC_LD_DEV_MEM_COPY_BITS",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "_HC_LOG10",
+            "_HC_NOROUND",
+            "_HC_ROUND",
+            "_HC_SHL",
+            "_HC_SHR",
+            "_HC_WATCHDOG",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 54,
+          "unique_count": 54,
+          "names": [
+            "ARYADDV",
+            "ARYAND",
+            "ARYBYTETO",
+            "ARYEXCHANGE",
+            "ARYMAX",
+            "ARYMEAN",
+            "ARYMIN",
+            "ARYMOVE",
+            "ARYOR",
+            "ARYSD",
+            "ARYSEARCH",
+            "ARYSHL",
+            "ARYSHR",
+            "ARYSUBV",
+            "ARYTOSTRING",
+            "ARYXOR",
+            "ARYXORN",
+            "CLEAR",
+            "CLEARSTRING",
+            "CONCAT",
+            "DELETE",
+            "FIND",
+            "INSERT",
+            "LEFT",
+            "LEN",
+            "MAIN",
+            "REPLACE",
+            "RIGHT",
+            "SBR_001",
+            "STRINGTOARY",
+            "TOARYBYTE",
+            "_HC_EMPTYFUC",
+            "_ST_ARRAY_INDEX_CHECK",
+            "_ST_BOOL_TO_STRING",
+            "_ST_BYTE_TO_STRING",
+            "_ST_DINT_TO_STRING",
+            "_ST_DOUBLE_ADD",
+            "_ST_DOUBLE_DIV",
+            "_ST_DOUBLE_MUL",
+            "_ST_DOUBLE_SUB",
+            "_ST_INT64_ADD",
+            "_ST_INT64_MUL",
+            "_ST_INT64_SUB",
+            "_ST_INT_TO_STRING",
+            "_ST_MEMCPY",
+            "_ST_MEMSET",
+            "_ST_REAL_TO_STRING",
+            "_ST_STRCOMPARE",
+            "_ST_STRING_CHECK",
+            "_ST_STRING_TO_BOOL",
+            "_ST_STRING_TO_BYTE",
+            "_ST_STRING_TO_DINT",
+            "_ST_STRING_TO_INT",
+            "_ST_STRING_TO_REAL"
+          ]
+        },
+        "relocations": {
+          "entries": 5316,
+          "types": {
+            "R_ARM_ABS32": 2316,
+            "R_ARM_NONE": 54,
+            "R_ARM_PREL31": 54,
+            "R_ARM_THM_MOVT_ABS": 1446,
+            "R_ARM_THM_MOVW_ABS_NC": 1446
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 5100,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 108,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.debug_frame",
+              "entries": 108,
+              "target_section": ".debug_frame",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_FB_FBBESS^IDIRECTION",
+            "_FB_FBBESS^IESTIMATORCOUNT",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^IRECOVERCOUNT",
+            "_FB_FBBESS^IUVCOUNT",
+            "_FB_FBBESS^RANCHORPESS",
+            "_FB_FBBESS^RANCHORPLINE",
+            "_FB_FBBESS^RANCHORQESS",
+            "_FB_FBBESS^RANCHORQLINE",
+            "_FB_FBBESS^RANCHORV",
+            "_FB_FBBESS^RCKP",
+            "_FB_FBBESS^RCKQ",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RCVP",
+            "_FB_FBBESS^RCVQ",
+            "_FB_FBBESS^RDP",
+            "_FB_FBBESS^RDPL",
+            "_FB_FBBESS^RDQ",
+            "_FB_FBBESS^RDQL",
+            "_FB_FBBESS^RDV",
+            "_FB_FBBESS^REV",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RKP",
+            "_FB_FBBESS^RKQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RNATIVELOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RPNATIVE",
+            "_FB_FBBESS^RPOVER",
+            "_FB_FBBESS^RPTARGET",
+            "_FB_FBBESS^RPVOLTAGE",
+            "_FB_FBBESS^RQAFTER",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RQNATIVE",
+            "_FB_FBBESS^RRAWQ",
+            "_FB_FBBESS^RSAMPLE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSLIMIT",
+            "_FB_FBBESS^RSLINE",
+            "_FB_FBBESS^RSNATIVE",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RSVP",
+            "_FB_FBBESS^RSVQ",
+            "_FB_FBBESS^RVNATIVEESTIMATE",
+            "_FB_FBBESS^RVPU",
+            "_HC_DINT_MOD",
+            "_HC_EXPT",
+            "_HC_FLOAT_MAX",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_INTERRUPTFCBYST",
+            "_HC_LD_DEV_MEM_COPY_BITS",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "_HC_LOG10",
+            "_HC_NOROUND",
+            "_HC_ROUND",
+            "_HC_SHL",
+            "_HC_SHR",
+            "_HC_WATCHDOG",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        }
+      }
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+      "inspection_status": "parsed",
+      "size": 159012,
+      "sha256": "b95099a749ed9c96c4a7d16a8b391a6a0c87d7e63ea614b34ff6af123f33f8c6",
+      "format": "elf",
+      "observations": {
+        "prefix_hex": "7f454c46010101000000000000000000",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [
+          0
+        ],
+        "length_equalities": []
+      },
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000200",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 13,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".text",
+            "type": 1,
+            "offset": 56,
+            "size": 79672,
+            "flags": 6
+          },
+          {
+            "index": 2,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 79728,
+            "size": 440,
+            "flags": 130
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 80168,
+            "size": 42216,
+            "flags": 64
+          },
+          {
+            "index": 4,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 122384,
+            "size": 880,
+            "flags": 64
+          },
+          {
+            "index": 5,
+            "name": ".bss",
+            "type": 8,
+            "offset": 123264,
+            "size": 14192,
+            "flags": 3
+          },
+          {
+            "index": 6,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 123264,
+            "size": 52,
+            "flags": 0
+          },
+          {
+            "index": 7,
+            "name": ".debug_frame",
+            "type": 1,
+            "offset": 123316,
+            "size": 2904,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".rel.debug_frame",
+            "type": 9,
+            "offset": 126220,
+            "size": 880,
+            "flags": 64
+          },
+          {
+            "index": 9,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 127100,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 10,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 127100,
+            "size": 28592,
+            "flags": 0
+          },
+          {
+            "index": 11,
+            "name": ".shstrtab",
+            "type": 3,
+            "offset": 155692,
+            "size": 136,
+            "flags": 0
+          },
+          {
+            "index": 12,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 155828,
+            "size": 2664,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 52,
+            "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 82,
+          "unique_count": 82,
+          "names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_FB_FBBESS^IDIRECTION",
+            "_FB_FBBESS^IESTIMATORCOUNT",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^IRECOVERCOUNT",
+            "_FB_FBBESS^IUVCOUNT",
+            "_FB_FBBESS^RANCHORPESS",
+            "_FB_FBBESS^RANCHORPLINE",
+            "_FB_FBBESS^RANCHORQESS",
+            "_FB_FBBESS^RANCHORQLINE",
+            "_FB_FBBESS^RANCHORV",
+            "_FB_FBBESS^RCKP",
+            "_FB_FBBESS^RCKQ",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RCVP",
+            "_FB_FBBESS^RCVQ",
+            "_FB_FBBESS^RDP",
+            "_FB_FBBESS^RDPL",
+            "_FB_FBBESS^RDQ",
+            "_FB_FBBESS^RDQL",
+            "_FB_FBBESS^RDV",
+            "_FB_FBBESS^REV",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RKP",
+            "_FB_FBBESS^RKQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RNATIVELOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RPNATIVE",
+            "_FB_FBBESS^RPOVER",
+            "_FB_FBBESS^RPTARGET",
+            "_FB_FBBESS^RPVOLTAGE",
+            "_FB_FBBESS^RQAFTER",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RQNATIVE",
+            "_FB_FBBESS^RRAWQ",
+            "_FB_FBBESS^RSAMPLE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSLIMIT",
+            "_FB_FBBESS^RSLINE",
+            "_FB_FBBESS^RSNATIVE",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RSVP",
+            "_FB_FBBESS^RSVQ",
+            "_FB_FBBESS^RVNATIVEESTIMATE",
+            "_FB_FBBESS^RVPU",
+            "_HC_DINT_MOD",
+            "_HC_EXPT",
+            "_HC_FLOAT_MAX",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_LD_DEV_MEM_COPY_BITS",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "_HC_LOG10",
+            "_HC_NOROUND",
+            "_HC_ROUND",
+            "_HC_SHL",
+            "_HC_SHR",
+            "_HC_WATCHDOG",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 55,
+          "unique_count": 55,
+          "names": [
+            "ARYADDV",
+            "ARYAND",
+            "ARYBYTETO",
+            "ARYEXCHANGE",
+            "ARYMAX",
+            "ARYMEAN",
+            "ARYMIN",
+            "ARYMOVE",
+            "ARYOR",
+            "ARYSD",
+            "ARYSEARCH",
+            "ARYSHL",
+            "ARYSHR",
+            "ARYSUBV",
+            "ARYTOSTRING",
+            "ARYXOR",
+            "ARYXORN",
+            "CLEAR",
+            "CLEARSTRING",
+            "CONCAT",
+            "DELETE",
+            "FIND",
+            "INSERT",
+            "LEFT",
+            "LEN",
+            "MAIN",
+            "REPLACE",
+            "RIGHT",
+            "SBR_001",
+            "STRINGTOARY",
+            "TOARYBYTE",
+            "_CALL_FB_00000000",
+            "_HC_EMPTYFUC",
+            "_ST_ARRAY_INDEX_CHECK",
+            "_ST_BOOL_TO_STRING",
+            "_ST_BYTE_TO_STRING",
+            "_ST_DINT_TO_STRING",
+            "_ST_DOUBLE_ADD",
+            "_ST_DOUBLE_DIV",
+            "_ST_DOUBLE_MUL",
+            "_ST_DOUBLE_SUB",
+            "_ST_INT64_ADD",
+            "_ST_INT64_MUL",
+            "_ST_INT64_SUB",
+            "_ST_INT_TO_STRING",
+            "_ST_MEMCPY",
+            "_ST_MEMSET",
+            "_ST_REAL_TO_STRING",
+            "_ST_STRCOMPARE",
+            "_ST_STRING_CHECK",
+            "_ST_STRING_TO_BOOL",
+            "_ST_STRING_TO_BYTE",
+            "_ST_STRING_TO_DINT",
+            "_ST_STRING_TO_INT",
+            "_ST_STRING_TO_REAL"
+          ]
+        },
+        "relocations": {
+          "entries": 5497,
+          "types": {
+            "R_ARM_ABS32": 2320,
+            "R_ARM_NONE": 55,
+            "R_ARM_PREL31": 55,
+            "R_ARM_THM_MOVT_ABS": 1533,
+            "R_ARM_THM_MOVW_ABS_NC": 1534
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 5277,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 110,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.debug_frame",
+              "entries": 110,
+              "target_section": ".debug_frame",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_FB_FBBESS^IDIRECTION",
+            "_FB_FBBESS^IESTIMATORCOUNT",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^IRECOVERCOUNT",
+            "_FB_FBBESS^IUVCOUNT",
+            "_FB_FBBESS^RANCHORPESS",
+            "_FB_FBBESS^RANCHORPLINE",
+            "_FB_FBBESS^RANCHORQESS",
+            "_FB_FBBESS^RANCHORQLINE",
+            "_FB_FBBESS^RANCHORV",
+            "_FB_FBBESS^RCKP",
+            "_FB_FBBESS^RCKQ",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RCVP",
+            "_FB_FBBESS^RCVQ",
+            "_FB_FBBESS^RDP",
+            "_FB_FBBESS^RDPL",
+            "_FB_FBBESS^RDQ",
+            "_FB_FBBESS^RDQL",
+            "_FB_FBBESS^RDV",
+            "_FB_FBBESS^REV",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RKP",
+            "_FB_FBBESS^RKQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RNATIVELOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RPNATIVE",
+            "_FB_FBBESS^RPOVER",
+            "_FB_FBBESS^RPTARGET",
+            "_FB_FBBESS^RPVOLTAGE",
+            "_FB_FBBESS^RQAFTER",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RQNATIVE",
+            "_FB_FBBESS^RRAWQ",
+            "_FB_FBBESS^RSAMPLE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSLIMIT",
+            "_FB_FBBESS^RSLINE",
+            "_FB_FBBESS^RSNATIVE",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RSVP",
+            "_FB_FBBESS^RSVQ",
+            "_FB_FBBESS^RVNATIVEESTIMATE",
+            "_FB_FBBESS^RVPU",
+            "_HC_DINT_MOD",
+            "_HC_EXPT",
+            "_HC_FLOAT_MAX",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_LD_DEV_MEM_COPY_BITS",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "_HC_LOG10",
+            "_HC_NOROUND",
+            "_HC_ROUND",
+            "_HC_SHL",
+            "_HC_SHR",
+            "_HC_WATCHDOG",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        }
+      }
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.st",
+      "inspection_status": "observed",
+      "size": 12839,
+      "sha256": "c892f081ac8409bf60225160732eca605f8b0de6e25085e82bac712ef55d844c",
+      "format": "observed-autoshop-AS-prefix",
+      "observations": {
+        "prefix_hex": "2a2a2a2a41532a2a2a2a2a0001000000",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [],
+        "length_equalities": []
+      }
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.st",
+      "inspection_status": "observed",
+      "size": 3460,
+      "sha256": "63a0cebdc36d6d0dea72938a89b3240d4c4c7e4b0fd7b1f8196a44b888829966",
+      "format": "observed-autoshop-AS-prefix",
+      "observations": {
+        "prefix_hex": "2a2a2a2a41532a2a2a2a2a0001000000",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [],
+        "length_equalities": []
+      }
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Output.prg",
+      "inspection_status": "observed",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "format": "unknown",
+      "observations": {
+        "prefix_hex": "ffffffffffffffffffffffffffffffff",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [],
+        "length_equalities": []
+      }
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.prg",
+      "inspection_status": "observed",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "format": "unknown",
+      "observations": {
+        "prefix_hex": "ffffffffffffffffffffffffffffffff",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [],
+        "length_equalities": []
+      }
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Output.sdt",
+      "inspection_status": "observed",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+      "format": "observed-SA-prefix",
+      "observations": {
+        "prefix_hex": "53410001000100000000000000000000",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [],
+        "length_equalities": [
+          {
+            "offset": 20,
+            "width": 4,
+            "endianness": "big",
+            "value": 182,
+            "arithmetic_relationship": "equals_file_size",
+            "field_semantics_confirmed": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.sdt",
+      "inspection_status": "observed",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+      "format": "observed-SA-prefix",
+      "observations": {
+        "prefix_hex": "53410001000100000000000000000000",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [],
+        "length_equalities": [
+          {
+            "offset": 20,
+            "width": 4,
+            "endianness": "big",
+            "value": 182,
+            "arithmetic_relationship": "equals_file_size",
+            "field_semantics_confirmed": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "/tmp/plcidf-native-link-20261017/outputs/E-main-old-syslib-no-duplicate.o",
+      "inspection_status": "parsed",
+      "size": 143824,
+      "sha256": "2b772ddbd67569369d2bcc93e13eece6704c54476be22da388553832d9d596ce",
+      "format": "elf",
+      "observations": {
+        "prefix_hex": "7f454c46010101000000000000000000",
+        "prefix_bytes": 16,
+        "embedded_elf_magic_offsets": [
+          0
+        ],
+        "length_equalities": []
+      },
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000200",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 13,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".text",
+            "type": 1,
+            "offset": 52,
+            "size": 62382,
+            "flags": 6
+          },
+          {
+            "index": 2,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 62436,
+            "size": 424,
+            "flags": 130
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 62860,
+            "size": 28528,
+            "flags": 64
+          },
+          {
+            "index": 4,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 91388,
+            "size": 848,
+            "flags": 64
+          },
+          {
+            "index": 5,
+            "name": ".bss",
+            "type": 8,
+            "offset": 62860,
+            "size": 13680,
+            "flags": 3
+          },
+          {
+            "index": 6,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 92236,
+            "size": 52,
+            "flags": 0
+          },
+          {
+            "index": 7,
+            "name": ".debug_frame",
+            "type": 1,
+            "offset": 92288,
+            "size": 2892,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".rel.debug_frame",
+            "type": 9,
+            "offset": 95180,
+            "size": 848,
+            "flags": 64
+          },
+          {
+            "index": 9,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 96028,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 10,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 96028,
+            "size": 26624,
+            "flags": 0
+          },
+          {
+            "index": 11,
+            "name": ".shstrtab",
+            "type": 3,
+            "offset": 122652,
+            "size": 136,
+            "flags": 0
+          },
+          {
+            "index": 12,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 122788,
+            "size": 20516,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 52,
+            "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 46,
+          "unique_count": 46,
+          "names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_CALL_FB_00000000",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RVPU",
+            "_HC_DINT_MOD",
+            "_HC_EXPT",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_LD_DEV_MEM_COPY_BITS",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "_HC_LOG10",
+            "_HC_NOROUND",
+            "_HC_ROUND",
+            "_HC_SHL",
+            "_HC_SHR",
+            "_HC_WATCHDOG",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 53,
+          "unique_count": 53,
+          "names": [
+            "ARYADDV",
+            "ARYAND",
+            "ARYBYTETO",
+            "ARYEXCHANGE",
+            "ARYMAX",
+            "ARYMEAN",
+            "ARYMIN",
+            "ARYMOVE",
+            "ARYOR",
+            "ARYSD",
+            "ARYSEARCH",
+            "ARYSHL",
+            "ARYSHR",
+            "ARYSUBV",
+            "ARYTOSTRING",
+            "ARYXOR",
+            "ARYXORN",
+            "CLEAR",
+            "CLEARSTRING",
+            "CONCAT",
+            "DELETE",
+            "FIND",
+            "INSERT",
+            "LEFT",
+            "LEN",
+            "MAIN",
+            "REPLACE",
+            "RIGHT",
+            "STRINGTOARY",
+            "TOARYBYTE",
+            "_HC_EMPTYFUC",
+            "_ST_ARRAY_INDEX_CHECK",
+            "_ST_BOOL_TO_STRING",
+            "_ST_BYTE_TO_STRING",
+            "_ST_DINT_TO_STRING",
+            "_ST_DOUBLE_ADD",
+            "_ST_DOUBLE_DIV",
+            "_ST_DOUBLE_MUL",
+            "_ST_DOUBLE_SUB",
+            "_ST_INT64_ADD",
+            "_ST_INT64_MUL",
+            "_ST_INT64_SUB",
+            "_ST_INT_TO_STRING",
+            "_ST_MEMCPY",
+            "_ST_MEMSET",
+            "_ST_REAL_TO_STRING",
+            "_ST_STRCOMPARE",
+            "_ST_STRING_CHECK",
+            "_ST_STRING_TO_BOOL",
+            "_ST_STRING_TO_BYTE",
+            "_ST_STRING_TO_DINT",
+            "_ST_STRING_TO_INT",
+            "_ST_STRING_TO_REAL"
+          ]
+        },
+        "relocations": {
+          "entries": 3778,
+          "types": {
+            "R_ARM_ABS32": 2054,
+            "R_ARM_NONE": 53,
+            "R_ARM_PREL31": 53,
+            "R_ARM_THM_MOVT_ABS": 809,
+            "R_ARM_THM_MOVW_ABS_NC": 809
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 3566,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 106,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.debug_frame",
+              "entries": 106,
+              "target_section": ".debug_frame",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_LOADING",
+            "G_RBESS_PCMD",
+            "G_RBESS_PESS",
+            "G_RBESS_PLINE",
+            "G_RBESS_QCMD",
+            "G_RBESS_QESS",
+            "G_RBESS_QLINE",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "G_RBESS_SOC",
+            "G_RBESS_VPU",
+            "_CALL_FB_00000000",
+            "_FB_FBBESS^IMODE",
+            "_FB_FBBESS^RCONFIDENCE",
+            "_FB_FBBESS^RINFLUENCEP",
+            "_FB_FBBESS^RINFLUENCEQ",
+            "_FB_FBBESS^RLOADING",
+            "_FB_FBBESS^RPCMD",
+            "_FB_FBBESS^RPESS",
+            "_FB_FBBESS^RPLINE",
+            "_FB_FBBESS^RQCMD",
+            "_FB_FBBESS^RQESS",
+            "_FB_FBBESS^RQLINE",
+            "_FB_FBBESS^RSENSVP",
+            "_FB_FBBESS^RSENSVQ",
+            "_FB_FBBESS^RSOC",
+            "_FB_FBBESS^RVPU",
+            "_HC_DINT_MOD",
+            "_HC_EXPT",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_LD_DEV_MEM_COPY_BITS",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "_HC_LOG10",
+            "_HC_NOROUND",
+            "_HC_ROUND",
+            "_HC_SHL",
+            "_HC_SHR",
+            "_HC_WATCHDOG",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "base": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o",
+      "candidate": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.o",
+      "same_sha256": false,
+      "size_delta": -29812,
+      "changed_overlap_bytes": 3902,
+      "first_difference_offset": 32,
+      "base_format": "elf",
+      "candidate_format": "elf",
+      "elf": {
+        "same_machine_class_endianness": true,
+        "same_flags": true,
+        "relocation_entry_delta": -1534,
+        "undefined_global_weak": {
+          "removed_names": [
+            "_FB_FBBESS^IDIRECTION",
+            "_FB_FBBESS^IESTIMATORCOUNT",
+            "_FB_FBBESS^IRECOVERCOUNT",
+            "_FB_FBBESS^IUVCOUNT",
+            "_FB_FBBESS^RANCHORPESS",
+            "_FB_FBBESS^RANCHORPLINE",
+            "_FB_FBBESS^RANCHORQESS",
+            "_FB_FBBESS^RANCHORQLINE",
+            "_FB_FBBESS^RANCHORV",
+            "_FB_FBBESS^RCKP",
+            "_FB_FBBESS^RCKQ",
+            "_FB_FBBESS^RCVP",
+            "_FB_FBBESS^RCVQ",
+            "_FB_FBBESS^RDP",
+            "_FB_FBBESS^RDPL",
+            "_FB_FBBESS^RDQ",
+            "_FB_FBBESS^RDQL",
+            "_FB_FBBESS^RDV",
+            "_FB_FBBESS^REV",
+            "_FB_FBBESS^RKP",
+            "_FB_FBBESS^RKQ",
+            "_FB_FBBESS^RNATIVELOADING",
+            "_FB_FBBESS^RPNATIVE",
+            "_FB_FBBESS^RPOVER",
+            "_FB_FBBESS^RPTARGET",
+            "_FB_FBBESS^RPVOLTAGE",
+            "_FB_FBBESS^RQAFTER",
+            "_FB_FBBESS^RQNATIVE",
+            "_FB_FBBESS^RRAWQ",
+            "_FB_FBBESS^RSAMPLE",
+            "_FB_FBBESS^RSLIMIT",
+            "_FB_FBBESS^RSLINE",
+            "_FB_FBBESS^RSNATIVE",
+            "_FB_FBBESS^RSVP",
+            "_FB_FBBESS^RSVQ",
+            "_FB_FBBESS^RVNATIVEESTIMATE",
+            "_HC_FLOAT_MAX",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_INTERRUPTFCBYST",
+            "_HC_LD_ERROR_ADD",
+            "_HC_ROUND",
+            "_ST_DOUBLE_ADD",
+            "_ST_DOUBLE_DIV",
+            "_ST_DOUBLE_MUL",
+            "_ST_DOUBLE_SUB",
+            "_ST_INT64_SUB"
+          ],
+          "added_names": [
+            "_CALL_FB_00000000"
+          ]
+        },
+        "defined_global_weak": {
+          "removed_names": [],
+          "added_names": []
+        }
+      }
+    },
+    {
+      "base": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o",
+      "candidate": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+      "same_sha256": false,
+      "size_delta": 3636,
+      "changed_overlap_bytes": 124817,
+      "first_difference_offset": 32,
+      "base_format": "elf",
+      "candidate_format": "elf",
+      "elf": {
+        "same_machine_class_endianness": true,
+        "same_flags": true,
+        "relocation_entry_delta": 181,
+        "undefined_global_weak": {
+          "removed_names": [
+            "_HC_INTERRUPTFCBYST"
+          ],
+          "added_names": []
+        },
+        "defined_global_weak": {
+          "removed_names": [],
+          "added_names": [
+            "_CALL_FB_00000000"
+          ]
+        }
+      }
+    },
+    {
+      "base": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.st",
+      "candidate": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.st",
+      "same_sha256": false,
+      "size_delta": -9379,
+      "changed_overlap_bytes": 3150,
+      "first_difference_offset": 42,
+      "base_format": "observed-autoshop-AS-prefix",
+      "candidate_format": "observed-autoshop-AS-prefix"
+    },
+    {
+      "base": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Output.prg",
+      "candidate": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.prg",
+      "same_sha256": true,
+      "size_delta": 0,
+      "changed_overlap_bytes": 0,
+      "first_difference_offset": null,
+      "base_format": "unknown",
+      "candidate_format": "unknown"
+    },
+    {
+      "base": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Output.sdt",
+      "candidate": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.sdt",
+      "same_sha256": true,
+      "size_delta": 0,
+      "changed_overlap_bytes": 0,
+      "first_difference_offset": null,
+      "base_format": "observed-SA-prefix",
+      "candidate_format": "observed-SA-prefix"
+    },
+    {
+      "base": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+      "candidate": "/tmp/plcidf-native-link-20261017/outputs/E-main-old-syslib-no-duplicate.o",
+      "same_sha256": false,
+      "size_delta": -15188,
+      "changed_overlap_bytes": 124042,
+      "first_difference_offset": 32,
+      "base_format": "elf",
+      "candidate_format": "elf",
+      "elf": {
+        "same_machine_class_endianness": true,
+        "same_flags": true,
+        "relocation_entry_delta": -1719,
+        "undefined_global_weak": {
+          "removed_names": [
+            "_FB_FBBESS^IDIRECTION",
+            "_FB_FBBESS^IESTIMATORCOUNT",
+            "_FB_FBBESS^IRECOVERCOUNT",
+            "_FB_FBBESS^IUVCOUNT",
+            "_FB_FBBESS^RANCHORPESS",
+            "_FB_FBBESS^RANCHORPLINE",
+            "_FB_FBBESS^RANCHORQESS",
+            "_FB_FBBESS^RANCHORQLINE",
+            "_FB_FBBESS^RANCHORV",
+            "_FB_FBBESS^RCKP",
+            "_FB_FBBESS^RCKQ",
+            "_FB_FBBESS^RCVP",
+            "_FB_FBBESS^RCVQ",
+            "_FB_FBBESS^RDP",
+            "_FB_FBBESS^RDPL",
+            "_FB_FBBESS^RDQ",
+            "_FB_FBBESS^RDQL",
+            "_FB_FBBESS^RDV",
+            "_FB_FBBESS^REV",
+            "_FB_FBBESS^RKP",
+            "_FB_FBBESS^RKQ",
+            "_FB_FBBESS^RNATIVELOADING",
+            "_FB_FBBESS^RPNATIVE",
+            "_FB_FBBESS^RPOVER",
+            "_FB_FBBESS^RPTARGET",
+            "_FB_FBBESS^RPVOLTAGE",
+            "_FB_FBBESS^RQAFTER",
+            "_FB_FBBESS^RQNATIVE",
+            "_FB_FBBESS^RRAWQ",
+            "_FB_FBBESS^RSAMPLE",
+            "_FB_FBBESS^RSLIMIT",
+            "_FB_FBBESS^RSLINE",
+            "_FB_FBBESS^RSNATIVE",
+            "_FB_FBBESS^RSVP",
+            "_FB_FBBESS^RSVQ",
+            "_FB_FBBESS^RVNATIVEESTIMATE",
+            "_HC_FLOAT_MAX"
+          ],
+          "added_names": [
+            "_CALL_FB_00000000"
+          ]
+        },
+        "defined_global_weak": {
+          "removed_names": [
+            "SBR_001",
+            "_CALL_FB_00000000"
+          ],
+          "added_names": []
+        }
+      }
+    }
+  ],
+  "associations": {
+    "identical_content": [
+      {
+        "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+        "paths": [
+          "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Output.prg",
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.prg"
+        ]
+      },
+      {
+        "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+        "paths": [
+          "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Output.sdt",
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.sdt"
+        ]
+      }
+    ],
+    "same_basename_stem_only": [
+      {
+        "stem": "main",
+        "paths": [
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.rst",
+          "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o",
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.o",
+          "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.st",
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.st"
+        ]
+      },
+      {
+        "stem": "stprog",
+        "paths": [
+          "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o",
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o"
+        ]
+      },
+      {
+        "stem": "output",
+        "paths": [
+          "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Output.prg",
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.prg",
+          "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Output.sdt",
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.sdt"
+        ]
+      }
+    ],
+    "symbol_name_intersections": [
+      {
+        "consumer": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o",
+        "provider": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o",
+        "matched_names": [
+          "_HC_EMPTYFUC",
+          "_ST_DOUBLE_ADD",
+          "_ST_DOUBLE_DIV",
+          "_ST_DOUBLE_MUL",
+          "_ST_DOUBLE_SUB",
+          "_ST_INT64_ADD",
+          "_ST_INT64_SUB"
+        ],
+        "abi_compatibility_confirmed": false
+      },
+      {
+        "consumer": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o",
+        "provider": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+        "matched_names": [
+          "_HC_EMPTYFUC",
+          "_ST_DOUBLE_ADD",
+          "_ST_DOUBLE_DIV",
+          "_ST_DOUBLE_MUL",
+          "_ST_DOUBLE_SUB",
+          "_ST_INT64_ADD",
+          "_ST_INT64_SUB"
+        ],
+        "abi_compatibility_confirmed": false
+      },
+      {
+        "consumer": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o",
+        "provider": "/tmp/plcidf-native-link-20261017/outputs/E-main-old-syslib-no-duplicate.o",
+        "matched_names": [
+          "_HC_EMPTYFUC",
+          "_ST_DOUBLE_ADD",
+          "_ST_DOUBLE_DIV",
+          "_ST_DOUBLE_MUL",
+          "_ST_DOUBLE_SUB",
+          "_ST_INT64_ADD",
+          "_ST_INT64_SUB"
+        ],
+        "abi_compatibility_confirmed": false
+      },
+      {
+        "consumer": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.o",
+        "provider": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o",
+        "matched_names": [
+          "_HC_EMPTYFUC",
+          "_ST_INT64_ADD"
+        ],
+        "abi_compatibility_confirmed": false
+      },
+      {
+        "consumer": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.o",
+        "provider": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+        "matched_names": [
+          "_CALL_FB_00000000",
+          "_HC_EMPTYFUC",
+          "_ST_INT64_ADD"
+        ],
+        "abi_compatibility_confirmed": false
+      },
+      {
+        "consumer": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.o",
+        "provider": "/tmp/plcidf-native-link-20261017/outputs/E-main-old-syslib-no-duplicate.o",
+        "matched_names": [
+          "_HC_EMPTYFUC",
+          "_ST_INT64_ADD"
+        ],
+        "abi_compatibility_confirmed": false
+      },
+      {
+        "consumer": "/tmp/plcidf-native-link-20261017/outputs/E-main-old-syslib-no-duplicate.o",
+        "provider": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+        "matched_names": [
+          "_CALL_FB_00000000"
+        ],
+        "abi_compatibility_confirmed": false
+      }
+    ]
+  },
+  "limitations": [
+    "Inspection is not native ST compilation, complete linking, packaging, signature validation, download, or runtime validation.",
+    "Unknown vendor prefixes and length coincidences are observations, not a validated container schema.",
+    "ELF OSABI and matching symbol names do not establish the device OS or runtime ABI compatibility."
+  ],
+  "tool_source_sha256": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9",
+  "independent_validation": {
+    "tool": "GNU readelf 2.42",
+    "scope": "Cross-check existing real inputs only; the inspection tool itself does not depend on readelf. No vendor executable ran.",
+    "argv_templates": [
+      [
+        "readelf",
+        "-sW",
+        "<input>"
+      ],
+      [
+        "readelf",
+        "-rW",
+        "<input>"
+      ]
+    ],
+    "files": [
+      {
+        "path": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o",
+        "undefined_entries_match": true,
+        "undefined_unique_names_match": true,
+        "relocation_types_and_totals_match": true
+      },
+      {
+        "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.o",
+        "undefined_entries_match": true,
+        "undefined_unique_names_match": true,
+        "relocation_types_and_totals_match": true
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o",
+        "undefined_entries_match": true,
+        "undefined_unique_names_match": true,
+        "relocation_types_and_totals_match": true
+      },
+      {
+        "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+        "undefined_entries_match": true,
+        "undefined_unique_names_match": true,
+        "relocation_types_and_totals_match": true
+      },
+      {
+        "path": "/tmp/plcidf-native-link-20261017/outputs/E-main-old-syslib-no-duplicate.o",
+        "undefined_entries_match": true,
+        "undefined_unique_names_match": true,
+        "relocation_types_and_totals_match": true
+      }
+    ]
+  }
+}

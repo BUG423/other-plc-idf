@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "status": "verified",
+  "toolchain_dir": "/tmp/plcidf-open-linux-toolchain",
+  "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e",
+  "iec2c_sha256": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834",
+  "toolchain_hash": "b725b09d1de22cff90300159251f33f1c3873d40071a9366eade68cb5ff77aef",
+  "licenses": {
+    "compiler": "GPL-3.0-or-later (upstream COPYING)",
+    "C_runtime_headers": "Mixed LGPL-2.0-or-later / LGPL-3.0-or-later; individual upstream header notices apply"
+  }
+}

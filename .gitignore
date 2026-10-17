@@ -8,6 +8,7 @@ __pycache__/
 .ruff_cache/
 build/
 dist/
+.plcidf/
 
 # ===== 本地运行产物（监测 JSONL 落盘、日志等）=====
 *.jsonl

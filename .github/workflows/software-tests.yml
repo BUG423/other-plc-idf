@@ -29,3 +29,25 @@ jobs:
         run: python -m unittest discover -s tools/tests -v
       - name: Build sdist and install wheel outside checkout
         run: python tools/check_distribution.py --report /tmp/plcidf-distribution.json
+
+  open-linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Install Linux compiler build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential autoconf automake bison flex
+          python -m pip install -r requirements-ci.txt -e .
+      - name: Bootstrap pinned MatIEC without Windows
+        run: python tools/bootstrap_open_linux.py --directory /tmp/plcidf-matiec --jobs 2
+      - name: Real ST compiler and runtime regression
+        env:
+          PLCIDF_OPEN_LINUX_TOOLCHAIN: /tmp/plcidf-matiec
+        run: python -m pytest src/plc_idf/tests/test_open_linux.py -q
+      - name: CLI compile, deploy, run, observe, stop, and changed-program evidence
+        run: python tools/check_open_linux.py --toolchain-dir /tmp/plcidf-matiec --report /tmp/plcidf-open-linux.json

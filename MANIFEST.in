@@ -3,3 +3,5 @@ include wsl-tools/e521_monitor.py
 include wsl-tools/virtual_easy521.py
 include wsl-tools/e521_regs.py
 include plc/tools/autoshop_ui.ps1
+include examples/open_linux/counter/main.st
+include tools/bootstrap_open_linux.py

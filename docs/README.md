@@ -15,7 +15,8 @@
 | WSL 可行性侦察 · 实测 | [wsl-feasibility/03-wsl-probe-results.md](wsl-feasibility/03-wsl-probe-results.md) | ✅ 定稿 2026-10-16 | WSL 环境只读实测：WSL→Windows 被防火墙静默丢弃、代理 TUN「假连接」陷阱、USB/RTU 探测执行与红线遵守记录 |
 | 需求 | [requirements/SPEC.md](requirements/SPEC.md) | v0.2 设计草案，含 2026-10-17 勘误 | 功能与验收目标；多数尚待实现 |
 | 架构 | [architecture/ARCHITECTURE.md](architecture/ARCHITECTURE.md) | v0.2 设计草案，含实现边界说明 | 后端分层与接口设计；签名草案不等同于现有 API |
-| 原生多目标架构 | [architecture/ADR-0002-native-multitarget.md](architecture/ADR-0002-native-multitarget.md) | 设计方向已采纳，接口待实现 | Easy521 兼容研究与自控开放运行时并行；目标、设备、传输及 BSP 分离 |
+| 原生多目标架构 | [architecture/ADR-0002-native-multitarget.md](architecture/ADR-0002-native-multitarget.md) | 已部分实装，完整迁移待完成 | Easy521 兼容研究与自控开放运行时并行；目标、设备、传输及 BSP 分离 |
+| 三路线并行交付 | [management/PARALLEL_DELIVERY_2026-10-17.md](management/PARALLEL_DELIVERY_2026-10-17.md) | 首个开放 ST 后端已实测 | Linux 真实编译/执行/停止，厂商应用与通用固件检查工具、测试与后续任务 |
 | 实施与验收 | [management/PLAN.md](management/PLAN.md) | 2026-10-17 执行基线 | 第一性原理需求、任务依赖、里程碑、分工与完成定义 |
 | 进展与任务 | [management/PROGRESS.md](management/PROGRESS.md) / [tasks.json](management/tasks.json) | 随里程碑更新 | GitHub 同步、测试结果、未完成与现场依赖 |
 | 最新现场验证 | [management/LIVE_VALIDATION_2026-10-17.md](management/LIVE_VALIDATION_2026-10-17.md) | 2026-10-17 | USB 真机识别、CLI 正负编译、网口断开及下载/运行待验收 |

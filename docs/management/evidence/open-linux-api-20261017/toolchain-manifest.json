@@ -1,0 +1,70 @@
+{
+  "schema": "plcidf.open-linux.toolchain.v1",
+  "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e",
+  "source_url": "https://codeload.github.com/beremiz/matiec/tar.gz/3a41303bcb4e50403417bc39c63f88981d7d961e",
+  "source_archive_sha256": "21d249d9c65ff1a26404cfe0969a14a0c12d05e53871e26d77bdd4e8fd0a89a2",
+  "iec2c_sha256": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834",
+  "library_sha256": {
+    "lib/C/accessor.h": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a",
+    "lib/C/globals_instances_py.h": "3e927ed0dc93f815f1606eb761dd4a1927ac2bd918b9e304b59d431cc5f324f7",
+    "lib/C/globals_proto_c.h": "7dd22192442dc8658c7582c3eedb0db3b906a7d866ea8545388f8a0f767415d6",
+    "lib/C/globals_ticktime_py.h": "6dee0901a8614c487a0647b71a08dc60d20f21578f8ec9a54631e48817309076",
+    "lib/C/iec_std_FB.h": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093",
+    "lib/C/iec_std_FB_impl.h": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd",
+    "lib/C/iec_std_FB_no_ENENO.h": "7b252d645589083112a5c840c469785ca5a4ac7d84161ccffe82cf97e0986b39",
+    "lib/C/iec_std_FB_no_ENENO_impl.h": "db1da5770f0300bcf2abb9134866db215a98ca262631612841723ce7e27faa8b",
+    "lib/C/iec_std_functions.h": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03",
+    "lib/C/iec_std_lib.h": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665",
+    "lib/C/iec_types.h": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4",
+    "lib/C/iec_types_all.h": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004",
+    "lib/C/iec_types_list.h": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8",
+    "lib/C/pous_decl_py.h": "71b1aa32bfb54c189bb34c3049f9ef2403096bc40a1e37b39275f3c6397e484c",
+    "lib/C/pous_flatcount_c.h": "a65318510a0f0aecc64da67e5043de2c029b43de477a5f96802ba1a114c44378",
+    "lib/C/pous_flatcount_py.h": "23da12b046623dde1f276ba65f62b353534ae5691749e7a00a55a1512020f1ae",
+    "lib/C/pous_recurse_c.h": "93808d9fd11be7884436755922890cb4ecf8c3a69741d91466b8ff6639f8b3e3",
+    "lib/C/python_desc_template.pycpp": "037c44c0fed2f8e8b379766e33802fc908c7364f0fc604f71b78f3d4ed383955",
+    "lib/C/undef_macros.h": "c86549de5a3b0730b45f33bf536e3bec1a5f9ed6e2bf76fae9da067d252cfaaa",
+    "lib/COPYING.LESSER": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+    "lib/bistable.txt": "691e1ef023a680cffd755d76229d6e67ba1cd50415b100f1f079480097d2a74a",
+    "lib/counter.txt": "3e4da3a8cb0232c291d1a1f73ec8ceedf3bdd0ee236c1ee3408632bab7ca976a",
+    "lib/create_standard_function_txt.sh": "a4fceb587730ff95d2293fa9ccf5f3eb9c43a37e0d5a25ff231fd10cd0c6fa10",
+    "lib/derivative_st.txt": "94d8fd405b8ec8d039132f68d92bd047de6ddf864354856ffeb55d3032361630",
+    "lib/edge_detection.txt": "13b4b04b175cfcf825ff7ca2c953196fb493ad4860628efb9e00ef51d81ec0de",
+    "lib/hysteresis_st.txt": "5f04ed78aa1c44180e3fb0e0948b0d49526978d5c3ae7ae64a62033a8df42192",
+    "lib/ieclib.txt": "3cf0d0afbbfcc3f19282be224be785f56259557d00391786db9c901f8b9303b8",
+    "lib/integral_st.txt": "6d255e4b88d4ea29c92d46ce5ed5efab393c4b37baafcb131744046a7eebdca8",
+    "lib/pid_st.txt": "c6c63ca2fce2b74cc66c4766f453867aabf709b2e0b227c536dd1b6f1a39c530",
+    "lib/ramp_st.txt": "a9ee1e74b76b6d40416ab27e7e76bb042567c22c10609bf4c4599492e2191695",
+    "lib/rtc.txt": "842861fb07a6cdf2cf18c53f3ee73584dd57be2b67ffc04851bec05a7e8fea76",
+    "lib/sema.txt": "df75ef20875bfdf998f720b1d88b485491f91963cf1785eff5eadc44782e1be3",
+    "lib/standard_FB.txt": "195bf96111506c879e02e33c24d0111d5f1905929fe4db017fa97aa6198e80ba",
+    "lib/standard_functions.txt": "90b2131e872b2626403d3389c3c8ac5af5b31b74e38b85e55e300719db39a9f3",
+    "lib/test_iec_std_lib.c": "82ea3d5428bcfc7ce75c3bf5408b22d10107a96b0a8ac7a9fa61a85958722840",
+    "lib/timer.txt": "48ab29066eec0ba899c3bc2c99873ddd9211c1cbf627577efc18bf4a4e9bd5e1"
+  },
+  "build_tools": {
+    "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "make": "GNU Make 4.3",
+    "bison": "bison (GNU Bison) 3.8.2",
+    "flex": "flex 2.6.4"
+  },
+  "local_build_packages": [
+    {
+      "file": "autoconf_2.71-3_all.deb",
+      "sha256": "cc3f9f7a1e576173fb59c36652c0a67c6426feae752b352404ba92dfcb1b26c9"
+    },
+    {
+      "file": "automake_1%3a1.16.5-1.3ubuntu1_all.deb",
+      "sha256": "5ae9a98e73545002cd891f028859941af2a3c760cb6190e635c7ef36953912de"
+    },
+    {
+      "file": "autotools-dev_20220109.1_all.deb",
+      "sha256": "d909f0327b09d9a9136239caca975df89782fa28efd721c4eb4caea422d3fc5a"
+    }
+  ],
+  "licenses": {
+    "compiler": "GPL-3.0-or-later (upstream COPYING)",
+    "C_runtime_headers": "Mixed LGPL-2.0-or-later / LGPL-3.0-or-later; individual upstream header notices apply"
+  }
+}

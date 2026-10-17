@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "status": "verified",
+  "manifest_path": "/tmp/plcidf-open-linux-final-api/builds/build-zhztz3hv/build.json",
+  "build_hash": "22bf13294357f098d11849bc0e2f62e24d81060fcaa615c6fa26b560bcae4e13",
+  "program_hash": "2ef889bce570736154e2a87ee4cd58225ce96155c23a72d22e13971b95e0fd7f",
+  "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+  "binary_sha256": "0ccda989ad7bff47582495e66b11f7010da38769eb1db027e5bc1f7df8090371",
+  "build_dir": "/tmp/plcidf-open-linux-final-api/builds/build-zhztz3hv",
+  "diagnostics": "POUS.c\nPOUS.h\nLOCATED_VARIABLES.h\nGLOBALS.h\nConfig0.c\nConfig0.h\nRes0.c\n",
+  "cycle_ms": 20
+}

@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "status": "deployed",
+  "release_id": "22bf13294357f098d11849bc0e2f62e24d81060fcaa615c6fa26b560bcae4e13",
+  "build_hash": "22bf13294357f098d11849bc0e2f62e24d81060fcaa615c6fa26b560bcae4e13",
+  "program_hash": "2ef889bce570736154e2a87ee4cd58225ce96155c23a72d22e13971b95e0fd7f",
+  "manifest_path": "/tmp/plcidf-open-linux-final-api/state/releases/22bf13294357f098d11849bc0e2f62e24d81060fcaa615c6fa26b560bcae4e13/release.json"
+}

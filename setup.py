@@ -15,6 +15,8 @@ ASSETS = (
     "wsl-tools/virtual_easy521.py",
     "wsl-tools/e521_regs.py",
     "plc/tools/autoshop_ui.ps1",
+    "examples/open_linux/counter/main.st",
+    "tools/bootstrap_open_linux.py",
 )
 ROOT = Path(__file__).resolve().parent
 

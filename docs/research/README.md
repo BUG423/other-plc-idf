@@ -8,6 +8,8 @@
 - [本机工具链拆解](firmware/05-local-toolchain-2026-10-17.md)：Windows ST 前端、ARM ELF 库、Linux 烧录库存在性线索与实际缺口；未发布厂商原文件。
 - [Linux 链接实验](firmware/06-linux-link-experiment-2026-10-17.md)：用原生 Linux LLD 对已有厂商 ARM 对象做可重定位链接，保留失败对照；不是 ST 编译或真机部署验收。
 - [原生多目标架构决定](../architecture/ADR-0002-native-multitarget.md)：两条路线、目标接口、六项有界任务与逐层验收。
+- [厂商应用分析工具与差分](firmware/07-vendor-application-inspection-2026-10-17.md)：真实 12 文件、6 组对照，ELF 与不透明容器分级。
+- [镜像检查器与硬件证据矩阵](firmware/08-hardware-evidence-and-image-inspection-2026-10-17.md)：通用 ELF/uImage/DTB 格式检查，不将平台字符串当作芯片认定。
 - `firmware/01-manual-facts.md`、`02-sunxi-ecosystem.md`：2026-10-16 历史资料，保留原文；结论采用最新复核的限定。
 - [实施计划](../management/PLAN.md) 中 R01/R02：下一批研究工作，独立于主线桥接交付。
 

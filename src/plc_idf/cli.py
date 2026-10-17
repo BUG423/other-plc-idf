@@ -1,6 +1,12 @@
 """cli.py — plcidf（PLC-IDF CLI；曾用名 py2plc，旧命令名保留为等价别名）命令行入口。
 
-子命令与状态（2026-10-16）：
+子命令与状态（2026-10-17）：
+    targets  Easy521 / open-linux 目标能力，不探测设备
+    toolchain 固定 MatIEC 工具链引导与只读校验
+    run/stop open-linux 已部署应用的有限扫描执行和核验停止
+    build/flash/monitor 支持 --target open-linux，本地原生 ST 闭环
+
+    以下 Easy521 默认入口保留，其 Windows/硬件验证与 open-linux 分别报告：
     build    桥式 AutoShop 后端编译管线  —— 管道就绪，默认 dry-run，真执行需双因子
     flash    桥式 AutoShop 后端下载管线  —— 管道就绪，默认 dry-run，真执行需双因子
     monitor  只读 Modbus 监测            —— 真实可用（封装 e521_monitor.py）
@@ -17,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shlex
 import subprocess
 import sys
@@ -37,6 +44,8 @@ from .device import probe_devices, render_devices_table
 from .doctor import collect_diagnostics, render_diagnostics
 from .interop import InteropError
 from .project import check_project, create_project
+from .open_project import check_any_project, create_open_project
+from .targets import BuildRequestV2, get_profile, list_profiles, local_runtime_locator
 from .safety import (EvidenceLogger, SafetyError, check_bridge_authorization,
                      make_evidence_logger, require_authorization)
 
@@ -46,8 +55,8 @@ from .safety import (EvidenceLogger, SafetyError, check_bridge_authorization,
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="plcidf",
-        description="BESS Easy521 工具链：只读监测 / 虚拟从站 / 桥式 AutoShop "
-                    "build-flash 管线（默认 dry-run，真执行需双因子授权）",
+        description="PLC-IDF 多目标工具链：Easy521 AutoShop 桥接 / "
+                    "Linux 原生 ST 编译与本地运行（默认 dry-run）",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("--config", metavar="FILE",
@@ -63,8 +72,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     # ---- build / flash：桥式管线（默认 dry-run） ----
     for action, help_text in (
-            ("build", "编译 AutoShop 工程（桥式后端，默认 dry-run 打印调用链）"),
-            ("flash", "下载工程到 PLC（桥式后端，默认 dry-run 打印调用链）")):
+            ("build", "按目标编译 ST 或 AutoShop 工程（默认 dry-run）"),
+            ("flash", "按目标部署本地应用或调用 PLC 下载桥接（默认 dry-run）")):
         p = sub.add_parser(action, help=help_text,
                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
         p.add_argument("--project", default=None, metavar="NAME",
@@ -75,20 +84,28 @@ def build_parser() -> argparse.ArgumentParser:
                        help="操作者当次显式授权；真执行还需配置 bridge.enabled=true"
                             "（双因子，缺一即拒）")
         p.add_argument("--json", action="store_true", help="输出版本化 JSON 结果")
+        p.add_argument("--target", choices=("easy521", "open-linux"), default="easy521",
+                       help="编译/部署目标；本地 Linux 包不适用于 Easy521")
+        p.add_argument("--toolchain-dir", metavar="DIR", help="open-linux 工具链目录")
+        p.add_argument("--state-dir", metavar="DIR", help="open-linux 本机运行时目录")
         if action == "build":
             p.add_argument("--source", metavar="FILE", help="同步 MAIN 正文并校验真实编译结果（已有工程副本）")
             p.add_argument("--working-project", metavar="WINDOWS_PATH",
                            help="明确的 Windows 工程副本目录，须与配置和当前窗口一致")
             p.add_argument("--manifest", metavar="FILE", help="真实编译通过后保存产物清单")
-            p.add_argument("--compile-timeout", type=float, default=30.0,
+            p.add_argument("--compile-timeout", type=float, default=None,
                            help="等待真实新产物的上限，秒")
+            p.add_argument("--build-dir", metavar="DIR", help="open-linux 构建输出目录")
+            p.add_argument("--cycle-ms", type=int, default=None,
+                           help="open-linux 扫描周期（需与 ST 的 TASK 声明一致）")
+        else:
+            p.add_argument("--manifest", metavar="FILE", help="open-linux 构建清单（部署输入）")
         _add_config_option(p)
         p.set_defaults(handler=_make_bridge_handler(action), action=action)
 
     # ---- monitor：只读监测透传 ----
     m = sub.add_parser(
-        "monitor", help="只读 Modbus 监测（封装 wsl-tools/e521_monitor.py，"
-                        "硬编码 FC01/02/03/04）",
+        "monitor", help="观测本地 ST 运行实例或只读 Modbus 寄存器",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     m.add_argument("--host", default=None, help="[tcp] PLC 地址")
     m.add_argument("--port", type=int, default=None, help="[tcp] 端口")
@@ -108,6 +125,11 @@ def build_parser() -> argparse.ArgumentParser:
     m.add_argument("--jsonl", default=None, metavar="FILE", help="解码结果落盘 JSONL")
     m.add_argument("--exec-timeout", dest="exec_timeout", type=float, default=None,
                    help="监测子进程硬超时（秒，--once 建议设；轮询模式不限）")
+    m.add_argument("--target", choices=("easy521", "open-linux"), default="easy521")
+    m.add_argument("--run-id", help="open-linux 运行实例 ID")
+    m.add_argument("--state-dir", help="open-linux 本机运行时目录")
+    m.add_argument("--toolchain-dir", help="open-linux 工具链目录")
+    m.add_argument("--json", action="store_true", help="open-linux 输出结构化运行快照")
     m.add_argument("extra", nargs=argparse.REMAINDER, metavar="-- 透传参数",
                    help="其余参数原样透传给 e521_monitor.py（写作: -- 参数）")
     _add_config_option(m)
@@ -155,12 +177,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     # ---- new / init / check：可移植文本工程（离线） ----
     for name in ("new", "init"):
-        p = sub.add_parser(name, help="创建内存变量示例文本工程（不生成原生 .hcp）")
+        p = sub.add_parser(name, help="创建目标文本工程（Easy521 或 open-linux）")
         p.add_argument("path", nargs=None if name == "new" else "?",
                        default=".", metavar="PATH", help="新建或已有的空目录")
         p.add_argument("--name", default=None, help="工程名；默认使用目录名")
-        p.add_argument("--cycle-ms", type=int, default=5,
+        p.add_argument("--cycle-ms", type=int, default=None,
                        help="MAIN 周期配置意图（毫秒；不代表实测周期）")
+        p.add_argument("--target", choices=("easy521", "open-linux"), default="easy521")
         p.add_argument("--json", action="store_true", help="仅输出版本化 JSON 结果")
         _add_config_option(p)
         p.set_defaults(handler=_cmd_create_project)
@@ -174,6 +197,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     doctor = sub.add_parser("doctor", help="离线环境诊断（不访问 Windows GUI 或 PLC）")
     doctor.add_argument("--json", action="store_true", help="仅输出版本化 JSON 报告")
+    doctor.add_argument("--target", choices=("easy521", "open-linux"), default="easy521")
+    doctor.add_argument("--toolchain-dir", help="open-linux 工具链目录")
+    doctor.add_argument("--state-dir", help="open-linux 本机运行时目录")
     _add_config_option(doctor)
     doctor.set_defaults(handler=_cmd_doctor)
 
@@ -185,6 +211,36 @@ def build_parser() -> argparse.ArgumentParser:
     _add_config_option(sync)
     sync.set_defaults(handler=_cmd_sync)
 
+    targets = sub.add_parser("targets", help="列出目标与能力（不探测设备）")
+    targets.add_argument("--json", action="store_true")
+    _add_config_option(targets)
+    targets.set_defaults(handler=_cmd_targets)
+
+    toolchain = sub.add_parser("toolchain", help="检查或构建 open-linux 本地工具链")
+    toolchain.add_argument("--target", choices=("open-linux",), default="open-linux")
+    toolchain.add_argument("--toolchain-dir", help="工具链目录")
+    toolchain.add_argument("--state-dir", help="本机运行时目录")
+    toolchain.add_argument("--install", action="store_true", help="下载固定版本并构建到工具链目录")
+    toolchain.add_argument("--local-autotools", action="store_true", help="需要时下载/解包 autotools；不安装系统包")
+    toolchain.add_argument("--json", action="store_true")
+    _add_config_option(toolchain)
+    toolchain.set_defaults(handler=_cmd_toolchain)
+
+    for command in ("run", "stop"):
+        p = sub.add_parser(command, help="open-linux 本机 ST 运行控制")
+        p.add_argument("--target", choices=("open-linux",), default="open-linux")
+        p.add_argument("--toolchain-dir", help="工具链目录")
+        p.add_argument("--state-dir", help="本机运行时目录")
+        p.add_argument("--json", action="store_true")
+        if command == "run":
+            p.add_argument("--manifest", required=True, help="已部署的本地应用清单")
+            p.add_argument("--duration", type=float, default=5.0, help="有限运行时间，秒")
+            p.add_argument("--sample-ms", type=int, default=100, help="观测采样间隔，毫秒")
+        else:
+            p.add_argument("--run-id", required=True)
+        _add_config_option(p)
+        p.set_defaults(handler=_cmd_open_control)
+
     return parser
 
 
@@ -194,12 +250,17 @@ def _make_bridge_handler(action: str):
     """生成 build/flash 共用处理器（同一条门禁与 dry-run 语义）。"""
 
     def handler(args: argparse.Namespace, cfg, evidence: EvidenceLogger) -> int:
+        if args.target == "open-linux":
+            return _cmd_open_operation(args, cfg, evidence)
+        if args.toolchain_dir or args.state_dir or (action == "build" and
+                (args.build_dir or args.cycle_ms is not None)) or (action == "flash" and args.manifest):
+            raise ValueError("open-linux-only options cannot be used for an Easy521 operation")
         if action == "build" and args.source:
             backend = NativeAutoShop(cfg, evidence=StrictEvidenceLogger(evidence_path(cfg)))
             result = backend.compile(args.source, execute=args.execute,
                                      authorized=args.i_have_authorized,
                                      working_project=args.working_project,
-                                     timeout_s=args.compile_timeout)
+                                     timeout_s=args.compile_timeout if args.compile_timeout is not None else 30.0)
             if result.get("ok") and result.get("manifest") and args.manifest:
                 write_record(args.manifest, result["manifest"])
                 result["manifest_path"] = str(Path(args.manifest).resolve())
@@ -283,6 +344,19 @@ _MONITOR_KEYS = ("host", "port", "transport", "device", "baud", "unit_id",
 
 
 def _cmd_monitor(args: argparse.Namespace, cfg, evidence: EvidenceLogger) -> int:
+    if args.target == "open-linux":
+        if not args.run_id:
+            raise ValueError("open-linux monitor requires --run-id")
+        # Reject Easy521 connection parameters instead of silently dropping them.
+        if any(getattr(args, key, None) is not None for key in
+               ("host", "port", "transport", "device", "baud", "unit_id", "word_order",
+                "interval", "timeout", "jsonl", "project_revision", "exec_timeout")) \
+                or args.calibrate or args.with_bits or args.extra:
+            raise ValueError("Modbus transport/options are not supported by open-linux monitor")
+        result = _open_backend(args).monitor(args.run_id)
+        return _emit_open(args, result)
+    if args.run_id or args.state_dir or args.toolchain_dir or args.json:
+        raise ValueError("local runtime options require --target open-linux")
     opts = {key: getattr(args, key) for key in _MONITOR_KEYS}
     extra = [a for a in (args.extra or []) if a != "--"]
     if extra:
@@ -393,19 +467,165 @@ def _render_project_result(args: argparse.Namespace, result) -> int:
 
 
 def _cmd_create_project(args: argparse.Namespace, cfg, evidence: EvidenceLogger) -> int:
+    if args.target == "open-linux":
+        return _render_project_result(args, create_open_project(
+            args.path, name=args.name,
+            cycle_ms=args.cycle_ms if args.cycle_ms is not None else 20))
     return _render_project_result(args, create_project(
-        args.path, name=args.name, cycle_ms=args.cycle_ms))
+        args.path, name=args.name, cycle_ms=args.cycle_ms if args.cycle_ms is not None else 5))
 
 
 def _cmd_check_project(args: argparse.Namespace, cfg, evidence: EvidenceLogger) -> int:
-    return _render_project_result(args, check_project(args.path))
+    return _render_project_result(args, check_any_project(args.path))
 
 
 def _cmd_doctor(args: argparse.Namespace, cfg, evidence: EvidenceLogger) -> int:
+    if args.target == "open-linux":
+        result = _open_backend(args).install()
+        result.update(command="doctor", target="open-linux", hardware_checked=False,
+                      target_profile=get_profile("open-linux").as_dict())
+        return _emit_open(args, result)
+    if args.toolchain_dir or args.state_dir:
+        raise ValueError("local toolchain/runtime paths require --target open-linux")
     report = collect_diagnostics(cfg)
     print(json.dumps(report, ensure_ascii=False, indent=2) if args.json
           else render_diagnostics(report))
     return 0 if report["ok"] else 1
+
+
+def _open_paths(args):
+    cache = Path.home() / ".cache" / "plcidf"
+    toolchain = Path(args.toolchain_dir or os.environ.get(
+        "PLCIDF_OPEN_LINUX_TOOLCHAIN", str(cache / "matiec"))).expanduser().resolve()
+    state = Path(args.state_dir or os.environ.get(
+        "PLCIDF_OPEN_LINUX_STATE", str(cache / "local-runtime"))).expanduser().resolve()
+    return toolchain, state
+
+
+def _open_backend(args):
+    from .backends.open_linux import OpenLinuxBackend
+    toolchain, state = _open_paths(args)
+    return OpenLinuxBackend(toolchain_dir=toolchain, state_dir=state)
+
+
+def _emit_open(args, result):
+    result = dict(result)
+    result.setdefault("schema_version", 2)
+    result.update(command=args.command, target="open-linux")
+    if getattr(args, "json", False):
+        print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    else:
+        print(f"[plcidf] {args.command} / open-linux: {result.get('status', 'unknown')}")
+        print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    return 0 if result.get("ok") is True else 1
+
+
+def _cmd_open_operation(args, cfg, evidence):
+    profile = get_profile(args.target)
+    profile.require(args.command)
+    backend = _open_backend(args)
+    if args.command == "flash":
+        if args.project:
+            raise ValueError("open-linux flash uses --manifest, not --project")
+        if not args.manifest:
+            raise ValueError("open-linux flash requires --manifest")
+        result = backend.deploy(_open_manifest_path(args.manifest), execute=args.execute)
+        result["locator"] = local_runtime_locator(_open_paths(args)[1])
+    else:
+        if args.compile_timeout is not None:
+            raise ValueError("--compile-timeout is an AutoShop option; open-linux compiler stages have bounded timeouts")
+        if args.working_project:
+            raise ValueError("open-linux does not use a Windows working project")
+        if args.source and args.project:
+            raise ValueError("choose --source or --project for open-linux build")
+        cycle_ms = args.cycle_ms
+        if args.source:
+            source = Path(args.source).expanduser().resolve()
+            project_root = source.parent
+            cycle_ms = 20 if cycle_ms is None else cycle_ms
+        else:
+            checked = check_any_project(args.project or ".")
+            if not checked.ok or not checked.manifest or checked.manifest.get("profile_id") != "open-linux":
+                raise ValueError("build requires a valid open-linux project or explicit --source")
+            project_root = Path(checked.root)
+            source = project_root / checked.manifest["source"]
+            declared_cycle = checked.manifest["task"]["cycle_ms"]
+            if cycle_ms is not None and cycle_ms != declared_cycle:
+                raise ValueError("--cycle-ms conflicts with the project manifest")
+            cycle_ms = declared_cycle
+        request = BuildRequestV2(source=source,
+                                 build_dir=Path(args.build_dir).expanduser().resolve()
+                                 if args.build_dir else project_root / ".plcidf" / "build",
+                                 profile_id=args.target)
+        request.validate()
+        if not args.execute:
+            return _emit_open(args, {"ok": True, "status": "preview", "executed": False,
+                                    "source": str(source), "build_dir": str(request.build_dir),
+                                    "cycle_ms": cycle_ms, "profile": profile.as_dict()})
+        result = backend.build(source, request.build_dir, cycle_ms=cycle_ms)
+        if result.get("ok") and args.manifest:
+            # A build bundle's manifest stays with its artifacts. Do not copy it
+            # to another directory and accidentally change relative resolution.
+            result["manifest_pointer"] = str(Path(args.manifest).expanduser().resolve())
+            write_record(args.manifest, {"schema": "plcidf.bundle-pointer.v2",
+                                        "manifest_path": result["manifest_path"],
+                                        "build_hash": result["build_hash"]})
+    return _emit_open(args, result)
+
+
+def _cmd_open_control(args, cfg, evidence):
+    get_profile(args.target).require(args.command)
+    backend = _open_backend(args)
+    if args.command == "run":
+        result = backend.run(_open_manifest_path(args.manifest), duration_s=args.duration,
+                             sample_interval_ms=args.sample_ms)
+    else:
+        result = backend.stop(args.run_id)
+    return _emit_open(args, result)
+
+
+def _open_manifest_path(value):
+    """Resolve optional CLI build pointers without moving bundle-relative files."""
+    path = Path(value).expanduser()
+    if path.is_file():
+        record = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(record, dict) and record.get("schema") == "plcidf.bundle-pointer.v2":
+            if set(record) != {"schema", "manifest_path", "build_hash"}:
+                raise ValueError("malformed local bundle pointer")
+            if not isinstance(record["manifest_path"], str) or not isinstance(record["build_hash"], str):
+                raise ValueError("bundle pointer fields must be strings")
+            target = Path(record["manifest_path"])
+            if not target.is_absolute():
+                raise ValueError("bundle pointer requires an absolute manifest_path")
+            actual = json.loads(target.read_text(encoding="utf-8"))
+            if not isinstance(actual, dict) or not record["build_hash"] or actual.get("build_hash") != record["build_hash"]:
+                raise ValueError("bundle pointer no longer matches the recorded build")
+            return str(target)
+    return value
+
+
+def _cmd_targets(args, cfg, evidence):
+    result = {"schema_version": 2, "command": "targets", "ok": True,
+              "hardware_checked": False, "profiles": list_profiles()}
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _cmd_toolchain(args, cfg, evidence):
+    if args.install:
+        from .config import runtime_asset
+        script = runtime_asset(cfg.paths.project_root, "tools/bootstrap_open_linux.py")
+        argv = [sys.executable, str(script), "--directory", str(_open_paths(args)[0])]
+        if args.local_autotools:
+            argv.append("--local-autotools")
+        print("[plcidf] building pinned MatIEC toolchain in its own directory", file=sys.stderr)
+        completed = subprocess.run(argv, capture_output=True, text=True, timeout=600)
+        if completed.returncode:
+            return _emit_open(args, {"ok": False, "status": "failed",
+                                    "diagnostics": {"stdout": completed.stdout,
+                                                    "stderr": completed.stderr,
+                                                    "returncode": completed.returncode}})
+    return _emit_open(args, _open_backend(args).install())
 
 
 def _report_error(args: argparse.Namespace, code: str, message: str, rc: int) -> int:

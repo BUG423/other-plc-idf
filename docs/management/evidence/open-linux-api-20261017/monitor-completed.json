@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "status": "completed",
+  "sample_age_s": 0.02116141101032376,
+  "bundle_integrity": "verified",
+  "integrity_error": null,
+  "exit_code": 0,
+  "run_id": "28aa41c009a04bfa95a5b18029b88a7f",
+  "process_alive": false,
+  "program_hash": "2ef889bce570736154e2a87ee4cd58225ce96155c23a72d22e13971b95e0fd7f",
+  "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+  "binary_sha256": "0ccda989ad7bff47582495e66b11f7010da38769eb1db027e5bc1f7df8090371",
+  "sample": {
+    "schema_version": 1,
+    "run_id": "28aa41c009a04bfa95a5b18029b88a7f",
+    "program_hash": "2ef889bce570736154e2a87ee4cd58225ce96155c23a72d22e13971b95e0fd7f",
+    "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+    "binary_sha256": "0ccda989ad7bff47582495e66b11f7010da38769eb1db027e5bc1f7df8090371",
+    "runtime": "matiec-local-scan-v1",
+    "state": "completed",
+    "scan_count": 50,
+    "counter": 50,
+    "heartbeat": true,
+    "elapsed_ns": 1000161725,
+    "cycle_ns": 20000000,
+    "max_observed_lateness_ns": 812286
+  },
+  "quality": {
+    "program_identity": "verified",
+    "bundle_integrity": "verified",
+    "freshness": "terminal-historical",
+    "execution": "actual-matiec-generated-code",
+    "timing": "observed-local-linux-not-hard-realtime",
+    "physical_io": "not-provided"
+  },
+  "samples_path": "/tmp/plcidf-open-linux-final-api/state/runs/28aa41c009a04bfa95a5b18029b88a7f/samples.jsonl"
+}

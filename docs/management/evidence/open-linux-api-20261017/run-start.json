@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "status": "running",
+  "run_id": "28aa41c009a04bfa95a5b18029b88a7f",
+  "state_path": "/tmp/plcidf-open-linux-final-api/state/runs/28aa41c009a04bfa95a5b18029b88a7f/run.json",
+  "program_hash": "2ef889bce570736154e2a87ee4cd58225ce96155c23a72d22e13971b95e0fd7f",
+  "binary_sha256": "0ccda989ad7bff47582495e66b11f7010da38769eb1db027e5bc1f7df8090371",
+  "sample": {
+    "schema_version": 1,
+    "run_id": "28aa41c009a04bfa95a5b18029b88a7f",
+    "program_hash": "2ef889bce570736154e2a87ee4cd58225ce96155c23a72d22e13971b95e0fd7f",
+    "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+    "binary_sha256": "0ccda989ad7bff47582495e66b11f7010da38769eb1db027e5bc1f7df8090371",
+    "runtime": "matiec-local-scan-v1",
+    "state": "running",
+    "scan_count": 1,
+    "counter": 1,
+    "heartbeat": false,
+    "elapsed_ns": 113577,
+    "cycle_ns": 20000000,
+    "max_observed_lateness_ns": 113577
+  }
+}

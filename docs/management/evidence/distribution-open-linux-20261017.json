@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "result": "passed",
+  "timestamp_utc": "2026-10-17T12:35:02.429257+00:00",
+  "source_revision": "76cebd16086e1ba0c8c61a96cb437667b2db3dde",
+  "working_tree_dirty": true,
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "wheel": "plc_idf-0.2.0-py3-none-any.whl",
+  "wheel_sha256": "aaba64ab6b40bea541c170e4fbc3efed7ead3bb61f97d4548131f8e5b19e2588",
+  "sdist": "plc_idf-0.2.0.tar.gz",
+  "sdist_sha256": "1ed41801679da9d36702f3433da4130e2e9c4672644a56bc57d81e09dad2d459",
+  "runtime_asset_sha256": {
+    "wsl-tools/e521_monitor.py": "159700838a7ba10ad5985aa63b6f8cf5b95b8f7ad2204fc1edfd3c96ec245162",
+    "wsl-tools/virtual_easy521.py": "668cd74b27a2a0f5026bed51e2e9b217a50ed01a5d2caa0aa6683ffc641d40c7",
+    "wsl-tools/e521_regs.py": "3aa5912562d92c90211e5228a5df1b68db6825c38638f12fda950d067c95fa23",
+    "plc/tools/autoshop_ui.ps1": "0fbe83581f0cceee5bd0e1ace2e9828210cc2da571b167495779415859b89e63",
+    "examples/open_linux/counter/main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+    "tools/bootstrap_open_linux.py": "0dc96412c5bafcbf5be5805c588fb9db4066e693f3e6d731053df25864cfb6df"
+  },
+  "installed_paths": {
+    "module": "/tmp/plcidf-distribution-d6bqov3e/venv/lib/python3.12/site-packages/plc_idf/__init__.py",
+    "root": "/tmp/plcidf-distribution-d6bqov3e/user-project",
+    "monitor_dir": "/tmp/plcidf-distribution-d6bqov3e/venv/lib/python3.12/site-packages/plc_idf/_resources/wsl-tools",
+    "bridge": "/tmp/plcidf-distribution-d6bqov3e/venv/lib/python3.12/site-packages/plc_idf/_resources/plc/tools/autoshop_ui.ps1",
+    "bridge_windows": "\\\\wsl.localhost\\Ubuntu\\tmp\\plcidf-distribution-d6bqov3e\\venv\\lib\\python3.12\\site-packages\\plc_idf\\_resources\\plc\\tools\\autoshop_ui.ps1",
+    "evidence_path": "/tmp/plcidf-distribution-d6bqov3e/user-project/logs/evidence.jsonl",
+    "bootstrap": "/tmp/plcidf-distribution-d6bqov3e/venv/lib/python3.12/site-packages/plc_idf/_resources/tools/bootstrap_open_linux.py",
+    "st_template": "/tmp/plcidf-distribution-d6bqov3e/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/counter/main.st",
+    "installed_st_templates": [
+      "/tmp/plcidf-distribution-d6bqov3e/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/counter/main.st"
+    ],
+    "pymodbus": "3.16.1",
+    "pyserial": "3.5"
+  },
+  "alias_version": "plcidf 0.2.0",
+  "tested_scenarios": [
+    "steady",
+    "low_voltage",
+    "overload"
+  ],
+  "open_linux_checks": {
+    "targets": {
+      "schema_version": 2,
+      "command": "targets",
+      "ok": true,
+      "hardware_checked": false,
+      "profiles": [
+        {
+          "schema": "plcidf.target-profile.v2",
+          "id": "easy521",
+          "name": "Inovance Easy521 / existing vendor runtime",
+          "compile_target": {
+            "dialect": "AutoShop LiteST",
+            "compiler_backend": "autoshop-working-project"
+          },
+          "runtime_backend": "inovance-vendor",
+          "host_platform": "Windows AutoShop + Linux CLI",
+          "transport_kinds": [
+            "vendor-usb",
+            "modbus-tcp",
+            "modbus-serial"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "monitor"
+          ],
+          "limitations": [
+            "Build requires an existing compatible AutoShop working project",
+            "Application download and real PLC runtime results remain unverified",
+            "USB BUSID and VID/PID checks are retained in v1 deployment paths"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        },
+        {
+          "schema": "plcidf.target-profile.v2",
+          "id": "open-linux",
+          "name": "Local Linux / MatIEC scan runtime",
+          "compile_target": {
+            "dialect": "MatIEC IEC ST subset",
+            "compiler_backend": "matiec-gcc"
+          },
+          "runtime_backend": "plcidf-local-scan",
+          "host_platform": "Linux",
+          "transport_kinds": [
+            "local-filesystem"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "run",
+            "stop",
+            "monitor"
+          ],
+          "limitations": [
+            "Local runtime only; no physical I/O provider or remote device deployment",
+            "Functional scan execution does not validate hard real-time deadlines",
+            "Application packages are not compatible with Easy521 vendor firmware"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        }
+      ]
+    },
+    "new": {
+      "schema_version": 2,
+      "ok": true,
+      "root": "/tmp/plcidf-distribution-d6bqov3e/user-project/open_counter",
+      "validation": "offline-project-contract-check",
+      "compiled": false,
+      "native_project_created": false,
+      "profile": "open-linux",
+      "source_hashes": {
+        "plcidf.json": "0e00b7065c4f1d334b8cec15b15b99e7ab428fab46193d70ebf4c0c7db66416e",
+        "main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140"
+      },
+      "limitations": [
+        "ST syntax and semantics require the MatIEC compiler",
+        "No execution, physical I/O or real-time validation"
+      ],
+      "diagnostics": [],
+      "command": "new"
+    },
+    "check": {
+      "schema_version": 2,
+      "ok": true,
+      "root": "/tmp/plcidf-distribution-d6bqov3e/user-project/open_counter",
+      "validation": "offline-project-contract-check",
+      "compiled": false,
+      "native_project_created": false,
+      "profile": "open-linux",
+      "source_hashes": {
+        "plcidf.json": "0e00b7065c4f1d334b8cec15b15b99e7ab428fab46193d70ebf4c0c7db66416e",
+        "main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140"
+      },
+      "limitations": [
+        "ST syntax and semantics require the MatIEC compiler",
+        "No execution, physical I/O or real-time validation"
+      ],
+      "diagnostics": [],
+      "command": "check"
+    },
+    "project_manifest": {
+      "schema_version": 2,
+      "name": "open_counter",
+      "profile_id": "open-linux",
+      "compile_target": {
+        "dialect": "MatIEC IEC ST subset",
+        "compiler_backend": "matiec-gcc"
+      },
+      "source": "main.st",
+      "toolchain": {
+        "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e"
+      },
+      "task": {
+        "program": "MAIN",
+        "configuration": "Config0",
+        "resource": "Res0",
+        "name": "scan",
+        "instance": "instance0",
+        "cycle_ms": 20
+      },
+      "io": {
+        "provider": "memory-only",
+        "bindings": {}
+      },
+      "observables": {
+        "COUNTER": "DINT",
+        "HEARTBEAT": "BOOL"
+      }
+    },
+    "template_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+    "doctor_missing_toolchain": {
+      "returncode": 1,
+      "expected_returncode": 1,
+      "result": {
+        "ok": false,
+        "status": "unavailable",
+        "error": "cannot read manifest /tmp/plcidf-distribution-d6bqov3e/deliberately_absent_toolchain/toolchain.json: [Errno 2] No such file or directory: '/tmp/plcidf-distribution-d6bqov3e/deliberately_absent_toolchain/toolchain.json'",
+        "toolchain_dir": "/tmp/plcidf-distribution-d6bqov3e/deliberately_absent_toolchain",
+        "command": "doctor",
+        "target": "open-linux",
+        "hardware_checked": false,
+        "target_profile": {
+          "schema": "plcidf.target-profile.v2",
+          "id": "open-linux",
+          "name": "Local Linux / MatIEC scan runtime",
+          "compile_target": {
+            "dialect": "MatIEC IEC ST subset",
+            "compiler_backend": "matiec-gcc"
+          },
+          "runtime_backend": "plcidf-local-scan",
+          "host_platform": "Linux",
+          "transport_kinds": [
+            "local-filesystem"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "run",
+            "stop",
+            "monitor"
+          ],
+          "limitations": [
+            "Local runtime only; no physical I/O provider or remote device deployment",
+            "Functional scan execution does not validate hard real-time deadlines",
+            "Application packages are not compatible with Easy521 vendor firmware"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        },
+        "schema_version": 2
+      }
+    },
+    "bootstrap_help_checked": true,
+    "toolchain_downloaded": false,
+    "native_compilation_executed": false,
+    "local_runtime_started": false
+  },
+  "monitor_output": "[monitor] 字序: 假定默认 ABCD，未经判别（首次接真机建议先跑 --calibrate 或用已知值确认 --word-order）\n=== Easy521 监测 @ tcp://127.0.0.1:36577  unit=1  2026-10-17T12:35:00.441+00:00\n--- 字序: ABCD（大端直排，reg0=高字，项目契约）\n--- 质量: 字序来源=default；数据新鲜度/PLC扫描进度/工程匹配均未验证\n量名        寄存器       原始字(w0,w1)                   解码值  单位   范围检查\nVpu       0-1       (0x3f80,0x01bd)          1.00005  pu   ok  # 节点电压标幺值\nPline     2-3       (0x3ee6,0x78ef)          0.45014  pu   ok  # 馈线有功功率\nQline     4-5       (0x3e38,0x6db9)          0.18011  pu   ok  # 馈线无功功率\nloading   6-7       (0x3ef5,0xd8cd)          0.48017  -    ok  # 线路负载率\nSOC       8-9       (0x3f4c,0xca25)          0.79996  -    ok  # 储能荷电状态\nPess      10-11     (0x3e99,0xac22)          0.30014  pu   ok  # 储能实测有功功率\nQess      12-13     (0x3d4d,0x3c01)          0.05011  pu   ok  # 储能实测无功功率\nPcmd      14-15     (0x3e99,0x999a)          0.30000  pu   ok  # 储能有功指令\nQcmd      16-17     (0x3d4c,0xcccd)          0.05000  pu   ok  # 储能无功指令\nD18(mode) 18        -                              0       normal 正常\nFC03 原始字   : [16256, 445, 16102, 30959, 15928, 28089, 16117, 55501, 16204, 51749, 16025, 44066, 15693, 15361, 16025, 39322, 15692, 52429, 0]\n",
+  "evidence_events": 13,
+  "hardware_accessed": false,
+  "note": "Temporary installation paths are removed after validation."
+}

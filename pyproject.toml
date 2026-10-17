@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "plc-idf"
 version = "0.2.0"
-description = "PLC-IDF（曾用名 py2plc）：BESS Easy521 工具链 CLI——只读监测 / 虚拟从站 / 桥式 AutoShop build-flash 管线（默认 dry-run）"
+description = "PLC-IDF：多目标 CLI，Linux 原生 ST 编译/本地运行与 Easy521 AutoShop 兼容后端"
 readme = "wsl-tools/README.md"
 requires-python = ">=3.12"
 license = { text = "PolyForm-Noncommercial-1.0.0" }
