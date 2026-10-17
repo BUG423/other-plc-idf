@@ -4,7 +4,7 @@
 [![Platform](https://img.shields.io/badge/Platform-WSL2%20%2B%20usbipd--win-0078D6?style=flat-square&logo=linux&logoColor=white)](https://learn.microsoft.com/windows/wsl/about)
 [![Protocol](https://img.shields.io/badge/Protocol-Modbus%20TCP%20%2F%20RTU-orange?style=flat-square)](https://www.modbus.org/)
 [![Target PLC](https://img.shields.io/badge/Target%20PLC-Inovance%20Easy521-9370DB?style=flat-square)](https://www.inovance.com/)
-[![Software tests](https://img.shields.io/badge/Software%20Tests-396%20passed-brightgreen?style=flat-square)](docs/management/PARALLEL_DELIVERY_2026-10-17.md)
+[![Software tests](https://img.shields.io/badge/Software%20Tests-535%20passed-brightgreen?style=flat-square)](docs/management/AI_WORKFLOW_DELIVERY_2026-10-17.md)
 [![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm--Noncommercial--1.0.0-red.svg)](https://polyformproject.org/licenses/noncommercial/1.0.0)
 
 > **PLC-IDF** 面向 AI 与终端开发，对标 ESP-IDF 的项目、构建、下载和监测工作流。当前为汇川 Easy521 工具链原型：文本工程与监测软件链可用，已有 Windows 工程的 MAIN 同步及编译通过正负实测，下载和真机运行仍待验收。
@@ -14,6 +14,17 @@
 后续方向已扩展为 **原生终端、多目标 PLC 工具链**：Easy521 是首个兼容目标，AutoShop 桥接保留；并行研究厂商运行时的 ABI/编程协议，以及自控 Linux 目标上的开放 ST 运行时。共享接口与独立验收见 [ADR-0002](docs/architecture/ADR-0002-native-multitarget.md)，不承诺不同 PLC 共用系统固件。
 
 **三路线首轮并行交付已完成**：[报告与命令](docs/management/PARALLEL_DELIVERY_2026-10-17.md)。`open-linux` 已真实执行 MatIEC→C→GCC 的 ST 扫描、部署、运行观测和停止，并验证修改源码会改变执行结果；Easy521 应用与通用固件离线检查工具同步交付。当前开放后端运行于本机 Linux，物理 I/O、工业实时性和 Easy521 固件替换仍待独立验收。
+
+**AI 编程与自动验收**：现在可创建通用输入输出工程，直接让终端 AI 编辑 ST 和需求场景，再用一条 `verify` 命令真实编译、部署并逐扫描验收。电机启停/联锁/TON 与 REAL 滞回示例已提供，不需要其他实物。完整步骤见 [AI 编程说明](docs/AI_PROGRAMMING.md)，实测与范围见 [本批交付](docs/management/AI_WORKFLOW_DELIVERY_2026-10-17.md)。
+
+```bash
+source .venv/bin/activate
+plcidf doctor --target open-linux --json
+plcidf new /tmp/ai_motor --target open-linux --template motor --json
+plcidf verify /tmp/ai_motor --json
+```
+
+工具链缺失时使用 `plcidf toolchain --install --local-autotools --json` 引导安装。验收报告默认在工程 `.plcidf/verification.json`；`verify` 执行本机软件逻辑，Easy521 设备运行结果继续单独验收。
 
 ---
 

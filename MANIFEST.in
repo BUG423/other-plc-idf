@@ -4,4 +4,14 @@ include wsl-tools/virtual_easy521.py
 include wsl-tools/e521_regs.py
 include plc/tools/autoshop_ui.ps1
 include examples/open_linux/counter/main.st
+include examples/open_linux/motor/main.st
+include examples/open_linux/motor/plcidf.json
+include examples/open_linux/motor/scenarios.json
+include examples/open_linux/motor/README.md
+include examples/open_linux/motor/AGENTS.md
+include examples/open_linux/analog_hysteresis/main.st
+include examples/open_linux/analog_hysteresis/plcidf.json
+include examples/open_linux/analog_hysteresis/scenarios.json
+include examples/open_linux/analog_hysteresis/README.md
+include examples/open_linux/analog_hysteresis/AGENTS.md
 include tools/bootstrap_open_linux.py

@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "name": "analog_hysteresis",
+  "profile_id": "open-linux",
+  "compile_target": {
+    "dialect": "MatIEC IEC ST subset",
+    "compiler_backend": "matiec-gcc"
+  },
+  "source": "main.st",
+  "toolchain": {
+    "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e"
+  },
+  "task": {
+    "program": "MAIN",
+    "configuration": "Config0",
+    "resource": "Res0",
+    "name": "scan",
+    "instance": "instance0",
+    "cycle_ms": 20
+  },
+  "io": {
+    "provider": "memory-only",
+    "bindings": {}
+  },
+  "observables": {
+    "ALARM": "BOOL",
+    "ECHO": "REAL"
+  },
+  "signals": {
+    "inputs": {
+      "ENABLE": "BOOL",
+      "VALUE": "REAL"
+    },
+    "outputs": {
+      "ALARM": "BOOL",
+      "ECHO": "REAL"
+    }
+  }
+}

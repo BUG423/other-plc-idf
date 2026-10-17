@@ -1,0 +1,31 @@
+{
+  "schema": "plcidf.scenarios.v1",
+  "scenarios": [
+    {
+      "name": "thresholds_and_hysteresis",
+      "steps": [
+        {"scans": 1, "inputs": {"ENABLE": true, "VALUE": 79.0}, "expect": {"ALARM": false, "ECHO": {"approx": 79.0, "abs_tol": 0.0001}}},
+        {"scans": 1, "inputs": {"VALUE": 80.0}, "expect": {"ALARM": true, "ECHO": {"approx": 80.0, "abs_tol": 0.0001}}},
+        {"scans": 1, "inputs": {"VALUE": 75.0}, "expect": {"ALARM": true}},
+        {"scans": 1, "inputs": {"VALUE": 70.0}, "expect": {"ALARM": false}},
+        {"scans": 1, "inputs": {"VALUE": 75.0}, "expect": {"ALARM": false}}
+      ]
+    },
+    {
+      "name": "disabled_output_is_cleared",
+      "steps": [
+        {"scans": 1, "inputs": {"ENABLE": false, "VALUE": 100.0}, "expect": {"ALARM": false, "ECHO": {"approx": 100.0, "abs_tol": 0.0001}}},
+        {"scans": 1, "inputs": {"ENABLE": true}, "expect": {"ALARM": true}},
+        {"scans": 1, "inputs": {"ENABLE": false}, "expect": {"ALARM": false}}
+      ]
+    },
+    {
+      "name": "input_hold_and_real_echo",
+      "steps": [
+        {"scans": 1, "inputs": {"ENABLE": true, "VALUE": 80.0}, "expect": {"ALARM": true}},
+        {"scans": 3, "inputs": {}, "expect": {"ALARM": true, "ECHO": {"approx": 80.0, "abs_tol": 0.0001}}},
+        {"scans": 1, "inputs": {"VALUE": 69.5}, "expect": {"ALARM": false, "ECHO": {"approx": 69.5, "abs_tol": 0.0001}}}
+      ]
+    }
+  ]
+}

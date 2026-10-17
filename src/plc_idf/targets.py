@@ -50,7 +50,7 @@ _PROFILES = {
     "open-linux": TargetProfile(
         "open-linux", "Local Linux / MatIEC scan runtime", "MatIEC IEC ST subset",
         "matiec-gcc", "plcidf-local-scan", "Linux", ("local-filesystem",),
-        ("new", "check", "build", "flash", "run", "stop", "monitor"),
+        ("new", "check", "build", "flash", "run", "stop", "monitor", "verify"),
         ("Local runtime only; no physical I/O provider or remote device deployment",
          "Functional scan execution does not validate hard real-time deadlines",
          "Application packages are not compatible with Easy521 vendor firmware")),

@@ -1,0 +1,79 @@
+{
+  "schema": "plcidf.validation-batch.v1",
+  "timestamp_utc": "2026-10-17T13:00:50.583583+00:00",
+  "base_revision": "35ac0618cb2cd90a12a8877f97440ae165fea65d",
+  "tested_working_tree": true,
+  "file_sha256": {
+    ".github/workflows/software-tests.yml": "a70fc42e35b7a9482281f8ffd09a55b360cad5f7c1ba534f57684191054624a9",
+    "MANIFEST.in": "43b44a63afb3011c38bee6e78525c0f8f9b1c8550ab6cd355f296030341da975",
+    "examples/open_linux/analog_hysteresis/AGENTS.md": "07e050a42cf4704815e8ca8e30d53cbb2388da5127578219db1594e3f66e3a52",
+    "examples/open_linux/analog_hysteresis/README.md": "3c75316825c3235d3b46a7e8c98e1b6cd11420674d10aa500bbd4f959a029f5a",
+    "examples/open_linux/analog_hysteresis/main.st": "6955f54be84ce678b069618e412aa48cc18b69b752573dea97643f20ebf9109b",
+    "examples/open_linux/analog_hysteresis/plcidf.json": "a3ea268afdd2396975f234b34dda4d2893a93afbb688e8e9269152f7b03a898d",
+    "examples/open_linux/analog_hysteresis/scenarios.json": "c89d2a781a21b375f90defbe16f2d2a61eebb554fff2e6a78f2aa002e8543464",
+    "examples/open_linux/motor/AGENTS.md": "07e050a42cf4704815e8ca8e30d53cbb2388da5127578219db1594e3f66e3a52",
+    "examples/open_linux/motor/README.md": "b97f1dc8a0fc92ac90f37c4fc867d815c8664c0ccb93b3fba29d01b464f0a847",
+    "examples/open_linux/motor/main.st": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248",
+    "examples/open_linux/motor/plcidf.json": "f375d670c365bb95297e9f0eadc4c287182c494a1cb7d5fcd11d2bc3ed932927",
+    "examples/open_linux/motor/scenarios.json": "71df9a2b0f512bfe963a67a02a7e58763ca3cea45ccab0dbe72e75f7d0891cf3",
+    "setup.py": "0234931b21904812236ec5df43a355b0c922ff54f649321bb386082e7ca8fd43",
+    "src/plc_idf/backends/open_linux.py": "63d5584c4a5bc5358fcd0aa04ba96f2f4ea6ac53c5b2d70fa5528763db4133a2",
+    "src/plc_idf/cli.py": "745292546f66068b2f0f21d5a403a56c2bc282cd9f5cbf54f8b20e2783dee72e",
+    "src/plc_idf/open_contract.py": "8c54b1a05611bd622bd412cda581b72fec5fbfd9218c5e458b59e9f52e4d41e3",
+    "src/plc_idf/open_project.py": "999c60adf0bdcead13b9d2136d2c1e70f00215e86889c0eac4635efab5deb116",
+    "src/plc_idf/targets.py": "b389dc748c075b9931f298fd66607d0f3d631154f871a3ab194f911ffb8f296c",
+    "src/plc_idf/tests/test_ai_cli.py": "ba95a27bd2cbec6e446fa6ad3735091f4c1c002d766df9af322546fd329e45a3",
+    "src/plc_idf/tests/test_open_linux_signals.py": "57b05f23e1caccb468f6131264b384793bde7b19c43c1c3e763e44e44bfe4aa8",
+    "src/plc_idf/tests/test_open_project_signals.py": "c6e8e019c69a4d3125cf963921574454047719d9f5535e64b3dfeb4df7191e87",
+    "src/plc_idf/tests/test_verification.py": "e893d809afae0d762c9497693dcb78537b0d2dfdfd0244c7b0722cd9807006bb",
+    "src/plc_idf/verification.py": "76634ed9b076c2b3bbba55987507ae6682d64cf5b38136430633d60342033515",
+    "tools/check_ai_workflow.py": "c937839eacfcd51a47921462527882fd1e359a9f55df5a91380d842ec698a8ac",
+    "tools/check_distribution.py": "3fa9d0a6fa1aed52dc8d5ace907585c3a56606d52901bc7cdd0b795056a693b4"
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest src/plc_idf/tests wsl-tools/tests -k 'not test_devices_real_readonly' -o addopts= -q",
+      "returncode": 0,
+      "passed": 535,
+      "skipped": 51,
+      "deselected": 1,
+      "duration_s": 25.61
+    },
+    {
+      "command": "PLCIDF_OPEN_LINUX_TOOLCHAIN=/home/zss/.cache/plcidf/matiec .venv/bin/python -m pytest src/plc_idf/tests/test_open_linux.py src/plc_idf/tests/test_open_linux_signals.py src/plc_idf/tests/test_verification.py -o addopts= -q",
+      "returncode": 0,
+      "passed": 192,
+      "duration_s": 50.71,
+      "overlaps_default_suite": true
+    },
+    {
+      "command": ".venv/bin/python -m unittest discover -s tools/tests -q",
+      "returncode": 0,
+      "passed": 54
+    },
+    {
+      "report": "ai-workflow-20261017.json",
+      "returncode": 0,
+      "checks": 9
+    },
+    {
+      "report": "distribution-ai-workflow-20261017.json",
+      "returncode": 0,
+      "installed_motor_scenarios": 6,
+      "installed_motor_assertions": 56
+    },
+    {
+      "report": "open-linux-cli-ai-regression-20261017.json",
+      "returncode": 0,
+      "checks": 5
+    }
+  ],
+  "live_project": ".plcidf/workspaces/ai_motor",
+  "live_project_report": ".plcidf/workspaces/ai_motor/.plcidf/verification.json",
+  "active_plc_runtime_processes": [],
+  "hardware_accessed": false,
+  "windows_processes_used": false,
+  "physical_io_verified": false,
+  "hard_realtime_verified": false,
+  "easy521_open_firmware_verified": false
+}

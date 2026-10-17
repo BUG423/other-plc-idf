@@ -1,0 +1,1366 @@
+{
+  "schema_version": 1,
+  "result": "passed",
+  "timestamp_utc": "2026-10-17T12:58:06.004162+00:00",
+  "source_revision": "35ac0618cb2cd90a12a8877f97440ae165fea65d",
+  "working_tree_dirty": true,
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "wheel": "plc_idf-0.2.0-py3-none-any.whl",
+  "wheel_sha256": "90e6c8ecdba2ea987e5fad606e64c44028ce4562bfaeaa143a8fe623a7b95a89",
+  "sdist": "plc_idf-0.2.0.tar.gz",
+  "sdist_sha256": "8d3573911640aead3eca8caca125119998283dd2e8cddc781b58b896fd1e206d",
+  "runtime_asset_sha256": {
+    "wsl-tools/e521_monitor.py": "159700838a7ba10ad5985aa63b6f8cf5b95b8f7ad2204fc1edfd3c96ec245162",
+    "wsl-tools/virtual_easy521.py": "668cd74b27a2a0f5026bed51e2e9b217a50ed01a5d2caa0aa6683ffc641d40c7",
+    "wsl-tools/e521_regs.py": "3aa5912562d92c90211e5228a5df1b68db6825c38638f12fda950d067c95fa23",
+    "plc/tools/autoshop_ui.ps1": "0fbe83581f0cceee5bd0e1ace2e9828210cc2da571b167495779415859b89e63",
+    "examples/open_linux/counter/main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+    "examples/open_linux/motor/main.st": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248",
+    "examples/open_linux/motor/plcidf.json": "f375d670c365bb95297e9f0eadc4c287182c494a1cb7d5fcd11d2bc3ed932927",
+    "examples/open_linux/motor/scenarios.json": "71df9a2b0f512bfe963a67a02a7e58763ca3cea45ccab0dbe72e75f7d0891cf3",
+    "examples/open_linux/motor/README.md": "b97f1dc8a0fc92ac90f37c4fc867d815c8664c0ccb93b3fba29d01b464f0a847",
+    "examples/open_linux/motor/AGENTS.md": "07e050a42cf4704815e8ca8e30d53cbb2388da5127578219db1594e3f66e3a52",
+    "examples/open_linux/analog_hysteresis/main.st": "6955f54be84ce678b069618e412aa48cc18b69b752573dea97643f20ebf9109b",
+    "examples/open_linux/analog_hysteresis/plcidf.json": "a3ea268afdd2396975f234b34dda4d2893a93afbb688e8e9269152f7b03a898d",
+    "examples/open_linux/analog_hysteresis/scenarios.json": "c89d2a781a21b375f90defbe16f2d2a61eebb554fff2e6a78f2aa002e8543464",
+    "examples/open_linux/analog_hysteresis/README.md": "3c75316825c3235d3b46a7e8c98e1b6cd11420674d10aa500bbd4f959a029f5a",
+    "examples/open_linux/analog_hysteresis/AGENTS.md": "07e050a42cf4704815e8ca8e30d53cbb2388da5127578219db1594e3f66e3a52",
+    "tools/bootstrap_open_linux.py": "0dc96412c5bafcbf5be5805c588fb9db4066e693f3e6d731053df25864cfb6df"
+  },
+  "installed_paths": {
+    "module": "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/__init__.py",
+    "root": "/tmp/plcidf-distribution-fr56dly9/user-project",
+    "monitor_dir": "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/wsl-tools",
+    "bridge": "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/plc/tools/autoshop_ui.ps1",
+    "bridge_windows": "\\\\wsl.localhost\\Ubuntu\\tmp\\plcidf-distribution-fr56dly9\\venv\\lib\\python3.12\\site-packages\\plc_idf\\_resources\\plc\\tools\\autoshop_ui.ps1",
+    "evidence_path": "/tmp/plcidf-distribution-fr56dly9/user-project/logs/evidence.jsonl",
+    "bootstrap": "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/tools/bootstrap_open_linux.py",
+    "st_template": "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/counter/main.st",
+    "installed_st_templates": [
+      "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/analog_hysteresis/main.st",
+      "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/counter/main.st",
+      "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/motor/main.st"
+    ],
+    "control_examples": {
+      "motor": "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/motor",
+      "analog_hysteresis": "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/analog_hysteresis"
+    },
+    "pymodbus": "3.16.1",
+    "pyserial": "3.5"
+  },
+  "alias_version": "plcidf 0.2.0",
+  "tested_scenarios": [
+    "steady",
+    "low_voltage",
+    "overload"
+  ],
+  "open_linux_checks": {
+    "targets": {
+      "schema_version": 2,
+      "command": "targets",
+      "ok": true,
+      "hardware_checked": false,
+      "profiles": [
+        {
+          "schema": "plcidf.target-profile.v2",
+          "id": "easy521",
+          "name": "Inovance Easy521 / existing vendor runtime",
+          "compile_target": {
+            "dialect": "AutoShop LiteST",
+            "compiler_backend": "autoshop-working-project"
+          },
+          "runtime_backend": "inovance-vendor",
+          "host_platform": "Windows AutoShop + Linux CLI",
+          "transport_kinds": [
+            "vendor-usb",
+            "modbus-tcp",
+            "modbus-serial"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "monitor"
+          ],
+          "limitations": [
+            "Build requires an existing compatible AutoShop working project",
+            "Application download and real PLC runtime results remain unverified",
+            "USB BUSID and VID/PID checks are retained in v1 deployment paths"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        },
+        {
+          "schema": "plcidf.target-profile.v2",
+          "id": "open-linux",
+          "name": "Local Linux / MatIEC scan runtime",
+          "compile_target": {
+            "dialect": "MatIEC IEC ST subset",
+            "compiler_backend": "matiec-gcc"
+          },
+          "runtime_backend": "plcidf-local-scan",
+          "host_platform": "Linux",
+          "transport_kinds": [
+            "local-filesystem"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "run",
+            "stop",
+            "monitor",
+            "verify"
+          ],
+          "limitations": [
+            "Local runtime only; no physical I/O provider or remote device deployment",
+            "Functional scan execution does not validate hard real-time deadlines",
+            "Application packages are not compatible with Easy521 vendor firmware"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        }
+      ]
+    },
+    "new": {
+      "schema_version": 2,
+      "ok": true,
+      "root": "/tmp/plcidf-distribution-fr56dly9/user-project/open_counter",
+      "validation": "offline-project-contract-check",
+      "compiled": false,
+      "native_project_created": false,
+      "profile": "open-linux",
+      "source_hashes": {
+        "plcidf.json": "0e00b7065c4f1d334b8cec15b15b99e7ab428fab46193d70ebf4c0c7db66416e",
+        "main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140"
+      },
+      "limitations": [
+        "ST syntax and semantics require the MatIEC compiler",
+        "No execution, physical I/O or real-time validation"
+      ],
+      "diagnostics": [],
+      "command": "new"
+    },
+    "check": {
+      "schema_version": 2,
+      "ok": true,
+      "root": "/tmp/plcidf-distribution-fr56dly9/user-project/open_counter",
+      "validation": "offline-project-contract-check",
+      "compiled": false,
+      "native_project_created": false,
+      "profile": "open-linux",
+      "source_hashes": {
+        "plcidf.json": "0e00b7065c4f1d334b8cec15b15b99e7ab428fab46193d70ebf4c0c7db66416e",
+        "main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140"
+      },
+      "limitations": [
+        "ST syntax and semantics require the MatIEC compiler",
+        "No execution, physical I/O or real-time validation"
+      ],
+      "diagnostics": [],
+      "command": "check"
+    },
+    "complete_control_examples": {
+      "motor": {
+        "schema_version": 2,
+        "ok": true,
+        "root": "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/motor",
+        "validation": "offline-project-contract-check",
+        "compiled": false,
+        "native_project_created": false,
+        "profile": "open-linux",
+        "source_hashes": {
+          "plcidf.json": "f375d670c365bb95297e9f0eadc4c287182c494a1cb7d5fcd11d2bc3ed932927",
+          "main.st": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248"
+        },
+        "limitations": [
+          "ST syntax and semantics require the MatIEC compiler",
+          "No execution, physical I/O or real-time validation"
+        ],
+        "diagnostics": [],
+        "command": "check"
+      },
+      "analog_hysteresis": {
+        "schema_version": 2,
+        "ok": true,
+        "root": "/tmp/plcidf-distribution-fr56dly9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/analog_hysteresis",
+        "validation": "offline-project-contract-check",
+        "compiled": false,
+        "native_project_created": false,
+        "profile": "open-linux",
+        "source_hashes": {
+          "plcidf.json": "a3ea268afdd2396975f234b34dda4d2893a93afbb688e8e9269152f7b03a898d",
+          "main.st": "6955f54be84ce678b069618e412aa48cc18b69b752573dea97643f20ebf9109b"
+        },
+        "limitations": [
+          "ST syntax and semantics require the MatIEC compiler",
+          "No execution, physical I/O or real-time validation"
+        ],
+        "diagnostics": [],
+        "command": "check"
+      }
+    },
+    "motor_new": {
+      "schema_version": 2,
+      "ok": true,
+      "root": "/tmp/plcidf-distribution-fr56dly9/user-project/motor_project",
+      "validation": "offline-project-contract-check",
+      "compiled": false,
+      "native_project_created": false,
+      "profile": "open-linux",
+      "source_hashes": {
+        "plcidf.json": "f58842fc0216e87acf6c82621062c4578216881b25c4823b06a2308fb9659580",
+        "main.st": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248"
+      },
+      "limitations": [
+        "ST syntax and semantics require the MatIEC compiler",
+        "No execution, physical I/O or real-time validation"
+      ],
+      "diagnostics": [],
+      "command": "new"
+    },
+    "motor_verification": {
+      "schema": "plcidf.verification.v1",
+      "ok": true,
+      "status": "verified",
+      "stage": "complete",
+      "project": "/tmp/plcidf-distribution-fr56dly9/user-project/motor_project",
+      "created_at": "2026-10-17T12:58:04.301953+00:00",
+      "summary": {
+        "scenarios": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "assertions": 56,
+        "assertions_passed": 56,
+        "assertions_failed": 0
+      },
+      "diagnostics": [],
+      "scenarios": [
+        {
+          "name": "start_delay_boundary",
+          "status": "verified",
+          "steps": [
+            {
+              "step": 1,
+              "scan": 1,
+              "scans": 1,
+              "inputs": {
+                "START": true,
+                "STOP": false,
+                "PERMISSIVE": true,
+                "FAULT": false
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": true,
+                "FAULTED": false
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": true,
+                "FAULTED": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 2,
+              "scan": 3,
+              "scans": 2,
+              "inputs": {},
+              "expected": {
+                "MOTOR": false,
+                "STARTING": true
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": true
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 3,
+              "scan": 4,
+              "scans": 1,
+              "inputs": {},
+              "expected": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "actual": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 4,
+              "scan": 5,
+              "scans": 1,
+              "inputs": {
+                "START": false
+              },
+              "expected": {
+                "MOTOR": true
+              },
+              "actual": {
+                "MOTOR": true
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 5,
+              "scan": 6,
+              "scans": 1,
+              "inputs": {
+                "STOP": true
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": false
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            }
+          ],
+          "run_id": "bf1a7b78c6ba4e2c87fb181c21849044",
+          "evidence": {
+            "path": "/tmp/plcidf-distribution-fr56dly9/verified_motor_state/replays/bf1a7b78c6ba4e2c87fb181c21849044/samples.jsonl",
+            "sha256": "8a2b0a3dedbb125795099af8b1cca42ae67060ed926d3e49864252925265da6e",
+            "bytes": 4202,
+            "samples": 6
+          }
+        },
+        {
+          "name": "stop_priority_requires_new_edge",
+          "status": "verified",
+          "steps": [
+            {
+              "step": 1,
+              "scan": 4,
+              "scans": 4,
+              "inputs": {
+                "START": true,
+                "STOP": true,
+                "PERMISSIVE": true,
+                "FAULT": false
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": false,
+                "FAULTED": false
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": false,
+                "FAULTED": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 2,
+              "scan": 8,
+              "scans": 4,
+              "inputs": {
+                "STOP": false
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": false
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 3,
+              "scan": 9,
+              "scans": 1,
+              "inputs": {
+                "START": false
+              },
+              "expected": {
+                "MOTOR": false
+              },
+              "actual": {
+                "MOTOR": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 4,
+              "scan": 10,
+              "scans": 1,
+              "inputs": {
+                "START": true
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": true
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": true
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 5,
+              "scan": 14,
+              "scans": 4,
+              "inputs": {},
+              "expected": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "actual": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            }
+          ],
+          "run_id": "3e67d8ffa4424684a56caceedfdab158",
+          "evidence": {
+            "path": "/tmp/plcidf-distribution-fr56dly9/verified_motor_state/replays/3e67d8ffa4424684a56caceedfdab158/samples.jsonl",
+            "sha256": "eb84585d8f69fd6ec14c15334a347df30f195bab0947e9a3aa30f77572dde05a",
+            "bytes": 9827,
+            "samples": 14
+          }
+        },
+        {
+          "name": "permissive_loss_clears_latch",
+          "status": "verified",
+          "steps": [
+            {
+              "step": 1,
+              "scan": 4,
+              "scans": 4,
+              "inputs": {
+                "START": true,
+                "STOP": false,
+                "PERMISSIVE": true,
+                "FAULT": false
+              },
+              "expected": {
+                "MOTOR": true,
+                "FAULTED": false
+              },
+              "actual": {
+                "MOTOR": true,
+                "FAULTED": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 2,
+              "scan": 5,
+              "scans": 1,
+              "inputs": {
+                "PERMISSIVE": false
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": false,
+                "FAULTED": true
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": false,
+                "FAULTED": true
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 3,
+              "scan": 9,
+              "scans": 4,
+              "inputs": {
+                "PERMISSIVE": true
+              },
+              "expected": {
+                "MOTOR": false,
+                "FAULTED": false
+              },
+              "actual": {
+                "MOTOR": false,
+                "FAULTED": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 4,
+              "scan": 10,
+              "scans": 1,
+              "inputs": {
+                "START": false
+              },
+              "expected": {
+                "MOTOR": false
+              },
+              "actual": {
+                "MOTOR": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 5,
+              "scan": 14,
+              "scans": 4,
+              "inputs": {
+                "START": true
+              },
+              "expected": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "actual": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            }
+          ],
+          "run_id": "5e87abee56ab47ad85384337fabf8ee5",
+          "evidence": {
+            "path": "/tmp/plcidf-distribution-fr56dly9/verified_motor_state/replays/5e87abee56ab47ad85384337fabf8ee5/samples.jsonl",
+            "sha256": "f3d9f824a7e830fa675b6886bfcdc5199aebee18950230b7b6a537d4ef19a5ad",
+            "bytes": 9828,
+            "samples": 14
+          }
+        },
+        {
+          "name": "fault_clears_latch",
+          "status": "verified",
+          "steps": [
+            {
+              "step": 1,
+              "scan": 4,
+              "scans": 4,
+              "inputs": {
+                "START": true,
+                "STOP": false,
+                "PERMISSIVE": true,
+                "FAULT": false
+              },
+              "expected": {
+                "MOTOR": true,
+                "FAULTED": false
+              },
+              "actual": {
+                "MOTOR": true,
+                "FAULTED": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 2,
+              "scan": 5,
+              "scans": 1,
+              "inputs": {
+                "FAULT": true
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": false,
+                "FAULTED": true
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": false,
+                "FAULTED": true
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 3,
+              "scan": 9,
+              "scans": 4,
+              "inputs": {
+                "FAULT": false
+              },
+              "expected": {
+                "MOTOR": false,
+                "FAULTED": false
+              },
+              "actual": {
+                "MOTOR": false,
+                "FAULTED": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 4,
+              "scan": 10,
+              "scans": 1,
+              "inputs": {
+                "START": false
+              },
+              "expected": {
+                "MOTOR": false
+              },
+              "actual": {
+                "MOTOR": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 5,
+              "scan": 14,
+              "scans": 4,
+              "inputs": {
+                "START": true
+              },
+              "expected": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "actual": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            }
+          ],
+          "run_id": "cdc2d873cd9c493598947dd87a4b3b8a",
+          "evidence": {
+            "path": "/tmp/plcidf-distribution-fr56dly9/verified_motor_state/replays/cdc2d873cd9c493598947dd87a4b3b8a/samples.jsonl",
+            "sha256": "ed8b1331b5a238cb8e36fb60642188604baff9910c0f979addba8958d5c82cbb",
+            "bytes": 9826,
+            "samples": 14
+          }
+        },
+        {
+          "name": "released_start_keeps_request_until_stop",
+          "status": "verified",
+          "steps": [
+            {
+              "step": 1,
+              "scan": 1,
+              "scans": 1,
+              "inputs": {
+                "START": true,
+                "STOP": false,
+                "PERMISSIVE": true,
+                "FAULT": false
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": true
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": true
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 2,
+              "scan": 5,
+              "scans": 4,
+              "inputs": {
+                "START": false
+              },
+              "expected": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "actual": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 3,
+              "scan": 9,
+              "scans": 4,
+              "inputs": {},
+              "expected": {
+                "MOTOR": true
+              },
+              "actual": {
+                "MOTOR": true
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 4,
+              "scan": 10,
+              "scans": 1,
+              "inputs": {
+                "STOP": true
+              },
+              "expected": {
+                "MOTOR": false
+              },
+              "actual": {
+                "MOTOR": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 5,
+              "scan": 14,
+              "scans": 4,
+              "inputs": {
+                "STOP": false
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": false
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            }
+          ],
+          "run_id": "f9328633bb724dc48cfba395fc987908",
+          "evidence": {
+            "path": "/tmp/plcidf-distribution-fr56dly9/verified_motor_state/replays/f9328633bb724dc48cfba395fc987908/samples.jsonl",
+            "sha256": "679f9f04e3647479a59b4b2c9bbcc46c8664770d57fc0d765c7f720b59a71c37",
+            "bytes": 9838,
+            "samples": 14
+          }
+        },
+        {
+          "name": "start_while_inhibited_is_consumed",
+          "status": "verified",
+          "steps": [
+            {
+              "step": 1,
+              "scan": 4,
+              "scans": 4,
+              "inputs": {
+                "START": true,
+                "STOP": false,
+                "PERMISSIVE": false,
+                "FAULT": false
+              },
+              "expected": {
+                "MOTOR": false,
+                "STARTING": false,
+                "FAULTED": true
+              },
+              "actual": {
+                "MOTOR": false,
+                "STARTING": false,
+                "FAULTED": true
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 2,
+              "scan": 8,
+              "scans": 4,
+              "inputs": {
+                "PERMISSIVE": true
+              },
+              "expected": {
+                "MOTOR": false,
+                "FAULTED": false
+              },
+              "actual": {
+                "MOTOR": false,
+                "FAULTED": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                },
+                {
+                  "signal": "FAULTED",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 3,
+              "scan": 9,
+              "scans": 1,
+              "inputs": {
+                "START": false
+              },
+              "expected": {
+                "MOTOR": false
+              },
+              "actual": {
+                "MOTOR": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            },
+            {
+              "step": 4,
+              "scan": 13,
+              "scans": 4,
+              "inputs": {
+                "START": true
+              },
+              "expected": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "actual": {
+                "MOTOR": true,
+                "STARTING": false
+              },
+              "assertions": [
+                {
+                  "signal": "MOTOR",
+                  "expected": true,
+                  "actual": true,
+                  "passed": true
+                },
+                {
+                  "signal": "STARTING",
+                  "expected": false,
+                  "actual": false,
+                  "passed": true
+                }
+              ],
+              "status": "verified"
+            }
+          ],
+          "run_id": "25f67a7b65a74d7a9347082ad5d90dfb",
+          "evidence": {
+            "path": "/tmp/plcidf-distribution-fr56dly9/verified_motor_state/replays/25f67a7b65a74d7a9347082ad5d90dfb/samples.jsonl",
+            "sha256": "161ec7154ac800d2e9808e6f94f361709ead107030daa7c0e5bd3ebc24f006bd",
+            "bytes": 9128,
+            "samples": 13
+          }
+        }
+      ],
+      "input_hashes": {
+        "manifest": {
+          "path": "/tmp/plcidf-distribution-fr56dly9/user-project/motor_project/plcidf.json",
+          "sha256": "f58842fc0216e87acf6c82621062c4578216881b25c4823b06a2308fb9659580"
+        },
+        "source": {
+          "path": "/tmp/plcidf-distribution-fr56dly9/user-project/motor_project/main.st",
+          "sha256": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248",
+          "normalized_sha256": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248"
+        },
+        "scenarios": {
+          "path": "/tmp/plcidf-distribution-fr56dly9/user-project/motor_project/scenarios.json",
+          "sha256": "0b1e9f94af78e18ba886035fb836b7e38486757067d44cc8143dd8cb6730da27"
+        }
+      },
+      "report_written": true,
+      "quality": {
+        "logic_assertions": "verified",
+        "timing": "not-verified",
+        "physical_io": "not-verified",
+        "hardware": "not-verified",
+        "iec_time": "deterministic-virtual-scan-time"
+      },
+      "report_path": "/tmp/plcidf-distribution-fr56dly9/user-project/motor_project/.plcidf/verification.json",
+      "signals": {
+        "inputs": {
+          "FAULT": "BOOL",
+          "PERMISSIVE": "BOOL",
+          "START": "BOOL",
+          "STOP": "BOOL"
+        },
+        "outputs": {
+          "FAULTED": "BOOL",
+          "MOTOR": "BOOL",
+          "STARTING": "BOOL"
+        }
+      },
+      "build": {
+        "ok": true,
+        "status": "verified",
+        "manifest_path": "/tmp/plcidf-distribution-fr56dly9/user-project/motor_project/.plcidf/build/build-_8tabkho/build.json",
+        "build_hash": "a2aea41046d148ccbecc53d16dbda7da655eb0005e7ec1806a81236586da2eea",
+        "program_hash": "450677374b151df41737565c076a77c397a810b81ade833104c5d9cb76eaef60",
+        "source_sha256": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248",
+        "binary_sha256": "ec92c0fd8882c88ce1f23c9e87d80efd0674aa7460ebd8bb119b00ca0262c00d",
+        "build_dir": "/tmp/plcidf-distribution-fr56dly9/user-project/motor_project/.plcidf/build/build-_8tabkho",
+        "diagnostics": "POUS.c\nPOUS.h\nLOCATED_VARIABLES.h\nGLOBALS.h\nConfig0.c\nConfig0.h\nRes0.c\n",
+        "cycle_ms": 20
+      },
+      "build_hash": "a2aea41046d148ccbecc53d16dbda7da655eb0005e7ec1806a81236586da2eea",
+      "program_hash": "450677374b151df41737565c076a77c397a810b81ade833104c5d9cb76eaef60",
+      "source_sha256": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248",
+      "binary_sha256": "ec92c0fd8882c88ce1f23c9e87d80efd0674aa7460ebd8bb119b00ca0262c00d",
+      "deployment": {
+        "ok": true,
+        "status": "deployed",
+        "release_id": "a2aea41046d148ccbecc53d16dbda7da655eb0005e7ec1806a81236586da2eea",
+        "build_hash": "a2aea41046d148ccbecc53d16dbda7da655eb0005e7ec1806a81236586da2eea",
+        "program_hash": "450677374b151df41737565c076a77c397a810b81ade833104c5d9cb76eaef60",
+        "manifest_path": "/tmp/plcidf-distribution-fr56dly9/verified_motor_state/releases/a2aea41046d148ccbecc53d16dbda7da655eb0005e7ec1806a81236586da2eea/release.json"
+      },
+      "schema_version": 2,
+      "command": "verify",
+      "target": "open-linux"
+    },
+    "project_manifest": {
+      "schema_version": 2,
+      "name": "open_counter",
+      "profile_id": "open-linux",
+      "compile_target": {
+        "dialect": "MatIEC IEC ST subset",
+        "compiler_backend": "matiec-gcc"
+      },
+      "source": "main.st",
+      "toolchain": {
+        "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e"
+      },
+      "task": {
+        "program": "MAIN",
+        "configuration": "Config0",
+        "resource": "Res0",
+        "name": "scan",
+        "instance": "instance0",
+        "cycle_ms": 20
+      },
+      "io": {
+        "provider": "memory-only",
+        "bindings": {}
+      },
+      "observables": {
+        "COUNTER": "DINT",
+        "HEARTBEAT": "BOOL"
+      }
+    },
+    "template_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+    "doctor_missing_toolchain": {
+      "returncode": 1,
+      "expected_returncode": 1,
+      "result": {
+        "ok": false,
+        "status": "unavailable",
+        "error": "cannot read manifest /tmp/plcidf-distribution-fr56dly9/deliberately_absent_toolchain/toolchain.json: [Errno 2] No such file or directory: '/tmp/plcidf-distribution-fr56dly9/deliberately_absent_toolchain/toolchain.json'",
+        "toolchain_dir": "/tmp/plcidf-distribution-fr56dly9/deliberately_absent_toolchain",
+        "command": "doctor",
+        "target": "open-linux",
+        "hardware_checked": false,
+        "target_profile": {
+          "schema": "plcidf.target-profile.v2",
+          "id": "open-linux",
+          "name": "Local Linux / MatIEC scan runtime",
+          "compile_target": {
+            "dialect": "MatIEC IEC ST subset",
+            "compiler_backend": "matiec-gcc"
+          },
+          "runtime_backend": "plcidf-local-scan",
+          "host_platform": "Linux",
+          "transport_kinds": [
+            "local-filesystem"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "run",
+            "stop",
+            "monitor",
+            "verify"
+          ],
+          "limitations": [
+            "Local runtime only; no physical I/O provider or remote device deployment",
+            "Functional scan execution does not validate hard real-time deadlines",
+            "Application packages are not compatible with Easy521 vendor firmware"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        },
+        "schema_version": 2
+      }
+    },
+    "bootstrap_help_checked": true,
+    "toolchain_downloaded": false,
+    "native_compilation_executed": true,
+    "local_runtime_started": true
+  },
+  "monitor_output": "[monitor] 字序: 假定默认 ABCD，未经判别（首次接真机建议先跑 --calibrate 或用已知值确认 --word-order）\n=== Easy521 监测 @ tcp://127.0.0.1:38207  unit=1  2026-10-17T12:58:01.317+00:00\n--- 字序: ABCD（大端直排，reg0=高字，项目契约）\n--- 质量: 字序来源=default；数据新鲜度/PLC扫描进度/工程匹配均未验证\n量名        寄存器       原始字(w0,w1)                   解码值  单位   范围检查\nVpu       0-1       (0x3f80,0x01bb)          1.00005  pu   ok  # 节点电压标幺值\nPline     2-3       (0x3ee6,0x78db)          0.45014  pu   ok  # 馈线有功功率\nQline     4-5       (0x3e38,0x6d9a)          0.18011  pu   ok  # 馈线无功功率\nloading   6-7       (0x3ef5,0xd8b5)          0.48017  -    ok  # 线路负载率\nSOC       8-9       (0x3f4c,0xca28)          0.79996  -    ok  # 储能荷电状态\nPess      10-11     (0x3e99,0xac0e)          0.30014  pu   ok  # 储能实测有功功率\nQess      12-13     (0x3d4d,0x3b87)          0.05011  pu   ok  # 储能实测无功功率\nPcmd      14-15     (0x3e99,0x999a)          0.30000  pu   ok  # 储能有功指令\nQcmd      16-17     (0x3d4c,0xcccd)          0.05000  pu   ok  # 储能无功指令\nD18(mode) 18        -                              0       normal 正常\nFC03 原始字   : [16256, 443, 16102, 30939, 15928, 28058, 16117, 55477, 16204, 51752, 16025, 44046, 15693, 15239, 16025, 39322, 15692, 52429, 0]\n",
+  "evidence_events": 13,
+  "hardware_accessed": false,
+  "note": "Temporary installation paths are removed after validation."
+}

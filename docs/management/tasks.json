@@ -291,11 +291,34 @@
       "delivery": "ADR-0002 N5；共同子集、对照向量、差异及实际运行记录；当前未执行",
       "issue_number": 16,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/16"
+    },
+    {
+      "id": "T13",
+      "title": "通用ST输入输出与AI一键场景验收",
+      "priority": "P1",
+      "milestone": "M4",
+      "role": "开放运行时、工程与分发、验收接口AI技术代理；统筹代理集成复核",
+      "depends_on": [
+        "T10",
+        "T11"
+      ],
+      "estimate": "当前批次实施，以实际验收为准",
+      "acceptance": [
+        "类型化输入输出取代固定计数器限制，旧工程与运行路径兼容",
+        "固定MatIEC/GCC实际编译并执行已部署ELF，按确定IEC时间逐扫描输入与采样",
+        "启停保持、停止优先、故障/许可联锁、启动边沿、TON及REAL阈值有完整场景",
+        "verify一键检查、编译、部署、执行和断言；JSON诊断关联场景/步骤/扫描及期望与实值",
+        "无效场景、语法错误、逻辑破坏、源输入变化、超时等返回失败，证据绑定输入与产物身份",
+        "wheel资源与干净Linux CI验收；明确软件逻辑、物理I/O与Easy521运行的不同验证等级"
+      ],
+      "delivery": "open_contract.py / 通用open-linux profile与replay / verification.py / motor与analog示例 / verify CLI / AI_PROGRAMMING.md / 实际CLI与CI证据",
+      "issue_number": 17,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/17"
     }
   ],
   "tracking_issue": {
     "number": 12,
     "url": "https://github.com/BUG423/other-plc-idf/issues/12"
   },
-  "scope_update": "2026-10-17 用户确认三路线并行、路线2优先；T11首个本地原生ST后端交付，T10部分实装，T12及R01/R02继续按独立门槛验收。状态以GitHub Issue为准。"
+  "scope_update": "2026-10-17 用户要求优先完善直接AI PLC编程，T13实现通用类型化I/O与一键场景验收；Easy521下载/运行及跨目标比较仍独立验收。状态以GitHub Issue为准。"
 }

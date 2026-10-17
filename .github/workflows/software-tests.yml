@@ -48,6 +48,10 @@ jobs:
       - name: Real ST compiler and runtime regression
         env:
           PLCIDF_OPEN_LINUX_TOOLCHAIN: /tmp/plcidf-matiec
-        run: python -m pytest src/plc_idf/tests/test_open_linux.py -q
+        run: python -m pytest src/plc_idf/tests/test_open_linux.py src/plc_idf/tests/test_open_linux_signals.py src/plc_idf/tests/test_verification.py -q
       - name: CLI compile, deploy, run, observe, stop, and changed-program evidence
         run: python tools/check_open_linux.py --toolchain-dir /tmp/plcidf-matiec --report /tmp/plcidf-open-linux.json
+      - name: AI workflow with logic regression, compiler failure and scenario repair
+        run: python tools/check_ai_workflow.py --toolchain-dir /tmp/plcidf-matiec --report /tmp/plcidf-ai-workflow.json
+      - name: Installed wheel creates and verifies a control project outside checkout
+        run: python tools/check_distribution.py --toolchain-dir /tmp/plcidf-matiec --report /tmp/plcidf-installed-ai-workflow.json

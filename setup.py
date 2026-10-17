@@ -16,6 +16,16 @@ ASSETS = (
     "wsl-tools/e521_regs.py",
     "plc/tools/autoshop_ui.ps1",
     "examples/open_linux/counter/main.st",
+    "examples/open_linux/motor/main.st",
+    "examples/open_linux/motor/plcidf.json",
+    "examples/open_linux/motor/scenarios.json",
+    "examples/open_linux/motor/README.md",
+    "examples/open_linux/motor/AGENTS.md",
+    "examples/open_linux/analog_hysteresis/main.st",
+    "examples/open_linux/analog_hysteresis/plcidf.json",
+    "examples/open_linux/analog_hysteresis/scenarios.json",
+    "examples/open_linux/analog_hysteresis/README.md",
+    "examples/open_linux/analog_hysteresis/AGENTS.md",
     "tools/bootstrap_open_linux.py",
 )
 ROOT = Path(__file__).resolve().parent

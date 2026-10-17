@@ -4,6 +4,7 @@
     targets  Easy521 / open-linux 目标能力，不探测设备
     toolchain 固定 MatIEC 工具链引导与只读校验
     run/stop open-linux 已部署应用的有限扫描执行和核验停止
+    verify   编译本地 ST 并按逐扫描场景自动验收，输出 AI 可读诊断
     build/flash/monitor 支持 --target open-linux，本地原生 ST 闭环
 
     以下 Easy521 默认入口保留，其 Windows/硬件验证与 open-linux 分别报告：
@@ -16,7 +17,7 @@
     check    有限 ST/映射检查             —— 离线，不等于厂商编译
     doctor   环境与能力诊断               —— 仅本地文件/版本，不探测硬件
 
-退出码：0 成功；1 运行失败；2 用法/检查/安全门禁拒绝；124 超时或未就绪。
+退出码：0 成功；1 运行失败；2 用法/检查/安全门禁拒绝；124 超时或未就绪；130 用户中断。
 """
 
 from __future__ import annotations
@@ -184,6 +185,8 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--cycle-ms", type=int, default=None,
                        help="MAIN 周期配置意图（毫秒；不代表实测周期）")
         p.add_argument("--target", choices=("easy521", "open-linux"), default="easy521")
+        p.add_argument("--template", choices=("counter", "motor"), default=None,
+                       help="open-linux 工程模板；motor 包含启停、联锁、定时器及验收场景")
         p.add_argument("--json", action="store_true", help="仅输出版本化 JSON 结果")
         _add_config_option(p)
         p.set_defaults(handler=_cmd_create_project)
@@ -225,6 +228,21 @@ def build_parser() -> argparse.ArgumentParser:
     toolchain.add_argument("--json", action="store_true")
     _add_config_option(toolchain)
     toolchain.set_defaults(handler=_cmd_toolchain)
+
+    verify = sub.add_parser(
+        "verify", help="真实编译并逐扫描验收本地 ST 工程（执行于 Linux，无需 PLC）")
+    verify.add_argument("path", nargs="?", default=".", metavar="PATH")
+    verify.add_argument("--target", choices=("open-linux",), default="open-linux")
+    verify.add_argument("--scenarios", help="工程内的场景 JSON；默认 scenarios.json")
+    verify.add_argument("--report", help="保存验收报告；默认工程内 .plcidf/verification.json")
+    verify.add_argument("--build-dir", help="本地构建目录")
+    verify.add_argument("--toolchain-dir", help="open-linux 工具链目录")
+    verify.add_argument("--state-dir", help="本机运行时目录")
+    verify.add_argument("--timeout", type=float, default=5.0,
+                        help="每个场景的执行期限，秒（最长 30 秒）")
+    verify.add_argument("--json", action="store_true", help="仅输出结构化验收结果")
+    _add_config_option(verify)
+    verify.set_defaults(handler=_cmd_verify)
 
     for command in ("run", "stop"):
         p = sub.add_parser(command, help="open-linux 本机 ST 运行控制")
@@ -470,7 +488,10 @@ def _cmd_create_project(args: argparse.Namespace, cfg, evidence: EvidenceLogger)
     if args.target == "open-linux":
         return _render_project_result(args, create_open_project(
             args.path, name=args.name,
-            cycle_ms=args.cycle_ms if args.cycle_ms is not None else 20))
+            cycle_ms=args.cycle_ms if args.cycle_ms is not None else 20,
+            template=args.template or "counter"))
+    if args.template is not None:
+        raise ValueError("--template requires --target open-linux")
     return _render_project_result(args, create_project(
         args.path, name=args.name, cycle_ms=args.cycle_ms if args.cycle_ms is not None else 5))
 
@@ -539,6 +560,7 @@ def _cmd_open_operation(args, cfg, evidence):
         if args.source and args.project:
             raise ValueError("choose --source or --project for open-linux build")
         cycle_ms = args.cycle_ms
+        signals = None
         if args.source:
             source = Path(args.source).expanduser().resolve()
             project_root = source.parent
@@ -553,6 +575,7 @@ def _cmd_open_operation(args, cfg, evidence):
             if cycle_ms is not None and cycle_ms != declared_cycle:
                 raise ValueError("--cycle-ms conflicts with the project manifest")
             cycle_ms = declared_cycle
+            signals = checked.manifest.get("signals")
         request = BuildRequestV2(source=source,
                                  build_dir=Path(args.build_dir).expanduser().resolve()
                                  if args.build_dir else project_root / ".plcidf" / "build",
@@ -561,8 +584,12 @@ def _cmd_open_operation(args, cfg, evidence):
         if not args.execute:
             return _emit_open(args, {"ok": True, "status": "preview", "executed": False,
                                     "source": str(source), "build_dir": str(request.build_dir),
-                                    "cycle_ms": cycle_ms, "profile": profile.as_dict()})
-        result = backend.build(source, request.build_dir, cycle_ms=cycle_ms)
+                                    "cycle_ms": cycle_ms, "signals": signals,
+                                    "profile": profile.as_dict()})
+        build_options = {"cycle_ms": cycle_ms}
+        if signals is not None:
+            build_options["signals"] = signals
+        result = backend.build(source, request.build_dir, **build_options)
         if result.get("ok") and args.manifest:
             # A build bundle's manifest stays with its artifacts. Do not copy it
             # to another directory and accidentally change relative resolution.
@@ -570,6 +597,19 @@ def _cmd_open_operation(args, cfg, evidence):
             write_record(args.manifest, {"schema": "plcidf.bundle-pointer.v2",
                                         "manifest_path": result["manifest_path"],
                                         "build_hash": result["build_hash"]})
+    return _emit_open(args, result)
+
+
+def _cmd_verify(args, cfg, evidence):
+    from .verification import verify_project
+    get_profile(args.target).require("verify")
+    given = Path(args.path).expanduser().resolve()
+    root = given.parent if given.is_file() else given
+    result = verify_project(
+        args.path, _open_backend(args), scenarios_path=args.scenarios,
+        build_dir=args.build_dir,
+        report_path=args.report or root / ".plcidf" / "verification.json",
+        timeout_s=args.timeout)
     return _emit_open(args, result)
 
 
@@ -647,6 +687,8 @@ def main(argv: list[str] | None = None) -> int:
         cfg = load_config(args.config)
         evidence = make_evidence_logger(cfg)
         return args.handler(args, cfg, evidence)
+    except KeyboardInterrupt:
+        return _report_error(args, "E_INTERRUPTED", f"{args.command} 已由用户中断", 130)
     except SafetyError as exc:
         return _report_error(args, "E_REFUSED", f"拒绝: {exc}", 2)
     except LeaseError as exc:

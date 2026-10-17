@@ -26,9 +26,24 @@ ASSETS = (
     "wsl-tools/e521_regs.py",
     "plc/tools/autoshop_ui.ps1",
     "examples/open_linux/counter/main.st",
+    "examples/open_linux/motor/main.st",
+    "examples/open_linux/motor/plcidf.json",
+    "examples/open_linux/motor/scenarios.json",
+    "examples/open_linux/motor/README.md",
+    "examples/open_linux/motor/AGENTS.md",
+    "examples/open_linux/analog_hysteresis/main.st",
+    "examples/open_linux/analog_hysteresis/plcidf.json",
+    "examples/open_linux/analog_hysteresis/scenarios.json",
+    "examples/open_linux/analog_hysteresis/README.md",
+    "examples/open_linux/analog_hysteresis/AGENTS.md",
     "tools/bootstrap_open_linux.py",
 )
 OPEN_LINUX_TEMPLATE = "examples/open_linux/counter/main.st"
+OPEN_LINUX_SOURCES = (
+    OPEN_LINUX_TEMPLATE,
+    "examples/open_linux/motor/main.st",
+    "examples/open_linux/analog_hysteresis/main.st",
+)
 
 
 def run(argv: list[str], *, cwd: Path, env: dict[str, str], timeout: float = 120,
@@ -47,7 +62,10 @@ def main() -> int:
     parser.add_argument("--report", type=Path)
     parser.add_argument("--dist-dir", type=Path,
                         help="Keep the built wheel and sdist in this directory")
+    parser.add_argument("--toolchain-dir", type=Path,
+                        help="Use this existing local MatIEC toolchain to verify the installed motor project; never downloads a toolchain")
     args = parser.parse_args()
+    toolchain_dir = args.toolchain_dir.expanduser().resolve() if args.toolchain_dir else None
     env = dict(os.environ)
     for key in ("PYTHONPATH", "PLCIDF_ROOT", "PLCIDF_CONFIG", "PY2PLC_ROOT",
                 "PY2PLC_CONFIG", "PLCIDF_OPEN_LINUX_TOOLCHAIN", "PLCIDF_OPEN_LINUX_STATE"):
@@ -67,8 +85,8 @@ def main() -> int:
             templates = sorted(name for name in archive.namelist()
                                if name.startswith("plc_idf/_resources/")
                                and name.lower().endswith(".st"))
-            if templates != ["plc_idf/_resources/" + OPEN_LINUX_TEMPLATE]:
-                raise RuntimeError(f"Wheel must contain one canonical ST template: {templates}")
+            if templates != sorted("plc_idf/_resources/" + item for item in OPEN_LINUX_SOURCES):
+                raise RuntimeError(f"Wheel must contain each canonical ST source exactly once: {templates}")
             for asset in ASSETS:
                 source = (ROOT / asset).read_bytes()
                 bundled = archive.read("plc_idf/_resources/" + asset)
@@ -89,13 +107,18 @@ def main() -> int:
             "bridge = runtime_asset(root, 'plc/tools/autoshop_ui.ps1')",
             "bootstrap = runtime_asset(root, 'tools/bootstrap_open_linux.py')",
             "template = runtime_asset(root, 'examples/open_linux/counter/main.st')",
+            "motor = runtime_asset(root, 'examples/open_linux/motor/main.st').parent",
+            "analog = runtime_asset(root, 'examples/open_linux/analog_hysteresis/main.st').parent",
             "package = pathlib.Path(plc_idf.__file__).resolve().parent",
             "installed_templates = sorted(p for p in (package / '_resources').rglob('*')",
             "    if p.is_file() and p.suffix.lower() == '.st')",
             "assert bridge.is_file()",
             "assert bootstrap.is_file() and bootstrap.is_relative_to(package)",
             "assert template.is_file() and template.is_relative_to(package)",
-            "assert installed_templates == [template]",
+            "assert installed_templates == sorted([template, motor / 'main.st', analog / 'main.st'])",
+            "for example in (motor, analog):",
+            "    assert example.is_relative_to(package)",
+            "    assert all((example / name).is_file() for name in ('main.st', 'plcidf.json', 'scenarios.json', 'README.md', 'AGENTS.md'))",
             "assert root == pathlib.Path.cwd()",
             "print(json.dumps({'module': plc_idf.__file__, 'root': str(root),",
             "'monitor_dir': cfg.paths.wsl_tools, 'bridge': str(bridge),",
@@ -103,6 +126,7 @@ def main() -> int:
             "'evidence_path': str(evidence_path(cfg)),",
             "'bootstrap': str(bootstrap), 'st_template': str(template),",
             "'installed_st_templates': [str(p) for p in installed_templates],",
+            "'control_examples': {'motor': str(motor), 'analog_hysteresis': str(analog)},",
             "'pymodbus': pymodbus.__version__, 'pyserial': serial.__version__}))",
         ])], cwd=project, env=env)
         paths = json.loads(probe.stdout)
@@ -147,6 +171,43 @@ def main() -> int:
             raise RuntimeError("Installed new produced a Windows/USB-coupled project manifest")
         if (open_project / "main.st").read_bytes() != Path(paths["st_template"]).read_bytes():
             raise RuntimeError("Installed new did not use the canonical bundled ST template")
+        if "signals" in open_manifest or (open_project / "scenarios.json").exists():
+            raise RuntimeError("Default counter lost its legacy contract")
+        if not (open_project / "AGENTS.md").is_file():
+            raise RuntimeError("Installed new did not create project-local AI instructions")
+        control_checks = {}
+        for name, location in paths["control_examples"].items():
+            result = json.loads(run([str(cli), "check", location, "--json"],
+                                    cwd=open_project, env=env).stdout)
+            if result.get("ok") is not True or result.get("schema_version") != 2:
+                raise RuntimeError(f"Installed complete control example failed check: {name}")
+            control_checks[name] = result
+        motor_project = project / "motor_project"
+        motor_created = json.loads(run([str(cli), "new", str(motor_project),
+            "--target", "open-linux", "--template", "motor", "--json"],
+            cwd=project, env=env).stdout)
+        if motor_created.get("ok") is not True or not (motor_project / "AGENTS.md").is_file():
+            raise RuntimeError("Installed motor template failed to create a complete AI project")
+        motor_manifest = json.loads((motor_project / "plcidf.json").read_text())
+        if (motor_manifest.get("signals", {}).get("outputs") != motor_manifest.get("observables")
+                or "MOTOR" not in motor_manifest.get("observables", {})):
+            raise RuntimeError("Installed motor template lost its typed signal contract")
+        motor_scenarios = json.loads((motor_project / "scenarios.json").read_text())
+        if len(motor_scenarios.get("scenarios", [])) != 6:
+            raise RuntimeError("Installed motor template lost its six acceptance scenarios")
+        motor_verification = None
+        if toolchain_dir is not None:
+            motor_verification = json.loads(run([str(cli), "verify", str(motor_project),
+                "--toolchain-dir", str(toolchain_dir), "--state-dir", str(work / "verified_motor_state"),
+                "--json"], cwd=motor_project, env=env, timeout=180).stdout)
+            summary = motor_verification.get("summary", {})
+            if (motor_verification.get("ok") is not True
+                    or motor_verification.get("status") != "verified"
+                    or summary.get("scenarios") != 6 or summary.get("passed") != 6
+                    or summary.get("failed") != 0 or summary.get("skipped") != 0
+                    or summary.get("assertions") != 56 or summary.get("assertions_passed") != 56
+                    or summary.get("assertions_failed") != 0):
+                raise RuntimeError("Installed motor workflow did not verify all six scenarios and 56 assertions")
         # --help exercises the installed bootstrap entry without downloading or
         # constructing a toolchain; actual ST compilation has its own CI job.
         run([str(python), paths["bootstrap"], "--help"], cwd=open_project, env=env)
@@ -192,13 +253,16 @@ def main() -> int:
             "tested_scenarios": ["steady", "low_voltage", "overload"],
             "open_linux_checks": {
                 "targets": targets, "new": created, "check": checked,
+                "complete_control_examples": control_checks,
+                "motor_new": motor_created, "motor_verification": motor_verification,
                 "project_manifest": open_manifest,
                 "template_sha256": hashlib.sha256((open_project / "main.st").read_bytes()).hexdigest(),
                 "doctor_missing_toolchain": {"returncode": doctor_process.returncode,
                                               "expected_returncode": 1, "result": doctor},
                 "bootstrap_help_checked": True,
-                "toolchain_downloaded": False, "native_compilation_executed": False,
-                "local_runtime_started": False,
+                "toolchain_downloaded": False,
+                "native_compilation_executed": motor_verification is not None,
+                "local_runtime_started": motor_verification is not None,
             },
             "monitor_output": simulation.stdout,
             "evidence_events": len(rows),

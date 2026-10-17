@@ -1,0 +1,64 @@
+{
+  "schema": "plcidf.scenarios.v1",
+  "scenarios": [
+    {
+      "name": "start_delay_boundary",
+      "steps": [
+        {"scans": 1, "inputs": {"START": true, "STOP": false, "PERMISSIVE": true, "FAULT": false}, "expect": {"MOTOR": false, "STARTING": true, "FAULTED": false}},
+        {"scans": 2, "inputs": {}, "expect": {"MOTOR": false, "STARTING": true}},
+        {"scans": 1, "inputs": {}, "expect": {"MOTOR": true, "STARTING": false}},
+        {"scans": 1, "inputs": {"START": false}, "expect": {"MOTOR": true}},
+        {"scans": 1, "inputs": {"STOP": true}, "expect": {"MOTOR": false, "STARTING": false}}
+      ]
+    },
+    {
+      "name": "stop_priority_requires_new_edge",
+      "steps": [
+        {"scans": 4, "inputs": {"START": true, "STOP": true, "PERMISSIVE": true, "FAULT": false}, "expect": {"MOTOR": false, "STARTING": false, "FAULTED": false}},
+        {"scans": 4, "inputs": {"STOP": false}, "expect": {"MOTOR": false, "STARTING": false}},
+        {"scans": 1, "inputs": {"START": false}, "expect": {"MOTOR": false}},
+        {"scans": 1, "inputs": {"START": true}, "expect": {"MOTOR": false, "STARTING": true}},
+        {"scans": 4, "inputs": {}, "expect": {"MOTOR": true, "STARTING": false}}
+      ]
+    },
+    {
+      "name": "permissive_loss_clears_latch",
+      "steps": [
+        {"scans": 4, "inputs": {"START": true, "STOP": false, "PERMISSIVE": true, "FAULT": false}, "expect": {"MOTOR": true, "FAULTED": false}},
+        {"scans": 1, "inputs": {"PERMISSIVE": false}, "expect": {"MOTOR": false, "STARTING": false, "FAULTED": true}},
+        {"scans": 4, "inputs": {"PERMISSIVE": true}, "expect": {"MOTOR": false, "FAULTED": false}},
+        {"scans": 1, "inputs": {"START": false}, "expect": {"MOTOR": false}},
+        {"scans": 4, "inputs": {"START": true}, "expect": {"MOTOR": true, "STARTING": false}}
+      ]
+    },
+    {
+      "name": "fault_clears_latch",
+      "steps": [
+        {"scans": 4, "inputs": {"START": true, "STOP": false, "PERMISSIVE": true, "FAULT": false}, "expect": {"MOTOR": true, "FAULTED": false}},
+        {"scans": 1, "inputs": {"FAULT": true}, "expect": {"MOTOR": false, "STARTING": false, "FAULTED": true}},
+        {"scans": 4, "inputs": {"FAULT": false}, "expect": {"MOTOR": false, "FAULTED": false}},
+        {"scans": 1, "inputs": {"START": false}, "expect": {"MOTOR": false}},
+        {"scans": 4, "inputs": {"START": true}, "expect": {"MOTOR": true, "STARTING": false}}
+      ]
+    },
+    {
+      "name": "released_start_keeps_request_until_stop",
+      "steps": [
+        {"scans": 1, "inputs": {"START": true, "STOP": false, "PERMISSIVE": true, "FAULT": false}, "expect": {"MOTOR": false, "STARTING": true}},
+        {"scans": 4, "inputs": {"START": false}, "expect": {"MOTOR": true, "STARTING": false}},
+        {"scans": 4, "inputs": {}, "expect": {"MOTOR": true}},
+        {"scans": 1, "inputs": {"STOP": true}, "expect": {"MOTOR": false}},
+        {"scans": 4, "inputs": {"STOP": false}, "expect": {"MOTOR": false, "STARTING": false}}
+      ]
+    },
+    {
+      "name": "start_while_inhibited_is_consumed",
+      "steps": [
+        {"scans": 4, "inputs": {"START": true, "STOP": false, "PERMISSIVE": false, "FAULT": false}, "expect": {"MOTOR": false, "STARTING": false, "FAULTED": true}},
+        {"scans": 4, "inputs": {"PERMISSIVE": true}, "expect": {"MOTOR": false, "FAULTED": false}},
+        {"scans": 1, "inputs": {"START": false}, "expect": {"MOTOR": false}},
+        {"scans": 4, "inputs": {"START": true}, "expect": {"MOTOR": true, "STARTING": false}}
+      ]
+    }
+  ]
+}

@@ -1,5 +1,17 @@
 # 进展记录
 
+## 2026-10-17：通用输入输出与 AI 一键验收交付
+
+用户确认当前只有 Easy521，优先完善 WSL/Linux 中可由 AI 直接创建、修改、编译与验证的工作流。[交付报告](AI_WORKFLOW_DELIVERY_2026-10-17.md) 与 [操作说明](../AI_PROGRAMMING.md) 已补齐。
+
+- 新 `open-linux-signals-v1` 支持最多 64 个 BOOL/INT/DINT/UINT/UDINT/REAL 直接 MAIN 字段。真正生成的类型与契约核对；旧 counter 工程和 release 保留兼容路径。
+- `new --template motor` 带 ST、manifest、场景与 AGENTS.md；`verify PATH --json` 实际编译、部署、确定扫描执行并断言，失败关联 expected/actual 与场景/步骤/扫描。
+- motor 6 场景/56 断言、analog 3 场景/16 断言通过；60→100ms 规则变化先被旧测试检出，新边界 t80ms 停/t100ms 起动真实通过；7/60/1000ms 周期均实测。
+- 默认软件 535 passed、51 skipped、1 deselected；启用真实工具链的后端与验收套件 192 passed，与默认套件重叠。独立 wheel 的仓库外新建/实际编译/验收通过。中断后的进程清理和 CLI 结构化退出 130 已覆盖。
+- 由三个 AI 技术代理并行实现，统筹代理做 CLI、独立正负联测、打包复核、CI 与 GitHub 同步。T13/#17 交付待合并，T12 仍只有本机语义基础；没有新 Windows/PLC 操作。
+
+开放软件运行结果不替代 Easy521 设备运行。T09 的应用下载/运行、R01/R02 的厂商协议与系统固件研究继续单独跟踪。定期 GitHub 报告需合并默认分支后启用。
+
 ## 2026-10-17：三路线并行实施，开放 ST 首个闭环交付
 
 用户确认三路线同时推进，以路线 2 优先。[本轮交付报告](PARALLEL_DELIVERY_2026-10-17.md) 记录代码入口、命令、实测证据及剩余工作。
