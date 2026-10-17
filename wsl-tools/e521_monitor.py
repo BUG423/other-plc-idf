@@ -1,4 +1,4 @@
-"""e521_monitor.py — Easy521 只读监测客户端（将来直连真机的工具）。
+"""e521_monitor.py — Easy521 只读监测客户端。
 
 轮询读取 Easy521 的 Modbus 寄存器契约（FC03 保持寄存器 0~17，REAL32），
 终端表格输出 + 可选 JSONL 落盘。这是将来从"虚拟 Easy521"切到真机时唯一
@@ -19,6 +19,13 @@
 字序：
     契约默认 ABCD（大端直排）；官方无记载，BADC（字交换）为备选。
     --calibrate 用有限性/合理范围判据自动判别字序；--word-order 可手动覆盖。
+    校准读取失败或无法判别时退出 3；不会回落默认字序继续输出解码值。
+    自动判别只是启发式，手工选择也只标记 manual；两者均不证明工程匹配。
+
+质量与来源：
+    JSONL 保留原始字、契约标识/哈希、主机读取起止/耗时与逐量范围标记。
+    --project-revision 只是操作者声明的标签；数据新鲜度、PLC 扫描进度和
+    设备程序匹配均保持 unverified，不能由一次 Modbus 成功响应推断。
 
 用法示例：
     python e521_monitor.py --host 127.0.0.1 --port 1502            # 连虚拟从站
@@ -30,7 +37,9 @@
 # =====================【导入与路径】=====================
 
 import argparse
+import hashlib
 import json
+import math
 import sys
 import time
 from datetime import datetime, timezone
@@ -57,6 +66,20 @@ from pymodbus.client import ModbusTcpClient, ModbusSerialClient  # noqa: E402
 
 #: 读功能码超时（秒）
 READ_TIMEOUT = 3.0
+
+# 标识既有事实源，不在监测器中重新定义寄存器映射。
+CONTRACT_ID = "bess-easy521-fc03-real32-v1"
+CONTRACT_SHA256 = hashlib.sha256(
+    Path(__file__).with_name("e521_regs.py").read_bytes()).hexdigest()
+CALIBRATION_EXIT_CODE = 3
+
+
+class CalibrationError(ValueError):
+    """字序没有得到判别；保留原始帧，禁止继续按默认字序解码。"""
+
+    def __init__(self, message: str, frame: dict):
+        super().__init__(message)
+        self.frame = frame
 
 #: 模式号 -> 含义（虚拟从站写在 D18；真机 D18 未必有效，仅作参考列）
 MODE_NAMES = {0: "normal 正常", 1: "low_voltage 低压", 2: "overload-fwd 正过载",
@@ -105,7 +128,8 @@ def connect_client(client) -> bool:
 
 # =====================【只读读取】=====================
 
-def read_contract(client, unit_id: int, with_bits: bool = False) -> dict | None:
+def read_contract(client, unit_id: int, with_bits: bool = False,
+                  *, register_count: int = CONTRACT_REG_COUNT + 1) -> dict:
     """读一次契约寄存器（FC03 0~17，多读 1 个到 D18 取工作模式）+ 可选位量。
 
     返回:
@@ -114,21 +138,42 @@ def read_contract(client, unit_id: int, with_bits: bool = False) -> dict | None:
           "coils": [...], "discrete": [...],  # 仅 with_bits 时存在
           "error": None,
         }
-    失败返回 {"error": 中文原因, ...}。全函数只出现读功能码。
+    失败返回 {"error": 中文原因, ...}，并保留读取时间和可用原始字。
+    校准时 register_count=18，其余默认读 19 字以获取模式参考列。
+    全函数只出现读功能码。
     """
-    out: dict = {"error": None}
-    rr = client.read_holding_registers(
-        address=0, count=CONTRACT_REG_COUNT + 1, device_id=unit_id)
-    if rr is None or rr.isError():
-        out["error"] = f"FC03 读保持寄存器失败: {rr}"
-        return out
-    out["registers"] = list(rr.registers)
+    out: dict = {"error": None, "registers": [], "read_started_at": _now_iso()}
+    started = time.monotonic()
+    try:
+        rr = client.read_holding_registers(
+            address=0, count=register_count, device_id=unit_id)
+        if rr is None or rr.isError():
+            out["error"] = f"FC03 读保持寄存器失败: {rr}"
+        else:
+            out["registers"] = list(rr.registers)
+            if len(out["registers"]) != register_count:
+                out["error"] = (f"FC03 响应字数异常: {len(out['registers'])}，"
+                                f"预期 {register_count}")
+            elif any(type(word) is not int or not 0 <= word <= 0xFFFF
+                     for word in out["registers"]):
+                out["error"] = "FC03 响应含无效 uint16 寄存器字"
 
-    if with_bits:
-        rc = client.read_coils(address=0, count=8, device_id=unit_id)
-        rd = client.read_discrete_inputs(address=0, count=8, device_id=unit_id)
-        out["coils"] = list(rc.bits[:8]) if rc is not None and not rc.isError() else None
-        out["discrete"] = list(rd.bits[:8]) if rd is not None and not rd.isError() else None
+        if with_bits and not out["error"]:
+            for field, method in (("coils", client.read_coils),
+                                  ("discrete", client.read_discrete_inputs)):
+                try:
+                    result = method(address=0, count=8, device_id=unit_id)
+                    if result is None or result.isError() or len(result.bits) < 8:
+                        raise ValueError(f"{field} 读取失败: {result}")
+                    out[field] = list(result.bits[:8])
+                except Exception as exc:
+                    out[field] = None
+                    out.setdefault("bit_errors", []).append(str(exc))
+    except Exception as exc:
+        out["error"] = f"FC03 读取异常: {exc}"
+    finally:
+        out["read_completed_at"] = _now_iso()
+        out["read_duration_ms"] = round((time.monotonic() - started) * 1000, 3)
     return out
 
 
@@ -143,14 +188,11 @@ def run_calibration(client, unit_id: int, manual_order: str | None) -> str:
         print(f"[calibrate] 使用手动指定字序: {describe_order(manual_order)}（跳过自动判别）")
         return manual_order
 
-    rr = client.read_holding_registers(
-        address=0, count=CONTRACT_REG_COUNT, device_id=unit_id)
-    if rr is None or rr.isError():
-        print(f"[calibrate] FC03 读取失败，无法判别，先按默认 ABCD 继续: {rr}",
-              file=sys.stderr)
-        return WORD_ORDER_ABCD
+    frame = read_contract(client, unit_id, register_count=CONTRACT_REG_COUNT)
+    if frame["error"]:
+        raise CalibrationError(f"字序校准读取失败: {frame['error']}", frame)
 
-    words = list(rr.registers)
+    words = frame["registers"]
     rep = calibrate_word_order(words)
 
     # 两种字序的逐量对照表
@@ -180,9 +222,9 @@ def run_calibration(client, unit_id: int, manual_order: str | None) -> str:
         print(f"[calibrate] 结论：字序判定为 {rep['best'].upper()} —— "
               f"{describe_order(rep['best'])}")
     else:
-        print("[calibrate] 结论：两种字序得分并列（寄存器可能全零/初始态），"
-              "暂按默认 ABCD 继续；建议等数据活跃后重跑 --calibrate")
-    print("[calibrate] 如需强制覆盖，可加 --word-order {abcd,badc}")
+        raise CalibrationError(
+            "两种字序得分并列，无法判别（寄存器可能全零/初始态）；停止解码", frame)
+    print("[calibrate] 这是合理范围启发式判别，未验证工程身份或 PLC 扫描进度。")
     return rep["best"]
 
 
@@ -192,10 +234,12 @@ def render_table(target: str, unit_id: int, word_order: str, frame: dict) -> str
     """渲染一次轮询的终端表格：量名 | 寄存器 | 原始字 | 解码值 | 单位 | 范围标记。"""
     words = frame["registers"]
     values = decode_quantities(words, word_order)
-    ts = _now_iso()
+    ts = frame.get("read_completed_at") or _now_iso()
     lines = [
         f"=== Easy521 监测 @ {target}  unit={unit_id}  {ts}",
         f"--- 字序: {describe_order(word_order)}",
+        f"--- 质量: 字序来源={frame.get('word_order_source', 'default')}；"
+        "数据新鲜度/PLC扫描进度/工程匹配均未验证",
         f"{'量名':<10}{'寄存器':<10}{'原始字(w0,w1)':<20}{'解码值':>12}  "
         f"{'单位':<5}{'范围检查'}",
     ]
@@ -214,27 +258,65 @@ def render_table(target: str, unit_id: int, word_order: str, frame: dict) -> str
         di = "".join("1" if b else "0" for b in (frame.get("discrete") or []))
         lines.append(f"FC01 线圈 0~7 : {co}   (bit0运行 bit1低压 bit2正过载 bit3反过载 bit4心跳)")
         lines.append(f"FC02 离散 0~7 : {di}")
+    if frame.get("bit_errors"):
+        lines.append("位量质量: 读取不完整；" + "; ".join(frame["bit_errors"]))
     lines.append(f"FC03 原始字   : {words}")
     return "\n".join(lines)
 
 
-def jsonl_record(target: str, transport: str, unit_id: int, word_order: str,
-                 frame: dict) -> dict:
+def jsonl_record(target: str, transport: str, unit_id: int, word_order: str | None,
+                 frame: dict, *, word_order_source: str = "default",
+                 project_revision: str | None = None) -> dict:
     """构造一行 JSONL 记录（监测落盘与将来真机采集同一格式）。"""
-    values = decode_quantities(frame["registers"], word_order)
+    words = frame.get("registers", [])
+    decoded = not frame.get("error") and word_order in WORD_ORDERS
+    values = decode_quantities(words, word_order) if decoded else {}
+    range_flags = {name: ("non-finite" if not math.isfinite(value) else
+                          "in-range" if in_range(name, value) else "out-of-range")
+                   for name, value in values.items()}
     rec = {
-        "ts": _now_iso(),
+        "ts": frame.get("read_completed_at") or _now_iso(),
         "transport": transport,
         "target": target,
         "unit_id": unit_id,
         "word_order": word_order,
-        "registers": frame["registers"],
-        "values": {k: round(v, 6) for k, v in values.items()},
+        "word_order_source": word_order_source,
+        "registers": words,
+        "raw": {"holding_registers": words},
+        "values": {key: round(value, 6) if math.isfinite(value) else None
+                   for key, value in values.items()},
+        "range_flags": range_flags,
+        "contract_id": CONTRACT_ID,
+        "contract_sha256": CONTRACT_SHA256,
+        "project_revision": project_revision,
+        "project_revision_source": "operator-declared" if project_revision else "not-provided",
+        "read_started_at": frame.get("read_started_at"),
+        "read_completed_at": frame.get("read_completed_at"),
+        "read_duration_ms": frame.get("read_duration_ms"),
+        "timestamp_source": "host",
+        "error": frame.get("error") or frame.get("calibration_error"),
+        "quality": {
+            "read": "error" if frame.get("error") else "ok",
+            "decoded": decoded,
+            "word_order": {"manual": "manual", "calibrated": "heuristic",
+                           "default": "assumed-default"}.get(word_order_source, "unresolved"),
+            "range": ("not-decoded" if not decoded else "within-envelope"
+                      if all(flag == "in-range" for flag in range_flags.values())
+                      else "out-of-range"),
+            "freshness": "unverified", "plc_scan_progress": "unverified",
+            "program_match": "unverified",
+            "bits": "partial-error" if frame.get("bit_errors") else "not-checked"
+                    if "coils" not in frame else "ok",
+        },
     }
     if frame.get("coils") is not None:
         rec["coils"] = frame["coils"]
+        rec["raw"]["coils"] = frame["coils"]
     if frame.get("discrete") is not None:
         rec["discrete"] = frame["discrete"]
+        rec["raw"]["discrete"] = frame["discrete"]
+    if frame.get("bit_errors"):
+        rec["bit_errors"] = frame["bit_errors"]
     return rec
 
 
@@ -245,37 +327,63 @@ def poll_loop(args) -> int:
     client, target = build_client(args)
     if not connect_client(client):
         print(f"[monitor] 无法连接 {target}，退出（--once 模式返回码 1）", file=sys.stderr)
+        try:
+            client.close()
+        except Exception:
+            pass
         return 1
 
     word_order = args.word_order or WORD_ORDER_ABCD
+    word_order_source = "default"
     exit_code = 0
-    jsonl_fh = open(args.jsonl, "a", encoding="utf-8") if args.jsonl else None
+    jsonl_fh = None
+
+    def record(frame: dict, order: str | None, source: str) -> None:
+        if jsonl_fh:
+            jsonl_fh.write(json.dumps(jsonl_record(
+                target, args.transport, args.unit_id, order, frame,
+                word_order_source=source,
+                project_revision=getattr(args, "project_revision", None)),
+                ensure_ascii=False, allow_nan=False) + "\n")
+            jsonl_fh.flush()
+
     try:
+        jsonl_fh = open(args.jsonl, "a", encoding="utf-8") if args.jsonl else None
         if args.word_order:
             # 手动指定优先：跳过自动判别
             word_order = args.word_order
+            word_order_source = "manual"
             print(f"[monitor] 字序（手动指定，跳过判别）: {describe_order(word_order)}")
         elif args.calibrate:
-            word_order = run_calibration(client, args.unit_id, manual_order=None)
+            try:
+                word_order = run_calibration(client, args.unit_id, manual_order=None)
+            except CalibrationError as exc:
+                exc.frame["calibration_error"] = str(exc)
+                record(exc.frame, None, "unresolved")
+                print(f"[monitor] 校准失败，未输出有效解码: {exc}", file=sys.stderr)
+                print("[monitor] 请用人工已知值确认字序后显式指定 "
+                      "--word-order {abcd,badc}，或恢复可判别数据后重试 --calibrate。",
+                      file=sys.stderr)
+                return CALIBRATION_EXIT_CODE
+            word_order_source = "calibrated"
         else:
             word_order = WORD_ORDER_ABCD
-            print("[monitor] 字序: 默认 ABCD（未指定 --calibrate；首次接真机建议先跑 --calibrate）")
+            print("[monitor] 字序: 假定默认 ABCD，未经判别"
+                  "（首次接真机建议先跑 --calibrate 或用已知值确认 --word-order）")
 
         seq = 0
         while True:
             frame = read_contract(client, args.unit_id, with_bits=args.with_bits)
+            frame["word_order_source"] = word_order_source
             if frame["error"]:
                 print(f"[monitor] 第 {seq} 轮读取失败: {frame['error']}", file=sys.stderr)
+                record(frame, word_order, word_order_source)
                 if args.once:
                     exit_code = 1
                     break
             else:
                 print(render_table(target, args.unit_id, word_order, frame))
-                if jsonl_fh:
-                    jsonl_fh.write(json.dumps(jsonl_record(
-                        target, args.transport, args.unit_id, word_order, frame),
-                        ensure_ascii=False) + "\n")
-                    jsonl_fh.flush()
+                record(frame, word_order, word_order_source)
                 if args.once:
                     break
             seq += 1
@@ -334,15 +442,26 @@ def parse_args(argv=None) -> argparse.Namespace:
                         help="同时读 FC01 线圈与 FC02 离散输入（只读）")
     parser.add_argument("--jsonl", default=None, metavar="FILE",
                         help="把每轮解码结果追加写入 JSONL 文件")
+    parser.add_argument("--project-revision", default=None, metavar="REVISION",
+                        help="操作者声明的工程版本标签；不证明设备已运行该版本")
     args = parser.parse_args(argv)
-    if args.interval <= 0:
-        parser.error("--interval 必须为正数")
+    if not math.isfinite(args.interval) or args.interval <= 0:
+        parser.error("--interval 必须为有限正数")
+    if not math.isfinite(args.timeout) or args.timeout <= 0:
+        parser.error("--timeout 必须为有限正数")
     return args
 
 
 def main(argv=None) -> int:
     args = parse_args(argv)
-    return poll_loop(args)
+    try:
+        return poll_loop(args)
+    except OSError as exc:
+        print(f"[monitor] 文件或通信操作失败: {exc}", file=sys.stderr)
+        return 1
+    except ValueError as exc:
+        print(f"[monitor] 配置或帧数据无效: {exc}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

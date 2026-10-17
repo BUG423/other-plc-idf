@@ -258,3 +258,30 @@ def test_e2e_overload_scenario():
     finally:
         client.close()
         srv.stop()
+
+
+@pytest.mark.parametrize("scenario", ["steady", "low_voltage", "overload"])
+def test_e2e_monitor_quality_metadata_for_all_scenarios(tmp_path, scenario):
+    """Real loopback server/client preserve transport facts without inferring PLC state."""
+    port = _free_port()
+    srv = VirtualServer(port, ["--scenario", scenario, "--quiet"])
+    assert srv.wait_ready(), "\n".join(srv.lines[-30:])
+    try:
+        output = tmp_path / "quality.jsonl"
+        proc = subprocess.run(
+            [PY, str(MONITOR), "--host", "127.0.0.1", "--port", str(port),
+             "--once", "--calibrate", "--project-revision", "source-test-123",
+             "--jsonl", str(output)], capture_output=True, text=True, timeout=15)
+        assert proc.returncode == 0, proc.stdout + proc.stderr
+        row, = [json.loads(line) for line in output.read_text().splitlines()]
+        assert row["quality"]["read"] == "ok"
+        assert row["word_order_source"] == "calibrated"
+        assert row["quality"]["word_order"] == "heuristic"
+        assert row["registers"] == row["raw"]["holding_registers"]
+        assert row["project_revision"] == "source-test-123"
+        assert row["quality"]["program_match"] == "unverified"
+        assert row["quality"]["plc_scan_progress"] == "unverified"
+        assert row["quality"]["freshness"] == "unverified"
+        assert row["read_duration_ms"] >= 0 and len(row["contract_sha256"]) == 64
+    finally:
+        srv.stop()

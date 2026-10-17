@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "command": "devices",
+  "usbipd_ok": true,
+  "error": null,
+  "plc": {
+    "busid": "6-3",
+    "vidpid": "0471:a531",
+    "state": "Not shared",
+    "attached": false
+  },
+  "tty": [],
+  "entries": [
+    {
+      "busid": "1-5",
+      "vidpid": "0489:e0cd",
+      "state": "Not shared"
+    },
+    {
+      "busid": "2-1",
+      "vidpid": "174f:181d",
+      "state": "Not shared"
+    },
+    {
+      "busid": "5-1",
+      "vidpid": "0bda:8153",
+      "state": "Not shared"
+    },
+    {
+      "busid": "6-3",
+      "vidpid": "0471:a531",
+      "state": "Not shared"
+    },
+    {
+      "busid": "6-4",
+      "vidpid": "35bb:d00b",
+      "state": "Not shared"
+    },
+    {
+      "busid": "8-1",
+      "vidpid": "046d:c52b",
+      "state": "Not shared"
+    },
+    {
+      "busid": "8-2",
+      "vidpid": "24ae:2015",
+      "state": "Not shared"
+    },
+    {
+      "busid": "8-3",
+      "vidpid": "1ea7:0066",
+      "state": "Not shared"
+    },
+    {
+      "busid": "8-4",
+      "vidpid": "1a2c:7fff",
+      "state": "Not shared"
+    }
+  ]
+}

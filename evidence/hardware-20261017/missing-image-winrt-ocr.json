@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "engine": "Windows.Media.Ocr",
+  "ok": false,
+  "status": "error",
+  "text": "",
+  "lines": [],
+  "language": null,
+  "available_languages": [],
+  "error": "System.Management.Automation.MethodInvocationException: 使用“0”个参数调用“GetResult”时发生异常:“系统找不到指定的文件。\r\n\r\n在指定的路径(UNABLE_TO_MASK_PATH)中找不到某个项目。” ---> System.IO.FileNotFoundException: 系统找不到指定的文件。\r\n\r\n在指定的路径(UNABLE_TO_MASK_PATH)中找不到某个项目。\r\n   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 CallSite.Target(Closure , CallSite , Object )\r\n   --- 内部异常堆栈跟踪的结尾 ---\r\n   在 System.Management.Automation.ExceptionHandlingOps.CheckActionPreference(FunctionContext funcContext, Exception exception)\r\n   在 System.Management.Automation.Interpreter.ActionCallInstruction`2.Run(InterpretedFrame frame)\r\n   在 System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)\r\n   在 System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)",
+  "stage": "read-image",
+  "returncode": 0,
+  "stdout": "{\"schema_version\":1,\"status\":\"error\",\"text\":\"\",\"lines\":[],\"language\":null,\"available_languages\":[],\"error\":\"System.Management.Automation.MethodInvocationException: 使用“0”个参数调用“GetResult”时发生异常:“系统找不到指定的文件。\\r\\n\\r\\n在指定的路径(UNABLE_TO_MASK_PATH)中找不到某个项目。” ---\\u003e System.IO.FileNotFoundException: 系统找不到指定的文件。\\r\\n\\r\\n在指定的路径(UNABLE_TO_MASK_PATH)中找不到某个项目。\\r\\n   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\\r\\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\\r\\n   在 CallSite.Target(Closure , CallSite , Object )\\r\\n   --- 内部异常堆栈跟踪的结尾 ---\\r\\n   在 System.Management.Automation.ExceptionHandlingOps.CheckActionPreference(FunctionContext funcContext, Exception exception)\\r\\n   在 System.Management.Automation.Interpreter.ActionCallInstruction`2.Run(InterpretedFrame frame)\\r\\n   在 System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)\\r\\n   在 System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)\",\"stage\":\"read-image\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "windows_path": "C:\\Users\\12646\\Downloads\\plcidf-no-such-image-20261017.png",
+  "scale": 1.0,
+  "region": null
+}

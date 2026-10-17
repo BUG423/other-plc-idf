@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "result": "passed",
+  "timestamp_utc": "2026-10-17T10:44:37.481168+00:00",
+  "source_revision": "1fb5ef9240473950ba0a7b0d62d0788f6db4b9f9",
+  "working_tree_dirty": true,
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "wheel": "plc_idf-0.2.0-py3-none-any.whl",
+  "wheel_sha256": "7ef10fb01bbe8b032e465f4a7eefcd1543930038f9c7daae469faa1c76f5c7b5",
+  "sdist": "plc_idf-0.2.0.tar.gz",
+  "sdist_sha256": "42d4b4f90ea7e0247d395f918a309423850f7f8b8a67c32b716cfdba8475f0a8",
+  "runtime_asset_sha256": {
+    "wsl-tools/e521_monitor.py": "159700838a7ba10ad5985aa63b6f8cf5b95b8f7ad2204fc1edfd3c96ec245162",
+    "wsl-tools/virtual_easy521.py": "668cd74b27a2a0f5026bed51e2e9b217a50ed01a5d2caa0aa6683ffc641d40c7",
+    "wsl-tools/e521_regs.py": "3aa5912562d92c90211e5228a5df1b68db6825c38638f12fda950d067c95fa23",
+    "plc/tools/autoshop_ui.ps1": "0fbe83581f0cceee5bd0e1ace2e9828210cc2da571b167495779415859b89e63"
+  },
+  "installed_paths": {
+    "module": "/tmp/plcidf-distribution-lwliybcm/venv/lib/python3.12/site-packages/plc_idf/__init__.py",
+    "root": "/tmp/plcidf-distribution-lwliybcm/user-project",
+    "monitor_dir": "/tmp/plcidf-distribution-lwliybcm/venv/lib/python3.12/site-packages/plc_idf/_resources/wsl-tools",
+    "bridge": "/tmp/plcidf-distribution-lwliybcm/venv/lib/python3.12/site-packages/plc_idf/_resources/plc/tools/autoshop_ui.ps1",
+    "bridge_windows": "\\\\wsl.localhost\\Ubuntu\\tmp\\plcidf-distribution-lwliybcm\\venv\\lib\\python3.12\\site-packages\\plc_idf\\_resources\\plc\\tools\\autoshop_ui.ps1",
+    "evidence_path": "/tmp/plcidf-distribution-lwliybcm/user-project/logs/evidence.jsonl",
+    "pymodbus": "3.16.1",
+    "pyserial": "3.5"
+  },
+  "alias_version": "plcidf 0.2.0",
+  "tested_scenarios": [
+    "steady",
+    "low_voltage",
+    "overload"
+  ],
+  "monitor_output": "[monitor] 字序: 假定默认 ABCD，未经判别（首次接真机建议先跑 --calibrate 或用已知值确认 --word-order）\n=== Easy521 监测 @ tcp://127.0.0.1:42633  unit=1  2026-10-17T10:44:36.422+00:00\n--- 字序: ABCD（大端直排，reg0=高字，项目契约）\n--- 质量: 字序来源=default；数据新鲜度/PLC扫描进度/工程匹配均未验证\n量名        寄存器       原始字(w0,w1)                   解码值  单位   范围检查\nVpu       0-1       (0x3f80,0x0002)          1.00000  pu   ok  # 节点电压标幺值\nPline     2-3       (0x3ee6,0x6678)          0.45000  pu   ok  # 馈线有功功率\nQline     4-5       (0x3e38,0x5206)          0.18000  pu   ok  # 馈线无功功率\nloading   6-7       (0x3ef5,0xc2a5)          0.48000  -    ok  # 线路负载率\nSOC       8-9       (0x3f4c,0xccca)          0.80000  -    ok  # 储能荷电状态\nPess      10-11     (0x3e99,0x99ab)          0.30000  pu   ok  # 储能实测有功功率\nQess      12-13     (0x3d4c,0xcd38)          0.05000  pu   ok  # 储能实测无功功率\nPcmd      14-15     (0x3e99,0x999a)          0.30000  pu   ok  # 储能有功指令\nQcmd      16-17     (0x3d4c,0xcccd)          0.05000  pu   ok  # 储能无功指令\nD18(mode) 18        -                              0       normal 正常\nFC03 原始字   : [16256, 2, 16102, 26232, 15928, 20998, 16117, 49829, 16204, 52426, 16025, 39339, 15692, 52536, 16025, 39322, 15692, 52429, 0]\n",
+  "evidence_events": 13,
+  "hardware_accessed": false,
+  "note": "Temporary installation paths are removed after validation."
+}

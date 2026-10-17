@@ -1,0 +1,23 @@
+{
+  "time": "2026-10-17T10:31:55.999125+00:00",
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "plc_idf.cli",
+    "build",
+    "--config",
+    "/tmp/plcidf-native-test.toml",
+    "--source",
+    "evidence/hardware-20261017/invalid-main.st",
+    "--working-project",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+    "--execute",
+    "--i-have-authorized",
+    "--compile-timeout",
+    "6",
+    "--json"
+  ],
+  "returncode": 2,
+  "stdout": "{\"schema_version\": 1, \"command\": \"build\", \"ok\": false, \"diagnostics\": [{\"code\": \"E_REFUSED\", \"message\": \"拒绝: AutoShop must show the exact expected project and MAIN document\", \"severity\": \"error\"}]}\n",
+  "stderr": ""
+}

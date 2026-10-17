@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-17T10:21:03.686410+00:00",
+  "argv": [
+    "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "editor-set",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017",
+    "-Value",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\evidence\\hardware-20261017\\invalid-main.st"
+  ],
+  "returncode": 0,
+  "stdout": "{\"title\":\"AutoShop V4.12.0.2  E:\\\\PLCProjects\\\\PLCIDF_LAB_20261017\\\\BESS_E521_DEV - [MAIN *]\",\"editor_handle\":3870228,\"source\":\"(* AutoShop MAIN/ST body. Configure this program block for a 5 ms constant cycle. *)\\n\\nfbBESS(\\n    xEnable := g_xBESS_Enable,\\n    xReset := g_xBESS_Reset,\\n    xInputValid := g_xBESS_MeasurementsValid,\\n    rVpu := g_rBESS_Vpu,\\n    rPline := g_rBESS_Pline,\\n    rQline := g_rBESS_Qline,\\n    rLoading := g_rBESS_Loading,\\n    rSOC := g_rBESS_SOC,\\n    rPess := g_rBESS_Pess,\\n    rQess := g_rBESS_Qess\\n);\\n\\ng_rBESS_Pcmd := fbBESS.rPcmd;\\ng_rBESS_Qcmd := fbBESS.rQcmd;\\ng_iBESS_Mode := fbBESS.iMode;\\ng_rBESS_SensVP := fbBESS.rSensVP;\\ng_rBESS_SensVQ := fbBESS.rSensVQ;\\ng_rBESS_InfluenceP := fbBESS.rInfluenceP;\\ng_rBESS_InfluenceQ := fbBESS.rInfluenceQ;\\ng_rBESS_Confidence := fbBESS.rConfidence;\\ng_xBESS_ControllerReady := fbBESS.xReady;\\n\\nPLCIDF_NEGATIVE_TEST := ;\\n\"}\r\n",
+  "stderr": ""
+}

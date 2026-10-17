@@ -34,6 +34,7 @@ _VALUE_FLAGS = {
     "timeout": "--timeout",
     "word_order": "--word-order",
     "jsonl": "--jsonl",
+    "project_revision": "--project-revision",
 }
 
 

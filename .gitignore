@@ -6,6 +6,8 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+build/
+dist/
 
 # ===== 本地运行产物（监测 JSONL 落盘、日志等）=====
 *.jsonl

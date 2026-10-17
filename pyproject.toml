@@ -10,9 +10,9 @@ readme = "wsl-tools/README.md"
 requires-python = ">=3.12"
 license = { text = "PolyForm-Noncommercial-1.0.0" }
 authors = [{ name = "PLC-IDF Contributors" }]
-# 零第三方 CLI 依赖：argparse/tomllib/glob/subprocess 全部标准库；
-# pymodbus 只属于被封装的 wsl-tools 脚本（已在 .venv），本包不 import 它。
-dependencies = []
+# monitor/sim 在同一 Python 环境中启动；运行依赖必须随独立安装交付。
+# simulator 使用 pymodbus 3.16 的运行时接口，先固定到实际验收的版本。
+dependencies = ["pymodbus==3.16.1", "pyserial==3.5"]
 
 [project.scripts]
 plcidf = "plc_idf.cli:main"   # 主入口
@@ -21,6 +21,7 @@ py2plc = "plc_idf.cli:main"   # 兼容别名（曾用名，行为与 plcidf 完�
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["plc_idf*"]
+exclude = ["plc_idf.tests*"]
 
 [tool.pytest.ini_options]
 # 默认只跑本包测试；wsl-tools 65 项回归用 `pytest wsl-tools/tests` 单独跑

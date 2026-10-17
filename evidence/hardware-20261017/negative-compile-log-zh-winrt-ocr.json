@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "engine": "Windows.Media.Ocr",
+  "ok": true,
+  "status": "ok",
+  "text": "湄 误 } 〖 行 号 ： 26 〗 · 误 请 查 “ 、 关 漣 享 （ 正 确 / 缺 尖 ） 、 变 里 名 、 函 名 、 条 件 语 问 、 值 语 问 （ 是 叾 常 统 计 一 (1) 濡 误 总 行 ： 213 026 / 10 / 1 7 18 ： 21 ： 08 026 / 10 / 1 7 18 ： 21 ： 08 完 成 程 序 编 译 完 成 编 译",
+  "lines": [
+    "湄 误 } 〖 行 号 ： 26 〗 · 误 请 查 “",
+    "、 关 漣 享 （ 正 确 / 缺 尖 ） 、 变 里 名 、 函 名 、 条 件 语 问 、 值 语 问 （ 是 叾 常",
+    "统 计 一 (1) 濡 误",
+    "总 行 ： 213",
+    "026 / 10 / 1 7 18 ： 21 ： 08",
+    "026 / 10 / 1 7 18 ： 21 ： 08",
+    "完 成 程 序 编 译",
+    "完 成 编 译"
+  ],
+  "language": "zh-Hans-CN",
+  "available_languages": [
+    "zh-Hans-CN"
+  ],
+  "error": null,
+  "stage": "recognize",
+  "returncode": 0,
+  "stdout": "{\"schema_version\":1,\"status\":\"ok\",\"text\":\"湄 误 } 〖 行 号 ： 26 〗 · 误 请 查 “ 、 关 漣 享 （ 正 确 / 缺 尖 ） 、 变 里 名 、 函 名 、 条 件 语 问 、 值 语 问 （ 是 叾 常 统 计 一 (1) 濡 误 总 行 ： 213 026 / 10 / 1 7 18 ： 21 ： 08 026 / 10 / 1 7 18 ： 21 ： 08 完 成 程 序 编 译 完 成 编 译\",\"lines\":[\"湄 误 } 〖 行 号 ： 26 〗 · 误 请 查 “\",\"、 关 漣 享 （ 正 确 / 缺 尖 ） 、 变 里 名 、 函 名 、 条 件 语 问 、 值 语 问 （ 是 叾 常\",\"统 计 一 (1) 濡 误\",\"总 行 ： 213\",\"026 / 10 / 1 7 18 ： 21 ： 08\",\"026 / 10 / 1 7 18 ： 21 ： 08\",\"完 成 程 序 编 译\",\"完 成 编 译\"],\"language\":\"zh-Hans-CN\",\"available_languages\":[\"zh-Hans-CN\"],\"error\":null,\"stage\":\"recognize\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "windows_path": "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\evidence\\hardware-20261017\\negative-compile.png",
+  "scale": 4,
+  "region": [
+    5,
+    918,
+    650,
+    80
+  ]
+}

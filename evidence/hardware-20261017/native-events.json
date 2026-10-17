@@ -1,0 +1,836 @@
+[
+  {
+    "ts": "2026-10-17T10:30:17.623+00:00",
+    "command": "evidence.preflight",
+    "params": {},
+    "result": {
+      "durable": true
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:17.629+00:00",
+    "command": "lease.acquire",
+    "params": {
+      "resource": "autoshop:interactive-desktop"
+    },
+    "result": {
+      "schema_version": 1,
+      "resource": "autoshop:interactive-desktop",
+      "state": "held",
+      "pid": 402072,
+      "boot_id": "451af41a-98a3-4cf3-81b5-e4628f19569c",
+      "acquired_at": 1792233017.6279247,
+      "purpose": "native-project-compile",
+      "token": "678ccbccb5ec441db50d4a45257be997",
+      "recovered": false
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:17.639+00:00",
+    "command": "lease.acquire",
+    "params": {
+      "resource": "device:usb:6-3"
+    },
+    "result": {
+      "schema_version": 1,
+      "resource": "device:usb:6-3",
+      "state": "held",
+      "pid": 402072,
+      "boot_id": "451af41a-98a3-4cf3-81b5-e4628f19569c",
+      "acquired_at": 1792233017.6373756,
+      "purpose": "native-project-compile",
+      "token": "82b58def0c314b7dbe4a91410c424742",
+      "recovered": false
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:18.760+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "b10e250b6819bac4297f22b4d2a8b3232533c820f6ee5c09b8c72c40e0dcf747",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:18.769+00:00",
+    "command": "native_autoshop.sync",
+    "params": {
+      "source": "/home/zss/workspace/py2plc/evidence/hardware-20261017/known-good-main.st"
+    },
+    "result": {
+      "schema_version": 1,
+      "ok": true,
+      "status": "verified",
+      "executed": true,
+      "changed": false,
+      "source": "/home/zss/workspace/py2plc/evidence/hardware-20261017/known-good-main.st",
+      "source_sha256": "9886635713e72c613622b423304778c0adbce95f78aeb28b5e52ae8fb1313368",
+      "source_text_sha256": "9886635713e72c613622b423304778c0adbce95f78aeb28b5e52ae8fb1313368",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "autoshop_version": "4.12.0.2"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:18.882+00:00",
+    "command": "native_autoshop.quarantine.intent",
+    "params": {
+      "project": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV",
+      "artifacts": [
+        "STTemp/MAIN.rst",
+        "STTemp/MAIN.o",
+        "Temp/stprog.o",
+        "Output.prg",
+        "Output.sdt"
+      ],
+      "destination": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/.plcidf/quarantine/ea684713b2704d22b0fef92128b530c2"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:30:18.993+00:00",
+    "command": "native_autoshop.quarantine",
+    "params": {},
+    "result": {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/.plcidf/quarantine/ea684713b2704d22b0fef92128b530c2"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:20.067+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "b10e250b6819bac4297f22b4d2a8b3232533c820f6ee5c09b8c72c40e0dcf747",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:20.074+00:00",
+    "command": "native_autoshop.intent",
+    "params": {
+      "action": "keys",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "value": "{F7}"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:30:21.668+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "keys"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:24.052+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "log"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "be67178016fb1245fe8bfc71e5b7d4a8e3d453529aa60e3a72127eee40f59549",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:25.230+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "b10e250b6819bac4297f22b4d2a8b3232533c820f6ee5c09b8c72c40e0dcf747",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:26.846+00:00",
+    "command": "native_autoshop.compile",
+    "params": {
+      "source": "evidence/hardware-20261017/known-good-main.st"
+    },
+    "result": {
+      "ok": true,
+      "status": "verified",
+      "reason": null,
+      "diagnostics": {
+        "status": "verified",
+        "error_count": 0,
+        "text": "----------------------------------  AutoShop :  工程（BESS_E521_DEV）  编译消息  ----------------------------------\n2026/10/17 18:30:21  开始编译\n2026/10/17 18:30:21  >>>开始变量地址分配\n2026/10/17 18:30:21  完成变量地址分配\n2026/10/17 18:30:21  >>>开始ECAT检查\n2026/10/17 18:30:21  当前工程轮廓轴0个;总线伺服轴0个;总线编码器轴0个;本地脉冲轴0个;本地编码器轴0个\n2026/10/17 18:30:21  完成ECAT检查\n2026/10/17 18:30:21  >>>开始本地模块检查\n2026/10/17 18:30:21  完成本地模块检查\n2026/10/17 18:30:21  >>>开始Modbus配置检查\n2026/10/17 18:30:21  完成Modbus配置检查\n2026/10/17 18:30:21  >>>开始OPCUA检查\n2026/10/17 18:30:21  完成OPCUA检查\n2026/10/17 18:30:21  >>>开始SFTP检查\n2026/10/17 18:30:21  完成SFTP检查\n2026/10/17 18:30:21  >>>开始EIP检查\n2026/10/17 18:30:21  完成EIP检查\n2026/10/17 18:30:21  >>开始WebServer配置检查\n2026/10/17 18:30:21  结束WebServer配置检查\n2026/10/17 18:30:21  >>>开始数据记录配置检查\n2026/10/17 18:30:21  完成数据记录配置检查\n2026/10/17 18:30:21  >>>开始程序文件工程密码检查\n2026/10/17 18:30:21  >>>结束程序文件工程密码检查\n2026/10/17 18:30:21  >>>开始程序编译\n2026/10/17 18:30:21  开始预处理\n信息  预处理时间: 125 ms\n2026/10/17 18:30:22  预处理结束\n开始编译...\n正在编译系统配置信息...\n正在生成UCODE文件...\nMAIN.ST\n合计符号数：79，STFunc符号数:2， 变量符号数:77， LD函数符号数：0\n统计 - (0)错误,(28)步占用/(200000)总容量,非保持变量区使用:0.25K/1920K,保持变量区使用:0.00K/128K\n总行数：212\n2026/10/17 18:30:22  完成程序编译\n2026/10/17 18:30:22  完成编译",
+        "source": "autoshop-log"
+      },
+      "build_hash": "9d019da5cff3d3dd946883ed90f5380bffd4786f7e54c97619971fd34c7c84a9"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:26.851+00:00",
+    "command": "lease.release",
+    "params": {
+      "resource": "device:usb:6-3"
+    },
+    "result": {
+      "token": "82b58def0c314b7dbe4a91410c424742"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:30:26.855+00:00",
+    "command": "lease.release",
+    "params": {
+      "resource": "autoshop:interactive-desktop"
+    },
+    "result": {
+      "token": "678ccbccb5ec441db50d4a45257be997"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:31:53.697+00:00",
+    "command": "evidence.preflight",
+    "params": {},
+    "result": {
+      "durable": true
+    }
+  },
+  {
+    "ts": "2026-10-17T10:31:53.702+00:00",
+    "command": "lease.acquire",
+    "params": {
+      "resource": "autoshop:interactive-desktop"
+    },
+    "result": {
+      "schema_version": 1,
+      "resource": "autoshop:interactive-desktop",
+      "state": "held",
+      "pid": 403154,
+      "boot_id": "451af41a-98a3-4cf3-81b5-e4628f19569c",
+      "acquired_at": 1792233113.7010064,
+      "purpose": "native-project-compile",
+      "token": "d80699e69d214ff5beb2de68dd160ce8",
+      "recovered": false
+    }
+  },
+  {
+    "ts": "2026-10-17T10:31:53.706+00:00",
+    "command": "lease.acquire",
+    "params": {
+      "resource": "device:usb:6-3"
+    },
+    "result": {
+      "schema_version": 1,
+      "resource": "device:usb:6-3",
+      "state": "held",
+      "pid": 403154,
+      "boot_id": "451af41a-98a3-4cf3-81b5-e4628f19569c",
+      "acquired_at": 1792233113.7052188,
+      "purpose": "native-project-compile",
+      "token": "9fa0950498e24f82bc724ba7d5ee493c",
+      "recovered": false
+    }
+  },
+  {
+    "ts": "2026-10-17T10:31:54.790+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "b10e250b6819bac4297f22b4d2a8b3232533c820f6ee5c09b8c72c40e0dcf747",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:31:54.797+00:00",
+    "command": "native_autoshop.intent",
+    "params": {
+      "action": "editor-set",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "value": "\\\\wsl.localhost\\Ubuntu\\tmp\\tmp656thr9b.st"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:31:55.971+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-set"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "c990409c3acea5cf629708998d7f4a22bbae6a2b86b772bb6ef9dabc3feee13f",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:31:55.977+00:00",
+    "command": "lease.release",
+    "params": {
+      "resource": "device:usb:6-3"
+    },
+    "result": {
+      "token": "9fa0950498e24f82bc724ba7d5ee493c"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:31:55.981+00:00",
+    "command": "lease.release",
+    "params": {
+      "resource": "autoshop:interactive-desktop"
+    },
+    "result": {
+      "token": "d80699e69d214ff5beb2de68dd160ce8"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:24.243+00:00",
+    "command": "evidence.preflight",
+    "params": {},
+    "result": {
+      "durable": true
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:24.247+00:00",
+    "command": "lease.acquire",
+    "params": {
+      "resource": "autoshop:interactive-desktop"
+    },
+    "result": {
+      "schema_version": 1,
+      "resource": "autoshop:interactive-desktop",
+      "state": "held",
+      "pid": 404208,
+      "boot_id": "451af41a-98a3-4cf3-81b5-e4628f19569c",
+      "acquired_at": 1792233204.246079,
+      "purpose": "native-project-compile",
+      "token": "04c77f0d30de4d3a9d4e3ca57a4044c3",
+      "recovered": false
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:24.251+00:00",
+    "command": "lease.acquire",
+    "params": {
+      "resource": "device:usb:6-3"
+    },
+    "result": {
+      "schema_version": 1,
+      "resource": "device:usb:6-3",
+      "state": "held",
+      "pid": 404208,
+      "boot_id": "451af41a-98a3-4cf3-81b5-e4628f19569c",
+      "acquired_at": 1792233204.2496161,
+      "purpose": "native-project-compile",
+      "token": "a747807a53ea474fa7210964789a9852",
+      "recovered": false
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:25.389+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "b10e250b6819bac4297f22b4d2a8b3232533c820f6ee5c09b8c72c40e0dcf747",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:25.391+00:00",
+    "command": "native_autoshop.intent",
+    "params": {
+      "action": "editor-set",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "value": "\\\\wsl.localhost\\Ubuntu\\tmp\\tmpcxrfub9v.st"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:33:26.554+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-set"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "c990409c3acea5cf629708998d7f4a22bbae6a2b86b772bb6ef9dabc3feee13f",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:27.703+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "c990409c3acea5cf629708998d7f4a22bbae6a2b86b772bb6ef9dabc3feee13f",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:27.709+00:00",
+    "command": "native_autoshop.intent",
+    "params": {
+      "action": "keys",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "value": "^s"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:33:29.289+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "keys"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:30.464+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "da68112c614c2f81c14d3385221587c6e26cec299ff836496b072a95de6e40e4",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:30.466+00:00",
+    "command": "native_autoshop.sync",
+    "params": {
+      "source": "/home/zss/workspace/py2plc/evidence/hardware-20261017/invalid-main.st"
+    },
+    "result": {
+      "schema_version": 1,
+      "ok": true,
+      "status": "verified",
+      "executed": true,
+      "changed": true,
+      "source": "/home/zss/workspace/py2plc/evidence/hardware-20261017/invalid-main.st",
+      "source_sha256": "996279aa424c14cf54abca789dc32c70dff1c733b4455cee189bae1e5331188d",
+      "source_text_sha256": "996279aa424c14cf54abca789dc32c70dff1c733b4455cee189bae1e5331188d",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "autoshop_version": "4.12.0.2"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:30.572+00:00",
+    "command": "native_autoshop.quarantine.intent",
+    "params": {
+      "project": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV",
+      "artifacts": [
+        "STTemp/MAIN.rst",
+        "STTemp/MAIN.o",
+        "Temp/stprog.o",
+        "Output.prg",
+        "Output.sdt"
+      ],
+      "destination": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/.plcidf/quarantine/0fcb0269bc4f4699aac36b7e3ba6e30e"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:33:30.671+00:00",
+    "command": "native_autoshop.quarantine",
+    "params": {},
+    "result": {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/.plcidf/quarantine/0fcb0269bc4f4699aac36b7e3ba6e30e"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:31.772+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "da68112c614c2f81c14d3385221587c6e26cec299ff836496b072a95de6e40e4",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:31.778+00:00",
+    "command": "native_autoshop.intent",
+    "params": {
+      "action": "keys",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "value": "{F7}"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:33:33.377+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "keys"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:40.713+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "log"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "d691a9436be97786aa4acda25768f5d4ae1dfc8fb9993da41de13ead674a0451",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:40.727+00:00",
+    "command": "native_autoshop.compile",
+    "params": {
+      "source": "evidence/hardware-20261017/invalid-main.st"
+    },
+    "result": {
+      "ok": false,
+      "status": "failed",
+      "reason": "vendor-reported-compile-errors",
+      "diagnostics": {
+        "status": "failed",
+        "error_count": 1,
+        "text": "----------------------------------  AutoShop :  工程（BESS_E521_DEV）  编译消息  ----------------------------------\n2026/10/17 18:33:33  开始编译\n2026/10/17 18:33:33  >>>开始变量地址分配\n2026/10/17 18:33:33  完成变量地址分配\n2026/10/17 18:33:33  >>>开始ECAT检查\n2026/10/17 18:33:33  当前工程轮廓轴0个;总线伺服轴0个;总线编码器轴0个;本地脉冲轴0个;本地编码器轴0个\n2026/10/17 18:33:33  完成ECAT检查\n2026/10/17 18:33:33  >>>开始本地模块检查\n2026/10/17 18:33:33  完成本地模块检查\n2026/10/17 18:33:33  >>>开始Modbus配置检查\n2026/10/17 18:33:33  完成Modbus配置检查\n2026/10/17 18:33:33  >>>开始OPCUA检查\n2026/10/17 18:33:33  完成OPCUA检查\n2026/10/17 18:33:33  >>>开始SFTP检查\n2026/10/17 18:33:33  完成SFTP检查\n2026/10/17 18:33:33  >>>开始EIP检查\n2026/10/17 18:33:33  完成EIP检查\n2026/10/17 18:33:33  >>开始WebServer配置检查\n2026/10/17 18:33:33  结束WebServer配置检查\n2026/10/17 18:33:33  >>>开始数据记录配置检查\n2026/10/17 18:33:33  完成数据记录配置检查\n2026/10/17 18:33:33  >>>开始程序文件工程密码检查\n2026/10/17 18:33:33  >>>结束程序文件工程密码检查\n2026/10/17 18:33:33  >>>开始程序编译\n2026/10/17 18:33:33  开始预处理\n信息  预处理时间: 125 ms\n2026/10/17 18:33:33  预处理结束\n开始编译...\n正在编译系统配置信息...\n正在生成UCODE文件...\nMAIN.ST\n错误  MAIN, 【行号:26】: 错误:请检查“;”、关键字（正确/缺失）、变量名、函数名、条件语句、赋值语句（是否常量）、参数个数等完整性、CASE语句标签是否存在、FOR语句变量类型是否匹配\n\n统计 - (1)错误\n总行数：213\n2026/10/17 18:33:34  完成程序编译\n2026/10/17 18:33:34  完成编译",
+        "source": "autoshop-log"
+      },
+      "build_hash": null
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:40.733+00:00",
+    "command": "lease.release",
+    "params": {
+      "resource": "device:usb:6-3"
+    },
+    "result": {
+      "token": "a747807a53ea474fa7210964789a9852"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:40.736+00:00",
+    "command": "lease.release",
+    "params": {
+      "resource": "autoshop:interactive-desktop"
+    },
+    "result": {
+      "token": "04c77f0d30de4d3a9d4e3ca57a4044c3"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:40.837+00:00",
+    "command": "evidence.preflight",
+    "params": {},
+    "result": {
+      "durable": true
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:40.843+00:00",
+    "command": "lease.acquire",
+    "params": {
+      "resource": "autoshop:interactive-desktop"
+    },
+    "result": {
+      "schema_version": 1,
+      "resource": "autoshop:interactive-desktop",
+      "state": "held",
+      "pid": 404632,
+      "boot_id": "451af41a-98a3-4cf3-81b5-e4628f19569c",
+      "acquired_at": 1792233220.841722,
+      "purpose": "native-project-compile",
+      "token": "d395d2cb30124f73b917d127798b4d21",
+      "recovered": false
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:40.847+00:00",
+    "command": "lease.acquire",
+    "params": {
+      "resource": "device:usb:6-3"
+    },
+    "result": {
+      "schema_version": 1,
+      "resource": "device:usb:6-3",
+      "state": "held",
+      "pid": 404632,
+      "boot_id": "451af41a-98a3-4cf3-81b5-e4628f19569c",
+      "acquired_at": 1792233220.8457694,
+      "purpose": "native-project-compile",
+      "token": "03cb8688d44445ac82a5bba24e586d79",
+      "recovered": false
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:41.896+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "da68112c614c2f81c14d3385221587c6e26cec299ff836496b072a95de6e40e4",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:41.903+00:00",
+    "command": "native_autoshop.intent",
+    "params": {
+      "action": "editor-set",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "value": "\\\\wsl.localhost\\Ubuntu\\tmp\\tmpvkq1i6sf.st"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:33:43.038+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-set"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "1c2d719f62fe2b582e4306e81d6b4744eb4cb5eec57dd2c6a4bdf176d426516b",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:44.104+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "1c2d719f62fe2b582e4306e81d6b4744eb4cb5eec57dd2c6a4bdf176d426516b",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:44.107+00:00",
+    "command": "native_autoshop.intent",
+    "params": {
+      "action": "keys",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "value": "^s"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:33:45.656+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "keys"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:46.783+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "b10e250b6819bac4297f22b4d2a8b3232533c820f6ee5c09b8c72c40e0dcf747",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:46.785+00:00",
+    "command": "native_autoshop.sync",
+    "params": {
+      "source": "/home/zss/workspace/py2plc/evidence/hardware-20261017/known-good-main.st"
+    },
+    "result": {
+      "schema_version": 1,
+      "ok": true,
+      "status": "verified",
+      "executed": true,
+      "changed": true,
+      "source": "/home/zss/workspace/py2plc/evidence/hardware-20261017/known-good-main.st",
+      "source_sha256": "9886635713e72c613622b423304778c0adbce95f78aeb28b5e52ae8fb1313368",
+      "source_text_sha256": "9886635713e72c613622b423304778c0adbce95f78aeb28b5e52ae8fb1313368",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "autoshop_version": "4.12.0.2"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:46.885+00:00",
+    "command": "native_autoshop.quarantine.intent",
+    "params": {
+      "project": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV",
+      "artifacts": [
+        "STTemp/MAIN.rst",
+        "STTemp/MAIN.o",
+        "Temp/stprog.o",
+        "Output.prg",
+        "Output.sdt"
+      ],
+      "destination": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/.plcidf/quarantine/0e36af40963a441b82368ebc27a89ef3"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:33:46.949+00:00",
+    "command": "native_autoshop.quarantine",
+    "params": {},
+    "result": {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/.plcidf/quarantine/0e36af40963a441b82368ebc27a89ef3"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:48.047+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "b10e250b6819bac4297f22b4d2a8b3232533c820f6ee5c09b8c72c40e0dcf747",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:48.050+00:00",
+    "command": "native_autoshop.intent",
+    "params": {
+      "action": "keys",
+      "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "value": "{F7}"
+    },
+    "result": {}
+  },
+  {
+    "ts": "2026-10-17T10:33:49.620+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "keys"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:52.111+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "log"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "801e7fea6ca61c7bf97568850d1498bc0446168ad78d994f8aff150ec4907eb7",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:53.243+00:00",
+    "command": "native_autoshop.action",
+    "params": {
+      "action": "editor-read"
+    },
+    "result": {
+      "returncode": 0,
+      "timed_out": false,
+      "stdout_sha256": "b10e250b6819bac4297f22b4d2a8b3232533c820f6ee5c09b8c72c40e0dcf747",
+      "stderr": ""
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:54.817+00:00",
+    "command": "native_autoshop.compile",
+    "params": {
+      "source": "evidence/hardware-20261017/known-good-main.st"
+    },
+    "result": {
+      "ok": true,
+      "status": "verified",
+      "reason": null,
+      "diagnostics": {
+        "status": "verified",
+        "error_count": 0,
+        "text": "----------------------------------  AutoShop :  工程（BESS_E521_DEV）  编译消息  ----------------------------------\n2026/10/17 18:33:49  开始编译\n2026/10/17 18:33:49  >>>开始变量地址分配\n2026/10/17 18:33:49  完成变量地址分配\n2026/10/17 18:33:49  >>>开始ECAT检查\n2026/10/17 18:33:49  当前工程轮廓轴0个;总线伺服轴0个;总线编码器轴0个;本地脉冲轴0个;本地编码器轴0个\n2026/10/17 18:33:49  完成ECAT检查\n2026/10/17 18:33:49  >>>开始本地模块检查\n2026/10/17 18:33:49  完成本地模块检查\n2026/10/17 18:33:49  >>>开始Modbus配置检查\n2026/10/17 18:33:49  完成Modbus配置检查\n2026/10/17 18:33:49  >>>开始OPCUA检查\n2026/10/17 18:33:49  完成OPCUA检查\n2026/10/17 18:33:49  >>>开始SFTP检查\n2026/10/17 18:33:49  完成SFTP检查\n2026/10/17 18:33:49  >>>开始EIP检查\n2026/10/17 18:33:49  完成EIP检查\n2026/10/17 18:33:49  >>开始WebServer配置检查\n2026/10/17 18:33:49  结束WebServer配置检查\n2026/10/17 18:33:49  >>>开始数据记录配置检查\n2026/10/17 18:33:49  完成数据记录配置检查\n2026/10/17 18:33:49  >>>开始程序文件工程密码检查\n2026/10/17 18:33:49  >>>结束程序文件工程密码检查\n2026/10/17 18:33:49  >>>开始程序编译\n2026/10/17 18:33:49  开始预处理\n信息  预处理时间: 109 ms\n2026/10/17 18:33:50  预处理结束\n开始编译...\n正在编译系统配置信息...\n正在生成UCODE文件...\nMAIN.ST\nSBR_001.ST\n_CALL_FB_00000000.ST\n合计符号数：79，STFunc符号数:2， 变量符号数:77， LD函数符号数：0\n统计 - (0)错误,(28)步占用/(200000)总容量,非保持变量区使用:0.25K/1920K,保持变量区使用:0.00K/128K\n总行数：212\n2026/10/17 18:33:50  完成程序编译\n2026/10/17 18:33:50  完成编译",
+        "source": "autoshop-log"
+      },
+      "build_hash": "79d91b93b15692c2a6c69826d35743115f53a3aceb7092485a1429410b09951a"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:54.823+00:00",
+    "command": "lease.release",
+    "params": {
+      "resource": "device:usb:6-3"
+    },
+    "result": {
+      "token": "03cb8688d44445ac82a5bba24e586d79"
+    }
+  },
+  {
+    "ts": "2026-10-17T10:33:54.827+00:00",
+    "command": "lease.release",
+    "params": {
+      "resource": "autoshop:interactive-desktop"
+    },
+    "result": {
+      "token": "d395d2cb30124f73b917d127798b4d21"
+    }
+  }
+]

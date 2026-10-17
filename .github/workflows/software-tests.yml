@@ -27,3 +27,5 @@ jobs:
         run: python -m pytest wsl-tools/tests -q
       - name: GitHub progress renderer tests
         run: python -m unittest discover -s tools/tests -v
+      - name: Build sdist and install wheel outside checkout
+        run: python tools/check_distribution.py --report /tmp/plcidf-distribution.json

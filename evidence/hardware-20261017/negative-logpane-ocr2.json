@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "engine": "Windows.Media.Ocr",
+  "ok": true,
+  "status": "ok",
+  "text": "误 hIÅIN, （ 行 号 ： 26 〗 ： 误 ． 清 查 “ 、 关 享 〈 正 确 / 缺 尖 ） 、 变 里 名 、 函 名 、 条 件 语 问 、 值 语 问 〈 是 叾 常 里 ） 、 参 个 等 亮 整 性 、 c 语 问 标 签 是 叾 存 在 、 F 语 问 变 里 类 型 是 叾 匹 统 计 一 (1) 误 总 行 ： 213 2026 / 10 / 1 7 18 ' 21 ： 08 2 囗 26 / 10 / 17 18 21 :08 完 成 程 序 编 译 完 成 编 译",
+  "lines": [
+    "误 hIÅIN, （ 行 号 ： 26 〗 ： 误 ． 清 查 “",
+    "、 关 享 〈 正 确 / 缺 尖 ） 、 变 里 名 、 函 名 、 条 件 语 问 、 值 语 问 〈 是 叾 常 里 ） 、 参 个 等 亮 整 性 、 c 语 问 标 签 是 叾 存 在 、 F 语 问 变 里 类 型 是 叾 匹",
+    "统 计 一 (1) 误",
+    "总 行 ： 213",
+    "2026 / 10 / 1 7 18 ' 21 ： 08",
+    "2 囗 26 / 10 / 17 18 21 :08",
+    "完 成 程 序 编 译",
+    "完 成 编 译"
+  ],
+  "language": "zh-Hans-CN",
+  "available_languages": [
+    "zh-Hans-CN"
+  ],
+  "error": null,
+  "stage": "recognize",
+  "returncode": 0,
+  "stdout": "{\"schema_version\":1,\"status\":\"ok\",\"text\":\"误 hIÅIN, （ 行 号 ： 26 〗 ： 误 ． 清 查 “ 、 关 享 〈 正 确 / 缺 尖 ） 、 变 里 名 、 函 名 、 条 件 语 问 、 值 语 问 〈 是 叾 常 里 ） 、 参 个 等 亮 整 性 、 c 语 问 标 签 是 叾 存 在 、 F 语 问 变 里 类 型 是 叾 匹 统 计 一 (1) 误 总 行 ： 213 2026 / 10 / 1 7 18 \\u0027 21 ： 08 2 囗 26 / 10 / 17 18 21 :08 完 成 程 序 编 译 完 成 编 译\",\"lines\":[\"误 hIÅIN, （ 行 号 ： 26 〗 ： 误 ． 清 查 “\",\"、 关 享 〈 正 确 / 缺 尖 ） 、 变 里 名 、 函 名 、 条 件 语 问 、 值 语 问 〈 是 叾 常 里 ） 、 参 个 等 亮 整 性 、 c 语 问 标 签 是 叾 存 在 、 F 语 问 变 里 类 型 是 叾 匹\",\"统 计 一 (1) 误\",\"总 行 ： 213\",\"2026 / 10 / 1 7 18 \\u0027 21 ： 08\",\"2 囗 26 / 10 / 17 18 21 :08\",\"完 成 程 序 编 译\",\"完 成 编 译\"],\"language\":\"zh-Hans-CN\",\"available_languages\":[\"zh-Hans-CN\"],\"error\":null,\"stage\":\"recognize\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "windows_path": "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\evidence\\hardware-20261017\\negative-logpane.png",
+  "scale": 2,
+  "region": null
+}

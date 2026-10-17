@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "status": "preview",
+  "executed": false,
+  "changed": false,
+  "diff": "",
+  "source": "/home/zss/workspace/py2plc/plc/easy521/MAIN_5ms_body.st",
+  "source_sha256": "9886635713e72c613622b423304778c0adbce95f78aeb28b5e52ae8fb1313368",
+  "source_text_sha256": "9886635713e72c613622b423304778c0adbce95f78aeb28b5e52ae8fb1313368",
+  "project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+  "autoshop_version": "4.12.0.2",
+  "command": "sync"
+}

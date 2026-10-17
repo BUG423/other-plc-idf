@@ -4,12 +4,12 @@
 [![Platform](https://img.shields.io/badge/Platform-WSL2%20%2B%20usbipd--win-0078D6?style=flat-square&logo=linux&logoColor=white)](https://learn.microsoft.com/windows/wsl/about)
 [![Protocol](https://img.shields.io/badge/Protocol-Modbus%20TCP%20%2F%20RTU-orange?style=flat-square)](https://www.modbus.org/)
 [![Target PLC](https://img.shields.io/badge/Target%20PLC-Inovance%20Easy521-9370DB?style=flat-square)](https://www.inovance.com/)
-[![Software tests](https://img.shields.io/badge/Software%20Tests-160%20passed-brightgreen?style=flat-square)](docs/reviews/IMPLEMENTATION_AUDIT_2026-10-17.md)
+[![Software tests](https://img.shields.io/badge/Software%20Tests-346%20passed-brightgreen?style=flat-square)](docs/management/LIVE_VALIDATION_2026-10-17.md)
 [![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm--Noncommercial--1.0.0-red.svg)](https://polyformproject.org/licenses/noncommercial/1.0.0)
 
-> **PLC-IDF** 面向 AI 与终端开发，对标 ESP-IDF 的项目、构建、下载和监测工作流。当前为汇川 Easy521 工具链原型：监测软件闭环可用，Windows AutoShop 编译/下载调用链尚缺真实结果校验。
+> **PLC-IDF** 面向 AI 与终端开发，对标 ESP-IDF 的项目、构建、下载和监测工作流。当前为汇川 Easy521 工具链原型：文本工程与监测软件链可用，已有 Windows 工程的 MAIN 同步及编译通过正负实测，下载和真机运行仍待验收。
 
-2026-10-17 基线：[实施计划与验收](docs/management/PLAN.md) · [进展](docs/management/PROGRESS.md) · [实现审计](docs/reviews/IMPLEMENTATION_AUDIT_2026-10-17.md) · [底层固件可行性复核](docs/research/firmware/03-feasibility-assessment-2026-10-17.md)。下文历史环境描述不代表本次已重新完成硬件验收。
+2026-10-17 最新实测：[现场验证报告](docs/management/LIVE_VALIDATION_2026-10-17.md) · [实施计划与验收](docs/management/PLAN.md) · [进展](docs/management/PROGRESS.md) · [基线实现审计](docs/reviews/IMPLEMENTATION_AUDIT_2026-10-17.md) · [底层固件复核](docs/research/firmware/03-feasibility-assessment-2026-10-17.md)。已通过 USB 确认 Easy521/6.11.0.1，并在独立 Windows 工程副本完成 CLI 正负编译验证；网口物理链路仍断开，下载及运行未验收。
 
 ---
 
@@ -18,8 +18,9 @@
 **PLC-IDF** 的目标是在 WSL 内完成「文本工程 → 编译 → 应用下载 → 运行反馈」。先适配 Windows AutoShop 桥接，再按证据评估原生后端。目标设备为汇川 Inovance **Easy521-0808TN**；历史固件记录为 6.11.0.1，已有 AutoShop 4.11/4.12 适配记录，当前版本须在联调时核实。现有 USB 通道可供 Windows 厂商工具使用，真机网口监测仍待验收。
 
 - 🏷️ **曾用名**：项目曾用名 **py2plc**，已更名 **PLC-IDF**（包名 `plc_idf`，命令名 `plcidf`）；`py2plc` 命令保留为等价别名。历史档案（`docs/wsl-feasibility/`、`wsl-probe/`、`wsl-tools/` 等）沿用原名，保留原貌。
-- ⚙️ **CLI 状态**：已有 `build / flash / monitor / sim / devices` 五个子命令。`monitor/sim` 软件闭环已测；`devices` 提供只读枚举。`build/flash` 默认 dry-run，配置布尔 `bridge.enabled=true` 与当次旗标共同允许执行调用链，结果校验未实现时返回未核验和非零退出码。`init/check/sync/doctor` 等属于计划。当前使用源码树 editable 安装；独立 wheel 尚缺资源和依赖封装。
-- 🧪 **验证边界**：160 项软件回归通过，1 项真实 USB 枚举测试排除；场景播放器不执行用户 ST，Modbus 数采也不等同于断点/单步或完整在线调试。
+- ⚙️ **CLI 状态**：已有 `new / init / check / doctor / sync / build / flash / monitor / sim / devices`。`sync` 仅对已有原生工程 MAIN 正文做 diff/读回同步；`build --source FILE --working-project WINDOWS_PATH` 校验新产物、ARM ELF、源文本及厂商 0 错误日志。现场正负测试分别返回 verified/0、failed/1。普通 `build/flash` 仍保留旧 GUI 计划，结果校验不全时不会报成功；下载未完成设备端验收。
+- 📦 **分发**：独立 wheel 已包含运行脚本、寄存器契约和 Windows 桥接脚本，自动安装必要依赖；已验证从 sdist 构建、在新 venv 与仓库外运行三个软件场景，见 [分发说明](docs/management/DISTRIBUTION.md)。
+- 🧪 **验证边界**：软件 CI 与真机验收分开；场景播放器不执行用户 ST，Modbus 数采也不等同于断点/单步。校准无法判别时退出 3，JSONL 标明字序来源、原始值、质量与尚未验证的程序匹配/扫描进度。
 
 ---
 
@@ -27,20 +28,20 @@
 
 ```mermaid
 flowchart LR
-    DEV["👨‍💻 开发者<br/>WSL2 终端"] --> CLI["⚡ plcidf CLI<br/>build / flash / monitor / sim / devices"]
+    DEV["👨‍💻 开发者<br/>WSL2 终端"] --> CLI["⚡ plcidf CLI<br/>new / check / doctor / sync / build<br/>flash / monitor / sim / devices"]
 
     CLI --> SIM["🧪 虚拟 Easy521 从站<br/>127.0.0.1:1502"]
     CLI --> MON["🔍 监测链 · ✅ 软件闭环<br/>只读 monitor + REAL32 字序校准"]
 
     subgraph BRIDGE["桥式后端（Windows）"]
-        BUILD["🏗️ 编译链 · GUI 编排已实现<br/>⚠️ 编译结果校验待实现"]
+        BUILD["🏗️ build --source · MAIN 同步与新产物校验<br/>✅ AutoShop 4.12 正负测试已通过"]
         FLASH["📦 下载链 · 厂商路径有历史人工证据<br/>⚠️ CLI 下载结果校验待实现"]
         AUTO["🪟 AutoShop<br/>GUI 驱动（autoshop_ui.ps1）"]
         BUILD --> AUTO
         FLASH --> AUTO
     end
 
-    USB["🔌 USB 传输层 · ✅ usbipd 打通<br/>cdc_acm 认领 /dev/ttyACM0"]
+    USB["🔌 USB 传输层<br/>当前由 Windows 厂商驱动使用<br/>历史已验证 usbipd attach"]
     HW["🎛️ 汇川 Easy521-0808TN<br/>Modbus TCP 502 / USB CDC"]
 
     MON --> HW
@@ -62,10 +63,12 @@ flowchart LR
 
 | 能力链 | 当前状态 | 路线 |
 | :--- | :--- | :--- |
-| **监测链** | ✅ 虚拟从站、只读数采及字序判别软件测试通过；15 组 USB RTU 参数下均无应答，尚无可用 USB RTU 监测证据；⏳ 真机网口待验收 | **T08** 网口已知值对照、字序和质量验证；当前无法判别时仍回落 ABCD，不能将它作为可信真机标定 |
-| **编译链** | ⚠️ 已有 Windows GUI 调用链；未实现真实编译诊断、产物与源版本校验；目前未验证 Easy521 原生 Linux 编译器 | **T04–T06** 文本工程、同步、正负编译验收；H3U DLL 研究线索不能证明 Easy521/LiteST 已可用 |
+| **监测链** | ✅ 虚拟从站、只读数采及字序判别软件测试通过；15 组历史 USB RTU 参数下均无应答，尚无可用 USB RTU 监测证据；⏳ 真机网口待验收 | **T08** 网口已知值对照、字序和质量验证；请求校准但无法判别时退出 3，不回落默认值 |
+| **编译链** | ✅ 已有工程 MAIN 正文同步、完整日志与新产物校验，CLI 正负测试通过；当前仍依赖 Windows，尚无自动变量/原生工程创建 | **T06** 继续补变量/任务同步及版本覆盖；H3U DLL 线索不能证明 Easy521/LiteST 原生编译已可用 |
 | **应用下载链** | 历史 AutoShop 人工下载有成功及程序一致性证据；当前 CLI 未实现设备端结果校验，授权后调用链仍可能产生实际下载 | **T07/T09** 先做产物/目标绑定、设备互斥，再做现场下载与一致性验收；**R01** 独立研究原生下载 |
 | **USB 传输层** | ✅ usbipd 挂载打通，内核 cdc_acm 认领 `/dev/ttyACM0`（2026-10-16 实测） | 维持 usbipd attach/detach 工作流（与 AutoShop 使用互斥） |
+
+本轮真实网卡状态为 `Disconnected / 0 bps`，设备在 Windows 侧；不把旧 USB attach 记录或虚拟监测当作当前网口实测。当前编译工作副本与复现命令见现场报告。
 
 当前任务顺序与验收以 [实施计划](docs/management/PLAN.md) 为准。旧 P1–P5 编号保留在 [历史可行性档案](docs/wsl-feasibility/00-synthesis-and-roadmap.md)，其中过强结论的勘误见最新研究报告。
 
@@ -89,7 +92,7 @@ python3.12 -m venv .venv
 ```bash
 .venv/bin/python wsl-tools/virtual_easy521.py --scenario low_voltage   # ① 起虚拟 Easy521 从站（127.0.0.1:1502）
 .venv/bin/python wsl-tools/e521_monitor.py --once --calibrate --with-bits   # ② 另开终端：只读监测 + REAL32 字序自动判别
-.venv/bin/python -m pytest wsl-tools/tests/ -q                          # ③（可选）65 项测试
+.venv/bin/python -m pytest wsl-tools/tests/ -q                          # ③（可选）监测软件测试
 ```
 
 ### CLI 一键闭环（零硬件）
@@ -101,6 +104,16 @@ plcidf devices                              # USB 设备在线状态表
 plcidf monitor --once --calibrate           # 只读监测（封装 wsl-tools/e521_monitor.py）
 plcidf --help                               # 全部子命令与参数
 ```
+
+新增文本工程、检查与诊断：
+
+```bash
+plcidf new /tmp/my_plc_project --json
+plcidf check /tmp/my_plc_project --json
+plcidf doctor --json
+```
+
+脚手架只生成 ST/变量/映射文本与导入表，不直接生成厂商 `.hcp`。已有 Windows 工程的 MAIN 同步与真实编译命令见 [现场复现](docs/management/LIVE_VALIDATION_2026-10-17.md)。
 
 配置可选：`cp .plcidf.toml.example .plcidf.toml` 后按需改；所有键都有内置默认值（`bridge.enabled` 默认 false）。也可用 `--config FILE` 或环境变量 `PLCIDF_CONFIG` 指定。
 

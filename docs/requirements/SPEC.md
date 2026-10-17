@@ -1,5 +1,7 @@
 # PLC-IDF 需求规格说明书（SPEC）
 
+> **后续实装更新（2026-10-17）**：现已增加 `new/init/check/doctor` 及已有工程 MAIN 的 `sync`、`build --source`；Windows 4.12 正负编译与独立 wheel 通过实测，见 [现场验证](../management/LIVE_VALIDATION_2026-10-17.md)。下文“五命令”等边界描述为首轮审计快照。完整变量/任务同步、真机网口、下载/运行及全部目标 API 仍未完成，不能将本草案视为当前功能清单。
+
 | 项 | 值 |
 |---|---|
 | 文档编号 | PLC-IDF-SPEC-001（原 py2plc-SPEC-001，随 v0.2 更名） |

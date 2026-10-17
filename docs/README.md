@@ -17,6 +17,8 @@
 | 架构 | [architecture/ARCHITECTURE.md](architecture/ARCHITECTURE.md) | v0.2 设计草案，含实现边界说明 | 后端分层与接口设计；签名草案不等同于现有 API |
 | 实施与验收 | [management/PLAN.md](management/PLAN.md) | 2026-10-17 执行基线 | 第一性原理需求、任务依赖、里程碑、分工与完成定义 |
 | 进展与任务 | [management/PROGRESS.md](management/PROGRESS.md) / [tasks.json](management/tasks.json) | 随里程碑更新 | GitHub 同步、测试结果、未完成与现场依赖 |
+| 最新现场验证 | [management/LIVE_VALIDATION_2026-10-17.md](management/LIVE_VALIDATION_2026-10-17.md) | 2026-10-17 | USB 真机识别、CLI 正负编译、网口断开及下载/运行待验收 |
+| 独立分发 | [management/DISTRIBUTION.md](management/DISTRIBUTION.md) | 已实际验收 | sdist、wheel、运行依赖与仓库外安装验证 |
 | 架构审计 | [reviews/ARCHITECTURE_REVIEW_2026-10-17.md](reviews/ARCHITECTURE_REVIEW_2026-10-17.md) | 2026-10-17 | 需求/实现追溯与优先级 |
 | 实现审计 | [reviews/IMPLEMENTATION_AUDIT_2026-10-17.md](reviews/IMPLEMENTATION_AUDIT_2026-10-17.md) | 2026-10-17 | 真实软件能力、P0 修复、回归及独立打包缺口 |
 | 协议与固件研究 | [research/README.md](research/README.md) | 公开/离线研究已有结果；真机抓包未启动 | 四路线比较、ARM ELF 证据与历史结论勘误 |

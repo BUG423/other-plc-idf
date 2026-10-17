@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-10-17T10:22:11.045016+00:00",
+  "argv": [
+    "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "inspect"
+  ],
+  "returncode": 0,
+  "stdout": "PID=21248|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [MAIN]\r\nControlType.Window|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [MAIN]|Afx:00400000:8:00010003:00000000:009B0C75|396572|True|-16,-16,3872,2096\r\nControlType.Pane||SysTreeView32|330656|True|2,278,396,1476\r\nControlType.Pane||Button|724032|True|6,1984,26,26\r\nControlType.Pane||Button|330808|True|38,1984,26,26\r\nControlType.Pane||Button|330836|True|70,1984,26,26\r\nControlType.Pane||Button|331010|True|102,1984,26,26\r\nControlType.Pane||ListBox|527526|True|6,1824,3828,154\r\nControlType.Window|MAIN|Afx:00400000:b:00010003:00000006:000D0864|5181504|True|398,216,2944,1550\r\nControlType.Pane|<ST editor>|Scintilla|3870228|True|432,282,2890,1464\r\nControlType.Pane||Button|593072|False|410,234,30,30\r\nControlType.Pane||Button|461976|False|3288,234,30,30\r\nControlType.Pane|本地|Button|4002092|False|1878,172,84,40\r\nControlType.Pane|未登录::USB|Button|987198|False|1974,172,164,40\r\nControlType.Pane|变量共享:|Button|2887626|False|2286,112,152,40\r\nControlType.Pane|未连接|Button|1970186|False|2450,112,90,40\r\nControlType.Pane|智能问答|Static|590028|True|3364,292,166,32\r\nControlType.Pane||Button|330700|True|3526,382,344,50\r\nControlType.Pane||Button|265096|True|3374,362,120,92\r\nControlType.Pane|AI问答|Button|460774|True|3374,504,144,50\r\nControlType.Pane|指令指南|Button|330878|True|3538,504,140,50\r\nControlType.Pane|智能问答帮你快速上手|Button|396048|True|3374,568,384,50\r\nControlType.Pane|AI编程|Button|396790|True|3374,654,144,50\r\nControlType.Pane|一键同步|Button|396796|True|3538,654,140,50\r\nControlType.Pane|一拖即用实现高效开发|Button|396374|True|3374,718,384,50\r\nControlType.Pane||Button|658734|True|3374,788,248,60\r\nControlType.Pane||Button|724166|True|3374,864,398,60\r\nControlType.Pane||Button|396868|True|3374,940,398,60\r\nControlType.Pane||Button|396768|True|3374,1016,398,60\r\nControlType.Pane||Button|396336|True|3638,792,134,56\r\nControlType.Pane||Button|331188|False|3562,1636,200,40\r\nControlType.Pane||RichEdit20W|527542|True|3368,1596,434,36\r\nControlType.Pane||Button|396646|True|3772,1636,40,40\r\nControlType.Pane||Button|396594|True|3740,284,48,48\r\n",
+  "stderr": ""
+}

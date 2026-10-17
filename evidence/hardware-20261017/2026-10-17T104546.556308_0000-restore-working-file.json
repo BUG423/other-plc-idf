@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-17T10:45:46.556308+00:00",
+  "argv": [
+    "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "file",
+    "-Value",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV\\BESS_E521_DEV.hcp"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": ""
+}
