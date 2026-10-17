@@ -1,4 +1,4 @@
-"""backends/bridge_autoshop.py — 桥式 AutoShop 后端（build/flash 完整管线）。
+"""backends/bridge_autoshop.py — 桥式 AutoShop 调用链（必需结果校验尚未实现）。
 
 桥式思路：WSL 侧不做任何 AutoShop 协议逆向，而是驱动 Windows 侧已装好的
 AutoShop GUI 完成"打开工程 -> 编译 -> 下载"，工具是本仓库已验证过的
@@ -12,6 +12,7 @@ dry-run（默认）：
 真执行（双因子门禁锁住，见 safety.check_bridge_authorization）：
     配置 bridge.enabled=true 且命令行 --i-have-authorized，二者缺一即拒。
     执行路径已写好：逐步 run_command（超时+重试）+ 逐步证据日志 + 失败即停。
+    调用链全部执行后仍为 unverified，不能据进程退出码判定编译/下载成功。
     菜单 ID / 对话框文案属于现场校准点（P2），脚本里显式标注。
 """
 
@@ -93,6 +94,15 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
                 "<EXE>", self.cfg.bridge["autoshop_exe"]),
         ]
 
+    @staticmethod
+    def _step_retryable(step: PlanStep) -> bool:
+        """只重试只读 GUI 查询；按键、确认、打开工程及启动不得自动重放。"""
+        if "-Action" not in step.command:
+            return False
+        action_index = step.command.index("-Action") + 1
+        return (action_index < len(step.command)
+                and step.command[action_index] in {"inspect", "menus", "log", "diagnostics"})
+
     # ---------- 调用链规划 ----------
 
     def _plan_open_project(self, request: OperationRequest, start: int) -> list[PlanStep]:
@@ -108,9 +118,9 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
             PlanStep(start + 2, "在文件对话框填入工程路径并确认", "interop",
                      self._powershell_argv("file", hcp),
                      "file 动作：向 #32770 对话框 Edit 填路径并点击 打开"),
-            PlanStep(start + 3, "校验工程已加载（主窗口标题含工程名）", "interop",
+            PlanStep(start + 3, "读取工程标题（工程匹配校验尚未实现）", "interop",
                      self._powershell_argv("inspect"),
-                     f"inspect 动作：期望标题含 {request.project}"),
+                     f"inspect 动作：采集标题；期望含 {request.project}，尚未自动判定"),
         ]
 
     def _plan_verify_device(self, start: int) -> PlanStep:
@@ -125,9 +135,9 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
             PlanStep(start, "读取 AutoShop 编译/下载日志面板", "interop",
                      self._powershell_argv("log"),
                      "log 动作：抓取结果 ListBox（必要时回退 screenshot）"),
-            PlanStep(start + 1, "读取错误诊断列表", "interop",
+            PlanStep(start + 1, "采集 AutoShop 进程/窗口环境诊断", "interop",
                      self._powershell_argv("diagnostics"),
-                     "diagnostics 动作：空列表=无错误"),
+                     "diagnostics 动作：采集 PID/会话/前台/DPI；不判定编译错误"),
         ]
 
 
@@ -156,10 +166,11 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
                                   f"accept 动作：等待含“{self.cfg.bridge['accept_compile_text']}”"
                                   "的成功弹窗并点确定（P2 现场校准点）"))
             idx = 11
-        # 4.12+ 无编译成功弹窗：跳过 accept，由日志面板（log/diagnostics）+产物校验判定
+        # 4.12+ 无编译成功弹窗：跳过 accept；日志采集后仍待实现产物/结果核验。
         steps += [*self._plan_read_logs(idx),
                   PlanStep(idx + 2, "校验编译产物", "verify", [],
-                           "预期产物：编译输出目录与工程文件更新时间",
+                           "必需校验尚未实现：编译输出目录与工程文件更新时间；"
+                           "执行调用链后仍返回未核验，不报告编译成功",
                            expected_artifacts=(
                                win_dir + r"\Compile",
                                hcp_mtime_artifact(request),
@@ -190,7 +201,8 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
                      "下载走 USB，实测数秒完成；等 10s 再取证据"),
             *self._plan_read_logs(12),
             PlanStep(14, "下载后复核", "verify", [],
-                     "复核 PLC 在线与运行状态（只读监测链路复核寄存器）",
+                     "必需校验尚未实现：PLC 在线与运行状态及下载结果；"
+                     "执行调用链后仍返回未核验，不报告下载成功",
                      expected_artifacts=(
                          "logs/evidence.jsonl（本次下载全链证据）",
                      )),
@@ -248,6 +260,7 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
         steps = self.plan_build(request) if action == "build" else self.plan_flash(request)
         policy = RetryPolicy.from_config(self.cfg)
         executed: list[dict] = []
+        unverified: list[dict] = []
         for step in steps:
             if step.kind == "verify":
                 if step.command:  # 带命令的 verify 步 = usbipd/串口在线校验（只读）
@@ -259,14 +272,28 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
                                              steps=steps)
                     self._evidence_step(action, step, result, ok=True)
                     executed.append({"step": step.index, "ok": True})
-                continue  # 空命令 verify 步 = 产物核对说明，无动作
+                else:
+                    missing = {
+                        "step": step.index, "title": step.title,
+                        "status": "unverified",
+                        "reason": "required_verification_not_implemented",
+                        "expected_artifacts": list(step.expected_artifacts),
+                    }
+                    unverified.append(missing)
+                    if self.evidence:
+                        self.evidence.log(
+                            f"bridge.{action}.verification",
+                            params={"step": step.index, "title": step.title},
+                            result={"ok": False, **missing})
+                continue
             if step.kind == "phase":
                 continue  # 渲染用阶段分隔，无动作
             # interop 步：GUI 动作超时上限单独放宽
             step_policy = RetryPolicy(policy.timeout_s if policy.timeout_s > GUI_STEP_TIMEOUT_S
                                       else GUI_STEP_TIMEOUT_S,
                                       policy.retries, policy.backoff_s)
-            result = run_command(step.command, policy=step_policy)
+            result = run_command(step.command, policy=step_policy,
+                                 retryable=self._step_retryable(step))
             ok = result.ok
             self._evidence_step(action, step, result, ok=ok)
             executed.append({"step": step.index, "ok": ok})
@@ -276,12 +303,21 @@ class BridgeAutoshopBackend(BuildBackend, FlashBackend):
                     f"第 {step.index} 步失败: {step.title}（{result.summary(80)}）",
                     outputs={"failed_step": step.index, "executed": executed},
                     steps=steps)
+        outputs = {"executed": executed, "command_chain_completed": True,
+                   "verification_status": "unverified" if unverified else "verified",
+                   "unverified_steps": unverified}
         if self.evidence:
             self.evidence.log(f"bridge.{action}.done",
                               params={"project": request.project},
-                              result={"ok": True, "steps": executed})
+                              result={"ok": not unverified, "steps": executed, **outputs})
+        if unverified:
+            return BackendResult(
+                False,
+                f"{action} 调用链 {len(executed)} 步已执行完成，但必需结果校验尚未实现；"
+                "结果未核验，不能判定编译/下载成功",
+                outputs=outputs, steps=steps)
         return BackendResult(True, f"{action} 调用链 {len(executed)} 步全部执行完成",
-                             outputs={"executed": executed}, steps=steps)
+                             outputs=outputs, steps=steps)
 
     def _evidence_step(self, action: str, step: PlanStep,
                        result: InteropResult, ok: bool) -> None:

@@ -1,9 +1,11 @@
-# docs/research — 协议逆向研究区（P3 阶段启用）
+# docs/research — 协议与固件研究
 
-> **状态：框架已建，内容未启用。** 本区在路线图 **P3「协议抓包评估」**（见
-> [../wsl-feasibility/00-synthesis-and-roadmap.md](../wsl-feasibility/00-synthesis-and-roadmap.md)）
-> 正式启动前保持空置；届时 AutoShop 私有协议（编译产物下载 / 上载 / 在线监控）与
-> USB 编程口 bulk 端点协议的逆向工作全部落在这里。
+> **2026-10-17 状态**：公开资料与本地离线研究已有交付；尚未启动真机私有协议抓包或固件操作。文档研究可继续，硬件操作遵守既有操作边界。
+
+- [平台路线与固件可行性复核](firmware/03-feasibility-assessment-2026-10-17.md)：四条路线、事实/推断/TBD、历史调查勘误及研究门槛。
+- [ARM ELF 离线证据](firmware/20261017-offline-elf-inspection.json)：工具版本、目标属性、原始输出、文件哈希。
+- `firmware/01-manual-facts.md`、`02-sunxi-ecosystem.md`：2026-10-16 历史资料，保留原文；结论采用最新复核的限定。
+- [实施计划](../management/PLAN.md) 中 R01/R02：下一批研究工作，独立于主线桥接交付。
 
 ## 目录规划（启用时创建）
 

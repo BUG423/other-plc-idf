@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "baseline_date": "2026-10-17",
+  "repository": "BUG423/other-plc-idf",
+  "status_source": "GitHub Issue；本文件为任务定义，状态可能随实施变化",
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "建立需求、架构与实现能力基线",
+      "priority": "P0",
+      "milestone": "M0",
+      "role": "架构审计代理与统筹代理",
+      "depends_on": [],
+      "estimate": "本轮",
+      "acceptance": [
+        "实现/计划/待硬件能力分别列出并可追溯到代码",
+        "第一性原理需求、实施计划、任务依赖与研究退出条件入库",
+        "GitHub 任务与进度报告包含验收证据及未完成事项"
+      ],
+      "delivery": "docs/management/PLAN.md；docs/reviews/；SPEC/ARCH 勘误",
+      "issue_number": 1,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/1"
+    },
+    {
+      "id": "T02",
+      "title": "修复执行成功语义、配置类型和 GUI 副作用重试",
+      "priority": "P0",
+      "milestone": "M0",
+      "role": "Python 实现代理与统筹复核",
+      "depends_on": [],
+      "estimate": "本轮",
+      "acceptance": [
+        "bridge.enabled 仅 TOML 布尔 true 可启用；字符串与数值拒绝",
+        "改变状态的 GUI 操作失败或超时后不自动重试",
+        "缺少必需验证时所有进程 rc=0 仍返回未核验、ok=false、非零退出码",
+        "未核验步骤写入证据；软件负向用例覆盖，测试不进行真实 GUI/PLC 操作"
+      ],
+      "delivery": "src/plc_idf/backends/bridge_autoshop.py；safety.py；cli.py；回归测试",
+      "issue_number": 2,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/2"
+    },
+    {
+      "id": "T03",
+      "title": "封装独立 wheel、依赖和纯软件 CI",
+      "priority": "P1",
+      "milestone": "M1",
+      "role": "Python 构建与分发工程角色（待接单）",
+      "depends_on": [
+        "T02"
+      ],
+      "estimate": "1–3 工程日",
+      "acceptance": [
+        "安装 wheel 后从仓库外目录运行 sim 与只读 monitor 软件闭环",
+        "外置脚本、模板和必要依赖随包正确分发，不依赖 editable 布局",
+        "干净 Linux CI 测试通过；默认软件 CI 排除 Windows/硬件枚举",
+        "兼容 plcidf 与 py2plc 两入口"
+      ],
+      "delivery": "打包变更、隔离安装证据、CI；本轮仅先建立源码树 CI",
+      "issue_number": 3,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/3"
+    },
+    {
+      "id": "T04",
+      "title": "实现文本工程 manifest、脚手架和静态检查",
+      "priority": "P1",
+      "milestone": "M1",
+      "role": "PLC 语言与工程模型角色（待接单）",
+      "depends_on": [
+        "T01"
+      ],
+      "estimate": "2–4 工程日",
+      "acceptance": [
+        "从空目录生成最小可读 ST/变量/映射工程",
+        "manifest 声明型号、方言、工具版本、任务周期、I/O、初值与保持属性",
+        "对不支持类型、变量缺失、地址重叠和寄存器契约冲突给行级错误",
+        "检查明确不是厂商编译；演示仿真不宣称执行用户 ST"
+      ],
+      "delivery": "init/check 命令、版本化工程 schema 与最小示例",
+      "issue_number": 4,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/4"
+    },
+    {
+      "id": "T05",
+      "title": "实现后端能力诊断、稳定 JSON 与退出码",
+      "priority": "P1",
+      "milestone": "M1",
+      "role": "CLI 与接口工程角色（待接单）",
+      "depends_on": [
+        "T02",
+        "T04"
+      ],
+      "estimate": "2–3 工程日",
+      "acceptance": [
+        "doctor 按 build/flash/monitor/sim 分别报告能力、版本和缺失条件",
+        "Windows 不可用时仍能运行诊断及软件闭环",
+        "版本化 JSON 独占 stdout，进度与诊断文本走 stderr",
+        "确定性退出码覆盖配置错误、拒绝、超时、验证失败与不支持"
+      ],
+      "delivery": "能力接口、doctor、JSON schema 与 CLI 契约测试",
+      "issue_number": 5,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/5"
+    },
+    {
+      "id": "T06",
+      "title": "同步源码并完成可验证 AutoShop 编译",
+      "priority": "P1",
+      "milestone": "M2",
+      "role": "Windows 自动化与 PLC 工具链角色（待接单）",
+      "depends_on": [
+        "T04",
+        "T05"
+      ],
+      "estimate": "3–6 工程日",
+      "acceptance": [
+        "同步有 diff、可恢复工作副本与源哈希，不覆盖唯一原工程",
+        "固定 AutoShop/目标版本，正确与故意错误 ST 均取得真实判定与可读诊断",
+        "识别目标工程、产物内容与本次源版本；产物清单含 SHA-256",
+        "无 PLC 连接也能离线编译；Windows 交互桌面需求如实报告",
+        "截图或文件时间不能单独作为成功证据"
+      ],
+      "delivery": "sync、真实编译验证器、构建产物清单、正负 Windows 验收证据",
+      "issue_number": 6,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/6"
+    },
+    {
+      "id": "T07",
+      "title": "绑定部署产物与设备身份并实现互斥和可靠证据",
+      "priority": "P0",
+      "milestone": "M2",
+      "role": "系统与部署工程角色（待接单）",
+      "depends_on": [
+        "T02",
+        "T05"
+      ],
+      "estimate": "2–4 工程日",
+      "acceptance": [
+        "设备选择同时核对配置 BUSID 与 VID/PID，并对多设备/不明身份拒绝执行",
+        "部署计划绑定源版本、产物哈希、目标身份、备份与校验方式",
+        "计划后换包或换目标使原确认失效",
+        "跨进程设备/AutoShop 租约阻止并发，陈旧锁恢复有证据",
+        "证据不可写时在副作用前停止；超时保留未知状态且不自动再下载"
+      ],
+      "delivery": "部署计划、严格设备匹配、租约、证据和负向用例",
+      "issue_number": 7,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/7"
+    },
+    {
+      "id": "T08",
+      "title": "验收真机只读监测和数据质量",
+      "priority": "P1",
+      "milestone": "M3",
+      "role": "通信测试角色与用户现场（待网络条件）",
+      "depends_on": [
+        "T05"
+      ],
+      "estimate": "1–3 工程日；另需网口可达",
+      "acceptance": [
+        "确认实验机及工程寄存器映射，以已知值和厂商界面对照 REAL32 字序",
+        "字序不明不能静默产生可信工程量，保留原始字与质量标记",
+        "JSONL 含时间、原始值、解析值、质量及契约/工程版本",
+        "验证断连、异常值和陈旧数据；只用读功能码",
+        "区分变量数采、CPU运行状态、故障与周期监控的实际覆盖范围"
+      ],
+      "delivery": "真机只读报告、原始样本、异常路径证据",
+      "issue_number": 8,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/8"
+    },
+    {
+      "id": "T09",
+      "title": "完成实验机应用下载、一致性与运行验收",
+      "priority": "P1",
+      "milestone": "M3",
+      "role": "PLC 联调测试角色与用户现场（待前置验收）",
+      "depends_on": [
+        "T06",
+        "T07",
+        "T08"
+      ],
+      "estimate": "1–3 工程日；另需当次现场授权",
+      "acceptance": [
+        "逐次操作有用户明确授权与在场，目标/备份/隔离条件记录完整",
+        "从 AI 修改文本到厂商工程、产物、指定设备具备连续追溯",
+        "厂商程序一致性校验通过，下载成功与 RUN 分别判定",
+        "RUN/STOP、5ms任务周期和错误恢复各有真实证据；未测不写通过",
+        "失败或未知状态停止，不自动重试下载、不推断恢复成功"
+      ],
+      "delivery": "一次完整可复现闭环记录、程序一致性证据、运行与周期验收",
+      "issue_number": 9,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/9"
+    },
+    {
+      "id": "R01",
+      "title": "研究原生厂商编译 ABI 与下载协议",
+      "priority": "research",
+      "milestone": "RX",
+      "role": "编译 ABI 与协议研究角色（首轮文献完成，原型待接单）",
+      "depends_on": [],
+      "estimate": "首轮原型时间盒 3–5 工程日",
+      "acceptance": [
+        "保留样本来源、SHA-256、ARM ELF 属性及未定义符号；判断 runtime ABI 与包装边界",
+        "官方自动化接口或 DLL 适配验证明确型号/语言/版本；H3U结论不能冒充H5U或Easy521",
+        "下载协议研究先离线分析合法样本，真实抓包与写操作另需现场授权",
+        "最小原型或否决证据支持桥接保留/原生投入决定，未发现不等于不存在"
+      ],
+      "delivery": "本轮 docs/research/firmware/03-* 与 ELF JSON；后续 ABI/协议最小原型及决定记录",
+      "issue_number": 10,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/10"
+    },
+    {
+      "id": "R02",
+      "title": "评估系统固件替换与自控开放 PLC 后端",
+      "priority": "research",
+      "milestone": "RX",
+      "role": "嵌入式 Linux 与实时系统角色（首轮文献完成，实验待接单）",
+      "depends_on": [],
+      "estimate": "首轮离线原型时间盒 3–5 工程日",
+      "acceptance": [
+        "官方固件合法获取后记录版本、来源与哈希，仅做离线结构分析",
+        "具体 SoC、OS、启动/签名、runtime、BSP、I/O、现场总线与恢复路径逐层区分已知和未知",
+        "在自控硬件/软件环境验证开放 runtime 编译/运行，明确不代表Easy521兼容",
+        "无驱动或恢复证据时不进入替换固件实验，输出成本与退出条件",
+        "系统级实验不复用用户工程下载授权"
+      ],
+      "delivery": "四路线比较、镜像离线报告、开放平台验证、投入/退出决定",
+      "issue_number": 11,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/11"
+    }
+  ],
+  "tracking_issue": {
+    "number": 12,
+    "url": "https://github.com/BUG423/other-plc-idf/issues/12"
+  }
+}

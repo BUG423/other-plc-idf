@@ -4,19 +4,22 @@
 [![Platform](https://img.shields.io/badge/Platform-WSL2%20%2B%20usbipd--win-0078D6?style=flat-square&logo=linux&logoColor=white)](https://learn.microsoft.com/windows/wsl/about)
 [![Protocol](https://img.shields.io/badge/Protocol-Modbus%20TCP%20%2F%20RTU-orange?style=flat-square)](https://www.modbus.org/)
 [![Target PLC](https://img.shields.io/badge/Target%20PLC-Inovance%20Easy521-9370DB?style=flat-square)](https://www.inovance.com/)
-[![CLI Tests](https://img.shields.io/badge/CLI%20Tests-65%20passed-brightgreen?style=flat-square)](wsl-tools/tests/)
+[![Software tests](https://img.shields.io/badge/Software%20Tests-160%20passed-brightgreen?style=flat-square)](docs/reviews/IMPLEMENTATION_AUDIT_2026-10-17.md)
 [![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm--Noncommercial--1.0.0-red.svg)](https://polyformproject.org/licenses/noncommercial/1.0.0)
 
-> **PLC-IDF** 是对标 ESP-IDF 的汇川 PLC 开源工具链：在 Linux/WSL 里以一条 `plcidf` 命令完成汇川 Easy521 的「编译 → 烧录 → 监测」，把 PLC 开发做成 ESP-IDF 风格的命令行体验。
+> **PLC-IDF** 面向 AI 与终端开发，对标 ESP-IDF 的项目、构建、下载和监测工作流。当前为汇川 Easy521 工具链原型：监测软件闭环可用，Windows AutoShop 编译/下载调用链尚缺真实结果校验。
+
+2026-10-17 基线：[实施计划与验收](docs/management/PLAN.md) · [进展](docs/management/PROGRESS.md) · [实现审计](docs/reviews/IMPLEMENTATION_AUDIT_2026-10-17.md) · [底层固件可行性复核](docs/research/firmware/03-feasibility-assessment-2026-10-17.md)。下文历史环境描述不代表本次已重新完成硬件验收。
 
 ---
 
 ## 🌟 项目简介
 
-**PLC-IDF** 把汇川 Easy521 PLC 开发做成 **ESP-IDF 风格的 WSL CLI 体验**：一条命令 `plcidf build / flash / monitor` 完成「编译 → 烧录 → 监测」。桥式后端先用（Windows 作为不可见编译服务器，驱动 AutoShop），协议逐条逆向后再替换为原生后端。目标设备：汇川 Inovance **Easy521-0808TN**（固件 6.11.0.1，AutoShop V4.11.0.5），约束为 **USB Type-C 单线**（网口待拓展坞）。
+**PLC-IDF** 的目标是在 WSL 内完成「文本工程 → 编译 → 应用下载 → 运行反馈」。先适配 Windows AutoShop 桥接，再按证据评估原生后端。目标设备为汇川 Inovance **Easy521-0808TN**；历史固件记录为 6.11.0.1，已有 AutoShop 4.11/4.12 适配记录，当前版本须在联调时核实。现有 USB 通道可供 Windows 厂商工具使用，真机网口监测仍待验收。
 
 - 🏷️ **曾用名**：项目曾用名 **py2plc**，已更名 **PLC-IDF**（包名 `plc_idf`，命令名 `plcidf`）；`py2plc` 命令保留为等价别名。历史档案（`docs/wsl-feasibility/`、`wsl-probe/`、`wsl-tools/` 等）沿用原名，保留原貌。
-- ⚙️ **CLI 状态**：`plcidf build / flash / monitor / sim / devices` 五个子命令已可用（`monitor` / `sim` / `devices` 真实可用；`build` / `flash` 默认 dry-run，真执行需双因子授权，桥式 GUI 驱动链待 P2 演练接通）。安装：仓库根 `pip install -e .`。
+- ⚙️ **CLI 状态**：已有 `build / flash / monitor / sim / devices` 五个子命令。`monitor/sim` 软件闭环已测；`devices` 提供只读枚举。`build/flash` 默认 dry-run，配置布尔 `bridge.enabled=true` 与当次旗标共同允许执行调用链，结果校验未实现时返回未核验和非零退出码。`init/check/sync/doctor` 等属于计划。当前使用源码树 editable 安装；独立 wheel 尚缺资源和依赖封装。
+- 🧪 **验证边界**：160 项软件回归通过，1 项真实 USB 枚举测试排除；场景播放器不执行用户 ST，Modbus 数采也不等同于断点/单步或完整在线调试。
 
 ---
 
@@ -30,8 +33,8 @@ flowchart LR
     CLI --> MON["🔍 监测链 · ✅ 软件闭环<br/>只读 monitor + REAL32 字序校准"]
 
     subgraph BRIDGE["桥式后端（Windows）"]
-        BUILD["🏗️ 编译链 · ❌ 纯 WSL 不可行<br/>⚠️ GUI 驱动已备未接通"]
-        FLASH["📦 烧录链 · ❌ 原生协议零逆向<br/>✅ 桥式通道已人工验证"]
+        BUILD["🏗️ 编译链 · GUI 编排已实现<br/>⚠️ 编译结果校验待实现"]
+        FLASH["📦 下载链 · 厂商路径有历史人工证据<br/>⚠️ CLI 下载结果校验待实现"]
         AUTO["🪟 AutoShop<br/>GUI 驱动（autoshop_ui.ps1）"]
         BUILD --> AUTO
         FLASH --> AUTO
@@ -59,12 +62,12 @@ flowchart LR
 
 | 能力链 | 当前状态 | 路线 |
 | :--- | :--- | :--- |
-| **监测链** | ✅ 软件闭环可用：虚拟从站 + 只读 monitor + 字序校准（65 测试全过，2026-10-16 复验）；❌ USB 编程口 RTU 已证伪（15 组合零应答，证据 `wsl-probe/usb-rtu/`）；⏳ 真机网口未接（无网口硬件） | **P4** 拓展坞到位后走网口 Modbus TCP（502 端口，首连必 `--calibrate`）；**P3** USB 抓包评估是否立项原生 USB 监测 |
-| **编译链** | ❌ 纯 WSL 不可行：AutoShop 无 CLI/无头接口，Wine 零成功记录；⚠️ 桥式 GUI 驱动工具已备未接通（`plc/tools/autoshop_ui.ps1`） | **P2** AutoShop GUI 桥接演练（需用户在场）；中期观察 autoshop-mcp 无头编译路线（H3U 已证 DLL 可行，H5U 需适配） |
-| **烧录链** | ❌ 原生私有协议全网零文档零逆向；✅ 桥式通道已人工验证：AutoShop USB 下载在真机走通（证据 `plc/easy521/evidence/`） | **P2** 用户授权后做 detach→AutoShop 下载→attach 全流程演练；原生下载器视 P3 抓包结论决定是否立项 |
+| **监测链** | ✅ 虚拟从站、只读数采及字序判别软件测试通过；15 组 USB RTU 参数下均无应答，尚无可用 USB RTU 监测证据；⏳ 真机网口待验收 | **T08** 网口已知值对照、字序和质量验证；当前无法判别时仍回落 ABCD，不能将它作为可信真机标定 |
+| **编译链** | ⚠️ 已有 Windows GUI 调用链；未实现真实编译诊断、产物与源版本校验；目前未验证 Easy521 原生 Linux 编译器 | **T04–T06** 文本工程、同步、正负编译验收；H3U DLL 研究线索不能证明 Easy521/LiteST 已可用 |
+| **应用下载链** | 历史 AutoShop 人工下载有成功及程序一致性证据；当前 CLI 未实现设备端结果校验，授权后调用链仍可能产生实际下载 | **T07/T09** 先做产物/目标绑定、设备互斥，再做现场下载与一致性验收；**R01** 独立研究原生下载 |
 | **USB 传输层** | ✅ usbipd 挂载打通，内核 cdc_acm 认领 `/dev/ttyACM0`（2026-10-16 实测） | 维持 usbipd attach/detach 工作流（与 AutoShop 使用互斥） |
 
-路线图全景（P1 侦察 ✅ → P2 GUI 桥接 → P3 协议抓包 → P4 网口直连）见 [docs/wsl-feasibility/00-synthesis-and-roadmap.md](docs/wsl-feasibility/00-synthesis-and-roadmap.md)。
+当前任务顺序与验收以 [实施计划](docs/management/PLAN.md) 为准。旧 P1–P5 编号保留在 [历史可行性档案](docs/wsl-feasibility/00-synthesis-and-roadmap.md)，其中过强结论的勘误见最新研究报告。
 
 ---
 
@@ -77,7 +80,7 @@ flowchart LR
 
 ```bash
 python3.12 -m venv .venv
-.venv/bin/pip install pymodbus pyserial pytest
+.venv/bin/pip install -r requirements-ci.txt
 .venv/bin/pip install -e .        # 安装 PLC-IDF CLI（plcidf 命令 + py2plc 别名）
 ```
 
@@ -114,7 +117,7 @@ plcidf monitor --host <PLC_IP> --port 502 --once --calibrate
 # 确认字序后持续采集
 plcidf monitor --host <PLC_IP> --port 502 --interval 1 --jsonl real.jsonl
 
-# 若走 RS485 口 + USB-485 适配器（不是 USB 编程口！RTU 直连已证伪）
+# RS485 口 + USB-485 适配器的备选模板；本机端口配置仍需现场核对
 plcidf monitor --transport serial --device /dev/ttyUSB0 --once --calibrate
 ```
 
@@ -141,8 +144,10 @@ PLC-IDF/
 ├── .plcidf.toml.example    ← CLI 配置模板（cp 成 .plcidf.toml 生效，真实配置不入库）
 ├── docs/                   ← 文档总导航（入口：docs/README.md）
 │   ├── wsl-feasibility/        P1 侦察档案：00 总纲 + 01~03 专项（原地产物，只增不改）
-│   ├── requirements/           需求文档（建设中）
-│   ├── architecture/           架构文档（建设中）
+│   ├── requirements/           v0.2 需求草案与实现边界勘误
+│   ├── architecture/           v0.2 架构草案与实现边界勘误
+│   ├── management/             实施计划、任务定义、进展
+│   ├── reviews/                架构与实现质量审计
 │   └── research/               协议逆向研究区（框架已建，P3 抓包阶段启用）
 ├── src/plc_idf/            ← CLI 本体：plcidf build / flash / monitor / sim / devices
 ├── wsl-tools/              ← 虚拟 Easy521 从站 + 只读监测客户端 + 寄存器契约 + 测试（可直接运行）
@@ -178,9 +183,9 @@ PLC-IDF/
   - [01-protocol-facts.md](docs/wsl-feasibility/01-protocol-facts.md) — 官方手册硬事实（Modbus TCP 映射、USB CDC 拓扑、串口规格，页码可溯）
   - [02-opensource-ecosystem.md](docs/wsl-feasibility/02-opensource-ecosystem.md) — 开源生态联网调研（各通道公开程度评级、可借鉴项目）
   - [03-wsl-probe-results.md](docs/wsl-feasibility/03-wsl-probe-results.md) — WSL 环境实测（防火墙阻断、TUN 假连接、只读探测执行记录）
-- `docs/requirements/` — 需求文档（建设中）
-- `docs/architecture/` — 架构文档（建设中）
-- `docs/research/` — 协议逆向研究区（框架已建，P3 启用，见 [docs/research/README.md](docs/research/README.md)）
+- [需求草案](docs/requirements/SPEC.md) 与 [架构草案](docs/architecture/ARCHITECTURE.md) — 包含计划能力，卷首明确实际实现边界
+- [实施计划](docs/management/PLAN.md) 与 [进展](docs/management/PROGRESS.md) — 当前执行入口
+- `docs/research/` — 已有公开资料和离线产物研究；真机协议抓包尚未启动，见 [研究导航](docs/research/README.md)
 - 专题文档：[wsl-tools/README.md](wsl-tools/README.md)（工具链详解）、[plc/README.md](plc/README.md)（BESS 算法资产）、[plc/easy521/README.md](plc/easy521/README.md)（Easy521 工程与硬件验收）
 
 ---

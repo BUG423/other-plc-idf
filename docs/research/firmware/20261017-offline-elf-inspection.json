@@ -1,0 +1,186 @@
+{
+  "inspection_date": "2026-10-17",
+  "scope": "Read-only local artifact inspection; no PLC access; no target code execution",
+  "tools": [
+    {
+      "command": [
+        "file",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "file-5.45\nmagic file from /etc/magic:/usr/share/misc/magic\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "readelf",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "GNU readelf (GNU Binutils for Ubuntu) 2.42\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis program is free software; you may redistribute it under the terms of\nthe GNU General Public License version 3 or (at your option) any later version.\nThis program has absolutely no warranty.\n",
+      "stderr": ""
+    }
+  ],
+  "files": [
+    {
+      "path": "plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o",
+      "bytes": 34284,
+      "sha256": "10b84e22569143dd04e24490d8d33d05b004fa383f60e3350fc7a20988627ea9",
+      "inspection": [
+        {
+          "command": [
+            "file",
+            "plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o"
+          ],
+          "exit_code": 0,
+          "stdout": "plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o: ELF 32-bit LSB relocatable, ARM, EABI5 version 1 (SYSV), not stripped\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "readelf",
+            "-h",
+            "plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o"
+          ],
+          "exit_code": 0,
+          "stdout": "ELF Header:\n  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 \n  Class:                             ELF32\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              REL (Relocatable file)\n  Machine:                           ARM\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          0 (bytes into file)\n  Start of section headers:          33804 (bytes into file)\n  Flags:                             0x5000000, Version5 EABI\n  Size of this header:               52 (bytes)\n  Size of program headers:           0 (bytes)\n  Number of program headers:         0\n  Size of section headers:           40 (bytes)\n  Number of section headers:         12\n  Section header string table index: 1\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "readelf",
+            "-A",
+            "plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o"
+          ],
+          "exit_code": 0,
+          "stdout": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: V6\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Needed\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "path": "plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o",
+      "bytes": 155376,
+      "sha256": "6500e740c7ea380fdb8c0b30d2b69ba3007ad27ee03a2f56bd449ca6e553af56",
+      "inspection": [
+        {
+          "command": [
+            "file",
+            "plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o"
+          ],
+          "exit_code": 0,
+          "stdout": "plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o: ELF 32-bit LSB relocatable, ARM, EABI5 version 1 (SYSV), not stripped\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "readelf",
+            "-h",
+            "plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o"
+          ],
+          "exit_code": 0,
+          "stdout": "ELF Header:\n  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 \n  Class:                             ELF32\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              REL (Relocatable file)\n  Machine:                           ARM\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          0 (bytes into file)\n  Start of section headers:          154856 (bytes into file)\n  Flags:                             0x5000200, Version5 EABI, soft-float ABI\n  Size of this header:               52 (bytes)\n  Size of program headers:           0 (bytes)\n  Number of program headers:         0\n  Size of section headers:           40 (bytes)\n  Number of section headers:         13\n  Section header string table index: 11\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "readelf",
+            "-A",
+            "plc/easy521/autoshop/BESS_E521_DEV/Temp/stprog.o"
+          ],
+          "exit_code": 0,
+          "stdout": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: V6\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Needed\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "path": "plc/easy521/autoshop/BESS_E521_TEST/STTemp/MAIN.o",
+      "bytes": 97032,
+      "sha256": "36e504d00a812c07e9f62a6233c9848e5d9cd1570b6e96cdd9fcb2b7e8ac12f3",
+      "inspection": [
+        {
+          "command": [
+            "file",
+            "plc/easy521/autoshop/BESS_E521_TEST/STTemp/MAIN.o"
+          ],
+          "exit_code": 0,
+          "stdout": "plc/easy521/autoshop/BESS_E521_TEST/STTemp/MAIN.o: ELF 32-bit LSB relocatable, ARM, EABI5 version 1 (SYSV), not stripped\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "readelf",
+            "-h",
+            "plc/easy521/autoshop/BESS_E521_TEST/STTemp/MAIN.o"
+          ],
+          "exit_code": 0,
+          "stdout": "ELF Header:\n  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 \n  Class:                             ELF32\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              REL (Relocatable file)\n  Machine:                           ARM\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          0 (bytes into file)\n  Start of section headers:          96552 (bytes into file)\n  Flags:                             0x5000000, Version5 EABI\n  Size of this header:               52 (bytes)\n  Size of program headers:           0 (bytes)\n  Number of program headers:         0\n  Size of section headers:           40 (bytes)\n  Number of section headers:         12\n  Section header string table index: 1\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "readelf",
+            "-A",
+            "plc/easy521/autoshop/BESS_E521_TEST/STTemp/MAIN.o"
+          ],
+          "exit_code": 0,
+          "stdout": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: V6\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Needed\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "path": "plc/easy521/autoshop/BESS_E521_BENCH/STTemp/MAIN.o",
+      "bytes": 126576,
+      "sha256": "397ec09ae914a493af869618f32454f23b5f32819bb1c11a25014037b273e5b4",
+      "inspection": [
+        {
+          "command": [
+            "file",
+            "plc/easy521/autoshop/BESS_E521_BENCH/STTemp/MAIN.o"
+          ],
+          "exit_code": 0,
+          "stdout": "plc/easy521/autoshop/BESS_E521_BENCH/STTemp/MAIN.o: ELF 32-bit LSB relocatable, ARM, EABI5 version 1 (SYSV), not stripped\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "readelf",
+            "-h",
+            "plc/easy521/autoshop/BESS_E521_BENCH/STTemp/MAIN.o"
+          ],
+          "exit_code": 0,
+          "stdout": "ELF Header:\n  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 \n  Class:                             ELF32\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              REL (Relocatable file)\n  Machine:                           ARM\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          0 (bytes into file)\n  Start of section headers:          126096 (bytes into file)\n  Flags:                             0x5000000, Version5 EABI\n  Size of this header:               52 (bytes)\n  Size of program headers:           0 (bytes)\n  Number of program headers:         0\n  Size of section headers:           40 (bytes)\n  Number of section headers:         12\n  Section header string table index: 1\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "readelf",
+            "-A",
+            "plc/easy521/autoshop/BESS_E521_BENCH/STTemp/MAIN.o"
+          ],
+          "exit_code": 0,
+          "stdout": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: V6\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Needed\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Object metadata identifies the compiler target, not the physical CPU model or running OS.",
+    "Existing archived objects were inspected; this is not a fresh vendor build or hardware execution.",
+    "ELF OS/ABI System V is not proof of Linux."
+  ],
+  "undefined_symbols_dev_main": {
+    "command": [
+      "readelf",
+      "--wide",
+      "--symbols",
+      "plc/easy521/autoshop/BESS_E521_DEV/STTemp/MAIN.o"
+    ],
+    "exit_code": 0,
+    "stdout": "\nSymbol table '.symtab' contains 137 entries:\n   Num:    Value  Size Type    Bind   Vis      Ndx Name\n     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND \n     1: 00000000     0 FILE    LOCAL  DEFAULT  ABS Module\n     2: 00000804     0 NOTYPE  LOCAL  DEFAULT    2 $d.1\n     3: 00002ab8     0 NOTYPE  LOCAL  DEFAULT    2 $d.11\n     4: 00003380     0 NOTYPE  LOCAL  DEFAULT    2 $d.13\n     5: 00003ea8     0 NOTYPE  LOCAL  DEFAULT    2 $d.15\n     6: 00000e78     0 NOTYPE  LOCAL  DEFAULT    2 $d.3\n     7: 00001430     0 NOTYPE  LOCAL  DEFAULT    2 $d.5\n     8: 00001a10     0 NOTYPE  LOCAL  DEFAULT    2 $d.7\n     9: 00002120     0 NOTYPE  LOCAL  DEFAULT    2 $d.9\n    10: 00000000     0 NOTYPE  LOCAL  DEFAULT    2 $t.0\n    11: 000021a4     0 NOTYPE  LOCAL  DEFAULT    2 $t.10\n    12: 00002b5c     0 NOTYPE  LOCAL  DEFAULT    2 $t.12\n    13: 00003398     0 NOTYPE  LOCAL  DEFAULT    2 $t.14\n    14: 0000094c     0 NOTYPE  LOCAL  DEFAULT    2 $t.2\n    15: 00000ef0     0 NOTYPE  LOCAL  DEFAULT    2 $t.4\n    16: 000014b8     0 NOTYPE  LOCAL  DEFAULT    2 $t.6\n    17: 00001a9c     0 NOTYPE  LOCAL  DEFAULT    2 $t.8\n    18: 00000104     4 OBJECT  LOCAL  DEFAULT    6 _ArrayIndex_dint_temp_01\n    19: 00000010     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_1\n    20: 00000038     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_10\n    21: 00000058     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_11\n    22: 00000078     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_12\n    23: 00000098     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_13\n    24: 000000b8     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_14\n    25: 000000f8     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_15\n    26: 000000d8     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_16\n    27: 00000008     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_17\n    28: 00000028     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_18\n    29: 00000048     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_19\n    30: 00000030     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_2\n    31: 00000068     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_20\n    32: 00000088     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_21\n    33: 000000a8     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_22\n    34: 000000c8     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_23\n    35: 000000e8     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_24\n    36: 00000000     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_25\n    37: 00000020     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_26\n    38: 00000040     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_27\n    39: 00000060     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_28\n    40: 00000080     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_29\n    41: 00000050     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_3\n    42: 000000a0     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_30\n    43: 000000c0     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_31\n    44: 000000e0     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_32\n    45: 00000100     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_33\n    46: 00000070     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_4\n    47: 00000090     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_5\n    48: 000000b0     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_6\n    49: 000000d0     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_7\n    50: 000000f0     4 OBJECT  LOCAL  DEFAULT    6 __unnamed_8\n    51: 00000018     8 OBJECT  LOCAL  DEFAULT    6 __unnamed_9\n    52: 00000000     0 SECTION LOCAL  DEFAULT    2 .text\n    53: 00000000     0 SECTION LOCAL  DEFAULT    9 .debug_frame\n    54: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_IBESS_MODE\n    55: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_CONFIDENCE\n    56: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_INFLUENCEP\n    57: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_INFLUENCEQ\n    58: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_LOADING\n    59: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_PCMD\n    60: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_PESS\n    61: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_PLINE\n    62: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_QCMD\n    63: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_QESS\n    64: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_QLINE\n    65: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_SENSVP\n    66: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_SENSVQ\n    67: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_SOC\n    68: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND G_RBESS_VPU\n    69: 00000001 16356 FUNC    GLOBAL DEFAULT    2 MAIN\n    70: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^IDIRECTION\n    71: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^IESTIMATORCOUNT\n    72: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^IMODE\n    73: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^IRECOVERCOUNT\n    74: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^IUVCOUNT\n    75: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RANCHORPESS\n    76: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RANCHORPLINE\n    77: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RANCHORQESS\n    78: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RANCHORQLINE\n    79: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RANCHORV\n    80: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RCKP\n    81: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RCKQ\n    82: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RCONFIDENCE\n    83: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RCVP\n    84: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RCVQ\n    85: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RDP\n    86: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RDPL\n    87: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RDQ\n    88: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RDQL\n    89: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RDV\n    90: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^REV\n    91: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RINFLUENCEP\n    92: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RINFLUENCEQ\n    93: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RKP\n    94: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RKQ\n    95: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RLOADING\n    96: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RNATIVELOADING\n    97: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RPCMD\n    98: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RPESS\n    99: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RPLINE\n   100: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RPNATIVE\n   101: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RPOVER\n   102: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RPTARGET\n   103: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RPVOLTAGE\n   104: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RQAFTER\n   105: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RQCMD\n   106: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RQESS\n   107: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RQLINE\n   108: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RQNATIVE\n   109: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RRAWQ\n   110: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RSAMPLE\n   111: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RSENSVP\n   112: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RSENSVQ\n   113: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RSLIMIT\n   114: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RSLINE\n   115: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RSNATIVE\n   116: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RSOC\n   117: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RSVP\n   118: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RSVQ\n   119: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RVNATIVEESTIMATE\n   120: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _FB_FBBESS^RVPU\n   121: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _HC_EMPTYFUC\n   122: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _HC_FLOAT_MAX\n   123: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _HC_FLOAT_MIN\n   124: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _HC_INT64TODOUBLE\n   125: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _HC_INTERRUPTFCBYST\n   126: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _HC_LD_DEV_MEM_READ_BITS\n   127: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _HC_LD_DEV_MEM_WRITE_BITS\n   128: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _HC_LD_ERROR_ADD\n   129: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _HC_ROUND\n   130: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ST_DOUBLE_ADD\n   131: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ST_DOUBLE_DIV\n   132: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ST_DOUBLE_MUL\n   133: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ST_DOUBLE_SUB\n   134: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ST_INT64_ADD\n   135: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND _ST_INT64_SUB\n   136: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND __aeabi_unwind_cpp_pr0\n",
+    "stderr": ""
+  }
+}

@@ -163,7 +163,10 @@ def _make_bridge_handler(action: str):
               f"{backend.name} 调用链…")
         result = (backend.execute_build(request) if action == "build"
                   else backend.execute_flash(request))
-        print(f"[plcidf] {action} {'完成' if result.ok else '失败'}: {result.message}")
+        status = ("调用链已完成，结果未核验"
+                  if result.outputs.get("verification_status") == "unverified"
+                  else ("完成" if result.ok else "失败"))
+        print(f"[plcidf] {action} {status}: {result.message}")
         if result.ok:
             print(f"[plcidf] 执行步骤: {json.dumps(result.outputs.get('executed', []),
                                                ensure_ascii=False)}")
