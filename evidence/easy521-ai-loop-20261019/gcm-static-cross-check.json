@@ -1,0 +1,38 @@
+{
+  "schema": "plcidf.root-gcm-static-cross-check.v1",
+  "observed_at": "2026-10-18T18:22:34.100680+00:00",
+  "scope": "independent root read of PE RTTI/vtables; no vendor execution, Windows process or device access",
+  "input": {
+    "path": "/mnt/e/Software/AutoShop/H530Communicate.dll",
+    "sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698"
+  },
+  "checks": [
+    {
+      "vtable_rva": "0x79e54",
+      "rtti_name": ".?AVCGCMStateCommand@@",
+      "execute_slot": "0x3c",
+      "execute_rva": "0xdcb0"
+    },
+    {
+      "vtable_rva": "0x7bb24",
+      "rtti_name": ".?AVCRTUStateCommand@@",
+      "execute_slot": "0x3c",
+      "execute_rva": "0x1df70"
+    },
+    {
+      "vtable_rva": "0x7affc",
+      "rtti_name": ".?AVCReadEthercatCommand@@",
+      "execute_slot": "0x3c",
+      "execute_rva": "0x13390"
+    }
+  ],
+  "read_body_rva": "0xdd30",
+  "read_body_sha256": "d106e8da4fce62ee90e4c3bbc2f5a42c8b31030af63aa854a0e5f6bff85ada33",
+  "candidate": {
+    "selector": 1,
+    "operation": 1,
+    "index": "0xff000000",
+    "length": 1,
+    "basis": "read branch raw-index argument1 verified in disassembly; no state-changing path invoked"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "plcidf.ai-loop-followup-validation.v1",
+  "observed_at": "2026-10-18T18:27:10.604509+00:00",
+  "scope": "new software tests and separate real GCM/variables/feedback CLI evidence; full PLC application execution not verified",
+  "source_monitor_reused_record": "source-monitor-tests.json",
+  "source_monitor_passed": 765,
+  "source_monitor_unchanged": true,
+  "tools_record": "tools-tests-followup.json",
+  "tools_passed": 351,
+  "subtests_not_added_to_total": 904,
+  "non_overlapping_passed": 1116,
+  "new_or_updated_subsets": {
+    "codec": 94,
+    "usb_worker_fake_transports": 67,
+    "feedback_local_files": 38,
+    "gvt_synthetic_files": 10,
+    "link_worker": 14
+  },
+  "gcm_device_record": "gcm-state-query.json",
+  "raw_gcm_byte": 0,
+  "static_vendor_mapping": "STOP",
+  "device_calibrated": false,
+  "cpu_scanning_verified": false,
+  "linux_native_usb": false,
+  "program_downloaded_this_batch": false,
+  "files": [
+    {
+      "path": "tools/easy521_protocol.py",
+      "sha256": "9073ac6d448420728a33668ce37da24757ad7ea0529b8d623a7597758980a2cc"
+    },
+    {
+      "path": "tools/read_easy521_usb_runtime.py",
+      "sha256": "f54040be7820f1a2f2349c15a5f31ef2f0b3af6ba7087ac9dd38cfbf10ebb11b"
+    },
+    {
+      "path": "plc/tools/read_easy521_usb_runtime.ps1",
+      "sha256": "237131365c2aae4ce96dcc9d17505637158dbab5397a59faea7c7f6eeaa712d7"
+    },
+    {
+      "path": "tools/capture_plc_feedback.py",
+      "sha256": "c19480ad3c90802ab8825be659fe5806bc2ab850d1a78eb3944f869c11c2467d"
+    },
+    {
+      "path": "tools/inspect_vendor_variables.py",
+      "sha256": "108421e86cf05a74f91b91a3cd5e9ad5c68e4dc67c05190aab6a2b404a1472c3"
+    }
+  ]
+}

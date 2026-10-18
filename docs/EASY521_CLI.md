@@ -1,14 +1,14 @@
 # Easy521 的 WSL CLI 实验入口
 
-2026-10-19：已增加可在终端执行的独立USB只读查询，绕开AutoShop进程并真实收回原始u32=0；其RUN/STOP含义未标定。这仍是Windows驱动桥接，完整Linux原生部署和CPU执行闭环尚未完成。Linux两级对象链接及剩余变量后处理见[本轮交付](management/EASY521_AI_DELIVERY_2026-10-19.md)。
+2026-10-19最新：独立USB GCM只读查询已绕开AutoShop进程收回原始u8=0，按厂商静态映射报告STOP，现场扫描仍未独立标定。此前ff010000/4B的u32=0属于另一条EtherCAT相关索引，不能解释为CPU状态；错误的静态调用链已另文更正。这仍是Windows驱动桥接，完整Linux原生部署和CPU执行闭环尚未完成。见[最新实测/更正/变量与反馈](management/EASY521_AI_FOLLOWUP_2026-10-19.md)。
 
 ```bash
 # 默认纯预览。实际读取需确认当次BUSID、关闭AutoShop，再显式执行。
-.venv/bin/python tools/read_easy521_usb_runtime.py
-.venv/bin/python tools/read_easy521_usb_runtime.py --execute --busid 8-3
+.venv/bin/python tools/read_easy521_usb_runtime.py --profile gcm-state
+.venv/bin/python tools/read_easy521_usb_runtime.py --profile gcm-state --execute --busid 8-3
 ```
 
-`8-3`是该轮实际位置，worker会在设备锁内重新枚举核对；不自动关闭AutoShop、不切换USB归属、不重试。成功为`observed`且仅提供raw_value，CPU模式/型号/应用执行均仍未核验。工具位于仓库，未添加为`plcidf`子命令。
+`8-3`是该轮实际位置，worker会在设备锁内重新枚举核对；不自动关闭AutoShop、不切换USB归属、不重试。成功为`observed`，提供raw_value及单独标记未实机校准的静态解释；型号、CPU扫描/程序执行仍未核验。默认`literal`保持历史ff010000/4B请求，不能当CPU状态。工具位于仓库，未添加为`plcidf`子命令。
 
 2026-10-17 已真实完成两个内存探针的应用下载、厂商程序一致性正反校验。当时 CPU RUN 被拒绝，未完成运行验收；用户报告额定 24V 主供电未连接。完整记录和证据见 [该轮设备报告](management/EASY521_APPLICATION_2026-10-17.md)，不代表今天重新观察了供电或 CPU 状态。
 

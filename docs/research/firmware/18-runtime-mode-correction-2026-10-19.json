@@ -1,0 +1,345 @@
+{
+  "schema": "plcidf.runtime-mode-correction-static.v1",
+  "observed_date": "2026-10-19",
+  "scope": "offline static only; no Windows, DLL load, GUI, USB, socket or device calls",
+  "supersedes_inference_in": [
+    "12-interface-control-2026-10-18.md",
+    "15-transport-contract-2026-10-19.md"
+  ],
+  "critical_correction": "Historical CRTUStateCommand -> 0x133d0 association was wrong. 0x133d0 is executed by CReadEthercatCommand, not CRTUStateCommand. Existing ff010000/4B live data remains raw only.",
+  "files": [
+    {
+      "name": "AutoShop.exe",
+      "bytes": 55592960,
+      "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e",
+      "image_base": "0x400000",
+      "selected_code_ranges": [
+        {
+          "name": "mode_coupler_run_guard",
+          "start_rva": "0x11f1ada",
+          "end_rva_exclusive": "0x11f1b61",
+          "sha256": "0ccfd69f6dd0061bba33a4b1744b99cac36f5298c3f919cbc1669f78bc6082b2"
+        },
+        {
+          "name": "mode_coupler_download_warning",
+          "start_rva": "0x11f6232",
+          "end_rva_exclusive": "0x11f62bc",
+          "sha256": "925af55868302e13d287b89ed00b4046ef1877c4ff67ce421da316bbed48fe93"
+        },
+        {
+          "name": "mode_firewall_write_guard",
+          "start_rva": "0x381e43",
+          "end_rva_exclusive": "0x381ec5",
+          "sha256": "73d2fd3d93ee55b24150dd56438a774c9628605796c29fa729496630f2847a46"
+        },
+        {
+          "name": "mode_firewall_read_guard",
+          "start_rva": "0x3827f7",
+          "end_rva_exclusive": "0x38287b",
+          "sha256": "4a398666f6b7f14f60f9d6ffa5d93dc3ae5664218005c3025e5b246e0d586503"
+        },
+        {
+          "name": "mode_expansion_guard",
+          "start_rva": "0x12b74a9",
+          "end_rva_exclusive": "0x12b7536",
+          "sha256": "57e2f7e3a678f0bc8e3f305ee3a69fa774566d6fb7a80998ebf7d63e91cd91b0"
+        },
+        {
+          "name": "GCM_stop_UI_mapping",
+          "start_rva": "0x11f10cc",
+          "end_rva_exclusive": "0x11f11f5",
+          "sha256": "b14c416e259399be4d282f9863f43de313b2776cec31d8af0aab2a511955025e"
+        },
+        {
+          "name": "GCM_run_UI_mapping",
+          "start_rva": "0x11f18d3",
+          "end_rva_exclusive": "0x11f19fc",
+          "sha256": "88c97d8376cc3d2e528bc267af1ca86e42beff9ea78940c18ab62072216c9176"
+        },
+        {
+          "name": "GCM_run_confirmation",
+          "start_rva": "0x11f1c29",
+          "end_rva_exclusive": "0x11f1c56",
+          "sha256": "af5164f25c21a2f2c40ee770af379fe4ee74bae947637bd48b7ca569a193aadb"
+        }
+      ]
+    },
+    {
+      "name": "H530Communicate.dll",
+      "bytes": 22864896,
+      "sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698",
+      "image_base": "0x10000000",
+      "selected_code_ranges": [
+        {
+          "name": "GetPLCRunMode_constructor",
+          "start_rva": "0x7310",
+          "end_rva_exclusive": "0x736b",
+          "sha256": "75599e9ae57e54ceb840a46de2d034febe0ad895cf56e8b797bfcbaaab16f5c5"
+        },
+        {
+          "name": "CRTUStateCommand_vtable",
+          "start_rva": "0x7bb24",
+          "end_rva_exclusive": "0x7bb68",
+          "sha256": "8311fbe6a8a3d4a1b65250f2dd2d929f47918ddfee2258bcbbd67a8650f00bef"
+        },
+        {
+          "name": "CRTUStateCommand_execute",
+          "start_rva": "0x1df70",
+          "end_rva_exclusive": "0x1e005",
+          "sha256": "a92da4af9cd4c39a1f02bfa7fa258bef8dd62f5884c490c69983c6eceab4774e"
+        },
+        {
+          "name": "Ethercat_constructor",
+          "start_rva": "0x4ac0",
+          "end_rva_exclusive": "0x4b29",
+          "sha256": "a611fb13cbf56f1b0f78d4127c23e4da2ada153f4e0f37e6d9dc6f7a82402e80"
+        },
+        {
+          "name": "CReadEthercatCommand_vtable",
+          "start_rva": "0x7affc",
+          "end_rva_exclusive": "0x7b040",
+          "sha256": "c5b8767bb765a26377d320d5f59e5e1437fd29b146d1cca73d3729c1e1ae96d1"
+        },
+        {
+          "name": "Ethercat_execute",
+          "start_rva": "0x13390",
+          "end_rva_exclusive": "0x1341d",
+          "sha256": "2829e8e798d5a57319421daf78dec8ab35d4a6957696fe0e635afec9c4bfc7e8"
+        },
+        {
+          "name": "GetGCMState_constructor",
+          "start_rva": "0x5050",
+          "end_rva_exclusive": "0x50cb",
+          "sha256": "df70990bfd34bd63d6e5fe03e6cc531a4a1545dd811266c988f7b441b2de40a2"
+        },
+        {
+          "name": "CGCMStateCommand_vtable",
+          "start_rva": "0x79e54",
+          "end_rva_exclusive": "0x79e98",
+          "sha256": "e6b2174debc54c56ff32dff6cea76ed54645fd3e2ed4e97ec045b065a2effa88"
+        },
+        {
+          "name": "CGCMStateCommand_read_dispatch",
+          "start_rva": "0xdcb0",
+          "end_rva_exclusive": "0xdd2c",
+          "sha256": "fada1228d0e6a11b38c41bc6e5237d6efd93956133f2e1a250ae494779b609f4"
+        },
+        {
+          "name": "GCM_literal_read_and_enum_mapping",
+          "start_rva": "0xdd30",
+          "end_rva_exclusive": "0xddfc",
+          "sha256": "d106e8da4fce62ee90e4c3bbc2f5a42c8b31030af63aa854a0e5f6bff85ada33"
+        },
+        {
+          "name": "common_length_lookup",
+          "start_rva": "0xc5c0",
+          "end_rva_exclusive": "0xc67e",
+          "sha256": "fc15eb41f30f35418707f58230ae3466e52d171e3b2b81f96b6363f74f4dbe82"
+        }
+      ]
+    },
+    {
+      "name": "InterfaceMgr.dll",
+      "bytes": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192",
+      "image_base": "0x10000000",
+      "selected_code_ranges": [
+        {
+          "name": "GetPLCRunMode_facade",
+          "start_rva": "0x69a80",
+          "end_rva_exclusive": "0x69ab0",
+          "sha256": "f405d7a767c1a11875c96c0ab7f3dec5544fbe26eb1ab3042c960e8411dcdbbb"
+        },
+        {
+          "name": "GetGCMState_facade",
+          "start_rva": "0x689e0",
+          "end_rva_exclusive": "0x68a0e",
+          "sha256": "cb43bc188880b761b3df452370a6fc6c67bcd425b5e3511d9055a0be6641bc6f"
+        }
+      ]
+    }
+  ],
+  "paths": {
+    "GetPLCRunMode": {
+      "facade_module": "InterfaceMgr.dll",
+      "facade_rva": "0x69a80",
+      "implementation_vtable_slot": "0x1b8",
+      "constructor_rva": "0x7310",
+      "rtti": "CRTUStateCommand",
+      "vtable_rva": "0x7bb24",
+      "execute_slot": "0x3c",
+      "execute_rva": "0x1df70",
+      "read_rva": "0x1dfb0",
+      "index_argument": "0xffc00000",
+      "raw_index_argument": 0,
+      "length": "obtained from protocol metadata via c5c0, not fixed4 by this caller",
+      "lookup_retains_input_index": true,
+      "output": "first returned DWORD -> pointer stored in command+0x2c",
+      "meaning": "mode flags; low two bits nonzero gate coupler restrictions; bit0x10 gates extension-card DIP mode warning",
+      "cpu_run_stop_enum": false
+    },
+    "CReadEthercatCommand": {
+      "constructor_rva": "0x4ac0",
+      "vtable_write_rva": "0x4ae8",
+      "rtti": "CReadEthercatCommand",
+      "vtable_rva": "0x7affc",
+      "execute_slot": "0x3c",
+      "execute_rva": "0x13390",
+      "read_rva": "0x133d0",
+      "index_argument": "0xff010000",
+      "data_bytes": 4,
+      "raw_index_argument": 1,
+      "output": "first returned DWORD -> pointer stored in command+0x2c",
+      "real_observation": "raw u32=0 observed by root; exact device semantics unknown",
+      "cpu_run_stop_enum": false
+    },
+    "GetGCMState": {
+      "facade_module": "InterfaceMgr.dll",
+      "facade_rva": "0x689e0",
+      "implementation_vtable_slot": "0xa4",
+      "constructor_rva": "0x5050",
+      "rtti": "CGCMStateCommand",
+      "vtable_rva": "0x79e54",
+      "execute_slot": "0x3c",
+      "execute_rva": "0xdcb0",
+      "read_rva": "0xdd30",
+      "index_argument": "0xff000000",
+      "data_bytes": 1,
+      "raw_index_argument": 1,
+      "read_selector_field": "command+0x30=0",
+      "output_pointer": "command+0x2c",
+      "internal_enum": "command+0x38",
+      "wire_mapping": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "other": "enum=-1; communication result=2"
+      },
+      "static_UI_semantics": {
+        "0": "STOP",
+        "1": "RUN",
+        "2": "unknown",
+        "3": "unknown"
+      },
+      "device_verified": false
+    }
+  },
+  "caller_guards": [
+    {
+      "call_va": "0x15f1aeb",
+      "communication_success_value": 1,
+      "wire_data_mask": "0x3",
+      "resource_id": "0x1cac",
+      "meaning": "coupler mode prevents RUN"
+    },
+    {
+      "call_va": "0x15f6249",
+      "communication_success_value": 1,
+      "wire_data_mask": "0x3",
+      "resource_id": "0x1cb1",
+      "meaning": "coupler mode means downloaded user program will not run"
+    },
+    {
+      "call_va": "0x781e5a",
+      "communication_success_value": 1,
+      "wire_data_mask": "0x3",
+      "resource_id": "0x1cb8",
+      "meaning": "coupler mode forbids firewall config write"
+    },
+    {
+      "call_va": "0x78280e",
+      "communication_success_value": 1,
+      "wire_data_mask": "0x3",
+      "resource_id": "0x1cb9",
+      "meaning": "coupler mode forbids firewall config read"
+    },
+    {
+      "call_va": "0x16b74ba",
+      "communication_success_value": 1,
+      "wire_data_mask": "0x10",
+      "resource_id": "0x1c8d",
+      "meaning": "extension-card DIP controls actual operating mode"
+    }
+  ],
+  "GCM_UI_semantics_evidence": [
+    {
+      "call_va": "0x15f10dd",
+      "communication_result_compare_va": "0x15f10e9",
+      "data_enum_compare_va": "0x15f11c3",
+      "enum": 0,
+      "string_id": "0xf8fc",
+      "text": "PLC处于停止状态"
+    },
+    {
+      "call_va": "0x15f18e4",
+      "communication_result_compare_va": "0x15f18f0",
+      "data_enum_compare_va": "0x15f19ca",
+      "enum": 1,
+      "string_id": "0xf8a8",
+      "text": "PLC处于运行状态"
+    }
+  ],
+  "resource_extraction": "PE RT_STRING (type6), language0x804; block=(id//16)+1, slot=id%16; no vendor process executed",
+  "unknowns": [
+    "live vendor GCM state response",
+    "EnumGCMState 2/3 full names",
+    "actual semantics of observed ff010000 DWORD",
+    "GetPLCRunMode protocol-metadata length at runtime",
+    "CPU scanning/task progress and physical output execution",
+    "all state-changing commands remain unimplemented in this research"
+  ],
+  "future_read_candidate": {
+    "selector": 1,
+    "operation": 1,
+    "index": "0xff000000",
+    "requested_bytes": 1,
+    "request_frame_bytes": 18,
+    "normal_response_bytes": 11,
+    "basis": "vendor own constructor/vtable/body; Simulator not used as proof",
+    "not_sent_by_this_agent": true
+  },
+  "current_tool_correction": {
+    "codec_profiles": {
+      "vendor_literal_ff010000_4": {
+        "index": "0xff010000",
+        "bytes": 4,
+        "cpu_state": false
+      },
+      "vendor_h530_runtime": {
+        "legacy_alias": true,
+        "index": "0xff010000",
+        "bytes": 4,
+        "cpu_state": false
+      },
+      "vendor_gcm_state": {
+        "index": "0xff000000",
+        "bytes": 1,
+        "accepted_wire_values": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "basis": "vendor own static path"
+      }
+    },
+    "worker_choices": [
+      "literal",
+      "gcm-state"
+    ],
+    "worker_default": "literal",
+    "helper_parameter": "-ReadProfile",
+    "helper_return_field": "read_profile",
+    "static_state_interpretation_device_calibrated": false,
+    "cpu_state_verified": false,
+    "new_device_requests_by_this_agent": 0
+  },
+  "validation": {
+    "command": ".venv/bin/python -m pytest tools/tests/test_easy521_protocol.py tools/tests/test_read_easy521_usb_runtime.py -q",
+    "passed": 161,
+    "codec": 94,
+    "worker": 67,
+    "scope": "synthetic frames, fake subprocesses, temporary local leases only"
+  }
+}

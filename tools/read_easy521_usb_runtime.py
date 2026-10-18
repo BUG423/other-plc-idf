@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Preview or perform one fixed Easy521 runtime-index read via Windows libusb0.
+"""Preview or perform one explicitly selected fixed index read via Windows libusb0.
 
 This is a WSL-to-Windows driver bridge, not a Linux-native USB transport.  The
 first real-device observation is recorded in
 evidence/easy521-ai-loop-20261019/single-usb-runtime-query.json: one 18-byte
 request returned a correlated 14-byte data frame containing raw u32 zero.
-Its RUN/STOP meaning, CPU identity and application execution remain unknown.
+Report 18 corrects that literal index's historical runtime naming: its vendor
+command is CReadEthercatCommand; its device meaning remains unknown. The new
+gcm-state profile follows the separate vendor GetGCMState ff000000/1B path.
+CPU identity, live state calibration and application execution remain unverified.
 
 Preview is the default and performs no subprocess, USB, lease or GUI action.
 Execute requires an explicit fresh USB bus location and exactly one matching
@@ -56,7 +59,7 @@ LIBRARY_SHA256 = "cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe5435252
 HELPER_SCOPE = "single fixed read request via Windows libusb0; no CPU mode or application change"
 SCOPE = "one fixed read through Windows libusb0 driver bridge; raw value only"
 VIDPID = "0471:a531"
-PROFILE = codec.VENDOR_RUNTIME
+PROFILES = {"literal": codec.VENDOR_LITERAL_FF010000_4, "gcm-state": codec.VENDOR_GCM_STATE}
 PREVIEW_SEQUENCE = 0x1234
 
 
@@ -96,10 +99,11 @@ def _hex(value, *, maximum_bytes: int, name: str) -> bytes:
     return bytes.fromhex(value)
 
 
-def _validate_transport(record: dict, request: bytes) -> dict:
+def _validate_transport(record: dict, request: bytes, profile: str) -> dict:
     """Validate transport evidence before the independent codec sees its frame."""
     if (record.get("schema") != HELPER_SCHEMA or record.get("scope") != HELPER_SCOPE
-            or record.get("library_sha256") != LIBRARY_SHA256):
+            or record.get("library_sha256") != LIBRARY_SHA256
+            or record.get("read_profile") != profile):
         raise ValueError("Helper schema/scope or pinned Windows library identity differs")
     result = record.get("result")
     if (not isinstance(result, dict) or result.get("ok") is not True
@@ -122,16 +126,18 @@ def _validate_transport(record: dict, request: bytes) -> dict:
             or any(type(count) is not int or not 1 <= count <= 512 for count in reads)
             or sum(reads) != len(response)):
         raise ValueError("Helper read lengths do not describe exactly the returned frame")
-    return codec.parse_read_response(response, request=request, profile=PROFILE)
+    return codec.parse_read_response(response, request=request, profile=PROFILES[profile])
 
 
-def read_runtime(*, execute: bool = False, busid: str | None = None,
+def read_runtime(*, execute: bool = False, busid: str | None = None, profile: str = "literal",
                  runner=None, lease_directory: str | Path | None = None) -> dict:
     """Return one structured preview/observation/failure; never retry a request.
 
     Args:
         execute: False previews locally. True permits the single fixed USB read.
         busid: Required for execution, explicit Windows USB location (e.g. 8-3).
+        profile: "literal" preserves the historical ff010000/4B read;
+            "gcm-state" reads the separate vendor ff000000/1B CPU-state candidate.
         runner: subprocess.run-shaped test injection used by run_command.
         lease_directory: Optional cooperating-process lock directory for tests.
     Returns:
@@ -144,15 +150,20 @@ def read_runtime(*, execute: bool = False, busid: str | None = None,
         The helper claims/releases interface 0 and makes one bulk READ request;
         it does not alter active configuration or close AutoShop.
     """
-    request = codec.build_read_request(profile=PROFILE, sequence=PREVIEW_SEQUENCE)
+    request = codec.build_read_request(profile=PROFILES["literal"], sequence=PREVIEW_SEQUENCE)
     report = {
         "schema": SCHEMA, "scope": SCOPE, "ok": False, "status": "failed",
         "stage": "preview", "device_access": False, "gui_access": False,
         "transport_kind": "wsl-windows-libusb0", "linux_native_usb": False,
         "cpu_identity_verified": False, "cpu_state_verified": False,
         "application_execution_verified": False, "state_semantics": "unknown",
-        "profile": PROFILE, "request_hex": request.hex(), "diagnostics": [],
+        "read_profile": profile, "profile": PROFILES["literal"], "request_hex": request.hex(), "diagnostics": [],
     }
+    if not isinstance(profile, str) or profile not in PROFILES:
+        return {**report, "stage": "arguments", "diagnostics": [{"code": "E_PROFILE",
+                "message": "Choose fixed literal or gcm-state profile; arbitrary indexes are unsupported"}]}
+    request = codec.build_read_request(profile=PROFILES[profile], sequence=PREVIEW_SEQUENCE)
+    report.update(profile=PROFILES[profile], request_hex=request.hex())
     if execute is False:
         return {**report, "ok": True, "status": "preview", "requested_busid": busid,
                 "execution_requires": "--execute --busid BUSID; unique Not shared device; AutoShop closed"}
@@ -164,7 +175,7 @@ def read_runtime(*, execute: bool = False, busid: str | None = None,
         # prior call's late response. Collisions remain possible (1/65536), so
         # this is neither authentication nor a guarantee of response freshness.
         sequence = secrets.randbits(16)
-        request = codec.build_read_request(profile=PROFILE, sequence=sequence)
+        request = codec.build_read_request(profile=PROFILES[profile], sequence=sequence)
         report["request_hex"] = request.hex()
         report["sequence"] = sequence
         report["correlation_scope"] = "random u16; collision reduction only, not authentication or absolute freshness"
@@ -199,7 +210,8 @@ def read_runtime(*, execute: bool = False, busid: str | None = None,
             report["helper"] = {"path": str(helper), "sha256": helper_hash,
                                 "library_sha256": LIBRARY_SHA256}
             argv = [POWERSHELL_WSL_PATH, "-NoProfile", "-NonInteractive", "-ExecutionPolicy",
-                    "Bypass", "-File", to_windows_unc(helper), "-Execute", "-Sequence", str(sequence)]
+                    "Bypass", "-File", to_windows_unc(helper), "-Execute", "-Sequence", str(sequence),
+                    "-ReadProfile", profile]
             report["stage"] = "transport"
             report["device_access"] = True  # Attempted helper access; outcome may remain unknown.
             report["request_outcome"] = "unknown"
@@ -221,13 +233,19 @@ def read_runtime(*, execute: bool = False, busid: str | None = None,
             report["stage"] = "validate"
             raw = _helper_record(transport.stdout)
             report["transport_record"] = raw
-            decoded = _validate_transport(raw, request)
+            decoded = _validate_transport(raw, request, profile)
             report["decoded"] = decoded
             if not decoded["ok"]:
                 report["request_outcome"] = "device_error_response"
                 raise ValueError("Device returned an error operation, not runtime data")
             report.update(ok=True, status="observed", stage="complete",
                           request_outcome="correlated_raw_data", raw_value=decoded["raw_value"])
+            if profile == "gcm-state":
+                report["static_cpu_state_interpretation"] = {
+                    "value": {0: "STOP", 1: "RUN"}.get(decoded["raw_value"], "unknown"),
+                    "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+                    "device_calibrated": False,
+                }
         return report
     except Exception as error:
         # Never promote a helper marker, raw stdout, or partially decoded reply
@@ -246,9 +264,11 @@ def main(argv=None) -> int:
     parser = JsonArgumentParser(description=__doc__)
     parser.add_argument("--execute", action="store_true", help="perform the fixed read once; default is preview")
     parser.add_argument("--busid", help="explicit Windows USB location required for execution")
+    parser.add_argument("--profile", choices=tuple(PROFILES), default="literal",
+                        help="fixed literal ff010000/4B (default), or vendor gcm-state ff000000/1B")
     try:
         args = parser.parse_args(argv)
-        report = read_runtime(execute=args.execute, busid=args.busid)
+        report = read_runtime(execute=args.execute, busid=args.busid, profile=args.profile)
         code = 0 if report["ok"] else 1
     except ValueError as error:
         report = {"schema": SCHEMA, "ok": False, "status": "failed", "stage": "arguments",

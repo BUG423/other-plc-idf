@@ -23,6 +23,7 @@ USB_LIST = "Connected:\nBUSID  VID:PID    DEVICE             STATE\n8-3    0471:
 def record():
     return {
         "schema": reader.HELPER_SCHEMA, "scope": reader.HELPER_SCOPE,
+        "read_profile": "literal",
         "library_sha256": reader.LIBRARY_SHA256,
         "result": {
             "ok": True, "stage": "raw-frame-only", "write_calls": 1,
@@ -56,6 +57,7 @@ class FakeRunner:
             return SimpleNamespace(returncode=self.listing_rc, stdout=self.listing, stderr="")
         assert argv[0] == reader.POWERSHELL_WSL_PATH and "-Execute" in argv
         assert argv[argv.index("-Sequence") + 1] in ("4660", "4661")
+        assert argv[argv.index("-ReadProfile") + 1] in ("literal", "gcm-state")
         assert "-File" in argv and "read_easy521_usb_runtime.ps1" in argv[argv.index("-File") + 1]
         if self.timeout:
             raise subprocess.TimeoutExpired(argv, timeout, output="partial raw evidence")
@@ -258,3 +260,38 @@ def test_helper_change_during_execution_is_failed_unknown_with_raw_evidence(envi
     assert result["raw_transport"]["stdout"] == fake.payload
     assert result["helper"]["sha256_after"] != result["helper"]["sha256"]
     assert len(fake.calls) == 2
+
+
+@pytest.mark.parametrize("value,mapped", [(0, "STOP"), (1, "RUN"), (2, "unknown"), (3, "unknown")])
+def test_gcm_has_own_exact_one_byte_profile_and_only_static_state_mapping(environment, value, mapped):
+    data = record(); data["read_profile"] = "gcm-state"
+    data["result"].update(request_hex="12000101341200000100000000ff01000000",
+                          response_hex="0b000101341200000500" + bytes([value]).hex(), read_rcs=[11])
+    fake = FakeRunner(payload=json.dumps(data))
+    result = execute(environment, fake, profile="gcm-state")
+    assert result["ok"] and result["raw_value"] == value
+    assert result["static_cpu_state_interpretation"]["value"] == mapped
+    assert result["static_cpu_state_interpretation"]["device_calibrated"] is False
+    assert result["cpu_state_verified"] is False and result["state_semantics"] == "unknown"
+    assert fake.calls[1][-2:] == ["-ReadProfile", "gcm-state"]
+
+
+def test_helper_profile_cannot_silently_select_different_index(environment):
+    data = record(); data["read_profile"] = "gcm-state"
+    result = execute(environment, FakeRunner(payload=json.dumps(data)))
+    assert not result["ok"] and result["stage"] == "validate"
+
+
+@pytest.mark.parametrize("profile", ["runtime", "0xff000000", True, []])
+def test_unknown_profile_is_rejected_before_windows_even_for_preview(profile):
+    def forbidden(*args, **kwargs):
+        pytest.fail("invalid profile accessed Windows")
+    result = reader.read_runtime(profile=profile, runner=forbidden)
+    assert not result["ok"] and result["stage"] == "arguments"
+
+
+def test_gcm_preview_does_not_run_windows(capsys):
+    assert reader.main(["--profile", "gcm-state"]) == 0
+    result = json.loads(capsys.readouterr().out)
+    assert result["status"] == "preview" and result["read_profile"] == "gcm-state"
+    assert result["request_hex"] == "12000101341200000100000000ff01000000"

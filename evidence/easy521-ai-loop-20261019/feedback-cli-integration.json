@@ -1,0 +1,49 @@
+{
+  "schema": "plcidf.feedback-cli-integration.v1",
+  "observed_at": "2026-10-18T18:21:47.405205+00:00",
+  "scope": "local CLI against existing instrument observation; no human observation invented, no Windows/device actions",
+  "commands": [
+    {
+      "argv": [
+        ".venv/bin/python",
+        "tools/capture_plc_feedback.py",
+        "validate",
+        "evidence/easy521-ai-loop-20261019/feedback-runtime-observation.json",
+        "--evidence-root",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"validated\", \"scope\": \"schema, calendar time and local attachment digests only; no verification of source claims, device identity, program execution or behavior\", \"feedback_id\": \"usb-runtime-read-20261019-01\", \"record_kind\": \"observation\", \"attachments_checked\": [{\"path\": \"evidence/easy521-ai-loop-20261019/public-runtime-worker-final.json\", \"sha256\": \"e18d3471cf203fc905e0b4523aeca0e6b045852b8d7aee407bc4b5b9bef24ddc\"}, {\"path\": \"evidence/easy521-ai-loop-20261019/usb-standard-descriptors.json\", \"sha256\": \"fd57d902c7171b22ff7802be81d3c35584538d679ca50b0f7fd5c9061db45c41\"}]}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "tools/capture_plc_feedback.py",
+        "summary",
+        "evidence/easy521-ai-loop-20261019/feedback-runtime-observation.json",
+        "--evidence-root",
+        ".",
+        "--output",
+        "evidence/easy521-ai-loop-20261019/feedback-ai-summary-raw-index.md"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"created\", \"output\": \"evidence/easy521-ai-loop-20261019/feedback-ai-summary-raw-index.md\", \"scope\": \"schema, calendar time and local attachment digests only; no verification of source claims, device identity, program execution or behavior\"}\n",
+      "stderr": ""
+    }
+  ],
+  "files": [
+    {
+      "path": "tools/capture_plc_feedback.py",
+      "sha256": "c19480ad3c90802ab8825be659fe5806bc2ab850d1a78eb3944f869c11c2467d"
+    },
+    {
+      "path": "examples/easy521_feedback/feedback.schema.json",
+      "sha256": "54335062e4044ebc7c550f9a85c8685fac2ca4b7c2e5cb291a8cd6749f1ae637"
+    },
+    {
+      "path": "evidence/easy521-ai-loop-20261019/feedback-ai-summary-raw-index.md",
+      "sha256": "a239ec33db0caacf8dba47c218055c3e943b0427f20be06a425ab2da7f1a2821"
+    }
+  ]
+}

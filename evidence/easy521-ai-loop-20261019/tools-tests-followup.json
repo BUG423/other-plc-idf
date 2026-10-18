@@ -1,0 +1,19 @@
+{
+  "schema": "plcidf.software-test-run.v1",
+  "observed_at": "2026-10-18T18:25:39.629669+00:00",
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "tools/tests",
+    "-o",
+    "addopts=",
+    "-q"
+  ],
+  "lld_path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+  "exit_code": 0,
+  "elapsed_s": 3.522,
+  "stdout": ".......................................... [ 11%]\n........................................................................................................... [ 42%]\n........................................................... [ 59%]\n.................................................................... [ 78%]\n........................................................................... [100%]\n351 passed, 904 subtests passed in 3.19s\n",
+  "stderr": "",
+  "scope": "software contracts, fake Windows/USB transports and actual local LLD synthetic ARM cases; no device access"
+}

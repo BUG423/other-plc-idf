@@ -1,9 +1,12 @@
 # docs/research — 协议与固件研究
 
-> **2026-10-19 状态**：已实际完成独立USB只读请求/真机返回、厂商顺序的Linux两级对象链接。CPU状态值尚未标定，变量地址/类型注入、完整应用包装和无GUI下装仍开放。后面的历史研究保留其日期与当时范围。
+> **2026-10-19更新**：18号纠正12/15的虚表误接；旧ff010000/4B不是CPU状态。独立厂商GCM读取已真机回u8=0（静态STOP，现场未校准）。Linux两级链接和已有GVT分配解析已实测，符号注入、完整应用包装与无GUI下装仍开放。历史研究保留原貌，按更正理解其推导。
 
-- [本轮真实交付与命令](../management/EASY521_AI_DELIVERY_2026-10-19.md)：独立USB查询、Linux链接、人工反馈合同、单main分支与验证。
-- [USB线帧静态合同](firmware/15-transport-contract-2026-10-19.md)：运行态read封装、序列/响应、端点/配置与离线codec；真机实验另列在本轮交付。
+- [最新交付、调用链更正与GCM实测](../management/EASY521_AI_FOLLOWUP_2026-10-19.md)：已有变量解析、人工反馈工具及当前验收边界。
+- [运行模式/CPU状态更正](firmware/18-runtime-mode-correction-2026-10-19.md)：CRTU/EtherCAT/GCM三条构造与执行路径，修正12/15静态错误。
+- [已有变量分配解析](firmware/17-existing-variable-bindings-2026-10-19.md)：GVT19项地址/类型、8项候选符号独立对照，非新分配器。
+- [首批真实交付与命令](../management/EASY521_AI_DELIVERY_2026-10-19.md)：独立USB查询、Linux链接、人工反馈合同、单main分支与验证。
+- [USB线帧静态合同](firmware/15-transport-contract-2026-10-19.md)：通用帧、序列/响应、端点/配置与离线codec；CRTU→ff010000误接由18号更正，原始帧事实保留。
 - [Linux两级链接与应用事务](firmware/16-application-transaction-2026-10-19.md)：真实节字节对照、8项变量符号后处理、有序文件表与配置头。
 
 - [Easy521 最简单直接的控制方式](../management/EASY521_DIRECT_CONTROL_2026-10-18.md)：Modbus 数据控制、CPU 模式、应用下载与系统固件四层分开；附本轮物理网口/USB 枚举和可运行 Linux D 区工具。

@@ -1,0 +1,36 @@
+{
+  "schema": "plcidf.feedback-gcm-cli-integration.v1",
+  "observed_at": "2026-10-18T18:25:36.036736+00:00",
+  "scope": "existing instrument observations only; no human observation fabricated or device action",
+  "commands": [
+    {
+      "argv": [
+        ".venv/bin/python",
+        "tools/capture_plc_feedback.py",
+        "validate",
+        "evidence/easy521-ai-loop-20261019/feedback-gcm-observation.json",
+        "--evidence-root",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"validated\", \"scope\": \"schema, calendar time and local attachment digests only; no verification of source claims, device identity, program execution or behavior\", \"feedback_id\": \"gcm-state-read-20261019-01\", \"record_kind\": \"observation\", \"attachments_checked\": [{\"path\": \"evidence/easy521-ai-loop-20261019/gcm-state-query.json\", \"sha256\": \"bad46ca6a04ebce0d5066a3929ca6e4efd1fe5992b04e4edad4b2ee18dc4fe94\"}]}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "tools/capture_plc_feedback.py",
+        "summary",
+        "evidence/easy521-ai-loop-20261019/feedback-runtime-observation.json",
+        "evidence/easy521-ai-loop-20261019/feedback-gcm-observation.json",
+        "--evidence-root",
+        ".",
+        "--output",
+        "evidence/easy521-ai-loop-20261019/feedback-ai-summary-gcm.md"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"created\", \"output\": \"evidence/easy521-ai-loop-20261019/feedback-ai-summary-gcm.md\", \"scope\": \"schema, calendar time and local attachment digests only; no verification of source claims, device identity, program execution or behavior\"}\n",
+      "stderr": ""
+    }
+  ]
+}

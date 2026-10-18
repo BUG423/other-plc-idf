@@ -1,10 +1,11 @@
-"""Pure offline codec for two explicitly different, read-only index profiles.
+"""Pure offline codec for explicitly selected, fixed read-only index profiles.
 
-The pinned vendor host DLL implements CRTUStateCommand as index 0xff010000,
-length 4.  The separately shipped Simulator uses index 0xff000000, length 1
-for its CPU status.  Those facts do NOT establish that either profile has
-been accepted by Easy521 hardware.  See:
-docs/research/firmware/15-transport-contract-2026-10-19.{md,json}.
+Research report 18 corrects report 15's command association: ff010000/4 belongs
+to CReadEthercatCommand, not GetPLCRunMode/CPU scanning state. A live raw u32=0
+was observed for that literal request, but its device meaning remains unknown.
+The vendor's own GetGCMState path independently reads ff000000/1; Simulator
+uses that same index/size but is a separate target, not evidence of compatibility.
+See docs/research/firmware/18-runtime-mode-correction-2026-10-19.{md,json}.
 
 Only a complete request and complete response are handled here.  The module
 has no USB/socket transport, DLL loading, subprocesses, file I/O, login,
@@ -18,12 +19,18 @@ from __future__ import annotations
 import struct
 
 
+VENDOR_LITERAL_FF010000_4 = "vendor_literal_ff010000_4"
+VENDOR_GCM_STATE = "vendor_gcm_state"
+# Compatibility name/string for historical callers and reports. Despite its
+# old name it reads the literal EtherCAT-related index, NEVER CPU RUN/STOP.
 VENDOR_RUNTIME = "vendor_h530_runtime"
 SIMULATOR_CPU_STATUS = "simulator_cpu_status"
 
 # Deliberately private and selected by exact name.  There is no implicit target
 # and no arbitrary index/operation option that could turn this into a writer.
 _PROFILES = {
+    VENDOR_LITERAL_FF010000_4: (0xFF010000, 4),
+    VENDOR_GCM_STATE: (0xFF000000, 1),
     VENDOR_RUNTIME: (0xFF010000, 4),
     SIMULATOR_CPU_STATUS: (0xFF000000, 1),
 }
@@ -96,7 +103,8 @@ def build_read_request(*, profile: str, sequence: int) -> bytes:
     """Construct one fixed read request without opening or changing any device.
 
     Args:
-        profile: VENDOR_RUNTIME (u32) or SIMULATOR_CPU_STATUS (u8), required.
+        profile: Explicit vendor literal (u32), vendor GCM (u8), or Simulator
+            CPU status (u8). The legacy VENDOR_RUNTIME name is still accepted.
         sequence: Integer correlation value in 0..65535; not an authenticity token.
     Returns:
         Exactly 18 bytes: 10-byte header followed by LE index and data length.
@@ -107,8 +115,8 @@ def build_read_request(*, profile: str, sequence: int) -> bytes:
     index, data_bytes = _profile(profile)
     seq = _sequence(sequence)
     # RVA 0x28050 zeroes the allocation, writes version/selector/sequence/op,
-    # then copies the eight-byte body at +10.  Ordinary CRTUStateCommand does
-    # not set the one-shot flags override.  No session/login is synthesized.
+    # then copies the eight-byte body at +10. Only an ordinary read is
+    # represented here; no one-shot flags, session or login is synthesized.
     return _HEADER.pack(_REQUEST_BYTES, 1, 1, seq, 0, 1, 0) + _READ_BODY.pack(index, data_bytes)
 
 
@@ -182,6 +190,11 @@ def parse_read_response(frame: bytes, *, request: bytes, profile: str) -> dict:
 
     raw = frame[_HEADER_BYTES:]
     value = int.from_bytes(raw, "little", signed=False)
+    # Vendor dd30 accepts only wire bytes 0..3 as EnumGCMState. Other bytes
+    # produce enum=-1 and communication result=2 there. Do not label such a
+    # value as a successful GCM observation. Simulator remains independent.
+    if operation == 5 and profile == VENDOR_GCM_STATE and value not in (0, 1, 2, 3):
+        raise ProtocolError("E_STATE_VALUE", "vendor GCM state is outside its statically accepted 0..3 range")
     result = {
         **header,
         "profile": profile,

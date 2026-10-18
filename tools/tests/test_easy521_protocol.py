@@ -155,3 +155,31 @@ def test_response_revalidates_original_request_instead_of_trusting_sequence_only
 def test_profile_must_be_explicit_in_public_api():
     with pytest.raises(TypeError):
         codec.build_read_request(sequence=0)
+
+
+def test_neutral_literal_name_preserves_historical_request_without_cpu_claim():
+    assert codec.build_read_request(profile=codec.VENDOR_LITERAL_FF010000_4, sequence=0x1234) == VENDOR_REQUEST
+    # Historical name/string remain accepted for old callers, with raw semantics.
+    result = codec.parse_read_response(VENDOR_DATA, request=VENDOR_REQUEST, profile="vendor_h530_runtime")
+    assert result["raw_value"] == 0x12345678 and result["state_semantics"] == "unknown"
+
+
+@pytest.mark.parametrize("state", [0, 1, 2, 3])
+def test_vendor_gcm_profile_follows_vendor_own_one_byte_read(state):
+    request = codec.build_read_request(profile=codec.VENDOR_GCM_STATE, sequence=0x1234)
+    assert request == SIM_REQUEST  # Same wire shape, independently recovered source.
+    frame = bytes.fromhex("0b000101341200000500") + bytes([state])
+    result = codec.parse_read_response(frame, request=request, profile=codec.VENDOR_GCM_STATE)
+    assert result["raw_value"] == state and result["device_verified"] is False
+
+
+@pytest.mark.parametrize("frame", [VENDOR_DATA, SIM_DATA, bytes.fromhex("0b000101341200000500ff")])
+def test_vendor_gcm_rejects_dword_reply_or_out_of_range_enum(frame):
+    with pytest.raises(codec.ProtocolError):
+        codec.parse_read_response(frame, request=SIM_REQUEST, profile=codec.VENDOR_GCM_STATE)
+
+
+def test_gcm_error_still_uses_four_bytes_and_never_becomes_state():
+    frame = bytes.fromhex("0e000101341200000f0001000000")
+    result = codec.parse_read_response(frame, request=SIM_REQUEST, profile=codec.VENDOR_GCM_STATE)
+    assert result["status"] == "device_error" and result["ok"] is False

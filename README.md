@@ -34,7 +34,7 @@ flowchart LR
     style PLC fill:#fff7ed,stroke:#f97316,color:#7c2d12
 ```
 
-Linux 后端已能真实编译、执行与验收 ST。Easy521 已完成 USB 应用下装及厂商程序一致性校验，CPU 运行尚未验收；本轮独立 USB 查询已收到真机原始数据，Linux 两级对象链接已实测。工程变量地址/类型注入、完整应用包装、无界面下装与设备字节身份仍在研究。**Linux ELF 与厂商 ARM 对象均不能直接当作完整 Easy521 应用烧录。**
+Linux 后端已能真实编译、执行与验收 ST。Easy521 已完成 USB 应用下装及厂商程序一致性校验，CPU 运行尚未验收；本轮独立 GCM 查询收到状态字节0（厂商静态映射STOP，现场未独立校准），Linux 两级对象链接及已有变量表解析已实测。变量符号注入、完整应用包装、无界面下装与设备字节身份仍在研究。**Linux ELF 与厂商 ARM 对象均不能直接当作完整 Easy521 应用烧录。**
 
 ---
 
@@ -45,8 +45,9 @@ Linux 后端已能真实编译、执行与验收 ST。Easy521 已完成 USB 应�
 | 🤖 **AI 编程与需求验收** | AI 直接修改 ST 和场景文件；`verify` 执行真实编译与逐扫描 expected/actual 断言，支持电机逻辑和 REAL 滞回示例。 |
 | 🐧 **Linux 原生运行** | 固定 MatIEC 工具链，提供工程创建、构建、部署、本地运行、监测与停止；物理 I/O 和工业实时性另行验收。 |
 | 🎛️ **Easy521 工程兼容** | WSL 调用已安装 AutoShop，支持已有工程 MAIN 同步、真实编译、下载与证据记录；当前保留 Windows 依赖。 |
-| 🧩 **独立对象编译与链接** | 受限 MAIN 和基础全局表经 Windows StLang 生成 ARM 对象，Linux LLD 已可执行厂商顺序的两级链接；完整运行时绑定仍待完成。 |
-| 🔌 **数据控制与监测** | 独立 USB 查询已实测，状态含义尚未标定；D 区工具支持单次写入和读回，原 monitor 保持只读。业务变量须先绑定地址。 |
+| 🧩 **独立对象编译与链接** | 受限 MAIN 和基础全局表经 Windows StLang 生成 ARM 对象，Linux LLD 已可执行厂商顺序的两级链接；已有变量地址可独立解析，完整运行时绑定仍待完成。 |
+| 🔌 **数据控制与监测** | 独立 USB GCM 查询已实测，现场扫描仍待验收；D 区工具支持单次写入和读回，原 monitor 保持只读。业务变量须先绑定地址。 |
+| 📝 **现场反馈** | 人工记录、仪器记录校验及多轮摘要；关联需求/程序/目标，核对日期与附件哈希，未知项保留。 |
 | 📋 **可追溯记录** | 源码、构建产物、部署候选与验证结果分开记录；超时或无法核验时返回失败或 unknown，不自动重放设备写操作。 |
 
 项目曾用名 **py2plc**，Python 包名为 `plc_idf`，命令名为 `plcidf`；`py2plc` 保留为等价命令别名。历史工程与探测档案按原貌保留。
@@ -85,11 +86,11 @@ plcidf verify /tmp/ai_motor --json
 ### 3. 独立查询 Easy521 USB 原始数据
 
 ```bash
-python tools/read_easy521_usb_runtime.py
-python tools/read_easy521_usb_runtime.py --execute --busid 8-3
+python tools/read_easy521_usb_runtime.py --profile gcm-state
+python tools/read_easy521_usb_runtime.py --profile gcm-state --execute --busid 8-3
 ```
 
-第一条仅预览。执行前关闭 AutoShop，并用 `usbipd list` 核对本次设备位置；`8-3` 是本轮实测位置。工具在设备锁内重新枚举，只发送一次固定读取请求。当前通过 WSL 调用 Windows libusb0 驱动；返回原始数值不等于已标定 RUN/STOP。详见[本轮真实证据](docs/management/EASY521_AI_DELIVERY_2026-10-19.md)。
+第一条仅预览。执行前关闭 AutoShop，并用 `usbipd list` 核对本次设备位置；`8-3` 是本轮实测位置。工具在设备锁内重新枚举，只发送一次固定读取请求。当前通过 WSL 调用 Windows libusb0 驱动。`gcm-state` 按已核对的厂商 CPU 状态链读取；默认 `literal` 是另一条原始索引查询，不能作为 CPU 状态。详见[最新实测与调用链更正](docs/management/EASY521_AI_FOLLOWUP_2026-10-19.md)。
 
 ### 4. 读取或预览 Modbus 数据操作
 
@@ -125,7 +126,7 @@ python -m pytest tools/tests -q
 
 | 入口 | 内容 |
 | :--- | :--- |
-| [AI 编程](docs/AI_PROGRAMMING.md) | 需求、ST、场景与软件反馈的实际用法 |
+| [AI 编程](docs/AI_PROGRAMMING.md) / [人工反馈](docs/FEEDBACK_CAPTURE.md) | 需求、ST、场景、人工/仪器记录与多轮汇总的实际用法 |
 | [Easy521 闭环需求](docs/requirements/EASY521_AI_LOOP_2026-10-19.md) / [任务分工](docs/management/EASY521_AI_TASKS_2026-10-19.md) | Linux 原生目标、人工观察记录、代码注释标准和本轮分派 |
 | [Easy521 操作说明](docs/EASY521_CLI.md) | 真实构建/下装记录、命令、当前限制与诊断 |
 | [直接控制研究](docs/management/EASY521_DIRECT_CONTROL_2026-10-18.md) | 数据协议、CPU 模式、应用下载和底层系统的证据边界 |

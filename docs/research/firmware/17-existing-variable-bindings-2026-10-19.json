@@ -1,0 +1,1068 @@
+{
+  "schema": "plcidf.existing-global-allocation-research.v1",
+  "recorded_at_utc": "2026-10-18T18:19:37.971038+00:00",
+  "scope": {
+    "static_and_independent_file_parsing": true,
+    "new_allocator": false,
+    "elf_patch": false,
+    "vendor_execution": false,
+    "windows_or_device_access": false,
+    "complete_build_download_runtime_claim": false
+  },
+  "input_records": {
+    "变量表.gvt": {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/变量表.gvt",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-17-variables-20261019/inputs/变量表.gvt",
+      "size": 1503,
+      "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
+    },
+    "VarNameAndAddr.csv": {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/VarNameAndAddr.csv",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-17-variables-20261019/inputs/VarNameAndAddr.csv",
+      "size": 24548,
+      "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+    },
+    "VarsInfo.vi": {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/VarsInfo.vi",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-17-variables-20261019/inputs/VarsInfo.vi",
+      "size": 284,
+      "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95"
+    },
+    "ReAllocVarsInfo.vi": {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/ReAllocVarsInfo.vi",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-17-variables-20261019/inputs/ReAllocVarsInfo.vi",
+      "size": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    },
+    "varsinfo.foid": {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/varsinfo.foid",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-17-variables-20261019/inputs/varsinfo.foid",
+      "size": 423,
+      "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d"
+    }
+  },
+  "parser_report": {
+    "schema": "plcidf.vendor-existing-variables.v1",
+    "ok": true,
+    "status": "existing-records-inspected",
+    "scope": "existing-project-allocation-inspection",
+    "allocator_implemented": false,
+    "elf_patched": false,
+    "downloadable": false,
+    "limitations": [
+      "Parses existing assigned scalar globals in one pinned GVT serialization profile; it does not allocate addresses for new variables.",
+      "Address values are opaque vendor symbol addresses, not proven byte addresses, direct I/O addresses or Modbus registers.",
+      "SInfo type 8 is the observed ordinary-global symbol category; it is not the BOOL/INT/REAL scalar code.",
+      "ASCII uppercase compiler names are candidates for the observed ordinary-global profile; Unicode, aliases, namespaces, arrays and instances are unsupported.",
+      "No ELF patch, complete application build, download, runtime ABI or device execution is verified."
+    ],
+    "gvt": {
+      "path": "/home/zss/workspace/py2plc/.plcidf/research-17-variables-20261019/inputs/变量表.gvt",
+      "size": 1503,
+      "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
+    },
+    "profile": "autoshop-gvt-6.0-observed-scalar-v1",
+    "count": 19,
+    "preamble_bytes": 217,
+    "preamble_sha256": "551997c6cc365daf1275ee90349f48cfc2c5f2d05225732e0877fb435bfeb03f",
+    "count_offset": 217,
+    "records": [
+      {
+        "index": 0,
+        "name": "g_xBESS_Enable",
+        "type": "BOOL",
+        "type_code": 1,
+        "width_bits": 1,
+        "initial_text": "OFF",
+        "comment": "Controller enable",
+        "address": 34603008,
+        "address_hex": "0x2100000",
+        "record_offset": 221,
+        "name_length_offset": 229,
+        "flags_offset": 248,
+        "address_offset": 252,
+        "tail_offset": 274,
+        "record_end_offset": 286,
+        "compiler_symbol_candidate": "G_XBESS_ENABLE",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 1,
+        "name": "g_xBESS_Reset",
+        "type": "BOOL",
+        "type_code": 1,
+        "width_bits": 1,
+        "initial_text": "OFF",
+        "comment": "Controller reset",
+        "address": 34603009,
+        "address_hex": "0x2100001",
+        "record_offset": 286,
+        "name_length_offset": 294,
+        "flags_offset": 312,
+        "address_offset": 316,
+        "tail_offset": 337,
+        "record_end_offset": 349,
+        "compiler_symbol_candidate": "G_XBESS_RESET",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 2,
+        "name": "g_xBESS_MeasurementsValid",
+        "type": "BOOL",
+        "type_code": 1,
+        "width_bits": 1,
+        "initial_text": "OFF",
+        "comment": "Measurement frame valid",
+        "address": 34603010,
+        "address_hex": "0x2100002",
+        "record_offset": 349,
+        "name_length_offset": 357,
+        "flags_offset": 387,
+        "address_offset": 391,
+        "tail_offset": 419,
+        "record_end_offset": 431,
+        "compiler_symbol_candidate": "G_XBESS_MEASUREMENTSVALID",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 3,
+        "name": "g_rBESS_Vpu",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "BUS18 voltage pu",
+        "address": 34603024,
+        "address_hex": "0x2100010",
+        "record_offset": 431,
+        "name_length_offset": 439,
+        "flags_offset": 453,
+        "address_offset": 457,
+        "tail_offset": 478,
+        "record_end_offset": 490,
+        "compiler_symbol_candidate": "G_RBESS_VPU",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 4,
+        "name": "g_rBESS_Pline",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Line active power pu",
+        "address": 34603056,
+        "address_hex": "0x2100030",
+        "record_offset": 490,
+        "name_length_offset": 498,
+        "flags_offset": 514,
+        "address_offset": 518,
+        "tail_offset": 543,
+        "record_end_offset": 555,
+        "compiler_symbol_candidate": "G_RBESS_PLINE",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 5,
+        "name": "g_rBESS_Qline",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Line reactive power pu",
+        "address": 34603088,
+        "address_hex": "0x2100050",
+        "record_offset": 555,
+        "name_length_offset": 563,
+        "flags_offset": 579,
+        "address_offset": 583,
+        "tail_offset": 610,
+        "record_end_offset": 622,
+        "compiler_symbol_candidate": "G_RBESS_QLINE",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 6,
+        "name": "g_rBESS_Loading",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Line loading ratio",
+        "address": 34603120,
+        "address_hex": "0x2100070",
+        "record_offset": 622,
+        "name_length_offset": 630,
+        "flags_offset": 648,
+        "address_offset": 652,
+        "tail_offset": 675,
+        "record_end_offset": 687,
+        "compiler_symbol_candidate": "G_RBESS_LOADING",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 7,
+        "name": "g_rBESS_SOC",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Battery SOC",
+        "address": 34603152,
+        "address_hex": "0x2100090",
+        "record_offset": 687,
+        "name_length_offset": 695,
+        "flags_offset": 709,
+        "address_offset": 713,
+        "tail_offset": 729,
+        "record_end_offset": 741,
+        "compiler_symbol_candidate": "G_RBESS_SOC",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 8,
+        "name": "g_rBESS_Pess",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Measured BESS active power pu",
+        "address": 34603184,
+        "address_hex": "0x21000b0",
+        "record_offset": 741,
+        "name_length_offset": 749,
+        "flags_offset": 764,
+        "address_offset": 768,
+        "tail_offset": 802,
+        "record_end_offset": 814,
+        "compiler_symbol_candidate": "G_RBESS_PESS",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 9,
+        "name": "g_rBESS_Qess",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Measured BESS reactive power pu",
+        "address": 34603216,
+        "address_hex": "0x21000d0",
+        "record_offset": 814,
+        "name_length_offset": 822,
+        "flags_offset": 837,
+        "address_offset": 841,
+        "tail_offset": 877,
+        "record_end_offset": 889,
+        "compiler_symbol_candidate": "G_RBESS_QESS",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 10,
+        "name": "g_rBESS_Pcmd",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Active power command pu",
+        "address": 34603248,
+        "address_hex": "0x21000f0",
+        "record_offset": 889,
+        "name_length_offset": 897,
+        "flags_offset": 912,
+        "address_offset": 916,
+        "tail_offset": 944,
+        "record_end_offset": 956,
+        "compiler_symbol_candidate": "G_RBESS_PCMD",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 11,
+        "name": "g_rBESS_Qcmd",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Reactive power command pu",
+        "address": 34603280,
+        "address_hex": "0x2100110",
+        "record_offset": 956,
+        "name_length_offset": 964,
+        "flags_offset": 979,
+        "address_offset": 983,
+        "tail_offset": 1013,
+        "record_end_offset": 1025,
+        "compiler_symbol_candidate": "G_RBESS_QCMD",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 12,
+        "name": "g_iBESS_Mode",
+        "type": "INT",
+        "type_code": 4,
+        "width_bits": 16,
+        "initial_text": "0",
+        "comment": "Controller mode",
+        "address": 34603312,
+        "address_hex": "0x2100130",
+        "record_offset": 1025,
+        "name_length_offset": 1033,
+        "flags_offset": 1048,
+        "address_offset": 1052,
+        "tail_offset": 1072,
+        "record_end_offset": 1084,
+        "compiler_symbol_candidate": "G_IBESS_MODE",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 13,
+        "name": "g_rBESS_SensVP",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimated dV per dPess",
+        "address": 34603328,
+        "address_hex": "0x2100140",
+        "record_offset": 1084,
+        "name_length_offset": 1092,
+        "flags_offset": 1109,
+        "address_offset": 1113,
+        "tail_offset": 1140,
+        "record_end_offset": 1152,
+        "compiler_symbol_candidate": "G_RBESS_SENSVP",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 14,
+        "name": "g_rBESS_SensVQ",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimated dV per dQess",
+        "address": 34603360,
+        "address_hex": "0x2100160",
+        "record_offset": 1152,
+        "name_length_offset": 1160,
+        "flags_offset": 1177,
+        "address_offset": 1181,
+        "tail_offset": 1208,
+        "record_end_offset": 1220,
+        "compiler_symbol_candidate": "G_RBESS_SENSVQ",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 15,
+        "name": "g_rBESS_InfluenceP",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimated P coupling",
+        "address": 34603392,
+        "address_hex": "0x2100180",
+        "record_offset": 1220,
+        "name_length_offset": 1228,
+        "flags_offset": 1249,
+        "address_offset": 1253,
+        "tail_offset": 1278,
+        "record_end_offset": 1290,
+        "compiler_symbol_candidate": "G_RBESS_INFLUENCEP",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 16,
+        "name": "g_rBESS_InfluenceQ",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimated Q coupling",
+        "address": 34603424,
+        "address_hex": "0x21001a0",
+        "record_offset": 1290,
+        "name_length_offset": 1298,
+        "flags_offset": 1319,
+        "address_offset": 1323,
+        "tail_offset": 1348,
+        "record_end_offset": 1360,
+        "compiler_symbol_candidate": "G_RBESS_INFLUENCEQ",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 17,
+        "name": "g_rBESS_Confidence",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimator confidence",
+        "address": 34603456,
+        "address_hex": "0x21001c0",
+        "record_offset": 1360,
+        "name_length_offset": 1368,
+        "flags_offset": 1389,
+        "address_offset": 1393,
+        "tail_offset": 1418,
+        "record_end_offset": 1430,
+        "compiler_symbol_candidate": "G_RBESS_CONFIDENCE",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 18,
+        "name": "g_xBESS_ControllerReady",
+        "type": "BOOL",
+        "type_code": 1,
+        "width_bits": 1,
+        "initial_text": "OFF",
+        "comment": "Controller ready",
+        "address": 34603011,
+        "address_hex": "0x2100003",
+        "record_offset": 1430,
+        "name_length_offset": 1438,
+        "flags_offset": 1466,
+        "address_offset": 1470,
+        "tail_offset": 1491,
+        "record_end_offset": 1503,
+        "compiler_symbol_candidate": "G_XBESS_CONTROLLERREADY",
+        "sinfo_type_candidate": 8
+      }
+    ],
+    "selected_records": [
+      {
+        "index": 12,
+        "name": "g_iBESS_Mode",
+        "type": "INT",
+        "type_code": 4,
+        "width_bits": 16,
+        "initial_text": "0",
+        "comment": "Controller mode",
+        "address": 34603312,
+        "address_hex": "0x2100130",
+        "record_offset": 1025,
+        "name_length_offset": 1033,
+        "flags_offset": 1048,
+        "address_offset": 1052,
+        "tail_offset": 1072,
+        "record_end_offset": 1084,
+        "compiler_symbol_candidate": "G_IBESS_MODE",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 17,
+        "name": "g_rBESS_Confidence",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimator confidence",
+        "address": 34603456,
+        "address_hex": "0x21001c0",
+        "record_offset": 1360,
+        "name_length_offset": 1368,
+        "flags_offset": 1389,
+        "address_offset": 1393,
+        "tail_offset": 1418,
+        "record_end_offset": 1430,
+        "compiler_symbol_candidate": "G_RBESS_CONFIDENCE",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 15,
+        "name": "g_rBESS_InfluenceP",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimated P coupling",
+        "address": 34603392,
+        "address_hex": "0x2100180",
+        "record_offset": 1220,
+        "name_length_offset": 1228,
+        "flags_offset": 1249,
+        "address_offset": 1253,
+        "tail_offset": 1278,
+        "record_end_offset": 1290,
+        "compiler_symbol_candidate": "G_RBESS_INFLUENCEP",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 16,
+        "name": "g_rBESS_InfluenceQ",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimated Q coupling",
+        "address": 34603424,
+        "address_hex": "0x21001a0",
+        "record_offset": 1290,
+        "name_length_offset": 1298,
+        "flags_offset": 1319,
+        "address_offset": 1323,
+        "tail_offset": 1348,
+        "record_end_offset": 1360,
+        "compiler_symbol_candidate": "G_RBESS_INFLUENCEQ",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 10,
+        "name": "g_rBESS_Pcmd",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Active power command pu",
+        "address": 34603248,
+        "address_hex": "0x21000f0",
+        "record_offset": 889,
+        "name_length_offset": 897,
+        "flags_offset": 912,
+        "address_offset": 916,
+        "tail_offset": 944,
+        "record_end_offset": 956,
+        "compiler_symbol_candidate": "G_RBESS_PCMD",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 11,
+        "name": "g_rBESS_Qcmd",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Reactive power command pu",
+        "address": 34603280,
+        "address_hex": "0x2100110",
+        "record_offset": 956,
+        "name_length_offset": 964,
+        "flags_offset": 979,
+        "address_offset": 983,
+        "tail_offset": 1013,
+        "record_end_offset": 1025,
+        "compiler_symbol_candidate": "G_RBESS_QCMD",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 13,
+        "name": "g_rBESS_SensVP",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimated dV per dPess",
+        "address": 34603328,
+        "address_hex": "0x2100140",
+        "record_offset": 1084,
+        "name_length_offset": 1092,
+        "flags_offset": 1109,
+        "address_offset": 1113,
+        "tail_offset": 1140,
+        "record_end_offset": 1152,
+        "compiler_symbol_candidate": "G_RBESS_SENSVP",
+        "sinfo_type_candidate": 8
+      },
+      {
+        "index": 14,
+        "name": "g_rBESS_SensVQ",
+        "type": "REAL",
+        "type_code": 32,
+        "width_bits": 32,
+        "initial_text": "0",
+        "comment": "Estimated dV per dQess",
+        "address": 34603360,
+        "address_hex": "0x2100160",
+        "record_offset": 1152,
+        "name_length_offset": 1160,
+        "flags_offset": 1177,
+        "address_offset": 1181,
+        "tail_offset": 1208,
+        "record_end_offset": 1220,
+        "compiler_symbol_candidate": "G_RBESS_SENSVQ",
+        "sinfo_type_candidate": 8
+      }
+    ],
+    "csv_cross_check": {
+      "path": "/home/zss/workspace/py2plc/.plcidf/research-17-variables-20261019/inputs/VarNameAndAddr.csv",
+      "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+      "checks": [
+        {
+          "name": "g_xBESS_Enable",
+          "csv_line": 286,
+          "matches": true
+        },
+        {
+          "name": "g_xBESS_Reset",
+          "csv_line": 288,
+          "matches": true
+        },
+        {
+          "name": "g_xBESS_MeasurementsValid",
+          "csv_line": 287,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_Vpu",
+          "csv_line": 284,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_Pline",
+          "csv_line": 277,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_Qline",
+          "csv_line": 280,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_Loading",
+          "csv_line": 274,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_SOC",
+          "csv_line": 281,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_Pess",
+          "csv_line": 276,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_Qess",
+          "csv_line": 279,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_Pcmd",
+          "csv_line": 275,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_Qcmd",
+          "csv_line": 278,
+          "matches": true
+        },
+        {
+          "name": "g_iBESS_Mode",
+          "csv_line": 270,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_SensVP",
+          "csv_line": 282,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_SensVQ",
+          "csv_line": 283,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_InfluenceP",
+          "csv_line": 272,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_InfluenceQ",
+          "csv_line": 273,
+          "matches": true
+        },
+        {
+          "name": "g_rBESS_Confidence",
+          "csv_line": 271,
+          "matches": true
+        },
+        {
+          "name": "g_xBESS_ControllerReady",
+          "csv_line": 285,
+          "matches": true
+        }
+      ]
+    }
+  },
+  "parser_uses_elf_input": false,
+  "cross_checks": {
+    "address_csv_matches": 19,
+    "declared_type_source": {
+      "path": "plc/easy521/autoshop_global_import.csv",
+      "size": 1378,
+      "sha256": "2ec0225aaa9be79e57f2780ddbdbfdd174d90b778dc225bc532040c361ce89bc"
+    },
+    "declared_type_checks": [
+      {
+        "name": "g_xBESS_Enable",
+        "gvt_type_code": 1,
+        "parsed_scalar_type": "BOOL",
+        "declared_import_type": "BOOL",
+        "matches": true
+      },
+      {
+        "name": "g_xBESS_Reset",
+        "gvt_type_code": 1,
+        "parsed_scalar_type": "BOOL",
+        "declared_import_type": "BOOL",
+        "matches": true
+      },
+      {
+        "name": "g_xBESS_MeasurementsValid",
+        "gvt_type_code": 1,
+        "parsed_scalar_type": "BOOL",
+        "declared_import_type": "BOOL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_Vpu",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_Pline",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_Qline",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_Loading",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_SOC",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_Pess",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_Qess",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_Pcmd",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_Qcmd",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_iBESS_Mode",
+        "gvt_type_code": 4,
+        "parsed_scalar_type": "INT",
+        "declared_import_type": "INT",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_SensVP",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_SensVQ",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_InfluenceP",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_InfluenceQ",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_rBESS_Confidence",
+        "gvt_type_code": 32,
+        "parsed_scalar_type": "REAL",
+        "declared_import_type": "REAL",
+        "matches": true
+      },
+      {
+        "name": "g_xBESS_ControllerReady",
+        "gvt_type_code": 1,
+        "parsed_scalar_type": "BOOL",
+        "declared_import_type": "BOOL",
+        "matches": true
+      }
+    ],
+    "reference_elf": {
+      "path": ".plcidf/research-16-link-20261019T014840/inputs/Temp/stprog.o",
+      "size": 127464,
+      "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b"
+    },
+    "reference_elf_used_only_after_independent_parse": true,
+    "eight_symbol_checks": [
+      {
+        "name": "g_iBESS_Mode",
+        "compiler_symbol": "G_IBESS_MODE",
+        "gvt_record_offset": 1025,
+        "gvt_address_offset": 1052,
+        "gvt_derived_address": 34603312,
+        "gvt_derived_address_hex": "0x2100130",
+        "gvt_declared_type_code": 4,
+        "gvt_scalar_type": "INT",
+        "sinfo_category_candidate": 8,
+        "reference_elf": {
+          "st_value": 34603312,
+          "st_info": 24,
+          "st_shndx": 0
+        },
+        "comparison_matches": true
+      },
+      {
+        "name": "g_rBESS_Confidence",
+        "compiler_symbol": "G_RBESS_CONFIDENCE",
+        "gvt_record_offset": 1360,
+        "gvt_address_offset": 1393,
+        "gvt_derived_address": 34603456,
+        "gvt_derived_address_hex": "0x21001c0",
+        "gvt_declared_type_code": 32,
+        "gvt_scalar_type": "REAL",
+        "sinfo_category_candidate": 8,
+        "reference_elf": {
+          "st_value": 34603456,
+          "st_info": 24,
+          "st_shndx": 0
+        },
+        "comparison_matches": true
+      },
+      {
+        "name": "g_rBESS_InfluenceP",
+        "compiler_symbol": "G_RBESS_INFLUENCEP",
+        "gvt_record_offset": 1220,
+        "gvt_address_offset": 1253,
+        "gvt_derived_address": 34603392,
+        "gvt_derived_address_hex": "0x2100180",
+        "gvt_declared_type_code": 32,
+        "gvt_scalar_type": "REAL",
+        "sinfo_category_candidate": 8,
+        "reference_elf": {
+          "st_value": 34603392,
+          "st_info": 24,
+          "st_shndx": 0
+        },
+        "comparison_matches": true
+      },
+      {
+        "name": "g_rBESS_InfluenceQ",
+        "compiler_symbol": "G_RBESS_INFLUENCEQ",
+        "gvt_record_offset": 1290,
+        "gvt_address_offset": 1323,
+        "gvt_derived_address": 34603424,
+        "gvt_derived_address_hex": "0x21001a0",
+        "gvt_declared_type_code": 32,
+        "gvt_scalar_type": "REAL",
+        "sinfo_category_candidate": 8,
+        "reference_elf": {
+          "st_value": 34603424,
+          "st_info": 24,
+          "st_shndx": 0
+        },
+        "comparison_matches": true
+      },
+      {
+        "name": "g_rBESS_Pcmd",
+        "compiler_symbol": "G_RBESS_PCMD",
+        "gvt_record_offset": 889,
+        "gvt_address_offset": 916,
+        "gvt_derived_address": 34603248,
+        "gvt_derived_address_hex": "0x21000f0",
+        "gvt_declared_type_code": 32,
+        "gvt_scalar_type": "REAL",
+        "sinfo_category_candidate": 8,
+        "reference_elf": {
+          "st_value": 34603248,
+          "st_info": 24,
+          "st_shndx": 0
+        },
+        "comparison_matches": true
+      },
+      {
+        "name": "g_rBESS_Qcmd",
+        "compiler_symbol": "G_RBESS_QCMD",
+        "gvt_record_offset": 956,
+        "gvt_address_offset": 983,
+        "gvt_derived_address": 34603280,
+        "gvt_derived_address_hex": "0x2100110",
+        "gvt_declared_type_code": 32,
+        "gvt_scalar_type": "REAL",
+        "sinfo_category_candidate": 8,
+        "reference_elf": {
+          "st_value": 34603280,
+          "st_info": 24,
+          "st_shndx": 0
+        },
+        "comparison_matches": true
+      },
+      {
+        "name": "g_rBESS_SensVP",
+        "compiler_symbol": "G_RBESS_SENSVP",
+        "gvt_record_offset": 1084,
+        "gvt_address_offset": 1113,
+        "gvt_derived_address": 34603328,
+        "gvt_derived_address_hex": "0x2100140",
+        "gvt_declared_type_code": 32,
+        "gvt_scalar_type": "REAL",
+        "sinfo_category_candidate": 8,
+        "reference_elf": {
+          "st_value": 34603328,
+          "st_info": 24,
+          "st_shndx": 0
+        },
+        "comparison_matches": true
+      },
+      {
+        "name": "g_rBESS_SensVQ",
+        "compiler_symbol": "G_RBESS_SENSVQ",
+        "gvt_record_offset": 1152,
+        "gvt_address_offset": 1181,
+        "gvt_derived_address": 34603360,
+        "gvt_derived_address_hex": "0x2100160",
+        "gvt_declared_type_code": 32,
+        "gvt_scalar_type": "REAL",
+        "sinfo_category_candidate": 8,
+        "reference_elf": {
+          "st_value": 34603360,
+          "st_info": 24,
+          "st_shndx": 0
+        },
+        "comparison_matches": true
+      }
+    ]
+  },
+  "serialization": {
+    "profile": "autoshop-gvt-6.0-observed-scalar-v1",
+    "preamble_bytes": 217,
+    "preamble_sha256": "551997c6cc365daf1275ee90349f48cfc2c5f2d05225732e0877fb435bfeb03f",
+    "count_offset": 217,
+    "count": 19,
+    "first_record_offset": 221,
+    "record_fields": [
+      "u32le declared_type_code",
+      "u32le repeated_type_code (must equal)",
+      "CArchive short ASCII name: u8 length + bytes",
+      "CArchive short ASCII initial value",
+      "four observed flag bytes 01 01 00 00",
+      "u32le existing assigned address",
+      "CArchive short ASCII comment",
+      "empty Unicode CString marker ff fe ff 00",
+      "two zero DWORDs"
+    ],
+    "exact_EOF_required": true,
+    "supported_types": {
+      "1": {
+        "type": "BOOL",
+        "width_bits": 1
+      },
+      "4": {
+        "type": "INT",
+        "width_bits": 16
+      },
+      "32": {
+        "type": "REAL",
+        "width_bits": 32
+      }
+    },
+    "unsupported": [
+      "unknown preamble/version/class-tree",
+      "Unicode or extended strings",
+      "arrays/instances/aliases/namespaces",
+      "unknown type codes or flags",
+      "unassigned/out-of-profile addresses",
+      "casefold duplicate names or duplicate addresses"
+    ]
+  },
+  "sinfo_rule_evidence": {
+    "source_report": "16-application-transaction-2026-10-19.json",
+    "converter_path": "/mnt/e/Software/AutoShop/H530Converter.dll",
+    "ordinary_global_type_constant_va": "0x1016dacc",
+    "ordinary_global_type_constant": 8,
+    "note": "8 is a symbol category, not GVT scalar type4/32; do not cast one to the other",
+    "records": "12-byte {char* name,DWORD address,BYTE category@+8}",
+    "address_helper_va": "0x1016d090",
+    "name_mapping_entry": "CSTCompiler virtual+0x3c @0x1016d9d7; namespaces/Unicode full implementation still unknown",
+    "observed_name_mapping": "all selected ASCII gvt names uppercased equal reference symbols",
+    "ELF_update": "STRelocation.dll 0x10003d09..1c: st_info=(old&0xf0)|category, st_value=address, st_shndx untouched",
+    "implemented": false
+  },
+  "allocation_metadata": {
+    "VarsInfo.vi": "Two initial range/count-like records observed; exact allocator meaning not decoded. It is not needed to extract already assigned GVT addresses.",
+    "ReAllocVarsInfo.vi": "Four zero bytes observed; not proof that allocation is generally unnecessary.",
+    "varsinfo.foid": "Opaque generated container with own GUID/header/payload; not parsed or used as source of the eight mappings."
+  },
+  "tests": {
+    "command": ".venv/bin/python -m unittest discover -s tools/tests -p test_vendor_variables.py -v",
+    "passed": 10,
+    "fixture_policy": "synthetic preamble hash is patched only in tests; no proprietary preamble/file embedded in tests",
+    "private_real_file_result": "19 records parsed, all19 address/width CSV checks and all19 declared-type checks passed; selected8 ELF checks passed"
+  },
+  "limitations": [
+    "Parses existing assigned scalar globals in one pinned GVT serialization profile; it does not allocate addresses for new variables.",
+    "Address values are opaque vendor symbol addresses, not proven byte addresses, direct I/O addresses or Modbus registers.",
+    "SInfo type 8 is the observed ordinary-global symbol category; it is not the BOOL/INT/REAL scalar code.",
+    "ASCII uppercase compiler names are candidates for the observed ordinary-global profile; Unicode, aliases, namespaces, arrays and instances are unsupported.",
+    "No ELF patch, complete application build, download, runtime ABI or device execution is verified.",
+    "Pinned preamble is an explicit compatibility bound; another archive class tree is unavailable even if it contains similar names.",
+    "Generated CSV and GVT may both be stale relative to a source/build. A future injector must bind hashes to one intent/release and cannot treat the CSV as live device readback.",
+    "New variable allocation, retention, task/FB memory, array and bit address units remain unimplemented.",
+    "The matched final symbols support an existing-allocation candidate contract for these eight globals only; no injector or downloader was created."
+  ],
+  "next_steps": [
+    {
+      "priority": 1,
+      "action": "For a fixed existing legal global/task interface, pass independently parsed GVT records plus pinned GVT/source/build hashes to a future bounded SInfo injector. Validate target UND name, expected original category, value and section index; preserve the original ELF and output to a fresh directory."
+    },
+    {
+      "priority": 2,
+      "action": "Decode the actual compiler name mapper and variable allocator before adding variables/types/namespaces or using remanent/array/FB storage. Reuse no reference addresses as allocation logic."
+    },
+    {
+      "priority": 3,
+      "action": "After a separately tested injector, compare complete artifacts and transactional packaging; no current evidence permits application transfer or execution."
+    }
+  ],
+  "original_inputs_rechecked_unchanged": true
+}

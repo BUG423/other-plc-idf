@@ -4,7 +4,7 @@
 
 Easy521 已有实际 USB 下载和一致性校验记录，CLI 实验入口与当前运行/部署限制见 [Easy521 操作说明](EASY521_CLI.md)。
 
-2026-10-19新增[Easy521闭环需求](requirements/EASY521_AI_LOOP_2026-10-19.md)和[任务分工](management/EASY521_AI_TASKS_2026-10-19.md)。现场反馈采用[观察记录schema](../examples/easy521_feedback/feedback.schema.json)：将人为观察、仪器数据、AI推断和unknown分开，关联当轮源码/候选/设备身份；本轮已有[真实USB原始值反馈](../evidence/easy521-ai-loop-20261019/feedback-runtime-observation.json)，但未完成反馈CLI或Easy521程序运行验收。代码与注释遵循根[AGENTS.md](../AGENTS.md)。
+2026-10-19新增[Easy521闭环需求](requirements/EASY521_AI_LOOP_2026-10-19.md)和[任务分工](management/EASY521_AI_TASKS_2026-10-19.md)。现场反馈采用[观察记录schema](../examples/easy521_feedback/feedback.schema.json)：将人为观察、仪器数据、AI推断和unknown分开，关联当轮源码/候选/设备身份；本轮已有[独立GCM真实反馈](../evidence/easy521-ai-loop-20261019/feedback-gcm-observation.json)，现可用[反馈采集/汇总工具](FEEDBACK_CAPTURE.md)保存用户观察或校验既有记录；Easy521程序运行验收仍未完成。代码与注释遵循根[AGENTS.md](../AGENTS.md)。
 
 在项目根目录进入当前 Python 环境：
 

@@ -1,11 +1,18 @@
-param([switch]$Execute, [ValidateRange(0,65535)][int]$Sequence = 4660)
-# Experimental, fixed READ of the vendor runtime index via Windows libusb0.
+param(
+    [switch]$Execute,
+    [ValidateRange(0,65535)][int]$Sequence = 4660,
+    [ValidateSet('literal','gcm-state')][string]$ReadProfile = 'literal'
+)
+# Experimental fixed vendor READs via Windows libusb0; no arbitrary index.
 # Default is preview. Execute requires AutoShop already closed; this helper
 # never closes applications, changes configuration, resets endpoints/devices,
 # clears halts, writes variables, changes CPU mode or downloads applications.
 # Actual 2026-10-19 evidence: evidence/easy521-ai-loop-20261019/
-# single-usb-runtime-query.json. An independently validated raw value was zero;
-# its RUN/STOP meaning and exact device identity remain unverified.
+# single-usb-runtime-query.json. The historical literal ff010000/4 read returned
+# raw zero. Research 18 corrects its former runtime interpretation: that command
+# belongs to CReadEthercatCommand and cannot identify CPU RUN/STOP. A separate
+# vendor GetGCMState chain specifies ff000000/1; its static 0/1 mapping still
+# needs real-device interpretation checks. The filename is kept for compatibility.
 # The adjacent Python worker checks fresh USB location, owns a cooperating
 # lease, calls this helper once and validates the full response using the
 # offline codec. This PowerShell result alone is transport data, not a CPU
@@ -80,7 +87,7 @@ public static class PlcUsbDescriptors {
 
     // One fixed index READ. No configuration change, clear-halt, reset,
     // arbitrary operation, CPU mode command, download or retry is provided.
-    public static object ReadRuntime(ushort sequence) {
+    public static object ReadRuntime(ushort sequence, bool gcmState) {
         var record = new Dictionary<string, object>();
         record["ok"] = false; record["stage"] = "enumerate";
         record["write_calls"] = 0; record["state_semantics"] = "unknown";
@@ -106,7 +113,12 @@ public static class PlcUsbDescriptors {
             if (claimRc < 0) throw new InvalidOperationException("Interface unavailable: " + Error());
             claimed = true;
             byte[] request = new byte[] { 0x12, 0x00, 0x01, 0x01, 0x34, 0x12, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0xff, 0x04, 0x00, 0x00, 0x00 };
-            // Only the correlation word varies. Index, operation and size remain fixed.
+            // Exactly two inspected read contracts are available. The GCM
+            // contract comes from the actual vendor CGCMStateCommand dd30,
+            // not an assumption based on the separately shipped Simulator.
+            // The historical literal contract remains a raw index observation.
+            if (gcmState) { request[12] = 0; request[14] = 1; }
+            // The correlation word varies; neither contract permits a writer.
             request[4] = (byte)(sequence & 255); request[5] = (byte)(sequence >> 8);
             record["request_hex"] = BitConverter.ToString(request).Replace("-", "").ToLowerInvariant();
             record["stage"] = "send-read-request"; record["write_calls"] = 1;
@@ -125,7 +137,11 @@ public static class PlcUsbDescriptors {
                 for (int i=0;i<received;i++) bytes.Add(chunk[i]);
                 record["response_hex"] = BitConverter.ToString(bytes.ToArray()).Replace("-", "").ToLowerInvariant();
                 if (bytes.Count >= 2) expected = bytes[0] | (bytes[1] << 8);
-                if (expected > 14 || (expected >= 0 && expected < 10) || bytes.Count > 14)
+                // Error frames contain a 4-byte code even when the requested
+                // data is one byte, so the transport permits up to 14 bytes.
+                // Operation-specific lengths are checked by Python's codec.
+                const int maximumFrame = 14;
+                if (expected > maximumFrame || (expected >= 0 && expected < 10) || bytes.Count > maximumFrame)
                     throw new InvalidOperationException("Response outside fixed profile length");
                 if (expected >= 0 && bytes.Count >= expected) {
                     if (bytes.Count != expected) throw new InvalidOperationException("Trailing response bytes");
@@ -176,10 +192,11 @@ public static class PlcUsbDescriptors {
 
 if (!$Execute) {
     $previewRequest = [byte[]](0x12,0,1,1,($Sequence -band 255),(($Sequence -shr 8) -band 255),0,0,1,0,0,0,1,0xff,4,0,0,0)
-    [ordered]@{schema='plcidf.usb-runtime-probe.v1';status='preview';device_access=$false;request_hex=([BitConverter]::ToString($previewRequest).Replace('-','').ToLowerInvariant())}|ConvertTo-Json -Compress
+    if ($ReadProfile -eq 'gcm-state') { $previewRequest[12] = 0; $previewRequest[14] = 1 }
+    [ordered]@{schema='plcidf.usb-runtime-probe.v1';status='preview';device_access=$false;read_profile=$ReadProfile;request_hex=([BitConverter]::ToString($previewRequest).Replace('-','').ToLowerInvariant())}|ConvertTo-Json -Compress
     exit 0
 }
 if (@(Get-Process -Name AutoShop -ErrorAction SilentlyContinue).Count -ne 0) {
     throw 'AutoShop must be closed for this exclusive USB experiment; no PLC request sent.'
 }
-[ordered]@{schema='plcidf.usb-runtime-probe.v1';observed_at=[DateTimeOffset]::Now.ToString('o');scope='single fixed read request via Windows libusb0; no CPU mode or application change';library_sha256=$expectedHash;result=[PlcUsbDescriptors]::ReadRuntime([uint16]$Sequence)}|ConvertTo-Json -Depth 8 -Compress
+[ordered]@{schema='plcidf.usb-runtime-probe.v1';observed_at=[DateTimeOffset]::Now.ToString('o');scope='single fixed read request via Windows libusb0; no CPU mode or application change';read_profile=$ReadProfile;library_sha256=$expectedHash;result=[PlcUsbDescriptors]::ReadRuntime([uint16]$Sequence, ($ReadProfile -eq 'gcm-state'))}|ConvertTo-Json -Depth 8 -Compress

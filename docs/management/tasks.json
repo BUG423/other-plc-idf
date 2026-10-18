@@ -161,7 +161,7 @@
         "验证断连、异常值和陈旧数据；只用读功能码",
         "区分变量数采、CPU运行状态、故障与周期监控的实际覆盖范围"
       ],
-      "delivery": "历史USB UI已读取12个探针量；2026-10-19独立USB固定read真实返回原始u32=0，状态含义/CPU/程序身份仍unknown。网口仍断开，Modbus及字序未验收；见EASY521_AI_DELIVERY_2026-10-19.md",
+      "delivery": "历史USB UI读取12项探针量；2026-10-19独立GCM只读返回u8=0，按厂商静态映射报告STOP，现场扫描/程序身份仍unknown。此前ff010000/4B仅原始索引不是CPU状态；见18号更正及当日后续交付。Modbus、字序和网口仍未验收",
       "issue_number": 8,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/8"
     },
@@ -202,7 +202,7 @@
         "下载协议研究先离线分析合法样本，真实抓包与写操作另需现场授权",
         "最小原型或否决证据支持桥接保留/原生投入决定，未发现不等于不存在"
       ],
-      "delivery": "受限普通ST经Windows厂商编译器生成真实ARM对象；2026-10-19Linux LLD已真实执行两级链接，代码和重定位节与参考一致，尚缺8个变量地址/类型绑定。恢复固定USB读帧并独立真机收回raw0；应用包装/传输/端侧身份仍开放。见研究15/16与当日交付",
+      "delivery": "受限ST经Windows厂商编译器生成ARM对象；Linux两级LLD链接已实测。已有GVT的19项合法分配可独立解析，8项候选符号绑定吻合但未注入。18号纠正12/15错接链，独立GCM ff000000/1B已真机读回0（静态STOP，现场未校准）。完整包装/原生ST编译/传输/端侧身份仍开放",
       "issue_number": 10,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/10"
     },
@@ -334,7 +334,7 @@
         "提供本地采集、校验与多轮汇总入口，汇总可供AI修改下一轮需求和代码",
         "全程不触发PLC/Windows或AI代码执行；软件正负例和真实只读记录集成有证据"
       ],
-      "delivery": "schema、unknown示例及真实仪器反馈已入库；采集/汇总工具本批并行实施，验收状态以Issue为准",
+      "delivery": "create-human/validate/summary仓库工具及38项正负测试已交付；真实仪器记录与附件校验、多轮关联摘要集成通过。见FEEDBACK_CAPTURE.md和EASY521_AI_FOLLOWUP_2026-10-19.md；不执行AI/设备动作，不伪造人工观察",
       "issue_number": 18,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/18"
     }
@@ -343,5 +343,5 @@
     "number": 12,
     "url": "https://github.com/BUG423/other-plc-idf/issues/12"
   },
-  "scope_update": "2026-10-19：已只保留main并统一README结构；独立USB只读请求真机返回raw0（CPU状态未知），Linux两级厂商对象链接通过但8个变量绑定和完整包装/部署仍开放。1049项本地软件测试通过；新增T14反馈入口并行实施。今日主电源/灯状态尚未重新观察，无程序下载/模式请求/变量写入。状态以GitHub为准。"
+  "scope_update": "2026-10-19后续：仅main；18号报告纠正旧虚表误接，真实GCM ff000000/1B单次读回0（厂商静态映射STOP，现场未校准），旧ff010000 raw0不解释为CPU。GVT已有19项分配独立解析，8项候选绑定吻合但未注入；反馈采集/汇总CLI已集成。1116项不重叠本地软件测试通过；完整包装/严格Linux原生与CPU执行闭环仍开放。今日主电源/灯状态未重新观察，无模式/变量/应用写入。"
 }

@@ -1,0 +1,66 @@
+{
+  "schema": "plcidf.easy521-feedback.v1",
+  "record_kind": "observation",
+  "feedback_id": "gcm-state-read-20261019-01",
+  "iteration_id": "easy521-gcm-read-20261019-01",
+  "parent_iteration_id": "easy521-transport-20261019-01",
+  "requirement_revision": "EAI-R05-gcm-read-contract-20261019",
+  "program": {
+    "source_sha256": null,
+    "source_tree_sha256": null,
+    "build_hash": null,
+    "intent_hash": null,
+    "release_hash": null,
+    "device_binary_sha256": null,
+    "device_program_binding": "unknown"
+  },
+  "target": {
+    "profile_id": "easy521",
+    "observed_model": null,
+    "observed_firmware": null,
+    "observed_serial": null,
+    "identity_quality": "unverified",
+    "locator": {
+      "kind": "vendor-usb",
+      "value": "8-3 / 0471:a531"
+    }
+  },
+  "observations": [
+    {
+      "recorded_at": "2026-10-18T18:25:35.643316+00:00",
+      "observed_at": "2026-10-19T02:24:32.1340772+08:00",
+      "source": {
+        "kind": "instrument",
+        "actor": "fixed vendor GCM read worker via Windows libusb0; no AutoShop process",
+        "evidence": [
+          {
+            "path": "evidence/easy521-ai-loop-20261019/gcm-state-query.json",
+            "sha256": "bad46ca6a04ebce0d5066a3929ca6e4efd1fe5992b04e4edad4b2ee18dc4fe94",
+            "source": "root real-device fixed GCM read"
+          }
+        ]
+      },
+      "action": {
+        "kind": "observe",
+        "description": "设备租约内重新枚举，单次读取厂商GetGCMState的固定索引ff000000/1B；不请求改变CPU模式。",
+        "operation_id": "3130db4aec604660be663ba08d0512e4",
+        "result": "performed"
+      },
+      "expected": "读取正确CPU状态候选接口并保留原始字节；实际扫描及现场状态另验收。",
+      "actual": {
+        "quality": "observed",
+        "description": "完整11字节返回通过长度/版本/selector/随机序列/operation5校验；原始字节为0。",
+        "value": 0,
+        "unit": "raw_u8"
+      },
+      "outcome": "unknown",
+      "limitations": [
+        "厂商自身GetGCMState调用方静态映射0=STOP，当前尚未以现场灯或扫描计数独立校准。",
+        "不能用此前ff010000/4B的raw0解释CPU状态；本轮是另一条明确profile的新读取。",
+        "CPU/程序永久身份、程序字节和新规则实际执行仍未核验；程序哈希保持null。",
+        "没有新的用户现场供电/灯/负载观察，也没有CPU模式/变量/应用写入。",
+        "仍通过WSL调用Windows驱动，不是严格Linux原生USB。"
+      ]
+    }
+  ]
+}
