@@ -1,0 +1,10 @@
+{
+  "schema": "plcidf.feedback-schema-validation.v1",
+  "observed_at": "2026-10-18T18:07:26.628833+00:00",
+  "scope": "schema shape/calendar and local evidence hashes; no device request",
+  "validator": "system jsonschema Draft202012Validator; explicit standard-library RFC3339 calendar checker registered because system lacks built-in date-time checker",
+  "positive_records": 2,
+  "negative_records_rejected": 6,
+  "evidence_hashes_checked": 2,
+  "does_not_verify_cpu_state_or_claim_truth": true
+}

@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-10-18T17:55:22.430723+00:00",
+  "scope": "compile/preview only; no USB API called",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\.plcidf\\read-runtime-prototype.ps1"
+    ],
+    "returncode": 0,
+    "stdout": "{\"schema\":\"plcidf.usb-runtime-probe.v1\",\"status\":\"preview\",\"device_access\":false,\"request_hex\":\"12000101341200000100000001ff04000000\"}\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

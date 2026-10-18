@@ -1,0 +1,2473 @@
+{
+  "schema": "plcidf.offline-application-transaction.v1",
+  "recorded_at_utc": "2026-10-18T17:58:59.284788+00:00",
+  "scope": {
+    "offline_static_vendor_files": true,
+    "linux_lld_execution": true,
+    "vendor_exe_dll_execution": false,
+    "windows_process_access": false,
+    "network_device_usb_plc_access": false,
+    "original_project_modified": false,
+    "st_compilation": false,
+    "full_application_packaging": false,
+    "application_download": false,
+    "runtime_validation": false
+  },
+  "sources": [
+    {
+      "path": "/mnt/e/Software/AutoShop/AutoShop.exe",
+      "size": 55592960,
+      "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/H530Converter.dll",
+      "size": 24275456,
+      "sha256": "9cc9e49c969373fdb37694a22542d11a35b63d8f8a768dfed61a2d8557b639cf"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/STRelocation.dll",
+      "size": 66560,
+      "sha256": "be75e5787d4eebcc9bcdb10bbaff92af6206abd40e9508f26d655cba5f2cde11"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/InterfaceMgr.dll",
+      "size": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Bin/ld.lld.exe",
+      "size": 54811648,
+      "sha256": "3e3fc4c277dee30119656ef4eb4af94b0e55ad23bb0fe0ced5ceb1b37a96acba"
+    }
+  ],
+  "linux_tool_acquisition": {
+    "package": "lld-20",
+    "version": "1:20.1.2-0ubuntu1~24.04.3",
+    "source": "Ubuntu noble-updates/universe",
+    "package_sha256": "50d8db763d3e3526c050d01c2c8c9c94e3f94cca6f7dbdb8f9a4c65aefefcf83",
+    "lld_path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/lld",
+    "lld_sha256": "5c8dc44318df21528d0456cae914061cdc30221e40445b8cef84ba57f352445b",
+    "version_stdout": "Ubuntu LLD 20.1.2 (compatible with GNU linkers)\n",
+    "version_stderr": "",
+    "version_returncode": 0
+  },
+  "static_link_contract": {
+    "image": "H530Converter.dll",
+    "coordinator_va": "0x100f61a0",
+    "stage1_call_va": "0x100f6869",
+    "stage2_call_va": "0x100f6b1a",
+    "helper_va": "0x100f6cf0",
+    "argument_template": "-relocatable %s -o \"%s\"",
+    "stage1_order": [
+      "explicit ordered POU objects",
+      "ARM/_SysLib.o"
+    ],
+    "stage1_output": "Temp/stuserprog.o",
+    "stage2_order": [
+      "Temp/stuserprog.o",
+      "ARM/_STCLib.o"
+    ],
+    "stage2_output": "Temp/stprog.o",
+    "branch_selection": {
+      "singleton": "CSTCompiler",
+      "virtual_slot_hex": "0x138",
+      "return_word_mask": 1,
+      "zero": "Bin/SysLib",
+      "nonzero": "Bin/SysLib_New",
+      "active_option_value_observed": false,
+      "candidate_method_name": "GetCompilationOpt (signature-compatible export; concrete implementation not read from process)"
+    },
+    "simulation_selector": "object +0x58 selects STSimTemp/X86 when nonzero, STTemp/ARM otherwise",
+    "chunk_threshold_characters": 30000,
+    "chunk_temp_pattern": "Temp/stprogTemp%d.o",
+    "vendor_helper_wait_ms": 10000,
+    "vendor_helper_attempt_limit": 5,
+    "new_tool_attempt_limit": 1,
+    "vendor_output_validation_helper_va": "0x10135cd0",
+    "vendor_output_validation_fully_decoded": false
+  },
+  "frozen_input_set": {
+    "STTemp/MAIN.o": {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/MAIN.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/MAIN.o",
+      "size": 3948,
+      "sha256": "55cacc60c640b85b072555f21989ce49903e2eef38ca03d262a3f5ea073a18b5"
+    },
+    "STTemp/SBR_001.o": {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/SBR_001.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/SBR_001.o",
+      "size": 1792,
+      "sha256": "0427a175b83bd445b632a449e92fde9276b2a703737e7ceadaca08d4f1d6d411"
+    },
+    "Temp/stuserprog.o": {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stuserprog.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stuserprog.o",
+      "size": 6240,
+      "sha256": "09c96e5511da4e0035c4427a9635ec70134a2258c357c952788f7f7069f718f9"
+    },
+    "Temp/stprog.o": {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stprog.o",
+      "size": 127464,
+      "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b"
+    },
+    "SysLib/_SysLib.o": {
+      "source": "/mnt/e/Software/AutoShop/Bin/SysLib/ARM/_SysLib.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib/_SysLib.o",
+      "size": 2808,
+      "sha256": "2fde5706b01135ac15db5f17b6847dd361894c909ecaa6a3cf9cca2f132782d2"
+    },
+    "SysLib/_STCLib.o": {
+      "source": "/mnt/e/Software/AutoShop/Bin/SysLib/ARM/_STCLib.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib/_STCLib.o",
+      "size": 120756,
+      "sha256": "9d51c094cce25d1d7fac96be2d7d8ae120e33b39ff0bb315242f8340da4e738c"
+    },
+    "SysLib_New/_SysLib.o": {
+      "source": "/mnt/e/Software/AutoShop/Bin/SysLib_New/ARM/_SysLib.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_SysLib.o",
+      "size": 2808,
+      "sha256": "2fde5706b01135ac15db5f17b6847dd361894c909ecaa6a3cf9cca2f132782d2"
+    },
+    "SysLib_New/_STCLib.o": {
+      "source": "/mnt/e/Software/AutoShop/Bin/SysLib_New/ARM/_STCLib.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_STCLib.o",
+      "size": 122944,
+      "sha256": "047dad6fa718170625f0a78d927df304f3a6f681970009324a7179397958d95e"
+    }
+  },
+  "initial_two_branch_experiment": {
+    "commands": [
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/MAIN.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/SBR_001.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib/_SysLib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib/stuserprog.o"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib/stuserprog.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib/_STCLib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib/stprog.o"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/MAIN.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/SBR_001.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_SysLib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib_New/stuserprog.o"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib_New/stuserprog.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_STCLib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib_New/stprog.o"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "comparisons": {
+      "SysLib": {
+        "files": [
+          {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stuserprog.o",
+            "inspection_status": "parsed",
+            "size": 6240,
+            "sha256": "09c96e5511da4e0035c4427a9635ec70134a2258c357c952788f7f7069f718f9",
+            "format": "elf",
+            "elf": {
+              "class_bits": 32,
+              "endianness": "little",
+              "machine_id": 40,
+              "machine": "ARM",
+              "type_id": 1,
+              "type": "REL",
+              "osabi_id": 0,
+              "abi_version": 0,
+              "flags_hex": "0x5000200",
+              "arm_eabi_version": 5,
+              "entry_address": 0,
+              "program_header_count": 0,
+              "section_count": 13,
+              "arm_attribute_sections": [
+                {
+                  "size": 52,
+                  "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+                  "decoded": false
+                }
+              ],
+              "undefined_global_weak": {
+                "entries": 13,
+                "unique_count": 13,
+                "names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              },
+              "relocations": {
+                "entries": 125,
+                "types": {
+                  "R_ARM_ABS32": 43,
+                  "R_ARM_NONE": 11,
+                  "R_ARM_PREL31": 11,
+                  "R_ARM_THM_MOVT_ABS": 30,
+                  "R_ARM_THM_MOVW_ABS_NC": 30
+                },
+                "sections": [
+                  {
+                    "name": ".rel.text",
+                    "entries": 81,
+                    "target_section": ".text",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.ARM.exidx",
+                    "entries": 22,
+                    "target_section": ".ARM.exidx",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.debug_frame",
+                    "entries": 22,
+                    "target_section": ".debug_frame",
+                    "explicit_addends": false
+                  }
+                ],
+                "referenced_undefined_names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              }
+            }
+          },
+          {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib/stuserprog.o",
+            "inspection_status": "parsed",
+            "size": 7084,
+            "sha256": "001ac7470ddbc3db378d554eb1c05016942bf333fa11f5e0f4e23444f1e233ff",
+            "format": "elf",
+            "elf": {
+              "class_bits": 32,
+              "endianness": "little",
+              "machine_id": 40,
+              "machine": "ARM",
+              "type_id": 1,
+              "type": "REL",
+              "osabi_id": 0,
+              "abi_version": 0,
+              "flags_hex": "0x5000200",
+              "arm_eabi_version": 5,
+              "entry_address": 0,
+              "program_header_count": 0,
+              "section_count": 13,
+              "arm_attribute_sections": [
+                {
+                  "size": 52,
+                  "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+                  "decoded": false
+                }
+              ],
+              "undefined_global_weak": {
+                "entries": 13,
+                "unique_count": 13,
+                "names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              },
+              "relocations": {
+                "entries": 125,
+                "types": {
+                  "R_ARM_ABS32": 43,
+                  "R_ARM_NONE": 11,
+                  "R_ARM_PREL31": 11,
+                  "R_ARM_THM_MOVT_ABS": 30,
+                  "R_ARM_THM_MOVW_ABS_NC": 30
+                },
+                "sections": [
+                  {
+                    "name": ".rel.text",
+                    "entries": 81,
+                    "target_section": ".text",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.ARM.exidx",
+                    "entries": 22,
+                    "target_section": ".ARM.exidx",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.debug_frame",
+                    "entries": 22,
+                    "target_section": ".debug_frame",
+                    "explicit_addends": false
+                  }
+                ],
+                "referenced_undefined_names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              }
+            }
+          },
+          {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stprog.o",
+            "inspection_status": "parsed",
+            "size": 127464,
+            "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b",
+            "format": "elf",
+            "elf": {
+              "class_bits": 32,
+              "endianness": "little",
+              "machine_id": 40,
+              "machine": "ARM",
+              "type_id": 1,
+              "type": "REL",
+              "osabi_id": 0,
+              "abi_version": 0,
+              "flags_hex": "0x5000200",
+              "arm_eabi_version": 5,
+              "entry_address": 0,
+              "program_header_count": 0,
+              "section_count": 13,
+              "arm_attribute_sections": [
+                {
+                  "size": 52,
+                  "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+                  "decoded": false
+                }
+              ],
+              "undefined_global_weak": {
+                "entries": 23,
+                "unique_count": 23,
+                "names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_EXPT",
+                  "_HC_FLOAT_MIN",
+                  "_HC_INT64TODOUBLE",
+                  "_HC_LD_DEV_MEM_COPY_BITS",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "_HC_LOG10",
+                  "_HC_NOROUND",
+                  "_HC_ROUND",
+                  "_HC_SHL",
+                  "_HC_SHR",
+                  "_HC_WATCHDOG",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              },
+              "relocations": {
+                "entries": 3906,
+                "types": {
+                  "R_ARM_ABS32": 2056,
+                  "R_ARM_NONE": 54,
+                  "R_ARM_PREL31": 54,
+                  "R_ARM_THM_MOVT_ABS": 871,
+                  "R_ARM_THM_MOVW_ABS_NC": 871
+                },
+                "sections": [
+                  {
+                    "name": ".rel.text",
+                    "entries": 3690,
+                    "target_section": ".text",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.ARM.exidx",
+                    "entries": 108,
+                    "target_section": ".ARM.exidx",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.debug_frame",
+                    "entries": 108,
+                    "target_section": ".debug_frame",
+                    "explicit_addends": false
+                  }
+                ],
+                "referenced_undefined_names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_EXPT",
+                  "_HC_FLOAT_MIN",
+                  "_HC_INT64TODOUBLE",
+                  "_HC_LD_DEV_MEM_COPY_BITS",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "_HC_LOG10",
+                  "_HC_NOROUND",
+                  "_HC_ROUND",
+                  "_HC_SHL",
+                  "_HC_SHR",
+                  "_HC_WATCHDOG",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              }
+            }
+          },
+          {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib/stprog.o",
+            "inspection_status": "parsed",
+            "size": 144304,
+            "sha256": "700e1f46c9ebfa09f9d3ac14ce646c941435a9749fb7e1425b1d6e16b2ca0abd",
+            "format": "elf",
+            "elf": {
+              "class_bits": 32,
+              "endianness": "little",
+              "machine_id": 40,
+              "machine": "ARM",
+              "type_id": 1,
+              "type": "REL",
+              "osabi_id": 0,
+              "abi_version": 0,
+              "flags_hex": "0x5000200",
+              "arm_eabi_version": 5,
+              "entry_address": 0,
+              "program_header_count": 0,
+              "section_count": 13,
+              "arm_attribute_sections": [
+                {
+                  "size": 52,
+                  "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+                  "decoded": false
+                }
+              ],
+              "undefined_global_weak": {
+                "entries": 23,
+                "unique_count": 23,
+                "names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_EXPT",
+                  "_HC_FLOAT_MIN",
+                  "_HC_INT64TODOUBLE",
+                  "_HC_LD_DEV_MEM_COPY_BITS",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "_HC_LOG10",
+                  "_HC_NOROUND",
+                  "_HC_ROUND",
+                  "_HC_SHL",
+                  "_HC_SHR",
+                  "_HC_WATCHDOG",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              },
+              "relocations": {
+                "entries": 3781,
+                "types": {
+                  "R_ARM_ABS32": 2055,
+                  "R_ARM_NONE": 54,
+                  "R_ARM_PREL31": 54,
+                  "R_ARM_THM_MOVT_ABS": 809,
+                  "R_ARM_THM_MOVW_ABS_NC": 809
+                },
+                "sections": [
+                  {
+                    "name": ".rel.text",
+                    "entries": 3565,
+                    "target_section": ".text",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.ARM.exidx",
+                    "entries": 108,
+                    "target_section": ".ARM.exidx",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.debug_frame",
+                    "entries": 108,
+                    "target_section": ".debug_frame",
+                    "explicit_addends": false
+                  }
+                ],
+                "referenced_undefined_names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_EXPT",
+                  "_HC_FLOAT_MIN",
+                  "_HC_INT64TODOUBLE",
+                  "_HC_LD_DEV_MEM_COPY_BITS",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "_HC_LOG10",
+                  "_HC_NOROUND",
+                  "_HC_ROUND",
+                  "_HC_SHL",
+                  "_HC_SHR",
+                  "_HC_WATCHDOG",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              }
+            }
+          }
+        ],
+        "comparisons": [
+          {
+            "base": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stuserprog.o",
+            "candidate": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib/stuserprog.o",
+            "same_sha256": false,
+            "size_delta": 844,
+            "changed_overlap_bytes": 1079,
+            "first_difference_offset": 32,
+            "base_format": "elf",
+            "candidate_format": "elf",
+            "elf": {
+              "same_machine_class_endianness": true,
+              "same_flags": true,
+              "relocation_entry_delta": 0,
+              "undefined_global_weak": {
+                "removed_names": [],
+                "added_names": []
+              },
+              "defined_global_weak": {
+                "removed_names": [],
+                "added_names": []
+              }
+            }
+          },
+          {
+            "base": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stprog.o",
+            "candidate": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib/stprog.o",
+            "same_sha256": false,
+            "size_delta": 16840,
+            "changed_overlap_bytes": 99891,
+            "first_difference_offset": 32,
+            "base_format": "elf",
+            "candidate_format": "elf",
+            "elf": {
+              "same_machine_class_endianness": true,
+              "same_flags": true,
+              "relocation_entry_delta": -125,
+              "undefined_global_weak": {
+                "removed_names": [],
+                "added_names": []
+              },
+              "defined_global_weak": {
+                "removed_names": [],
+                "added_names": []
+              }
+            }
+          }
+        ]
+      },
+      "SysLib_New": {
+        "files": [
+          {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stuserprog.o",
+            "inspection_status": "parsed",
+            "size": 6240,
+            "sha256": "09c96e5511da4e0035c4427a9635ec70134a2258c357c952788f7f7069f718f9",
+            "format": "elf",
+            "elf": {
+              "class_bits": 32,
+              "endianness": "little",
+              "machine_id": 40,
+              "machine": "ARM",
+              "type_id": 1,
+              "type": "REL",
+              "osabi_id": 0,
+              "abi_version": 0,
+              "flags_hex": "0x5000200",
+              "arm_eabi_version": 5,
+              "entry_address": 0,
+              "program_header_count": 0,
+              "section_count": 13,
+              "arm_attribute_sections": [
+                {
+                  "size": 52,
+                  "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+                  "decoded": false
+                }
+              ],
+              "undefined_global_weak": {
+                "entries": 13,
+                "unique_count": 13,
+                "names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              },
+              "relocations": {
+                "entries": 125,
+                "types": {
+                  "R_ARM_ABS32": 43,
+                  "R_ARM_NONE": 11,
+                  "R_ARM_PREL31": 11,
+                  "R_ARM_THM_MOVT_ABS": 30,
+                  "R_ARM_THM_MOVW_ABS_NC": 30
+                },
+                "sections": [
+                  {
+                    "name": ".rel.text",
+                    "entries": 81,
+                    "target_section": ".text",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.ARM.exidx",
+                    "entries": 22,
+                    "target_section": ".ARM.exidx",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.debug_frame",
+                    "entries": 22,
+                    "target_section": ".debug_frame",
+                    "explicit_addends": false
+                  }
+                ],
+                "referenced_undefined_names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              }
+            }
+          },
+          {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib_New/stuserprog.o",
+            "inspection_status": "parsed",
+            "size": 7084,
+            "sha256": "001ac7470ddbc3db378d554eb1c05016942bf333fa11f5e0f4e23444f1e233ff",
+            "format": "elf",
+            "elf": {
+              "class_bits": 32,
+              "endianness": "little",
+              "machine_id": 40,
+              "machine": "ARM",
+              "type_id": 1,
+              "type": "REL",
+              "osabi_id": 0,
+              "abi_version": 0,
+              "flags_hex": "0x5000200",
+              "arm_eabi_version": 5,
+              "entry_address": 0,
+              "program_header_count": 0,
+              "section_count": 13,
+              "arm_attribute_sections": [
+                {
+                  "size": 52,
+                  "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+                  "decoded": false
+                }
+              ],
+              "undefined_global_weak": {
+                "entries": 13,
+                "unique_count": 13,
+                "names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              },
+              "relocations": {
+                "entries": 125,
+                "types": {
+                  "R_ARM_ABS32": 43,
+                  "R_ARM_NONE": 11,
+                  "R_ARM_PREL31": 11,
+                  "R_ARM_THM_MOVT_ABS": 30,
+                  "R_ARM_THM_MOVW_ABS_NC": 30
+                },
+                "sections": [
+                  {
+                    "name": ".rel.text",
+                    "entries": 81,
+                    "target_section": ".text",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.ARM.exidx",
+                    "entries": 22,
+                    "target_section": ".ARM.exidx",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.debug_frame",
+                    "entries": 22,
+                    "target_section": ".debug_frame",
+                    "explicit_addends": false
+                  }
+                ],
+                "referenced_undefined_names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              }
+            }
+          },
+          {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stprog.o",
+            "inspection_status": "parsed",
+            "size": 127464,
+            "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b",
+            "format": "elf",
+            "elf": {
+              "class_bits": 32,
+              "endianness": "little",
+              "machine_id": 40,
+              "machine": "ARM",
+              "type_id": 1,
+              "type": "REL",
+              "osabi_id": 0,
+              "abi_version": 0,
+              "flags_hex": "0x5000200",
+              "arm_eabi_version": 5,
+              "entry_address": 0,
+              "program_header_count": 0,
+              "section_count": 13,
+              "arm_attribute_sections": [
+                {
+                  "size": 52,
+                  "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+                  "decoded": false
+                }
+              ],
+              "undefined_global_weak": {
+                "entries": 23,
+                "unique_count": 23,
+                "names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_EXPT",
+                  "_HC_FLOAT_MIN",
+                  "_HC_INT64TODOUBLE",
+                  "_HC_LD_DEV_MEM_COPY_BITS",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "_HC_LOG10",
+                  "_HC_NOROUND",
+                  "_HC_ROUND",
+                  "_HC_SHL",
+                  "_HC_SHR",
+                  "_HC_WATCHDOG",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              },
+              "relocations": {
+                "entries": 3906,
+                "types": {
+                  "R_ARM_ABS32": 2056,
+                  "R_ARM_NONE": 54,
+                  "R_ARM_PREL31": 54,
+                  "R_ARM_THM_MOVT_ABS": 871,
+                  "R_ARM_THM_MOVW_ABS_NC": 871
+                },
+                "sections": [
+                  {
+                    "name": ".rel.text",
+                    "entries": 3690,
+                    "target_section": ".text",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.ARM.exidx",
+                    "entries": 108,
+                    "target_section": ".ARM.exidx",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.debug_frame",
+                    "entries": 108,
+                    "target_section": ".debug_frame",
+                    "explicit_addends": false
+                  }
+                ],
+                "referenced_undefined_names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_EXPT",
+                  "_HC_FLOAT_MIN",
+                  "_HC_INT64TODOUBLE",
+                  "_HC_LD_DEV_MEM_COPY_BITS",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "_HC_LOG10",
+                  "_HC_NOROUND",
+                  "_HC_ROUND",
+                  "_HC_SHL",
+                  "_HC_SHR",
+                  "_HC_WATCHDOG",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              }
+            }
+          },
+          {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib_New/stprog.o",
+            "inspection_status": "parsed",
+            "size": 146492,
+            "sha256": "9ef1a87223b279b6a90b722beb6b86b6067b6255eee1fb23fd734adfe9b78b92",
+            "format": "elf",
+            "elf": {
+              "class_bits": 32,
+              "endianness": "little",
+              "machine_id": 40,
+              "machine": "ARM",
+              "type_id": 1,
+              "type": "REL",
+              "osabi_id": 0,
+              "abi_version": 0,
+              "flags_hex": "0x5000200",
+              "arm_eabi_version": 5,
+              "entry_address": 0,
+              "program_header_count": 0,
+              "section_count": 13,
+              "arm_attribute_sections": [
+                {
+                  "size": 52,
+                  "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+                  "decoded": false
+                }
+              ],
+              "undefined_global_weak": {
+                "entries": 23,
+                "unique_count": 23,
+                "names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_EXPT",
+                  "_HC_FLOAT_MIN",
+                  "_HC_INT64TODOUBLE",
+                  "_HC_LD_DEV_MEM_COPY_BITS",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "_HC_LOG10",
+                  "_HC_NOROUND",
+                  "_HC_ROUND",
+                  "_HC_SHL",
+                  "_HC_SHR",
+                  "_HC_WATCHDOG",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              },
+              "relocations": {
+                "entries": 3906,
+                "types": {
+                  "R_ARM_ABS32": 2056,
+                  "R_ARM_NONE": 54,
+                  "R_ARM_PREL31": 54,
+                  "R_ARM_THM_MOVT_ABS": 871,
+                  "R_ARM_THM_MOVW_ABS_NC": 871
+                },
+                "sections": [
+                  {
+                    "name": ".rel.text",
+                    "entries": 3690,
+                    "target_section": ".text",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.ARM.exidx",
+                    "entries": 108,
+                    "target_section": ".ARM.exidx",
+                    "explicit_addends": false
+                  },
+                  {
+                    "name": ".rel.debug_frame",
+                    "entries": 108,
+                    "target_section": ".debug_frame",
+                    "explicit_addends": false
+                  }
+                ],
+                "referenced_undefined_names": [
+                  "G_IBESS_MODE",
+                  "G_RBESS_CONFIDENCE",
+                  "G_RBESS_INFLUENCEP",
+                  "G_RBESS_INFLUENCEQ",
+                  "G_RBESS_PCMD",
+                  "G_RBESS_QCMD",
+                  "G_RBESS_SENSVP",
+                  "G_RBESS_SENSVQ",
+                  "_HC_DINT_MOD",
+                  "_HC_EXPT",
+                  "_HC_FLOAT_MIN",
+                  "_HC_INT64TODOUBLE",
+                  "_HC_LD_DEV_MEM_COPY_BITS",
+                  "_HC_LD_DEV_MEM_READ_BITS",
+                  "_HC_LD_DEV_MEM_WRITE_BITS",
+                  "_HC_LD_ERROR_ADD",
+                  "_HC_LOG10",
+                  "_HC_NOROUND",
+                  "_HC_ROUND",
+                  "_HC_SHL",
+                  "_HC_SHR",
+                  "_HC_WATCHDOG",
+                  "__aeabi_unwind_cpp_pr0"
+                ]
+              }
+            }
+          }
+        ],
+        "comparisons": [
+          {
+            "base": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stuserprog.o",
+            "candidate": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib_New/stuserprog.o",
+            "same_sha256": false,
+            "size_delta": 844,
+            "changed_overlap_bytes": 1079,
+            "first_difference_offset": 32,
+            "base_format": "elf",
+            "candidate_format": "elf",
+            "elf": {
+              "same_machine_class_endianness": true,
+              "same_flags": true,
+              "relocation_entry_delta": 0,
+              "undefined_global_weak": {
+                "removed_names": [],
+                "added_names": []
+              },
+              "defined_global_weak": {
+                "removed_names": [],
+                "added_names": []
+              }
+            }
+          },
+          {
+            "base": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stprog.o",
+            "candidate": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/SysLib_New/stprog.o",
+            "same_sha256": false,
+            "size_delta": 19028,
+            "changed_overlap_bytes": 4816,
+            "first_difference_offset": 32,
+            "base_format": "elf",
+            "candidate_format": "elf",
+            "elf": {
+              "same_machine_class_endianness": true,
+              "same_flags": true,
+              "relocation_entry_delta": 0,
+              "undefined_global_weak": {
+                "removed_names": [],
+                "added_names": []
+              },
+              "defined_global_weak": {
+                "removed_names": [],
+                "added_names": []
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "new_library_semantic_comparison": [
+    {
+      "stage": "stuserprog.o",
+      "normalized_symbol_entries_equal": false,
+      "symbol_entries": 137,
+      "sections": [
+        {
+          "section": "",
+          "type": 0,
+          "base_size": 0,
+          "candidate_size": 0,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "candidate_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "section": ".ARM.attributes",
+          "type": 1879048195,
+          "base_size": 52,
+          "candidate_size": 52,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+          "candidate_sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000"
+        },
+        {
+          "section": ".ARM.exidx",
+          "type": 1879048193,
+          "base_size": 88,
+          "candidate_size": 88,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "5cf556683efb53bd3ebaae54f6dda49a01f69f8e722f7d7d2cf5e3f4862f1888",
+          "candidate_sha256": "5cf556683efb53bd3ebaae54f6dda49a01f69f8e722f7d7d2cf5e3f4862f1888"
+        },
+        {
+          "section": ".bss",
+          "type": 8,
+          "base_size": 776,
+          "candidate_size": 776,
+          "same_flags": true,
+          "file_bytes_equal": null,
+          "nobits_memory_size_equal": true,
+          "base_sha256": null,
+          "candidate_sha256": null
+        },
+        {
+          "section": ".debug_frame",
+          "type": 1,
+          "base_size": 276,
+          "candidate_size": 276,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "55faeec5a892d5ea0f8c2eba984521cbb10df0f4fb6b5cdc3066de35e4b3b13c",
+          "candidate_sha256": "55faeec5a892d5ea0f8c2eba984521cbb10df0f4fb6b5cdc3066de35e4b3b13c"
+        },
+        {
+          "section": ".note.GNU-stack",
+          "type": 1,
+          "base_size": 0,
+          "candidate_size": 0,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "candidate_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "section": ".rel.ARM.exidx",
+          "type": 9,
+          "base_size": 176,
+          "candidate_size": 176,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "acfb7295da9392f02a6d4d8e6530250b7fa7089ce5291cfadf65a35e77ab93c7",
+          "candidate_sha256": "acfb7295da9392f02a6d4d8e6530250b7fa7089ce5291cfadf65a35e77ab93c7"
+        },
+        {
+          "section": ".rel.debug_frame",
+          "type": 9,
+          "base_size": 176,
+          "candidate_size": 176,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "4393c0db7e9c6659967dbc50d47b6286a81459ce761f10a08faf35891be17f5a",
+          "candidate_sha256": "4393c0db7e9c6659967dbc50d47b6286a81459ce761f10a08faf35891be17f5a"
+        },
+        {
+          "section": ".rel.text",
+          "type": 9,
+          "base_size": 648,
+          "candidate_size": 648,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "d8fad064ed90fa593b7eaf1021c3997117f1f385f0403ab4c3d6372adbb4386c",
+          "candidate_sha256": "d8fad064ed90fa593b7eaf1021c3997117f1f385f0403ab4c3d6372adbb4386c"
+        },
+        {
+          "section": ".shstrtab",
+          "type": 3,
+          "base_size": 136,
+          "candidate_size": 136,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "26cca74ab9bb14d86041d13efd7c72707a4cbf14ccef79aad282f4149c31a99b",
+          "candidate_sha256": "26cca74ab9bb14d86041d13efd7c72707a4cbf14ccef79aad282f4149c31a99b"
+        },
+        {
+          "section": ".strtab",
+          "type": 3,
+          "base_size": 848,
+          "candidate_size": 1691,
+          "same_flags": true,
+          "file_bytes_equal": false,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "2983368ac2adad6827952f15f9811da21a7750999ed69342d7b077969347ef49",
+          "candidate_sha256": "a052c0df29730f8e2e8a11bcfee28ff07571745d37d4029060a159257c95b50b"
+        },
+        {
+          "section": ".symtab",
+          "type": 2,
+          "base_size": 2192,
+          "candidate_size": 2192,
+          "same_flags": true,
+          "file_bytes_equal": false,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "97bb2d78e2fdaa4d5e5d202cbdf9263999912260dd104312a9feb4d85ef22702",
+          "candidate_sha256": "8cd2cc7059ea2f12db78040315c7e12be44acb3d579690c669fa5bb7ad0b2311"
+        },
+        {
+          "section": ".text",
+          "type": 1,
+          "base_size": 1070,
+          "candidate_size": 1070,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "1ded55358384173b464bfd12eb959ebd8b900a444f94424eb472012996d18a00",
+          "candidate_sha256": "1ded55358384173b464bfd12eb959ebd8b900a444f94424eb472012996d18a00"
+        }
+      ],
+      "symbol_entry_differences": [
+        {
+          "symbol_index": 113,
+          "reference": {
+            "name": "G_IBESS_MODE",
+            "st_value": 34603312,
+            "st_value_hex": "0x2100130",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_IBESS_MODE",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 114,
+          "reference": {
+            "name": "G_RBESS_CONFIDENCE",
+            "st_value": 34603456,
+            "st_value_hex": "0x21001c0",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_CONFIDENCE",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 115,
+          "reference": {
+            "name": "G_RBESS_INFLUENCEP",
+            "st_value": 34603392,
+            "st_value_hex": "0x2100180",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_INFLUENCEP",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 116,
+          "reference": {
+            "name": "G_RBESS_INFLUENCEQ",
+            "st_value": 34603424,
+            "st_value_hex": "0x21001a0",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_INFLUENCEQ",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 117,
+          "reference": {
+            "name": "G_RBESS_PCMD",
+            "st_value": 34603248,
+            "st_value_hex": "0x21000f0",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_PCMD",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 118,
+          "reference": {
+            "name": "G_RBESS_QCMD",
+            "st_value": 34603280,
+            "st_value_hex": "0x2100110",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_QCMD",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 119,
+          "reference": {
+            "name": "G_RBESS_SENSVP",
+            "st_value": 34603328,
+            "st_value_hex": "0x2100140",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_SENSVP",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 120,
+          "reference": {
+            "name": "G_RBESS_SENSVQ",
+            "st_value": 34603360,
+            "st_value_hex": "0x2100160",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_SENSVQ",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        }
+      ],
+      "reference_symbols_canonical_sha256": "01c7ea234c8c8f5d91e9d5a0d058c302adb08977eb1fe8da82b6ec7c78ea6dd4",
+      "candidate_symbols_canonical_sha256": "7dbdbb4ddfc6dc5a59f6e0183bc9065986f8c95c74f342d60e5978984db496cb"
+    },
+    {
+      "stage": "stprog.o",
+      "normalized_symbol_entries_equal": false,
+      "symbol_entries": 1676,
+      "sections": [
+        {
+          "section": "",
+          "type": 0,
+          "base_size": 0,
+          "candidate_size": 0,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "candidate_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "section": ".ARM.attributes",
+          "type": 1879048195,
+          "base_size": 52,
+          "candidate_size": 52,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+          "candidate_sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000"
+        },
+        {
+          "section": ".ARM.exidx",
+          "type": 1879048193,
+          "base_size": 432,
+          "candidate_size": 432,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "b7aec7625449b4bebad7f841abd767900af2911a65c52a2d995d62fe63d83a89",
+          "candidate_sha256": "b7aec7625449b4bebad7f841abd767900af2911a65c52a2d995d62fe63d83a89"
+        },
+        {
+          "section": ".bss",
+          "type": 8,
+          "base_size": 13936,
+          "candidate_size": 13936,
+          "same_flags": true,
+          "file_bytes_equal": null,
+          "nobits_memory_size_equal": true,
+          "base_sha256": null,
+          "candidate_sha256": null
+        },
+        {
+          "section": ".debug_frame",
+          "type": 1,
+          "base_size": 2816,
+          "candidate_size": 2816,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "5e510eeed684ec1b7534cd08e37d526775a5d776aeb90157b79c6a3fa28ca309",
+          "candidate_sha256": "5e510eeed684ec1b7534cd08e37d526775a5d776aeb90157b79c6a3fa28ca309"
+        },
+        {
+          "section": ".note.GNU-stack",
+          "type": 1,
+          "base_size": 0,
+          "candidate_size": 0,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "candidate_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "section": ".rel.ARM.exidx",
+          "type": 9,
+          "base_size": 864,
+          "candidate_size": 864,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "35a9556c91d092f78a5599c69bba385ce9f58bff84f67599ce65653e28d2d1b3",
+          "candidate_sha256": "35a9556c91d092f78a5599c69bba385ce9f58bff84f67599ce65653e28d2d1b3"
+        },
+        {
+          "section": ".rel.debug_frame",
+          "type": 9,
+          "base_size": 864,
+          "candidate_size": 864,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "ef38bacdb44c8d035555574e65d4cec1003c53f7a6f845c5bd9663ed6102154f",
+          "candidate_sha256": "ef38bacdb44c8d035555574e65d4cec1003c53f7a6f845c5bd9663ed6102154f"
+        },
+        {
+          "section": ".rel.text",
+          "type": 9,
+          "base_size": 29520,
+          "candidate_size": 29520,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "b4805c82ae5a1a92f4cf80061f804416281361145fe5f4f38780317ad0c8643e",
+          "candidate_sha256": "b4805c82ae5a1a92f4cf80061f804416281361145fe5f4f38780317ad0c8643e"
+        },
+        {
+          "section": ".shstrtab",
+          "type": 3,
+          "base_size": 136,
+          "candidate_size": 136,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "26cca74ab9bb14d86041d13efd7c72707a4cbf14ccef79aad282f4149c31a99b",
+          "candidate_sha256": "26cca74ab9bb14d86041d13efd7c72707a4cbf14ccef79aad282f4149c31a99b"
+        },
+        {
+          "section": ".strtab",
+          "type": 3,
+          "base_size": 1521,
+          "candidate_size": 20551,
+          "same_flags": true,
+          "file_bytes_equal": false,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "da78f89ccf784547b66bff16458c24799de0ebfc663a470bd7f78572e1a879ff",
+          "candidate_sha256": "fa901ac91fd9aaa57c69611552d46889b4bd370d9e119dd60a31c753caf7e6a6"
+        },
+        {
+          "section": ".symtab",
+          "type": 2,
+          "base_size": 26816,
+          "candidate_size": 26816,
+          "same_flags": true,
+          "file_bytes_equal": false,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "34760285c3c82b9a7e60d80563acbdd5c44522ce5990f7182c0d627c6bcfd3f2",
+          "candidate_sha256": "d446026fe38874459ac7cbae183131cab2f604be462fcafb5ca5efd8c017943b"
+        },
+        {
+          "section": ".text",
+          "type": 1,
+          "base_size": 63864,
+          "candidate_size": 63864,
+          "same_flags": true,
+          "file_bytes_equal": true,
+          "nobits_memory_size_equal": null,
+          "base_sha256": "fc671b56b99e4a5ca41eb83a34f8706793263033ad9bb0770e243ac8146e0eed",
+          "candidate_sha256": "fc671b56b99e4a5ca41eb83a34f8706793263033ad9bb0770e243ac8146e0eed"
+        }
+      ],
+      "symbol_entry_differences": [
+        {
+          "symbol_index": 1599,
+          "reference": {
+            "name": "G_IBESS_MODE",
+            "st_value": 34603312,
+            "st_value_hex": "0x2100130",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_IBESS_MODE",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 1600,
+          "reference": {
+            "name": "G_RBESS_CONFIDENCE",
+            "st_value": 34603456,
+            "st_value_hex": "0x21001c0",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_CONFIDENCE",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 1601,
+          "reference": {
+            "name": "G_RBESS_INFLUENCEP",
+            "st_value": 34603392,
+            "st_value_hex": "0x2100180",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_INFLUENCEP",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 1602,
+          "reference": {
+            "name": "G_RBESS_INFLUENCEQ",
+            "st_value": 34603424,
+            "st_value_hex": "0x21001a0",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_INFLUENCEQ",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 1603,
+          "reference": {
+            "name": "G_RBESS_PCMD",
+            "st_value": 34603248,
+            "st_value_hex": "0x21000f0",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_PCMD",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 1604,
+          "reference": {
+            "name": "G_RBESS_QCMD",
+            "st_value": 34603280,
+            "st_value_hex": "0x2100110",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_QCMD",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 1605,
+          "reference": {
+            "name": "G_RBESS_SENSVP",
+            "st_value": 34603328,
+            "st_value_hex": "0x2100140",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_SENSVP",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        },
+        {
+          "symbol_index": 1606,
+          "reference": {
+            "name": "G_RBESS_SENSVQ",
+            "st_value": 34603360,
+            "st_value_hex": "0x2100160",
+            "st_size": 0,
+            "st_info": 24,
+            "st_info_hex": "0x18",
+            "st_other": 0,
+            "st_shndx": 0
+          },
+          "linux_lld": {
+            "name": "G_RBESS_SENSVQ",
+            "st_value": 0,
+            "st_value_hex": "0x0",
+            "st_size": 0,
+            "st_info": 16,
+            "st_info_hex": "0x10",
+            "st_other": 0,
+            "st_shndx": 0
+          }
+        }
+      ],
+      "reference_symbols_canonical_sha256": "31d001235fea936a55b57dce739cc2472a9d5546fb42d437aef23500a866cea4",
+      "candidate_symbols_canonical_sha256": "d10b819441d3f767518a01a3e802f9cbd6e66e31bff520e11e6a24a431c1dd65"
+    }
+  ],
+  "optional_O1_O2_probes": {
+    "status": "no_effect_on_output_hashes",
+    "not_part_of_recovered_vendor_argv": true,
+    "commands": [
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-O1",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/MAIN.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/SBR_001.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_SysLib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/opt1/stuserprog.o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "size": 7084,
+        "sha256": "001ac7470ddbc3db378d554eb1c05016942bf333fa11f5e0f4e23444f1e233ff",
+        "byte_equal_reference": false
+      },
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-O1",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/opt1/stuserprog.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_STCLib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/opt1/stprog.o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "size": 146492,
+        "sha256": "9ef1a87223b279b6a90b722beb6b86b6067b6255eee1fb23fd734adfe9b78b92",
+        "byte_equal_reference": false
+      },
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-O2",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/MAIN.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/SBR_001.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_SysLib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/opt2/stuserprog.o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "size": 7084,
+        "sha256": "001ac7470ddbc3db378d554eb1c05016942bf333fa11f5e0f4e23444f1e233ff",
+        "byte_equal_reference": false
+      },
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-O2",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/opt2/stuserprog.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_STCLib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/opt2/stprog.o"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "size": 146492,
+        "sha256": "9ef1a87223b279b6a90b722beb6b86b6067b6255eee1fb23fd734adfe9b78b92",
+        "byte_equal_reference": false
+      }
+    ]
+  },
+  "reusable_tool_execution": {
+    "schema": "plcidf.vendor-relocatable-link.v1",
+    "ok": true,
+    "status": "linked",
+    "recorded_at_utc": "2026-10-18T17:51:30.966224+00:00",
+    "scope": "two-stage-relocatable-object-link",
+    "downloadable": false,
+    "st_compiled": false,
+    "runtime_verified": false,
+    "linker": {
+      "path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+      "resolved_path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/lld",
+      "sha256": "5c8dc44318df21528d0456cae914061cdc30221e40445b8cef84ba57f352445b",
+      "version": "Ubuntu LLD 20.1.2 (compatible with GNU linkers)"
+    },
+    "commands": [
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "--version"
+        ],
+        "timeout_s": 10,
+        "attempt": 1,
+        "returncode": 0,
+        "stdout": "Ubuntu LLD 20.1.2 (compatible with GNU linkers)\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/inputs/pou-000.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/inputs/pou-001.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/inputs/syslib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/stuserprog.o"
+        ],
+        "timeout_s": 10,
+        "attempt": 1,
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+          "-relocatable",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/stuserprog.o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/inputs/stclib.o",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/stprog.o"
+        ],
+        "timeout_s": 10,
+        "attempt": 1,
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "limitations": [
+      "Existing ARM objects are linked; ST compilation and complete application packaging are not implemented.",
+      "The caller supplies the POU order and exact library branch; no project option or library selection is inferred.",
+      "Unresolved runtime symbols are retained by relocatable linking; matching names do not establish runtime ABI compatibility.",
+      "No vendor executable/DLL, Windows process, network, USB, PLC, download, or CPU control is used.",
+      "A linked object is not evidence of a downloadable or executable PLC application.",
+      "Large projects needing AutoShop's 30000-character intermediate-chunk path are rejected rather than reordered."
+    ],
+    "report": {
+      "path": ".plcidf/research-16-tool-link-new-20261019/link-report.json",
+      "size": 41335,
+      "sha256": "4b81590c08feefdaae92bc6018171207a7c5a205d379a40fe698bfd955f70049"
+    },
+    "inputs": [
+      {
+        "role": "pou-000",
+        "original": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/MAIN.o",
+        "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/inputs/pou-000.o",
+        "size": 3948,
+        "sha256": "55cacc60c640b85b072555f21989ce49903e2eef38ca03d262a3f5ea073a18b5"
+      },
+      {
+        "role": "pou-001",
+        "original": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/STTemp/SBR_001.o",
+        "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/inputs/pou-001.o",
+        "size": 1792,
+        "sha256": "0427a175b83bd445b632a449e92fde9276b2a703737e7ceadaca08d4f1d6d411"
+      },
+      {
+        "role": "syslib",
+        "original": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_SysLib.o",
+        "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/inputs/syslib.o",
+        "size": 2808,
+        "sha256": "2fde5706b01135ac15db5f17b6847dd361894c909ecaa6a3cf9cca2f132782d2"
+      },
+      {
+        "role": "stclib",
+        "original": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_STCLib.o",
+        "frozen": "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/inputs/stclib.o",
+        "size": 122944,
+        "sha256": "047dad6fa718170625f0a78d927df304f3a6f681970009324a7179397958d95e"
+      }
+    ],
+    "outputs": [
+      {
+        "stage": 1,
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/stuserprog.o",
+        "size": 7084,
+        "sha256": "001ac7470ddbc3db378d554eb1c05016942bf333fa11f5e0f4e23444f1e233ff",
+        "undefined": {
+          "entries": 13,
+          "unique_count": 13,
+          "names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_PCMD",
+            "G_RBESS_QCMD",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "_HC_DINT_MOD",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        },
+        "relocations": 125
+      },
+      {
+        "stage": 2,
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-16-tool-link-new-20261019/stprog.o",
+        "size": 146492,
+        "sha256": "9ef1a87223b279b6a90b722beb6b86b6067b6255eee1fb23fd734adfe9b78b92",
+        "undefined": {
+          "entries": 23,
+          "unique_count": 23,
+          "names": [
+            "G_IBESS_MODE",
+            "G_RBESS_CONFIDENCE",
+            "G_RBESS_INFLUENCEP",
+            "G_RBESS_INFLUENCEQ",
+            "G_RBESS_PCMD",
+            "G_RBESS_QCMD",
+            "G_RBESS_SENSVP",
+            "G_RBESS_SENSVQ",
+            "_HC_DINT_MOD",
+            "_HC_EXPT",
+            "_HC_FLOAT_MIN",
+            "_HC_INT64TODOUBLE",
+            "_HC_LD_DEV_MEM_COPY_BITS",
+            "_HC_LD_DEV_MEM_READ_BITS",
+            "_HC_LD_DEV_MEM_WRITE_BITS",
+            "_HC_LD_ERROR_ADD",
+            "_HC_LOG10",
+            "_HC_NOROUND",
+            "_HC_ROUND",
+            "_HC_SHL",
+            "_HC_SHR",
+            "_HC_WATCHDOG",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        },
+        "relocations": 3906
+      }
+    ]
+  },
+  "post_link_symbol_binding": {
+    "status": "observed_unimplemented",
+    "converter_va": "0x1016d5d0",
+    "paths": [
+      "Temp/stprog.o",
+      "Temp/stuserprog.o"
+    ],
+    "relocation_call_vas": [
+      "0x1016dbb2",
+      "0x1016dbd1"
+    ],
+    "import": "STRelocation::Relocation(wchar_t const*, SInfo const*, unsigned int, unsigned long&)",
+    "sinfo_layout": {
+      "record_bytes": 12,
+      "name_pointer_offset": 0,
+      "address_dword_offset": 4,
+      "type_byte_offset": 8,
+      "ordinary_global_type": 8
+    },
+    "name_handling": {
+      "namespace_marker": "::",
+      "strip_prefix_call_va": "0x1016d97a",
+      "mapping_call": "CSTCompiler virtual +0x3c at 0x1016d9d7",
+      "mapping_semantics_fully_decoded": false,
+      "linked_symbol_spelling": "uppercase G_IBESS_MODE/G_RBESS_* observed; not a general rule for all Unicode/namespace names"
+    },
+    "address_resolution": {
+      "helper_va": "0x1016d090",
+      "ordinary_var_lookup": "IH530SysResMgr::GetVarByName @0x1016d1f1",
+      "ordinary_address_accessor": "CH530Var subobject +4 virtual +0x3c @0x1016d21e",
+      "ordinary_type_accessor": "CH530Var virtual +0x18 @0x1016d230",
+      "alternate_paths": [
+        "GetVarAddrByName @0x1016d137 (dot/decimal bit suffix)",
+        "GetOperInfo @0x1016d2a2 + GetVarAddrByName @0x1016d2e4"
+      ]
+    },
+    "elf_write_rule": {
+      "module": "STRelocation.dll",
+      "helper_va": "0x10003b80",
+      "instructions_va": "0x10003d09..0x10003d1c",
+      "st_info": "(old_st_info & 0xf0) | SInfo.type_byte",
+      "st_value": "SInfo.address_dword",
+      "st_shndx": "not written by this matched-symbol update",
+      "matching_and_relocation_filtering": "name/index maps in 0x10003d70 and 0x10003730; not fully implemented"
+    },
+    "missing": "independent complete project variable allocation/type/name mapping; no copied reference addresses and no patch applied"
+  },
+  "transaction": {
+    "current_static_chain": [
+      "dispatch raw0x5d @0xe63875",
+      "0xe6b470",
+      "0xe79a60",
+      "0xe7a170 CaculateAllDownloadFile2 builds vector",
+      "0xe63b20 SetGCMState raw2",
+      "0xe6b250 ordered transfer loop",
+      "0xe63b90 SetGCMState raw3 after transfer==1"
+    ],
+    "preflight_read_plc_info_call_va": "0xe7a1d3",
+    "record_layout": {
+      "record_bytes": 12,
+      "message_id_offset": 0,
+      "local_CStringW_offset": 4,
+      "remote_CStringW_offset": 8,
+      "constructor_va": "0xe6b140",
+      "vector_append_va": "0xe80f40"
+    },
+    "download_call_va": "0xe6b380",
+    "download_arguments": [
+      "record.local_path",
+      "record.remote_path",
+      "progress CWnd*",
+      "empty CStringW",
+      "EnumExecuteMode raw1",
+      "EnumCommandLevel raw0"
+    ],
+    "required_result": 1,
+    "on_file_failure": "return immediately; no automatic file replay in this loop",
+    "gcm_calls": {
+      "before_transfer": {
+        "call_va": "0xe63b3a",
+        "pointer_initial_enum": 2
+      },
+      "after_successful_transfer": {
+        "call_va": "0xe63baa",
+        "pointer_initial_enum": 3
+      },
+      "arguments": [
+        "EnumGCMState*",
+        "null CWnd*",
+        "raw1 mode",
+        "raw0 level"
+      ],
+      "enum_names_verified": false,
+      "wire_protocol_and_commit_semantics_verified": false
+    },
+    "files_in_static_order": [
+      {
+        "static_order": 1,
+        "role": "project source",
+        "message_id": 9,
+        "source": "helper 0xe71ce0 output; may .hcpp or Temp/Empty.hcpp",
+        "remote_basename": "project.hcpp",
+        "enqueue_call_va": "0xe7a605",
+        "payload_generator_va": null,
+        "condition": "conditional project-source and current route prefix",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 2,
+        "role": "user program",
+        "message_id": 2,
+        "source": "project\\Temp\\userprog.foid",
+        "remote_basename": "userprog.foid",
+        "enqueue_call_va": "0xe7a8ec",
+        "payload_generator_va": null,
+        "condition": "conditional transformation 0xe70570 before enqueue",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 3,
+        "role": "linked ST",
+        "message_id": 13,
+        "source": "project\\Temp\\stprog.o",
+        "remote_basename": "stprog.o",
+        "enqueue_call_va": "0xe7ab6f",
+        "payload_generator_va": null,
+        "condition": "POU/feature conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 4,
+        "role": "ST user object",
+        "message_id": 23,
+        "source": "project\\Temp\\stuserprog.o",
+        "remote_basename": "stuserprog.o",
+        "enqueue_call_va": "0xe7ae0b",
+        "payload_generator_va": null,
+        "condition": "POU/feature conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 5,
+        "role": "symbol",
+        "message_id": 14,
+        "source": "project\\Temp\\symbol.sym",
+        "remote_basename": "symbol.sym",
+        "enqueue_call_va": "0xe7b0c1",
+        "payload_generator_va": null,
+        "condition": "conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 6,
+        "role": "variables",
+        "message_id": 3,
+        "source": "project\\Temp\\varsinfo.foid",
+        "remote_basename": "varsinfo.foid",
+        "enqueue_call_va": "0xe7b3d2",
+        "payload_generator_va": null,
+        "condition": "may have pre-enqueue transform; not root varsinfo.foid",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 7,
+        "role": "system config",
+        "message_id": 4,
+        "source": "project\\Output.sdt → generated payload",
+        "remote_basename": "syscfg.foid",
+        "enqueue_call_va": "0xe7b79a",
+        "payload_generator_va": "0x15af600",
+        "condition": "generated FOID staging file",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 8,
+        "role": "EtherCAT",
+        "message_id": 5,
+        "source": "project\\EtherCat.dat → generated payload",
+        "remote_basename": "ethercat.foid",
+        "enqueue_call_va": "0xe7bbec",
+        "payload_generator_va": "0x15b31a0",
+        "condition": "generated conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 9,
+        "role": "Modbus",
+        "message_id": 6,
+        "source": "project\\TcpModbusConfig.cfg → generated payload",
+        "remote_basename": "modbus.foid",
+        "enqueue_call_va": "0xe7c0ae",
+        "payload_generator_va": "0x15b3490",
+        "condition": "generated conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 10,
+        "role": "CAN",
+        "message_id": 7,
+        "source": "project\\canopen.data or CANLink.prg → generated payload",
+        "remote_basename": "canlink.foid",
+        "enqueue_call_va": "0xe7c676",
+        "payload_generator_va": "0x15b3c10",
+        "condition": "model-dependent source branch",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 11,
+        "role": "module",
+        "message_id": 8,
+        "source": "project\\h5u_moduleCfg.data → generated payload",
+        "remote_basename": "modcfg.foid",
+        "enqueue_call_va": "0xe7cad9",
+        "payload_generator_va": "0x15b3e00",
+        "condition": "model-dependent; alternate GL20 record not resolved as same target",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 12,
+        "role": "EtherNet/IP",
+        "message_id": 16,
+        "source": "project\\EIP.dat → generated payload",
+        "remote_basename": "ethip.foid",
+        "enqueue_call_va": "0xe7d3d7",
+        "payload_generator_va": "0x15b79f0",
+        "condition": "UI label EIP.dat is not remote filename",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 13,
+        "role": "EIP instruction",
+        "message_id": 19,
+        "source": "project\\EIPIns.dat → generated payload",
+        "remote_basename": "EIPIns.foid",
+        "enqueue_call_va": "0xe7d89c",
+        "payload_generator_va": "0x15b7ce0",
+        "condition": "generated conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 14,
+        "role": "EtherCAT transparent",
+        "message_id": 15,
+        "source": "project\\ecttrans.foid → generated payload",
+        "remote_basename": "ecttrans.foid",
+        "enqueue_call_va": "0xe7dd61",
+        "payload_generator_va": "0x15b7fb0",
+        "condition": "generated conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 15,
+        "role": "data log",
+        "message_id": 18,
+        "source": "project\\dataLog.data → generated payload",
+        "remote_basename": "dataLog.foid",
+        "enqueue_call_va": "0xe7e1e1",
+        "payload_generator_va": "0x15b88a0",
+        "condition": "version/feature conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 16,
+        "role": "web server",
+        "message_id": 22,
+        "source": "project\\webserver.bin → generated payload",
+        "remote_basename": "webserver.foid",
+        "enqueue_call_va": "0xe7e656",
+        "payload_generator_va": "0x15b9480",
+        "condition": "optional; absent in historical 18-success trace",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 17,
+        "role": "OPC UA",
+        "message_id": 17,
+        "source": "project\\OpcUAServer.dat → generated payload",
+        "remote_basename": "OpcUAServer.foid",
+        "enqueue_call_va": "0xe7ea0d",
+        "payload_generator_va": "0x15b8290",
+        "condition": "UI label OpcUAServer.dat is not remote filename",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 18,
+        "role": "SFTP",
+        "message_id": 20,
+        "source": "project\\SFTPServer.dat → generated payload",
+        "remote_basename": "sftpserver.foid",
+        "enqueue_call_va": "0xe7ee70",
+        "payload_generator_va": "0x15b8590",
+        "condition": "generated conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 19,
+        "role": "electronic cam",
+        "message_id": 11,
+        "source": "project\\Ecam.tr → generated payload",
+        "remote_basename": "Ecam.foid",
+        "enqueue_call_va": "0xe7f329",
+        "payload_generator_va": "0x15b8ce0",
+        "condition": "generated conditional",
+        "transfer_byte_binding": "not_captured"
+      },
+      {
+        "static_order": 20,
+        "role": "auto system",
+        "message_id": 21,
+        "source": "project\\autosys.cfg → generated payload",
+        "remote_basename": "autosys.cfg",
+        "enqueue_call_va": "0xe7f7f7",
+        "payload_generator_va": "0x15b8b70",
+        "condition": "EASY51X-AG branch; not presumed Easy521",
+        "transfer_byte_binding": "not_captured"
+      }
+    ],
+    "generated_staging_path": {
+      "expression": "project_root + \\Temp + \\DownLoad\\ + remote_basename",
+      "resource_id": "0xf35c",
+      "resource_value": "\\Temp",
+      "resource_language_id": 2052,
+      "constructor_vas": [
+        "0xe62660",
+        "0xe626a2",
+        "0xe626ef",
+        "0xe62723"
+      ]
+    },
+    "foid_writer": {
+      "writer_va": "0x15b2a90",
+      "header_generator_va": "0x15b2dd0",
+      "header_size_bytes": 64,
+      "layout_observed": [
+        {
+          "offset": 0,
+          "u32_le": 256
+        },
+        {
+          "offset": 4,
+          "u32_le": 4
+        },
+        {
+          "offset": 8,
+          "length": 4,
+          "ascii": "foid"
+        },
+        {
+          "offset": 12,
+          "u32_le": 512
+        },
+        {
+          "offset": 16,
+          "u32_le": 32
+        },
+        {
+          "offset": 20,
+          "length": 32,
+          "semantics": "unknown metadata; preserve actual bytes, not guessed zeros"
+        },
+        {
+          "offset": 52,
+          "u32_le": 513
+        },
+        {
+          "offset": 56,
+          "u32_le": 4
+        },
+        {
+          "offset": 60,
+          "length": 4,
+          "semantics": "caller-provided DWORD; meaning/version policy incomplete"
+        }
+      ],
+      "body": "generated payload appended at offset64; raw source files are not generally body bytes",
+      "output_bytes_proven_for_historical_transfer": false
+    },
+    "legacy_implementation": {
+      "va": "0xe63e90",
+      "log_name": "CH530ProgressDlg::DownLoad",
+      "direct_E8_or_absolute_pointer_callers_found": false,
+      "not_assumed_current_path": true
+    },
+    "other_path": {
+      "function_va": "0xe73060",
+      "selection": "dispatch 0x125/.down or 0x126/.updown",
+      "transfers": "PLCProgram.down / PLCProgram.updown",
+      "simple_command_raw_values": [
+        0,
+        123
+      ],
+      "status_poll_iterations": 200,
+      "not_assumed_standard_application_commit": true
+    },
+    "write_module_versions_call_va": "0xe7faf2 (separate following function; relation to main download not proven)"
+  },
+  "tests": {
+    "command": "PLCIDF_TEST_LLD=\"$PWD/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld\" .venv/bin/python -m unittest discover -s tools/tests -p test_link_vendor_application.py -v",
+    "expected_total": 14,
+    "real_synthetic_arm_link": true,
+    "hardware_or_windows": false,
+    "actual_result": "14 passed including real LLD positive and duplicate-symbol negative"
+  },
+  "next_actions": [
+    {
+      "priority": 1,
+      "action": "Derive SInfo only from a separately validated legal project variable record and fixed global/task interface; validate address allocation, type and compiler-name conversion independently. Never copy addresses from reference outputs and call that an independent build."
+    },
+    {
+      "priority": 2,
+      "action": "Decode each actual model/version condition in CaculateAllDownloadFile2 and bind a complete file closure to one source/build snapshot. Retain configuration generator/64-byte-header output hashes; do not combine same-name files from PLC/Temp/OnlineVersion."
+    },
+    {
+      "priority": 3,
+      "action": "Recover IH530 session/factory initialization and EnumGCMState/wire outcomes, and program identity verification before any independent uploader implementation. The static vector loop is not a tested client."
+    },
+    {
+      "priority": 4,
+      "action": "Compare legal ST compilation output against frozen POU ELF; Linux relocatable link alone does not satisfy ST-to-application compilation."
+    }
+  ],
+  "limitations": [
+    "The recovered static paths are implementation evidence for the hashed version, not an official supported API.",
+    "No complete download-byte capture, independently byte-restorable backup, compiled source/build identity, new uploader or application execution proof is claimed.",
+    "Code/relocation bytes agree for frozen current inputs, but eight global variable address/type symbol entries do not. This is a concrete missing vendor post-link step.",
+    "The caller-selected SysLib_New branch is strongly consistent with this frozen comparison, not a reading of the actual GetCompilationOpt value.",
+    "NOBITS/BSS has no on-disk bytes and is compared by memory size only."
+  ],
+  "input_originals_rechecked_unchanged": true
+}

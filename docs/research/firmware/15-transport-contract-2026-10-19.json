@@ -1,0 +1,313 @@
+{
+  "schema": "plcidf.transport-contract-static.v1",
+  "observed_date": "2026-10-19",
+  "scope": {
+    "static_only": true,
+    "device_requests_sent": 0,
+    "dll_loads": 0,
+    "socket_connections": 0,
+    "gui_operations": 0,
+    "vendor_artifacts_published": false
+  },
+  "source": {
+    "path_in_user_installation": "E:/Software/AutoShop/H530Communicate.dll",
+    "bytes": 22864896,
+    "sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698",
+    "format": "PE32 i386",
+    "preferred_image_base": "0x10000000"
+  },
+  "evidence_levels": {
+    "static": "Instructions/RTTI in the pinned host DLL; not a real device acceptance test.",
+    "synthetic": "Own constructed vectors; not captured wire traffic.",
+    "unknown": "No positive evidence; must not infer from name, USB identity, or Simulator."
+  },
+  "code_ranges": [
+    {
+      "name": "runtime_command",
+      "start_rva": "0x133d0",
+      "end_rva_exclusive": "0x13450",
+      "sha256": "66382843cb785f5d6a08b249103fe525a2f4a750e638f644e9b118ae9f4353aa"
+    },
+    {
+      "name": "read_index_common",
+      "start_rva": "0xc6c0",
+      "end_rva_exclusive": "0xc7ca",
+      "sha256": "bcb22e829b8992be8b7917e1ac0466751e39950169d046c6e58732bfc398777b"
+    },
+    {
+      "name": "single_frame_builder",
+      "start_rva": "0x28050",
+      "end_rva_exclusive": "0x280cc",
+      "sha256": "18455fa9eca1e1b82214c3f9244b5f515cfb4ca07043298f6ca942aa9324badd"
+    },
+    {
+      "name": "response_header_validator",
+      "start_rva": "0x28610",
+      "end_rva_exclusive": "0x286a0",
+      "sha256": "515f80836c2a303cce755201c0a3cd76820cb35be57c684d56ac557320e769ce"
+    },
+    {
+      "name": "response_payload_extractor",
+      "start_rva": "0x28910",
+      "end_rva_exclusive": "0x28a64",
+      "sha256": "4cad4503f41a6f6cf1c65683af9cc385b3796e35f6d14572984eb76bf6bc353a"
+    },
+    {
+      "name": "usb_loader",
+      "start_rva": "0x29320",
+      "end_rva_exclusive": "0x29414",
+      "sha256": "de47b3fd2d7bf3507d069156486d2c04b653ce681bc035b1902b9abc5b1b9457"
+    },
+    {
+      "name": "usb_select_open",
+      "start_rva": "0x29420",
+      "end_rva_exclusive": "0x2952a",
+      "sha256": "b32afcf3d30fbbf8d822cd44ceccb0bc2e47e5f09e999e5ec52d6653b70d911d"
+    },
+    {
+      "name": "usb_clear_halt",
+      "start_rva": "0x29530",
+      "end_rva_exclusive": "0x2955b",
+      "sha256": "3dddf89f237f9ebd215b41192ad2a16456f147f46fdb895cacb7a905a9358efa"
+    },
+    {
+      "name": "usb_close",
+      "start_rva": "0x29560",
+      "end_rva_exclusive": "0x295c1",
+      "sha256": "779f8206d878a4784d37ab51b6898a4d993fd70e5bd8890bddd4a76a81b71ee2"
+    },
+    {
+      "name": "usb_probe",
+      "start_rva": "0x29720",
+      "end_rva_exclusive": "0x2976e",
+      "sha256": "003df6933fedbd2c28fa87e37958f0ac26e51d0427ce0a0607f8e9c96070084d"
+    },
+    {
+      "name": "usb_send",
+      "start_rva": "0x297b0",
+      "end_rva_exclusive": "0x298a3",
+      "sha256": "bfbb5f35e458d713fb27ffe653d60099dcfb40b5d984556953ff77dab55561ef"
+    },
+    {
+      "name": "usb_receive",
+      "start_rva": "0x298b0",
+      "end_rva_exclusive": "0x29b5b",
+      "sha256": "8440035c3592c0f9b22ec82f6da193758b99d28a28dd4eeeb2b594c89aaf39da"
+    },
+    {
+      "name": "protocol_base_ctor",
+      "start_rva": "0x27cd0",
+      "end_rva_exclusive": "0x27dc2",
+      "sha256": "9f8c5a23f58415ea1a9eaa39fe3aee6a832b18eb4e231086b32933cfe79cfc44"
+    },
+    {
+      "name": "transport_context_ctor",
+      "start_rva": "0x8280",
+      "end_rva_exclusive": "0x8440",
+      "sha256": "5efa806e6c3b66dca25f6e5e8fc5cfa6bac8fa89c5ee448cb903962e44b3f2a8"
+    },
+    {
+      "name": "queue_bind_protocol",
+      "start_rva": "0x8450",
+      "end_rva_exclusive": "0x8540",
+      "sha256": "939753453128d53466275173c126f3db684ffb62e5ce17297207113d48ebc32b"
+    },
+    {
+      "name": "execute_mode_wait",
+      "start_rva": "0xc550",
+      "end_rva_exclusive": "0xc58d",
+      "sha256": "949222b9a5736ea056abd3e41690cf62eac663b96bef1a4fb6c9cc86284a6cc9"
+    }
+  ],
+  "profiles": {
+    "vendor_h530_runtime": {
+      "evidence": "static",
+      "command_class": "CRTUStateCommand",
+      "logical_index": "0xff010000",
+      "wire_index": "0xff010000",
+      "data_bytes": 4,
+      "selector": 1,
+      "read_operation": 1,
+      "version": 1,
+      "index_mapping_bypassed": true,
+      "device_verified": false,
+      "run_stop_semantics": "unknown"
+    },
+    "simulator_cpu_status": {
+      "evidence": "static; see 14 report",
+      "index": "0xff000000",
+      "data_bytes": 1,
+      "selector": 1,
+      "read_operation": 1,
+      "version": 1,
+      "same_ff010000_index_meaning": "EtherCAT scan status/control",
+      "device_verified": false,
+      "compatible_with_easy521": false,
+      "compatibility_status": "not established; explicit index/length conflict"
+    }
+  },
+  "request_header": [
+    {
+      "offset": 0,
+      "bytes": 2,
+      "field": "total_length_le",
+      "value": 18
+    },
+    {
+      "offset": 2,
+      "bytes": 1,
+      "field": "version",
+      "value": 1
+    },
+    {
+      "offset": 3,
+      "bytes": 1,
+      "field": "selector",
+      "value": 1
+    },
+    {
+      "offset": 4,
+      "bytes": 2,
+      "field": "sequence_le",
+      "value": "u16 incrementing modulo 65536; ctor=0"
+    },
+    {
+      "offset": 6,
+      "bytes": 2,
+      "field": "reserved",
+      "value": "zero from builder memset; semantic unknown"
+    },
+    {
+      "offset": 8,
+      "bytes": 1,
+      "field": "operation",
+      "value": 1
+    },
+    {
+      "offset": 9,
+      "bytes": 1,
+      "field": "flags",
+      "value": "zero unless one-shot override is pending"
+    },
+    {
+      "offset": 10,
+      "bytes": 4,
+      "field": "index_le",
+      "value": "profile-specific"
+    },
+    {
+      "offset": 14,
+      "bytes": 4,
+      "field": "requested_bytes_le",
+      "value": "profile-specific"
+    }
+  ],
+  "flags": {
+    "evidence": "static",
+    "offset": 9,
+    "pending_flag_object_offset": "0x6a",
+    "high_component_object_offset": "0x6e",
+    "low_component_object_offset": "0x72",
+    "combination": "((low_u8(component_6e) << 4) | low_u8(component_72)) & 0xff",
+    "cleared_after_build": true,
+    "semantic_names": "unknown",
+    "runtime_path_sets_override": false
+  },
+  "response": {
+    "evidence": "static",
+    "matching_fields": [
+      "version@2",
+      "selector@3",
+      "sequence_le16@4"
+    ],
+    "header_errors": {
+      "null_request": "0x18",
+      "null_response": "0x19",
+      "mismatch": "0x1a"
+    },
+    "success_operation": 5,
+    "data_offset": 10,
+    "success_data_bytes": "exact profile data_bytes in conservative offline parser",
+    "error_operation": 15,
+    "error_bytes": 4,
+    "unsupported_operations": [
+      3,
+      6
+    ],
+    "reserved_and_flags": "preserved opaque, no invented echo check",
+    "state_value_interpretation": "raw only; no RUN/STOP decode",
+    "authentication": "not established by these fields"
+  },
+  "usb": {
+    "evidence": "static",
+    "library": "libusb0.dll",
+    "vid": "0x0471",
+    "pid": "0xa531",
+    "configuration": 2,
+    "interface": 0,
+    "bulk_out_endpoint": "0x02",
+    "bulk_in_endpoint": "0x81",
+    "per_transfer_timeout_ms": 2500,
+    "read_chunk_max_bytes": 512,
+    "protocol_default_timeout_ms": 10000,
+    "application_frame_crc_seen_in_selected_path": false,
+    "additional_encryption_seen_in_selected_path": false,
+    "init_order": [
+      "close old handle",
+      "usb_init",
+      "usb_find_busses",
+      "usb_find_devices",
+      "usb_get_busses -> exact VID/PID match -> usb_open",
+      "usb_set_configuration(2)",
+      "usb_claim_interface(0)",
+      "clear_halt(0x81), if successful clear_halt(0x02)"
+    ],
+    "lifecycle_and_auth_device_verified": false,
+    "send_implementation_caveat": "Vendor accepts some partial positive returns and special -116; do not copy as future success policy."
+  },
+  "communication_types": {
+    "evidence": "static RTTI + constructor + queue branch",
+    "0": "selects CUSBProtocol",
+    "4": "default selects CEthProtocol",
+    "other_values": "unknown; nonzero branch does not prove validity",
+    "ethernet_protocol_vtable_rva": "0x7d4cc",
+    "usb_protocol_vtable_rva": "0x7d84c"
+  },
+  "execute_mode": {
+    "value_1": "allocates completion events and waits in 0xc550",
+    "wait_timeout_ms": 1200000,
+    "public_enum_names": "unknown",
+    "full_abi_and_init_lifecycle": "not recovered"
+  },
+  "synthetic_vectors": [
+    {
+      "name": "vendor_request_seq1234",
+      "hex": "12000101341200000100000001ff04000000",
+      "evidence": "synthetic; not sent"
+    }
+  ],
+  "unknowns": [
+    "Easy521 live response to this profile",
+    "RUN/STOP state enumeration and bits",
+    "authentication/session prerequisites",
+    "complete Ethernet wire contract",
+    "command level enumeration and standalone C++ ABI lifecycle",
+    "SoC, OS, firmware/BSP",
+    "application download and full build/link chain"
+  ],
+  "previous_reports": [
+    "12-interface-control-2026-10-18.md",
+    "14-easy521-download-paths-2026-10-18.md"
+  ],
+  "deliverables": [
+    "tools/easy521_protocol.py",
+    "tools/tests/test_easy521_protocol.py"
+  ],
+  "validation": {
+    "command": ".venv/bin/python -m pytest tools/tests/test_easy521_protocol.py -q",
+    "passed": 85,
+    "fixtures": "independently constructed synthetic bytes",
+    "hardware_test": false,
+    "simulator_connection_test": false
+  }
+}

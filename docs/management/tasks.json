@@ -44,7 +44,7 @@
       "title": "封装独立 wheel、依赖和纯软件 CI",
       "priority": "P1",
       "milestone": "M1",
-      "role": "Python 构建与分发工程角色（待接单）",
+      "role": "构建分发AI代理与统筹复核（已合入main）",
       "depends_on": [
         "T02"
       ],
@@ -55,7 +55,7 @@
         "干净 Linux CI 测试通过；默认软件 CI 排除 Windows/硬件枚举",
         "兼容 plcidf 与 py2plc 两入口"
       ],
-      "delivery": "打包变更、隔离安装证据、CI；本轮仅先建立源码树 CI",
+      "delivery": "独立wheel、sdist、仓库外安装与软件CI已交付，PR #13已合入main；详见DISTRIBUTION.md",
       "issue_number": 3,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/3"
     },
@@ -64,7 +64,7 @@
       "title": "实现文本工程 manifest、脚手架和静态检查",
       "priority": "P1",
       "milestone": "M1",
-      "role": "PLC 语言与工程模型角色（待接单）",
+      "role": "工程模型AI代理与统筹复核（已合入main）",
       "depends_on": [
         "T01"
       ],
@@ -161,7 +161,7 @@
         "验证断连、异常值和陈旧数据；只用读功能码",
         "区分变量数采、CPU运行状态、故障与周期监控的实际覆盖范围"
       ],
-      "delivery": "USB UI当前值已真实读取12个探针量；独立在线身份、M8000/M8001与鲜度仍未核验，CLI非零；网口Modbus与字序仍待验收",
+      "delivery": "历史USB UI已读取12个探针量；2026-10-19独立USB固定read真实返回原始u32=0，状态含义/CPU/程序身份仍unknown。网口仍断开，Modbus及字序未验收；见EASY521_AI_DELIVERY_2026-10-19.md",
       "issue_number": 8,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/8"
     },
@@ -193,7 +193,7 @@
       "title": "研究原生厂商编译 ABI 与下载协议",
       "priority": "research",
       "milestone": "RX",
-      "role": "厂商编译器研究AI代理与统筹复核",
+      "role": "厂商编译与协议AI代理、部署AI代理及统筹复核",
       "depends_on": [],
       "estimate": "首轮原型时间盒 3–5 工程日",
       "acceptance": [
@@ -202,7 +202,7 @@
         "下载协议研究先离线分析合法样本，真实抓包与写操作另需现场授权",
         "最小原型或否决证据支持桥接保留/原生投入决定，未发现不等于不存在"
       ],
-      "delivery": "2026-10-18普通受限ST正文+显式全局声明→独立中间输入→真实厂商ARM对象，覆盖多语句/IF/4基础类型、+1/+2和语法负例；隐式声明修复崩溃。完整链接/软元件/任务/包装和独立下载协议仍开放；研究11",
+      "delivery": "受限普通ST经Windows厂商编译器生成真实ARM对象；2026-10-19Linux LLD已真实执行两级链接，代码和重定位节与参考一致，尚缺8个变量地址/类型绑定。恢复固定USB读帧并独立真机收回raw0；应用包装/传输/端侧身份仍开放。见研究15/16与当日交付",
       "issue_number": 10,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/10"
     },
@@ -221,7 +221,7 @@
         "无驱动或恢复证据时不进入替换固件实验，输出成本与退出条件",
         "系统级实验不复用用户工程下载授权"
       ],
-      "delivery": "四路线比较、镜像离线报告、开放平台验证、投入/退出决定",
+      "delivery": "离线镜像/开放平台评估已交付；2026-10-19设备USB自述Linux3.10.65 with sunxi_usb_udc与Easy52x v2.4。准确SoC、BSP、启动/恢复和I/O驱动尚未证明；未做系统固件替换",
       "issue_number": 11,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/11"
     },
@@ -253,7 +253,7 @@
       "title": "验证无 Windows 的开放 ST 编译、执行与变量观测",
       "priority": "P1",
       "milestone": "M4",
-      "role": "开放ST运行时AI技术代理与统筹复核（本轮交付待合并）",
+      "role": "开放ST运行时AI代理与统筹复核（已合入main）",
       "depends_on": [
         "T04"
       ],
@@ -314,11 +314,34 @@
       "delivery": "open_contract.py / 通用open-linux profile与replay / verification.py / motor与analog示例 / verify CLI / AI_PROGRAMMING.md / 实际CLI与CI证据",
       "issue_number": 17,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/17"
+    },
+    {
+      "id": "T14",
+      "title": "采集人工观察并汇总可追溯的AI PLC迭代反馈",
+      "priority": "P1",
+      "milestone": "M3",
+      "role": "反馈工具AI代理、独立审计代理与统筹集成",
+      "depends_on": [
+        "T01",
+        "T07",
+        "T08"
+      ],
+      "estimate": "本批离线工具实施，硬件反馈另行实测",
+      "acceptance": [
+        "复用feedback.schema.json；人工/仪器/AI推断和unknown严格区分，不把合法JSON当事实核验",
+        "记录迭代/父轮、需求、已知程序和设备身份；缺失项保留null或unknown",
+        "验证日历时间、附件路径与SHA256，输出默认不覆盖；伪造哈希及越界路径拒绝",
+        "提供本地采集、校验与多轮汇总入口，汇总可供AI修改下一轮需求和代码",
+        "全程不触发PLC/Windows或AI代码执行；软件正负例和真实只读记录集成有证据"
+      ],
+      "delivery": "schema、unknown示例及真实仪器反馈已入库；采集/汇总工具本批并行实施，验收状态以Issue为准",
+      "issue_number": 18,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/18"
     }
   ],
   "tracking_issue": {
     "number": 12,
     "url": "https://github.com/BUG423/other-plc-idf/issues/12"
   },
-  "scope_update": "2026-10-18自主推进：受限普通ST文本已无GUI生成真实ARM对象，完整应用链接仍开放；本地intent/release及完整输入覆盖、doctor/分发已改善。本轮无下载确认/RUN/STOP，今天设备供电/运行未重新观察。状态以GitHub为准。"
+  "scope_update": "2026-10-19：已只保留main并统一README结构；独立USB只读请求真机返回raw0（CPU状态未知），Linux两级厂商对象链接通过但8个变量绑定和完整包装/部署仍开放。1049项本地软件测试通过；新增T14反馈入口并行实施。今日主电源/灯状态尚未重新观察，无程序下载/模式请求/变量写入。状态以GitHub为准。"
 }

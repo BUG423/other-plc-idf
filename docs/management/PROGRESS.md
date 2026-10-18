@@ -1,5 +1,17 @@
 # 进展记录
 
+## 2026-10-19：单分支、独立真机 USB 查询与 Linux 两级链接
+
+用户明确最终闭环为Linux里AI编写有规范注释的ST、编译下装、接收设备/人工观察、继续修改，并要求仓库只保留一个分支及统一README。需求、架构、任务和真实交付见[本轮报告](EASY521_AI_DELIVERY_2026-10-19.md)、[需求基线](../requirements/EASY521_AI_LOOP_2026-10-19.md)、[ADR-0005](../architecture/ADR-0005-easy521-ai-control-loop.md)与[分工表](EASY521_AI_TASKS_2026-10-19.md)。
+
+- **仓库**：PR #13已正常合并，全部提交保留；删除已合入的工作分支后本地/远端只有main。README参考用户4个其他仓库重整，移除旧测试计数；根AGENTS固化单分支、分工与详细注释规范。16个Issue/PR的旧分支URL修到main。许可暂保留现有PolyForm，与README/包元数据一致；是否采用其他仓库的CC许可已单独询问。
+- **真机通信**：当前USB描述符直接读到Linux3.10.65/sunxi、Easy52x v2.4，当前配置2。先核实无未保存/在线修改，再正常退出精确实验AutoShop，独占USB。原型和公开worker各单次已知只读请求均收回匹配数据，原始u32=0；状态枚举、CPU身份与执行仍unknown。公开worker默认preview、执行时fresh枚举/lease、随机序号、校验helper哈希、完整收帧、不重试。保留首次PS类型别名失败与修复后的成功记录。没有setconfig/reset/clearhalt、模式/变量/应用写入；AutoShop保持退出。
+- **Linux链接**：恢复并实际执行POU+_SysLib→stuserprog、再+_STCLib→stprog；代码和重定位节与当前参考逐字节相同。差异精确剩8个工程变量的类型/地址后处理，已追到SInfo来源与STRelocation写入，未复制地址或patch。新工具始终downloadable=false；完整配置包装、文件事务与设备字节绑定仍开放。
+- **闭环与反馈**：10个任务有责任/依赖/验收与研究退出条件；新增反馈schema/unknown例子，并保存本轮仪器raw0的真实反馈，program hash全部null、结论unknown。未编造用户观察，反馈CLI仍待实现。严格Linux原生与WSL调用Windows驱动/编译器分别标记。
+- **验证**：源码/monitor765 passed、51 skipped、1个真实枚举排除；工具284 passed（新codec85、链接14、USB worker57为其子集），共1049项不重叠通过。真实Linux LLD合成正负例、原厂对象链接、公开Windows USB worker、反馈格式/附件哈希另有证据。修复测试启动参数把ld.lld误解析为lld的问题，初次失败保留。CI统一pytesttools，并加入真实Linux LLD正负验证。见[本轮验证](../../evidence/easy521-ai-loop-20261019/software-validation.json)。
+
+网口01:46仍Disconnected/0bps，未做猜测IP扫描；今日24V/开关/负载和RUN灯未重新观察。设备USB自述不能当作准确SoC/BSP证据。完整Easy521新应用执行闭环和严格Linux原生尚未通过。定期进展工作流现已进入默认main并启用（每周一上海09:00，可能延迟），仅报告任务元数据，不是无人值守研发或PLC控制。
+
 ## 2026-10-18：深究 Easy521 的最短直接控制入口
 
 三个 AI 技术代理并行核对手册、通信库和下载链，另一 AI 代理独立审计新工具；统筹检查现场主机连接并复核交付。按此前 Easy521 实物研究，用户新写的 Easy512 尚未确认为另一型号。详细结果见[直接控制报告](EASY521_DIRECT_CONTROL_2026-10-18.md)。

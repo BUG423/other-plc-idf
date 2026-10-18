@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-10-18T17:57:07.151776+00:00",
+  "scope": "exclusive session preparation; no PLC request",
+  "script_sha256": "08cad2eff0151666147a08bbbcc2207fe3caaf23639a017bfd082eaf651b1197",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\.plcidf\\close-experimental-autoshop.ps1"
+    ],
+    "returncode": 0,
+    "stdout": "{\"observed_at\":\"2026-10-19T01:57:07.3784792+08:00\",\"scope\":\"graceful close of exact clean experimental AutoShop only; no save click, force kill or PLC command\",\"pid\":17152,\"title\":\"AutoShop V4.12.0.2  E:\\\\PLCProjects\\\\PLCIDF_LAB_20261017\\\\BESS_E521_DEV - [MAIN]\",\"editor_checks\":[{\"handle\":135288,\"modified\":false,\"read_only\":false}],\"close_requested\":true,\"exited\":true}\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

@@ -4,6 +4,8 @@
 
 执行更新：本计划初稿是首次审计快照。用户随后授权真机实测，并确认没有外接 24V、输出无负载、开关在 RUN、RUN 灯灭。已完成真实 USB 应用下载及厂商一致性正反校验，运行请求被拒绝；额定供电、CPU 执行和精确二进制部署追溯仍待验收。以 [最新设备报告](EASY521_APPLICATION_2026-10-17.md)、[首轮现场报告](LIVE_VALIDATION_2026-10-17.md) 和 [当前进展](PROGRESS.md) 为准。
 
+2026-10-19执行更新：已只保留main；独立USB读请求收到真机原始数据，Linux两级链接已执行。新闭环需求、详细注释规则和反馈工作包见[需求基线](../requirements/EASY521_AI_LOOP_2026-10-19.md)、[ADR-0005](../architecture/ADR-0005-easy521-ai-control-loop.md)、[本批分工](EASY521_AI_TASKS_2026-10-19.md)及[最新交付](EASY521_AI_DELIVERY_2026-10-19.md)。本计划下文保留初始基线语境，不将历史未验收能力倒改为完成。
+
 范围更新：用户进一步明确去 Windows 与多 PLC 目标。现采纳 [ADR-0002](../architecture/ADR-0002-native-multitarget.md)：Easy521 厂商兼容研究与自控开放运行时并行，已有桥接继续维护。T10/T11/T12 覆盖目标模型、无 Windows 的真实 ST 闭环与跨目标语义，R01/R02 继续覆盖私有 ABI/协议及芯片/BSP/固件；任务定义与 GitHub 链接见 [tasks.json](tasks.json)。新增方向不会把既有未验收设备能力改写为已完成。
 
 ## 1. 产品需求与范围

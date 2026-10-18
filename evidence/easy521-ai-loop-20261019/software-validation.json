@@ -1,0 +1,58 @@
+{
+  "schema": "plcidf.ai-loop-validation.v1",
+  "observed_at": "2026-10-18T18:09:23.799708+00:00",
+  "scope": "software tests and separate named real-device/real-link evidence; no claim of full application deployment or CPU execution",
+  "checks": [
+    {
+      "record": "source-monitor-tests.json",
+      "passed": 765,
+      "skipped": 51,
+      "exit_code": 0
+    },
+    {
+      "record": "tools-tests-final.json",
+      "passed": 284,
+      "skipped": 0,
+      "exit_code": 0
+    }
+  ],
+  "non_overlapping_passed": 1049,
+  "excluded_real_windows_enumeration_case": "test_devices_real_readonly",
+  "new_test_subsets": {
+    "offline_protocol_codec": 85,
+    "two_stage_link_worker": 14,
+    "usb_runtime_worker_fake_transports": 57
+  },
+  "real_usb_public_worker_record": "public-runtime-worker-final.json",
+  "real_usb_raw_value": 0,
+  "cpu_state_semantics": "unknown",
+  "windows_driver_bridge": true,
+  "linux_native_usb": false,
+  "feedback_validation_record": "feedback-validation.json",
+  "retained_failures": {
+    "public-runtime-worker.json": "PS ushort alias rejected before invoking USB read; corrected to uint16; distinct final integration record retained",
+    "tools-tests.json": "test launcher resolved ld.lld symlink to generic lld driver; rerun preserved argv[0]; tool code unchanged"
+  },
+  "files": [
+    {
+      "path": "tools/easy521_protocol.py",
+      "sha256": "cef609daf66090b26347f36cbeeff1ab986736e167f5490710d68f6d046789f4"
+    },
+    {
+      "path": "tools/link_vendor_application.py",
+      "sha256": "b41f612085db21a581b7ee9813462505e0ffa753b21c834d4369be54a2e272ac"
+    },
+    {
+      "path": "tools/read_easy521_usb_runtime.py",
+      "sha256": "4cc9c5554020058a0637a0084bdacacd2cc4425f55effb29507bce327ed151ec"
+    },
+    {
+      "path": "plc/tools/read_easy521_usb_descriptors.ps1",
+      "sha256": "9bbcc1eaf2f35d0ddb1d28742b27f13aa2a3c0b895c9db7ea079c818998d929a"
+    },
+    {
+      "path": "plc/tools/read_easy521_usb_runtime.ps1",
+      "sha256": "e134c99e6d02dbb48eb2f7e4ea80d7fc3eadd08844e6d2040cfdc3417d393956"
+    }
+  ]
+}

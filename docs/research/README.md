@@ -1,6 +1,10 @@
 # docs/research — 协议与固件研究
 
-> **2026-10-18 状态**：已实际脱离 GUI 编译普通 ST 为厂商 ARM 对象；本轮继续核对直接控制与完整应用下载接口。尚未完成无 GUI 真机应用下载、CPU 扫描验收或系统固件替换。后面的历史研究保留其日期与当时范围。
+> **2026-10-19 状态**：已实际完成独立USB只读请求/真机返回、厂商顺序的Linux两级对象链接。CPU状态值尚未标定，变量地址/类型注入、完整应用包装和无GUI下装仍开放。后面的历史研究保留其日期与当时范围。
+
+- [本轮真实交付与命令](../management/EASY521_AI_DELIVERY_2026-10-19.md)：独立USB查询、Linux链接、人工反馈合同、单main分支与验证。
+- [USB线帧静态合同](firmware/15-transport-contract-2026-10-19.md)：运行态read封装、序列/响应、端点/配置与离线codec；真机实验另列在本轮交付。
+- [Linux两级链接与应用事务](firmware/16-application-transaction-2026-10-19.md)：真实节字节对照、8项变量符号后处理、有序文件表与配置头。
 
 - [Easy521 最简单直接的控制方式](../management/EASY521_DIRECT_CONTROL_2026-10-18.md)：Modbus 数据控制、CPU 模式、应用下载与系统固件四层分开；附本轮物理网口/USB 枚举和可运行 Linux D 区工具。
 - [官方数据协议的准确范围](firmware/13-documented-control-routes-2026-10-18.md)：Modbus/FINS/OPC UA 地址、变量发布、CPU STOP 语义与归档变量实际绑定。

@@ -1,0 +1,54 @@
+{
+  "schema": "plcidf.easy521-feedback.v1",
+  "record_kind": "example",
+  "feedback_id": "example-feedback-001",
+  "iteration_id": "example-iteration-001",
+  "parent_iteration_id": null,
+  "requirement_revision": "example-only-not-a-real-acceptance",
+  "program": {
+    "source_sha256": null,
+    "source_tree_sha256": null,
+    "build_hash": null,
+    "intent_hash": null,
+    "release_hash": null,
+    "device_binary_sha256": null,
+    "device_program_binding": "unknown"
+  },
+  "target": {
+    "profile_id": "easy521",
+    "observed_model": null,
+    "observed_firmware": null,
+    "observed_serial": null,
+    "identity_quality": "unknown",
+    "locator": {"kind": "unknown", "value": null}
+  },
+  "observations": [
+    {
+      "recorded_at": "2026-10-19T00:00:00+08:00",
+      "observed_at": null,
+      "source": {
+        "kind": "human",
+        "actor": "example-only-not-a-user-report",
+        "evidence": []
+      },
+      "action": {
+        "kind": "none",
+        "description": "这是填写格式示例；没有执行设备操作。",
+        "operation_id": null,
+        "result": "not-performed"
+      },
+      "expected": "实际验收时填写本轮需求的具体期望及时间窗口，例如计数按选定规则变化。",
+      "actual": {
+        "quality": "unknown",
+        "description": "尚无现场观察或工具采样，不能判断。",
+        "value": null,
+        "unit": null
+      },
+      "outcome": "unknown",
+      "limitations": [
+        "示例中的时间、ID 和文字不是现场证据。",
+        "不得从此记录推断当前供电、在线状态、CPU 模式或设备程序。"
+      ]
+    }
+  ]
+}

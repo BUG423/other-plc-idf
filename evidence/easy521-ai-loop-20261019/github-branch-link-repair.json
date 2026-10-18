@@ -1,0 +1,72 @@
+{
+  "started_at": "2026-10-18T18:04:25.396788+00:00",
+  "purpose": "replace deleted branch URLs with canonical main without altering issue state or checklists",
+  "updated": [
+    {
+      "number": 16,
+      "kind": "issue"
+    },
+    {
+      "number": 15,
+      "kind": "issue"
+    },
+    {
+      "number": 14,
+      "kind": "issue"
+    },
+    {
+      "number": 13,
+      "kind": "pr"
+    },
+    {
+      "number": 12,
+      "kind": "issue"
+    },
+    {
+      "number": 11,
+      "kind": "issue"
+    },
+    {
+      "number": 10,
+      "kind": "issue"
+    },
+    {
+      "number": 9,
+      "kind": "issue"
+    },
+    {
+      "number": 8,
+      "kind": "issue"
+    },
+    {
+      "number": 7,
+      "kind": "issue"
+    },
+    {
+      "number": 6,
+      "kind": "issue"
+    },
+    {
+      "number": 5,
+      "kind": "issue"
+    },
+    {
+      "number": 4,
+      "kind": "issue"
+    },
+    {
+      "number": 3,
+      "kind": "issue"
+    },
+    {
+      "number": 2,
+      "kind": "issue"
+    },
+    {
+      "number": 1,
+      "kind": "issue"
+    }
+  ],
+  "finished_at": "2026-10-18T18:05:27.684716+00:00",
+  "workflow": "active"
+}

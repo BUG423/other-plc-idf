@@ -1,0 +1,17 @@
+{
+  "schema": "plcidf.software-check.v1",
+  "started_at": "2026-10-18T18:06:33.946428+00:00",
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "tools/tests",
+    "-q"
+  ],
+  "returncode": 1,
+  "duration_s": 1.848,
+  "scope": "software, synthetic objects and localhost only; no Windows or real PLC operations",
+  "lld": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/lld",
+  "stdout": "........................................ [ 14%]\n................................................................... [ 37%]\n........................................................... [ 58%]\n...........FF....................................................... [ 82%]\n..................................................                                         [100%]\n=================================== FAILURES ===================================\n_____ LinkTests.test_real_linux_lld_duplicate_symbol_is_a_recorded_failure _____\n\nself = <test_link_vendor_application.LinkTests testMethod=test_real_linux_lld_duplicate_symbol_is_a_recorded_failure>\n\n    @unittest.skipUnless(os.environ.get(\"PLCIDF_TEST_LLD\"), \"set PLCIDF_TEST_LLD for native LLD test\")\n    def test_real_linux_lld_duplicate_symbol_is_a_recorded_failure(self):\n        # Distinct input paths can still contain conflicting strong definitions.\n        # This exercises the real linker error, rather than manufacturing exit 1.\n        self.pous[1].write_bytes(self.pous[0].read_bytes())\n        result = self.run_link(lld=Path(os.environ[\"PLCIDF_TEST_LLD\"]), runner=subprocess.run)\n        self.assertFalse(result[\"ok\"])\n        self.assertFalse(result[\"downloadable\"])\n>       self.assertEqual(len(result[\"commands\"]), 2)  # version + stage 1, no retry\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       AssertionError: 1 != 2\n\ntools/tests/test_link_vendor_application.py:260: AssertionError\n_ LinkTests.test_real_linux_lld_links_synthetic_arm_objects_and_retains_runtime_dependency _\n\nself = <test_link_vendor_application.LinkTests testMethod=test_real_linux_lld_links_synthetic_arm_objects_and_retains_runtime_dependency>\n\n    @unittest.skipUnless(os.environ.get(\"PLCIDF_TEST_LLD\"), \"set PLCIDF_TEST_LLD for native LLD test\")\n    def test_real_linux_lld_links_synthetic_arm_objects_and_retains_runtime_dependency(self):\n        result = self.run_link(lld=Path(os.environ[\"PLCIDF_TEST_LLD\"]), runner=subprocess.run)\n>       self.assertTrue(result[\"ok\"], result.get(\"error\"))\nE       AssertionError: False is not true : local linker exited 1\n\ntools/tests/test_link_vendor_application.py:244: AssertionError\n=========================== short test summary info ============================\nFAILED tools/tests/test_link_vendor_application.py::LinkTests::test_real_linux_lld_duplicate_symbol_is_a_recorded_failure\nFAILED tools/tests/test_link_vendor_application.py::LinkTests::test_real_linux_lld_links_synthetic_arm_objects_and_retains_runtime_dependency\n",
+  "stderr": ""
+}

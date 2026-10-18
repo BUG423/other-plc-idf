@@ -1,0 +1,19 @@
+{
+  "schema": "plcidf.software-check.v1",
+  "started_at": "2026-10-18T18:07:54.863569+00:00",
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "tools/tests",
+    "-q"
+  ],
+  "returncode": 0,
+  "duration_s": 1.775,
+  "scope": "offline and localhost only, with real native LLD synthetic fixture",
+  "lld": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+  "previous_failed_record": "tools-tests.json",
+  "correction": "Test launcher now preserves ld.lld argv[0] instead of resolving its symlink to the generic lld driver. Worker code was unchanged.",
+  "stdout": "........................................ [ 14%]\n................................................................... [ 37%]\n........................................................... [ 58%]\n.................................................................... [ 82%]\n..................................................                                         [100%]\n",
+  "stderr": ""
+}

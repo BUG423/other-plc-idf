@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Easy521 iteration observation",
+  "description": "Observation record only. Validation does not verify claims, authorize an action, or configure a project/device.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "record_kind", "feedback_id", "iteration_id", "parent_iteration_id", "requirement_revision", "program", "target", "observations"],
+  "properties": {
+    "schema": {"const": "plcidf.easy521-feedback.v1"},
+    "record_kind": {"enum": ["observation", "example"]},
+    "feedback_id": {"$ref": "#/$defs/nonempty"},
+    "iteration_id": {"$ref": "#/$defs/nonempty"},
+    "parent_iteration_id": {"anyOf": [{"$ref": "#/$defs/nonempty"}, {"type": "null"}]},
+    "requirement_revision": {"$ref": "#/$defs/nonempty"},
+    "program": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_sha256", "source_tree_sha256", "build_hash", "intent_hash", "release_hash", "device_binary_sha256", "device_program_binding"],
+      "properties": {
+        "source_sha256": {"$ref": "#/$defs/nullableHash"},
+        "source_tree_sha256": {"$ref": "#/$defs/nullableHash"},
+        "build_hash": {"$ref": "#/$defs/nullableHash"},
+        "intent_hash": {"$ref": "#/$defs/nullableHash"},
+        "release_hash": {"$ref": "#/$defs/nullableHash"},
+        "device_binary_sha256": {"$ref": "#/$defs/nullableHash"},
+        "device_program_binding": {"enum": ["verified", "unverified", "unknown"]}
+      },
+      "allOf": [{
+        "if": {"properties": {"device_program_binding": {"const": "verified"}}},
+        "then": {"properties": {"device_binary_sha256": {"$ref": "#/$defs/hash"}, "release_hash": {"$ref": "#/$defs/hash"}}}
+      }]
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile_id", "observed_model", "observed_firmware", "observed_serial", "identity_quality", "locator"],
+      "properties": {
+        "profile_id": {"const": "easy521"},
+        "observed_model": {"$ref": "#/$defs/nullableText"},
+        "observed_firmware": {"$ref": "#/$defs/nullableText"},
+        "observed_serial": {"$ref": "#/$defs/nullableText"},
+        "identity_quality": {"enum": ["verified", "unverified", "unknown"]},
+        "locator": {
+          "type": "object",
+          "description": "Descriptive connection location, not a unique device/program identity or a connection setting.",
+          "additionalProperties": false,
+          "required": ["kind", "value"],
+          "properties": {
+            "kind": {"enum": ["vendor-usb", "modbus-tcp", "other", "unknown"]},
+            "value": {"$ref": "#/$defs/nullableText"}
+          }
+        }
+      }
+    },
+    "observations": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/observation"}}
+  },
+  "$defs": {
+    "nonempty": {"type": "string", "minLength": 1},
+    "nullableText": {"anyOf": [{"$ref": "#/$defs/nonempty"}, {"type": "null"}]},
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nullableHash": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "source"],
+      "properties": {
+        "path": {"$ref": "#/$defs/nonempty"},
+        "sha256": {"$ref": "#/$defs/hash"},
+        "source": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recorded_at", "observed_at", "source", "action", "expected", "actual", "outcome", "limitations"],
+      "properties": {
+        "recorded_at": {"type": "string", "format": "date-time", "pattern": "(Z|[+-][0-9]{2}:[0-9]{2})$"},
+        "observed_at": {"anyOf": [{"type": "string", "format": "date-time", "pattern": "(Z|[+-][0-9]{2}:[0-9]{2})$"}, {"type": "null"}]},
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "actor", "evidence"],
+          "properties": {
+            "kind": {"enum": ["human", "instrument", "vendor-ui", "ai-inference"]},
+            "actor": {"$ref": "#/$defs/nonempty"},
+            "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}}
+          }
+        },
+        "action": {
+          "type": "object",
+          "description": "Reports a past action or no action; never authorizes or executes it.",
+          "additionalProperties": false,
+          "required": ["kind", "description", "operation_id", "result"],
+          "properties": {
+            "kind": {"enum": ["observe", "parameter-write", "cpu-mode-request", "application-download", "firmware-operation", "none"]},
+            "description": {"$ref": "#/$defs/nonempty"},
+            "operation_id": {"$ref": "#/$defs/nullableText"},
+            "result": {"enum": ["performed", "not-performed", "unknown"]}
+          }
+        },
+        "expected": {"$ref": "#/$defs/nonempty"},
+        "actual": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["quality", "description", "value", "unit"],
+          "properties": {
+            "quality": {"enum": ["observed", "not-observed", "unknown"]},
+            "description": {"$ref": "#/$defs/nullableText"},
+            "value": {"type": ["string", "number", "boolean", "null"]},
+            "unit": {"$ref": "#/$defs/nullableText"}
+          }
+        },
+        "outcome": {"enum": ["pass", "fail", "unknown"]},
+        "limitations": {"type": "array", "items": {"$ref": "#/$defs/nonempty"}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"outcome": {"enum": ["pass", "fail"]}}},
+          "then": {"properties": {
+            "observed_at": {"type": "string", "format": "date-time"},
+            "actual": {"properties": {"quality": {"const": "observed"}, "description": {"$ref": "#/$defs/nonempty"}}}
+          }}
+        },
+        {
+          "if": {"properties": {"source": {"properties": {"kind": {"const": "ai-inference"}}}}},
+          "then": {"properties": {
+            "outcome": {"const": "unknown"},
+            "actual": {"properties": {"quality": {"const": "unknown"}}}
+          }}
+        }
+      ]
+    }
+  }
+}

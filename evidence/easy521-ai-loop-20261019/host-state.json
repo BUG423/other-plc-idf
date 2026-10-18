@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-10-18T17:46:51.553012+00:00",
+  "scope": "host read-only inventory, no PLC payload",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-Command",
+      "[Console]::OutputEncoding=[Text.Encoding]::UTF8; $ErrorActionPreference='Stop'; [ordered]@{observed_at=[DateTimeOffset]::Now.ToString('o');is_admin=([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator);adapters=@(Get-NetAdapter -Physical|Where-Object {$_.InterfaceDescription -match 'Realtek|Ethernet|以太网'}|Select-Object Name,InterfaceDescription,Status,LinkSpeed,ifIndex);autoshop=@(Get-Process -Name AutoShop -ErrorAction SilentlyContinue|Select-Object Id,MainWindowTitle);plc_usb=@(Get-CimInstance Win32_PnPEntity|Where-Object {$_.DeviceID -match '^USB\\\\VID_0471&PID_A531'}|Select-Object Name,Status,Service,DeviceID)}|ConvertTo-Json -Depth 5 -Compress"
+    ],
+    "returncode": 0,
+    "stdout": "{\"observed_at\":\"2026-10-19T01:46:45.3383564+08:00\",\"is_admin\":false,\"adapters\":[{\"Name\":\"以太网 2\",\"InterfaceDescription\":\"Realtek USB GbE Family Controller\",\"Status\":\"Disconnected\",\"LinkSpeed\":\"0 bps\",\"ifIndex\":10}],\"autoshop\":[{\"Id\":17152,\"MainWindowTitle\":\"AutoShop V4.12.0.2  E:\\\\PLCProjects\\\\PLCIDF_LAB_20261017\\\\BESS_E521_DEV - [MAIN]\"}],\"plc_usb\":[{\"Name\":\"H5U USB Device\",\"Status\":\"OK\",\"Service\":\"libusb0\",\"DeviceID\":\"USB\\\\VID_0471\\u0026PID_A531\\\\7\\u002610250215\\u00260\\u00263\"}]}\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

@@ -25,10 +25,10 @@ jobs:
         run: python -m pytest src/plc_idf/tests -q -k 'not test_devices_real_readonly'
       - name: Monitor protocol and loopback integration tests
         run: python -m pytest wsl-tools/tests -q
-      - name: GitHub progress renderer tests
-        run: python -m unittest discover -s tools/tests -v
-      - name: Host-only vendor preparation and compiler contracts without Windows
-        run: python -m pytest tools/tests/test_prepare_vendor_st.py tools/tests/test_compile_vendor_st.py -q
+      - name: Offline tool contracts, protocols and loopback tests
+        # Collect both unittest classes and pytest functions, including newly
+        # added protocol/link workers. No Windows or PLC operations run here.
+        run: python -m pytest tools/tests -q
       - name: Build sdist and install wheel outside checkout
         run: python tools/check_distribution.py --report /tmp/plcidf-distribution.json
 
@@ -43,8 +43,12 @@ jobs:
       - name: Install Linux compiler build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends build-essential autoconf automake bison flex
+          sudo apt-get install -y --no-install-recommends build-essential autoconf automake bison flex lld
           python -m pip install -r requirements-ci.txt -e .
+      - name: Real Linux ARM relocatable linking and duplicate-symbol failure
+        env:
+          PLCIDF_TEST_LLD: /usr/bin/ld.lld
+        run: python -m pytest tools/tests/test_link_vendor_application.py -q -k real_linux_lld
       - name: Bootstrap pinned MatIEC without Windows
         run: python tools/bootstrap_open_linux.py --directory /tmp/plcidf-matiec --jobs 2
       - name: Real ST compiler and runtime regression

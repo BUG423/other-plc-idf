@@ -9,6 +9,8 @@
 
 | 分区 | 路径 | 状态 | 一句话 |
 |---|---|---|---|
+| Easy521 AI闭环 | [requirements/EASY521_AI_LOOP_2026-10-19.md](requirements/EASY521_AI_LOOP_2026-10-19.md) / [architecture/ADR-0005-easy521-ai-control-loop.md](architecture/ADR-0005-easy521-ai-control-loop.md) | 2026-10-19需求与设计 | Linux终态、Windows过渡、规范注释及人工观察/仪器反馈 |
+| 最新实际交付 | [management/EASY521_AI_DELIVERY_2026-10-19.md](management/EASY521_AI_DELIVERY_2026-10-19.md) | 独立USB请求/返回、Linux两级链接已实测 | 单main、README、10工作包、1049项软件验证；完整下装/CPU运行仍未完成 |
 | WSL 可行性侦察（总纲） | [wsl-feasibility/00-synthesis-and-roadmap.md](wsl-feasibility/00-synthesis-and-roadmap.md) | ✅ 定稿 2026-10-16 | **先读这篇**：三条能力链可行性结论速览、关键事实、已建资产清单、P1~P4 路线图与安全红线 |
 | WSL 可行性侦察 · 协议 | [wsl-feasibility/01-protocol-facts.md](wsl-feasibility/01-protocol-facts.md) | ✅ 定稿 2026-10-16 | 官方手册硬事实：Modbus TCP 从站映射（D0-D7999 ↔ FC03）、USB CDC 端点拓扑、串口/以太网规格，全部标注页码出处 |
 | WSL 可行性侦察 · 生态 | [wsl-feasibility/02-opensource-ecosystem.md](wsl-feasibility/02-opensource-ecosystem.md) | ✅ 定稿 2026-10-16 | 联网开源生态调研：四条通道公开程度分级评级、autoshop-mcp 等可借鉴项目逐仓核实、可信度标注 |
@@ -19,7 +21,7 @@
 | 三路线并行交付 | [management/PARALLEL_DELIVERY_2026-10-17.md](management/PARALLEL_DELIVERY_2026-10-17.md) | 首个开放 ST 后端已实测 | Linux 真实编译/执行/停止，厂商应用与通用固件检查工具、测试与后续任务 |
 | 实施与验收 | [management/PLAN.md](management/PLAN.md) | 2026-10-17 执行基线 | 第一性原理需求、任务依赖、里程碑、分工与完成定义 |
 | 进展与任务 | [management/PROGRESS.md](management/PROGRESS.md) / [tasks.json](management/tasks.json) | 随里程碑更新 | GitHub 同步、测试结果、未完成与现场依赖 |
-| 最新现场验证 | [management/LIVE_VALIDATION_2026-10-17.md](management/LIVE_VALIDATION_2026-10-17.md) | 2026-10-17 | USB 真机识别、CLI 正负编译、网口断开及下载/运行待验收 |
+| 历史现场验证 | [management/LIVE_VALIDATION_2026-10-17.md](management/LIVE_VALIDATION_2026-10-17.md) | 2026-10-17阶段快照 | USB 真机识别、CLI 正负编译；后续下载与独立USB进展见最新交付 |
 | 独立分发 | [management/DISTRIBUTION.md](management/DISTRIBUTION.md) | 已实际验收 | sdist、wheel、运行依赖与仓库外安装验证 |
 | 架构审计 | [reviews/ARCHITECTURE_REVIEW_2026-10-17.md](reviews/ARCHITECTURE_REVIEW_2026-10-17.md) | 2026-10-17 | 需求/实现追溯与优先级 |
 | 实现审计 | [reviews/IMPLEMENTATION_AUDIT_2026-10-17.md](reviews/IMPLEMENTATION_AUDIT_2026-10-17.md) | 2026-10-17 | 真实软件能力、P0 修复、回归及独立打包缺口 |

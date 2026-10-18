@@ -1,0 +1,29 @@
+{
+  "schema": "plcidf.usb-standard-descriptor-probe.v1",
+  "observed_at": "2026-10-18T17:51:13.567026+00:00",
+  "scope": "standard USB device and string descriptors, GET_CONFIGURATION only; no PLC payload, configuration/driver changes, interface claims, reset or bulk transfers",
+  "locator_from_host_inventory": {
+    "busid": "8-3",
+    "vidpid": "0471:a531"
+  },
+  "lease_token": "b78cdc7c39bd47739e774f4bc9a3c4f0",
+  "script": {
+    "path": "plc/tools/read_easy521_usb_descriptors.ps1",
+    "sha256": "9bbcc1eaf2f35d0ddb1d28742b27f13aa2a3c0b895c9db7ea079c818998d929a"
+  },
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\read_easy521_usb_descriptors.ps1"
+    ],
+    "returncode": 0,
+    "stdout": "{\"schema\":\"plcidf.usb-descriptor-observation.v1\",\"observed_at\":\"2026-10-19T01:51:13.9766022+08:00\",\"ok\":true,\"scope\":\"standard USB descriptors only; no bulk PLC protocol\",\"library\":\"E:\\\\Software\\\\AutoShop\\\\libusb0.dll\",\"library_sha256\":\"cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe54352520c\",\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"result\":{\"library_driver_versions\":[1,2,6,0,1,2,6,0],\"device_descriptor_hex\":\"1201000202000040710431a5100301020001\",\"configuration_read_rc\":1,\"configuration\":2,\"manufacturer\":{\"index\":1,\"status\":\"read\",\"text\":\"Linux 3.10.65 with sunxi_usb_udc\",\"error\":\"\"},\"product\":{\"index\":2,\"status\":\"read\",\"text\":\"Easy52x USB Device v2.4\",\"error\":\"\"},\"configuration_count\":1,\"vidpid\":\"0471:a531\"}}\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

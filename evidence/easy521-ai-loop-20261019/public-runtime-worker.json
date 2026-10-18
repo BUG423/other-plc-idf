@@ -1,0 +1,99 @@
+{
+  "schema": "plcidf.real-usb-worker-integration.v1",
+  "started_at": "2026-10-18T18:04:47.617038+00:00",
+  "duration_s": 1.406,
+  "argv": [
+    ".venv/bin/python",
+    "tools/read_easy521_usb_runtime.py",
+    "--execute",
+    "--busid",
+    "8-3"
+  ],
+  "returncode": 1,
+  "stdout": "{\"schema\":\"plcidf.usb-runtime-observation.v1\",\"scope\":\"one fixed read through Windows libusb0 driver bridge; raw value only\",\"ok\":false,\"status\":\"failed\",\"stage\":\"transport\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"wsl-windows-libusb0\",\"linux_native_usb\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"profile\":\"vendor_h530_runtime\",\"request_hex\":\"120001013aed00000100000001ff04000000\",\"diagnostics\":[{\"code\":\"E_USB_RUNTIME_READ\",\"stage\":\"transport\",\"message\":\"Windows runtime helper failed or timed out; request is not replayed\"}],\"sequence\":60730,\"correlation_scope\":\"random u16; collision reduction only, not authentication or absolute freshness\",\"lease_token\":\"b514856959764d2fb45d7e50685fd160\",\"usbipd_snapshot\":{\"argv\":[\"/mnt/c/Program Files/usbipd-win/usbipd.exe\",\"list\"],\"returncode\":0,\"stdout\":\"Connected:\\nBUSID  VID:PID    DEVICE                                                        STATE\\n1-5    0489:e0cd  MediaTek Bluetooth Adapter                                    Not shared\\n2-1    174f:181d  Integrated Camera, Integrated IR Camera, Camera DFU Device    Not shared\\n6-1    046d:c52b  Logitech USB Input Device, USB 输入设备                           Not shared\\n6-2    20dd:5191  USB 输入设备                                                      Not shared\\n6-3    1ea7:0066  USB 输入设备                                                      Not shared\\n6-4    1a2c:7fff  USB 输入设备                                                      Not shared\\n7-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared\\n8-3    0471:a531  H5U USB Device                                                Not shared\\n8-4    35bb:d00b  HECATE Co-Installer Device, USB 输入设备                          Not shared\\n\\nPersisted:\\nGUID                                  DEVICE\\n94ed4ff5-3008-47cf-9c47-6022b6832257  H5U USB Device\\n\\n\",\"stderr\":\"\",\"attempts\":1,\"timed_out\":false},\"target\":{\"busid\":\"8-3\",\"vidpid\":\"0471:a531\",\"usbipd_state\":\"Not shared\",\"identity_basis\":\"USB location and product, not CPU identity\"},\"helper\":{\"path\":\"/home/zss/workspace/py2plc/plc/tools/read_easy521_usb_runtime.ps1\",\"sha256\":\"e23badc6cba946de6fa043b7bc82ac05657e399a2f89c91b9f1497bf3606ae23\",\"library_sha256\":\"cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe54352520c\"},\"request_outcome\":\"unknown\",\"raw_transport\":{\"argv\":[\"/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe\",\"-NoProfile\",\"-NonInteractive\",\"-ExecutionPolicy\",\"Bypass\",\"-File\",\"\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\zss\\\\workspace\\\\py2plc\\\\plc\\\\tools\\\\read_easy521_usb_runtime.ps1\",\"-Execute\",\"-Sequence\",\"60730\"],\"returncode\":1,\"stdout\":\"\",\"stderr\":\"找不到类型 [ushort]。\\n所在位置 \\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\zss\\\\workspace\\\\py2plc\\\\plc\\\\tools\\\\read_easy521_usb_runtime.ps1:185 字符: 256\\n+ ... $expectedHash;result=[PlcUsbDescriptors]::ReadRuntime([ushort]$Sequen ...\\n+                                                            ~~~~~~\\n    + CategoryInfo          : InvalidOperation: (ushort:TypeName) []，ParentContainsErrorRecordException\\n    + FullyQualifiedErrorId : TypeNotFound\\n \\n\",\"attempts\":1,\"timed_out\":false}}\n",
+  "stderr": "",
+  "scope": "one explicit fixed read via Windows USB driver bridge; no CPU mode or application change",
+  "files": [
+    {
+      "path": "tools/read_easy521_usb_runtime.py",
+      "sha256": "4cc9c5554020058a0637a0084bdacacd2cc4425f55effb29507bce327ed151ec"
+    },
+    {
+      "path": "tools/easy521_protocol.py",
+      "sha256": "cef609daf66090b26347f36cbeeff1ab986736e167f5490710d68f6d046789f4"
+    },
+    {
+      "path": "plc/tools/read_easy521_usb_runtime.ps1",
+      "sha256": "e23badc6cba946de6fa043b7bc82ac05657e399a2f89c91b9f1497bf3606ae23"
+    }
+  ],
+  "parsed": {
+    "schema": "plcidf.usb-runtime-observation.v1",
+    "scope": "one fixed read through Windows libusb0 driver bridge; raw value only",
+    "ok": false,
+    "status": "failed",
+    "stage": "transport",
+    "device_access": true,
+    "gui_access": false,
+    "transport_kind": "wsl-windows-libusb0",
+    "linux_native_usb": false,
+    "cpu_identity_verified": false,
+    "cpu_state_verified": false,
+    "application_execution_verified": false,
+    "state_semantics": "unknown",
+    "profile": "vendor_h530_runtime",
+    "request_hex": "120001013aed00000100000001ff04000000",
+    "diagnostics": [
+      {
+        "code": "E_USB_RUNTIME_READ",
+        "stage": "transport",
+        "message": "Windows runtime helper failed or timed out; request is not replayed"
+      }
+    ],
+    "sequence": 60730,
+    "correlation_scope": "random u16; collision reduction only, not authentication or absolute freshness",
+    "lease_token": "b514856959764d2fb45d7e50685fd160",
+    "usbipd_snapshot": {
+      "argv": [
+        "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+        "list"
+      ],
+      "returncode": 0,
+      "stdout": "Connected:\nBUSID  VID:PID    DEVICE                                                        STATE\n1-5    0489:e0cd  MediaTek Bluetooth Adapter                                    Not shared\n2-1    174f:181d  Integrated Camera, Integrated IR Camera, Camera DFU Device    Not shared\n6-1    046d:c52b  Logitech USB Input Device, USB 输入设备                           Not shared\n6-2    20dd:5191  USB 输入设备                                                      Not shared\n6-3    1ea7:0066  USB 输入设备                                                      Not shared\n6-4    1a2c:7fff  USB 输入设备                                                      Not shared\n7-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared\n8-3    0471:a531  H5U USB Device                                                Not shared\n8-4    35bb:d00b  HECATE Co-Installer Device, USB 输入设备                          Not shared\n\nPersisted:\nGUID                                  DEVICE\n94ed4ff5-3008-47cf-9c47-6022b6832257  H5U USB Device\n\n",
+      "stderr": "",
+      "attempts": 1,
+      "timed_out": false
+    },
+    "target": {
+      "busid": "8-3",
+      "vidpid": "0471:a531",
+      "usbipd_state": "Not shared",
+      "identity_basis": "USB location and product, not CPU identity"
+    },
+    "helper": {
+      "path": "/home/zss/workspace/py2plc/plc/tools/read_easy521_usb_runtime.ps1",
+      "sha256": "e23badc6cba946de6fa043b7bc82ac05657e399a2f89c91b9f1497bf3606ae23",
+      "library_sha256": "cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe54352520c"
+    },
+    "request_outcome": "unknown",
+    "raw_transport": {
+      "argv": [
+        "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\read_easy521_usb_runtime.ps1",
+        "-Execute",
+        "-Sequence",
+        "60730"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "找不到类型 [ushort]。\n所在位置 \\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\read_easy521_usb_runtime.ps1:185 字符: 256\n+ ... $expectedHash;result=[PlcUsbDescriptors]::ReadRuntime([ushort]$Sequen ...\n+                                                            ~~~~~~\n    + CategoryInfo          : InvalidOperation: (ushort:TypeName) []，ParentContainsErrorRecordException\n    + FullyQualifiedErrorId : TypeNotFound\n \n",
+      "attempts": 1,
+      "timed_out": false
+    }
+  }
+}
