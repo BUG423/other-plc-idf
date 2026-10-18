@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-10-18T11:37:07.431132+00:00",
+  "label": "reopened-project-state",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "inspect",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "PID=17152|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [MAIN]\nControlType.Window|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [MAIN]|Afx:00400000:8:00010003:00000000:00010F2E|69428|True|156,156,2880,1474\nControlType.Pane||SysTreeView32|135030|True|174,450,396,808\nControlType.Pane||Button|69504|True|178,1534,26,26\nControlType.Pane||Button|69506|True|210,1534,26,26\nControlType.Pane||Button|69508|True|242,1534,26,26\nControlType.Pane||Button|69510|True|274,1534,26,26\nControlType.Pane||ListBox|69518|True|178,1328,2836,200\nControlType.Window|MAIN|Afx:00400000:b:00010003:00000006:00260CAD|2756712|True|570,388,1952,882\nControlType.Pane|<ST editor>|Scintilla|135288|True|604,454,1898,796\nControlType.Pane||Button|69434|False|582,406,30,30\nControlType.Pane||Button|69436|False|2468,406,30,30\nControlType.Pane|本地|Button|135326|False|2050,344,84,40\nControlType.Pane|未登录::USB|Button|200792|False|2146,344,164,40\nControlType.Pane|变量共享:|Button|135332|False|2458,284,152,40\nControlType.Pane|未连接|Button|135330|False|2622,284,90,40\nControlType.Pane|智能问答|Static|69626|True|2544,464,166,32\nControlType.Pane||Button|69634|True|2706,462,344,50\nControlType.Pane||Button|69636|True|2554,442,120,92\nControlType.Pane|AI问答|Button|69644|True|2554,584,144,50\nControlType.Pane|指令指南|Button|69646|True|2718,584,140,50\nControlType.Pane|智能问答帮你快速上手|Button|69648|True|2554,648,384,50\nControlType.Pane|AI编程|Button|69654|True|2554,734,144,50\nControlType.Pane|一键同步|Button|69656|True|2718,734,140,50\nControlType.Pane|一拖即用实现高效开发|Button|69658|True|2554,798,384,50\nControlType.Pane||Button|69664|True|2554,868,248,60\nControlType.Pane||Button|69666|True|2554,944,398,60\nControlType.Pane||Button|69668|True|2554,1020,398,60\nControlType.Pane||Button|69670|True|2554,1096,398,60\nControlType.Pane||Button|69672|True|2818,872,134,56\nControlType.Pane||Button|69686|False|2742,1140,200,40\nControlType.Pane||RichEdit20W|69676|True|2548,1100,434,36\nControlType.Pane||Button|69678|True|2952,1140,40,40\nControlType.Pane||Button|69692|True|2920,456,48,48\n",
+  "stderr": ""
+}

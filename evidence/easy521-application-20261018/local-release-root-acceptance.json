@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "error_type": "NativeReleaseError",
+  "message": "Intent manifest does not cover all native source/variable/configuration inputs"
+}

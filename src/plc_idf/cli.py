@@ -211,7 +211,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_config_option(c)
     c.set_defaults(handler=_cmd_check_project)
 
-    doctor = sub.add_parser("doctor", help="离线环境诊断（不访问 Windows GUI 或 PLC）")
+    doctor = sub.add_parser("doctor", help="离线依赖、厂商能力与缺失条件诊断（不访问 GUI 或 PLC）")
     doctor.add_argument("--json", action="store_true", help="仅输出版本化 JSON 报告")
     doctor.add_argument("--target", choices=("easy521", "open-linux"), default="easy521")
     doctor.add_argument("--toolchain-dir", help="open-linux 工具链目录")
@@ -640,7 +640,7 @@ def _cmd_doctor(args: argparse.Namespace, cfg, evidence: EvidenceLogger) -> int:
         result.update(command="doctor", target="open-linux", hardware_checked=False,
                       target_profile=get_profile("open-linux").as_dict())
         return _emit_open(args, result)
-    if args.toolchain_dir or args.state_dir:
+    if args.toolchain_dir is not None or args.state_dir is not None:
         raise ValueError("local toolchain/runtime paths require --target open-linux")
     report = collect_diagnostics(cfg)
     print(json.dumps(report, ensure_ascii=False, indent=2) if args.json

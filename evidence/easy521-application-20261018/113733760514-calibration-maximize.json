@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-10-18T11:37:33.760457+00:00",
+  "label": "calibration-maximize",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "maximize",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": ""
+}

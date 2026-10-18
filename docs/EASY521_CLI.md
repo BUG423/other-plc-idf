@@ -2,6 +2,8 @@
 
 本机已经真实完成两个内存探针的应用下载、厂商程序一致性正反校验。CPU RUN 被拒绝，未完成运行验收；额定 24V 主供电尚未连接。完整记录和证据见 [本轮设备报告](management/EASY521_APPLICATION_2026-10-17.md)。
 
+2026-10-18 更新：普通受限正文和显式基础类型全局表已可不经过 AutoShop 界面生成中间输入并真实编译 ARM 对象；本地 intent/release 追溯与诊断已补齐。完整链接/设备字节绑定仍开放，当前供电未重新观察。见 [新交付报告](management/HOST_TOOLCHAIN_DELIVERY_2026-10-18.md) 和 [离线诊断](usage/easy521-doctor.md)。
+
 当前路线保留已安装 Windows AutoShop 4.12.0.2 和交互桌面，由 WSL 发起命令。下载适配器只接受本次标定的 3840×2160、应用 DPI 96/系统 DPI 192、最大化 MAIN 窗口；其他布局拒绝。它还不能支持任意 AutoShop 版本或其他 PLC 型号。开放 Linux 的 [AI 场景验收](AI_PROGRAMMING.md) 可独立使用。
 
 ## 构建记录
@@ -44,3 +46,5 @@ plcidf monitor --transport vendor-usb --timeout 20 --json
 ## 脱离 GUI 的编译研究
 
 独立 STLang worker 已将冻结的厂商 MAIN.st/MAIN.cl 转为新的 ARM `.o`，不访问设备。它仍依赖 Windows 厂商编译器，尚不接受普通 IEC 文本生成完整设备应用，见 [真实正负编译实验](research/firmware/10-stlang-headless-compiler-2026-10-17.md)。
+
+新增 `prepare_vendor_st.py` 可将普通 MAIN 正文及显式 BOOL/INT/DINT/REAL 全局表生成合法 MAIN.st/cl；已真实验证多语句、IF、规则变化及错误语法。仍只生成 ARM 可重定位对象，完整工程链接和下装不是该工具的交付范围。使用方法及隐式运行时声明见 [研究报告 11](research/firmware/11-plain-main-object-2026-10-18.md)。两个 worker 均随 wheel 分发，`doctor --json` 给出它们的实际路径和 argv。

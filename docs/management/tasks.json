@@ -96,7 +96,7 @@
         "版本化 JSON 独占 stdout，进度与诊断文本走 stderr",
         "确定性退出码覆盖配置错误、拒绝、超时、验证失败与不支持"
       ],
-      "delivery": "能力接口、doctor、JSON schema 与 CLI 契约测试",
+      "delivery": "doctor已分列Easy521七种能力、纯本地版本/资源/编译器pin检查和缺失条件/argv；device binary/runtime不预填历史结果，CLI结构化诊断继续维护",
       "issue_number": 5,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/5"
     },
@@ -118,7 +118,7 @@
         "无 PLC 连接也能离线编译；Windows 交互桌面需求如实报告",
         "截图或文件时间不能单独作为成功证据"
       ],
-      "delivery": "sync、真实编译验证器、构建产物清单、正负 Windows 验收证据",
+      "delivery": "MAIN同步/真实编译、跨行错误数修复及包含PLC子目录的完整输入清单；2026-10-18真实F7 verified，厂商任务/变量自动导入仍开放",
       "issue_number": 6,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/6"
     },
@@ -140,7 +140,7 @@
         "跨进程设备/AutoShop 租约阻止并发，陈旧锁恢复有证据",
         "证据不可写时在副作用前停止；超时保留未知状态且不自动再下载"
       ],
-      "delivery": "NativeDeploy+AutoShopVendorAdapter+CLI/严格证据已实现；真实下载确认已执行。厂商自动重编导致精确二进制身份追溯未通过，保持开放",
+      "delivery": "新增严格intent与确认前不可变release；真实80输入/108文件快照与本地捕获复验通过，确认后重编/设备字节绑定仍开放；ADR-0004",
       "issue_number": 7,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/7"
     },
@@ -202,7 +202,7 @@
         "下载协议研究先离线分析合法样本，真实抓包与写操作另需现场授权",
         "最小原型或否决证据支持桥接保留/原生投入决定，未发现不等于不存在"
       ],
-      "delivery": "docs/research/firmware/09-*、10-*；真实脱离GUI的StLang IPC容器→ARM对象、worker及正负验证；文本预处理/完整链接/下载协议仍开放",
+      "delivery": "2026-10-18普通受限ST正文+显式全局声明→独立中间输入→真实厂商ARM对象，覆盖多语句/IF/4基础类型、+1/+2和语法负例；隐式声明修复崩溃。完整链接/软元件/任务/包装和独立下载协议仍开放；研究11",
       "issue_number": 10,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/10"
     },
@@ -320,5 +320,5 @@
     "number": 12,
     "url": "https://github.com/BUG423/other-plc-idf/issues/12"
   },
-  "scope_update": "2026-10-17 真机USB应用下载与厂商一致性正反校验已执行，RUN拒绝、缺额定24V且根因未证实；部署自动重编追溯及运行保持开放。R01取得无GUI的Windows StLang ARM对象编译证据，非完整无Windows设备闭环。状态以GitHub Issue为准。"
+  "scope_update": "2026-10-18自主推进：受限普通ST文本已无GUI生成真实ARM对象，完整应用链接仍开放；本地intent/release及完整输入覆盖、doctor/分发已改善。本轮无下载确认/RUN/STOP，今天设备供电/运行未重新观察。状态以GitHub为准。"
 }

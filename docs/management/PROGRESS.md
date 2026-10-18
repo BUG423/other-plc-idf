@@ -1,5 +1,17 @@
 # 进展记录
 
+## 2026-10-18：自主推进普通 ST 无界面对象编译与部署候选追溯
+
+用户要求继续工作。三个 AI 代理并行实施，统筹独立复核实际编译和工作副本；[交付报告](HOST_TOOLCHAIN_DELIVERY_2026-10-18.md) 与 [ADR-0004](../architecture/ADR-0004-vendor-build-release.md) 记录最终结果。
+
+- **R01 编译推进**：自写 MAIN 正文+显式 BOOL/INT/DINT/REAL 全局表，可独立准备厂商中间文件并调用 StLang，真实生成新 ARM 对象；+1/+2 的 `.text` 不同，重复编译字节一致，错误 ST 正确失败。独立混合类型/多语句测试最初发现编译器崩溃，补齐隐式 `_HC_EMPTYFUC` 声明后复测通过，原失败保留。仍缺运行库/地址/软元件/任务和全应用链接/封装，不声称已无 Windows 或已部署 PLC。
+- **T06/T07 追溯修复**：构建清单补齐子目录覆盖，真实新 F7 清单覆盖 80 项输入、含 PLC 目录 5 个原遗漏文件。F8 设置确认前 108 个选定文件完全不变，未发生新编译；只点击取消。新增 intent/不可变 release、转换与独立 project/binary 等级，本机捕获/复验通过。确认后重编和设备字节绑定仍开放，没有重新下载、RUN 或 STOP。
+- **T05 诊断/分发**：doctor 分列七种能力、缺失条件及真实 worker argv；磁盘/窗口/PLC 版本不混用，默认只读本地文件，不将历史成功填成当前状态。两 Python worker 与 PS helper 已随 wheel 分发，仓库外正文准备和诊断检查通过。
+- **错误反馈**：修复 Windows ANSI 错误导致 Unicode traceback，以及编译错误数跨行误读下一行年份。非 UTF-8 错误后有副作用的动作不重放。
+- **最终本地验证**：源码/监测 765 passed、51 skipped、1 deselected；工具 114 passed，另 499 个 subtest 通过，共 879 项不重叠测试通过。独立 sdist/wheel/全新 venv 检查通过；本机 Windows 编译实验另存 JSON。远程 CI 随新提交核验。
+
+没有重新观察今天的设备供电或 CPU 状态。当前仍需完整应用链接/包装、确认后实际对象/设备读回及额定供电下的运行证据；T07/T08/T09/R01 保持开放。
+
 ## 2026-10-17：Easy521 真机应用下装、运行拒绝与独立编译研究
 
 用户确认 USB-only、没有外接 24V、输出无负载、物理开关 RUN，RUN 灯灭。本轮完成真实应用下装，未把下装成功当作 CPU 运行成功；[设备报告](EASY521_APPLICATION_2026-10-17.md)、[CLI 用法](../EASY521_CLI.md) 与 [会话摘要](../../evidence/easy521-application-20261017/session-summary.json) 已记录。

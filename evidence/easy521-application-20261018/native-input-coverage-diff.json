@@ -1,0 +1,13 @@
+{
+  "unrecorded_paths": [
+    "PLC/PLCInsIndex.idx",
+    "PLC/PLCProg.prg",
+    "PLC/stuserprog.o",
+    "PLC/symbol.sym",
+    "PLC/userprog.foid"
+  ],
+  "missing_paths": [],
+  "changed_paths": [],
+  "before_files": 75,
+  "complete_files": 80
+}

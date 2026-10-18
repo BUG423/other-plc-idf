@@ -77,8 +77,8 @@ def analyze_compile_log(text: str) -> dict:
     """Interpret explicit error counts only; OCR ambiguity remains unverified."""
     counts = []
     for pattern in (
-        r"(?<![\dA-Za-z])\(?\s*([0-9]+)\s*\)?\s*(?:个\s*)?(?:错\s*误|errors?\b)",
-        r"(?:\berrors?|错\s*误(?:数)?)\s*[:=]?\s*\(?\s*([0-9]+)\s*\)?",
+        r"(?<![\dA-Za-z])\(?[ \t]*([0-9]+)[ \t]*\)?[ \t]*(?:个[ \t]*)?(?:错[ \t]*误|errors?\b)",
+        r"(?:\berrors?|错[ \t]*误(?:数)?)[ \t]*[:=]?[ \t]*\(?[ \t]*([0-9]+)[ \t]*\)?",
     ):
         counts.extend(int(match[1]) for match in re.finditer(pattern, text, re.I))
     if counts and max(counts) > 0:
@@ -324,12 +324,15 @@ class NativeAutoShop:
                         [self.project_dir / relative for relative in REQUIRED_ARTIFACTS],
                         target=actual_target, tool_versions=versions,
                         # AutoShop exclusively locks its .hcp file while open.
-                        # Capture the actual native source/configuration files,
-                        # excluding packed archives and generated/cache trees.
-                        source_paths=[p.name for p in self.project_dir.iterdir()
-                                      if p.is_file() and p.suffix.lower() not in {".hcp", ".hcpp", ".log"}],
+                        # Include nested native project files as well. PLC/
+                        # contains candidate download files on this version;
+                        # unclassified files remain bound rather than being
+                        # silently omitted from the selected build.
+                        source_paths=["."],
                         exclude_paths=["STTemp", "Temp", ".plcidf", "Compile",
-                                       "InteractiveFile", "BackUP", "OnlineVersion"])
+                                       "InteractiveFile", "BackUP", "OnlineVersion",
+                                       *[p.name for p in self.project_dir.iterdir()
+                                         if p.is_file() and p.suffix.lower() in {".hcp", ".hcpp", ".log"}]])
                     result.update(ok=True, status="verified", manifest=manifest)
             self.evidence.log("native_autoshop.compile", params={"source": str(source)},
                 result={"ok": result["ok"], "status": result["status"],

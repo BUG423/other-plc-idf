@@ -309,6 +309,92 @@ def test_evidence_failure_after_download_keeps_unknown_and_stops(deployment, mon
     assert deployment[1].calls == ["preflight", "download"]
 
 
+class PreparedFakeAdapter(FakeAdapter):
+    """Synthetic new protocol; its source match must never imply byte readback."""
+
+    def describe(self):
+        metadata = super().describe()
+        metadata["capabilities"]["prepared_release"] = True
+        return metadata
+
+    def download(self, context, *, timeout_s):
+        from plc_idf.native_release import capture_release, compile_baseline
+        observed = super().download(context, timeout_s=timeout_s)
+        self.release = capture_release(context["intent"], compile_baseline(context["intent"]),
+                                       directory=self.directory / "release-copies")
+        observed.update(release=self.release, release_hash=self.release["release_hash"])
+        return observed
+
+    def verify_download(self, context, download_result, *, timeout_s):
+        observed = super().verify_download(context, download_result, timeout_s=timeout_s)
+        observed["release_hash"] = self.release["release_hash"]
+        return observed
+
+    def compare_program(self, context, *, timeout_s):
+        observed = super().compare_program(context, timeout_s=timeout_s)
+        observed.update(release_hash=self.release["release_hash"], verification_level="project",
+                        project_consistency={"status": "verified", "intent_hash": context["intent"]["intent_hash"]})
+        return observed
+
+
+def prepared(deployment):
+    fake = PreparedFakeAdapter(deployment[1].directory)
+    deployment[0].adapter = fake
+    return fake
+
+
+def test_prepared_release_separates_project_match_from_binary_evidence(deployment):
+    fake = prepared(deployment)
+    old_hash = deployment[2]["manifest"]["build_hash"]
+    result = deploy_now(deployment)
+    assert not result["ok"] and result["status"] == "unknown"
+    assert result["verification_level"] == "project"
+    assert result["project_consistency"]["status"] == "verified"
+    assert result["binary_consistency"]["status"] == "unverified"
+    assert result["build_hash"] == result["intent_build_hash"] == old_hash
+    assert result["release"]["intent_build_hash"] == old_hash
+    assert result["release"]["transition"]["kind"] == "unchanged-pre-confirm"
+    assert fake.calls == ["preflight", "download", "vendor", "compare"]
+    assert result["runtime"]["run_requested"] is False
+
+
+def test_compare_rebuild_preserves_release_and_verifies_only_project(deployment):
+    fake = prepared(deployment)
+    def rebuild_during_compare(context):
+        path = Path(context["source_root"]) / "STTemp/MAIN.o"
+        path.write_bytes(path.read_bytes() + b"comparison recompiled")
+    fake.hooks["compare"] = rebuild_during_compare
+    result = deploy_now(deployment)
+    assert result["verification_level"] == "project" and result["status"] == "unknown"
+    assert result["release"]["release_hash"] == fake.release["release_hash"]
+    assert result["release"]["artifacts"][0]["path"].startswith(str(fake.directory / "release-copies"))
+    assert not result["ok"]
+
+
+def test_project_match_cannot_raise_adapter_binary_claim_to_success(deployment):
+    fake = prepared(deployment)
+    fake.changes["compare"] = {"binary_consistency": {"status": "verified", "method": "invented-readback"}}
+    result = deploy_now(deployment)
+    assert result["status"] == "unknown" and not result["ok"]
+    assert result["binary_consistency"]["status"] == "unverified"
+
+
+def test_configuration_or_source_drift_during_compare_is_unknown(deployment):
+    fake = prepared(deployment)
+    fake.hooks["compare"] = lambda context: (Path(context["source_root"]) / "MAIN.ST").write_text("changed source")
+    result = deploy_now(deployment)
+    assert result["status"] == "unknown" and result["verification_level"] == "unverified"
+    assert "input drift" in result["reason"]
+    assert fake.calls.count("download") == 1
+
+
+def test_prepared_manifest_tampering_stops_before_calls(deployment):
+    fake = prepared(deployment)
+    deployment[2]["manifest"]["artifacts"][0]["sha256"] = "0" * 64
+    result = deploy_now(deployment)
+    assert result["status"] == "blocked" and not fake.calls
+
+
 def test_busy_lease_prevents_adapter_queries(deployment):
     backend = deployment[0]
     with bridge_lease("6-4", "0471:a531", directory=backend.lease_directory):

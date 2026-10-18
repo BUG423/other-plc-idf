@@ -113,8 +113,10 @@ def test_doctor_backend_verification_flags_are_explicit(monkeypatch):
     monkeypatch.setattr(doctor.BridgeAutoshopBackend, "flash_verification_supported", False,
                         raising=False)
     report = doctor.collect_diagnostics(load_config())
-    assert report["capabilities"]["build"]["verification_status"] == "supported-by-backend"
-    assert report["capabilities"]["flash"]["verification_status"] == "not-implemented"
+    assert report["capabilities"]["build"]["legacy_bridge"]["verification_status"] == "supported-by-backend"
+    assert report["capabilities"]["flash"]["legacy_bridge"]["verification_status"] == "not-implemented"
+    assert report["capabilities"]["build"]["backend"] == "native_autoshop"
+    assert report["capabilities"]["flash"]["verification_status"] == "implemented-not-observed"
 
 
 def test_doctor_converts_wsl_paths_without_running_wslpath(monkeypatch):

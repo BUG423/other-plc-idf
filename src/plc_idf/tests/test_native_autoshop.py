@@ -8,7 +8,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from plc_idf.artifacts import verify_build_manifest
+from plc_idf.artifacts import ArtifactError, verify_build_manifest
 from plc_idf.config import load_config
 from plc_idf.evidence import StrictEvidenceLogger
 from plc_idf.native_autoshop import (NativeAutoShop, NativeAutoShopError,
@@ -172,6 +172,20 @@ def test_compile_positive_is_bound_to_new_complete_artifacts(native):
     assert fake.ops.count(("keys", "{F7}")) == 1
 
 
+def test_compile_binds_nested_native_download_candidates(native):
+    backend, fake, source = native
+    candidate = backend.project_dir / "PLC" / "userprog.foid"
+    candidate.parent.mkdir()
+    candidate.write_bytes(b"original nested vendor candidate")
+    result = compile_now(backend, source)
+    manifest = result["manifest"]
+    assert result["ok"] and verify_build_manifest(manifest)
+    assert "PLC/userprog.foid" in {item["path"] for item in manifest["source"]["files"]}
+    candidate.write_bytes(b"changed nested vendor candidate")
+    with pytest.raises(ArtifactError):
+        verify_build_manifest(manifest)
+
+
 def test_negative_compile_cannot_fall_back_to_old_success(native):
     backend, fake, source = native
     for relative in REQUIRED_ARTIFACTS:
@@ -226,6 +240,13 @@ def test_log_counts_and_ocr_ambiguity():
         "2026/10/17 18:23:05 完成程序编译")["status"] == "verified"
     assert analyze_compile_log("统计-- (1)错误\n完成编译")["status"] == "failed"
     assert analyze_compile_log("Compilation completed\nerrors0")["status"] == "verified"
+
+
+def test_compile_count_does_not_consume_next_line_timestamp():
+    log = "统计-- (0)错误\n2026/10/18 19:00:00 完成程序编译"
+    result = analyze_compile_log(log)
+    assert result["status"] == "verified" and result["error_count"] == 0
+    assert analyze_compile_log("错误\n0\n完成编译")["status"] == "unverified"
 
 
 def test_exact_title_parser_does_not_accept_path_prefix():

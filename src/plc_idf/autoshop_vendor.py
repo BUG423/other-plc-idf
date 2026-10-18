@@ -29,6 +29,8 @@ from .device import find_plc_entry, parse_usbipd_list
 from .evidence import EvidenceWriteError
 from .interop import RetryPolicy, run_command
 from .native_autoshop import parse_editor_title
+from .native_release import (CompilationProofRequired, capture_release, compile_baseline, fresh_compile_proof,
+                             verify_intent, verify_release)
 
 
 VERSION = "4.12.0.2"
@@ -268,7 +270,8 @@ class AutoShopVendorAdapter:
     def describe(self):
         return {"name": "autoshop-4.12.0.2-calibrated-desktop", "calibrated": True,
                 "capabilities": {"download": True, "vendor_result": True, "program_compare": True,
-                                 "runtime_control": False, "connection_identity": False},
+                                 "runtime_control": False, "connection_identity": False,
+                                 "prepared_release": True},
                 "version": VERSION, "comparison_layout": _LAYOUT,
                 "limits": ["GUI steps calibrated; adapter integration requires live acceptance",
                            "vendor comparison may recompile and invalidate the selected build",
@@ -286,6 +289,11 @@ class AutoShopVendorAdapter:
         except Exception as exc:
             observation.update(status="unknown" if name in {"download", "verify-download", "compare"}
                                else "unavailable", reason=str(exc), error_type=type(exc).__name__)
+            session = self._sessions.get(context.get("operation_id"), {})
+            if name == "download" and session.get("release"):
+                observation.update(release=session["release"], release_hash=session["release"]["release_hash"])
+                if session.get("terminal"):
+                    observation["vendor_result"] = session["terminal"]
         phase.save("decision", observation)
         observation["evidence"] = phase.evidence
         return observation
@@ -339,6 +347,9 @@ class AutoShopVendorAdapter:
             raise VendorAdapterError("Requires calibrated version and an offline writable MAIN editor")
         if not isinstance(editor.get("source"), str):
             raise VendorAdapterError("MAIN source readback is missing")
+        expected = phase.context.get("source_text_sha256")
+        if expected and _sha(editor["source"].replace("\r\n", "\n").replace("\r", "\n").encode()) != expected:
+            raise VendorAdapterError("MAIN source readback differs from the selected source intent")
         return editor
 
     def _layout(self, phase):
@@ -367,6 +378,8 @@ class AutoShopVendorAdapter:
             self._editor(phase)
             self._layout(phase)
             self._artifacts(context)
+            if context.get("intent"):
+                verify_intent(context["intent"])
             self._sessions[context["operation_id"]] = {"context_hash": _sha(_json(context).encode()),
                                                        "download_called": False}
             return {"status": "verified", "usb_state": device.state, "identity_ambiguous": False,
@@ -409,11 +422,30 @@ class AutoShopVendorAdapter:
             self._editor(phase)
             self._layout(phase)
             self._artifacts(context)
-            phase.ui("log-data")  # Retain the pre-F8 pane as diagnostic evidence.
+            before_log = phase.ui("log-data")
+            intent = context.get("intent")
+            if intent:
+                baseline = compile_baseline(intent, check_time=phase.remaining)
+                phase.save("compile-baseline", baseline)
+                compile_started = phase.windows_time()
             phase.ui("keys", "{F8}", mutation=True)
             dialog = phase.object("dialog", ExpectedDialog=DOWNLOAD_DIALOG)
             self._download_dialog(dialog, self.expected_project)
             session["baseline"] = phase.ui("log-data")
+            if intent:
+                try:
+                    session["release"] = capture_release(intent, baseline,
+                        directory=self.evidence_directory / "releases", check_time=phase.remaining)
+                except CompilationProofRequired:
+                    proof = fresh_compile_proof(before_log, session["baseline"], started_at=compile_started,
+                                                observed_at=phase.windows_time(), evidence=phase.evidence)
+                    session["release"] = capture_release(intent, baseline, proof,
+                        directory=self.evidence_directory / "releases", check_time=phase.remaining)
+                phase.save("prepared-release", session["release"])
+                # Capture is not consent to changing project/options while it runs.
+                self._download_dialog(phase.object("dialog", ExpectedDialog=DOWNLOAD_DIALOG), self.expected_project)
+                verify_release(session["release"], live_outputs=True)
+                phase.remaining()
             session["started_at"] = phase.windows_time()
             posted = phase.object("button", "确定", mutation=True, ExpectedDialog=DOWNLOAD_DIALOG)
             if posted.get("invocation_posted") is not True or posted.get("dialog") != DOWNLOAD_DIALOG:
@@ -427,6 +459,12 @@ class AutoShopVendorAdapter:
                 if analysis["status"] in {"verified", "failed"}:
                     session["terminal"] = analysis
                     phase.save("vendor-terminal", analysis)
+                    if intent:
+                        verify_release(session["release"], live_outputs=True)
+                        return {"status": "completed" if analysis["status"] == "verified" else "failed",
+                                "vendor_result": analysis, "release": session["release"],
+                                "release_hash": session["release"]["release_hash"],
+                                "binary_consistency": {"status": "unverified", "method": "no-device-byte-binding"}}
                     return self._integrity_result(phase, context,
                         {"status": "completed" if analysis["status"] == "verified" else "failed",
                          "vendor_result": analysis})
@@ -445,6 +483,13 @@ class AutoShopVendorAdapter:
             analysis = analyze_download_log(session["baseline"], raw, window=window)
             if window is not None:
                 analysis["clock_window"] = window
+            if context.get("intent"):
+                release = session.get("release")
+                if not release or download_result.get("release_hash") != release["release_hash"]:
+                    raise VendorAdapterError("Download result does not bind the prepared release")
+                verify_release(release, live_outputs=True)
+                return {"status": analysis["status"], "vendor_result": analysis,
+                        "release_hash": release["release_hash"]}
             return self._integrity_result(phase, context,
                                           {"status": analysis["status"], "vendor_result": analysis})
         return self._phase("verify-download", context, timeout_s, verify)
@@ -454,7 +499,16 @@ class AutoShopVendorAdapter:
             self._usb(phase)
             self._editor(phase)
             self._layout(phase)
-            self._artifacts(context)
+            release = None
+            if context.get("intent"):
+                verify_intent(context["intent"])
+                session = self._session(context)
+                release = session.get("release")
+                if not release:
+                    raise VendorAdapterError("No prepared release for this operation")
+                verify_release(release, live_outputs=True)
+            else:
+                self._artifacts(context)
             baseline = phase.ui("log-data")
             started_at = phase.windows_time()
             # The owner-drawn menu has no calibrated semantic identifier.
@@ -485,6 +539,16 @@ class AutoShopVendorAdapter:
                     posted = phase.object("button", "确定", mutation=True, ExpectedDialog="AutoShop", ExpectedText=phrase)
                     if posted.get("invocation_posted") is not True:
                         raise VendorAdapterError("Comparison acknowledgement outcome is unknown")
+                    if release:
+                        # Comparison may rebuild live files. Verify inputs and
+                        # immutable release copies; never replace the release.
+                        verify_release(release)
+                        outcome.update(release_hash=release["release_hash"], verification_level="project",
+                            project_consistency={"status": "verified" if outcome["matches"] else "failed",
+                                                 "intent_hash": context["intent"]["intent_hash"]},
+                            binary_consistency={"status": "unverified", "method": "vendor-project-compare",
+                                                "reason": "Vendor project comparison is not byte readback"})
+                        return outcome
                     return self._integrity_result(phase, context, outcome)
                 time.sleep(min(0.2, phase.remaining()))
         return self._phase("compare", context, timeout_s, compare)

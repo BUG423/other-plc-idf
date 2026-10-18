@@ -113,9 +113,18 @@ def run_command(argv: list[str],
 
 
 def _default_runner(argv, timeout, cwd=None):
-    return subprocess.run(
-        argv, capture_output=True, text=True, timeout=timeout, cwd=cwd,
-    )
+    # PowerShell can emit an ANSI error before our UTF-8 setup runs (for
+    # example, parameter validation). Decode after capturing both streams so a
+    # completed, possibly mutating command never becomes a Unicode traceback.
+    result = subprocess.run(argv, capture_output=True, timeout=timeout, cwd=cwd)
+    def decode(data):
+        try:
+            text = data.decode("utf-8")
+        except UnicodeDecodeError:
+            text = data.decode("gb18030", errors="backslashreplace")
+        return text.replace("\r\n", "\n").replace("\r", "\n")
+    return subprocess.CompletedProcess(result.args, result.returncode,
+                                       decode(result.stdout), decode(result.stderr))
 
 
 def require_ok(result: InteropResult, what: str) -> InteropResult:

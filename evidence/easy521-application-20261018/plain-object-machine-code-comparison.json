@@ -1,0 +1,360 @@
+{
+  "scope": "static machine-code identity only; not device execution",
+  "cases": [
+    {
+      "case": "plus1",
+      "object_sha256": "9d2063daa05318c463c27a43ae6895e79fe27ba6d34dadd08dc27eb0e22affd1",
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000000",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 12,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 952,
+            "size": 608,
+            "flags": 0
+          },
+          {
+            "index": 2,
+            "name": ".text",
+            "type": 1,
+            "offset": 52,
+            "size": 32,
+            "flags": 6
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 896,
+            "size": 24,
+            "flags": 0
+          },
+          {
+            "index": 4,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 84,
+            "size": 8,
+            "flags": 130
+          },
+          {
+            "index": 5,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 920,
+            "size": 16,
+            "flags": 0
+          },
+          {
+            "index": 6,
+            "name": ".bss",
+            "type": 8,
+            "offset": 96,
+            "size": 264,
+            "flags": 3
+          },
+          {
+            "index": 7,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 96,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 96,
+            "size": 52,
+            "flags": 0
+          },
+          {
+            "index": 9,
+            "name": ".debug_frame",
+            "type": 1,
+            "offset": 148,
+            "size": 44,
+            "flags": 0
+          },
+          {
+            "index": 10,
+            "name": ".rel.debug_frame",
+            "type": 9,
+            "offset": 936,
+            "size": 16,
+            "flags": 0
+          },
+          {
+            "index": 11,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 192,
+            "size": 704,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 52,
+            "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 3,
+          "unique_count": 3,
+          "names": [
+            "COUNTER",
+            "_ST_INT64_ADD",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "MAIN"
+          ]
+        },
+        "relocations": {
+          "entries": 7,
+          "types": {
+            "R_ARM_ABS32": 3,
+            "R_ARM_NONE": 1,
+            "R_ARM_PREL31": 1,
+            "R_ARM_THM_MOVT_ABS": 1,
+            "R_ARM_THM_MOVW_ABS_NC": 1
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 3,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 2,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.debug_frame",
+              "entries": 2,
+              "target_section": ".debug_frame",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "COUNTER",
+            "_ST_INT64_ADD",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        }
+      },
+      "text_sha256": "dc676944cddaaef58417027958f431f59862b391cbb5c6c5690f5c6f4c2e6adb",
+      "text_bytes": 32
+    },
+    {
+      "case": "plus2",
+      "object_sha256": "ef27685da39c95eedb3c942d64b2a3ee78ade4d50ce7897d73041213bf26add4",
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000000",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 12,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 952,
+            "size": 608,
+            "flags": 0
+          },
+          {
+            "index": 2,
+            "name": ".text",
+            "type": 1,
+            "offset": 52,
+            "size": 32,
+            "flags": 6
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 896,
+            "size": 24,
+            "flags": 0
+          },
+          {
+            "index": 4,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 84,
+            "size": 8,
+            "flags": 130
+          },
+          {
+            "index": 5,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 920,
+            "size": 16,
+            "flags": 0
+          },
+          {
+            "index": 6,
+            "name": ".bss",
+            "type": 8,
+            "offset": 96,
+            "size": 264,
+            "flags": 3
+          },
+          {
+            "index": 7,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 96,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 96,
+            "size": 52,
+            "flags": 0
+          },
+          {
+            "index": 9,
+            "name": ".debug_frame",
+            "type": 1,
+            "offset": 148,
+            "size": 44,
+            "flags": 0
+          },
+          {
+            "index": 10,
+            "name": ".rel.debug_frame",
+            "type": 9,
+            "offset": 936,
+            "size": 16,
+            "flags": 0
+          },
+          {
+            "index": 11,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 192,
+            "size": 704,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 52,
+            "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 3,
+          "unique_count": 3,
+          "names": [
+            "COUNTER",
+            "_ST_INT64_ADD",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "MAIN"
+          ]
+        },
+        "relocations": {
+          "entries": 7,
+          "types": {
+            "R_ARM_ABS32": 3,
+            "R_ARM_NONE": 1,
+            "R_ARM_PREL31": 1,
+            "R_ARM_THM_MOVT_ABS": 1,
+            "R_ARM_THM_MOVW_ABS_NC": 1
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 3,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 2,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.debug_frame",
+              "entries": 2,
+              "target_section": ".debug_frame",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "COUNTER",
+            "_ST_INT64_ADD",
+            "__aeabi_unwind_cpp_pr0"
+          ]
+        }
+      },
+      "text_sha256": "9e76906873dd250402f4cefd97b2a55ada60dbaf9673af4d9710851c0e3f7c5a",
+      "text_bytes": 32
+    }
+  ],
+  "changed_machine_code_verified": true
+}

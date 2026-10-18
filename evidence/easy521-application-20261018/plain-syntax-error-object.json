@@ -1,0 +1,95 @@
+{
+  "case": "syntax-error",
+  "observed_at": "2026-10-18T11:39:19.973984+00:00",
+  "prepared": {
+    "schema": "plcidf.vendor-main-preparation.v1",
+    "scope": "vendor-main-intermediate-only",
+    "ok": true,
+    "status": "prepared",
+    "stage": "complete",
+    "diagnostics": [],
+    "device_access": false,
+    "gui_access": false,
+    "project_link_verified": false,
+    "files": [
+      {
+        "name": "MAIN.st",
+        "path": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/syntax-error/prepared/MAIN.st",
+        "bytes": 86,
+        "sha256": "83eab0d20555bbdaa078200d28fce137f058c7c76dc4f0e088c7f6a0d5e0dd24"
+      },
+      {
+        "name": "MAIN.cl",
+        "path": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/syntax-error/prepared/MAIN.cl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "source": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/syntax-error/main.st",
+    "source_sha256": "b87aef97b7a6b51ecb3216bca00846e4cdc6c7028bbf10047cd17bd368096e85",
+    "globals_file": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/syntax-error/globals.json",
+    "globals_sha256": "144fe1eb155c31c4b7e0cd035d87ce04f481df2ad95699c7c3b08b13c0cc996c",
+    "globals": {
+      "COUNTER": "DINT"
+    },
+    "intermediate_text_sha256": "493f303b87125112038744784c3aa6328f9b5d62e04bbdfb0c1a837cb15033ca",
+    "output_directory": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/syntax-error/prepared"
+  },
+  "compiled": {
+    "schema": "plcidf.vendor-object-build.v1",
+    "scope": "vendor-object-only",
+    "ok": false,
+    "status": "failed",
+    "stage": "validate",
+    "diagnostics": [
+      {
+        "message": "Compiler emitted error diagnostics, regardless of later success markers",
+        "code": "E_VENDOR_OBJECT",
+        "stage": "validate"
+      }
+    ],
+    "build_directory": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\syntax-error\\compiled",
+    "source_files": [
+      {
+        "name": "MAIN.st",
+        "path": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\syntax-error\\prepared\\MAIN.st",
+        "bytes": 86,
+        "sha256": "83eab0d20555bbdaa078200d28fce137f058c7c76dc4f0e088c7f6a0d5e0dd24"
+      },
+      {
+        "name": "MAIN.cl",
+        "path": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\syntax-error\\prepared\\MAIN.cl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "object_files": [],
+    "device_access": false,
+    "gui_access": false,
+    "compiler": {
+      "name": "StLang.exe",
+      "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\StLang.exe",
+      "bytes": 25144320,
+      "sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847"
+    },
+    "kernel": {
+      "name": "Kernel.dll",
+      "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\Kernel.dll",
+      "bytes": 289280,
+      "sha256": "e9b675b79ced087c7e7e1a897ea889d692536056f2f45d2b813e98239906edcd"
+    },
+    "pid": 18660,
+    "timed_out": false,
+    "elapsed_ms": 64,
+    "exit_code": 1,
+    "stdout": "01F821D8i686-pc-windows-msvc\r\nlexer error: syntax error, unexpected ';'\r\nLoc: 4,11;4,12\r\nline: 4, leng: 1, text: ;, err_msg: syntax error, unexpected ';'\r\n4,11,\r\nlexer error: syntax error, unexpected ';'\r\nLoc: 4,11;4,12\r\nline: 4, leng: 1, text: ;, err_msg: syntax error, unexpected ';'\r\n4,11,\r\nlexer error: syntax error, unexpected ';'\r\nLoc: 4,11;4,12\r\nline: 4, leng: 1, text: ;, err_msg: syntax error, unexpected ';'\r\n4,11,\r\n",
+    "stderr": "",
+    "output_truncated": false,
+    "capture_complete": true,
+    "ipc": {
+      "success": 0,
+      "started": 1,
+      "done": 1
+    }
+  }
+}

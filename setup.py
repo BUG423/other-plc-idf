@@ -17,6 +17,8 @@ ASSETS = (
     "plc/tools/autoshop_ui.ps1",
     "plc/tools/read_autoshop_online.ps1",
     "plc/tools/compile_vendor_st.ps1",
+    "tools/prepare_vendor_st.py",
+    "tools/compile_vendor_st.py",
     "examples/easy521_native_probe/MAIN_plus1_body.st",
     "examples/easy521_native_probe/MAIN_plus2_body.st",
     "examples/easy521_native_probe/README.md",

@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-10-18T11:35:27.963201+00:00",
+  "label": "session-inspect",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "inspect",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV"
+  ],
+  "returncode": 1,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "Get-Process : 找不到名为“AutoShop”的进程。请验证该进程名称，然后再次调用 cmdlet。\n所在位置 \\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1:181 字符: 8\n+ $app = Get-Process AutoShop | Select-Object -First 1\n+        ~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (AutoShop:String) [Get-Process], ProcessCommandException\n    + FullyQualifiedErrorId : NoProcessFoundForGivenName,Microsoft.PowerShell.Commands.GetProcessCommand\n \n"
+}

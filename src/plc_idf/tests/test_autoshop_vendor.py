@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -12,6 +13,7 @@ from plc_idf.autoshop_vendor import (
     analyze_download_log, fresh_log_lines,
 )
 from plc_idf.evidence import EvidenceWriteError
+from .test_native_release import release_fixture  # pytest fixture, synthetic native project
 
 
 PROJECT = r"E:\PLCProjects\PLCIDF_LAB_20261017\BESS_E521_DEV"
@@ -57,6 +59,7 @@ class FixtureRunner:
         self.fail_action = None
         self.unexpected_modal = False
         self.clock_reads = 0
+        self.clock_values = None
 
     def __call__(self, argv, timeout, cwd=None):
         assert 0 < timeout <= 30
@@ -65,7 +68,8 @@ class FixtureRunner:
         if "-Action" not in argv:
             if "-Command" in argv:
                 assert argv[-1] == "[DateTimeOffset]::Now.ToString('o')"
-                output = WINDOW["started_at"] if self.clock_reads == 0 else WINDOW["observed_at"]
+                output = ((WINDOW["started_at"] if self.clock_reads == 0 else WINDOW["observed_at"])
+                          if self.clock_values is None else self.clock_values[min(self.clock_reads, len(self.clock_values) - 1)])
                 self.clock_reads += 1
                 return SimpleNamespace(returncode=0, stdout=output, stderr="")
             assert argv[-1] == "list"
@@ -392,3 +396,128 @@ def test_failed_evidence_write_prevents_input(setup):
     with pytest.raises(EvidenceWriteError):
         adapter.preflight(context, timeout_s=5)
     assert "keys" not in runner.actions and "click" not in runner.actions
+
+
+def prepared_setup(setup, release_fixture):
+    from plc_idf.artifacts import create_build_manifest
+    from plc_idf.native_release import freeze_intent
+    adapter, runner, context = setup
+    project, previous_intent, _, _ = release_fixture
+    artifacts = [item["path"] for item in previous_intent["manifest"]["artifacts"]]
+    manifest = create_build_manifest(project, artifacts, target=context["target"],
+        tool_versions={"autoshop": "offline fixture"}, source_paths=["."])
+    context.update(artifacts=manifest["artifacts"], build_hash=manifest["build_hash"], source_root=str(project),
+        intent=freeze_intent(manifest, operation_id=context["operation_id"], working_project=PROJECT))
+    assert adapter.preflight(context, timeout_s=5)["status"] == "verified"
+    return adapter, runner, context
+
+
+def test_prepared_unchanged_f8_does_not_relabel_old_log_fresh(setup, release_fixture):
+    adapter, runner, context = prepared_setup(setup, release_fixture)
+    result = adapter.download(context, timeout_s=5)
+    assert result["status"] == "completed"
+    assert result["release"]["transition"]["kind"] == "unchanged-pre-confirm"
+    assert result["release"]["transition"]["compile"] is None
+    assert result["binary_consistency"]["status"] == "unverified"
+    assert adapter.verify_download(context, result, timeout_s=5)["release_hash"] == result["release_hash"]
+    assert runner.actions.count("keys") == 1 and runner.actions.count("button") == 1
+
+
+@pytest.mark.parametrize("changed", ["MAIN.ST", "Config.cfg", "STTemp/MAIN.o", "steps.dat"])
+def test_post_confirm_drift_preserves_release_and_vendor_result(setup, release_fixture, changed):
+    project = release_fixture[0]
+    if changed == "steps.dat":
+        (project / changed).write_text("unclassified input that must remain bound")
+    adapter, runner, context = prepared_setup(setup, release_fixture)
+    def drift(action, value):
+        if action == "button":
+            if changed == "steps.dat":
+                (project / changed).unlink()
+            else:
+                path = project / changed
+                path.write_bytes(path.read_bytes() + b"post confirmation drift")
+    runner.hook = drift
+    result = adapter.download(context, timeout_s=5)
+    assert result["status"] == "unknown"
+    assert result["release_hash"] == result["release"]["release_hash"]
+    assert result["vendor_result"]["status"] == "verified"
+    assert result["release"]["transition"]["kind"] == "unchanged-pre-confirm"
+    assert runner.actions.count("button") == 1
+
+
+@pytest.mark.parametrize("changed", ["MAIN.ST", "Config.cfg", "VarList.gdt"])
+def test_pre_confirm_input_drift_prevents_confirmation(setup, release_fixture, changed):
+    adapter, runner, context = prepared_setup(setup, release_fixture)
+    def drift(action, value):
+        if action == "keys":
+            (release_fixture[0] / changed).write_text("unexpected native input change")
+    runner.hook = drift
+    result = adapter.download(context, timeout_s=5)
+    assert result["status"] == "unknown" and "input drift" in result["reason"]
+    assert "button" not in runner.actions
+
+
+def test_pre_confirm_recompile_without_fresh_log_is_not_confirmed(setup, release_fixture):
+    adapter, runner, context = prepared_setup(setup, release_fixture)
+    def drift(action, value):
+        if action == "keys":
+            path = release_fixture[0] / "STTemp/MAIN.o"
+            path.write_bytes(path.read_bytes() + b"unproved fresh output")
+    runner.hook = drift
+    result = adapter.download(context, timeout_s=5)
+    assert result["status"] == "unknown" and "unique fresh" in result["reason"]
+    assert "button" not in runner.actions
+
+
+def test_actual_pre_confirm_recompile_requires_complete_fresh_trace(setup, release_fixture):
+    from .test_native_release import rewrite
+    adapter, runner, context = prepared_setup(setup, release_fixture)
+    runner.clock_values = ["2026-10-17T23:08:45.500000+08:00", "2026-10-17T23:08:47.500000+08:00",
+                           "2026-10-17T23:08:48.500000+08:00", "2026-10-17T23:08:51.500000+08:00"]
+    compile_trace = ("2026/10/17 23:08:46  开始编译\n统计-- (0)错误\n"
+                     "2026/10/17 23:08:47  完成程序编译")
+    def compile_or_download(action, value):
+        if action == "keys":
+            for artifact in context["artifacts"]:
+                path = Path(artifact["path"])
+                rewrite(path, path.read_bytes() + (b"revision" if path.suffix != ".rst" else b""))
+            runner.log_override = compile_trace
+        elif action == "button":
+            runner.log_override = COMMUNICATION_DOWNLOAD.replace("23:08:46", "23:08:50")
+    runner.hook = compile_or_download
+    result = adapter.download(context, timeout_s=5)
+    assert result["status"] == "completed", result.get("reason")
+    assert result["release"]["transition"]["kind"] == "vendor-f8-recompile"
+    assert result["release"]["transition"]["compile"]["error_count"] == 0
+    assert result["release"]["intent_build_hash"] == context["build_hash"]
+
+
+def test_prepared_timeout_never_replays_f8_or_confirmation(setup, release_fixture):
+    adapter, runner, context = prepared_setup(setup, release_fixture)
+    def expire(action, value):
+        if action == "keys":
+            raise subprocess.TimeoutExpired("offline fake F8", 1)
+    runner.hook = expire
+    first = adapter.download(context, timeout_s=5)
+    second = adapter.download(context, timeout_s=5)
+    assert first["status"] == second["status"] == "unknown"
+    assert runner.actions.count("keys") == 1 and "button" not in runner.actions
+
+
+def test_project_compare_rebuild_cannot_replace_prepared_release(setup, release_fixture):
+    from plc_idf.native_release import verify_release
+    adapter, runner, context = prepared_setup(setup, release_fixture)
+    downloaded = adapter.download(context, timeout_s=5)
+    assert downloaded["status"] == "completed"
+    frozen_hash = downloaded["release_hash"]
+    def compare_rebuild(action, value):
+        if action == "click":
+            path = release_fixture[0] / "STTemp/MAIN.o"
+            path.write_bytes(path.read_bytes() + b"compare recompiled")
+    runner.hook = compare_rebuild
+    result = adapter.compare_program(context, timeout_s=5)
+    assert result["status"] == "verified" and result["matches"] is True
+    assert result["verification_level"] == "project" and result["project_consistency"]["status"] == "verified"
+    assert result["binary_consistency"]["status"] == "unverified"
+    assert result["release_hash"] == frozen_hash
+    verify_release(downloaded["release"])

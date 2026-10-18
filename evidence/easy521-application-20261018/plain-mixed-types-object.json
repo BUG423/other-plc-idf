@@ -1,0 +1,98 @@
+{
+  "case": "mixed-types",
+  "observed_at": "2026-10-18T11:45:24.687272+00:00",
+  "prepared": {
+    "schema": "plcidf.vendor-main-preparation.v1",
+    "scope": "vendor-main-intermediate-only",
+    "ok": true,
+    "status": "prepared",
+    "stage": "complete",
+    "diagnostics": [],
+    "device_access": false,
+    "gui_access": false,
+    "project_link_verified": false,
+    "files": [
+      {
+        "name": "MAIN.st",
+        "path": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/mixed-types/prepared/MAIN.st",
+        "bytes": 254,
+        "sha256": "147218d39514358014494d988142ddb33e3551000f44be79a5da308240246849"
+      },
+      {
+        "name": "MAIN.cl",
+        "path": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/mixed-types/prepared/MAIN.cl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "source": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/mixed-types/main.st",
+    "source_sha256": "3c3db8342771af051134045be9ec5337ce1d20bd681fc4a8cbacbaaa9f761707",
+    "globals_file": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/mixed-types/globals.json",
+    "globals_sha256": "695df267d9fc701151313e5828ff6bc8870120b265a1fe04d5f3c6783ef6dafd",
+    "globals": {
+      "COUNTER": "DINT",
+      "FLAG": "BOOL",
+      "SMALL": "INT",
+      "VALUE": "REAL"
+    },
+    "intermediate_text_sha256": "aa811390bc127b80286321e400b6c5c6bb3ca1b55bd2b7751d636170f0e0335e",
+    "output_directory": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/mixed-types/prepared"
+  },
+  "compiled": {
+    "schema": "plcidf.vendor-object-build.v1",
+    "scope": "vendor-object-only",
+    "ok": false,
+    "status": "failed",
+    "stage": "validate",
+    "diagnostics": [
+      {
+        "message": "Compiler did not report successful completion of this mapped task",
+        "code": "E_VENDOR_OBJECT",
+        "stage": "validate"
+      }
+    ],
+    "build_directory": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\mixed-types\\compiled",
+    "source_files": [
+      {
+        "name": "MAIN.st",
+        "path": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\mixed-types\\prepared\\MAIN.st",
+        "bytes": 254,
+        "sha256": "147218d39514358014494d988142ddb33e3551000f44be79a5da308240246849"
+      },
+      {
+        "name": "MAIN.cl",
+        "path": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\mixed-types\\prepared\\MAIN.cl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "object_files": [],
+    "device_access": false,
+    "gui_access": false,
+    "compiler": {
+      "name": "StLang.exe",
+      "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\StLang.exe",
+      "bytes": 25144320,
+      "sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847"
+    },
+    "kernel": {
+      "name": "Kernel.dll",
+      "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\Kernel.dll",
+      "bytes": 289280,
+      "sha256": "e9b675b79ced087c7e7e1a897ea889d692536056f2f45d2b813e98239906edcd"
+    },
+    "pid": 27260,
+    "timed_out": false,
+    "elapsed_ms": 55,
+    "exit_code": -1073741819,
+    "stdout": "01F821D8i686-pc-windows-msvc\r\n",
+    "stderr": "",
+    "output_truncated": false,
+    "capture_complete": true,
+    "ipc": {
+      "success": 0,
+      "started": 1,
+      "done": 0
+    }
+  }
+}

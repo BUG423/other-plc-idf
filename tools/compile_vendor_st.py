@@ -190,7 +190,15 @@ def compile_vendor_st(compiler_path: str, input_directory: str, build_directory:
         if not compiler:
             raise ValueError("Only the two inspected local StLang installations are supported")
         source, build = windows_path(input_directory), windows_path(build_directory)
-        helper = Path(helper_path) if helper_path else Path(__file__).resolve().parents[1] / "plc/tools/compile_vendor_st.ps1"
+        if helper_path is not None:
+            helper = Path(helper_path)
+        else:
+            # Repository execution remains standalone; an installed worker uses
+            # the wheel's canonical PowerShell resource through the package.
+            helper = Path(__file__).resolve().parents[1] / "plc/tools/compile_vendor_st.ps1"
+            if not helper.is_file():
+                from plc_idf.config import runtime_asset
+                helper = runtime_asset(Path.cwd(), "plc/tools/compile_vendor_st.ps1")
         helper_bytes = _regular_read(helper, 1024 * 1024)
         if not shutil.which(powershell_exe):
             raise ValueError("Windows PowerShell is unavailable")
@@ -236,9 +244,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--input-dir", required=True, help="Frozen STTemp directory containing MAIN.st and MAIN.cl")
     parser.add_argument("--build-dir", required=True, help="New Windows directory; parent must exist")
     parser.add_argument("--timeout-s", type=float, default=4.0)
+    parser.add_argument("--powershell-exe", default="powershell.exe",
+                        help="Windows PowerShell path; WSL callers may use an absolute /mnt/c path")
     try:
         args = parser.parse_args(argv)
-        record = compile_vendor_st(args.compiler, args.input_dir, args.build_dir, timeout_s=args.timeout_s)
+        record = compile_vendor_st(args.compiler, args.input_dir, args.build_dir,
+                                   timeout_s=args.timeout_s, powershell_exe=args.powershell_exe)
     except ValueError as exc:
         record = _failed("arguments", str(exc))
     except KeyboardInterrupt:

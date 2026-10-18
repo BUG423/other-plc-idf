@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-10-18T11:36:15.974860+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "[Console]::OutputEncoding=[System.Text.Encoding]::UTF8; $ErrorActionPreference='Stop'; if(Get-Process AutoShop -ErrorAction SilentlyContinue){throw 'AutoShop already running; launch refused'}; $p=Start-Process -FilePath 'E:\\Software\\AutoShop\\AutoShop.exe' -ArgumentList '\"E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV\\BESS_E521_DEV.hcp\"' -PassThru; @{process_id=$p.Id;action='launch working project only';device_write=$false}|ConvertTo-Json -Compress"
+  ],
+  "returncode": 0,
+  "stdout": "{\"device_write\":false,\"action\":\"launch working project only\",\"process_id\":17152}\n",
+  "stderr": ""
+}

@@ -27,6 +27,8 @@ ASSETS = (
     "plc/tools/autoshop_ui.ps1",
     "plc/tools/read_autoshop_online.ps1",
     "plc/tools/compile_vendor_st.ps1",
+    "tools/prepare_vendor_st.py",
+    "tools/compile_vendor_st.py",
     "examples/easy521_native_probe/MAIN_plus1_body.st",
     "examples/easy521_native_probe/MAIN_plus2_body.st",
     "examples/easy521_native_probe/README.md",
@@ -125,6 +127,8 @@ def main() -> int:
             "root = pathlib.Path(cfg.paths.project_root)",
             "bridge = runtime_asset(root, 'plc/tools/autoshop_ui.ps1')",
             "vendor_compiler = runtime_asset(root, 'plc/tools/compile_vendor_st.ps1')",
+            "prepare_worker = runtime_asset(root, 'tools/prepare_vendor_st.py')",
+            "compile_worker = runtime_asset(root, 'tools/compile_vendor_st.py')",
             "bootstrap = runtime_asset(root, 'tools/bootstrap_open_linux.py')",
             "template = runtime_asset(root, 'examples/open_linux/counter/main.st')",
             "motor = runtime_asset(root, 'examples/open_linux/motor/main.st').parent",
@@ -135,6 +139,7 @@ def main() -> int:
             "assert bridge.is_file()",
             "assert online_reader.is_file() and online_reader.is_relative_to(package)",
             "assert vendor_compiler.is_file() and vendor_compiler.is_relative_to(package)",
+            "assert all(p.is_file() and p.is_relative_to(package) for p in (prepare_worker, compile_worker))",
             "assert bootstrap.is_file() and bootstrap.is_relative_to(package)",
             "assert template.is_file() and template.is_relative_to(package)",
             "probe_templates = [PROBE_DIRECTORY / ('MAIN_plus' + str(i) + '_body.st') for i in (1, 2)]",
@@ -148,6 +153,7 @@ def main() -> int:
             "print(json.dumps({'module': plc_idf.__file__, 'root': str(root),",
             "'monitor_dir': cfg.paths.wsl_tools, 'bridge': str(bridge),",
             "'online_reader': str(online_reader), 'vendor_compiler': str(vendor_compiler),",
+            "'prepare_vendor_worker': str(prepare_worker), 'compile_vendor_worker': str(compile_worker),",
             "'vendor_adapter_metadata': vendor_metadata,",
             "'bridge_windows': cfg.bridge.tools_ps1_windows,",
             "'evidence_path': str(evidence_path(cfg)),",
@@ -160,6 +166,28 @@ def main() -> int:
         if Path(paths["module"]).is_relative_to(ROOT):
             raise RuntimeError("Distribution test accidentally imported the checkout")
         cli = venv / "bin/plcidf"
+        for worker in ("prepare_vendor_worker", "compile_vendor_worker"):
+            run([str(python), paths[worker], "--help"], cwd=project, env=env)
+        body, globals_file = project / "counter.st", project / "globals.json"
+        body.write_text("COUNTER := COUNTER + 1;\n", encoding="utf-8")
+        globals_file.write_text(json.dumps({"schema": "plcidf.vendor-main-source.v1",
+                                           "globals": {"COUNTER": "DINT"}}), encoding="utf-8")
+        prepared = json.loads(run([str(python), paths["prepare_vendor_worker"], "--source", str(body),
+                                   "--globals", str(globals_file), "--output-dir", str(project / "vendor-input")],
+                                  cwd=project, env=env).stdout)
+        if (prepared.get("ok") is not True or prepared.get("status") != "prepared"
+                or prepared.get("scope") != "vendor-main-intermediate-only"):
+            raise RuntimeError("Installed vendor input preparation did not produce an intermediate-only result")
+        for item in prepared.get("files", []):
+            if hashlib.sha256(Path(item["path"]).read_bytes()).hexdigest() != item["sha256"]:
+                raise RuntimeError("Installed vendor intermediate file differs from its reported hash")
+        easy_doctor = json.loads(run([str(cli), "doctor", "--target", "easy521", "--json"],
+                                     cwd=project, env=env).stdout)
+        if (easy_doctor.get("hardware_checked") is not False
+                or easy_doctor.get("easy521", {}).get("schema") != "plcidf.easy521-capability-diagnostics.v1"
+                or easy_doctor["easy521"]["verification_levels"]["binary"] != "unverified"
+                or easy_doctor["easy521"].get("device_actions_performed") != []):
+            raise RuntimeError("Installed Easy521 doctor did not preserve its offline verification boundaries")
         simulation = run([str(cli), "sim", "--with-monitor", "--once", "--quiet"],
                          cwd=project, env=env, timeout=45)
         if "Easy521 监测" not in simulation.stdout or "Vpu" not in simulation.stdout:
@@ -278,6 +306,9 @@ def main() -> int:
             "installed_paths": paths,
             "alias_version": alias.stdout.strip(),
             "tested_scenarios": ["steady", "low_voltage", "overload"],
+            "vendor_intermediate_preparation": prepared,
+            "vendor_windows_compilation_executed": False,
+            "easy521_offline_doctor": easy_doctor,
             "open_linux_checks": {
                 "targets": targets, "new": created, "check": checked,
                 "complete_control_examples": control_checks,

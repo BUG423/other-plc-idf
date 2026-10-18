@@ -1,0 +1,1924 @@
+{
+  "schema": "plcidf.plain-main-research.v1",
+  "observed_date": "2026-10-18",
+  "scope": "host-only plain MAIN + explicit primitive globals -> vendor STTemp -> ARM object; no GUI/device operations",
+  "raw_record_sha256": "8cb7212f76da4bf37ad1545b70f8712522467b1bc0b1872be0d8ee522ffa92de",
+  "private_experiment_root": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8",
+  "new_files": [
+    {
+      "path": "tools/prepare_vendor_st.py",
+      "sha256": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d"
+    },
+    {
+      "path": "tools/tests/test_prepare_vendor_st.py",
+      "sha256": "9e77420b9bb58bdc466aa6192fb5cb3e6b059b8359163dc08324e1875ccb1ce2"
+    }
+  ],
+  "tests": {
+    "prepare": 29,
+    "existing_compile": 31,
+    "total": 60,
+    "passed": 60
+  },
+  "cases": [
+    {
+      "case": "plus1",
+      "preparation": {
+        "schema": "plcidf.vendor-main-preparation.v1",
+        "scope": "vendor-main-intermediate-only",
+        "ok": true,
+        "status": "prepared",
+        "stage": "complete",
+        "diagnostics": [],
+        "device_access": false,
+        "gui_access": false,
+        "project_link_verified": false,
+        "files": [
+          {
+            "name": "MAIN.st",
+            "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus1/sttemp/MAIN.st",
+            "bytes": 97,
+            "sha256": "286aee653b8a52cc9028b7598f20888b5e9001917da2b36026b663c773cbd769"
+          },
+          {
+            "name": "MAIN.cl",
+            "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus1/sttemp/MAIN.cl",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus1/body.st",
+        "source_sha256": "4f9511c903b671a9109c5fb62c4879dbcac3f99d9aa99e9e3a0b797a5dd68e43",
+        "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus1/globals.json",
+        "globals_sha256": "90ed9de51ebaa217282030dea241a75e3620697a25c089e4718fe6241deebcda",
+        "globals": {
+          "COUNTER": "DINT"
+        },
+        "intermediate_text_sha256": "d71f43d534038caf8183549a4d5c9d4f3ccfd71cb6af24bd0071f07608f62c7f",
+        "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus1/sttemp"
+      },
+      "compile": {
+        "schema": "plcidf.vendor-object-build.v1",
+        "scope": "vendor-object-only",
+        "ok": true,
+        "status": "verified",
+        "stage": "complete",
+        "source_files": [
+          {
+            "name": "MAIN.st",
+            "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\plus1\\sttemp\\MAIN.st",
+            "bytes": 97,
+            "sha256": "286aee653b8a52cc9028b7598f20888b5e9001917da2b36026b663c773cbd769"
+          },
+          {
+            "name": "MAIN.cl",
+            "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\plus1\\sttemp\\MAIN.cl",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "object_files": [
+          {
+            "name": "MAIN.o",
+            "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\plus1\\build\\MAIN.o",
+            "bytes": 2040,
+            "sha256": "9d2063daa05318c463c27a43ae6895e79fe27ba6d34dadd08dc27eb0e22affd1",
+            "elf": {
+              "class": "ELF32",
+              "entry_symbol": "MAIN",
+              "type": "REL",
+              "machine": "ARM",
+              "byte_order": "little",
+              "eabi_flags": "0x05000000"
+            }
+          }
+        ],
+        "compiler": {
+          "name": "StLang.exe",
+          "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\StLang.exe",
+          "bytes": 25144320,
+          "sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847"
+        },
+        "kernel": {
+          "name": "Kernel.dll",
+          "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\Kernel.dll",
+          "bytes": 289280,
+          "sha256": "e9b675b79ced087c7e7e1a897ea889d692536056f2f45d2b813e98239906edcd"
+        },
+        "ipc": {
+          "success": 1,
+          "started": 1,
+          "done": 1
+        },
+        "result_file": {
+          "name": "MAIN.rst",
+          "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\plus1\\build\\MAIN.rst",
+          "bytes": 10,
+          "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+        },
+        "timed_out": false,
+        "output_truncated": false,
+        "capture_complete": true,
+        "diagnostics": [],
+        "helper_sha256": "1dd95f471bcb225f8bde3e9fe70f7e3287555e7e988c1c6745e18d22f78d26d9"
+      },
+      "stdout_contains_error": false
+    },
+    {
+      "case": "plus2",
+      "preparation": {
+        "schema": "plcidf.vendor-main-preparation.v1",
+        "scope": "vendor-main-intermediate-only",
+        "ok": true,
+        "status": "prepared",
+        "stage": "complete",
+        "diagnostics": [],
+        "device_access": false,
+        "gui_access": false,
+        "project_link_verified": false,
+        "files": [
+          {
+            "name": "MAIN.st",
+            "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus2/sttemp/MAIN.st",
+            "bytes": 97,
+            "sha256": "4ce7490e6ece8223c34244a088e34a2efb68737c0cd7fb2344e323769702ab1d"
+          },
+          {
+            "name": "MAIN.cl",
+            "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus2/sttemp/MAIN.cl",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus2/body.st",
+        "source_sha256": "ea670cf485083894ec20fe2e2312adedfd44f3982acf75b8399d53b5e6be7d07",
+        "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus2/globals.json",
+        "globals_sha256": "90ed9de51ebaa217282030dea241a75e3620697a25c089e4718fe6241deebcda",
+        "globals": {
+          "COUNTER": "DINT"
+        },
+        "intermediate_text_sha256": "d68e1b6ea28381f9e9c7aefabc3e66a902c0c11c3877242d88f237d3b5b3dcfc",
+        "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/plus2/sttemp"
+      },
+      "compile": {
+        "schema": "plcidf.vendor-object-build.v1",
+        "scope": "vendor-object-only",
+        "ok": true,
+        "status": "verified",
+        "stage": "complete",
+        "source_files": [
+          {
+            "name": "MAIN.st",
+            "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\plus2\\sttemp\\MAIN.st",
+            "bytes": 97,
+            "sha256": "4ce7490e6ece8223c34244a088e34a2efb68737c0cd7fb2344e323769702ab1d"
+          },
+          {
+            "name": "MAIN.cl",
+            "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\plus2\\sttemp\\MAIN.cl",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "object_files": [
+          {
+            "name": "MAIN.o",
+            "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\plus2\\build\\MAIN.o",
+            "bytes": 2040,
+            "sha256": "ef27685da39c95eedb3c942d64b2a3ee78ade4d50ce7897d73041213bf26add4",
+            "elf": {
+              "class": "ELF32",
+              "entry_symbol": "MAIN",
+              "type": "REL",
+              "machine": "ARM",
+              "byte_order": "little",
+              "eabi_flags": "0x05000000"
+            }
+          }
+        ],
+        "compiler": {
+          "name": "StLang.exe",
+          "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\StLang.exe",
+          "bytes": 25144320,
+          "sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847"
+        },
+        "kernel": {
+          "name": "Kernel.dll",
+          "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\Kernel.dll",
+          "bytes": 289280,
+          "sha256": "e9b675b79ced087c7e7e1a897ea889d692536056f2f45d2b813e98239906edcd"
+        },
+        "ipc": {
+          "success": 1,
+          "started": 1,
+          "done": 1
+        },
+        "result_file": {
+          "name": "MAIN.rst",
+          "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\plus2\\build\\MAIN.rst",
+          "bytes": 10,
+          "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+        },
+        "timed_out": false,
+        "output_truncated": false,
+        "capture_complete": true,
+        "diagnostics": [],
+        "helper_sha256": "1dd95f471bcb225f8bde3e9fe70f7e3287555e7e988c1c6745e18d22f78d26d9"
+      },
+      "stdout_contains_error": false
+    },
+    {
+      "case": "badsyntax",
+      "preparation": {
+        "schema": "plcidf.vendor-main-preparation.v1",
+        "scope": "vendor-main-intermediate-only",
+        "ok": true,
+        "status": "prepared",
+        "stage": "complete",
+        "diagnostics": [],
+        "device_access": false,
+        "gui_access": false,
+        "project_link_verified": false,
+        "files": [
+          {
+            "name": "MAIN.st",
+            "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/badsyntax/sttemp/MAIN.st",
+            "bytes": 86,
+            "sha256": "83eab0d20555bbdaa078200d28fce137f058c7c76dc4f0e088c7f6a0d5e0dd24"
+          },
+          {
+            "name": "MAIN.cl",
+            "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/badsyntax/sttemp/MAIN.cl",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/badsyntax/body.st",
+        "source_sha256": "b87aef97b7a6b51ecb3216bca00846e4cdc6c7028bbf10047cd17bd368096e85",
+        "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/badsyntax/globals.json",
+        "globals_sha256": "90ed9de51ebaa217282030dea241a75e3620697a25c089e4718fe6241deebcda",
+        "globals": {
+          "COUNTER": "DINT"
+        },
+        "intermediate_text_sha256": "493f303b87125112038744784c3aa6328f9b5d62e04bbdfb0c1a837cb15033ca",
+        "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/plain-main-delivery-7b92b5f8/badsyntax/sttemp"
+      },
+      "compile": {
+        "schema": "plcidf.vendor-object-build.v1",
+        "scope": "vendor-object-only",
+        "ok": false,
+        "status": "failed",
+        "stage": "validate",
+        "source_files": [
+          {
+            "name": "MAIN.st",
+            "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\badsyntax\\sttemp\\MAIN.st",
+            "bytes": 86,
+            "sha256": "83eab0d20555bbdaa078200d28fce137f058c7c76dc4f0e088c7f6a0d5e0dd24"
+          },
+          {
+            "name": "MAIN.cl",
+            "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\plain-main-delivery-7b92b5f8\\badsyntax\\sttemp\\MAIN.cl",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "object_files": [],
+        "compiler": {
+          "name": "StLang.exe",
+          "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\StLang.exe",
+          "bytes": 25144320,
+          "sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847"
+        },
+        "kernel": {
+          "name": "Kernel.dll",
+          "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\Kernel.dll",
+          "bytes": 289280,
+          "sha256": "e9b675b79ced087c7e7e1a897ea889d692536056f2f45d2b813e98239906edcd"
+        },
+        "ipc": {
+          "success": 0,
+          "started": 1,
+          "done": 1
+        },
+        "result_file": null,
+        "timed_out": false,
+        "output_truncated": false,
+        "capture_complete": true,
+        "diagnostics": [
+          {
+            "message": "Compiler emitted error diagnostics, regardless of later success markers",
+            "code": "E_VENDOR_OBJECT",
+            "stage": "validate"
+          }
+        ],
+        "helper_sha256": null
+      },
+      "stdout_contains_error": true
+    }
+  ],
+  "limitations": {
+    "whole_project_preprocessing": false,
+    "link_and_package": false,
+    "download": false,
+    "device_execution": false,
+    "hardware_soc_confirmed": false
+  },
+  "frozen_user_intermediate_roundtrip": {
+    "bytes": 1715,
+    "sha256": "0b9521fa530a0e6fcd119fbe57ef5fb78bfc92742a9670f0cbd1d30788ab82e5",
+    "byte_identical": true,
+    "source_payload_published": false
+  },
+  "independent_crash_correction": {
+    "root_evidence": "evidence/easy521-application-20261018/plain-mixed-types-object.json",
+    "failure_exit_code": -1073741819,
+    "finding": "Single variables of each primitive type and two globals with one statement pass; multiple statements/IF require the implicit _HC_EMPTYFUC declaration.",
+    "fix": "Inject FUNCTION _HC_EMPTYFUC : VOID / END_FUNCTION before globals; declaration only, runtime definition remains for later link.",
+    "matrices": [
+      {
+        "experiment": "type-matrix",
+        "raw_record_sha256": "0d71c4aa7a8354b3fc76840369e180871e8d5f0fadcd263b050b59b4185c2697",
+        "private_root": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a",
+        "cases": [
+          {
+            "case": "one-bool",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-bool\\sttemp\\MAIN.st",
+                "bytes": 88,
+                "sha256": "b841c854ccc51ee6d522beb4def041187ec28ad1d2eb9e65ce76db2736721902"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-bool\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-bool\\build\\MAIN.o",
+                "bytes": 1956,
+                "sha256": "811d93c507c1db5079e6ead5f6522d10aa077b2d4b3f4f29e28f299112fefab5",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool/sttemp/MAIN.st",
+                  "bytes": 88,
+                  "sha256": "b841c854ccc51ee6d522beb4def041187ec28ad1d2eb9e65ce76db2736721902"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool/body.st",
+              "source_sha256": "87247462492f9627d0d9876d749b88eaeea0569f61962ac08fc4201bc1101d8b",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool/globals.json",
+              "globals_sha256": "50a7ca61616a17f1e1b3e8e3ed41b5a89296d202c84fe8539a88184f487ca04f",
+              "globals": {
+                "FLAG": "BOOL"
+              },
+              "intermediate_text_sha256": "f907eefd1d672d3e792c004df06e5b1423e980a4aa3926169937832ab8782812",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool/sttemp"
+            }
+          },
+          {
+            "case": "one-bool-const",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-bool-const\\sttemp\\MAIN.st",
+                "bytes": 84,
+                "sha256": "5408a123023999f1710fe4ac1e674dc9fdfbd792b3e15010f9736ce13f840d3a"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-bool-const\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-bool-const\\build\\MAIN.o",
+                "bytes": 1956,
+                "sha256": "75029935084ae76ab39c20234e02c4cd634badf0d88f764d0b546e75a58a379e",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool-const/sttemp/MAIN.st",
+                  "bytes": 84,
+                  "sha256": "5408a123023999f1710fe4ac1e674dc9fdfbd792b3e15010f9736ce13f840d3a"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool-const/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool-const/body.st",
+              "source_sha256": "a97730ec200689e0468d187fe5d176589f65bcc7171a1a5f3cab0856192b0026",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool-const/globals.json",
+              "globals_sha256": "50a7ca61616a17f1e1b3e8e3ed41b5a89296d202c84fe8539a88184f487ca04f",
+              "globals": {
+                "FLAG": "BOOL"
+              },
+              "intermediate_text_sha256": "04e51a1d234f2ac3ce9547d6ca451d91bb89ea133921c3db79662c5e72ad9a0d",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-bool-const/sttemp"
+            }
+          },
+          {
+            "case": "one-int",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-int\\sttemp\\MAIN.st",
+                "bytes": 90,
+                "sha256": "55007f992eeb97a6f0985c738a9af4cb97025ea94b4d11305a449196c50ed390"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-int\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-int\\build\\MAIN.o",
+                "bytes": 2040,
+                "sha256": "a776c7bc68ac58a10d209a84132bc0b4c3fffab490b9e6baa6e1797a2d919f14",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-int/sttemp/MAIN.st",
+                  "bytes": 90,
+                  "sha256": "55007f992eeb97a6f0985c738a9af4cb97025ea94b4d11305a449196c50ed390"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-int/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-int/body.st",
+              "source_sha256": "aa1c3842d3f48345472ce732581b1592e8e61002faae716861073e753311354f",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-int/globals.json",
+              "globals_sha256": "0d56217e14025b9f195330cda77a89589f9979ee701eb5e93d772051de45d72c",
+              "globals": {
+                "SMALL": "INT"
+              },
+              "intermediate_text_sha256": "5e657cfbf6374795bbe0020dad826f09d842a3b5e7a87e18ae7294c5dac28706",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-int/sttemp"
+            }
+          },
+          {
+            "case": "one-dint",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-dint\\sttemp\\MAIN.st",
+                "bytes": 97,
+                "sha256": "286aee653b8a52cc9028b7598f20888b5e9001917da2b36026b663c773cbd769"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-dint\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-dint\\build\\MAIN.o",
+                "bytes": 2040,
+                "sha256": "9d2063daa05318c463c27a43ae6895e79fe27ba6d34dadd08dc27eb0e22affd1",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint/sttemp/MAIN.st",
+                  "bytes": 97,
+                  "sha256": "286aee653b8a52cc9028b7598f20888b5e9001917da2b36026b663c773cbd769"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint/body.st",
+              "source_sha256": "4f9511c903b671a9109c5fb62c4879dbcac3f99d9aa99e9e3a0b797a5dd68e43",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint/globals.json",
+              "globals_sha256": "90ed9de51ebaa217282030dea241a75e3620697a25c089e4718fe6241deebcda",
+              "globals": {
+                "COUNTER": "DINT"
+              },
+              "intermediate_text_sha256": "d71f43d534038caf8183549a4d5c9d4f3ccfd71cb6af24bd0071f07608f62c7f",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint/sttemp"
+            }
+          },
+          {
+            "case": "one-real",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-real\\sttemp\\MAIN.st",
+                "bytes": 93,
+                "sha256": "695b230901254894aced46487158c448d533f6614c87de980c2281b7d20cff06"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-real\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-real\\build\\MAIN.o",
+                "bytes": 2148,
+                "sha256": "3a3b16d5b68f4588e7687d3970ce965f7dfdad1e77921da20c078eed774c2da7",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real/sttemp/MAIN.st",
+                  "bytes": 93,
+                  "sha256": "695b230901254894aced46487158c448d533f6614c87de980c2281b7d20cff06"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real/body.st",
+              "source_sha256": "c6121e89e17295ea47b5bad1c681005ab287d8d9299cbb6cee29d91012408f7b",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real/globals.json",
+              "globals_sha256": "f9e4774c201d1ba32f952befe4772eb3678b04eb44550f214bd8bd7aa0315e66",
+              "globals": {
+                "VALUE": "REAL"
+              },
+              "intermediate_text_sha256": "32fe276b73e69fc03a1e448dbbfb10e1b34e226c1863697af654f2e8b5598694",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real/sttemp"
+            }
+          },
+          {
+            "case": "one-real-assign",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-real-assign\\sttemp\\MAIN.st",
+                "bytes": 85,
+                "sha256": "7c2aca8a3f55cc69c24499bc1b73eab9a95e48ade47706ac707a675f25588fa8"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-real-assign\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-real-assign\\build\\MAIN.o",
+                "bytes": 1980,
+                "sha256": "110ed7b4447d3ad226da37a7d2a616e5d85382c6de402c85639ca5427e60456e",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real-assign/sttemp/MAIN.st",
+                  "bytes": 85,
+                  "sha256": "7c2aca8a3f55cc69c24499bc1b73eab9a95e48ade47706ac707a675f25588fa8"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real-assign/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real-assign/body.st",
+              "source_sha256": "b14c6fbff10ccb7635e562f8b1067fa42549b6a706ea587fb4ba0c5ce4f6d4e3",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real-assign/globals.json",
+              "globals_sha256": "f9e4774c201d1ba32f952befe4772eb3678b04eb44550f214bd8bd7aa0315e66",
+              "globals": {
+                "VALUE": "REAL"
+              },
+              "intermediate_text_sha256": "aeea953f590caed887c424538133ca95b382d037f3883a4b39f6505dfea81b76",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real-assign/sttemp"
+            }
+          },
+          {
+            "case": "two-dint",
+            "ok": false,
+            "exit_code": -1073741819,
+            "ipc": {
+              "success": 0,
+              "started": 1,
+              "done": 0
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\two-dint\\sttemp\\MAIN.st",
+                "bytes": 131,
+                "sha256": "fefe4af778b5b8867ccdf4434325ec7004570eca1e380fc572698f24b919efb1"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\two-dint\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [],
+            "diagnostics": [
+              {
+                "message": "Compiler did not report successful completion of this mapped task",
+                "code": "E_VENDOR_OBJECT",
+                "stage": "validate"
+              }
+            ],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/two-dint/sttemp/MAIN.st",
+                  "bytes": 131,
+                  "sha256": "fefe4af778b5b8867ccdf4434325ec7004570eca1e380fc572698f24b919efb1"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/two-dint/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/two-dint/body.st",
+              "source_sha256": "eaeba220b4f7fba5d854e471dc6e1cec3e69abb843f1a162f63020b7aaf6a204",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/two-dint/globals.json",
+              "globals_sha256": "f19d6b447b7a926b518c422a497b39f60e8de7ebdaf1ce5ced0402cd89e55067",
+              "globals": {
+                "FIRST": "DINT",
+                "SECOND": "DINT"
+              },
+              "intermediate_text_sha256": "cf63dda5961a49c09bcd9553b5db197d6419292c77247089a209e45e7a8fe50c",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/two-dint/sttemp"
+            }
+          },
+          {
+            "case": "one-dint-if",
+            "ok": false,
+            "exit_code": -1073741819,
+            "ipc": {
+              "success": 0,
+              "started": 1,
+              "done": 0
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-dint-if\\sttemp\\MAIN.st",
+                "bytes": 116,
+                "sha256": "7aed5dbe5c32bc86c4f29424ead72710ff16e9df496712f1c50d4a34805cba70"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\one-dint-if\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [],
+            "diagnostics": [
+              {
+                "message": "Compiler did not report successful completion of this mapped task",
+                "code": "E_VENDOR_OBJECT",
+                "stage": "validate"
+              }
+            ],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint-if/sttemp/MAIN.st",
+                  "bytes": 116,
+                  "sha256": "7aed5dbe5c32bc86c4f29424ead72710ff16e9df496712f1c50d4a34805cba70"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint-if/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint-if/body.st",
+              "source_sha256": "f8fcea6f351222c4f3c0019d00904919a3906a193552294b68be6a599a70b3ce",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint-if/globals.json",
+              "globals_sha256": "90ed9de51ebaa217282030dea241a75e3620697a25c089e4718fe6241deebcda",
+              "globals": {
+                "COUNTER": "DINT"
+              },
+              "intermediate_text_sha256": "ced69660e77a10e971f11aec9153716ecff42d25413438281e057a278da8de89",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-dint-if/sttemp"
+            }
+          },
+          {
+            "case": "mixed-no-if",
+            "ok": false,
+            "exit_code": -1073741819,
+            "ipc": {
+              "success": 0,
+              "started": 1,
+              "done": 0
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\mixed-no-if\\sttemp\\MAIN.st",
+                "bytes": 206,
+                "sha256": "67a230059d3bfe3b329be0753a668353e426ba726bb5538cedff95ea81540593"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\mixed-no-if\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [],
+            "diagnostics": [
+              {
+                "message": "Compiler did not report successful completion of this mapped task",
+                "code": "E_VENDOR_OBJECT",
+                "stage": "validate"
+              }
+            ],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-no-if/sttemp/MAIN.st",
+                  "bytes": 206,
+                  "sha256": "67a230059d3bfe3b329be0753a668353e426ba726bb5538cedff95ea81540593"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-no-if/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-no-if/body.st",
+              "source_sha256": "44f87fc7db916d271c40cfe7fe7adeb29c4e98c0b118e2bc8f5170a57534d322",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-no-if/globals.json",
+              "globals_sha256": "04f0f43f37b669bcf89b48de30331874f36dcfbae17951568879b0bff3de2e05",
+              "globals": {
+                "COUNTER": "DINT",
+                "FLAG": "BOOL",
+                "SMALL": "INT",
+                "VALUE": "REAL"
+              },
+              "intermediate_text_sha256": "473d009495e7d807193d10100b1095e71dbc269ef8538dade427b7c7a905f064",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-no-if/sttemp"
+            }
+          },
+          {
+            "case": "mixed-with-if",
+            "ok": false,
+            "exit_code": -1073741819,
+            "ipc": {
+              "success": 0,
+              "started": 1,
+              "done": 0
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\mixed-with-if\\sttemp\\MAIN.st",
+                "bytes": 248,
+                "sha256": "2e6e21503007a3b14a46de063b4a6bf58befff37f2d3a947d30e2be05ef8d891"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\type-isolation-3d04e18a\\mixed-with-if\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [],
+            "diagnostics": [
+              {
+                "message": "Compiler did not report successful completion of this mapped task",
+                "code": "E_VENDOR_OBJECT",
+                "stage": "validate"
+              }
+            ],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-with-if/sttemp/MAIN.st",
+                  "bytes": 248,
+                  "sha256": "2e6e21503007a3b14a46de063b4a6bf58befff37f2d3a947d30e2be05ef8d891"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-with-if/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-with-if/body.st",
+              "source_sha256": "1205a1876ffb713420e67d4616e2c398bc7f1905b112518ba623332c27883622",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-with-if/globals.json",
+              "globals_sha256": "04f0f43f37b669bcf89b48de30331874f36dcfbae17951568879b0bff3de2e05",
+              "globals": {
+                "COUNTER": "DINT",
+                "FLAG": "BOOL",
+                "SMALL": "INT",
+                "VALUE": "REAL"
+              },
+              "intermediate_text_sha256": "7a7c5d6ec043e7b40b4401b6bb1d891b33c59aba16187471968a75ea4e3ba8d3",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/mixed-with-if/sttemp"
+            }
+          }
+        ]
+      },
+      {
+        "experiment": "helper-matrix",
+        "raw_record_sha256": "218191e6732b4ac1639cea23c3b8e9f52d2c66fbceef29900fa396bdc160d568",
+        "private_root": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/helper-isolation-22bc796c",
+        "cases": [
+          {
+            "case": "two-dint-single-statement",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\two-dint-single-statement\\sttemp\\MAIN.st",
+                "bytes": 110,
+                "sha256": "af0c53acf117c6579f15c6c79b1b6a4684dc6f82a9745668d4656f0d7efed22f"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\two-dint-single-statement\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\two-dint-single-statement\\build\\MAIN.o",
+                "bytes": 2088,
+                "sha256": "b510639832c57c43e1a34a5e1e35f8a95072657e38bd796671aa4ddf27efebc2",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "implicit_helper_declaration": false
+          },
+          {
+            "case": "one-dint-two-statements",
+            "ok": false,
+            "exit_code": -1073741819,
+            "ipc": {
+              "success": 0,
+              "started": 1,
+              "done": 0
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\one-dint-two-statements\\sttemp\\MAIN.st",
+                "bytes": 121,
+                "sha256": "b0180f115c44e49902e95b958f2b3deda4c766aa2f29c9b29d114c4d77356c35"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\one-dint-two-statements\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [],
+            "diagnostics": [
+              {
+                "message": "Compiler did not report successful completion of this mapped task",
+                "code": "E_VENDOR_OBJECT",
+                "stage": "validate"
+              }
+            ],
+            "implicit_helper_declaration": false
+          },
+          {
+            "case": "two-dint-with-helper",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\two-dint-with-helper\\sttemp\\MAIN.st",
+                "bytes": 175,
+                "sha256": "7b163c7da90a41a41c7b2098d0b4a93eaff34d8130e195010b119ce13660ac2d"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\two-dint-with-helper\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\two-dint-with-helper\\build\\MAIN.o",
+                "bytes": 2168,
+                "sha256": "417a5cabf2abd382c5b0eb1d3ab2ac14690ef61f7dc97791f4bf204362fcec1b",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "implicit_helper_declaration": true
+          },
+          {
+            "case": "one-dint-if-with-helper",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\one-dint-if-with-helper\\sttemp\\MAIN.st",
+                "bytes": 160,
+                "sha256": "ee278767111c0034f64028f8e463d417865e9afc7e5174438c2fe17c450c0da8"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\one-dint-if-with-helper\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\one-dint-if-with-helper\\build\\MAIN.o",
+                "bytes": 2052,
+                "sha256": "c6f96a0b40de2a9b2b9e6eb7c98f804d2de40ec7f8dad80e90de61ac2defa3fb",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "implicit_helper_declaration": true
+          },
+          {
+            "case": "mixed-if-with-helper",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\mixed-if-with-helper\\sttemp\\MAIN.st",
+                "bytes": 292,
+                "sha256": "b6c80f73b2da59940649e25ed7a6a6c3f279159f6a7e700f25d4d04b61061c63"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\mixed-if-with-helper\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\helper-isolation-22bc796c\\mixed-if-with-helper\\build\\MAIN.o",
+                "bytes": 2752,
+                "sha256": "f23dcf8f2e0d2a69be37964e12d4218b8bcfad5f69e4c79034ea3a0a3517bbef",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "implicit_helper_declaration": true
+          }
+        ]
+      },
+      {
+        "experiment": "fixed-type-matrix",
+        "raw_record_sha256": "7fc99f7d35a1b7afa1bf8e06f6efbdadfeafee1cdcff581d856d318979eebb7b",
+        "private_root": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92",
+        "cases": [
+          {
+            "case": "one-dint-two-statements",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\one-dint-two-statements\\sttemp\\MAIN.st",
+                "bytes": 165,
+                "sha256": "1c242dbd10ddcb993b617ab49a51cd9838111ed1683ca31d83739434dae4004c"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\one-dint-two-statements\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\one-dint-two-statements\\build\\MAIN.o",
+                "bytes": 2124,
+                "sha256": "d50133aa18f5a51a3bbeb11d20ee7ba1ddf8e1c6e14fc0f06b072397fdfcb3a7",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "injected_runtime_declarations": [
+                "_HC_EMPTYFUC:VOID()"
+              ],
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/one-dint-two-statements/sttemp/MAIN.st",
+                  "bytes": 165,
+                  "sha256": "1c242dbd10ddcb993b617ab49a51cd9838111ed1683ca31d83739434dae4004c"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/one-dint-two-statements/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/one-dint-two-statements/body.st",
+              "source_sha256": "168fcdf7f79d68ecd889d3a24be8c7219d00c387b8981791556dcfbcd97fcd8c",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/one-dint-two-statements/globals.json",
+              "globals_sha256": "90ed9de51ebaa217282030dea241a75e3620697a25c089e4718fe6241deebcda",
+              "globals": {
+                "COUNTER": "DINT"
+              },
+              "intermediate_text_sha256": "2fd96d5e744af79eb75c94903cad56286b1629ac64ec58d745fc4c7d8fc2a9a9",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/one-dint-two-statements/sttemp"
+            }
+          },
+          {
+            "case": "two-dint",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\two-dint\\sttemp\\MAIN.st",
+                "bytes": 175,
+                "sha256": "7b163c7da90a41a41c7b2098d0b4a93eaff34d8130e195010b119ce13660ac2d"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\two-dint\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\two-dint\\build\\MAIN.o",
+                "bytes": 2168,
+                "sha256": "417a5cabf2abd382c5b0eb1d3ab2ac14690ef61f7dc97791f4bf204362fcec1b",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "injected_runtime_declarations": [
+                "_HC_EMPTYFUC:VOID()"
+              ],
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/two-dint/sttemp/MAIN.st",
+                  "bytes": 175,
+                  "sha256": "7b163c7da90a41a41c7b2098d0b4a93eaff34d8130e195010b119ce13660ac2d"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/two-dint/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/two-dint/body.st",
+              "source_sha256": "eaeba220b4f7fba5d854e471dc6e1cec3e69abb843f1a162f63020b7aaf6a204",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/two-dint/globals.json",
+              "globals_sha256": "f19d6b447b7a926b518c422a497b39f60e8de7ebdaf1ce5ced0402cd89e55067",
+              "globals": {
+                "FIRST": "DINT",
+                "SECOND": "DINT"
+              },
+              "intermediate_text_sha256": "b5c1da29229aab41c60b17ebcefbc3fc0ad685a7400f6774f406cd93df6841f0",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/two-dint/sttemp"
+            }
+          },
+          {
+            "case": "mixed-with-if",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\mixed-with-if\\sttemp\\MAIN.st",
+                "bytes": 292,
+                "sha256": "c48cc67fd1840ba95dfcefce9558b550303f685e5c45d4219f67d21b937296a2"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\mixed-with-if\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\mixed-with-if\\build\\MAIN.o",
+                "bytes": 2752,
+                "sha256": "f23dcf8f2e0d2a69be37964e12d4218b8bcfad5f69e4c79034ea3a0a3517bbef",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "injected_runtime_declarations": [
+                "_HC_EMPTYFUC:VOID()"
+              ],
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/mixed-with-if/sttemp/MAIN.st",
+                  "bytes": 292,
+                  "sha256": "c48cc67fd1840ba95dfcefce9558b550303f685e5c45d4219f67d21b937296a2"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/mixed-with-if/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/mixed-with-if/body.st",
+              "source_sha256": "1205a1876ffb713420e67d4616e2c398bc7f1905b112518ba623332c27883622",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/mixed-with-if/globals.json",
+              "globals_sha256": "04f0f43f37b669bcf89b48de30331874f36dcfbae17951568879b0bff3de2e05",
+              "globals": {
+                "COUNTER": "DINT",
+                "FLAG": "BOOL",
+                "SMALL": "INT",
+                "VALUE": "REAL"
+              },
+              "intermediate_text_sha256": "a34efa70cc50a95a2dcbbed23b62c4f110e521ad8dae3d8e742c01bda47da450",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/mixed-with-if/sttemp"
+            }
+          },
+          {
+            "case": "max-256-globals",
+            "ok": true,
+            "exit_code": 1,
+            "ipc": {
+              "success": 1,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\max-256-globals\\sttemp\\MAIN.st",
+                "bytes": 4750,
+                "sha256": "98ae3be9069150f24e6162782e9aae522effa08decc37052509f06b13b92d267"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\max-256-globals\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [
+              {
+                "name": "MAIN.o",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\max-256-globals\\build\\MAIN.o",
+                "bytes": 2168,
+                "sha256": "60c4943e32e356f448552529af3f611542a6eae44ec7e6cea85f02e3bf23e066",
+                "elf": {
+                  "class": "ELF32",
+                  "entry_symbol": "MAIN",
+                  "type": "REL",
+                  "machine": "ARM",
+                  "byte_order": "little",
+                  "eabi_flags": "0x05000000"
+                }
+              }
+            ],
+            "diagnostics": [],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "injected_runtime_declarations": [
+                "_HC_EMPTYFUC:VOID()"
+              ],
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/max-256-globals/sttemp/MAIN.st",
+                  "bytes": 4750,
+                  "sha256": "98ae3be9069150f24e6162782e9aae522effa08decc37052509f06b13b92d267"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/max-256-globals/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/max-256-globals/body.st",
+              "source_sha256": "2054f27a45a7fc8154c54fe909b33a8d87707df5c3a4add494047e9276412633",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/max-256-globals/globals.json",
+              "globals_sha256": "afddd8a0623945a10beb14de50d4ca56da378c3e308811b32168170a7e107903",
+              "globals": {
+                "VAR000": "DINT",
+                "VAR001": "DINT",
+                "VAR002": "DINT",
+                "VAR003": "DINT",
+                "VAR004": "DINT",
+                "VAR005": "DINT",
+                "VAR006": "DINT",
+                "VAR007": "DINT",
+                "VAR008": "DINT",
+                "VAR009": "DINT",
+                "VAR010": "DINT",
+                "VAR011": "DINT",
+                "VAR012": "DINT",
+                "VAR013": "DINT",
+                "VAR014": "DINT",
+                "VAR015": "DINT",
+                "VAR016": "DINT",
+                "VAR017": "DINT",
+                "VAR018": "DINT",
+                "VAR019": "DINT",
+                "VAR020": "DINT",
+                "VAR021": "DINT",
+                "VAR022": "DINT",
+                "VAR023": "DINT",
+                "VAR024": "DINT",
+                "VAR025": "DINT",
+                "VAR026": "DINT",
+                "VAR027": "DINT",
+                "VAR028": "DINT",
+                "VAR029": "DINT",
+                "VAR030": "DINT",
+                "VAR031": "DINT",
+                "VAR032": "DINT",
+                "VAR033": "DINT",
+                "VAR034": "DINT",
+                "VAR035": "DINT",
+                "VAR036": "DINT",
+                "VAR037": "DINT",
+                "VAR038": "DINT",
+                "VAR039": "DINT",
+                "VAR040": "DINT",
+                "VAR041": "DINT",
+                "VAR042": "DINT",
+                "VAR043": "DINT",
+                "VAR044": "DINT",
+                "VAR045": "DINT",
+                "VAR046": "DINT",
+                "VAR047": "DINT",
+                "VAR048": "DINT",
+                "VAR049": "DINT",
+                "VAR050": "DINT",
+                "VAR051": "DINT",
+                "VAR052": "DINT",
+                "VAR053": "DINT",
+                "VAR054": "DINT",
+                "VAR055": "DINT",
+                "VAR056": "DINT",
+                "VAR057": "DINT",
+                "VAR058": "DINT",
+                "VAR059": "DINT",
+                "VAR060": "DINT",
+                "VAR061": "DINT",
+                "VAR062": "DINT",
+                "VAR063": "DINT",
+                "VAR064": "DINT",
+                "VAR065": "DINT",
+                "VAR066": "DINT",
+                "VAR067": "DINT",
+                "VAR068": "DINT",
+                "VAR069": "DINT",
+                "VAR070": "DINT",
+                "VAR071": "DINT",
+                "VAR072": "DINT",
+                "VAR073": "DINT",
+                "VAR074": "DINT",
+                "VAR075": "DINT",
+                "VAR076": "DINT",
+                "VAR077": "DINT",
+                "VAR078": "DINT",
+                "VAR079": "DINT",
+                "VAR080": "DINT",
+                "VAR081": "DINT",
+                "VAR082": "DINT",
+                "VAR083": "DINT",
+                "VAR084": "DINT",
+                "VAR085": "DINT",
+                "VAR086": "DINT",
+                "VAR087": "DINT",
+                "VAR088": "DINT",
+                "VAR089": "DINT",
+                "VAR090": "DINT",
+                "VAR091": "DINT",
+                "VAR092": "DINT",
+                "VAR093": "DINT",
+                "VAR094": "DINT",
+                "VAR095": "DINT",
+                "VAR096": "DINT",
+                "VAR097": "DINT",
+                "VAR098": "DINT",
+                "VAR099": "DINT",
+                "VAR100": "DINT",
+                "VAR101": "DINT",
+                "VAR102": "DINT",
+                "VAR103": "DINT",
+                "VAR104": "DINT",
+                "VAR105": "DINT",
+                "VAR106": "DINT",
+                "VAR107": "DINT",
+                "VAR108": "DINT",
+                "VAR109": "DINT",
+                "VAR110": "DINT",
+                "VAR111": "DINT",
+                "VAR112": "DINT",
+                "VAR113": "DINT",
+                "VAR114": "DINT",
+                "VAR115": "DINT",
+                "VAR116": "DINT",
+                "VAR117": "DINT",
+                "VAR118": "DINT",
+                "VAR119": "DINT",
+                "VAR120": "DINT",
+                "VAR121": "DINT",
+                "VAR122": "DINT",
+                "VAR123": "DINT",
+                "VAR124": "DINT",
+                "VAR125": "DINT",
+                "VAR126": "DINT",
+                "VAR127": "DINT",
+                "VAR128": "DINT",
+                "VAR129": "DINT",
+                "VAR130": "DINT",
+                "VAR131": "DINT",
+                "VAR132": "DINT",
+                "VAR133": "DINT",
+                "VAR134": "DINT",
+                "VAR135": "DINT",
+                "VAR136": "DINT",
+                "VAR137": "DINT",
+                "VAR138": "DINT",
+                "VAR139": "DINT",
+                "VAR140": "DINT",
+                "VAR141": "DINT",
+                "VAR142": "DINT",
+                "VAR143": "DINT",
+                "VAR144": "DINT",
+                "VAR145": "DINT",
+                "VAR146": "DINT",
+                "VAR147": "DINT",
+                "VAR148": "DINT",
+                "VAR149": "DINT",
+                "VAR150": "DINT",
+                "VAR151": "DINT",
+                "VAR152": "DINT",
+                "VAR153": "DINT",
+                "VAR154": "DINT",
+                "VAR155": "DINT",
+                "VAR156": "DINT",
+                "VAR157": "DINT",
+                "VAR158": "DINT",
+                "VAR159": "DINT",
+                "VAR160": "DINT",
+                "VAR161": "DINT",
+                "VAR162": "DINT",
+                "VAR163": "DINT",
+                "VAR164": "DINT",
+                "VAR165": "DINT",
+                "VAR166": "DINT",
+                "VAR167": "DINT",
+                "VAR168": "DINT",
+                "VAR169": "DINT",
+                "VAR170": "DINT",
+                "VAR171": "DINT",
+                "VAR172": "DINT",
+                "VAR173": "DINT",
+                "VAR174": "DINT",
+                "VAR175": "DINT",
+                "VAR176": "DINT",
+                "VAR177": "DINT",
+                "VAR178": "DINT",
+                "VAR179": "DINT",
+                "VAR180": "DINT",
+                "VAR181": "DINT",
+                "VAR182": "DINT",
+                "VAR183": "DINT",
+                "VAR184": "DINT",
+                "VAR185": "DINT",
+                "VAR186": "DINT",
+                "VAR187": "DINT",
+                "VAR188": "DINT",
+                "VAR189": "DINT",
+                "VAR190": "DINT",
+                "VAR191": "DINT",
+                "VAR192": "DINT",
+                "VAR193": "DINT",
+                "VAR194": "DINT",
+                "VAR195": "DINT",
+                "VAR196": "DINT",
+                "VAR197": "DINT",
+                "VAR198": "DINT",
+                "VAR199": "DINT",
+                "VAR200": "DINT",
+                "VAR201": "DINT",
+                "VAR202": "DINT",
+                "VAR203": "DINT",
+                "VAR204": "DINT",
+                "VAR205": "DINT",
+                "VAR206": "DINT",
+                "VAR207": "DINT",
+                "VAR208": "DINT",
+                "VAR209": "DINT",
+                "VAR210": "DINT",
+                "VAR211": "DINT",
+                "VAR212": "DINT",
+                "VAR213": "DINT",
+                "VAR214": "DINT",
+                "VAR215": "DINT",
+                "VAR216": "DINT",
+                "VAR217": "DINT",
+                "VAR218": "DINT",
+                "VAR219": "DINT",
+                "VAR220": "DINT",
+                "VAR221": "DINT",
+                "VAR222": "DINT",
+                "VAR223": "DINT",
+                "VAR224": "DINT",
+                "VAR225": "DINT",
+                "VAR226": "DINT",
+                "VAR227": "DINT",
+                "VAR228": "DINT",
+                "VAR229": "DINT",
+                "VAR230": "DINT",
+                "VAR231": "DINT",
+                "VAR232": "DINT",
+                "VAR233": "DINT",
+                "VAR234": "DINT",
+                "VAR235": "DINT",
+                "VAR236": "DINT",
+                "VAR237": "DINT",
+                "VAR238": "DINT",
+                "VAR239": "DINT",
+                "VAR240": "DINT",
+                "VAR241": "DINT",
+                "VAR242": "DINT",
+                "VAR243": "DINT",
+                "VAR244": "DINT",
+                "VAR245": "DINT",
+                "VAR246": "DINT",
+                "VAR247": "DINT",
+                "VAR248": "DINT",
+                "VAR249": "DINT",
+                "VAR250": "DINT",
+                "VAR251": "DINT",
+                "VAR252": "DINT",
+                "VAR253": "DINT",
+                "VAR254": "DINT",
+                "VAR255": "DINT"
+              },
+              "intermediate_text_sha256": "d9f09633cab655643fc940e45c8428a7db9eaab7230fd0a34716a14a30e7660a",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/max-256-globals/sttemp"
+            }
+          },
+          {
+            "case": "badsyntax",
+            "ok": false,
+            "exit_code": 1,
+            "ipc": {
+              "success": 0,
+              "started": 1,
+              "done": 1
+            },
+            "source_files": [
+              {
+                "name": "MAIN.st",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\badsyntax\\sttemp\\MAIN.st",
+                "bytes": 130,
+                "sha256": "84e85a853f9877ad35b05135f13763c062442acf1abb3bd8149fb7462954d637"
+              },
+              {
+                "name": "MAIN.cl",
+                "path": "E:\\PLCProjects\\PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2\\fixed-type-matrix-8a1cac92\\badsyntax\\sttemp\\MAIN.cl",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ],
+            "object_files": [],
+            "diagnostics": [
+              {
+                "message": "Compiler emitted error diagnostics, regardless of later success markers",
+                "code": "E_VENDOR_OBJECT",
+                "stage": "validate"
+              }
+            ],
+            "preparation": {
+              "schema": "plcidf.vendor-main-preparation.v1",
+              "scope": "vendor-main-intermediate-only",
+              "ok": true,
+              "status": "prepared",
+              "stage": "complete",
+              "diagnostics": [],
+              "device_access": false,
+              "gui_access": false,
+              "project_link_verified": false,
+              "injected_runtime_declarations": [
+                "_HC_EMPTYFUC:VOID()"
+              ],
+              "files": [
+                {
+                  "name": "MAIN.st",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/badsyntax/sttemp/MAIN.st",
+                  "bytes": 130,
+                  "sha256": "84e85a853f9877ad35b05135f13763c062442acf1abb3bd8149fb7462954d637"
+                },
+                {
+                  "name": "MAIN.cl",
+                  "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/badsyntax/sttemp/MAIN.cl",
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "source": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/badsyntax/body.st",
+              "source_sha256": "b87aef97b7a6b51ecb3216bca00846e4cdc6c7028bbf10047cd17bd368096e85",
+              "globals_file": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/badsyntax/globals.json",
+              "globals_sha256": "90ed9de51ebaa217282030dea241a75e3620697a25c089e4718fe6241deebcda",
+              "globals": {
+                "COUNTER": "DINT"
+              },
+              "intermediate_text_sha256": "79a5d128504017f28ff714def7b65deee4ecd5a5d54f6a3bf975b0b761117f37",
+              "output_directory": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/fixed-type-matrix-8a1cac92/badsyntax/sttemp"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

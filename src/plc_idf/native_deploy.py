@@ -44,6 +44,7 @@ from pathlib import Path, PureWindowsPath
 from .artifacts import normalize_target, verify_build_manifest
 from .evidence import EvidenceWriteError, StrictEvidenceLogger
 from .lease import LeaseBusy, bridge_lease
+from .native_release import freeze_intent, verify_release
 from .safety import SafetyError
 
 
@@ -302,10 +303,22 @@ class NativeDeploy:
             if type(timeout_s) not in (int, float) or not math.isfinite(timeout_s) or not 0 < timeout_s <= 600:
                 raise NativeDeployError("Deployment time budget must be in (0, 600] seconds")
             record, context = self._prepare(build_record, working_project, backup, preflight)
+            availability = self._availability()
+            prepared_release = (availability.get("available") is True and
+                availability["description"]["capabilities"].get("prepared_release") is True)
+            if prepared_release:
+                context["intent"] = freeze_intent(record["compilation"]["manifest"],
+                    operation_id=context["operation_id"], working_project=working_project,
+                    build_record_hash=record["record_hash"])
+                context["source_text_sha256"] = record["compilation"]["sync"]["source_text_sha256"]
+                context["plan_hash"] = _digest({k: v for k, v in context.items() if k != "plan_hash"})
+                result.update(verification_level="unverified", intent_build_hash=context["build_hash"],
+                    project_consistency={"status": "unverified"},
+                    binary_consistency={"status": "unverified", "reason": "No calibrated device byte binding/readback"})
             result["plan"] = _copy(context)
             result.update({key: context[key] for key in (
                 "operation_id", "build_hash", "plan_hash", "target", "working_project")})
-            result["adapter"] = self._availability()
+            result["adapter"] = availability
             if not result["adapter"]["available"]:
                 result.update(status="unavailable", reason=result["adapter"]["reason"])
                 return result
@@ -353,19 +366,58 @@ class NativeDeploy:
                 result["download"] = call(self.adapter.download, mutation=True)
                 self.evidence.log("native_deploy.download", params={"operation_id": context["operation_id"]},
                                   result=result["download"])
+                if prepared_release and result["download"].get("release"):
+                    # Preserve the actual candidate even for an uncertain transfer.
+                    result["release"] = _copy(result["download"]["release"])
+                    result["release_hash"] = result["download"].get("release_hash")
                 if result["download"]["status"] not in {"completed", "verified"}:
                     result.update(status="failed" if result["download"]["status"] == "failed" else "unknown",
                                   reason="Download completion was not established; do not automatically repeat")
                     return result
+                if prepared_release:
+                    release = result.get("release")
+                    verify_release(release, expected_release_hash=result.get("release_hash"), live_outputs=True)
+                    if release["intent"]["intent_hash"] != context["intent"]["intent_hash"]:
+                        raise NativeDeployError("Prepared release belongs to a different selected intent")
                 result["stage"] = "vendor-verification"
                 result["vendor_verification"] = call(self.adapter.verify_download, _copy(result["download"]))
                 self.evidence.log("native_deploy.vendor-verification", result=result["vendor_verification"])
                 if result["vendor_verification"]["status"] != "verified":
                     result.update(status="unverified", reason="Vendor download result is not verified")
                     return result
+                if prepared_release and result["vendor_verification"].get("release_hash") != result["release_hash"]:
+                    raise NativeDeployError("Vendor result does not bind the immutable prepared release")
                 result["stage"] = "program-consistency"
                 comparison = call(self.adapter.compare_program)
                 result["program_consistency"] = comparison
+                if prepared_release:
+                    # AutoShop's independent command may compile again. It can
+                    # establish project/source consistency, not frozen bytes.
+                    verify_release(result["release"], expected_release_hash=result["release_hash"])
+                    if comparison.get("release_hash") != result["release_hash"]:
+                        raise NativeDeployError("Independent comparison names another release")
+                    project = comparison.get("project_consistency", {})
+                    valid_project = (comparison["status"] == "verified" and comparison.get("matches") is True
+                        and comparison.get("independent") is True and comparison.get("method") == "vendor-program-compare"
+                        and comparison.get("verification_level") == "project"
+                        and project.get("status") == "verified" and project.get("intent_hash") == context["intent"]["intent_hash"])
+                    vendor_hashes = {ref["sha256"] for ref in result["vendor_verification"]["evidence"]}
+                    valid_project &= any(ref["sha256"] not in vendor_hashes for ref in comparison["evidence"])
+                    _file(context["backup"]["path"], context["backup"]["sha256"])
+                    sync = record["compilation"]["sync"]
+                    _file(sync["source"], sync["source_sha256"])
+                    for observation in (observed, result["download"], result["vendor_verification"], comparison):
+                        _evidence(observation["evidence"])
+                    result.update(project_consistency={"status": "verified" if valid_project else "unverified",
+                                                       "intent_hash": context["intent"]["intent_hash"]},
+                                  verification_level="project" if valid_project else "unverified",
+                                  status="unknown", stage="complete" if valid_project else "program-consistency",
+                                  reason="Project consistency verified; device byte binding is unverified" if valid_project
+                                  else "Independent project consistency was not established")
+                    self.evidence.log("native_deploy.release-result", params={"operation_id": context["operation_id"]},
+                        result={"release_hash": result["release_hash"], "verification_level": result["verification_level"],
+                                "binary_consistency": result["binary_consistency"], "ok": False})
+                    return result
                 valid = (comparison["status"] == "verified" and comparison.get("matches") is True
                          and comparison.get("independent") is True
                          and comparison.get("method") in {"vendor-program-compare", "upload-byte-compare"})

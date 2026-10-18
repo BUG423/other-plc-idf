@@ -27,8 +27,8 @@ jobs:
         run: python -m pytest wsl-tools/tests -q
       - name: GitHub progress renderer tests
         run: python -m unittest discover -s tools/tests -v
-      - name: Host-only vendor compiler worker contracts without Windows
-        run: python -m pytest tools/tests/test_compile_vendor_st.py -q
+      - name: Host-only vendor preparation and compiler contracts without Windows
+        run: python -m pytest tools/tests/test_prepare_vendor_st.py tools/tests/test_compile_vendor_st.py -q
       - name: Build sdist and install wheel outside checkout
         run: python tools/check_distribution.py --report /tmp/plcidf-distribution.json
 
