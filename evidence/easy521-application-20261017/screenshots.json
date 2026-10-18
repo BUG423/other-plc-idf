@@ -1,0 +1,17 @@
+[
+  {
+    "path": "evidence/easy521-application-20261017/plcidf-probe1-runtime.png",
+    "sha256": "0a40f2600ddb7435e1dd33b92ec2a2aa6a899734f838e930efab1766c16b3290",
+    "source": "AutoShop PrintWindow capture on Windows interactive desktop"
+  },
+  {
+    "path": "evidence/easy521-application-20261017/plcidf-info.png",
+    "sha256": "f5c34d7f231cdadaf24697bccb894c97708fc4c1104b94b63bc02a4e8d7e02dc",
+    "source": "AutoShop PrintWindow capture on Windows interactive desktop"
+  },
+  {
+    "path": "evidence/easy521-application-20261017/plcidf-info-online.png",
+    "sha256": "44884bde13137b1a067db25955e76e4bbf6fcd023b85cdb87a4af9cc97076b22",
+    "source": "AutoShop PrintWindow capture on Windows interactive desktop"
+  }
+]

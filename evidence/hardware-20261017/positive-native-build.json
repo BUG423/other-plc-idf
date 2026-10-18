@@ -1,0 +1,53 @@
+{
+  "native_root": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV",
+  "files": [
+    {
+      "path": "STTemp/MAIN.rst",
+      "text": "Success!\r\n",
+      "mtime_ns": 1792232585221431400,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": "STTemp/SBR_001.rst",
+      "text": "Success!\r\n",
+      "mtime_ns": 1792232585216413100,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": "STTemp/_CALL_FB_00000000.rst",
+      "text": "Success!\r\n",
+      "mtime_ns": 1792232585319370100,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": "MAIN.ST",
+      "bytes": 1357,
+      "mtime_ns": 1792232582929935500,
+      "sha256": "4ff85d07db2ec3a6b9306e9a1d1993db157772ec561c9c16958bc8c315c8a9b1"
+    },
+    {
+      "path": "Output.prg",
+      "bytes": 56,
+      "mtime_ns": 1792232585601851600,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": "Output.sdt",
+      "bytes": 182,
+      "mtime_ns": 1792232585120510200,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": "Temp/stprog.o",
+      "bytes": 159012,
+      "mtime_ns": 1792232585580841500,
+      "sha256": "b95099a749ed9c96c4a7d16a8b391a6a0c87d7e63ea614b34ff6af123f33f8c6"
+    },
+    {
+      "path": "STTemp/MAIN.o",
+      "bytes": 4472,
+      "mtime_ns": 1792232585220431700,
+      "sha256": "391ac85bffa6f5399c02fbe537bf98a2e32748c9c09cf0ec58936ea4b33643db"
+    }
+  ]
+}

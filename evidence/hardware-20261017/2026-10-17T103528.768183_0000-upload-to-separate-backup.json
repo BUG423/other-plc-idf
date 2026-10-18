@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-17T10:35:28.768183+00:00",
+  "argv": [
+    "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "background",
+    "-Handle",
+    "2754718",
+    "-Message",
+    "245"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": ""
+}

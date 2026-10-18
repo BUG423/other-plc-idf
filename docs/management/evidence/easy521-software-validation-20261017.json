@@ -1,0 +1,37 @@
+{
+  "schema": "plcidf.software-validation.v1",
+  "observed_at": "2026-10-17T15:14:04.579809+00:00",
+  "command": ".venv/bin/pytest src/plc_idf/tests wsl-tools/tests tools/tests -q -o addopts='' -k 'not test_devices_real_readonly' --junitxml=/tmp/plcidf-easy521-software.xml",
+  "exit_code": 0,
+  "passed": 788,
+  "skipped": 51,
+  "deselected": 1,
+  "subtests_passed": 499,
+  "junit_attributes": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "51",
+    "tests": "1338",
+    "time": "25.558",
+    "timestamp": "2026-10-17T23:12:33.043224+08:00",
+    "hostname": "zss"
+  },
+  "hardware_accessed_by_this_test_command": false,
+  "independent_distribution_report": "distribution-easy521-20261017.json",
+  "hardware_evidence": "../../../evidence/easy521-application-20261017/session-summary.json",
+  "files": {
+    "src/plc_idf/autoshop_vendor.py": "b4f856bdefb5b4da2381925e124df626fe243aa8fff3a80c0aa5faeef9f85a43",
+    "src/plc_idf/native_deploy.py": "5bb5befde9efe0191aa0893b8b2750e36dc18e37a7239a145f73ca75893ca012",
+    "src/plc_idf/autoshop_online.py": "379853a4c4c403dc4ac03ad25794f0b236a4af8c29120d5b8f7694e843a326e0",
+    "src/plc_idf/native_autoshop.py": "b9fb7ba10248fe6956473eb621cf4efd60d21089f41a9d6f3ad08e7bf19f3185",
+    "src/plc_idf/cli.py": "1bed4a955c67bad88177c6a11349bedcdf64c1141e4535c57ce91a4a46c2721f",
+    "plc/tools/autoshop_ui.ps1": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+    "plc/tools/read_autoshop_online.ps1": "6d8d29948673e07a2448d262b1b452a8de531c1ed04cf145d33e69069b25d793",
+    "plc/tools/compile_vendor_st.ps1": "1dd95f471bcb225f8bde3e9fe70f7e3287555e7e988c1c6745e18d22f78d26d9",
+    "tools/compile_vendor_st.py": "fcdc7e9d7db33a37582402adbc3a705427d57f27b24727c6382be415851922d2",
+    "setup.py": "00223e44dac5957b02e26ffbd393dbeef6544784336116229ef7bc6caee8ede1",
+    "MANIFEST.in": "317ce9dfb980b67c0ffc0278e504476975327ad418231aef1285e68d5c779988",
+    "tools/check_distribution.py": "ff00db640a5164fb6a62d16a1d7726eebd05b94dd7e71b04cc5d62dbe20b9dad"
+  }
+}

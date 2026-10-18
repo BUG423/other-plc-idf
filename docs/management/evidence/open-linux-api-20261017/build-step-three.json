@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "status": "verified",
+  "manifest_path": "/tmp/plcidf-open-linux-final-api/builds/build-wf2a5xtq/build.json",
+  "build_hash": "83d0b21f78dad5499daea1770a8f09f42fb2a775478174a471aa94872c1b8ebd",
+  "program_hash": "48259b723571869730e9e66a56d52baaca04af86fb363579790d82a1e9b67abb",
+  "source_sha256": "5de78d3976d6c8ddb602a75744b1e049a03e58ac7f5c70212de449370ee0ce87",
+  "binary_sha256": "f821d210fb9f74c0dfc72e6bac55e068fa6ffd129eac79c5f08fa14e576e7b7d",
+  "build_dir": "/tmp/plcidf-open-linux-final-api/builds/build-wf2a5xtq",
+  "diagnostics": "POUS.c\nPOUS.h\nLOCATED_VARIABLES.h\nGLOBALS.h\nConfig0.c\nConfig0.h\nRes0.c\n",
+  "cycle_ms": 20
+}

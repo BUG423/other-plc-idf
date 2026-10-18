@@ -1,0 +1,1477 @@
+{
+  "schema_version": 1,
+  "result": "passed",
+  "timestamp_utc": "2026-10-17T12:59:14.044502+00:00",
+  "toolchain": "/home/zss/.cache/plcidf/matiec",
+  "checks": [
+    "invalid ST rejected by actual MatIEC",
+    "undeployed build cannot run",
+    "real generated ST scans, changes counter and heartbeat, and stops",
+    "changing ST +1 to +2 changes the executed scan results",
+    "changed deployed bundle is refused and historical evidence is distinguished"
+  ],
+  "steps": [
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "doctor",
+        "--target",
+        "open-linux",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "verified",
+        "toolchain_dir": "/home/zss/.cache/plcidf/matiec",
+        "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e",
+        "iec2c_sha256": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834",
+        "toolchain_hash": "b725b09d1de22cff90300159251f33f1c3873d40071a9366eade68cb5ff77aef",
+        "licenses": {
+          "compiler": "GPL-3.0-or-later (upstream COPYING)",
+          "C_runtime_headers": "Mixed LGPL-2.0-or-later / LGPL-3.0-or-later; individual upstream header notices apply"
+        },
+        "command": "doctor",
+        "target": "open-linux",
+        "hardware_checked": false,
+        "target_profile": {
+          "schema": "plcidf.target-profile.v2",
+          "id": "open-linux",
+          "name": "Local Linux / MatIEC scan runtime",
+          "compile_target": {
+            "dialect": "MatIEC IEC ST subset",
+            "compiler_backend": "matiec-gcc"
+          },
+          "runtime_backend": "plcidf-local-scan",
+          "host_platform": "Linux",
+          "transport_kinds": [
+            "local-filesystem"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "run",
+            "stop",
+            "monitor",
+            "verify"
+          ],
+          "limitations": [
+            "Local runtime only; no physical I/O provider or remote device deployment",
+            "Functional scan execution does not validate hard real-time deadlines",
+            "Application packages are not compatible with Easy521 vendor firmware"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        },
+        "schema_version": 2
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "targets",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json"
+      ],
+      "returncode": 0,
+      "report": {
+        "schema_version": 2,
+        "command": "targets",
+        "ok": true,
+        "hardware_checked": false,
+        "profiles": [
+          {
+            "schema": "plcidf.target-profile.v2",
+            "id": "easy521",
+            "name": "Inovance Easy521 / existing vendor runtime",
+            "compile_target": {
+              "dialect": "AutoShop LiteST",
+              "compiler_backend": "autoshop-working-project"
+            },
+            "runtime_backend": "inovance-vendor",
+            "host_platform": "Windows AutoShop + Linux CLI",
+            "transport_kinds": [
+              "vendor-usb",
+              "modbus-tcp",
+              "modbus-serial"
+            ],
+            "operations": [
+              "new",
+              "check",
+              "build",
+              "flash",
+              "monitor"
+            ],
+            "limitations": [
+              "Build requires an existing compatible AutoShop working project",
+              "Application download and real PLC runtime results remain unverified",
+              "USB BUSID and VID/PID checks are retained in v1 deployment paths"
+            ],
+            "capability_evidence": "implementation-description; verify each operation",
+            "device_instance": null,
+            "hardware_checked": false
+          },
+          {
+            "schema": "plcidf.target-profile.v2",
+            "id": "open-linux",
+            "name": "Local Linux / MatIEC scan runtime",
+            "compile_target": {
+              "dialect": "MatIEC IEC ST subset",
+              "compiler_backend": "matiec-gcc"
+            },
+            "runtime_backend": "plcidf-local-scan",
+            "host_platform": "Linux",
+            "transport_kinds": [
+              "local-filesystem"
+            ],
+            "operations": [
+              "new",
+              "check",
+              "build",
+              "flash",
+              "run",
+              "stop",
+              "monitor",
+              "verify"
+            ],
+            "limitations": [
+              "Local runtime only; no physical I/O provider or remote device deployment",
+              "Functional scan execution does not validate hard real-time deadlines",
+              "Application packages are not compatible with Easy521 vendor firmware"
+            ],
+            "capability_evidence": "implementation-description; verify each operation",
+            "device_instance": null,
+            "hardware_checked": false
+          }
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "new",
+        "/tmp/plcidf-native-cli-03j595yy/project",
+        "--target",
+        "open-linux",
+        "--name",
+        "NativeDemo",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json"
+      ],
+      "returncode": 0,
+      "report": {
+        "schema_version": 2,
+        "ok": true,
+        "root": "/tmp/plcidf-native-cli-03j595yy/project",
+        "validation": "offline-project-contract-check",
+        "compiled": false,
+        "native_project_created": false,
+        "profile": "open-linux",
+        "source_hashes": {
+          "plcidf.json": "56023fdea1396a2de1ece0d716bd953cabf297da2dd38565bdc255b5676b8fc7",
+          "main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140"
+        },
+        "limitations": [
+          "ST syntax and semantics require the MatIEC compiler",
+          "No execution, physical I/O or real-time validation"
+        ],
+        "diagnostics": [],
+        "command": "new"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "check",
+        "/tmp/plcidf-native-cli-03j595yy/project",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json"
+      ],
+      "returncode": 0,
+      "report": {
+        "schema_version": 2,
+        "ok": true,
+        "root": "/tmp/plcidf-native-cli-03j595yy/project",
+        "validation": "offline-project-contract-check",
+        "compiled": false,
+        "native_project_created": false,
+        "profile": "open-linux",
+        "source_hashes": {
+          "plcidf.json": "56023fdea1396a2de1ece0d716bd953cabf297da2dd38565bdc255b5676b8fc7",
+          "main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140"
+        },
+        "limitations": [
+          "ST syntax and semantics require the MatIEC compiler",
+          "No execution, physical I/O or real-time validation"
+        ],
+        "diagnostics": [],
+        "command": "check"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "build",
+        "--target",
+        "open-linux",
+        "--project",
+        "/tmp/plcidf-native-cli-03j595yy/project",
+        "--build-dir",
+        "/tmp/plcidf-native-cli-03j595yy/negative",
+        "--execute",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 1,
+      "report": {
+        "ok": false,
+        "status": "failed",
+        "stage": "iec2c",
+        "returncode": 1,
+        "diagnostics": "/tmp/plcidf-native-cli-03j595yy/negative/build-byia72qm/source.st:7: error: no expression defined after ':=' in ST assignment statement.\n\n1 error(s) found. Bailing out!\n",
+        "source_sha256": "958655661742a2e891df825352debe72b43732c021bf99be3b3c4f7f3aea75f5",
+        "build_dir": "/tmp/plcidf-native-cli-03j595yy/negative/build-byia72qm",
+        "schema_version": 2,
+        "command": "build",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "build",
+        "--target",
+        "open-linux",
+        "--project",
+        "/tmp/plcidf-native-cli-03j595yy/project",
+        "--build-dir",
+        "/tmp/plcidf-native-cli-03j595yy/builds",
+        "--manifest",
+        "/tmp/plcidf-native-cli-03j595yy/build-pointer.json",
+        "--execute",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "verified",
+        "manifest_path": "/tmp/plcidf-native-cli-03j595yy/builds/build-da4zun45/build.json",
+        "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+        "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+        "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+        "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+        "build_dir": "/tmp/plcidf-native-cli-03j595yy/builds/build-da4zun45",
+        "diagnostics": "POUS.c\nPOUS.h\nLOCATED_VARIABLES.h\nGLOBALS.h\nConfig0.c\nConfig0.h\nRes0.c\n",
+        "cycle_ms": 20,
+        "manifest_pointer": "/tmp/plcidf-native-cli-03j595yy/build-pointer.json",
+        "schema_version": 2,
+        "command": "build",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "run",
+        "--manifest",
+        "/tmp/plcidf-native-cli-03j595yy/builds/build-da4zun45/build.json",
+        "--duration",
+        ".2",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 2,
+      "report": {
+        "schema_version": 1,
+        "command": "run",
+        "ok": false,
+        "diagnostics": [
+          {
+            "code": "E_ARGUMENT",
+            "message": "参数或配置无效: run requires a deployed release.json; deploy the build first",
+            "severity": "error"
+          }
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "flash",
+        "--target",
+        "open-linux",
+        "--manifest",
+        "/tmp/plcidf-native-cli-03j595yy/build-pointer.json",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "preview",
+        "release_id": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+        "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+        "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+        "manifest_path": "/tmp/plcidf-native-cli-03j595yy/runtime/releases/d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08/release.json",
+        "locator": {
+          "schema": "plcidf.device-locator.v2",
+          "profile_id": "open-linux",
+          "transport": {
+            "kind": "local-filesystem",
+            "state_dir": "/tmp/plcidf-native-cli-03j595yy/runtime"
+          },
+          "instance_id": null,
+          "identity_verification": "not-observed"
+        },
+        "schema_version": 2,
+        "command": "flash",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "flash",
+        "--target",
+        "open-linux",
+        "--manifest",
+        "/tmp/plcidf-native-cli-03j595yy/build-pointer.json",
+        "--execute",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "deployed",
+        "release_id": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+        "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+        "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+        "manifest_path": "/tmp/plcidf-native-cli-03j595yy/runtime/releases/d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08/release.json",
+        "locator": {
+          "schema": "plcidf.device-locator.v2",
+          "profile_id": "open-linux",
+          "transport": {
+            "kind": "local-filesystem",
+            "state_dir": "/tmp/plcidf-native-cli-03j595yy/runtime"
+          },
+          "instance_id": null,
+          "identity_verification": "not-observed"
+        },
+        "schema_version": 2,
+        "command": "flash",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "run",
+        "--manifest",
+        "/tmp/plcidf-native-cli-03j595yy/runtime/releases/d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08/release.json",
+        "--duration",
+        "2",
+        "--sample-ms",
+        "20",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "running",
+        "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+        "state_path": "/tmp/plcidf-native-cli-03j595yy/runtime/runs/d203c68b7b6e4bb7b2c38726f2999a95/run.json",
+        "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+        "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+        "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+        "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+        "sample": {
+          "schema_version": 2,
+          "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+          "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+          "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+          "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+          "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+          "profile": "open-linux-counter-v1",
+          "runtime": "matiec-local-scan-v2",
+          "state": "running",
+          "scan_count": 1,
+          "elapsed_ns": 97809,
+          "cycle_ns": 20000000,
+          "max_observed_lateness_ns": 97809,
+          "counter": 1,
+          "heartbeat": false,
+          "values": {
+            "COUNTER": 1,
+            "HEARTBEAT": false
+          },
+          "values_valid": true
+        },
+        "schema_version": 2,
+        "command": "run",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "monitor",
+        "--target",
+        "open-linux",
+        "--run-id",
+        "d203c68b7b6e4bb7b2c38726f2999a95",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "running",
+        "sample_error": null,
+        "sample_age_s": 0.01448551599807614,
+        "bundle_integrity": "verified",
+        "integrity_error": null,
+        "exit_code": null,
+        "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+        "process_alive": true,
+        "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+        "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+        "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+        "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+        "sample": {
+          "schema_version": 2,
+          "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+          "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+          "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+          "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+          "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+          "profile": "open-linux-counter-v1",
+          "runtime": "matiec-local-scan-v2",
+          "state": "running",
+          "scan_count": 6,
+          "elapsed_ns": 100578673,
+          "cycle_ns": 20000000,
+          "max_observed_lateness_ns": 578673,
+          "counter": 6,
+          "heartbeat": false,
+          "values": {
+            "COUNTER": 6,
+            "HEARTBEAT": false
+          },
+          "values_valid": true
+        },
+        "quality": {
+          "program_identity": "verified",
+          "signal_values": "verified",
+          "bundle_integrity": "verified",
+          "freshness": "current",
+          "execution": "actual-matiec-generated-code",
+          "timing": "observed-local-linux-not-hard-realtime",
+          "physical_io": "not-provided"
+        },
+        "samples_path": "/tmp/plcidf-native-cli-03j595yy/runtime/runs/d203c68b7b6e4bb7b2c38726f2999a95/samples.jsonl",
+        "schema_version": 2,
+        "command": "monitor",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "monitor",
+        "--target",
+        "open-linux",
+        "--run-id",
+        "d203c68b7b6e4bb7b2c38726f2999a95",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "running",
+        "sample_error": null,
+        "sample_age_s": 0.024156576000473662,
+        "bundle_integrity": "verified",
+        "integrity_error": null,
+        "exit_code": null,
+        "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+        "process_alive": true,
+        "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+        "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+        "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+        "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+        "sample": {
+          "schema_version": 2,
+          "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+          "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+          "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+          "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+          "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+          "profile": "open-linux-counter-v1",
+          "runtime": "matiec-local-scan-v2",
+          "state": "running",
+          "scan_count": 12,
+          "elapsed_ns": 220764291,
+          "cycle_ns": 20000000,
+          "max_observed_lateness_ns": 764291,
+          "counter": 12,
+          "heartbeat": true,
+          "values": {
+            "COUNTER": 12,
+            "HEARTBEAT": true
+          },
+          "values_valid": true
+        },
+        "quality": {
+          "program_identity": "verified",
+          "signal_values": "verified",
+          "bundle_integrity": "verified",
+          "freshness": "current",
+          "execution": "actual-matiec-generated-code",
+          "timing": "observed-local-linux-not-hard-realtime",
+          "physical_io": "not-provided"
+        },
+        "samples_path": "/tmp/plcidf-native-cli-03j595yy/runtime/runs/d203c68b7b6e4bb7b2c38726f2999a95/samples.jsonl",
+        "schema_version": 2,
+        "command": "monitor",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "stop",
+        "--run-id",
+        "d203c68b7b6e4bb7b2c38726f2999a95",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "stopped",
+        "sample_error": null,
+        "sample_age_s": 0.027452810000756833,
+        "bundle_integrity": "verified",
+        "integrity_error": null,
+        "exit_code": null,
+        "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+        "process_alive": false,
+        "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+        "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+        "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+        "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+        "sample": {
+          "schema_version": 2,
+          "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+          "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+          "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+          "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+          "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+          "profile": "open-linux-counter-v1",
+          "runtime": "matiec-local-scan-v2",
+          "state": "stopped",
+          "scan_count": 18,
+          "elapsed_ns": 352835404,
+          "cycle_ns": 20000000,
+          "max_observed_lateness_ns": 769471,
+          "counter": 18,
+          "heartbeat": true,
+          "values": {
+            "COUNTER": 18,
+            "HEARTBEAT": true
+          },
+          "values_valid": true
+        },
+        "quality": {
+          "program_identity": "verified",
+          "signal_values": "verified",
+          "bundle_integrity": "verified",
+          "freshness": "terminal-historical",
+          "execution": "actual-matiec-generated-code",
+          "timing": "observed-local-linux-not-hard-realtime",
+          "physical_io": "not-provided"
+        },
+        "samples_path": "/tmp/plcidf-native-cli-03j595yy/runtime/runs/d203c68b7b6e4bb7b2c38726f2999a95/samples.jsonl",
+        "schema_version": 2,
+        "command": "stop",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "build",
+        "--target",
+        "open-linux",
+        "--project",
+        "/tmp/plcidf-native-cli-03j595yy/project",
+        "--build-dir",
+        "/tmp/plcidf-native-cli-03j595yy/builds",
+        "--execute",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "verified",
+        "manifest_path": "/tmp/plcidf-native-cli-03j595yy/builds/build-56306_t0/build.json",
+        "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+        "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+        "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+        "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+        "build_dir": "/tmp/plcidf-native-cli-03j595yy/builds/build-56306_t0",
+        "diagnostics": "POUS.c\nPOUS.h\nLOCATED_VARIABLES.h\nGLOBALS.h\nConfig0.c\nConfig0.h\nRes0.c\n",
+        "cycle_ms": 20,
+        "schema_version": 2,
+        "command": "build",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "flash",
+        "--target",
+        "open-linux",
+        "--manifest",
+        "/tmp/plcidf-native-cli-03j595yy/builds/build-56306_t0/build.json",
+        "--execute",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "deployed",
+        "release_id": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+        "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+        "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+        "manifest_path": "/tmp/plcidf-native-cli-03j595yy/runtime/releases/3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4/release.json",
+        "locator": {
+          "schema": "plcidf.device-locator.v2",
+          "profile_id": "open-linux",
+          "transport": {
+            "kind": "local-filesystem",
+            "state_dir": "/tmp/plcidf-native-cli-03j595yy/runtime"
+          },
+          "instance_id": null,
+          "identity_verification": "not-observed"
+        },
+        "schema_version": 2,
+        "command": "flash",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "run",
+        "--manifest",
+        "/tmp/plcidf-native-cli-03j595yy/runtime/releases/3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4/release.json",
+        "--duration",
+        ".35",
+        "--sample-ms",
+        "20",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "running",
+        "run_id": "fff06161234b4033a0119418da7d3c37",
+        "state_path": "/tmp/plcidf-native-cli-03j595yy/runtime/runs/fff06161234b4033a0119418da7d3c37/run.json",
+        "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+        "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+        "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+        "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+        "sample": {
+          "schema_version": 2,
+          "run_id": "fff06161234b4033a0119418da7d3c37",
+          "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+          "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+          "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+          "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+          "profile": "open-linux-counter-v1",
+          "runtime": "matiec-local-scan-v2",
+          "state": "running",
+          "scan_count": 1,
+          "elapsed_ns": 77169,
+          "cycle_ns": 20000000,
+          "max_observed_lateness_ns": 77169,
+          "counter": 2,
+          "heartbeat": false,
+          "values": {
+            "COUNTER": 2,
+            "HEARTBEAT": false
+          },
+          "values_valid": true
+        },
+        "schema_version": 2,
+        "command": "run",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "monitor",
+        "--target",
+        "open-linux",
+        "--run-id",
+        "fff06161234b4033a0119418da7d3c37",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "running",
+        "sample_error": null,
+        "sample_age_s": 0.014070607007819702,
+        "bundle_integrity": "verified",
+        "integrity_error": null,
+        "exit_code": null,
+        "run_id": "fff06161234b4033a0119418da7d3c37",
+        "process_alive": true,
+        "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+        "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+        "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+        "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+        "sample": {
+          "schema_version": 2,
+          "run_id": "fff06161234b4033a0119418da7d3c37",
+          "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+          "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+          "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+          "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+          "profile": "open-linux-counter-v1",
+          "runtime": "matiec-local-scan-v2",
+          "state": "running",
+          "scan_count": 8,
+          "elapsed_ns": 140351821,
+          "cycle_ns": 20000000,
+          "max_observed_lateness_ns": 369781,
+          "counter": 16,
+          "heartbeat": true,
+          "values": {
+            "COUNTER": 16,
+            "HEARTBEAT": true
+          },
+          "values_valid": true
+        },
+        "quality": {
+          "program_identity": "verified",
+          "signal_values": "verified",
+          "bundle_integrity": "verified",
+          "freshness": "current",
+          "execution": "actual-matiec-generated-code",
+          "timing": "observed-local-linux-not-hard-realtime",
+          "physical_io": "not-provided"
+        },
+        "samples_path": "/tmp/plcidf-native-cli-03j595yy/runtime/runs/fff06161234b4033a0119418da7d3c37/samples.jsonl",
+        "schema_version": 2,
+        "command": "monitor",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "monitor",
+        "--target",
+        "open-linux",
+        "--run-id",
+        "fff06161234b4033a0119418da7d3c37",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "running",
+        "sample_error": null,
+        "sample_age_s": 0.009811972000622338,
+        "bundle_integrity": "verified",
+        "integrity_error": null,
+        "exit_code": null,
+        "run_id": "fff06161234b4033a0119418da7d3c37",
+        "process_alive": true,
+        "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+        "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+        "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+        "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+        "sample": {
+          "schema_version": 2,
+          "run_id": "fff06161234b4033a0119418da7d3c37",
+          "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+          "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+          "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+          "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+          "profile": "open-linux-counter-v1",
+          "runtime": "matiec-local-scan-v2",
+          "state": "running",
+          "scan_count": 16,
+          "elapsed_ns": 300810052,
+          "cycle_ns": 20000000,
+          "max_observed_lateness_ns": 810052,
+          "counter": 32,
+          "heartbeat": true,
+          "values": {
+            "COUNTER": 32,
+            "HEARTBEAT": true
+          },
+          "values_valid": true
+        },
+        "quality": {
+          "program_identity": "verified",
+          "signal_values": "verified",
+          "bundle_integrity": "verified",
+          "freshness": "current",
+          "execution": "actual-matiec-generated-code",
+          "timing": "observed-local-linux-not-hard-realtime",
+          "physical_io": "not-provided"
+        },
+        "samples_path": "/tmp/plcidf-native-cli-03j595yy/runtime/runs/fff06161234b4033a0119418da7d3c37/samples.jsonl",
+        "schema_version": 2,
+        "command": "monitor",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "monitor",
+        "--target",
+        "open-linux",
+        "--run-id",
+        "fff06161234b4033a0119418da7d3c37",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 0,
+      "report": {
+        "ok": true,
+        "status": "completed",
+        "sample_error": null,
+        "sample_age_s": 0.09556211800449915,
+        "bundle_integrity": "verified",
+        "integrity_error": null,
+        "exit_code": null,
+        "run_id": "fff06161234b4033a0119418da7d3c37",
+        "process_alive": false,
+        "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+        "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+        "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+        "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+        "sample": {
+          "schema_version": 2,
+          "run_id": "fff06161234b4033a0119418da7d3c37",
+          "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+          "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+          "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+          "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+          "profile": "open-linux-counter-v1",
+          "runtime": "matiec-local-scan-v2",
+          "state": "completed",
+          "scan_count": 18,
+          "elapsed_ns": 360175768,
+          "cycle_ns": 20000000,
+          "max_observed_lateness_ns": 810052,
+          "counter": 36,
+          "heartbeat": true,
+          "values": {
+            "COUNTER": 36,
+            "HEARTBEAT": true
+          },
+          "values_valid": true
+        },
+        "quality": {
+          "program_identity": "verified",
+          "signal_values": "verified",
+          "bundle_integrity": "verified",
+          "freshness": "terminal-historical",
+          "execution": "actual-matiec-generated-code",
+          "timing": "observed-local-linux-not-hard-realtime",
+          "physical_io": "not-provided"
+        },
+        "samples_path": "/tmp/plcidf-native-cli-03j595yy/runtime/runs/fff06161234b4033a0119418da7d3c37/samples.jsonl",
+        "schema_version": 2,
+        "command": "monitor",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "monitor",
+        "--target",
+        "open-linux",
+        "--run-id",
+        "fff06161234b4033a0119418da7d3c37",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 1,
+      "report": {
+        "ok": false,
+        "status": "bundle-changed-unverified",
+        "sample_error": null,
+        "sample_age_s": 0.21230998799805917,
+        "bundle_integrity": "changed-or-unavailable",
+        "integrity_error": "changed, missing or duplicate bundle artifact",
+        "exit_code": null,
+        "run_id": "fff06161234b4033a0119418da7d3c37",
+        "process_alive": false,
+        "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+        "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+        "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+        "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+        "sample": {
+          "schema_version": 2,
+          "run_id": "fff06161234b4033a0119418da7d3c37",
+          "program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39",
+          "source_sha256": "7825f393e1787e4180a4f5395fc4c2fac4c8b8fb64e7fb23fdb371c5bd160a10",
+          "binary_sha256": "b6007e144932fe107512655039e9362b69816aad195d374ec9bfbdc344ad1ab7",
+          "build_hash": "3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4",
+          "profile": "open-linux-counter-v1",
+          "runtime": "matiec-local-scan-v2",
+          "state": "completed",
+          "scan_count": 18,
+          "elapsed_ns": 360175768,
+          "cycle_ns": 20000000,
+          "max_observed_lateness_ns": 810052,
+          "counter": 36,
+          "heartbeat": true,
+          "values": {
+            "COUNTER": 36,
+            "HEARTBEAT": true
+          },
+          "values_valid": true
+        },
+        "quality": {
+          "program_identity": "historical-sample-only",
+          "signal_values": "verified",
+          "bundle_integrity": "changed-or-unavailable",
+          "freshness": "terminal-historical",
+          "execution": "actual-matiec-generated-code",
+          "timing": "observed-local-linux-not-hard-realtime",
+          "physical_io": "not-provided"
+        },
+        "samples_path": "/tmp/plcidf-native-cli-03j595yy/runtime/runs/fff06161234b4033a0119418da7d3c37/samples.jsonl",
+        "schema_version": 2,
+        "command": "monitor",
+        "target": "open-linux"
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "-m",
+        "plc_idf.cli",
+        "run",
+        "--manifest",
+        "/tmp/plcidf-native-cli-03j595yy/runtime/releases/3bcae3321a5d14f2d16acdb1a4c9c03476642c1ef59eebb9f7903b682b7ee3c4/release.json",
+        "--duration",
+        ".2",
+        "--config",
+        "/tmp/plcidf-native-cli-03j595yy/tool.toml",
+        "--json",
+        "--toolchain-dir",
+        "/home/zss/.cache/plcidf/matiec",
+        "--state-dir",
+        "/tmp/plcidf-native-cli-03j595yy/runtime"
+      ],
+      "returncode": 2,
+      "report": {
+        "schema_version": 1,
+        "command": "run",
+        "ok": false,
+        "diagnostics": [
+          {
+            "code": "E_ARGUMENT",
+            "message": "参数或配置无效: changed, missing or duplicate bundle artifact",
+            "severity": "error"
+          }
+        ]
+      },
+      "stderr": ""
+    }
+  ],
+  "source_examples": {
+    "increment_1_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+    "increment_2_program_hash": "b05febe1b4c59270e500b524d2ac90bf32bea8dd8695980696ea8c3269b3bc39"
+  },
+  "increment_1_samples": [
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 1,
+      "elapsed_ns": 97809,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 97809,
+      "counter": 1,
+      "heartbeat": false,
+      "values": {
+        "COUNTER": 1,
+        "HEARTBEAT": false
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 2,
+      "elapsed_ns": 20418533,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 418533,
+      "counter": 2,
+      "heartbeat": false,
+      "values": {
+        "COUNTER": 2,
+        "HEARTBEAT": false
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 4,
+      "elapsed_ns": 60258741,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 418533,
+      "counter": 4,
+      "heartbeat": false,
+      "values": {
+        "COUNTER": 4,
+        "HEARTBEAT": false
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 6,
+      "elapsed_ns": 100578673,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 578673,
+      "counter": 6,
+      "heartbeat": false,
+      "values": {
+        "COUNTER": 6,
+        "HEARTBEAT": false
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 8,
+      "elapsed_ns": 140102351,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 578673,
+      "counter": 8,
+      "heartbeat": false,
+      "values": {
+        "COUNTER": 8,
+        "HEARTBEAT": false
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 9,
+      "elapsed_ns": 160323079,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 578673,
+      "counter": 9,
+      "heartbeat": false,
+      "values": {
+        "COUNTER": 9,
+        "HEARTBEAT": false
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 10,
+      "elapsed_ns": 180430527,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 578673,
+      "counter": 10,
+      "heartbeat": true,
+      "values": {
+        "COUNTER": 10,
+        "HEARTBEAT": true
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 11,
+      "elapsed_ns": 200731712,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 731712,
+      "counter": 11,
+      "heartbeat": true,
+      "values": {
+        "COUNTER": 11,
+        "HEARTBEAT": true
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 12,
+      "elapsed_ns": 220764291,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 764291,
+      "counter": 12,
+      "heartbeat": true,
+      "values": {
+        "COUNTER": 12,
+        "HEARTBEAT": true
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 14,
+      "elapsed_ns": 260728923,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 764291,
+      "counter": 14,
+      "heartbeat": true,
+      "values": {
+        "COUNTER": 14,
+        "HEARTBEAT": true
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 15,
+      "elapsed_ns": 280769471,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 769471,
+      "counter": 15,
+      "heartbeat": true,
+      "values": {
+        "COUNTER": 15,
+        "HEARTBEAT": true
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 17,
+      "elapsed_ns": 320722859,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 769471,
+      "counter": 17,
+      "heartbeat": true,
+      "values": {
+        "COUNTER": 17,
+        "HEARTBEAT": true
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "running",
+      "scan_count": 18,
+      "elapsed_ns": 340737320,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 769471,
+      "counter": 18,
+      "heartbeat": true,
+      "values": {
+        "COUNTER": 18,
+        "HEARTBEAT": true
+      },
+      "values_valid": true
+    },
+    {
+      "schema_version": 2,
+      "run_id": "d203c68b7b6e4bb7b2c38726f2999a95",
+      "program_hash": "6be25e612f42d91286988b89ee1baaa8485f071d48b16968082db4a5161dcaa1",
+      "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "binary_sha256": "969b9b97e12fb8e3b11b4ede90b38859557351de639931911f54a53b5e05f7ef",
+      "build_hash": "d85c1c1427802a9faf31e976e94a1c3a77cc6cdc55a4cc2f82179f775132ef08",
+      "profile": "open-linux-counter-v1",
+      "runtime": "matiec-local-scan-v2",
+      "state": "stopped",
+      "scan_count": 18,
+      "elapsed_ns": 352835404,
+      "cycle_ns": 20000000,
+      "max_observed_lateness_ns": 769471,
+      "counter": 18,
+      "heartbeat": true,
+      "values": {
+        "COUNTER": 18,
+        "HEARTBEAT": true
+      },
+      "values_valid": true
+    }
+  ],
+  "hardware_accessed": false,
+  "windows_processes_used": false,
+  "physical_io_verified": false,
+  "hard_realtime_verified": false,
+  "note": "Temporary application/release/run paths are removed after validation."
+}

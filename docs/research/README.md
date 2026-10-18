@@ -1,9 +1,23 @@
-# docs/research — 协议逆向研究区（P3 阶段启用）
+# docs/research — 协议与固件研究
 
-> **状态：框架已建，内容未启用。** 本区在路线图 **P3「协议抓包评估」**（见
-> [../wsl-feasibility/00-synthesis-and-roadmap.md](../wsl-feasibility/00-synthesis-and-roadmap.md)）
-> 正式启动前保持空置；届时 AutoShop 私有协议（编译产物下载 / 上载 / 在线监控）与
-> USB 编程口 bulk 端点协议的逆向工作全部落在这里。
+> **2026-10-18 状态**：已实际脱离 GUI 编译普通 ST 为厂商 ARM 对象；本轮继续核对直接控制与完整应用下载接口。尚未完成无 GUI 真机应用下载、CPU 扫描验收或系统固件替换。后面的历史研究保留其日期与当时范围。
+
+- [Easy521 最简单直接的控制方式](../management/EASY521_DIRECT_CONTROL_2026-10-18.md)：Modbus 数据控制、CPU 模式、应用下载与系统固件四层分开；附本轮物理网口/USB 枚举和可运行 Linux D 区工具。
+- [官方数据协议的准确范围](firmware/13-documented-control-routes-2026-10-18.md)：Modbus/FINS/OPC UA 地址、变量发布、CPU STOP 语义与归档变量实际绑定。
+- [无 GUI 通信实现与本地变量服务](firmware/12-interface-control-2026-10-18.md)：IH530 工厂/状态查询链及匹配 PDB 的包头、枚举和数据提供关系缺口。
+- [完整应用文件与下载调用点](firmware/14-easy521-download-paths-2026-10-18.md)：真实18文件成功项、31个调用点及独立本地仿真器协议入口。
+- [普通 ST 到 ARM 对象的真实实验](firmware/11-plain-main-object-2026-10-18.md)：文本预处理、隐式声明、正负实验与未完成的完整应用链接。
+
+- [平台路线与固件可行性复核](firmware/03-feasibility-assessment-2026-10-17.md)：四条路线、事实/推断/TBD、历史调查勘误及研究门槛。
+- [ARM ELF 离线证据](firmware/20261017-offline-elf-inspection.json)：工具版本、目标属性、原始输出、文件哈希。
+- [官方固件与芯片来源复核](firmware/04-official-sources-2026-10-17.md)：四核官方表述、可获取固件元数据与缺失的准确 SoC/BSP；未取得 Easy521 系统镜像。
+- [本机工具链拆解](firmware/05-local-toolchain-2026-10-17.md)：Windows ST 前端、ARM ELF 库、Linux 烧录库存在性线索与实际缺口；未发布厂商原文件。
+- [Linux 链接实验](firmware/06-linux-link-experiment-2026-10-17.md)：用原生 Linux LLD 对已有厂商 ARM 对象做可重定位链接，保留失败对照；不是 ST 编译或真机部署验收。
+- [原生多目标架构决定](../architecture/ADR-0002-native-multitarget.md)：两条路线、目标接口、六项有界任务与逐层验收。
+- [厂商应用分析工具与差分](firmware/07-vendor-application-inspection-2026-10-17.md)：真实 12 文件、6 组对照，ELF 与不透明容器分级。
+- [镜像检查器与硬件证据矩阵](firmware/08-hardware-evidence-and-image-inspection-2026-10-17.md)：通用 ELF/uImage/DTB 格式检查，不将平台字符串当作芯片认定。
+- `firmware/01-manual-facts.md`、`02-sunxi-ecosystem.md`：2026-10-16 历史资料，保留原文；结论采用最新复核的限定。
+- [实施计划](../management/PLAN.md) 中 R01/R02：下一批研究工作，独立于主线桥接交付。
 
 ## 目录规划（启用时创建）
 

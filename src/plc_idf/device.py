@@ -106,12 +106,21 @@ def list_windows_usb(cfg, runner=None,
 
 
 def find_plc_entry(cfg, entries: list[DeviceEntry]) -> DeviceEntry | None:
-    """按配置 busid（优先）/vid:pid 匹配 PLC 设备条目。"""
-    busid = cfg.device["busid"]
-    vidpid = str(cfg.device["vidpid"]).lower()
-    for entry in entries:
-        if entry.busid == busid or entry.vidpid == vidpid:
-            return entry
+    """BUSID 与 VID:PID 必须同时匹配；重复 BUSID 的不明设备表拒绝使用。
+
+    VID:PID 只识别产品类型，不能在配置 BUSID 消失时自动选择另一台同型号
+    PLC。BUSID 是本次连接的位置身份，不代表设备的永久序列号。
+    """
+    busid = str(cfg.device["busid"]).strip()
+    vidpid = str(cfg.device["vidpid"]).strip().lower()
+    if not re.fullmatch(r"\d+(?:-\d+)+", busid) or not re.fullmatch(
+            r"[0-9a-f]{4}:[0-9a-f]{4}", vidpid):
+        raise InteropError("PLC 配置身份无效：需要明确 BUSID 和 VID:PID")
+    candidates = [entry for entry in entries if entry.busid == busid]
+    if len(candidates) > 1:
+        raise InteropError(f"PLC 设备身份有歧义：BUSID {busid} 出现 {len(candidates)} 次")
+    if candidates and candidates[0].vidpid.lower() == vidpid:
+        return candidates[0]
     return None
 
 

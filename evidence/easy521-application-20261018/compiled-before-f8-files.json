@@ -1,0 +1,628 @@
+{
+  "observed_at": "2026-10-18T11:38:04.156028+00:00",
+  "stage": "compiled-before-f8",
+  "project_root": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV",
+  "private_copy": "/home/zss/workspace/py2plc/.plcidf/calibration-20261018/compiled-before-f8",
+  "device_write": false,
+  "files": [
+    {
+      "path": "AXIS_CTRL-AXIS_CTRL.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383212330600
+    },
+    {
+      "path": "AXIS_CTRL-SUSERAXIS.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383211332200
+    },
+    {
+      "path": "AXIS_CTRL.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240,
+      "mtime_ns": 1792232383209330700
+    },
+    {
+      "path": "Config.sdt",
+      "sha256": "af9e01cb471c8c7d6b4c41605192adeed28f03f6b3570675bea97ae24760f664",
+      "bytes": 371,
+      "mtime_ns": 1792323458718340400
+    },
+    {
+      "path": "CrossTable.crs",
+      "sha256": "bbb948762666850dffcc2275b27d5ae9fbe8b1679ce9ce6bf8dcea521d0987eb",
+      "bytes": 3199,
+      "mtime_ns": 1792323460079414700
+    },
+    {
+      "path": "EIP.dat",
+      "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9",
+      "bytes": 340,
+      "mtime_ns": 1792323459193660500
+    },
+    {
+      "path": "EIP.datBAK",
+      "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9",
+      "bytes": 340,
+      "mtime_ns": 1792249815686811400
+    },
+    {
+      "path": "EIPIns.dat",
+      "sha256": "ded971312fd0d6636189f053bb70120ad8f783b028c5ae16da4253e63d6376f3",
+      "bytes": 24,
+      "mtime_ns": 1792323460015175200
+    },
+    {
+      "path": "Ecam.tr",
+      "sha256": "854e0a3951bc4a773d684415ec8983c32c6f6cfc93f71b86344442379bcc688f",
+      "bytes": 54,
+      "mtime_ns": 1792323458750052700
+    },
+    {
+      "path": "ElemBitComm.gdtx",
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+      "bytes": 209,
+      "mtime_ns": 1792232383163347200
+    },
+    {
+      "path": "ElemUseInfo.esi",
+      "sha256": "09fdbdc578dde7a0763b83b64eba98746e4208742cbb3b5487509b18b50816a8",
+      "bytes": 214,
+      "mtime_ns": 1792232383170290800
+    },
+    {
+      "path": "EtherCat.dat",
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d",
+      "bytes": 243,
+      "mtime_ns": 1792323459081556000
+    },
+    {
+      "path": "EtherCat.datBAK",
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d",
+      "bytes": 243,
+      "mtime_ns": 1792249815682157600
+    },
+    {
+      "path": "EtherCat.tmp",
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d",
+      "bytes": 243,
+      "mtime_ns": 1792323459081556000
+    },
+    {
+      "path": "FBInstStep.dat",
+      "sha256": "19f959c5c26cb28ad3869ffc64b33e5369a3996bcb2fe3369a7430cabdb68777",
+      "bytes": 12,
+      "mtime_ns": 1792323460016178000
+    },
+    {
+      "path": "FB_BESS_AdaptiveSupervisor_Easy521.FB",
+      "sha256": "0a9d9836c86594f2954a30432cbf3de745296f3ea2d2bc5ec9ee8e8f1ad3afdd",
+      "bytes": 10384,
+      "mtime_ns": 1792232383208331000
+    },
+    {
+      "path": "FCInstTbl.fci",
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80",
+      "bytes": 221,
+      "mtime_ns": 1792323459024328400
+    },
+    {
+      "path": "GL20ModuleCfg.data",
+      "sha256": "b06bc7078c0e0df802d849839fd1b9e901814506be18785a81065f63ab079e13",
+      "bytes": 253,
+      "mtime_ns": 1792323458724909400
+    },
+    {
+      "path": "GetServoSN-GetServoSN.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383215326200
+    },
+    {
+      "path": "GetServoSN.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240,
+      "mtime_ns": 1792232383214330500
+    },
+    {
+      "path": "H530QUICKMONTABLE.qmt",
+      "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773",
+      "bytes": 554,
+      "mtime_ns": 1792249815861612000
+    },
+    {
+      "path": "ILIndex.idx",
+      "sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21",
+      "bytes": 142,
+      "mtime_ns": 1792323460014172100
+    },
+    {
+      "path": "INT_001.ST",
+      "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935",
+      "bytes": 233,
+      "mtime_ns": 1792232383145992000
+    },
+    {
+      "path": "LoginPassowrd.dat",
+      "sha256": "4facbf88d978289015360dd932d58748d165a0bf8a3d01c40cef08ea134a0bb3",
+      "bytes": 17,
+      "mtime_ns": 1792323384674820500
+    },
+    {
+      "path": "MAIN.ST",
+      "sha256": "fd060d7ed31f43308eee554bc9a7077834815f0fae7be0b102efca5163a57d68",
+      "bytes": 1757,
+      "mtime_ns": 1792249307965356300
+    },
+    {
+      "path": "MAIN.mon",
+      "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773",
+      "bytes": 554,
+      "mtime_ns": 1792232383164453200
+    },
+    {
+      "path": "ModifiedInsIndex.idx",
+      "sha256": "0ef201cc3f9e03eaf99e0dc9752745e1d6667c0f58b8a6f968cf4fd1dbcf40f4",
+      "bytes": 30,
+      "mtime_ns": 1792323460014172100
+    },
+    {
+      "path": "OpcUAServer.dat",
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b",
+      "bytes": 307,
+      "mtime_ns": 1792323459151697100
+    },
+    {
+      "path": "OpcUAServer.datBAK",
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b",
+      "bytes": 307,
+      "mtime_ns": 1792249815691744000
+    },
+    {
+      "path": "OpcUAServer.tmp",
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b",
+      "bytes": 307,
+      "mtime_ns": 1792323459151697100
+    },
+    {
+      "path": "Output.prg",
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "bytes": 56,
+      "mtime_ns": 1792323460019032400
+    },
+    {
+      "path": "Output.sdt",
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+      "bytes": 182,
+      "mtime_ns": 1792323459480467400
+    },
+    {
+      "path": "PID_AT-PID_AT.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383201309500
+    },
+    {
+      "path": "PID_AT.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240,
+      "mtime_ns": 1792232383200314800
+    },
+    {
+      "path": "PID_ATC-PID_ATC.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383203311500
+    },
+    {
+      "path": "PID_ATC.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240,
+      "mtime_ns": 1792232383202310800
+    },
+    {
+      "path": "PortConfig.cfg",
+      "sha256": "06f8615e878e0fdc8dfd617f76e8b229d97e3878bb9a2ad88d198526652b3603",
+      "bytes": 265,
+      "mtime_ns": 1792323458731425900
+    },
+    {
+      "path": "ReAllocVarsInfo.vi",
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "bytes": 4,
+      "mtime_ns": 1792323459029578000
+    },
+    {
+      "path": "SBR_001.ST",
+      "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935",
+      "bytes": 233,
+      "mtime_ns": 1792232383144995800
+    },
+    {
+      "path": "SFTPServer.dat",
+      "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169",
+      "bytes": 171,
+      "mtime_ns": 1792323459176611200
+    },
+    {
+      "path": "SFTPServer.datBAK",
+      "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169",
+      "bytes": 171,
+      "mtime_ns": 1792249815696807200
+    },
+    {
+      "path": "SFTPServer.tmp",
+      "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169",
+      "bytes": 171,
+      "mtime_ns": 1792323459176611200
+    },
+    {
+      "path": "STTemp/MAIN.cl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mtime_ns": 1792248053263565700
+    },
+    {
+      "path": "STTemp/MAIN.o",
+      "sha256": "55cacc60c640b85b072555f21989ce49903e2eef38ca03d262a3f5ea073a18b5",
+      "bytes": 3948,
+      "mtime_ns": 1792323459692843000
+    },
+    {
+      "path": "STTemp/MAIN.rst",
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+      "bytes": 10,
+      "mtime_ns": 1792323459693953800
+    },
+    {
+      "path": "STTemp/MAIN.st",
+      "sha256": "c32e81927c28e6ad218668bcf174b53d7a36f4d369f7e30764aeba7ca0616c84",
+      "bytes": 1715,
+      "mtime_ns": 1792249312903483800
+    },
+    {
+      "path": "STTemp/SBR_001.cl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mtime_ns": 1792232467546746300
+    },
+    {
+      "path": "STTemp/SBR_001.o",
+      "sha256": "0427a175b83bd445b632a449e92fde9276b2a703737e7ceadaca08d4f1d6d411",
+      "bytes": 1792,
+      "mtime_ns": 1792323459695024200
+    },
+    {
+      "path": "STTemp/SBR_001.rst",
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+      "bytes": 10,
+      "mtime_ns": 1792323459695024200
+    },
+    {
+      "path": "STTemp/SBR_001.st",
+      "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4",
+      "bytes": 32,
+      "mtime_ns": 1792248053273090400
+    },
+    {
+      "path": "STsteps.dat",
+      "sha256": "84f817788143a19bf7aece9df227badf819f438bcf32be904961e110e3598aaf",
+      "bytes": 918,
+      "mtime_ns": 1792323460017693500
+    },
+    {
+      "path": "SYS_EIP.eIPgvt",
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80",
+      "bytes": 221,
+      "mtime_ns": 1792323459016508800
+    },
+    {
+      "path": "SYS_ETHERCAT.ecgvt",
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80",
+      "bytes": 221,
+      "mtime_ns": 1792323459018165300
+    },
+    {
+      "path": "TRIG-F_TRIG.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383206331600
+    },
+    {
+      "path": "TRIG-R_TRIG.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383205312100
+    },
+    {
+      "path": "TRIG.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240,
+      "mtime_ns": 1792232383204314200
+    },
+    {
+      "path": "TcpModbusConfig.cfg",
+      "sha256": "2b4a11fa9359588975ca08fda63a08543abbde3f88753e01b523be7f804a4e83",
+      "bytes": 8,
+      "mtime_ns": 1792323458721616100
+    },
+    {
+      "path": "Temp/DownLoad/EIPIns.foid",
+      "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+      "bytes": 88,
+      "mtime_ns": 1792249726188597700
+    },
+    {
+      "path": "Temp/DownLoad/Ecam.foid",
+      "sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80",
+      "bytes": 118,
+      "mtime_ns": 1792249726215380900
+    },
+    {
+      "path": "Temp/DownLoad/OpcUAServer.foid",
+      "sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd",
+      "bytes": 97,
+      "mtime_ns": 1792249726198446100
+    },
+    {
+      "path": "Temp/DownLoad/canlink.foid",
+      "sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81",
+      "bytes": 72,
+      "mtime_ns": 1792249726165106400
+    },
+    {
+      "path": "Temp/DownLoad/dataLog.foid",
+      "sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4",
+      "bytes": 261,
+      "mtime_ns": 1792249726191843900
+    },
+    {
+      "path": "Temp/DownLoad/ecttrans.foid",
+      "sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538",
+      "bytes": 73,
+      "mtime_ns": 1792249726189607400
+    },
+    {
+      "path": "Temp/DownLoad/ethercat.foid",
+      "sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e",
+      "bytes": 270,
+      "mtime_ns": 1792249726161739600
+    },
+    {
+      "path": "Temp/DownLoad/ethip.foid",
+      "sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac",
+      "bytes": 301,
+      "mtime_ns": 1792249726178760800
+    },
+    {
+      "path": "Temp/DownLoad/modbus.foid",
+      "sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190",
+      "bytes": 73,
+      "mtime_ns": 1792249726162845000
+    },
+    {
+      "path": "Temp/DownLoad/modcfg.foid",
+      "sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48",
+      "bytes": 579,
+      "mtime_ns": 1792249726167269400
+    },
+    {
+      "path": "Temp/DownLoad/sftpserver.foid",
+      "sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2",
+      "bytes": 146,
+      "mtime_ns": 1792249726206439400
+    },
+    {
+      "path": "Temp/DownLoad/syscfg.foid",
+      "sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c",
+      "bytes": 789,
+      "mtime_ns": 1792249726151879200
+    },
+    {
+      "path": "Temp/EIPIns.foid",
+      "sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25",
+      "bytes": 88,
+      "mtime_ns": 1792323460040867400
+    },
+    {
+      "path": "Temp/stprog.o",
+      "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b",
+      "bytes": 127464,
+      "mtime_ns": 1792323459991152700
+    },
+    {
+      "path": "Temp/stuserprog.o",
+      "sha256": "09c96e5511da4e0035c4427a9635ec70134a2258c357c952788f7f7069f718f9",
+      "bytes": 6240,
+      "mtime_ns": 1792323459992155900
+    },
+    {
+      "path": "Temp/symbol.sym",
+      "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92",
+      "bytes": 218,
+      "mtime_ns": 1792323460002315900
+    },
+    {
+      "path": "Temp/userprog.foid",
+      "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c",
+      "bytes": 294,
+      "mtime_ns": 1792323460040867400
+    },
+    {
+      "path": "Temp/varsinfo.foid",
+      "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d",
+      "bytes": 423,
+      "mtime_ns": 1792323460040867400
+    },
+    {
+      "path": "VarAddrMap.am",
+      "sha256": "9cbff9ffc24e59896d72156b1807187130ae5d9939448b573ff756894d9dc93d",
+      "bytes": 1698,
+      "mtime_ns": 1792323459028377300
+    },
+    {
+      "path": "VarList.gdt",
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+      "bytes": 209,
+      "mtime_ns": 1792232383162311000
+    },
+    {
+      "path": "VarNameAndAddr.csv",
+      "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+      "bytes": 24548,
+      "mtime_ns": 1792323460129626000
+    },
+    {
+      "path": "VarsInfo.vi",
+      "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95",
+      "bytes": 284,
+      "mtime_ns": 1792323459029578000
+    },
+    {
+      "path": "_SYS_CAN.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383188771300
+    },
+    {
+      "path": "_SYS_COM.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383189782900
+    },
+    {
+      "path": "_SYS_COM_SAVE.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383191789000
+    },
+    {
+      "path": "_SYS_ECAT_MASTER.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383192780700
+    },
+    {
+      "path": "_SYS_ECAT_SLAVE.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383194780100
+    },
+    {
+      "path": "_SYS_ETHERNET.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383196301100
+    },
+    {
+      "path": "_SYS_INFO.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383197315300
+    },
+    {
+      "path": "_SYS_PN.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207,
+      "mtime_ns": 1792232383199311800
+    },
+    {
+      "path": "config.ini",
+      "sha256": "a2832fb685683a26344d61c567e7f58c8b947c76a9f84846a395ede84af8199c",
+      "bytes": 29,
+      "mtime_ns": 1792323388505212600
+    },
+    {
+      "path": "dataLog.data",
+      "sha256": "f3a0abebf69ea2227363120c9ee1cc4576997c897edd826107eb37124087f7a2",
+      "bytes": 197,
+      "mtime_ns": 1792323458797525400
+    },
+    {
+      "path": "ecttrans.foid",
+      "sha256": "11fe87bbabe3f9c7fe22e69a6abdfd0eafb2053d3e2a13c5a3491ea8298bc927",
+      "bytes": 9,
+      "mtime_ns": 1792323459077524800
+    },
+    {
+      "path": "etherCat.data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "bytes": 2,
+      "mtime_ns": 1792232383185674300
+    },
+    {
+      "path": "folder.txt",
+      "sha256": "41a5af25c9341d009292d9d79d6ee1575036634ca736aec22c1f3dd11f285cc0",
+      "bytes": 259,
+      "mtime_ns": 1792323458787989000
+    },
+    {
+      "path": "h5u_moduleCfg.data",
+      "sha256": "696bdab8fd3098aba68d0c18b6b35fdc552f7d14ec6739b1fdc39a98e3533c15",
+      "bytes": 225,
+      "mtime_ns": 1792232383187181100
+    },
+    {
+      "path": "h6u_expandCard.data",
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+      "bytes": 209,
+      "mtime_ns": 1792323458723257900
+    },
+    {
+      "path": "steps.dat",
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "bytes": 4,
+      "mtime_ns": 1792323460015175200
+    },
+    {
+      "path": "userprog.prg",
+      "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c",
+      "bytes": 294,
+      "mtime_ns": 1792323460030021500
+    },
+    {
+      "path": "varid.vid",
+      "sha256": "f10fdeb85027095a03ecc1ce50557a33bb3669d0f2a92f5fd6d3850bfc911824",
+      "bytes": 256,
+      "mtime_ns": 1792323458728439400
+    },
+    {
+      "path": "varsinfo.foid",
+      "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d",
+      "bytes": 423,
+      "mtime_ns": 1792323459039603400
+    },
+    {
+      "path": "webserver.bin",
+      "sha256": "6f29ed21f69172be9b1f5a5713299f2c5b286458de33823445ffe9f36fff586f",
+      "bytes": 249,
+      "mtime_ns": 1792323459206758000
+    },
+    {
+      "path": "webserver.dat",
+      "sha256": "df466b859e5bde34d465bd523a3ef731ab30e4015d61ae3ac70fce2692f5f064",
+      "bytes": 88,
+      "mtime_ns": 1792323458810435200
+    },
+    {
+      "path": "功能块实例.fbi",
+      "sha256": "a45ea7ff194093e45f9a4fa7b10961ebdf4f314b703ac06931582c9f0d9a15e6",
+      "bytes": 510,
+      "mtime_ns": 1792323459022112200
+    },
+    {
+      "path": "变量表.csv",
+      "sha256": "62f23b0ad6666da734f188412f5ed8ce49868abfbf4b8d0aca1f9172f1c4a5e3",
+      "bytes": 1296,
+      "mtime_ns": 1792323459021013400
+    },
+    {
+      "path": "变量表.gvt",
+      "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5",
+      "bytes": 1503,
+      "mtime_ns": 1792323459021013400
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,380 @@
+{
+  "schema": "plcidf.control-interface-static.v1",
+  "observed_date": "2026-10-18",
+  "scope": "offline static inspection only; no library loads, GUI, service starts, network or device communication",
+  "files": [
+    {
+      "path": "InterfaceMgr.dll",
+      "bytes": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192"
+    },
+    {
+      "path": "H530Communicate.dll",
+      "bytes": 22864896,
+      "sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698"
+    },
+    {
+      "path": "CommunicaterModule.dll",
+      "bytes": 22724096,
+      "sha256": "e4db40d8053c9768a7d3ba79fbc96909019933a5753e8559ed5e5cfe8f1ac3ed"
+    },
+    {
+      "path": "AutoVarShared/PluginCommunicate.dll",
+      "bytes": 225280,
+      "sha256": "3419fb5aca50107b82c6554d2a8f8f9e0477481160615ce406a57565710be28d"
+    },
+    {
+      "path": "AutoVarShared/PluginGlobalFunc.dll",
+      "bytes": 15872,
+      "sha256": "fd164ca0303c8d62008c893980e3fdf7f89e9a99226c9d3d4f4c237c15d5ea64"
+    },
+    {
+      "path": "AutoVarShared/InoVarSharedService.exe",
+      "bytes": 13312,
+      "sha256": "3f6a34fd980269dd110253dbd4f066d3e84f4cb2eb418a82bf09efd2b62fb4f4"
+    },
+    {
+      "path": "AutoVarShared/TestITPClient.exe",
+      "bytes": 260608,
+      "sha256": "560e408adeb18949cb2d9978fc98df89e8f0a09d2a6da780ecb79dd0067f8f80"
+    },
+    {
+      "path": "AutoVarShared/PluginCommunicate.pdb",
+      "bytes": 4631552,
+      "sha256": "f47fd8e26508b5617973ff0bdbb31cd1e5a346213d8a471337f36b6ff2c75122"
+    },
+    {
+      "path": "AutoVarShared/PluginGlobalFunc.pdb",
+      "bytes": 3296256,
+      "sha256": "18206ef3b878183d0609191a5d12d76c3ad314a0c63034960d64442a5af9536c"
+    },
+    {
+      "path": "AutoVarShared/InoVarSharedService.pdb",
+      "bytes": 707584,
+      "sha256": "dd38db3d5b51b05c4ae79eec19bcb0f754b27bd99e3b43b37a8b92aab3a5b848"
+    }
+  ],
+  "pe32_image_base_for_rva_examples": "0x10000000",
+  "facades": [
+    {
+      "ordinal": 3488,
+      "name": "?SetFactory@IH530Communicate@@SAXPAVCH530CommunicateFactory@@@Z",
+      "rva": 426112,
+      "va": 268861568,
+      "forwarder": null,
+      "wrapper_first_32_sha256": "e1cfe5532abd929f50c00447c592fcf48dd8116b3554fa6e4a86e63f3c3fff54",
+      "implementation_vtable_slot": null
+    },
+    {
+      "ordinal": 2668,
+      "name": "?Instance@IH530Communicate@@CAPAVIH530Communicate_Interface@@XZ",
+      "rva": 426080,
+      "va": 268861536,
+      "forwarder": null,
+      "wrapper_first_32_sha256": "d2612bec10ad175c94037815293faa52f5d9e028157b6b0cd735198e10e3a7ce",
+      "implementation_vtable_slot": null
+    },
+    {
+      "ordinal": 1406,
+      "name": "?CreateThreadAndTaskPool@IH530Communicate@@SAXXZ",
+      "rva": 426128,
+      "va": 268861584,
+      "forwarder": null,
+      "wrapper_first_32_sha256": "80b59b68aa5c8f5e9681c2b66e5dbfc7f6639fa2c22ba7344238ad665b967b56",
+      "implementation_vtable_slot": 4,
+      "h530_implementation_rva": 8592
+    },
+    {
+      "ordinal": 3425,
+      "name": "?SetCommunicatType@IH530Communicate@@SAXW4EnumCommunicaterType@@PAUtagEthernetInfo@@@Z",
+      "rva": 426192,
+      "va": 268861648,
+      "forwarder": null,
+      "wrapper_first_32_sha256": "56a276c831bcc5eb5a80da41cdd4b7c7614f2d1664b8a7b681f1f3596b53caa5",
+      "implementation_vtable_slot": 12,
+      "h530_implementation_rva": 15568
+    },
+    {
+      "ordinal": 2187,
+      "name": "?GetPLCInfo@IH530Communicate@@SAJPAU_H530_PLC_INFO@@PAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+      "rva": 426992,
+      "va": 268862448,
+      "forwarder": null,
+      "wrapper_first_32_sha256": "be73eaa0edb5f91f543af687e662ed6dbae91901301cbfd1f71b3994477e5842",
+      "implementation_vtable_slot": 68,
+      "h530_implementation_rva": 17136
+    },
+    {
+      "ordinal": 2192,
+      "name": "?GetPLCRunMode@IH530Communicate@@SAJPAKPAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+      "rva": 432768,
+      "va": 268868224,
+      "forwarder": null,
+      "wrapper_first_32_sha256": "2be18db96c29e990408a84296e03bd0a20daf7958fca66ee5a705bf471a673b0",
+      "implementation_vtable_slot": 440,
+      "h530_implementation_rva": 29456
+    },
+    {
+      "ordinal": 3118,
+      "name": "?ReadMemoryEx@IH530Communicate@@SAJKKPAPAEPAKPAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@W4EReadMemoryCommand@@@Z",
+      "rva": 429472,
+      "va": 268864928,
+      "forwarder": null,
+      "wrapper_first_32_sha256": "f3102415265b47fccc7f4c9fa59522bde62fa86df33101b22a384d614c30b211",
+      "implementation_vtable_slot": null
+    },
+    {
+      "ordinal": 3913,
+      "name": "?WriteMemoryEx@IH530Communicate@@SAJKKPAEKPAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+      "rva": 429648,
+      "va": 268865104,
+      "forwarder": null,
+      "wrapper_first_32_sha256": "7129a7d95b2af923723830548bcae32c3926749a9243beb5ab712a11c375da32",
+      "implementation_vtable_slot": null
+    },
+    {
+      "ordinal": 3752,
+      "name": "?SimpleCommand@IH530Communicate@@SAJPAKW4EnumH530SimpleCmdType@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+      "rva": 430736,
+      "va": 268866192,
+      "forwarder": null,
+      "wrapper_first_32_sha256": "7545f6446f3a42a7645b731feff4a9f486d72be65056d6fe94b1a557f83f1ee9",
+      "implementation_vtable_slot": 296,
+      "h530_implementation_rva": 25296
+    }
+  ],
+  "factory_chain": {
+    "interface_factory_global_rva": "0x1366e0",
+    "set_factory_rva": "0x68080",
+    "h530_crt_initializer_pointer_rva": "0x749f4",
+    "h530_initializer_rva": "0x41770",
+    "factory_constructor_rva": "0x7490",
+    "set_factory_import_callsite_rva": "0x74cd",
+    "factory_rtti": "CH530CommunicateFactory_HC",
+    "factory_vtable_rva": "0x793d8",
+    "lazy_instance_slot": 4,
+    "lazy_instance_function_rva": "0x7520",
+    "implementation_allocation_bytes": 12,
+    "implementation_rtti": "CH530Communicate_HC",
+    "implementation_vtable_rva": "0x791fc",
+    "null_check_before_facade_factory_dereference": false
+  },
+  "run_mode_command": {
+    "implementation_rva": "0x7310",
+    "command_rtti": "CRTUStateCommand",
+    "command_object_bytes": 48,
+    "command_vtable_rva": "0x7bb24",
+    "executor_rva": "0x133d0",
+    "logical_command_id": "0xff010000",
+    "expected_result_bytes": 4,
+    "copies_result_first_u32_to_caller": true,
+    "run_stop_numeric_enum_verified": false,
+    "complete_wire_frame_verified": false,
+    "cross_layer_conflict": {
+      "source": "independent Simulator mp_core mapping analysis, report 14",
+      "simulator_same_numeric_index_meaning": "EtherCAT scan status/control word",
+      "simulator_cpu_status_candidate": "0xff000000",
+      "numeric_equality_proves_compatibility": false,
+      "unresolved": "H530 common execution layer framing/transformation and target/version relationship"
+    }
+  },
+  "transport_selection": {
+    "implementation_rva": "0x3cd0",
+    "observed_zero_and_nonzero_branches": true,
+    "observed_local_ethernet_type_check": 4,
+    "type_0_meaning_verified": false,
+    "type_4_tcp_or_udp_verified": false,
+    "ethernet_info_offsets_observed": [
+      0,
+      4,
+      8,
+      12,
+      16
+    ],
+    "full_struct_layout_verified": false
+  },
+  "local_variable_service": {
+    "exe": "AutoVarShared/InoVarSharedService.exe",
+    "plugin": "AutoVarShared/PluginCommunicate.dll",
+    "factory_export": "CreatePlugin",
+    "observed_loopback_literal": "127.0.0.1",
+    "observed_registry_subkey": "SOFTWARE\\AutoServicePort",
+    "observed_registry_port_helpers": [
+      "GetAvaliablePort",
+      "GetServicePort",
+      "SaveServicePort",
+      "GetTcpPortState"
+    ],
+    "observed_json_parser_diagnostic": true,
+    "existing_test_client": "AutoVarShared/TestITPClient.exe",
+    "fixed_port_verified": false,
+    "request_framing_verified": false,
+    "direct_plc_control_verified": false,
+    "pdb_binding": {
+      "guid": "BF00E18A-C93D-47B3-A8E8-5F4C5EFAD741",
+      "age": 1,
+      "matches_dll_rsds": true,
+      "stripped": false,
+      "reader": "Ubuntu LLVM20.1.2 llvm-pdbutil, extracted locally",
+      "reader_package_sha256": "b7ca50166943d94c786611ebe7a0dd8f5b9a9b1f81025620cf9dfcd8aac84563"
+    },
+    "packet_header": {
+      "pdb_type_index": "0x2035",
+      "packed": true,
+      "sizeof": 28,
+      "fields": [
+        {
+          "name": "dataMagic",
+          "type": "u32",
+          "offset": 0
+        },
+        {
+          "name": "dataLength",
+          "type": "u32",
+          "offset": 4
+        },
+        {
+          "name": "dataType",
+          "type": "i32 enum",
+          "offset": 8
+        },
+        {
+          "name": "platform",
+          "type": "i32 enum",
+          "offset": 12
+        },
+        {
+          "name": "packetID",
+          "type": "u16",
+          "offset": 16
+        },
+        {
+          "name": "connectID",
+          "type": "u16",
+          "offset": 18
+        },
+        {
+          "name": "iVersion",
+          "type": "u16",
+          "offset": 20
+        },
+        {
+          "name": "sSocket",
+          "type": "u32",
+          "offset": 22
+        },
+        {
+          "name": "dataCrc",
+          "type": "u16",
+          "offset": 26
+        }
+      ],
+      "constructor_rva": "0xfb50",
+      "magic": "0xa50ea50e",
+      "version_default": 1,
+      "socket_default": "0xffffffff",
+      "process_header_rva": "0xfdc0",
+      "single_receive_cap_bytes": 1460,
+      "fragment_state_fully_verified": false
+    },
+    "packet_type_enum": {
+      "NULL": 0,
+      "REGISTER": 1,
+      "FULL_AMOUNT_REQUEST": 2,
+      "FULL_AMOUNT_DATA": 3,
+      "FULL_LAST_AMOUNT_DATA": 4,
+      "UPDATE_FULL_DATA": 5,
+      "DATA": 6,
+      "ANSWER": 7,
+      "CLOSE": 8,
+      "ERROR": 9,
+      "FULL_AMOUNT_INCREASE_DATA": 10
+    },
+    "platform_role_enum": {
+      "PLC": 0,
+      "INOTOUCHPAD": 1
+    },
+    "pdb_selected_publics": {
+      "?GetPort@CCommunicateBase@@QAE_NXZ": {
+        "section": 1,
+        "section_offset": 8336,
+        "rva": 12432
+      },
+      "?IsValidCompletePacket@CPacketHandler@@QAE_NPAVIConnectInfo@@PAVIOMemory@@@Z": {
+        "section": 1,
+        "section_offset": 61472,
+        "rva": 65568
+      },
+      "?g_GenCrc16Code@@YAGPBDK@Z": {
+        "section": 1,
+        "section_offset": 60352,
+        "rva": 64448
+      },
+      "?HandlerRegAnswer@CPacketHandler@@QAE_NPAVIOMemory@@W4_PACKET_TYPE_@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": {
+        "section": 1,
+        "section_offset": 69184,
+        "rva": 73280
+      },
+      "?InitServerInfo@CCommunicateBase@@QAE_NXZ": {
+        "section": 1,
+        "section_offset": 7552,
+        "rva": 11648
+      },
+      "??0PacketHeader@@QAE@XZ": {
+        "section": 1,
+        "section_offset": 60240,
+        "rva": 64336
+      },
+      "?HandlerRegister@CPacketHandler@@QAE?AW4_PACKET_RESPONSE_@@PAVIConnectInfo@@PAVIOMemory@@@Z": {
+        "section": 1,
+        "section_offset": 65264,
+        "rva": 69360
+      },
+      "?HandlerSendRequest@CPacketHandler@@QAE_NPAVIConnectInfo@@PAVIOMemory@@01@Z": {
+        "section": 1,
+        "section_offset": 75664,
+        "rva": 79760
+      },
+      "?ProcessPacketHeader@CPacketHandler@@QAE_NPAVIOMemory@@@Z": {
+        "section": 1,
+        "section_offset": 60864,
+        "rva": 64960
+      }
+    },
+    "crc16": {
+      "function_rva": "0xfbc0",
+      "initial": "0xffff",
+      "polynomial": "0xa001",
+      "shift": "right",
+      "final_byte_swap": true,
+      "empty_payload_check_scope": "first 26 header bytes",
+      "nonempty_payload_check_scope": "current payload capped at 1432 bytes",
+      "real_packet_capture_verified": false
+    },
+    "registration_json_key_code_verified": "Path",
+    "response_json_key_observed": "Response",
+    "real_plc_values_provider_verified": false,
+    "interpretation": "Static evidence supports a local PLC/HMI engineering-side variable synchronization/router. No RUN/STOP enum or independent device provider chain is established."
+  },
+  "sdk_source_search": {
+    "root": "AutoShop installation",
+    "source_header_example_extensions": [
+      ".h",
+      ".hpp",
+      ".cs",
+      ".cpp",
+      ".c",
+      ".py",
+      ".idl"
+    ],
+    "matching_files_found": 0
+  },
+  "next_contract_gaps": [
+    "MFC/plugin host initialization and thread/task-pool lifecycle",
+    "EnumCommunicaterType / EnumExecuteMode / EnumCommandLevel definitions",
+    "H530_PLC_INFO exact structure and Ethernet transport configuration",
+    "Full framing/checksum/ownership/threading/timeout contract",
+    "Local shared-variable service protocol/provider identity; direct device operation not established"
+  ],
+  "artifact_policy": "Full proprietary PDB dumps and disassembly stay in .plcidf; only selected task-related public facts, hashes, fields and RVAs are recorded here."
+}

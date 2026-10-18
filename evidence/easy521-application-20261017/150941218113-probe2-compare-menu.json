@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-10-17T15:09:41.218068+00:00",
+  "label": "probe2-compare-menu",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "click",
+    "-X",
+    "520",
+    "-Y",
+    "86"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": ""
+}

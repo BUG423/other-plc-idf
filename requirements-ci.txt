@@ -1,0 +1,5 @@
+# 软件测试/分发验收依赖；运行依赖在 pyproject.toml 固定，以下保留基线约束。
+pytest==9.1.1
+pymodbus==3.16.1
+pyserial==3.5
+build>=1.2,<2

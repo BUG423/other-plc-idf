@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-17T10:18:37.564844+00:00",
+  "argv": [
+    "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "editor-read",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\BESS_E521_DEV"
+  ],
+  "returncode": 0,
+  "stdout": "{\"title\":\"AutoShop V4.12.0.2  E:\\\\PLCProjects\\\\BESS_E521_DEV - [MAIN *]\",\"editor_handle\":5508014,\"source\":\"\"}\r\n",
+  "stderr": ""
+}

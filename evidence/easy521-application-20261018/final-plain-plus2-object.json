@@ -1,0 +1,115 @@
+{
+  "case": "plus2",
+  "observed_at": "2026-10-18T11:49:11.929209+00:00",
+  "tool": "with implicit vendor empty-function declaration",
+  "prepared": {
+    "schema": "plcidf.vendor-main-preparation.v1",
+    "scope": "vendor-main-intermediate-only",
+    "ok": true,
+    "status": "prepared",
+    "stage": "complete",
+    "diagnostics": [],
+    "device_access": false,
+    "gui_access": false,
+    "project_link_verified": false,
+    "injected_runtime_declarations": [
+      "_HC_EMPTYFUC:VOID()"
+    ],
+    "files": [
+      {
+        "name": "MAIN.st",
+        "path": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/final-tool-acceptance/plus2/prepared/MAIN.st",
+        "bytes": 141,
+        "sha256": "12ce0f71971a91e5cfbecef86042ae31d015548b5d39cce89bbd089e29c9c3cd"
+      },
+      {
+        "name": "MAIN.cl",
+        "path": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/final-tool-acceptance/plus2/prepared/MAIN.cl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "source": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/final-tool-acceptance/plus2/main.st",
+    "source_sha256": "ea670cf485083894ec20fe2e2312adedfd44f3982acf75b8399d53b5e6be7d07",
+    "globals_file": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/final-tool-acceptance/plus2/globals.json",
+    "globals_sha256": "144fe1eb155c31c4b7e0cd035d87ce04f481df2ad95699c7c3b08b13c0cc996c",
+    "globals": {
+      "COUNTER": "DINT"
+    },
+    "intermediate_text_sha256": "02a5dba6762d7e30621d5edfb5e89913a78166c1d8396d32c9bde912e0559374",
+    "output_directory": "/mnt/e/PLCProjects/PLCIDF_PLAIN_ROOT_20261018_65e082ce/final-tool-acceptance/plus2/prepared"
+  },
+  "compiled": {
+    "schema": "plcidf.vendor-object-build.v1",
+    "scope": "vendor-object-only",
+    "ok": true,
+    "status": "verified",
+    "stage": "complete",
+    "diagnostics": [],
+    "build_directory": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\final-tool-acceptance\\plus2\\compiled",
+    "source_files": [
+      {
+        "name": "MAIN.st",
+        "path": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\final-tool-acceptance\\plus2\\prepared\\MAIN.st",
+        "bytes": 141,
+        "sha256": "12ce0f71971a91e5cfbecef86042ae31d015548b5d39cce89bbd089e29c9c3cd"
+      },
+      {
+        "name": "MAIN.cl",
+        "path": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\final-tool-acceptance\\plus2\\prepared\\MAIN.cl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "object_files": [
+      {
+        "name": "MAIN.o",
+        "path": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\final-tool-acceptance\\plus2\\compiled\\MAIN.o",
+        "bytes": 2040,
+        "sha256": "ef27685da39c95eedb3c942d64b2a3ee78ade4d50ce7897d73041213bf26add4",
+        "elf": {
+          "class": "ELF32",
+          "entry_symbol": "MAIN",
+          "type": "REL",
+          "machine": "ARM",
+          "byte_order": "little",
+          "eabi_flags": "0x05000000"
+        }
+      }
+    ],
+    "device_access": false,
+    "gui_access": false,
+    "compiler": {
+      "name": "StLang.exe",
+      "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\StLang.exe",
+      "bytes": 25144320,
+      "sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847"
+    },
+    "kernel": {
+      "name": "Kernel.dll",
+      "path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\Kernel.dll",
+      "bytes": 289280,
+      "sha256": "e9b675b79ced087c7e7e1a897ea889d692536056f2f45d2b813e98239906edcd"
+    },
+    "pid": 23672,
+    "timed_out": false,
+    "elapsed_ms": 75,
+    "exit_code": 1,
+    "stdout": "01F821D8i686-pc-windows-msvc\r\ni686-pc-windows-msvc: i686-pc-windows-msvc\r\nsuccess-------------- \r\n",
+    "stderr": "",
+    "output_truncated": false,
+    "capture_complete": true,
+    "ipc": {
+      "success": 1,
+      "started": 1,
+      "done": 1
+    },
+    "result_file": {
+      "name": "MAIN.rst",
+      "path": "E:\\PLCProjects\\PLCIDF_PLAIN_ROOT_20261018_65e082ce\\final-tool-acceptance\\plus2\\compiled\\MAIN.rst",
+      "bytes": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    "helper_sha256": "1dd95f471bcb225f8bde3e9fe70f7e3287555e7e988c1c6745e18d22f78d26d9"
+  }
+}

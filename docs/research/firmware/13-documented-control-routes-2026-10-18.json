@@ -1,0 +1,709 @@
+{
+  "schema": "plcidf.documented-control-routes.v1",
+  "date": "2026-10-18",
+  "scope": {
+    "assessed_model": "Easy521 / Easy52X",
+    "easy512_identity_confirmed": false,
+    "local_files_only": true,
+    "windows_processes_accessed": false,
+    "gui_accessed": false,
+    "usb_accessed": false,
+    "device_accessed": false,
+    "network_accessed": false,
+    "hardware_tests_performed": false
+  },
+  "sources": [
+    {
+      "id": "P",
+      "kind": "bundled-official-manual",
+      "path": "/mnt/e/Software/AutoShop/Manual/H5U&Easy_Manual/H5U&Easy系列可编程逻辑控制器编程手册-中文.pdf",
+      "name": "H5U&Easy系列可编程逻辑控制器编程手册-中文.pdf",
+      "sha256": "799760718dd7b7fe48e92034fddba767d54d3b3040b64eefb07d6e36c237f03d",
+      "pages": 1022,
+      "page_numbering": "1-based PDF page; printed page agrees on cited pages",
+      "reviewed_pages": [
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        621,
+        622,
+        623,
+        624,
+        625,
+        626,
+        627,
+        628,
+        629,
+        630,
+        631,
+        90,
+        123,
+        124,
+        125,
+        127,
+        168,
+        169,
+        170,
+        171,
+        172,
+        973,
+        984,
+        985,
+        986
+      ]
+    },
+    {
+      "id": "U",
+      "kind": "bundled-official-manual",
+      "path": "/mnt/e/Software/AutoShop/Manual/H5U&Easy_Manual/Easy系列可编程逻辑控制器用户手册.PDF",
+      "name": "Easy系列可编程逻辑控制器用户手册.PDF",
+      "sha256": "e793971a545f5b4c89e067957ac73973546f6df354f586a62c041995df5dc5da",
+      "pages": 177,
+      "page_numbering": "1-based PDF page; printed page agrees on cited pages",
+      "reviewed_pages": [
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        150,
+        151,
+        156,
+        157
+      ]
+    },
+    {
+      "id": "plc/easy521/autoshop_global_import.csv",
+      "kind": "repository-file-not-live-device",
+      "path": "plc/easy521/autoshop_global_import.csv",
+      "sha256": "2ec0225aaa9be79e57f2780ddbdbfdd174d90b778dc225bc532040c361ce89bc"
+    },
+    {
+      "id": "plc/easy521/MAIN_5ms_variables.csv",
+      "kind": "repository-file-not-live-device",
+      "path": "plc/easy521/MAIN_5ms_variables.csv",
+      "sha256": "1a5afad0c4bae154cafd2d7aa5329b63d179cae1cbbec3014f9a7a2590d14d6e"
+    },
+    {
+      "id": "plc/easy521/autoshop/BESS_E521_DEV/VarNameAndAddr.csv",
+      "kind": "repository-file-not-live-device",
+      "path": "plc/easy521/autoshop/BESS_E521_DEV/VarNameAndAddr.csv",
+      "sha256": "ebdd331ebf5732c6377c09db368862d75ab73ad14b5f44d5a3776ee7a17e6e75"
+    },
+    {
+      "id": "plc/easy521/modbus_register_map_real32.csv",
+      "kind": "repository-file-not-live-device",
+      "path": "plc/easy521/modbus_register_map_real32.csv",
+      "sha256": "0c07457546f5f439072337f4aad030266196757105f501c65fc7f1b0a3596431"
+    },
+    {
+      "id": "wsl-tools/e521_regs.py",
+      "kind": "repository-file-not-live-device",
+      "path": "wsl-tools/e521_regs.py",
+      "sha256": "3aa5912562d92c90211e5228a5df1b68db6825c38638f12fda950d067c95fa23"
+    }
+  ],
+  "claims": [
+    {
+      "id": "model-scope",
+      "source_id": "U",
+      "pdf_pages": [
+        135,
+        136
+      ],
+      "classification": "documented",
+      "summary": "Easy521 TN/TP is explicitly listed under Easy52X/Easy500; Easy512 is not established by this review."
+    },
+    {
+      "id": "network-default-ip",
+      "source_id": "P",
+      "pdf_pages": [
+        420,
+        421
+      ],
+      "classification": "documented",
+      "summary": "Easy52X has two Ethernet ports. 192.168.1.88 and MFK reset are specifically described for H5U; no Easy521 factory IP is established here."
+    },
+    {
+      "id": "modbus-server-default",
+      "source_id": "P",
+      "pdf_pages": [
+        428
+      ],
+      "classification": "documented",
+      "summary": "The documented Modbus TCP server is enabled by default, uses port 502 and allows up to 31 clients; an actual listener on this connected device was not tested."
+    },
+    {
+      "id": "modbus-function-codes",
+      "source_id": "P",
+      "pdf_pages": [
+        428
+      ],
+      "classification": "documented",
+      "summary": "Implemented server function codes are 01/02,03/04,05,06,0F,10; 02 is described as same as 01 and 04 as same as 03."
+    },
+    {
+      "id": "modbus-maps",
+      "source_id": "P",
+      "pdf_pages": [
+        428,
+        429
+      ],
+      "classification": "documented",
+      "summary": "Published raw PDU address tables map M/B/S/X/Y coils and D/R words; W and Pointer variables are unsupported. A symbolic global is not automatically the same thing as a D/M address."
+    },
+    {
+      "id": "master-disable-distinction",
+      "source_id": "P",
+      "pdf_pages": [
+        425,
+        426,
+        427
+      ],
+      "classification": "documented",
+      "summary": "The optional slave-disable section uses _MbTcpMstEx to disable a remote station of the PLC Modbus master; it is not evidence that this toggles the local port-502 server."
+    },
+    {
+      "id": "fins-server-default",
+      "source_id": "P",
+      "pdf_pages": [
+        433
+      ],
+      "classification": "documented",
+      "summary": "H5U/Easy acts only as FINS TCP/UDP slave; service is documented as enabled by default on port 9600; FINS TCP allows 32 clients."
+    },
+    {
+      "id": "fins-commands",
+      "source_id": "P",
+      "pdf_pages": [
+        434
+      ],
+      "classification": "documented",
+      "summary": "The implementation table lists command 01/01 memory read and 01/02 memory write. CPU RUN/STOP command implementation is not established by that table."
+    },
+    {
+      "id": "fins-word-layout",
+      "source_id": "P",
+      "pdf_pages": [
+        434
+      ],
+      "classification": "documented",
+      "summary": "All mapped DM addresses are accessed as WORD, including 16 packed X/Y/M bits per word; X/Y soft-device labels are octal. Do not access across map gaps; max continuous quantity is 2000 words; node/IP last byte limit is 254."
+    },
+    {
+      "id": "fins-udp-run",
+      "source_id": "P",
+      "pdf_pages": [
+        434
+      ],
+      "classification": "documented",
+      "summary": "FINS UDP explicitly requires the PLC to be in Run. FINS TCP STOP-state availability is not established by this clause."
+    },
+    {
+      "id": "opcua-supported-config",
+      "source_id": "P",
+      "pdf_pages": [
+        625,
+        626
+      ],
+      "classification": "documented",
+      "summary": "Easy500 including Easy52X supports OPC UA; Easy firmware >=6.3.0.0 with AutoShop >=4.10.1.0 is stated. Server activation is configured in the project; default port is 4840, not proof the server is currently active."
+    },
+    {
+      "id": "opcua-publish-access",
+      "source_id": "P",
+      "pdf_pages": [
+        623,
+        624,
+        629
+      ],
+      "classification": "documented",
+      "summary": "Private globals are not registered and cannot be read/written via OPC UA; public and input/output globals are registered with read/write permission within registration limits. Supported basic types include BOOL/BYTE/INT/DINT/REAL/STRING."
+    },
+    {
+      "id": "opcua-limits",
+      "source_id": "P",
+      "pdf_pages": [
+        624,
+        626
+      ],
+      "classification": "documented",
+      "summary": "Limits include 2000 public variables,20000 basic elements; Easy52X max sessions=20. Arrays/structures and V6.12 enhancements have additional version requirements; minimum sampling can be 100ms, so this is not a 5ms scan trace guarantee."
+    },
+    {
+      "id": "opcua-stop-exception",
+      "source_id": "P",
+      "pdf_pages": [
+        622
+      ],
+      "classification": "documented",
+      "summary": "An already running OPC UA server remains running when PLC goes to Stop; stop/run or power cycling without a project configuration change preserves server activation logic. Do not generalize the PLC STOP overview into all network services being unavailable."
+    },
+    {
+      "id": "opcua-authentication",
+      "source_id": "P",
+      "pdf_pages": [
+        627,
+        628
+      ],
+      "classification": "documented",
+      "summary": "The manual describes security policy choices and authentication; anonymous login is checked by default in configuration. This is not a claim that any reachable installation permits anonymous access."
+    },
+    {
+      "id": "cpu-run-stop",
+      "source_id": "P",
+      "pdf_pages": [
+        90,
+        168
+      ],
+      "classification": "documented",
+      "summary": "Documented CPU mode control is physical RUN/STOP switch or AutoShop toolbar. M8000 is a read-only running flag; M8001 is its inverse; these are not CPU control bits. Neither is included in the default M0-M7999 protocol mapping."
+    },
+    {
+      "id": "bind-global-soft-device",
+      "source_id": "P",
+      "pdf_pages": [
+        123,
+        124
+      ],
+      "classification": "documented",
+      "summary": "Binding a named global to a soft-device address requires filling the variable-table address and compiling the project. BOOL binds a bit device; INT uses one word; DINT/REAL use two consecutive words."
+    },
+    {
+      "id": "ethernet-not-poe",
+      "source_id": "U",
+      "pdf_pages": [
+        137,
+        138
+      ],
+      "classification": "documented",
+      "summary": "EtherNET1/2 and EtherCAT are explicitly non-PoE; linking a cable is not a documented power source. RUN and ETH indicators denote different facts."
+    },
+    {
+      "id": "power-and-usb",
+      "source_id": "U",
+      "pdf_pages": [
+        138,
+        139,
+        140,
+        141
+      ],
+      "classification": "documented",
+      "summary": "Easy52X main terminal input and physical input/output voltage ratings are 24VDC +/-10%. USB-only operation is mentioned with a no-power-loss-retention limitation; Type-C supports application upload/download and firmware upgrade. The cited pages do not establish USB-only CPU or Ethernet runtime behavior."
+    },
+    {
+      "id": "no-st-download-contract",
+      "source_id": "P",
+      "pdf_pages": [
+        428,
+        434,
+        623,
+        624
+      ],
+      "classification": "bounded-document-review",
+      "summary": "Reviewed Modbus/FINS/OPC UA implementation sections describe data/variable access, not an arbitrary ST source download/build/link/application transaction. A business command variable is not a generic PLC program loader."
+    }
+  ],
+  "protocols": {
+    "modbus_tcp": {
+      "port": 502,
+      "default_enabled": "documented-standard-behavior-not-live-observed",
+      "max_clients": 31,
+      "function_codes_hex": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "0F",
+        "10"
+      ],
+      "address_basis": "raw zero-based PDU offsets; not 4xxxx display notation",
+      "coils": [
+        {
+          "area": "M",
+          "first_soft_device": "0",
+          "last_soft_device": "7999",
+          "raw_address_start": 0,
+          "raw_address_end": 7999,
+          "quantity": 8000
+        },
+        {
+          "area": "B",
+          "first_soft_device": "0",
+          "last_soft_device": "32767",
+          "raw_address_start": 12288,
+          "raw_address_end": 45055,
+          "quantity": 32768
+        },
+        {
+          "area": "S",
+          "first_soft_device": "0",
+          "last_soft_device": "4095",
+          "raw_address_start": 57344,
+          "raw_address_end": 61439,
+          "quantity": 4096
+        },
+        {
+          "area": "X",
+          "first_soft_device": "0",
+          "last_soft_device": "1777(octal)",
+          "raw_address_start": 63488,
+          "raw_address_end": 64511,
+          "quantity": 1024
+        },
+        {
+          "area": "Y",
+          "first_soft_device": "0",
+          "last_soft_device": "1777(octal)",
+          "raw_address_start": 64512,
+          "raw_address_end": 65535,
+          "quantity": 1024
+        }
+      ],
+      "registers": [
+        {
+          "area": "D",
+          "first_soft_device": 0,
+          "last_soft_device": 7999,
+          "raw_address_start": 0,
+          "raw_address_end": 7999,
+          "quantity": 8000
+        },
+        {
+          "area": "R",
+          "first_soft_device": 0,
+          "last_soft_device": 32767,
+          "raw_address_start": 12288,
+          "raw_address_end": 45055,
+          "quantity": 32768
+        }
+      ],
+      "per_region_write_permissions": "not explicitly separated by cited address table; physical input forcing/output persistence not established",
+      "cpu_mode_control": "not-established",
+      "arbitrary_st_download": "not-documented"
+    },
+    "fins": {
+      "port": 9600,
+      "transports": [
+        "tcp",
+        "udp"
+      ],
+      "role": "server/slave-only",
+      "default_enabled": "documented-standard-behavior-not-live-observed",
+      "max_tcp_clients": 32,
+      "commands_hex": {
+        "0101": "memory-read",
+        "0102": "memory-write"
+      },
+      "maps": [
+        {
+          "area": "D",
+          "first_soft_device": "0",
+          "last_soft_device": "7999",
+          "dm_word_start": 0,
+          "dm_word_end": 7999,
+          "bits_per_dm_word_if_bit_area": 1
+        },
+        {
+          "area": "R",
+          "first_soft_device": "0",
+          "last_soft_device": "19999",
+          "dm_word_start": 8192,
+          "dm_word_end": 28191,
+          "bits_per_dm_word_if_bit_area": 1
+        },
+        {
+          "area": "X",
+          "first_soft_device": "0",
+          "last_soft_device": "1777(octal)",
+          "dm_word_start": 28416,
+          "dm_word_end": 28479,
+          "bits_per_dm_word_if_bit_area": 16
+        },
+        {
+          "area": "Y",
+          "first_soft_device": "0",
+          "last_soft_device": "1777(octal)",
+          "dm_word_start": 28496,
+          "dm_word_end": 28559,
+          "bits_per_dm_word_if_bit_area": 16
+        },
+        {
+          "area": "M",
+          "first_soft_device": "0",
+          "last_soft_device": "7999",
+          "dm_word_start": 28672,
+          "dm_word_end": 29171,
+          "bits_per_dm_word_if_bit_area": 16
+        }
+      ],
+      "max_continuous_words": 2000,
+      "udp_requires_cpu_run": true,
+      "tcp_during_stop": "not-established",
+      "cpu_mode_control": "not-established",
+      "arbitrary_st_download": "not-documented"
+    },
+    "opcua": {
+      "default_port": 4840,
+      "server_enable": "project-activation-required; current-device-state-not-observed",
+      "variable_exposure": "public or input/output globals; private is not registered",
+      "cpu_mode_control": "no implemented mode method established in reviewed chapter",
+      "already_running_server_survives_cpu_stop": true,
+      "arbitrary_st_download": "not-documented",
+      "easy52x_max_sessions": 20,
+      "min_sampling_ms": 100
+    }
+  },
+  "repository_binding_review": {
+    "scope": "archived-repository-inputs-not-live-device",
+    "global_count": 19,
+    "all_private": true,
+    "all_soft_device_bindings_empty": true,
+    "variables": [
+      {
+        "name": "g_xBESS_Enable",
+        "type": "BOOL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100000",
+          "bits": "1"
+        }
+      },
+      {
+        "name": "g_xBESS_Reset",
+        "type": "BOOL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100001",
+          "bits": "1"
+        }
+      },
+      {
+        "name": "g_xBESS_MeasurementsValid",
+        "type": "BOOL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100002",
+          "bits": "1"
+        }
+      },
+      {
+        "name": "g_rBESS_Vpu",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100010",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_Pline",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100030",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_Qline",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100050",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_Loading",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100070",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_SOC",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100090",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_Pess",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X21000B0",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_Qess",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X21000D0",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_Pcmd",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X21000F0",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_Qcmd",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100110",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_iBESS_Mode",
+        "type": "INT",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100130",
+          "bits": "16"
+        }
+      },
+      {
+        "name": "g_rBESS_SensVP",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100140",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_SensVQ",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100160",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_InfluenceP",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100180",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_InfluenceQ",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X21001A0",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_rBESS_Confidence",
+        "type": "REAL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X21001C0",
+          "bits": "32"
+        }
+      },
+      {
+        "name": "g_xBESS_ControllerReady",
+        "type": "BOOL",
+        "network_visibility": "私有",
+        "soft_device_binding": null,
+        "archived_internal_symbol": {
+          "symbol_address": "0X2100003",
+          "bits": "1"
+        }
+      }
+    ],
+    "register_map_csv_is_confirmed_native_binding": false,
+    "real32_word_order_is_confirmed_on_device": false,
+    "conclusion": "The BESS D0-D17 layout is a protocol design; neither named global binding nor OPC UA publication is established by these archived files."
+  },
+  "practical_order": [
+    {
+      "route": "modbus-tcp",
+      "value": "Simplest documented raw D/M read/write route when live IP,link and service are known; no new protocol configuration is stated for the standard server",
+      "does_not_do": "Does not expose arbitrary private named globals or load ST"
+    },
+    {
+      "route": "one-time-addressed-app-interface",
+      "value": "A deliberately bound command/status D/M interface lets an existing running application interpret external commands",
+      "does_not_do": "Business START is not CPU RUN; behavior requires the application to execute"
+    },
+    {
+      "route": "opcua",
+      "value": "Named typed variables without a D map after project activation and publication",
+      "does_not_do": "Does not register current BESS private variables automatically"
+    },
+    {
+      "route": "fins",
+      "value": "Alternative documented word-level access; bit writes affect packed words",
+      "does_not_do": "No generic FINS CPU mode or ST application download implementation established"
+    }
+  ],
+  "corrections_to_prior_notes": [
+    "Manual default-enabled language is real but is not live endpoint observation.",
+    "Optional _MbTcpMstEx slave-disable is for a PLC master remote station, not proof of a local-server disable switch.",
+    "STOP does not imply every service is down: OPC UA has an explicit survival rule.",
+    "D/R raw mapping does not imply current private g_* globals are D-mapped.",
+    "Type-C vendor support is documented; third-party impossibility is not proved.",
+    "H5U 192.168.1.88 is not established as Easy521 default IP.",
+    "Logical Y image access does not by itself prove terminal energization, write persistence or priority over scan logic."
+  ]
+}

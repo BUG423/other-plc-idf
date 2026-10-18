@@ -1,0 +1,23 @@
+{
+  "time": "2026-10-17T10:33:40.751313+00:00",
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "plc_idf.cli",
+    "build",
+    "--config",
+    "/tmp/plcidf-native-test.toml",
+    "--source",
+    "evidence/hardware-20261017/invalid-main.st",
+    "--working-project",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+    "--execute",
+    "--i-have-authorized",
+    "--compile-timeout",
+    "6",
+    "--json"
+  ],
+  "returncode": 1,
+  "stdout": "{\n  \"schema_version\": 1,\n  \"ok\": false,\n  \"status\": \"failed\",\n  \"executed\": true,\n  \"sync\": {\n    \"schema_version\": 1,\n    \"ok\": true,\n    \"status\": \"verified\",\n    \"executed\": true,\n    \"changed\": true,\n    \"diff\": \"--- AutoShop/MAIN\\n+++ /home/zss/workspace/py2plc/evidence/hardware-20261017/invalid-main.st\\n@@ -22,3 +22,5 @@\\n g_rBESS_InfluenceQ := fbBESS.rInfluenceQ;\\n g_rBESS_Confidence := fbBESS.rConfidence;\\n g_xBESS_ControllerReady := fbBESS.xReady;\\n+\\n+PLCIDF_NEGATIVE_TEST := ;\\n\",\n    \"source\": \"/home/zss/workspace/py2plc/evidence/hardware-20261017/invalid-main.st\",\n    \"source_sha256\": \"996279aa424c14cf54abca789dc32c70dff1c733b4455cee189bae1e5331188d\",\n    \"source_text_sha256\": \"996279aa424c14cf54abca789dc32c70dff1c733b4455cee189bae1e5331188d\",\n    \"project\": \"E:\\\\PLCProjects\\\\PLCIDF_LAB_20261017\\\\BESS_E521_DEV\",\n    \"autoshop_version\": \"4.12.0.2\"\n  },\n  \"quarantine\": \"/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/.plcidf/quarantine/0fcb0269bc4f4699aac36b7e3ba6e30e\",\n  \"diagnostics\": {\n    \"status\": \"failed\",\n    \"error_count\": 1,\n    \"text\": \"----------------------------------  AutoShop :  工程（BESS_E521_DEV）  编译消息  ----------------------------------\\n2026/10/17 18:33:33  开始编译\\n2026/10/17 18:33:33  >>>开始变量地址分配\\n2026/10/17 18:33:33  完成变量地址分配\\n2026/10/17 18:33:33  >>>开始ECAT检查\\n2026/10/17 18:33:33  当前工程轮廓轴0个;总线伺服轴0个;总线编码器轴0个;本地脉冲轴0个;本地编码器轴0个\\n2026/10/17 18:33:33  完成ECAT检查\\n2026/10/17 18:33:33  >>>开始本地模块检查\\n2026/10/17 18:33:33  完成本地模块检查\\n2026/10/17 18:33:33  >>>开始Modbus配置检查\\n2026/10/17 18:33:33  完成Modbus配置检查\\n2026/10/17 18:33:33  >>>开始OPCUA检查\\n2026/10/17 18:33:33  完成OPCUA检查\\n2026/10/17 18:33:33  >>>开始SFTP检查\\n2026/10/17 18:33:33  完成SFTP检查\\n2026/10/17 18:33:33  >>>开始EIP检查\\n2026/10/17 18:33:33  完成EIP检查\\n2026/10/17 18:33:33  >>开始WebServer配置检查\\n2026/10/17 18:33:33  结束WebServer配置检查\\n2026/10/17 18:33:33  >>>开始数据记录配置检查\\n2026/10/17 18:33:33  完成数据记录配置检查\\n2026/10/17 18:33:33  >>>开始程序文件工程密码检查\\n2026/10/17 18:33:33  >>>结束程序文件工程密码检查\\n2026/10/17 18:33:33  >>>开始程序编译\\n2026/10/17 18:33:33  开始预处理\\n信息  预处理时间: 125 ms\\n2026/10/17 18:33:33  预处理结束\\n开始编译...\\n正在编译系统配置信息...\\n正在生成UCODE文件...\\nMAIN.ST\\n错误  MAIN, 【行号:26】: 错误:请检查“;”、关键字（正确/缺失）、变量名、函数名、条件语句、赋值语句（是否常量）、参数个数等完整性、CASE语句标签是否存在、FOR语句变量类型是否匹配\\n\\n统计 - (1)错误\\n总行数：213\\n2026/10/17 18:33:34  完成程序编译\\n2026/10/17 18:33:34  完成编译\",\n    \"source\": \"autoshop-log\"\n  },\n  \"manifest\": null,\n  \"missing_artifacts\": [\n    \"STTemp/MAIN.o\",\n    \"Temp/stprog.o\"\n  ],\n  \"reason\": \"vendor-reported-compile-errors\",\n  \"command\": \"build\"\n}\n",
+  "stderr": ""
+}

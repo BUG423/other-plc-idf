@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-10-17T14:44:01.045093+00:00",
+  "label": "probe1-download-options",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "dialog",
+    "-ExpectedDialog",
+    "下载设置",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "{\"title\":\"下载设置\",\"handle\":2232922,\"project\":\"AutoShop V4.12.0.2  E:\\\\PLCProjects\\\\PLCIDF_LAB_20261017\\\\BESS_E521_DEV - [MAIN]\",\"controls\":[{\"handle\":1249972,\"name\":\"确定\",\"class\":\"Button\",\"checked\":0,\"button_type\":1,\"enabled\":true},{\"handle\":5377680,\"name\":\"取消\",\"class\":\"Button\",\"checked\":0,\"button_type\":0,\"enabled\":true},{\"handle\":987972,\"name\":\"\",\"class\":\"Button\",\"checked\":0,\"button_type\":7,\"enabled\":true},{\"handle\":333056,\"name\":\"下载工程源码(不勾选则不能上载工程)\",\"class\":\"Button\",\"checked\":1,\"button_type\":3,\"enabled\":true},{\"handle\":332928,\"name\":\"\",\"class\":\"Button\",\"checked\":0,\"button_type\":7,\"enabled\":true},{\"handle\":136458,\"name\":\"下载时，保持型变量重新初始化\",\"class\":\"Button\",\"checked\":0,\"button_type\":9,\"enabled\":true},{\"handle\":136460,\"name\":\"下载时，保持型变量保持现有值\",\"class\":\"Button\",\"checked\":1,\"button_type\":9,\"enabled\":true},{\"handle\":660716,\"name\":\"每次下载提示\",\"class\":\"Button\",\"checked\":1,\"button_type\":3,\"enabled\":true},{\"handle\":594808,\"name\":\"\",\"class\":\"Button\",\"checked\":0,\"button_type\":7,\"enabled\":true},{\"handle\":3478006,\"name\":\"保持型变量属性\",\"class\":\"Button\",\"checked\":0,\"button_type\":3,\"enabled\":true},{\"handle\":398436,\"name\":\"下载配置在工程中的PLC登录密码\",\"class\":\"Button\",\"checked\":0,\"button_type\":3,\"enabled\":true},{\"handle\":201950,\"name\":\"\",\"class\":\"Button\",\"checked\":0,\"button_type\":7,\"enabled\":true}]}\n",
+  "stderr": ""
+}

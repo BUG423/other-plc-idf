@@ -1,0 +1,6 @@
+{
+  "before": "compiled-before-f8",
+  "after": "f8-settings-before-confirm",
+  "device_download_confirmation_sent": false,
+  "diff": []
+}

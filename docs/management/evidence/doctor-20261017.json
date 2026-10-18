@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "command": "doctor",
+  "ok": true,
+  "validation": "offline-prerequisites-only",
+  "hardware_checked": false,
+  "environment": {
+    "python": "3.12.3",
+    "executable": "/home/zss/workspace/py2plc/.venv/bin/python",
+    "python_supported": true,
+    "platform": "Linux",
+    "wsl_distro": "Ubuntu"
+  },
+  "distribution": {
+    "mode": "editable",
+    "version": "0.2.0",
+    "installed_metadata_version": "0.2.0",
+    "package_directory": "/home/zss/workspace/py2plc/src/plc_idf"
+  },
+  "workspace": "/home/zss/workspace/py2plc",
+  "config": "/home/zss/workspace/py2plc/.plcidf.toml",
+  "dependencies": {
+    "pymodbus": {
+      "expected": "3.16.1",
+      "installed": "3.16.1",
+      "ok": true
+    },
+    "pyserial": {
+      "expected": "3.5",
+      "installed": "3.5",
+      "ok": true
+    }
+  },
+  "resources": {
+    "e521_monitor.py": {
+      "configured_path": "/home/zss/workspace/py2plc/wsl-tools/e521_monitor.py",
+      "local_path": "/home/zss/workspace/py2plc/wsl-tools/e521_monitor.py",
+      "exists": true,
+      "status": "present"
+    },
+    "virtual_easy521.py": {
+      "configured_path": "/home/zss/workspace/py2plc/wsl-tools/virtual_easy521.py",
+      "local_path": "/home/zss/workspace/py2plc/wsl-tools/virtual_easy521.py",
+      "exists": true,
+      "status": "present"
+    },
+    "e521_regs.py": {
+      "configured_path": "/home/zss/workspace/py2plc/wsl-tools/e521_regs.py",
+      "local_path": "/home/zss/workspace/py2plc/wsl-tools/e521_regs.py",
+      "exists": true,
+      "status": "present"
+    },
+    "autoshop_ui.ps1": {
+      "configured_path": "/home/zss/workspace/py2plc/plc/tools/autoshop_ui.ps1",
+      "local_path": "/home/zss/workspace/py2plc/plc/tools/autoshop_ui.ps1",
+      "exists": true,
+      "status": "present"
+    }
+  },
+  "windows": {
+    "powershell": {
+      "configured_path": "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "local_path": "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "exists": true,
+      "status": "present"
+    },
+    "autoshop": {
+      "configured_path": "E:\\Software\\AutoShop\\AutoShop.exe",
+      "local_path": "/mnt/e/Software/AutoShop/AutoShop.exe",
+      "exists": true,
+      "status": "present"
+    },
+    "usbipd": {
+      "configured_path": "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+      "local_path": "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+      "exists": true,
+      "status": "present"
+    },
+    "bridge_script": {
+      "configured_path": "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "local_path": "/home/zss/workspace/py2plc/plc/tools/autoshop_ui.ps1",
+      "exists": true,
+      "status": "present"
+    }
+  },
+  "capabilities": {
+    "project": {
+      "scaffold": true,
+      "offline_check": true,
+      "complete_st_compiler": false,
+      "native_project_creation": false
+    },
+    "monitor": {
+      "available": true,
+      "transports": [
+        "tcp",
+        "serial"
+      ],
+      "read_function_codes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "variable_debugger": false,
+      "program_identity_verified": false
+    },
+    "sim": {
+      "available": true,
+      "scenarios": [
+        "steady",
+        "low_voltage",
+        "overload"
+      ],
+      "executes_user_st": false
+    },
+    "build": {
+      "backend": "bridge_autoshop",
+      "windows_files_present": true,
+      "main_working_copy_verification_supported": true,
+      "verified_command": "build --source FILE --working-project WINDOWS_PATH",
+      "scope": "Existing AutoShop MAIN working project; no variable import or native project creation",
+      "result_verification_supported": false,
+      "verification_status": "not-implemented"
+    },
+    "flash": {
+      "backend": "bridge_autoshop",
+      "windows_files_present": true,
+      "result_verification_supported": false,
+      "verification_status": "not-implemented"
+    }
+  },
+  "limitations": [
+    "No Windows commands, GUI actions, network or USB probes were run.",
+    "File presence does not verify tool versions, connectivity or PLC identity.",
+    "Simulator plays fixed BESS scenarios and does not execute project ST.",
+    "Offline project checks do not prove vendor compilation or scan timing."
+  ]
+}

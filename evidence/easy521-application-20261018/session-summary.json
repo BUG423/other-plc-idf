@@ -1,0 +1,38 @@
+{
+  "schema": "plcidf.easy521-host-session.v1",
+  "observed_at": "2026-10-18T11:49:33.276501+00:00",
+  "scope": "host-only compiler execution plus AutoShop compile/F8-settings inspection; no download confirmation/RUN/STOP",
+  "initial_autoshop": "not running; launched existing independent working copy",
+  "working_project": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+  "main_source": "existing memory probe revision2 unchanged",
+  "native_build": "real F7 verified with complete input directory coverage",
+  "f8_calibration": {
+    "selected_files": 108,
+    "included": [
+      "top-level",
+      "STTemp",
+      "Temp",
+      "PLC"
+    ],
+    "before_confirmation_unchanged": true,
+    "settings_cancelled": true,
+    "fresh_f8_compilation": false
+  },
+  "release": {
+    "local_capture_verified": true,
+    "inputs": 80,
+    "includes_nested_plc_files": 5,
+    "device_byte_binding": "unverified"
+  },
+  "plain_st_compiler": {
+    "plus1": "verified ARM object 2040B",
+    "plus2": "verified ARM object 2040B with different .text hash",
+    "syntax_error": "failed as required",
+    "mixed_bool_int_dint_real_if": "initial compiler crash retained; implicit declaration added, final ARM object 2600B verified",
+    "fresh_repeat": "byte-identical"
+  },
+  "current_device_power": "not newly observed; previous user reported USB-only",
+  "current_plc_state": "not observed this session",
+  "device_firmware_operation": false,
+  "physical_io_validation": false
+}

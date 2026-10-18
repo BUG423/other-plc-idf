@@ -99,7 +99,8 @@ def check_bridge_authorization(cfg, flag: bool) -> AuthorizationDecision:
     两个因子独立判定并给出人话原因；只有两者同时成立才 granted=True。
     """
     reasons: list[str] = []
-    cfg_enabled = bool(cfg.bridge.get("enabled", False))
+    # 配置是授权条件：只接受 TOML 的布尔 true，不能用非空字符串/数值替代。
+    cfg_enabled = cfg.bridge.get("enabled", False) is True
     if not cfg_enabled:
         reasons.append(
             "配置因子不满足：.plcidf.toml 中 bridge.enabled=false"

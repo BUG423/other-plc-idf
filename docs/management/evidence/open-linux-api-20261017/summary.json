@@ -1,0 +1,30 @@
+{
+  "validated_at_utc": "2026-10-17T12:32:22.171034+00:00",
+  "scope": "local WSL/Linux only; no Windows or PLC hardware calls",
+  "compiler_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e",
+  "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+  "binary_sha256": "0ccda989ad7bff47582495e66b11f7010da38769eb1db027e5bc1f7df8090371",
+  "program_hash": "2ef889bce570736154e2a87ee4cd58225ce96155c23a72d22e13971b95e0fd7f",
+  "build_hash": "22bf13294357f098d11849bc0e2f62e24d81060fcaa615c6fa26b560bcae4e13",
+  "actual_scan_count": 50,
+  "counter_range": [
+    1,
+    50
+  ],
+  "heartbeat_values": [
+    false,
+    true
+  ],
+  "syntax_negative_returncode": 1,
+  "source_change_evidence": {
+    "scan_count": 13,
+    "counter": 39,
+    "counter_equals_three_times_scans": true,
+    "program_hash_changed": true
+  },
+  "limitations": [
+    "no physical I/O provider",
+    "not Easy521 runtime compatibility proof",
+    "not hard real-time or timing certification"
+  ]
+}

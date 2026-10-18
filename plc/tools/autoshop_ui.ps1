@@ -1,17 +1,45 @@
 ﻿param(
-    [ValidateSet('inspect','screenshot','desktop','tree','keys','click','paste','background','menus','text','file','accept','log','diagnostics','maximize')]
+    [ValidateSet('inspect','status','dialog','button','check','close-dialog','screenshot','desktop','tree','keys','click','paste','background','menus','text','file','accept','log','log-data','diagnostics','maximize','editor-read','editor-set')]
     [string]$Action = 'inspect',
     [string]$Value = '',
     [int]$X = 0,
     [int]$Y = 0,
     [int]$Handle = 0,
     [int]$Message = 0,
+    [string]$ExpectedProject = '',
+    [string]$ExpectedDialog = '',
+    [string]$ExpectedText = '',
+    [ValidateSet(-1,0,1)][int]$CheckState = -1,
     [switch]$Right,
     [switch]$Double
 )
 
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+# Pure title validation is kept separate from UI access so it can be exercised
+# without starting AutoShop or sending any window messages.
+function Assert-AutoShopTitle {
+    param([string]$Title, [string]$ExpectedProject,
+          [switch]$RequireMain, [switch]$RequireClean)
+    if(!$ExpectedProject){throw 'An exact expected project path is required.'}
+    $match=[regex]::Match($Title, '^AutoShop\s+V\d+(?:\.\d+){1,3}\s+(?<project>[A-Za-z]:[\\/].+?)\s+-\s+\[(?<document>[^\]]+)\]$', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+    if(!$match.Success){throw 'AutoShop project/document title is not recognized.'}
+    if($ExpectedProject -notmatch '^[A-Za-z]:[\\/]'){throw 'An absolute Windows project path is required.'}
+    $actualPath=[System.IO.Path]::GetFullPath($match.Groups['project'].Value).TrimEnd('\','/')
+    $expectedPath=[System.IO.Path]::GetFullPath($ExpectedProject).TrimEnd('\','/')
+    if(![string]::Equals($actualPath,$expectedPath,[System.StringComparison]::OrdinalIgnoreCase)){
+        throw 'Exact AutoShop project mismatch; no input sent.'
+    }
+    $document=$match.Groups['document'].Value.Trim()
+    if($RequireMain -and $document -notmatch '^MAIN(?:\s*\*)?$'){
+        throw 'The current AutoShop document must be MAIN; no editor text written.'
+    }
+    if($RequireClean -and $document.Contains('*')){
+        throw 'AutoShop has unsaved editor changes; no editor text written.'
+    }
+}
+
 Add-Type -TypeDefinition @'
 using System;
 using System.Text;
@@ -32,6 +60,7 @@ public static class AutoShopUI {
  [DllImport("user32.dll")] public static extern bool IsWindowEnabled(IntPtr h);
  [DllImport("user32.dll")] public static extern bool IsWindowVisible(IntPtr h);
  [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+ [DllImport("user32.dll",CharSet=CharSet.Unicode)] public static extern int GetWindowText(IntPtr h,StringBuilder text,int count);
  [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr h,int command);
  [DllImport("user32.dll")] public static extern bool IsIconic(IntPtr h);
  [DllImport("user32.dll")] public static extern bool BringWindowToTop(IntPtr h);
@@ -87,6 +116,62 @@ public static class AutoShopUI {
    try{var result=new List<string>();Walk(tree,SendMessage(tree,0x110A,IntPtr.Zero,IntPtr.Zero),process,0,result);return result.ToArray();}
    finally{CloseHandle(process);}
  }
+ public static string EditorText(IntPtr editor, string replacement, bool replace) {
+   uint pid;GetWindowThreadProcessId(editor,out pid);IntPtr process=OpenProcess(0x38,false,pid);
+   if(process==IntPtr.Zero)throw new InvalidOperationException("Cannot access AutoShop editor");
+   IntPtr remote=IntPtr.Zero;
+   try {
+     int page=SendMessage(editor,2137,IntPtr.Zero,IntPtr.Zero).ToInt32();
+     Encoding encoding=page==65001?new UTF8Encoding(false,true):Encoding.GetEncoding(page==0?936:page);
+     if(replace) {
+       if(SendMessage(editor,2140,IntPtr.Zero,IntPtr.Zero).ToInt32()!=0)
+         throw new InvalidOperationException("AutoShop ST editor is read-only; exit online monitoring before editing.");
+       byte[] data=encoding.GetBytes(replacement+"\0");
+       if(data.Length>1048576)throw new InvalidOperationException("Editor replacement exceeds 1MiB");
+       remote=VirtualAllocEx(process,IntPtr.Zero,(UIntPtr)data.Length,0x3000,4);
+       if(remote==IntPtr.Zero)throw new InvalidOperationException("Editor allocation failed");
+       IntPtr written;if(!WriteProcessMemory(process,remote,data,data.Length,out written)||written.ToInt64()!=data.Length)throw new InvalidOperationException("Editor write failed");
+       SendMessage(editor,2181,IntPtr.Zero,remote);
+       VirtualFreeEx(process,remote,UIntPtr.Zero,0x8000);remote=IntPtr.Zero;
+     }
+     int length=SendMessage(editor,2183,IntPtr.Zero,IntPtr.Zero).ToInt32();
+     if(length<0||length>1048576)throw new InvalidOperationException("Invalid editor length");
+     remote=VirtualAllocEx(process,IntPtr.Zero,(UIntPtr)(length+1),0x3000,4);
+     if(remote==IntPtr.Zero)throw new InvalidOperationException("Editor allocation failed");
+     SendMessage(editor,2182,(IntPtr)(length+1),remote);
+     byte[] text=new byte[length];IntPtr read;
+     if(!ReadProcessMemory(process,remote,text,length,out read)||read.ToInt64()!=length)throw new InvalidOperationException("Editor read failed");
+     return encoding.GetString(text);
+   } finally {if(remote!=IntPtr.Zero)VirtualFreeEx(process,remote,UIntPtr.Zero,0x8000);CloseHandle(process);}
+ }
+ public static string[] LogData(IntPtr list) {
+   // AutoShop 4.12.0.2 stores UTF-16 row strings in owner-drawn item data.
+   // Read only that control's bounded item buffers; never follow arbitrary fields.
+   uint pid;GetWindowThreadProcessId(list,out pid);IntPtr process=OpenProcess(0x10,false,pid);
+   if(process==IntPtr.Zero)throw new InvalidOperationException("Cannot read AutoShop log");
+   try {
+     var rows=new List<string>();int count=SendMessage(list,0x18B,IntPtr.Zero,IntPtr.Zero).ToInt32();
+     if(count<0||count>10000)throw new InvalidOperationException("Invalid log item count");
+     for(int i=0;i<count;i++) {
+       IntPtr item=SendMessage(list,0x199,(IntPtr)i,IntPtr.Zero);
+       if(item.ToInt64()<65536)throw new InvalidOperationException("Invalid log text buffer");
+       var bytes=new List<byte>();bool terminated=false;
+       for(int offset=0;offset<8192&&!terminated;offset+=2) {
+         byte[] pair=new byte[2];IntPtr read;
+         if(!ReadProcessMemory(process,IntPtr.Add(item,offset),pair,2,out read)||read.ToInt64()!=2)throw new InvalidOperationException("Log text is unreadable");
+         if(pair[0]==0&&pair[1]==0){terminated=true;break;}
+         bytes.AddRange(pair);
+       }
+       if(!terminated)throw new InvalidOperationException("Log text exceeds bounded buffer");
+       string row=new UnicodeEncoding(false,false,true).GetString(bytes.ToArray());
+       foreach(char ch in row)if(Char.IsControl(ch)&&ch!='\t'&&ch!='\r'&&ch!='\n')throw new InvalidOperationException("Invalid log text characters");
+       rows.Add(row);
+     }
+     if(SendMessage(list,0x18B,IntPtr.Zero,IntPtr.Zero).ToInt32()!=count)throw new InvalidOperationException("Log changed while reading");
+     return rows.ToArray();
+   } finally {CloseHandle(process);}
+ }
+
 }
 '@
 [void][AutoShopUI]::SetProcessDPIAware()
@@ -98,6 +183,29 @@ $topWindows=[System.Windows.Automation.AutomationElement]::RootElement.FindAll([
 $root=$topWindows|Where-Object {$_.Current.ProcessId -eq $app.Id -and $_.Current.Name.StartsWith('AutoShop ') -and $_.Current.ClassName.StartsWith('Afx:')}|Select-Object -First 1
 if(!$root){throw 'AutoShop main frame not found.'}
 $mainFrameHandle=[IntPtr]$root.Current.NativeWindowHandle
+function Get-AutoShopTitle {
+    $titleBuffer=New-Object System.Text.StringBuilder 4096
+    if([AutoShopUI]::GetWindowText($mainFrameHandle,$titleBuffer,$titleBuffer.Capacity) -le 0){
+        throw 'Cannot read current AutoShop title; no input sent.'
+    }
+    return $titleBuffer.ToString()
+}
+function Get-ExactDialog {
+    if(!$ExpectedDialog){throw 'An exact expected dialog title is required.'}
+    $windows=@([System.Windows.Automation.AutomationElement]::RootElement.FindAll([System.Windows.Automation.TreeScope]::Children,[System.Windows.Automation.Condition]::TrueCondition))
+    $windows+=@($root.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition))
+    $dialogs=@($windows|Where-Object {$_.Current.ProcessId -eq $app.Id -and $_.Current.ClassName -eq '#32770' -and $_.Current.Name -ceq $ExpectedDialog -and $_.Current.IsEnabled -and !$_.Current.IsOffscreen}|Sort-Object {$_.Current.NativeWindowHandle} -Unique)
+    if($dialogs.Count -ne 1){throw 'Expected one exact active AutoShop dialog; no input sent.'}
+    if($ExpectedProject){Assert-AutoShopTitle -Title (Get-AutoShopTitle) -ExpectedProject $ExpectedProject}
+    $controls=@($dialogs[0].FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition))
+    if($ExpectedText -and !($controls|Where-Object {$_.Current.ClassName -eq 'Static' -and $_.Current.Name.Contains($ExpectedText)})){
+        throw 'Expected dialog message is absent; no input sent.'
+    }
+    return $dialogs[0]
+}
+if($ExpectedProject -and $Action -in @('keys','editor-read','editor-set','log','log-data')){
+    Assert-AutoShopTitle -Title (Get-AutoShopTitle) -ExpectedProject $ExpectedProject
+}
 
 function Activate-AutoShop {
     if([AutoShopUI]::IsIconic($mainFrameHandle)){[void][AutoShopUI]::ShowWindow($mainFrameHandle,9)}
@@ -134,6 +242,75 @@ function Activate-AutoShop {
 }
 
 switch ($Action) {
+    'close-dialog' {
+        $dialog=Get-ExactDialog
+        [void][AutoShopUI]::PostMessage([IntPtr]$dialog.Current.NativeWindowHandle,16,[IntPtr]::Zero,[IntPtr]::Zero)
+        @{dialog=$ExpectedDialog;close_posted=$true}|ConvertTo-Json -Compress
+    }
+    'dialog' {
+        $dialog=Get-ExactDialog
+        $controls=@($dialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)|ForEach-Object {
+            $checked=$null;$style=$null
+            if($_.Current.ClassName -eq 'Button'){
+                $style=[AutoShopUI]::GetWindowLong([IntPtr]$_.Current.NativeWindowHandle,-16) -band 15
+                $checked=[AutoShopUI]::SendMessage([IntPtr]$_.Current.NativeWindowHandle,240,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32()
+            }
+            @{name=$_.Current.Name;class=$_.Current.ClassName;handle=$_.Current.NativeWindowHandle;enabled=$_.Current.IsEnabled;checked=$checked;button_type=$style}
+        })
+        @{title=$dialog.Current.Name;handle=$dialog.Current.NativeWindowHandle;project=(Get-AutoShopTitle);controls=$controls}|ConvertTo-Json -Depth 5 -Compress
+    }
+    {$_ -in @('button','check')} {
+        $dialog=Get-ExactDialog
+        if(!$Value){throw 'An exact control name is required.'}
+        $buttons=@($dialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)|Where-Object {$_.Current.ClassName -eq 'Button' -and $_.Current.Name -ceq $Value -and $_.Current.IsEnabled})
+        if($buttons.Count -ne 1){throw 'Expected one exact enabled dialog button; no input sent.'}
+        $buttonHandle=[IntPtr]$buttons[0].Current.NativeWindowHandle
+        $kind=[AutoShopUI]::GetWindowLong($buttonHandle,-16) -band 15
+        if($Action -eq 'check'){
+            if($CheckState -eq -1 -or $kind -notin @(2,3,5,6)){throw 'An explicit check state and a checkbox control are required.'}
+            $before=[AutoShopUI]::SendMessage($buttonHandle,240,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32()
+            if($before -ne $CheckState){[void][AutoShopUI]::SendMessage($buttonHandle,245,[IntPtr]::Zero,[IntPtr]::Zero)}
+            $after=[AutoShopUI]::SendMessage($buttonHandle,240,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32()
+            if($after -ne $CheckState){throw 'Checkbox readback differs; do not repeat the operation.'}
+            @{dialog=$ExpectedDialog;button=$Value;before=$before;after=$after}|ConvertTo-Json -Compress
+        }else{
+            if($kind -notin @(0,1)){throw 'The requested control is not a push button.'}
+            [void][AutoShopUI]::PostMessage($buttonHandle,245,[IntPtr]::Zero,[IntPtr]::Zero)
+            @{dialog=$ExpectedDialog;button=$Value;invocation_posted=$true;outcome_verified=$false}|ConvertTo-Json -Compress
+        }
+    }
+    'status' {
+        $all=@($root.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition))
+        $items=@($all|Where-Object {$_.Current.ControlType -eq [System.Windows.Automation.ControlType]::StatusBar -or $_.Current.ClassName -match 'status|Static|VSFlex|Button'}|ForEach-Object {
+            @{name=$_.Current.Name;class=$_.Current.ClassName;handle=$_.Current.NativeWindowHandle;enabled=$_.Current.IsEnabled;offscreen=$_.Current.IsOffscreen;type=$_.Current.ControlType.ProgrammaticName}
+        })
+        @{title=(Get-AutoShopTitle);process_id=$app.Id;controls=$items}|ConvertTo-Json -Depth 5 -Compress
+    }
+    'log-data' {
+        if(!$root.Current.Name.StartsWith('AutoShop V4.12.0.2 ')){throw 'Owner-drawn log adapter is calibrated only for AutoShop 4.12.0.2.'}
+        $all=$root.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
+        $list=$all|Where-Object {$_.Current.ClassName -eq 'ListBox' -and $_.Current.BoundingRectangle.Width -gt 1000}|Select-Object -First 1
+        if(!$list){throw 'AutoShop compile log not found.'}
+        [AutoShopUI]::LogData([IntPtr]$list.Current.NativeWindowHandle)
+    }
+    {$_ -in 'editor-read','editor-set'} {
+        if($Action -eq 'editor-set' -and !$ExpectedProject){throw 'An exact expected project path is required for editor-set.'}
+        $editors=@($root.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)|Where-Object {$_.Current.ClassName -eq 'Scintilla' -and $_.Current.IsEnabled -and !($_.Current.IsOffscreen)})
+        if($editors.Count -ne 1){throw 'Expected exactly one visible AutoShop ST editor.'}
+        $replacement=$null
+        if($Action -eq 'editor-set'){
+            if(!(Test-Path -LiteralPath $Value -PathType Leaf)){throw 'Editor source file is required.'}
+            $replacement=[System.IO.File]::ReadAllText($Value)
+            # Re-read immediately before replacement. The user may have changed
+            # documents or made an unsaved edit since the previous Python call.
+            if(!$editors[0].Current.IsEnabled -or $editors[0].Current.IsOffscreen){
+                throw 'The selected AutoShop editor changed or became hidden; no text written.'
+            }
+            Assert-AutoShopTitle -Title (Get-AutoShopTitle) -ExpectedProject $ExpectedProject -RequireMain -RequireClean
+        }
+        $source=[AutoShopUI]::EditorText([IntPtr]$editors[0].Current.NativeWindowHandle,$replacement,($Action -eq 'editor-set'))
+        @{title=(Get-AutoShopTitle);source=$source;editor_handle=$editors[0].Current.NativeWindowHandle;read_only=([AutoShopUI]::SendMessage([IntPtr]$editors[0].Current.NativeWindowHandle,2140,[IntPtr]::Zero,[IntPtr]::Zero).ToInt32() -ne 0)}|ConvertTo-Json -Depth 3 -Compress
+    }
     'inspect' {
         Write-Output ("PID="+$app.Id+"|"+$root.Current.Name)
         $windows=[System.Windows.Automation.AutomationElement]::RootElement.FindAll([System.Windows.Automation.TreeScope]::Children,[System.Windows.Automation.Condition]::TrueCondition)
@@ -193,12 +370,18 @@ switch ($Action) {
                 Write-Output $line.ToString()
             }
         } else {
+            if($root.Current.Name.StartsWith('AutoShop V4.12.0.2 ')){
+                try {
+                    $rows=[AutoShopUI]::LogData($listHandle)
+                    if($rows.Count -gt 0){$rows;return}
+                } catch {Write-Verbose ('Exact log read unavailable: '+$_.Exception.Message)}
+            }
             $rect=New-Object AutoShopUI+RECT
-            $oldDpi=[AutoShopUI]::SetThreadDpiAwarenessContext([IntPtr](-1))
+            $oldDpi=[AutoShopUI]::SetThreadDpiAwarenessContext([IntPtr](-4))
             try{[void][AutoShopUI]::GetWindowRect($listHandle,[ref]$rect)}finally{[void][AutoShopUI]::SetThreadDpiAwarenessContext($oldDpi)}
             $w=$rect.Right-$rect.Left;$h=$rect.Bottom-$rect.Top
             $bmp=New-Object System.Drawing.Bitmap $w,$h;$g=[System.Drawing.Graphics]::FromImage($bmp)
-            try{$dc=$g.GetHdc();try{[void][AutoShopUI]::PrintWindow($listHandle,$dc,2)}finally{$g.ReleaseHdc($dc)};$shot='C:\Users\12646\Downloads\autoshop_logpane.png';$bmp.Save($shot,[System.Drawing.Imaging.ImageFormat]::Png)}finally{$g.Dispose();$bmp.Dispose()}
+            try{$dc=$g.GetHdc();try{[void][AutoShopUI]::PrintWindow($listHandle,$dc,2)}finally{$g.ReleaseHdc($dc)};$shot=if($Value){$Value}else{Join-Path $env:TEMP 'plcidf-autoshop-logpane.png'};$bmp.Save($shot,[System.Drawing.Imaging.ImageFormat]::Png)}finally{$g.Dispose();$bmp.Dispose()}
             Write-Output ('SCREENSHOT:' + $shot)
         }
     }
@@ -214,6 +397,7 @@ switch ($Action) {
     }
     'keys' {
         Activate-AutoShop
+        if($ExpectedProject){Assert-AutoShopTitle -Title (Get-AutoShopTitle) -ExpectedProject $ExpectedProject}
         $ws=New-Object -ComObject WScript.Shell;$ws.SendKeys($Value)
     }
     'click' {

@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-10-17T14:43:05.882866+00:00",
+  "label": "probe1-download-dialog",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "inspect"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "PID=21248|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [MAIN]\nControlType.Window|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [MAIN]|Afx:00400000:8:00010003:00000000:009B0C75|396572|False|-16,-16,3872,2096\nControlType.Window|下载设置|#32770|2232922|True|1528,784,798,652\nControlType.Pane|确定|Button|1249972|True|1834,1336,136,62\nControlType.Pane|取消|Button|5377680|True|1990,1336,136,62\nControlType.Pane||Button|987972|True|1576,866,702,108\nControlType.Pane|下载工程源码(不勾选则不能上载工程)|Button|333056|True|1612,908,466,32\nControlType.Pane||Button|332928|True|1576,992,702,196\nControlType.Pane|下载时，保持型变量重新初始化|Button|136458|True|1630,1112,394,32\nControlType.Pane|下载时，保持型变量保持现有值|Button|136460|True|1630,1050,462,32\nControlType.Pane|每次下载提示|Button|660716|True|1604,1346,192,32\nControlType.Pane||Button|594808|True|1552,846,748,568\nControlType.Pane|保持型变量属性|Button|3478006|True|1612,992,216,32\nControlType.Pane|下载配置在工程中的PLC登录密码|Button|398436|True|1604,1248,396,32\nControlType.Pane||Button|201950|True|1580,1196,700,118\nControlType.Pane||SysTreeView32|330656|False|2,278,396,1476\nControlType.Pane||Button|724032|False|6,1984,26,26\nControlType.Pane||Button|330808|False|38,1984,26,26\nControlType.Pane||Button|330836|False|70,1984,26,26\nControlType.Pane||Button|331010|False|102,1984,26,26\nControlType.Pane||ListBox|527526|False|6,1824,3828,154\nControlType.Window|MAIN|Afx:00400000:b:00010003:00000006:000D0864|4525090|False|398,216,2944,1550\nControlType.Pane|<ST editor>|Scintilla|4592044|False|432,282,2890,1464\nControlType.Pane||Button|593072|False|410,234,30,30\nControlType.Pane||Button|461976|False|3288,234,30,30\nControlType.Pane|本地|Button|4526380|False|1878,172,84,40\nControlType.Pane|未登录::USB|Button|1511486|False|1974,172,164,40\nControlType.Pane|变量共享:|Button|3674058|False|2286,112,152,40\nControlType.Pane|未连接|Button|2756618|False|2450,112,90,40\nControlType.Pane|智能问答|Static|590028|False|3364,292,166,32\nControlType.Pane||Button|330700|False|3526,382,344,50\nControlType.Pane||Button|265096|False|3374,362,120,92\nControlType.Pane|AI问答|Button|460774|False|3374,504,144,50\nControlType.Pane|指令指南|Button|330878|False|3538,504,140,50\nControlType.Pane|智能问答帮你快速上手|Button|396048|False|3374,568,384,50\nControlType.Pane|AI编程|Button|396790|False|3374,654,144,50\nControlType.Pane|一键同步|Button|396796|False|3538,654,140,50\nControlType.Pane|一拖即用实现高效开发|Button|396374|False|3374,718,384,50\nControlType.Pane||Button|658734|False|3374,788,248,60\nControlType.Pane||Button|724166|False|3374,864,398,60\nControlType.Pane||Button|396868|False|3374,940,398,60\nControlType.Pane||Button|396768|False|3374,1016,398,60\nControlType.Pane||Button|396336|False|3638,792,134,56\nControlType.Pane||Button|331188|False|3562,1636,200,40\nControlType.Pane||RichEdit20W|527542|False|3368,1596,434,36\nControlType.Pane||Button|396646|False|3772,1636,40,40\nControlType.Pane||Button|396594|False|3740,284,48,48\n",
+  "stderr": ""
+}

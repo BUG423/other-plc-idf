@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "engine": "Windows.Media.Ocr",
+  "ok": false,
+  "status": "unsupported",
+  "text": "",
+  "lines": [],
+  "language": null,
+  "available_languages": [
+    "zh-Hans-CN"
+  ],
+  "error": "No requested Windows OCR language is installed",
+  "stage": "language-selection",
+  "returncode": 0,
+  "stdout": "{\"schema_version\":1,\"status\":\"unsupported\",\"text\":\"\",\"lines\":[],\"language\":null,\"available_languages\":[\"zh-Hans-CN\"],\"error\":\"No requested Windows OCR language is installed\",\"stage\":\"language-selection\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "windows_path": "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\evidence\\hardware-20261017\\negative-compile.png",
+  "scale": 4,
+  "region": [
+    5,
+    918,
+    650,
+    80
+  ]
+}

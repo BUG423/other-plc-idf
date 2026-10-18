@@ -66,6 +66,33 @@ def test_find_plc_entry_by_busid():
     assert plc is not None and plc.busid == "6-4"
 
 
+@pytest.mark.parametrize("busid,vidpid", [("9-9", "0471:a531"), ("6-4", "ffff:ffff")])
+def test_find_plc_entry_requires_both_identity_fields(busid, vidpid):
+    class _Cfg:
+        device = {"busid": busid, "vidpid": vidpid}
+
+    assert find_plc_entry(_Cfg(), parse_usbipd_list(USBIPD_SAMPLE)) is None
+
+
+def test_find_plc_entry_refuses_duplicate_busid():
+    class _Cfg:
+        device = {"busid": "6-4", "vidpid": "0471:a531"}
+
+    entries = parse_usbipd_list(USBIPD_SAMPLE)
+    entries.append(DeviceEntry("6-4", "1234:5678", "ambiguous", "Shared"))
+    with pytest.raises(InteropError, match="歧义"):
+        find_plc_entry(_Cfg(), entries)
+
+
+def test_find_plc_entry_does_not_choose_another_identical_plc():
+    class _Cfg:
+        device = {"busid": "6-4", "vidpid": "0471:a531"}
+
+    entries = [DeviceEntry("6-3", "0471:a531", "another PLC", "Shared"),
+               DeviceEntry("6-4", "0471:a531", "configured PLC", "Shared")]
+    assert find_plc_entry(_Cfg(), entries) is entries[1]
+
+
 def test_find_tty_devices(monkeypatch):
     monkeypatch.setattr(device_mod.glob, "glob",
                         lambda pat: ["/dev/ttyACM0"] if "ACM" in pat else [])
@@ -168,8 +195,9 @@ def test_cli_devices_degrades_without_usbipd(tmp_cfg, capsys, monkeypatch):
     rc = cli.main(["devices", "--config", str(tmp_cfg), "--json"])
     assert rc == 0
     out = capsys.readouterr().out
-    assert "不可用" in out                       # usbipd 降级提示
-    payload = json.loads(out[out.index("{"):])   # --json 段仍可解析
+    payload = json.loads(out)  # --json 的 stdout 只包含一个 JSON 文档
+    assert payload["schema_version"] == 1
+    assert "不存在" in payload["error"]
     assert payload["usbipd_ok"] is False
 
 

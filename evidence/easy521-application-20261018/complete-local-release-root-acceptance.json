@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "scope": "local pre-confirm release evidence only; no download",
+  "intent_hash": "7d0e2ad11c9382c86f4efbc6d637719f3488ce01ce2aa18746491adf9ac342c6",
+  "release_hash": "c65c06f4791c8c13f8da5ed20fef0df08d388b9e6a84b406307fb503784c278b",
+  "transition": "unchanged-pre-confirm",
+  "fresh_f8_compilation": null,
+  "download_binding": {
+    "status": "unverified",
+    "method": "local-pre-confirm-snapshot",
+    "reason": "No calibrated device byte binding/readback"
+  },
+  "input_files": 80,
+  "includes_plc_candidate_files": [
+    "PLC/PLCInsIndex.idx",
+    "PLC/PLCProg.prg",
+    "PLC/stuserprog.o",
+    "PLC/symbol.sym",
+    "PLC/userprog.foid"
+  ],
+  "release_file": "/home/zss/workspace/py2plc/.plcidf/local-release-acceptance-20261018/f746a43058dc4acd98e0624e74ed4484/release.json",
+  "artifacts": [
+    {
+      "relative": "STTemp/MAIN.rst",
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+      "size": 10
+    },
+    {
+      "relative": "STTemp/MAIN.o",
+      "sha256": "55cacc60c640b85b072555f21989ce49903e2eef38ca03d262a3f5ea073a18b5",
+      "size": 3948
+    },
+    {
+      "relative": "Temp/stprog.o",
+      "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b",
+      "size": 127464
+    },
+    {
+      "relative": "Output.prg",
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "size": 56
+    },
+    {
+      "relative": "Output.sdt",
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+      "size": 182
+    }
+  ]
+}

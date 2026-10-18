@@ -1,0 +1,24 @@
+(* Local memory-only REAL threshold example; no physical I/O. *)
+PROGRAM MAIN
+VAR
+    ENABLE : BOOL := FALSE;
+    VALUE : REAL := 0.0;
+    ALARM : BOOL := FALSE;
+    ECHO : REAL := 0.0;
+END_VAR
+ECHO := VALUE;
+IF NOT ENABLE THEN
+    ALARM := FALSE;
+ELSIF VALUE >= 80.0 THEN
+    ALARM := TRUE;
+ELSIF VALUE <= 70.0 THEN
+    ALARM := FALSE;
+END_IF;
+END_PROGRAM
+
+CONFIGURATION Config0
+RESOURCE Res0 ON PLC
+    TASK scan (INTERVAL := T#20ms, PRIORITY := 0);
+    PROGRAM instance0 WITH scan : MAIN;
+END_RESOURCE
+END_CONFIGURATION

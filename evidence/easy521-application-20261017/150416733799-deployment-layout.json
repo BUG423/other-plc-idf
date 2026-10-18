@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-10-17T15:04:16.733768+00:00",
+  "label": "deployment-layout",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "diagnostics"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "AppPID=21248 Session=3 Foreground=396572 ForegroundPID=21248 AppDPI=96 SystemDPI=192 Screen=3840x2160\n",
+  "stderr": ""
+}

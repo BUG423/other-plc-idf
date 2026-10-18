@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-10-17T14:31:11.542755+00:00",
+  "label": "plc-menu2",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "desktop",
+    "-Value",
+    "C:\\Users\\12646\\Downloads\\plcidf-plc-menu2.png"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "C:\\Users\\12646\\Downloads\\plcidf-plc-menu2.png\n",
+  "stderr": ""
+}

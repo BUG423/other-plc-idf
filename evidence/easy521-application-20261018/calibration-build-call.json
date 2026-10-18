@@ -1,0 +1,19 @@
+{
+  "argv": [
+    ".venv/bin/plcidf",
+    "build",
+    "--source",
+    "examples/easy521_native_probe/MAIN_plus2_body.st",
+    "--working-project",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+    "--execute",
+    "--i-have-authorized",
+    "--compile-timeout",
+    "35",
+    "--build-record",
+    "evidence/easy521-application-20261018/calibration-build-record.json",
+    "--json"
+  ],
+  "returncode": 0,
+  "stderr": ""
+}

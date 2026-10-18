@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-10-17T15:09:59.610703+00:00",
+  "label": "probe2-compare-terminal",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "dialog",
+    "-ExpectedDialog",
+    "AutoShop",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "{\"title\":\"AutoShop\",\"handle\":3606980,\"project\":\"AutoShop V4.12.0.2  E:\\\\PLCProjects\\\\PLCIDF_LAB_20261017\\\\BESS_E521_DEV - [MAIN]\",\"controls\":[{\"handle\":8454402,\"name\":\"确定\",\"class\":\"Button\",\"checked\":0,\"button_type\":1,\"enabled\":true},{\"handle\":4592110,\"name\":\"\",\"class\":\"Static\",\"checked\":null,\"button_type\":null,\"enabled\":true},{\"handle\":2952762,\"name\":\"当前工程与PLC中程序校验一致！\",\"class\":\"Static\",\"checked\":null,\"button_type\":null,\"enabled\":true}]}\n",
+  "stderr": ""
+}

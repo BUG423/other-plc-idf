@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-10-17T10:15:57.950721+00:00",
+  "argv": [
+    "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+    "list"
+  ],
+  "returncode": 0,
+  "stdout": "Connected:\r\nBUSID  VID:PID    DEVICE                                                        STATE\r\n1-5    0489:e0cd  MediaTek Bluetooth Adapter                                    Not shared\r\n2-1    174f:181d  Integrated Camera, Integrated IR Camera, Camera DFU Device    Not shared\r\n5-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared\r\n6-3    0471:a531  H5U USB Device                                                Not shared\r\n6-4    35bb:d00b  HECATE Co-Installer Device, USB 输入设备                          Not shared\r\n8-1    046d:c52b  Logitech USB Input Device, USB 输入设备                           Not shared\r\n8-2    24ae:2015  USB 输入设备                                                      Not shared\r\n8-3    1ea7:0066  USB 输入设备                                                      Not shared\r\n8-4    1a2c:7fff  USB 输入设备                                                      Not shared\r\n\r\nPersisted:\r\nGUID                                  DEVICE\r\n94ed4ff5-3008-47cf-9c47-6022b6832257  H5U USB Device\r\n\r\n",
+  "stderr": "usbipd: warning: The service is currently not running; a reboot should fix that.\r\n"
+}

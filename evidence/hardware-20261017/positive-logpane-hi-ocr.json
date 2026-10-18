@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "engine": "Windows.Media.Ocr",
+  "ok": true,
+  "status": "ok",
+  "text": "台 计 符 号 ： 79 ， STFunc75#*h ： 2 ， 变 里 符 号 ' 77 ， 函 符 号 统 计 _ 误 ， （ 28 ） 步 占 用 / 〈 ） 总 夻 里 ， 非 亻 呆 持 变 里 区 使 用 25K ／ 1920K ， 亻 呆 持 变 里 区 使 用 ： 0 ， 00K/128K 总 行 ： 212 2026 / 10 / 1 7 18 ' 23 ： 05 完 成 程 序 编 译 2026 / 10 / 1 7 18 ： 23 ： 05 亮 成 译",
+  "lines": [
+    "台 计 符 号 ： 79 ， STFunc75#*h ： 2 ， 变 里 符 号 ' 77 ， 函 符 号",
+    "统 计 _ 误 ， （ 28 ） 步 占 用 / 〈 ） 总 夻 里 ， 非 亻 呆 持 变 里 区 使 用 25K ／ 1920K ， 亻 呆 持 变 里 区 使 用 ： 0 ， 00K/128K",
+    "总 行 ： 212",
+    "2026 / 10 / 1 7 18 ' 23 ： 05 完 成 程 序 编 译",
+    "2026 / 10 / 1 7 18 ： 23 ： 05 亮 成 译"
+  ],
+  "language": "zh-Hans-CN",
+  "available_languages": [
+    "zh-Hans-CN"
+  ],
+  "error": null,
+  "stage": "recognize",
+  "returncode": 0,
+  "stdout": "{\"schema_version\":1,\"status\":\"ok\",\"text\":\"台 计 符 号 ： 79 ， STFunc75#*h ： 2 ， 变 里 符 号 \\u0027 77 ， 函 符 号 统 计 _ 误 ， （ 28 ） 步 占 用 / 〈 ） 总 夻 里 ， 非 亻 呆 持 变 里 区 使 用 25K ／ 1920K ， 亻 呆 持 变 里 区 使 用 ： 0 ， 00K/128K 总 行 ： 212 2026 / 10 / 1 7 18 \\u0027 23 ： 05 完 成 程 序 编 译 2026 / 10 / 1 7 18 ： 23 ： 05 亮 成 译\",\"lines\":[\"台 计 符 号 ： 79 ， STFunc75#*h ： 2 ， 变 里 符 号 \\u0027 77 ， 函 符 号\",\"统 计 _ 误 ， （ 28 ） 步 占 用 / 〈 ） 总 夻 里 ， 非 亻 呆 持 变 里 区 使 用 25K ／ 1920K ， 亻 呆 持 变 里 区 使 用 ： 0 ， 00K/128K\",\"总 行 ： 212\",\"2026 / 10 / 1 7 18 \\u0027 23 ： 05 完 成 程 序 编 译\",\"2026 / 10 / 1 7 18 ： 23 ： 05 亮 成 译\"],\"language\":\"zh-Hans-CN\",\"available_languages\":[\"zh-Hans-CN\"],\"error\":null,\"stage\":\"recognize\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "windows_path": "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\evidence\\hardware-20261017\\positive-logpane-hi.png",
+  "scale": 2,
+  "region": [
+    0,
+    0,
+    1800,
+    150
+  ]
+}

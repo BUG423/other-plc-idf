@@ -1,0 +1,606 @@
+{
+  "source": "/mnt/e/PLCProjects/BESS_E521_DEV",
+  "copy": "E:\\PLCProjects\\PLCIDF_LAB_20261017",
+  "files": [
+    {
+      "path": "AXIS_CTRL-AXIS_CTRL.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "AXIS_CTRL-SUSERAXIS.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "AXIS_CTRL.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240
+    },
+    {
+      "path": "BESS_E521_DEV.hcp",
+      "sha256": "35d989bada4842304bf47ef7bf681e72a617ce939b965734f00e3e3e372cc486",
+      "bytes": 55454
+    },
+    {
+      "path": "BESS_E521_DEV.hcpp",
+      "sha256": "34d4e920a3f10bbd1bc2c8e21e00545aa40764369a1f303bee381937f00ca679",
+      "bytes": 51738
+    },
+    {
+      "path": "BackUP/BESS_E521_DEV_bk_V4.11.0.5_2026-1016-222253.hcpp",
+      "sha256": "694bb15b8023e04f0c227380530b6da42eee63b1782a16368de7663608c568c3",
+      "bytes": 47668
+    },
+    {
+      "path": "Config.sdt",
+      "sha256": "af9e01cb471c8c7d6b4c41605192adeed28f03f6b3570675bea97ae24760f664",
+      "bytes": 371
+    },
+    {
+      "path": "CrossTable.crs",
+      "sha256": "3cb094f27c5ed8992494f2e2422da1609bef151c7e505e69957f1ff2099f2b7c",
+      "bytes": 54701
+    },
+    {
+      "path": "EIP.dat",
+      "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9",
+      "bytes": 340
+    },
+    {
+      "path": "EIP.datBAK",
+      "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9",
+      "bytes": 340
+    },
+    {
+      "path": "EIPIns.dat",
+      "sha256": "ded971312fd0d6636189f053bb70120ad8f783b028c5ae16da4253e63d6376f3",
+      "bytes": 24
+    },
+    {
+      "path": "Ecam.tr",
+      "sha256": "854e0a3951bc4a773d684415ec8983c32c6f6cfc93f71b86344442379bcc688f",
+      "bytes": 54
+    },
+    {
+      "path": "ElemBitComm.gdtx",
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+      "bytes": 209
+    },
+    {
+      "path": "ElemUseInfo.esi",
+      "sha256": "09fdbdc578dde7a0763b83b64eba98746e4208742cbb3b5487509b18b50816a8",
+      "bytes": 214
+    },
+    {
+      "path": "EtherCat.dat",
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d",
+      "bytes": 243
+    },
+    {
+      "path": "EtherCat.datBAK",
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d",
+      "bytes": 243
+    },
+    {
+      "path": "EtherCat.tmp",
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d",
+      "bytes": 243
+    },
+    {
+      "path": "FBInstStep.dat",
+      "sha256": "19f959c5c26cb28ad3869ffc64b33e5369a3996bcb2fe3369a7430cabdb68777",
+      "bytes": 12
+    },
+    {
+      "path": "FB_BESS_AdaptiveSupervisor_Easy521.FB",
+      "sha256": "0a9d9836c86594f2954a30432cbf3de745296f3ea2d2bc5ec9ee8e8f1ad3afdd",
+      "bytes": 10384
+    },
+    {
+      "path": "FCInstTbl.fci",
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80",
+      "bytes": 221
+    },
+    {
+      "path": "GL20ModuleCfg.data",
+      "sha256": "b06bc7078c0e0df802d849839fd1b9e901814506be18785a81065f63ab079e13",
+      "bytes": 253
+    },
+    {
+      "path": "GetServoSN-GetServoSN.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "GetServoSN.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240
+    },
+    {
+      "path": "H530QUICKMONTABLE.qmt",
+      "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773",
+      "bytes": 554
+    },
+    {
+      "path": "ILIndex.idx",
+      "sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21",
+      "bytes": 142
+    },
+    {
+      "path": "INT_001.ST",
+      "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935",
+      "bytes": 233
+    },
+    {
+      "path": "InteractiveFile/LabelConfig.xml",
+      "sha256": "e7b0f64c0835386349582ef8c0049767b8c81aeb236d52bd76be198037f12c4b",
+      "bytes": 141
+    },
+    {
+      "path": "InteractiveFile/Temp/LabelConfig.xml",
+      "sha256": "e7b0f64c0835386349582ef8c0049767b8c81aeb236d52bd76be198037f12c4b",
+      "bytes": 141
+    },
+    {
+      "path": "InteractiveFile/Temp/SharedLabelConfig.xml",
+      "sha256": "e7b0f64c0835386349582ef8c0049767b8c81aeb236d52bd76be198037f12c4b",
+      "bytes": 141
+    },
+    {
+      "path": "LoginPassowrd.dat",
+      "sha256": "4facbf88d978289015360dd932d58748d165a0bf8a3d01c40cef08ea134a0bb3",
+      "bytes": 17
+    },
+    {
+      "path": "MAIN.ST",
+      "sha256": "4ff85d07db2ec3a6b9306e9a1d1993db157772ec561c9c16958bc8c315c8a9b1",
+      "bytes": 1357
+    },
+    {
+      "path": "MAIN.mon",
+      "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773",
+      "bytes": 554
+    },
+    {
+      "path": "ModifiedInsIndex.idx",
+      "sha256": "0ef201cc3f9e03eaf99e0dc9752745e1d6667c0f58b8a6f968cf4fd1dbcf40f4",
+      "bytes": 30
+    },
+    {
+      "path": "OnlineVersion/V0/EIPIns.foid",
+      "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+      "bytes": 88
+    },
+    {
+      "path": "OnlineVersion/V0/stprog.o",
+      "sha256": "048edf5e6f20595f7402a48382c13d0a39f2b27ca592e8539ec0b333611a746d",
+      "bytes": 158616
+    },
+    {
+      "path": "OnlineVersion/V0/stuserprog.o",
+      "sha256": "5746c31e3bedf516d6419f7b2dacf7b0e1012f2833f4601c79e2f12b553047e4",
+      "bytes": 37484
+    },
+    {
+      "path": "OnlineVersion/V0/symbol.sym",
+      "sha256": "cf06b767a8f915125c0b630b9f248bc4656aa3d68efe722cb404a6082d981f90",
+      "bytes": 218
+    },
+    {
+      "path": "OnlineVersion/V0/userprog.foid",
+      "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396",
+      "bytes": 215
+    },
+    {
+      "path": "OnlineVersion/V0/varsinfo.foid",
+      "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603",
+      "bytes": 173
+    },
+    {
+      "path": "OpcUAServer.dat",
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b",
+      "bytes": 307
+    },
+    {
+      "path": "OpcUAServer.datBAK",
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b",
+      "bytes": 307
+    },
+    {
+      "path": "OpcUAServer.tmp",
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b",
+      "bytes": 307
+    },
+    {
+      "path": "Output.prg",
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "bytes": 56
+    },
+    {
+      "path": "Output.sdt",
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+      "bytes": 182
+    },
+    {
+      "path": "PID_AT-PID_AT.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "PID_AT.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240
+    },
+    {
+      "path": "PID_ATC-PID_ATC.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "PID_ATC.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240
+    },
+    {
+      "path": "PortConfig.cfg",
+      "sha256": "06f8615e878e0fdc8dfd617f76e8b229d97e3878bb9a2ad88d198526652b3603",
+      "bytes": 265
+    },
+    {
+      "path": "ReAllocVarsInfo.vi",
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "bytes": 4
+    },
+    {
+      "path": "SBR_001.ST",
+      "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935",
+      "bytes": 233
+    },
+    {
+      "path": "SFTPServer.dat",
+      "sha256": "b353987706e3bebdaf02b9040dbd0af0a0afbe670764d4edc22050cde5c17646",
+      "bytes": 168
+    },
+    {
+      "path": "SFTPServer.datBAK",
+      "sha256": "b353987706e3bebdaf02b9040dbd0af0a0afbe670764d4edc22050cde5c17646",
+      "bytes": 168
+    },
+    {
+      "path": "SFTPServer.tmp",
+      "sha256": "b353987706e3bebdaf02b9040dbd0af0a0afbe670764d4edc22050cde5c17646",
+      "bytes": 168
+    },
+    {
+      "path": "STTemp/MAIN.cl",
+      "sha256": "30a8a98157a694f0274a0d7ab86f6204517220ce7e0aec806c8d07b3f558ef5b",
+      "bytes": 26
+    },
+    {
+      "path": "STTemp/MAIN.o",
+      "sha256": "e940370c9a4f4e4687363ddc145d6f0126a7a6c27bd3ba708d31695c06c85a66",
+      "bytes": 4456
+    },
+    {
+      "path": "STTemp/MAIN.rst",
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+      "bytes": 10
+    },
+    {
+      "path": "STTemp/MAIN.st",
+      "sha256": "63a0cebdc36d6d0dea72938a89b3240d4c4c7e4b0fd7b1f8196a44b888829966",
+      "bytes": 3460
+    },
+    {
+      "path": "STTemp/SBR_001.cl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "STTemp/SBR_001.o",
+      "sha256": "0427a175b83bd445b632a449e92fde9276b2a703737e7ceadaca08d4f1d6d411",
+      "bytes": 1792
+    },
+    {
+      "path": "STTemp/SBR_001.rst",
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+      "bytes": 10
+    },
+    {
+      "path": "STTemp/SBR_001.st",
+      "sha256": "1d70e4c43516e9f84bdbb4a632b68ac6fb6552fd524b34c4a42c068f6d1cd61d",
+      "bytes": 32
+    },
+    {
+      "path": "STTemp/_CALL_FB_00000000.cl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "STTemp/_CALL_FB_00000000.o",
+      "sha256": "8c02102c5a66937feaef4beb8fc30fba623e67011ac701f0343dbf0ee31c0cdd",
+      "bytes": 32824
+    },
+    {
+      "path": "STTemp/_CALL_FB_00000000.rst",
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+      "bytes": 10
+    },
+    {
+      "path": "STTemp/_CALL_FB_00000000.st",
+      "sha256": "c755ec83c05e93afffcf1c830007a2061c8d8cf5b0423b5495c82970342e43da",
+      "bytes": 11954
+    },
+    {
+      "path": "STsteps.dat",
+      "sha256": "d27baa69ab076a11335f77c91c83eb5e40e9f4269d12b85846382df98ac8c137",
+      "bytes": 2864
+    },
+    {
+      "path": "SYS_EIP.eIPgvt",
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80",
+      "bytes": 221
+    },
+    {
+      "path": "SYS_ETHERCAT.ecgvt",
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80",
+      "bytes": 221
+    },
+    {
+      "path": "TRIG-F_TRIG.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "TRIG-R_TRIG.libtemp",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "TRIG.flib",
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+      "bytes": 240
+    },
+    {
+      "path": "TcpModbusConfig.cfg",
+      "sha256": "2b4a11fa9359588975ca08fda63a08543abbde3f88753e01b523be7f804a4e83",
+      "bytes": 8
+    },
+    {
+      "path": "Temp/DownLoad/EIPIns.foid",
+      "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+      "bytes": 88
+    },
+    {
+      "path": "Temp/DownLoad/Ecam.foid",
+      "sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80",
+      "bytes": 118
+    },
+    {
+      "path": "Temp/DownLoad/OpcUAServer.foid",
+      "sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd",
+      "bytes": 97
+    },
+    {
+      "path": "Temp/DownLoad/canlink.foid",
+      "sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81",
+      "bytes": 72
+    },
+    {
+      "path": "Temp/DownLoad/dataLog.foid",
+      "sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4",
+      "bytes": 261
+    },
+    {
+      "path": "Temp/DownLoad/ecttrans.foid",
+      "sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538",
+      "bytes": 73
+    },
+    {
+      "path": "Temp/DownLoad/ethercat.foid",
+      "sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e",
+      "bytes": 270
+    },
+    {
+      "path": "Temp/DownLoad/ethip.foid",
+      "sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac",
+      "bytes": 301
+    },
+    {
+      "path": "Temp/DownLoad/modbus.foid",
+      "sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190",
+      "bytes": 73
+    },
+    {
+      "path": "Temp/DownLoad/modcfg.foid",
+      "sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48",
+      "bytes": 579
+    },
+    {
+      "path": "Temp/DownLoad/sftpserver.foid",
+      "sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2",
+      "bytes": 146
+    },
+    {
+      "path": "Temp/DownLoad/syscfg.foid",
+      "sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c",
+      "bytes": 789
+    },
+    {
+      "path": "Temp/EIPIns.foid",
+      "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+      "bytes": 88
+    },
+    {
+      "path": "Temp/stprog.o",
+      "sha256": "048edf5e6f20595f7402a48382c13d0a39f2b27ca592e8539ec0b333611a746d",
+      "bytes": 158616
+    },
+    {
+      "path": "Temp/stuserprog.o",
+      "sha256": "5746c31e3bedf516d6419f7b2dacf7b0e1012f2833f4601c79e2f12b553047e4",
+      "bytes": 37484
+    },
+    {
+      "path": "Temp/symbol.sym",
+      "sha256": "cf06b767a8f915125c0b630b9f248bc4656aa3d68efe722cb404a6082d981f90",
+      "bytes": 218
+    },
+    {
+      "path": "Temp/userprog.foid",
+      "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396",
+      "bytes": 215
+    },
+    {
+      "path": "Temp/varsinfo.foid",
+      "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603",
+      "bytes": 173
+    },
+    {
+      "path": "VarAddrMap.am",
+      "sha256": "9cbff9ffc24e59896d72156b1807187130ae5d9939448b573ff756894d9dc93d",
+      "bytes": 1698
+    },
+    {
+      "path": "VarList.gdt",
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+      "bytes": 209
+    },
+    {
+      "path": "VarNameAndAddr.csv",
+      "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+      "bytes": 24548
+    },
+    {
+      "path": "VarsInfo.vi",
+      "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95",
+      "bytes": 284
+    },
+    {
+      "path": "_SYS_CAN.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "_SYS_COM.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "_SYS_COM_SAVE.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "_SYS_ECAT_MASTER.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "_SYS_ECAT_SLAVE.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "_SYS_ETHERNET.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "_SYS_INFO.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "_SYS_PN.svt",
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+      "bytes": 207
+    },
+    {
+      "path": "config.ini",
+      "sha256": "a2832fb685683a26344d61c567e7f58c8b947c76a9f84846a395ede84af8199c",
+      "bytes": 29
+    },
+    {
+      "path": "dataLog.data",
+      "sha256": "f3a0abebf69ea2227363120c9ee1cc4576997c897edd826107eb37124087f7a2",
+      "bytes": 197
+    },
+    {
+      "path": "ecttrans.foid",
+      "sha256": "11fe87bbabe3f9c7fe22e69a6abdfd0eafb2053d3e2a13c5a3491ea8298bc927",
+      "bytes": 9
+    },
+    {
+      "path": "etherCat.data",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "bytes": 2
+    },
+    {
+      "path": "folder.txt",
+      "sha256": "41a5af25c9341d009292d9d79d6ee1575036634ca736aec22c1f3dd11f285cc0",
+      "bytes": 259
+    },
+    {
+      "path": "h5u_moduleCfg.data",
+      "sha256": "696bdab8fd3098aba68d0c18b6b35fdc552f7d14ec6739b1fdc39a98e3533c15",
+      "bytes": 225
+    },
+    {
+      "path": "h6u_expandCard.data",
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+      "bytes": 209
+    },
+    {
+      "path": "il_log.log",
+      "sha256": "c2ab81378b383f093c7a37497b10dd03310c711633649369eca6be2c3eb79338",
+      "bytes": 48
+    },
+    {
+      "path": "newil_log.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "userprog.prg",
+      "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c",
+      "bytes": 294
+    },
+    {
+      "path": "varid.vid",
+      "sha256": "f10fdeb85027095a03ecc1ce50557a33bb3669d0f2a92f5fd6d3850bfc911824",
+      "bytes": 256
+    },
+    {
+      "path": "varsinfo.foid",
+      "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d",
+      "bytes": 423
+    },
+    {
+      "path": "webserver.bin",
+      "sha256": "6f29ed21f69172be9b1f5a5713299f2c5b286458de33823445ffe9f36fff586f",
+      "bytes": 249
+    },
+    {
+      "path": "webserver.dat",
+      "sha256": "df466b859e5bde34d465bd523a3ef731ab30e4015d61ae3ac70fce2692f5f064",
+      "bytes": 88
+    },
+    {
+      "path": "\u529f\u80fd\u5757\u5b9e\u4f8b.fbi",
+      "sha256": "a45ea7ff194093e45f9a4fa7b10961ebdf4f314b703ac06931582c9f0d9a15e6",
+      "bytes": 510
+    },
+    {
+      "path": "\u53d8\u91cf\u8868.csv",
+      "sha256": "62f23b0ad6666da734f188412f5ed8ce49868abfbf4b8d0aca1f9172f1c4a5e3",
+      "bytes": 1296
+    },
+    {
+      "path": "\u53d8\u91cf\u8868.gvt",
+      "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5",
+      "bytes": 1503
+    }
+  ]
+}

@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-17T14:34:49.083716+00:00",
+  "scope": "Read-only static file metadata/export/import/XML inspection. No vendor binary execution, DLL loading, Windows process/GUI/USB/PLC access, download, firmware or runtime control.",
+  "files": [
+    {
+      "path": "/mnt/e/Software/AutoShop/AutoShop.exe",
+      "bytes": 55592960,
+      "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e",
+      "file": "PE32 executable (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 60,
+      "imports": [
+        "ECam.dll",
+        "COMCTL32.dll",
+        "IMM32.dll",
+        "zlibwapi.dll",
+        "InterfaceMgr.dll",
+        "STRelocation.dll",
+        "libcurl.dll",
+        "libcrypto-3.dll",
+        "libssl-3.dll",
+        "DuiLib.dll",
+        "Global.dll",
+        "mfc90u.dll",
+        "MSVCR90.dll",
+        "KERNEL32.dll",
+        "USER32.dll",
+        "GDI32.dll",
+        "MSIMG32.dll",
+        "ADVAPI32.dll",
+        "SHELL32.dll",
+        "SHLWAPI.dll",
+        "ole32.dll",
+        "OLEAUT32.dll",
+        "MSVCP90.dll",
+        "gdiplus.dll",
+        "WSOCK32.dll",
+        "WS2_32.dll",
+        "IPHLPAPI.DLL",
+        "VERSION.dll",
+        "PSAPI.DLL"
+      ],
+      "selected_export_names": []
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/InterfaceMgr.dll",
+      "bytes": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192",
+      "file": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 4534,
+      "imports": [
+        "mfc90u.dll",
+        "MSVCR90.dll",
+        "KERNEL32.dll",
+        "USER32.dll",
+        "GDI32.dll",
+        "ADVAPI32.dll",
+        "SHELL32.dll",
+        "SHLWAPI.dll",
+        "ole32.dll",
+        "OLEAUT32.dll",
+        "MSVCP90.dll",
+        "IPHLPAPI.DLL",
+        "PSAPI.DLL",
+        "WS2_32.dll"
+      ],
+      "selected_export_names": [
+        "?DownloadFile@IH530Communicate@@SAJV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@0PAVCWnd@@0W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?DownloadFile@IH530Communicate_Interface@@UAEJV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@0PAVCWnd@@0W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?GetCPUID@IH530Communicate@@SAJPAU_H530_CPUID@@PAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?GetCPUID@IH530Communicate_Interface@@UAEJPAU_H530_CPUID@@PAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?GetPLCInfo@IH530Communicate@@SAJPAU_H530_PLC_INFO@@PAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?GetPLCInfo@IH530Communicate_Interface@@UAEJPAU_H530_PLC_INFO@@PAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?GetPLCRunMode@IH530Communicate@@SAJPAKPAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?GetPLCRunMode@IH530Communicate_Interface@@UAEJPAKPAVCWnd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?SetPreDataCenterAndQuery@CSTCompiler@@UAEXPAVCDataManageCenter@@PAVIInstructionQueryer@@AAV?$list@USSTCompilerErrorInfo@@V?$allocator@USSTCompilerErrorInfo@@@std@@@std@@@Z",
+        "?SetReadSTFileFunc@CSTCompiler@@UAEXP6AHABV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@AAV23@1AAW4EnumProgType@@@Z3@Z",
+        "?StartSTPretreatCompile@CSTCompiler@@UAEHPBV?$CList@UtagFileProp@@AAU1@@@PAVCDataManageCenter@@PAVIInstructionQueryer@@AAV?$list@USSTCompilerErrorInfo@@V?$allocator@USSTCompilerErrorInfo@@@std@@@std@@HABV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@W4EnumEncodingFormat@@KGH@Z",
+        "?UploadFile@IH530Communicate@@SAJPAPAEPAHV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@PAVCWnd@@2W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?UploadFile@IH530Communicate@@SAJV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@0PAVCWnd@@0W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?UploadFile@IH530Communicate_Interface@@UAEJPAPAEPAHV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@PAVCWnd@@2W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?UploadFile@IH530Communicate_Interface@@UAEJV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@0PAVCWnd@@0W4EnumExecuteMode@@W4EnumCommandLevel@@@Z"
+      ]
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/CommunicaterModule.dll",
+      "bytes": 22724096,
+      "sha256": "e4db40d8053c9768a7d3ba79fbc96909019933a5753e8559ed5e5cfe8f1ac3ed",
+      "file": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 95,
+      "imports": [
+        "InterfaceMgr.dll",
+        "mfc90u.dll",
+        "MSVCR90.dll",
+        "KERNEL32.dll",
+        "USER32.dll",
+        "OLEAUT32.dll",
+        "MSVCP90.dll",
+        "SETUPAPI.dll",
+        "WINUSB.DLL",
+        "WS2_32.dll"
+      ],
+      "selected_export_names": [
+        "?Download@CCommunicaterLocal@@SAJPB_WW4EnumCommunicaterCmd@@PAVCWnd@@HW4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?GetExecMode@CCommunicaterLocal@@SAJPAW4EnumPlcRunModel@@HW4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?GetVersionInfo@CCommunicaterLocal@@SAJPAUtagPLCVERSION@@HW4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?ProgramValidate@CCommunicaterLocal@@SAJPAUtagProgramCheck@@W4EnumCommunicaterCmd@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?SingleSimpleCommand@CCommunicaterLocal@@SAJW4EnumSimpleCmdType@@W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+        "?Upload@CCommunicaterLocal@@SAJPB_WW4EnumCommunicaterCmd@@PAVCWnd@@HW4EnumExecuteMode@@W4EnumCommandLevel@@@Z"
+      ]
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/CommunicateEthernet.dll",
+      "bytes": 22499328,
+      "sha256": "fb420a9f6421bfc8db158a13a7dc1de65c09766e32cb51d67fab4914d6d7fa0d",
+      "file": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 84,
+      "imports": [
+        "InterfaceMgr.dll",
+        "mfc90u.dll",
+        "MSVCR90.dll",
+        "KERNEL32.dll",
+        "USER32.dll",
+        "SHLWAPI.dll",
+        "WS2_32.dll",
+        "MSVCP90.dll"
+      ],
+      "selected_export_names": []
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/H530Communicate.dll",
+      "bytes": 22864896,
+      "sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698",
+      "file": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 0,
+      "imports": [
+        "InterfaceMgr.dll",
+        "mfc90u.dll",
+        "MSVCR90.dll",
+        "KERNEL32.dll",
+        "USER32.dll",
+        "ole32.dll",
+        "OLEAUT32.dll",
+        "WS2_32.dll",
+        "MSVCP90.dll",
+        "IPHLPAPI.DLL"
+      ],
+      "selected_export_names": []
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/H530Converter.dll",
+      "bytes": 24275456,
+      "sha256": "9cc9e49c969373fdb37694a22542d11a35b63d8f8a768dfed61a2d8557b639cf",
+      "file": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 0,
+      "imports": [
+        "STRelocation.dll",
+        "InterfaceMgr.dll",
+        "mfc90u.dll",
+        "MSVCR90.dll",
+        "KERNEL32.dll",
+        "USER32.dll",
+        "SHELL32.dll",
+        "ole32.dll",
+        "OLEAUT32.dll",
+        "MSVCP90.dll"
+      ],
+      "selected_export_names": []
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Bin/STLang/StLang.exe",
+      "bytes": 25144320,
+      "sha256": "b69439a1bb91f8dc6d982760023518671eff80e4cb0e90cc509c56e87e4f424a",
+      "file": "PE32 executable (console) Intel 80386, for MS Windows, 8 sections",
+      "named_export_count": 0,
+      "imports": [
+        "Kernel.dll",
+        "KERNEL32.dll",
+        "ADVAPI32.dll",
+        "SHELL32.dll",
+        "ole32.dll",
+        "MSVCP140.dll",
+        "VCRUNTIME140.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-environment-l1-1-0.dll",
+        "api-ms-win-crt-filesystem-l1-1-0.dll",
+        "api-ms-win-crt-utility-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll"
+      ],
+      "selected_export_names": []
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Bin/STLang/Kernel.dll",
+      "bytes": 289280,
+      "sha256": "8f3381f791134e6df7691b776fe18912ae3ee5e3ffd134c631f2430d6d1e7bf0",
+      "file": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 308,
+      "imports": [
+        "KERNEL32.dll",
+        "MSVCP140.dll",
+        "VCRUNTIME140.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-filesystem-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll"
+      ],
+      "selected_export_names": []
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Bin/STLang_New/StLang.exe",
+      "bytes": 25144320,
+      "sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847",
+      "file": "PE32 executable (console) Intel 80386, for MS Windows, 8 sections",
+      "named_export_count": 0,
+      "imports": [
+        "Kernel.dll",
+        "KERNEL32.dll",
+        "ADVAPI32.dll",
+        "SHELL32.dll",
+        "ole32.dll",
+        "MSVCP140.dll",
+        "VCRUNTIME140.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-environment-l1-1-0.dll",
+        "api-ms-win-crt-filesystem-l1-1-0.dll",
+        "api-ms-win-crt-utility-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll"
+      ],
+      "selected_export_names": []
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Bin/STLang_New/Kernel.dll",
+      "bytes": 289280,
+      "sha256": "e9b675b79ced087c7e7e1a897ea889d692536056f2f45d2b813e98239906edcd",
+      "file": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 308,
+      "imports": [
+        "KERNEL32.dll",
+        "MSVCP140.dll",
+        "VCRUNTIME140.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-filesystem-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll"
+      ],
+      "selected_export_names": []
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/InoLoaderPro_V100R002B021.B5/MainControl.dll",
+      "bytes": 1694720,
+      "sha256": "955af9c657db9f03828e2e1aea57d6dc9a87023d3d658265c9fa3094c81bf743",
+      "file": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 88,
+      "imports": [
+        "EnDecrypt.dll",
+        "vxlapi.dll",
+        "zlgcan.dll",
+        "WINHTTP.dll",
+        "IPHLPAPI.DLL",
+        "ethercatapp.dll",
+        "packet.dll",
+        "wpcap.dll",
+        "hidapi.dll",
+        "KERNEL32.dll",
+        "USER32.dll",
+        "ADVAPI32.dll",
+        "SHELL32.dll",
+        "ole32.dll",
+        "MSVCP140.dll",
+        "SETUPAPI.dll",
+        "WS2_32.dll",
+        "VERSION.dll",
+        "CrashRpt1403.dll",
+        "VCRUNTIME140.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-filesystem-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-utility-l1-1-0.dll"
+      ],
+      "selected_export_names": [
+        "burn",
+        "getBinfile",
+        "scan",
+        "setBurnCancel",
+        "setBurnProgessCallBack",
+        "setParameters"
+      ]
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/InoLoaderPro_V100R002B021.B5/MainControl.lib",
+      "bytes": 44080,
+      "sha256": "e428962459e3e691a15b5679e3ff16ad80141132d3a0a5d801dfba5ea24a9b4b",
+      "file": "current ar archive"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/InoLoaderPro_V100R002B021.B5/libIvtAes.so",
+      "bytes": 17896,
+      "sha256": "2e9106512acf478584c255263c797b38c6d3e67d65efdb3b3f48bea9eabf0274",
+      "file": "ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, not stripped"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/InoLoaderPro_V100R002B021.B5/linkcfg/tools.xml",
+      "bytes": 21944,
+      "sha256": "73eed5afc7715a063e2f992f60b8e4b7a4fb5a18459f2cf8c8d6a4abfe17c490",
+      "file": "XML 1.0 document, Unicode text, UTF-8 text, with CRLF line terminators"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/xml/PlcSeriesModel.xml",
+      "bytes": 15870,
+      "sha256": "eae32fbd748042c40720c67ded6b98603db9b7f755157c1aeebf37b8f182af69",
+      "file": "XML 1.0 document, ISO-8859 text, with very long lines (482), with CRLF line terminators"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/device/H6UA8.dll",
+      "bytes": 3259904,
+      "sha256": "565226d0d4c493ac69f7d68e98e324dc8c2649caed079dcc8b4bbf18198a0a8e",
+      "file": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, 5 sections",
+      "named_export_count": 5,
+      "imports": [
+        "InterfaceMgr.dll",
+        "mfc90u.dll",
+        "MSVCR90.dll",
+        "KERNEL32.dll",
+        "ADVAPI32.dll",
+        "MSVCP90.dll"
+      ],
+      "selected_export_names": []
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Manual/H5U&Easy_Manual/Easy系列可编程逻辑控制器用户手册.PDF",
+      "bytes": 85041859,
+      "sha256": "e793971a545f5b4c89e067957ac73973546f6df354f586a62c041995df5dc5da",
+      "file": "PDF document, version 1.7 (zip deflate encoded)"
+    }
+  ],
+  "maincontrol_flat_import_symbols": [
+    "00000000 I __imp__burn",
+    "00000000 T _burn",
+    "00000000 I __imp__getBinfile",
+    "00000000 T _getBinfile",
+    "00000000 I __imp__scan",
+    "00000000 T _scan",
+    "00000000 I __imp__setBurnCancel",
+    "00000000 T _setBurnCancel",
+    "00000000 I __imp__setBurnProgessCallBack",
+    "00000000 T _setBurnProgessCallBack",
+    "00000000 I __imp__setParameters",
+    "00000000 T _setParameters"
+  ],
+  "maincontrol_calling_convention_observation": "Win32 import symbols have leading underscore and no @N suffix; consistent with cdecl. No argument count/layout or operational support inferred.",
+  "inoloader_plc_catalog": [
+    {
+      "line_id": "14",
+      "listed_product_types": [
+        {
+          "id": "0x60A",
+          "name": "Gx20系列通信耦合器"
+        }
+      ]
+    }
+  ],
+  "easy521_software_model_mapping": {
+    "file": "xml/PlcSeriesModel.xml",
+    "encoding": "gb18030",
+    "element": "H6UA8",
+    "alias": "Easy521",
+    "scope": "AutoShop model identifier; not SoC identity"
+  },
+  "linux_control_library_inventory": {
+    "scope": "/mnt/e/Software/AutoShop",
+    "observed_files": [
+      "InoLoaderPro_V100R002B021.B5/libIvtAes.so",
+      "InoLoaderPro_V100R002B021.B5/MainControl.dll",
+      "InoLoaderPro_V100R002B021.B5/MainControl.lib"
+    ],
+    "linux_maincontrol_observed": false,
+    "libIvtAes_host_architecture": "ELF64 x86-64",
+    "limit": "No claim about other disks, private vendor downloads or unretrieved releases."
+  },
+  "manual_observations": {
+    "document_code": "PS00006444A08",
+    "pdf_and_printed_page_numbers_agree": true,
+    "easy521_model_pages": [
+      135,
+      136
+    ],
+    "usb_only_supply_retention_limit_page": 138,
+    "usb_program_transfer_and_24v_terminal_spec_page": 139,
+    "input_voltage_page": 140,
+    "output_voltage_page": 141,
+    "run_led_and_switch_page": 137,
+    "cpu_run_with_usb_only": "not explicitly established or prohibited by the examined Easy52X chapter"
+  },
+  "not_verified": [
+    "StLang CLI arguments and independently successful new compile",
+    "Easy521 support and application semantics for InoLoaderPro burn APIs",
+    "Safe initialization/lifetime and enum/structure layouts for internal AutoShop MFC interfaces",
+    "Easy521 native Linux compiler/downloader runtime library",
+    "SoC model, OS or BSP",
+    "Current hardware runtime state"
+  ],
+  "primary_sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/cpp/build/reference/decorated-names?view=msvc-170",
+      "supports": "Win32 C calling-convention decoration and C++ ABI/toolset dependency"
+    },
+    {
+      "url": "https://www.inovance.com/portal/allResult?key=AutoShop",
+      "supports": "Official AutoShop V4.12.0.2 listing; title is not a headless CLI contract"
+    },
+    {
+      "url": "https://www.inovance.com/global/content/details_2349_583466.html",
+      "supports": "Official H3U .down package workflow; explicitly limited model applicability"
+    }
+  ]
+}

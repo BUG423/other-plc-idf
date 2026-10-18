@@ -1,0 +1,406 @@
+{
+  "observed_at": "2026-10-18T11:36:12.804948+00:00",
+  "purpose": "host project files before opening saved working copy",
+  "files": [
+    {
+      "name": "AXIS_CTRL-AXIS_CTRL.libtemp",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "AXIS_CTRL-SUSERAXIS.libtemp",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "AXIS_CTRL.flib",
+      "bytes": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "name": "BESS_E521_DEV.hcp",
+      "bytes": 55454,
+      "sha256": "5fc00591396f427b812cffd7b26379cf97c5f083b664c6493169e0023bdbef9a"
+    },
+    {
+      "name": "BESS_E521_DEV.hcpp",
+      "bytes": 52100,
+      "sha256": "0a6c6883638f388f8d915c230385695ca872006ddf8f2877cda3ad7060d8c8f4"
+    },
+    {
+      "name": "Config.sdt",
+      "bytes": 371,
+      "sha256": "af9e01cb471c8c7d6b4c41605192adeed28f03f6b3570675bea97ae24760f664"
+    },
+    {
+      "name": "CrossTable.crs",
+      "bytes": 3199,
+      "sha256": "bbb948762666850dffcc2275b27d5ae9fbe8b1679ce9ce6bf8dcea521d0987eb"
+    },
+    {
+      "name": "EIP.dat",
+      "bytes": 340,
+      "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9"
+    },
+    {
+      "name": "EIP.datBAK",
+      "bytes": 340,
+      "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9"
+    },
+    {
+      "name": "EIPIns.dat",
+      "bytes": 24,
+      "sha256": "ded971312fd0d6636189f053bb70120ad8f783b028c5ae16da4253e63d6376f3"
+    },
+    {
+      "name": "Ecam.tr",
+      "bytes": 54,
+      "sha256": "854e0a3951bc4a773d684415ec8983c32c6f6cfc93f71b86344442379bcc688f"
+    },
+    {
+      "name": "ElemBitComm.gdtx",
+      "bytes": 209,
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf"
+    },
+    {
+      "name": "ElemUseInfo.esi",
+      "bytes": 214,
+      "sha256": "09fdbdc578dde7a0763b83b64eba98746e4208742cbb3b5487509b18b50816a8"
+    },
+    {
+      "name": "EtherCat.dat",
+      "bytes": 243,
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d"
+    },
+    {
+      "name": "EtherCat.datBAK",
+      "bytes": 243,
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d"
+    },
+    {
+      "name": "EtherCat.tmp",
+      "bytes": 243,
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d"
+    },
+    {
+      "name": "FBInstStep.dat",
+      "bytes": 12,
+      "sha256": "19f959c5c26cb28ad3869ffc64b33e5369a3996bcb2fe3369a7430cabdb68777"
+    },
+    {
+      "name": "FB_BESS_AdaptiveSupervisor_Easy521.FB",
+      "bytes": 10384,
+      "sha256": "0a9d9836c86594f2954a30432cbf3de745296f3ea2d2bc5ec9ee8e8f1ad3afdd"
+    },
+    {
+      "name": "FCInstTbl.fci",
+      "bytes": 221,
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80"
+    },
+    {
+      "name": "GL20ModuleCfg.data",
+      "bytes": 253,
+      "sha256": "b06bc7078c0e0df802d849839fd1b9e901814506be18785a81065f63ab079e13"
+    },
+    {
+      "name": "GetServoSN-GetServoSN.libtemp",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "GetServoSN.flib",
+      "bytes": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "name": "H530QUICKMONTABLE.qmt",
+      "bytes": 554,
+      "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773"
+    },
+    {
+      "name": "ILIndex.idx",
+      "bytes": 142,
+      "sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21"
+    },
+    {
+      "name": "INT_001.ST",
+      "bytes": 233,
+      "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935"
+    },
+    {
+      "name": "LoginPassowrd.dat",
+      "bytes": 17,
+      "sha256": "4facbf88d978289015360dd932d58748d165a0bf8a3d01c40cef08ea134a0bb3"
+    },
+    {
+      "name": "MAIN.ST",
+      "bytes": 1757,
+      "sha256": "fd060d7ed31f43308eee554bc9a7077834815f0fae7be0b102efca5163a57d68"
+    },
+    {
+      "name": "MAIN.mon",
+      "bytes": 554,
+      "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773"
+    },
+    {
+      "name": "ModifiedInsIndex.idx",
+      "bytes": 30,
+      "sha256": "0ef201cc3f9e03eaf99e0dc9752745e1d6667c0f58b8a6f968cf4fd1dbcf40f4"
+    },
+    {
+      "name": "OpcUAServer.dat",
+      "bytes": 307,
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b"
+    },
+    {
+      "name": "OpcUAServer.datBAK",
+      "bytes": 307,
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b"
+    },
+    {
+      "name": "OpcUAServer.tmp",
+      "bytes": 307,
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b"
+    },
+    {
+      "name": "Output.prg",
+      "bytes": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "name": "Output.sdt",
+      "bytes": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "name": "PID_AT-PID_AT.libtemp",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "PID_AT.flib",
+      "bytes": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "name": "PID_ATC-PID_ATC.libtemp",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "PID_ATC.flib",
+      "bytes": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "name": "PortConfig.cfg",
+      "bytes": 265,
+      "sha256": "06f8615e878e0fdc8dfd617f76e8b229d97e3878bb9a2ad88d198526652b3603"
+    },
+    {
+      "name": "ReAllocVarsInfo.vi",
+      "bytes": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    },
+    {
+      "name": "SBR_001.ST",
+      "bytes": 233,
+      "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935"
+    },
+    {
+      "name": "SFTPServer.dat",
+      "bytes": 171,
+      "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169"
+    },
+    {
+      "name": "SFTPServer.datBAK",
+      "bytes": 168,
+      "sha256": "b353987706e3bebdaf02b9040dbd0af0a0afbe670764d4edc22050cde5c17646"
+    },
+    {
+      "name": "SFTPServer.tmp",
+      "bytes": 171,
+      "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169"
+    },
+    {
+      "name": "STsteps.dat",
+      "bytes": 918,
+      "sha256": "84f817788143a19bf7aece9df227badf819f438bcf32be904961e110e3598aaf"
+    },
+    {
+      "name": "SYS_EIP.eIPgvt",
+      "bytes": 221,
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80"
+    },
+    {
+      "name": "SYS_ETHERCAT.ecgvt",
+      "bytes": 221,
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80"
+    },
+    {
+      "name": "TRIG-F_TRIG.libtemp",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "TRIG-R_TRIG.libtemp",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "TRIG.flib",
+      "bytes": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "name": "TcpModbusConfig.cfg",
+      "bytes": 8,
+      "sha256": "2b4a11fa9359588975ca08fda63a08543abbde3f88753e01b523be7f804a4e83"
+    },
+    {
+      "name": "VarAddrMap.am",
+      "bytes": 1698,
+      "sha256": "9cbff9ffc24e59896d72156b1807187130ae5d9939448b573ff756894d9dc93d"
+    },
+    {
+      "name": "VarList.gdt",
+      "bytes": 209,
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf"
+    },
+    {
+      "name": "VarNameAndAddr.csv",
+      "bytes": 24548,
+      "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+    },
+    {
+      "name": "VarsInfo.vi",
+      "bytes": 284,
+      "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95"
+    },
+    {
+      "name": "_SYS_CAN.svt",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "_SYS_COM.svt",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "_SYS_COM_SAVE.svt",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "_SYS_ECAT_MASTER.svt",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "_SYS_ECAT_SLAVE.svt",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "_SYS_ETHERNET.svt",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "_SYS_INFO.svt",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "_SYS_PN.svt",
+      "bytes": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "name": "config.ini",
+      "bytes": 29,
+      "sha256": "a2832fb685683a26344d61c567e7f58c8b947c76a9f84846a395ede84af8199c"
+    },
+    {
+      "name": "dataLog.data",
+      "bytes": 197,
+      "sha256": "f3a0abebf69ea2227363120c9ee1cc4576997c897edd826107eb37124087f7a2"
+    },
+    {
+      "name": "ecttrans.foid",
+      "bytes": 9,
+      "sha256": "11fe87bbabe3f9c7fe22e69a6abdfd0eafb2053d3e2a13c5a3491ea8298bc927"
+    },
+    {
+      "name": "etherCat.data",
+      "bytes": 2,
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "name": "folder.txt",
+      "bytes": 259,
+      "sha256": "41a5af25c9341d009292d9d79d6ee1575036634ca736aec22c1f3dd11f285cc0"
+    },
+    {
+      "name": "h5u_moduleCfg.data",
+      "bytes": 225,
+      "sha256": "696bdab8fd3098aba68d0c18b6b35fdc552f7d14ec6739b1fdc39a98e3533c15"
+    },
+    {
+      "name": "h6u_expandCard.data",
+      "bytes": 209,
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf"
+    },
+    {
+      "name": "il_log.log",
+      "bytes": 48,
+      "sha256": "c2ab81378b383f093c7a37497b10dd03310c711633649369eca6be2c3eb79338"
+    },
+    {
+      "name": "newil_log.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "userprog.prg",
+      "bytes": 294,
+      "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c"
+    },
+    {
+      "name": "varid.vid",
+      "bytes": 256,
+      "sha256": "f10fdeb85027095a03ecc1ce50557a33bb3669d0f2a92f5fd6d3850bfc911824"
+    },
+    {
+      "name": "varsinfo.foid",
+      "bytes": 423,
+      "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d"
+    },
+    {
+      "name": "webserver.bin",
+      "bytes": 249,
+      "sha256": "6f29ed21f69172be9b1f5a5713299f2c5b286458de33823445ffe9f36fff586f"
+    },
+    {
+      "name": "webserver.dat",
+      "bytes": 88,
+      "sha256": "df466b859e5bde34d465bd523a3ef731ab30e4015d61ae3ac70fce2692f5f064"
+    },
+    {
+      "name": "功能块实例.fbi",
+      "bytes": 510,
+      "sha256": "a45ea7ff194093e45f9a4fa7b10961ebdf4f314b703ac06931582c9f0d9a15e6"
+    },
+    {
+      "name": "变量表.csv",
+      "bytes": 1296,
+      "sha256": "62f23b0ad6666da734f188412f5ed8ce49868abfbf4b8d0aca1f9172f1c4a5e3"
+    },
+    {
+      "name": "变量表.gvt",
+      "bytes": 1503,
+      "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
+    }
+  ]
+}

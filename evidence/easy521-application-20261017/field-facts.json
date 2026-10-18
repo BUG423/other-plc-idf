@@ -1,0 +1,16 @@
+{
+  "schema": "plcidf.field-facts.v1",
+  "source": "user message in this session",
+  "power_source": "usb-only",
+  "power_24v_connected": false,
+  "outputs_isolated": true,
+  "mode_switch": "RUN",
+  "operator_presence": "not explicitly stated",
+  "physical_run_led": "off",
+  "application_scope": "memory-only-probe",
+  "authorized_operations": "user requests real PLC programming/download/runtime completion; no new approval requested",
+  "firmware_replacement_authorized": false,
+  "observed_at": "2026-10-17T15:01:21.650450+00:00",
+  "physical_run_led_source": "User reply to RUN LED question: 灯现在常灭",
+  "power_cause": "unknown; missing rated 24V is an unmet prerequisite, not a proven sole cause"
+}

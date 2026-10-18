@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-17T10:36:34.762723+00:00",
+  "argv": [
+    "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "screenshot",
+    "-Value",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\evidence\\hardware-20261017\\final-main.png"
+  ],
+  "returncode": 0,
+  "stdout": "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\evidence\\hardware-20261017\\final-main.png\r\n",
+  "stderr": ""
+}

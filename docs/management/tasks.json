@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "baseline_date": "2026-10-17",
+  "repository": "BUG423/other-plc-idf",
+  "status_source": "GitHub Issue；本文件为任务定义，状态可能随实施变化",
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "建立需求、架构与实现能力基线",
+      "priority": "P0",
+      "milestone": "M0",
+      "role": "架构审计代理与统筹代理",
+      "depends_on": [],
+      "estimate": "本轮",
+      "acceptance": [
+        "实现/计划/待硬件能力分别列出并可追溯到代码",
+        "第一性原理需求、实施计划、任务依赖与研究退出条件入库",
+        "GitHub 任务与进度报告包含验收证据及未完成事项"
+      ],
+      "delivery": "docs/management/PLAN.md；docs/reviews/；SPEC/ARCH 勘误",
+      "issue_number": 1,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/1"
+    },
+    {
+      "id": "T02",
+      "title": "修复执行成功语义、配置类型和 GUI 副作用重试",
+      "priority": "P0",
+      "milestone": "M0",
+      "role": "Python 实现代理与统筹复核",
+      "depends_on": [],
+      "estimate": "本轮",
+      "acceptance": [
+        "bridge.enabled 仅 TOML 布尔 true 可启用；字符串与数值拒绝",
+        "改变状态的 GUI 操作失败或超时后不自动重试",
+        "缺少必需验证时所有进程 rc=0 仍返回未核验、ok=false、非零退出码",
+        "未核验步骤写入证据；软件负向用例覆盖，测试不进行真实 GUI/PLC 操作"
+      ],
+      "delivery": "src/plc_idf/backends/bridge_autoshop.py；safety.py；cli.py；回归测试",
+      "issue_number": 2,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/2"
+    },
+    {
+      "id": "T03",
+      "title": "封装独立 wheel、依赖和纯软件 CI",
+      "priority": "P1",
+      "milestone": "M1",
+      "role": "Python 构建与分发工程角色（待接单）",
+      "depends_on": [
+        "T02"
+      ],
+      "estimate": "1–3 工程日",
+      "acceptance": [
+        "安装 wheel 后从仓库外目录运行 sim 与只读 monitor 软件闭环",
+        "外置脚本、模板和必要依赖随包正确分发，不依赖 editable 布局",
+        "干净 Linux CI 测试通过；默认软件 CI 排除 Windows/硬件枚举",
+        "兼容 plcidf 与 py2plc 两入口"
+      ],
+      "delivery": "打包变更、隔离安装证据、CI；本轮仅先建立源码树 CI",
+      "issue_number": 3,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/3"
+    },
+    {
+      "id": "T04",
+      "title": "实现文本工程 manifest、脚手架和静态检查",
+      "priority": "P1",
+      "milestone": "M1",
+      "role": "PLC 语言与工程模型角色（待接单）",
+      "depends_on": [
+        "T01"
+      ],
+      "estimate": "2–4 工程日",
+      "acceptance": [
+        "从空目录生成最小可读 ST/变量/映射工程",
+        "manifest 声明型号、方言、工具版本、任务周期、I/O、初值与保持属性",
+        "对不支持类型、变量缺失、地址重叠和寄存器契约冲突给行级错误",
+        "检查明确不是厂商编译；演示仿真不宣称执行用户 ST"
+      ],
+      "delivery": "init/check 命令、版本化工程 schema 与最小示例",
+      "issue_number": 4,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/4"
+    },
+    {
+      "id": "T05",
+      "title": "实现后端能力诊断、稳定 JSON 与退出码",
+      "priority": "P1",
+      "milestone": "M1",
+      "role": "CLI 与接口工程角色（待接单）",
+      "depends_on": [
+        "T02",
+        "T04"
+      ],
+      "estimate": "2–3 工程日",
+      "acceptance": [
+        "doctor 按 build/flash/monitor/sim 分别报告能力、版本和缺失条件",
+        "Windows 不可用时仍能运行诊断及软件闭环",
+        "版本化 JSON 独占 stdout，进度与诊断文本走 stderr",
+        "确定性退出码覆盖配置错误、拒绝、超时、验证失败与不支持"
+      ],
+      "delivery": "doctor已分列Easy521七种能力、纯本地版本/资源/编译器pin检查和缺失条件/argv；device binary/runtime不预填历史结果，CLI结构化诊断继续维护",
+      "issue_number": 5,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/5"
+    },
+    {
+      "id": "T06",
+      "title": "同步源码并完成可验证 AutoShop 编译",
+      "priority": "P1",
+      "milestone": "M2",
+      "role": "Windows 自动化与 PLC 工具链角色（待接单）",
+      "depends_on": [
+        "T04",
+        "T05"
+      ],
+      "estimate": "3–6 工程日",
+      "acceptance": [
+        "同步有 diff、可恢复工作副本与源哈希，不覆盖唯一原工程",
+        "固定 AutoShop/目标版本，正确与故意错误 ST 均取得真实判定与可读诊断",
+        "识别目标工程、产物内容与本次源版本；产物清单含 SHA-256",
+        "无 PLC 连接也能离线编译；Windows 交互桌面需求如实报告",
+        "截图或文件时间不能单独作为成功证据"
+      ],
+      "delivery": "MAIN同步/真实编译、跨行错误数修复及包含PLC子目录的完整输入清单；2026-10-18真实F7 verified，厂商任务/变量自动导入仍开放",
+      "issue_number": 6,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/6"
+    },
+    {
+      "id": "T07",
+      "title": "绑定部署产物与设备身份并实现互斥和可靠证据",
+      "priority": "P0",
+      "milestone": "M2",
+      "role": "系统与部署AI代理、CLI代理与统筹复核",
+      "depends_on": [
+        "T02",
+        "T05"
+      ],
+      "estimate": "2–4 工程日",
+      "acceptance": [
+        "设备选择同时核对配置 BUSID 与 VID/PID，并对多设备/不明身份拒绝执行",
+        "部署计划绑定源版本、产物哈希、目标身份、备份与校验方式",
+        "计划后换包或换目标使原确认失效",
+        "跨进程设备/AutoShop 租约阻止并发，陈旧锁恢复有证据",
+        "证据不可写时在副作用前停止；超时保留未知状态且不自动再下载"
+      ],
+      "delivery": "新增严格intent与确认前不可变release；真实80输入/108文件快照与本地捕获复验通过，确认后重编/设备字节绑定仍开放；ADR-0004",
+      "issue_number": 7,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/7"
+    },
+    {
+      "id": "T08",
+      "title": "验收真机只读监测和数据质量",
+      "priority": "P1",
+      "milestone": "M3",
+      "role": "只读监测AI代理与统筹真机联调",
+      "depends_on": [
+        "T05"
+      ],
+      "estimate": "1–3 工程日；另需网口可达",
+      "acceptance": [
+        "确认实验机及工程寄存器映射，以已知值和厂商界面对照 REAL32 字序",
+        "字序不明不能静默产生可信工程量，保留原始字与质量标记",
+        "JSONL 含时间、原始值、解析值、质量及契约/工程版本",
+        "验证断连、异常值和陈旧数据；只用读功能码",
+        "区分变量数采、CPU运行状态、故障与周期监控的实际覆盖范围"
+      ],
+      "delivery": "USB UI当前值已真实读取12个探针量；独立在线身份、M8000/M8001与鲜度仍未核验，CLI非零；网口Modbus与字序仍待验收",
+      "issue_number": 8,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/8"
+    },
+    {
+      "id": "T09",
+      "title": "完成实验机应用下载、一致性与运行验收",
+      "priority": "P1",
+      "milestone": "M3",
+      "role": "部署AI代理与统筹独占真机操作、用户现场供电",
+      "depends_on": [
+        "T06",
+        "T07",
+        "T08"
+      ],
+      "estimate": "1–3 工程日；另需当次现场授权",
+      "acceptance": [
+        "逐次操作有用户明确授权与在场，目标/备份/隔离条件记录完整",
+        "从 AI 修改文本到厂商工程、产物、指定设备具备连续追溯",
+        "厂商程序一致性校验通过，下载成功与 RUN 分别判定",
+        "RUN/STOP、5ms任务周期和错误恢复各有真实证据；未测不写通过",
+        "失败或未知状态停止，不自动重试下载、不推断恢复成功"
+      ],
+      "delivery": "两个内存探针USB下载及厂商一致性正反校验通过；RUN请求拒绝。设备保留revision2，未恢复原BESS。需额定24V下复核、实际扫描/停止与规则变化、精确二进制追溯，详见EASY521_APPLICATION_2026-10-17.md",
+      "issue_number": 9,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/9"
+    },
+    {
+      "id": "R01",
+      "title": "研究原生厂商编译 ABI 与下载协议",
+      "priority": "research",
+      "milestone": "RX",
+      "role": "厂商编译器研究AI代理与统筹复核",
+      "depends_on": [],
+      "estimate": "首轮原型时间盒 3–5 工程日",
+      "acceptance": [
+        "保留样本来源、SHA-256、ARM ELF 属性及未定义符号；判断 runtime ABI 与包装边界",
+        "官方自动化接口或 DLL 适配验证明确型号/语言/版本；H3U结论不能冒充H5U或Easy521",
+        "下载协议研究先离线分析合法样本，真实抓包与写操作另需现场授权",
+        "最小原型或否决证据支持桥接保留/原生投入决定，未发现不等于不存在"
+      ],
+      "delivery": "2026-10-18普通受限ST正文+显式全局声明→独立中间输入→真实厂商ARM对象，覆盖多语句/IF/4基础类型、+1/+2和语法负例；隐式声明修复崩溃。完整链接/软元件/任务/包装和独立下载协议仍开放；研究11",
+      "issue_number": 10,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/10"
+    },
+    {
+      "id": "R02",
+      "title": "评估系统固件替换与自控开放 PLC 后端",
+      "priority": "research",
+      "milestone": "RX",
+      "role": "嵌入式 Linux 与实时系统角色（首轮文献完成，实验待接单）",
+      "depends_on": [],
+      "estimate": "首轮离线原型时间盒 3–5 工程日",
+      "acceptance": [
+        "官方固件合法获取后记录版本、来源与哈希，仅做离线结构分析",
+        "具体 SoC、OS、启动/签名、runtime、BSP、I/O、现场总线与恢复路径逐层区分已知和未知",
+        "在自控硬件/软件环境验证开放 runtime 编译/运行，明确不代表Easy521兼容",
+        "无驱动或恢复证据时不进入替换固件实验，输出成本与退出条件",
+        "系统级实验不复用用户工程下载授权"
+      ],
+      "delivery": "四路线比较、镜像离线报告、开放平台验证、投入/退出决定",
+      "issue_number": 11,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/11"
+    },
+    {
+      "id": "T10",
+      "title": "分离目标 profile、设备实例与传输并迁移通用接口",
+      "priority": "P1",
+      "milestone": "M4",
+      "role": "目标模型与CLI统筹实现角色（本轮部分交付）",
+      "depends_on": [
+        "T04",
+        "T05",
+        "T07"
+      ],
+      "estimate": "首轮1–2工程日，不是成功或日历承诺",
+      "acceptance": [
+        "定义版本化v2目标/能力schema，保留v1严格解析，不放宽已有USB设备校验",
+        "Easy521兼容与Open Linux两种profile不再共同强制Windows工程路径或USB身份",
+        "编译兼容目标、设备实例与传输定位分开，设备变化不伪造构建兼容性",
+        "不支持的类型、任务、I/O与部署能力明确拒绝，后端不静默丢弃请求",
+        "CLI选择后端后可结构化解释宿主平台、目标/运行时版本及验证等级"
+      ],
+      "delivery": "targets.py / BuildRequestV2 / schema2 open-linux文本工程 / 统一CLI已交付；后端注册、设备实例v2和完整产物迁移仍开放",
+      "issue_number": 14,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/14"
+    },
+    {
+      "id": "T11",
+      "title": "验证无 Windows 的开放 ST 编译、执行与变量观测",
+      "priority": "P1",
+      "milestone": "M4",
+      "role": "开放ST运行时AI技术代理与统筹复核（本轮交付待合并）",
+      "depends_on": [
+        "T04"
+      ],
+      "estimate": "首轮概念验证上限2–3工程日，不预设通过",
+      "acceptance": [
+        "固定开放编译器/运行时与依赖版本；首候选Beremiz，替代选型须记录证据",
+        "Linux本地隔离环境真实编译并执行最小ST，不调用Windows或AutoShop，不使用固定寄存器播放器替代",
+        "故意错误源码被拒绝，正向应用有源码/产物/加载程序身份连续证据",
+        "观察到属于本次源码的计数/心跳变量变化，并保存运行与停止的独立证据",
+        "只绑定本机测试环境；未接入物理I/O时不声称实时性、工业现场适用或Easy521兼容"
+      ],
+      "delivery": "固定MatIEC→C→GCC、本地scan runtime、统一CLI及正负实际执行证据；见OPEN_LINUX_RUNTIME.md和PARALLEL_DELIVERY_2026-10-17.md；不代表Easy521固件或物理I/O兼容",
+      "issue_number": 15,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/15"
+    },
+    {
+      "id": "T12",
+      "title": "建立跨目标 ST 语义与能力差异验收集",
+      "priority": "P1",
+      "milestone": "M4",
+      "role": "PLC语义与测试角色（任务待执行）",
+      "depends_on": [
+        "T10",
+        "T11",
+        "T09"
+      ],
+      "estimate": "首轮1–2工程日，依赖目标可执行条件",
+      "acceptance": [
+        "同一受限逻辑在两类目标上对逐扫描输入/输出向量进行比较",
+        "覆盖布尔逻辑、限幅、固定宽度类型边界与声明的任务周期语义",
+        "方言、溢出、计时器、保持和I/O差异明确记录；未支持项拒绝而非静默降级",
+        "证据绑定各自源码/编译器/runtime/设备实例，区分软件功能与真实I/O/实时性",
+        "不以相同Modbus数值、同CPU或同IEC语言声明推断二进制兼容"
+      ],
+      "delivery": "ADR-0002 N5；共同子集、对照向量、差异及实际运行记录；当前未执行",
+      "issue_number": 16,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/16"
+    },
+    {
+      "id": "T13",
+      "title": "通用ST输入输出与AI一键场景验收",
+      "priority": "P1",
+      "milestone": "M4",
+      "role": "开放运行时、工程与分发、验收接口AI技术代理；统筹代理集成复核",
+      "depends_on": [
+        "T10",
+        "T11"
+      ],
+      "estimate": "当前批次实施，以实际验收为准",
+      "acceptance": [
+        "类型化输入输出取代固定计数器限制，旧工程与运行路径兼容",
+        "固定MatIEC/GCC实际编译并执行已部署ELF，按确定IEC时间逐扫描输入与采样",
+        "启停保持、停止优先、故障/许可联锁、启动边沿、TON及REAL阈值有完整场景",
+        "verify一键检查、编译、部署、执行和断言；JSON诊断关联场景/步骤/扫描及期望与实值",
+        "无效场景、语法错误、逻辑破坏、源输入变化、超时等返回失败，证据绑定输入与产物身份",
+        "wheel资源与干净Linux CI验收；明确软件逻辑、物理I/O与Easy521运行的不同验证等级"
+      ],
+      "delivery": "open_contract.py / 通用open-linux profile与replay / verification.py / motor与analog示例 / verify CLI / AI_PROGRAMMING.md / 实际CLI与CI证据",
+      "issue_number": 17,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/17"
+    }
+  ],
+  "tracking_issue": {
+    "number": 12,
+    "url": "https://github.com/BUG423/other-plc-idf/issues/12"
+  },
+  "scope_update": "2026-10-18自主推进：受限普通ST文本已无GUI生成真实ARM对象，完整应用链接仍开放；本地intent/release及完整输入覆盖、doctor/分发已改善。本轮无下载确认/RUN/STOP，今天设备供电/运行未重新观察。状态以GitHub为准。"
+}

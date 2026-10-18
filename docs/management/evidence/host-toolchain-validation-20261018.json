@@ -1,0 +1,34 @@
+{
+  "schema": "plcidf.software-validation.v1",
+  "observed_at": "2026-10-18T11:51:59.532125+00:00",
+  "source_and_monitor": {
+    "passed": 765,
+    "skipped": 51,
+    "deselected": 1,
+    "command": ".venv/bin/pytest src/plc_idf/tests wsl-tools/tests -q -o addopts='' -k 'not test_devices_real_readonly'"
+  },
+  "tools": {
+    "passed": 114,
+    "subtests_passed": 499,
+    "command": ".venv/bin/pytest tools/tests -q -o addopts=''"
+  },
+  "total_distinct_passed": 879,
+  "software_test_device_access": false,
+  "windows_host_experiments": "../../../evidence/easy521-application-20261018/session-summary.json",
+  "independent_distribution_report": "distribution-host-toolchain-20261018.json",
+  "files": {
+    "src/plc_idf/native_release.py": "d63e87f7812c26cc6b6907b6b06e427a1dfcdeb730359cdb187a2588f1342384",
+    "src/plc_idf/native_deploy.py": "769b7efef5c66a9b389b0c0f84b7bbaab385c04e7c19f77eee97b442c83c8f20",
+    "src/plc_idf/autoshop_vendor.py": "3f449bf9d74665d782171e89b40a19c8f0fd851df0cdfdc4709acb8ae5d28e8b",
+    "src/plc_idf/native_autoshop.py": "abd8678ad0169a10c717d21938b609c1cb118532f3baac1691f1e77f4ae29a8d",
+    "src/plc_idf/doctor.py": "36a240f528ebd2623e8197b094d5b88cc58b579dbba31e0767a2bd7428fa55c7",
+    "src/plc_idf/interop.py": "5e4b9ba170993cd09172479e258bbc84ff83de20e05aeb1cec0460321c2bb317",
+    "src/plc_idf/cli.py": "9f8cd9d5305a241bf9a2f7a07ca914dab34a8ef988653d315e1fe75951788948",
+    "tools/prepare_vendor_st.py": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d",
+    "tools/compile_vendor_st.py": "1e65912ca8e1872ecda1bcf9832263c3df665f03ac3d67aa73babbc3f3210b6e",
+    "plc/tools/compile_vendor_st.ps1": "1dd95f471bcb225f8bde3e9fe70f7e3287555e7e988c1c6745e18d22f78d26d9",
+    "tools/check_distribution.py": "f59ba31ad18c4f17fc72d862fc963c23e94f7453f3bb75300f2e447632e90b39",
+    "setup.py": "c4e6cf2d10d7678bee3ab59c288ad221fae9a6fdc1e0e8aa21907cb9b25df626",
+    "MANIFEST.in": "d0f86e0eac7c3b9dd9737b39c0b7d362baaf6ff1460424cedf1aeae90dc4c88b"
+  }
+}

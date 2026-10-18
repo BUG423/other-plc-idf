@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-10-17T15:02:14.682525+00:00",
+  "label": "compare-negative-result",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "inspect"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "PID=21248|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [MAIN]\nControlType.Window|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV - [MAIN]|Afx:00400000:8:00010003:00000000:009B0C75|396572|False|-16,-16,3872,2096\nControlType.Pane||SysTreeView32|330656|False|2,278,396,1476\nControlType.Pane||Button|724032|False|6,1984,26,26\nControlType.Pane||Button|330808|False|38,1984,26,26\nControlType.Pane||Button|330836|False|70,1984,26,26\nControlType.Pane||Button|331010|False|102,1984,26,26\nControlType.Pane||ListBox|527526|False|6,1824,3828,154\nControlType.Window|MAIN|Afx:00400000:b:00010003:00000006:000D0864|4525090|False|398,216,2944,1550\nControlType.Pane|<ST editor>|Scintilla|4592044|False|432,282,2890,1464\nControlType.Window|_SYS_INFO|Afx:00400000:b:00010003:00000006:02C014C3|1183216|False|398,216,2944,1550\nControlType.Pane||VSFlexGrid8N|3937350|False|418,282,2904,1464\nControlType.Window|变量表|Afx:00400000:b:00010003:00000006:02C014C3|2495066|False|398,216,2944,1550\nControlType.Pane||VSFlexGrid8N|1250168|False|418,282,2904,1464\nControlType.Pane||Button|593072|False|410,234,30,30\nControlType.Pane||Button|461976|False|3288,234,30,30\nControlType.Pane|本地|Button|4854060|False|1878,172,84,40\nControlType.Pane|已登录::USB|Button|2757028|False|1974,172,164,40\nControlType.Pane|变量共享:|Button|4001738|False|2286,112,152,40\nControlType.Pane|未连接|Button|5312822|False|2450,112,90,40\nControlType.Pane||SysTreeView32|720976|False|3348,340,480,1206\nControlType.Pane||ComboBox|6619848|False|3348,284,390,42\nControlType.Pane||Edit|655594|False|3354,290,344,30\nControlType.Pane|搜索|Button|3279596|False|3742,284,86,46\nControlType.Pane|显示选中信息!|Edit|5834078|False|3348,1556,480,136\n",
+  "stderr": ""
+}

@@ -1,10 +1,10 @@
 """config.py — .plcidf.toml 配置读取（项目根自动发现 + 全默认值）。
 
 查找顺序：
-    1. 环境变量 PLCIDF_CONFIG 指定的文件（旧名 PY2PLC_CONFIG 仍被识别）
-    2. 命令行 --config 指定的文件
+    1. 命令行 --config 指定的文件
+    2. 环境变量 PLCIDF_CONFIG 指定的文件（旧名 PY2PLC_CONFIG 仍被识别）
     3. 从 cwd 逐级向上找 .plcidf.toml
-    4. 项目根（含 wsl-tools/e521_monitor.py 的目录）下的 .plcidf.toml
+    4. 源码工作区根下的 .plcidf.toml（editable 安装）；独立安装以 cwd 为根
 
 任一环节没找到就用纯默认值——工具在任何目录下都能跑，配置只是覆盖项。
 Python 3.12 标准库 tomllib 解析，零第三方依赖。
@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import os
 import tomllib
+from copy import deepcopy
 from pathlib import Path
 from types import MappingProxyType
 
@@ -143,7 +144,7 @@ def _env(name: str) -> str | None:
 
 
 def find_project_root(explicit: str | os.PathLike | None = None) -> Path:
-    """定位 PLC-IDF 项目根（wsl-tools/e521_monitor.py 所在目录）。"""
+    """定位用户工作区，独立安装不得把 site-packages 当作可写项目目录。"""
     if explicit:
         return Path(explicit).resolve()
     env = _env("PLCIDF_ROOT")
@@ -151,10 +152,23 @@ def find_project_root(explicit: str | os.PathLike | None = None) -> Path:
         return Path(env).resolve()
     cwd = Path.cwd()
     for base in (cwd, *cwd.parents):
-        if (base / ROOT_MARKER).exists():
+        if (base / CONFIG_NAME).is_file() or (base / ROOT_MARKER).is_file():
             return base
-    # 兜底：本包位于 <root>/src/plc_idf/config.py（editable 安装场景）
-    return Path(__file__).resolve().parents[2]
+    # editable 安装可以继续发现源码工作区；wheel 安装回落到调用目录。
+    source_root = Path(__file__).resolve().parents[2]
+    return source_root if (source_root / ROOT_MARKER).is_file() else cwd
+
+
+def runtime_asset(project_root: Path, relative: str) -> Path:
+    """优先使用工作区原始资源；普通安装使用 wheel 随包携带的资源。"""
+    candidate = project_root / relative
+    if candidate.exists():
+        return candidate
+    source_candidate = Path(__file__).resolve().parents[2] / relative
+    if source_candidate.exists():
+        return source_candidate
+    # Wheel 安装时 setuptools/pip 将资源解包到包目录，无需写入用户缓存。
+    return Path(__file__).resolve().parent / "_resources" / relative
 
 
 def find_config_file(project_root: Path) -> Path | None:
@@ -169,7 +183,8 @@ def find_config_file(project_root: Path) -> Path | None:
 
 def _deep_merge(base: dict, override: dict) -> dict:
     """递归合并：override 覆盖 base，嵌套 dict 深合并，其余整体替换。"""
-    out = dict(base)
+    # 自动资源定位会写入 paths；不能污染 DEFAULTS 或下一次 load_config。
+    out = deepcopy(base)
     for key, value in override.items():
         if isinstance(value, dict) and isinstance(out.get(key), dict):
             out[key] = _deep_merge(out[key], value)
@@ -181,7 +196,7 @@ def _deep_merge(base: dict, override: dict) -> dict:
 def _auto_tools_ps1_windows(project_root: Path) -> str:
     """autoshop_ui.ps1 的 Windows 侧 UNC 路径（\\\\wsl.localhost\\<发行版>\\...）。"""
     from .interop import to_windows_unc
-    return to_windows_unc(project_root / "plc" / "tools" / "autoshop_ui.ps1")
+    return to_windows_unc(runtime_asset(project_root, "plc/tools/autoshop_ui.ps1"))
 
 
 def load_config(config_path: str | os.PathLike | None = None,
@@ -206,7 +221,14 @@ def load_config(config_path: str | os.PathLike | None = None,
 
     merged = _deep_merge(DEFAULTS, user_data)
     merged["paths"]["project_root"] = str(root)
-    merged["paths"]["wsl_tools"] = str(root / "wsl-tools")
+    tools_override = merged["paths"].get("wsl_tools")
+    if tools_override:
+        tools_path = Path(tools_override).expanduser()
+        if not tools_path.is_absolute():
+            tools_path = root / tools_path
+    else:
+        tools_path = runtime_asset(root, "wsl-tools/e521_monitor.py").parent
+    merged["paths"]["wsl_tools"] = str(tools_path.resolve())
     if not merged["bridge"]["tools_ps1_windows"]:
         merged["bridge"]["tools_ps1_windows"] = _auto_tools_ps1_windows(root)
     return Config(MappingProxyType(merged), path)

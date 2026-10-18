@@ -106,9 +106,10 @@ def test_unlocked_reaches_call_point_but_no_real_exec(tmp_cfg_unlocked, capsys,
 
     rc = cli.main([sub, "--execute", "--i-have-authorized",
                    "--config", str(tmp_cfg_unlocked)])
-    assert rc == 0
+    assert rc == 1  # 调用点可达不代表编译/下载结果已经核验
     out = capsys.readouterr().out
     assert "门禁通过" in out
+    assert "调用链已完成，结果未核验" in out
 
     # 调用点确已触达：至少一条 usbipd 校验 + 多条 powershell interop 步
     # （冷启动步是 powershell -Command 内联脚本，其余 GUI 步走 autoshop_ui.ps1 -File）
@@ -123,6 +124,10 @@ def test_unlocked_reaches_call_point_but_no_real_exec(tmp_cfg_unlocked, capsys,
     commands = [e["command"] for e in events]
     assert f"bridge.{sub}.step" in commands
     assert f"bridge.{sub}.done" in commands
+    done = next(e for e in events if e["command"] == f"bridge.{sub}.done")
+    assert done["result"]["ok"] is False
+    assert done["result"]["verification_status"] == "unverified"
+    assert done["result"]["command_chain_completed"] is True
     step_event = next(e for e in events if e["command"] == f"bridge.{sub}.step")
     assert "argv" in step_event["params"] and "ts" in step_event
 

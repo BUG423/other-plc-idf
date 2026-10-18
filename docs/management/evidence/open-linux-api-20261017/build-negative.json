@@ -1,0 +1,9 @@
+{
+  "ok": false,
+  "status": "failed",
+  "stage": "iec2c",
+  "returncode": 1,
+  "diagnostics": "/tmp/plcidf-open-linux-final-api/builds/build-c0ir178t/source.st:7: error: no expression defined after ':=' in ST assignment statement.\n\n1 error(s) found. Bailing out!\n",
+  "source_sha256": "958655661742a2e891df825352debe72b43732c021bf99be3b3c4f7f3aea75f5",
+  "build_dir": "/tmp/plcidf-open-linux-final-api/builds/build-c0ir178t"
+}

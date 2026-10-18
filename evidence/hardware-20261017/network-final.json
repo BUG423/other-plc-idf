@@ -1,0 +1,6 @@
+{
+  "timestamp_utc": "2026-10-17T10:36:36.567353+00:00",
+  "returncode": 0,
+  "stdout": "{\n    \"InterfaceIndex\":  8,\n    \"Status\":  \"Disconnected\",\n    \"LinkSpeed\":  \"0 bps\"\n}\n",
+  "stderr": ""
+}

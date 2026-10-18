@@ -1,0 +1,113 @@
+{
+  "schema": "plcidf.open-linux.build.v1",
+  "profile": "open-linux-counter-v1",
+  "status": "verified",
+  "created_at": "2026-10-17T12:32:19.676038+00:00",
+  "program_hash": "2ef889bce570736154e2a87ee4cd58225ce96155c23a72d22e13971b95e0fd7f",
+  "source_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+  "source": "source.st",
+  "executable": "plc_runtime",
+  "target": {
+    "os": "linux",
+    "architecture": "x86_64",
+    "physical_io": false
+  },
+  "cycle_ms": 20,
+  "toolchain": {
+    "ok": true,
+    "status": "verified",
+    "toolchain_dir": "/tmp/plcidf-open-linux-toolchain",
+    "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e",
+    "iec2c_sha256": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834",
+    "toolchain_hash": "b725b09d1de22cff90300159251f33f1c3873d40071a9366eade68cb5ff77aef",
+    "licenses": {
+      "compiler": "GPL-3.0-or-later (upstream COPYING)",
+      "C_runtime_headers": "Mixed LGPL-2.0-or-later / LGPL-3.0-or-later; individual upstream header notices apply"
+    }
+  },
+  "gcc_version": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "commands": [
+    [
+      "/tmp/plcidf-open-linux-toolchain/bin/iec2c",
+      "-I",
+      "/tmp/plcidf-open-linux-toolchain/lib",
+      "-T",
+      "/tmp/plcidf-open-linux-final-api/builds/build-zhztz3hv/generated",
+      "/tmp/plcidf-open-linux-final-api/builds/build-zhztz3hv/source.st"
+    ],
+    [
+      "gcc",
+      "-std=c11",
+      "-O2",
+      "-I",
+      "/tmp/plcidf-open-linux-toolchain/lib/C",
+      "-I",
+      "/tmp/plcidf-open-linux-final-api/builds/build-zhztz3hv/generated",
+      "/tmp/plcidf-open-linux-final-api/builds/build-zhztz3hv/generated/Config0.c",
+      "/tmp/plcidf-open-linux-final-api/builds/build-zhztz3hv/generated/Res0.c",
+      "/tmp/plcidf-open-linux-final-api/builds/build-zhztz3hv/runner.c",
+      "-lm",
+      "-o",
+      "/tmp/plcidf-open-linux-final-api/builds/build-zhztz3hv/plc_runtime"
+    ]
+  ],
+  "artifacts": [
+    {
+      "path": "source.st",
+      "sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+      "size": 414
+    },
+    {
+      "path": "runner.c",
+      "sha256": "397ce51bd39694e61dad04f0df2bdcf3d6df8240a5c50ef7596f556329753dd2",
+      "size": 4161
+    },
+    {
+      "path": "plc_runtime",
+      "sha256": "0ccda989ad7bff47582495e66b11f7010da38769eb1db027e5bc1f7df8090371",
+      "size": 17040
+    },
+    {
+      "path": "generated/Config0.c",
+      "sha256": "b5da33fd7e6a2a0607c347394614f22ba3087fd9946e06316db232da1f26dbf9",
+      "size": 708
+    },
+    {
+      "path": "generated/Config0.h",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1
+    },
+    {
+      "path": "generated/GLOBALS.h",
+      "sha256": "7fba8b0577288cae16260ef04ef40225fa19061931a154483eb9262e81487000",
+      "size": 93
+    },
+    {
+      "path": "generated/LOCATED_VARIABLES.h",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "generated/POUS.c",
+      "sha256": "39f685201d5d3daa257bd19d5a09d03243a106e3ade162251abe044d7c284416",
+      "size": 891
+    },
+    {
+      "path": "generated/POUS.h",
+      "sha256": "e195f275c3295f0e2e576008a21fb0c5190a6cdb3a9a2c7bff2367ec1fea9343",
+      "size": 205
+    },
+    {
+      "path": "generated/Res0.c",
+      "sha256": "5f3a1c37ca55d4aba9a867c2da8db6251837efd72607d6d7297ee850f0e07762",
+      "size": 702
+    }
+  ],
+  "observation": {
+    "program": "MAIN",
+    "instance": "RES0__INSTANCE0",
+    "counter_type": "DINT",
+    "heartbeat_type": "BOOL"
+  },
+  "build_hash": "22bf13294357f098d11849bc0e2f62e24d81060fcaa615c6fa26b560bcae4e13"
+}

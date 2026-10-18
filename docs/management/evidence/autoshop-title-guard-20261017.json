@@ -1,0 +1,82 @@
+{
+    "schema_version":  1,
+    "result":  "passed",
+    "timestamp_utc":  "2026-10-17T10:43:51.0680947Z",
+    "source_sha256":  "0fbe83581f0cceee5bd0e1ace2e9828210cc2da571b167495779415859b89e63",
+    "production_script_ast_valid":  true,
+    "utf8_bom_preserved":  true,
+    "ui_automation_executed":  false,
+    "device_communication_executed":  false,
+    "cases":  [
+                  {
+                      "name":  "clean MAIN accepted",
+                      "expected_accept":  true,
+                      "actual_accept":  true,
+                      "passed":  true,
+                      "rejection":  null
+                  },
+                  {
+                      "name":  "SBR write rejected",
+                      "expected_accept":  false,
+                      "actual_accept":  false,
+                      "passed":  true,
+                      "rejection":  "The current AutoShop document must be MAIN; no editor text written."
+                  },
+                  {
+                      "name":  "dirty MAIN write rejected",
+                      "expected_accept":  false,
+                      "actual_accept":  false,
+                      "passed":  true,
+                      "rejection":  "AutoShop has unsaved editor changes; no editor text written."
+                  },
+                  {
+                      "name":  "compact dirty MAIN write rejected",
+                      "expected_accept":  false,
+                      "actual_accept":  false,
+                      "passed":  true,
+                      "rejection":  "AutoShop has unsaved editor changes; no editor text written."
+                  },
+                  {
+                      "name":  "project prefix rejected",
+                      "expected_accept":  false,
+                      "actual_accept":  false,
+                      "passed":  true,
+                      "rejection":  "Exact AutoShop project mismatch; no input sent."
+                  },
+                  {
+                      "name":  "other project rejected",
+                      "expected_accept":  false,
+                      "actual_accept":  false,
+                      "passed":  true,
+                      "rejection":  "Exact AutoShop project mismatch; no input sent."
+                  },
+                  {
+                      "name":  "case and path normalization accepted",
+                      "expected_accept":  true,
+                      "actual_accept":  true,
+                      "passed":  true,
+                      "rejection":  null
+                  },
+                  {
+                      "name":  "malformed title rejected",
+                      "expected_accept":  false,
+                      "actual_accept":  false,
+                      "passed":  true,
+                      "rejection":  "AutoShop project/document title is not recognized."
+                  },
+                  {
+                      "name":  "log SBR identity accepted",
+                      "expected_accept":  true,
+                      "actual_accept":  true,
+                      "passed":  true,
+                      "rejection":  null
+                  },
+                  {
+                      "name":  "save dirty MAIN identity accepted",
+                      "expected_accept":  true,
+                      "actual_accept":  true,
+                      "passed":  true,
+                      "rejection":  null
+                  }
+              ]
+}

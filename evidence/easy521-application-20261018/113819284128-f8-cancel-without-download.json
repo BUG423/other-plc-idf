@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-10-18T11:38:19.284085+00:00",
+  "label": "f8-cancel-without-download",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "button",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+    "-ExpectedDialog",
+    "下载设置",
+    "-Value",
+    "取消"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "stdout": "{\"outcome_verified\":false,\"dialog\":\"下载设置\",\"invocation_posted\":true,\"button\":\"取消\"}\n",
+  "stderr": ""
+}

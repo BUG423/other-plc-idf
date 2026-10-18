@@ -1,0 +1,697 @@
+{
+  "schema_version": 1,
+  "command": "doctor",
+  "ok": true,
+  "validation": "offline-prerequisites-only",
+  "hardware_checked": false,
+  "environment": {
+    "python": "3.12.3",
+    "executable": "/home/zss/workspace/py2plc/.venv/bin/python3",
+    "python_supported": true,
+    "platform": "Linux",
+    "wsl_distro": "Ubuntu"
+  },
+  "distribution": {
+    "mode": "editable",
+    "version": "0.2.0",
+    "installed_metadata_version": "0.2.0",
+    "package_directory": "/home/zss/workspace/py2plc/src/plc_idf"
+  },
+  "workspace": "/home/zss/workspace/py2plc",
+  "config": "/home/zss/workspace/py2plc/.plcidf.toml",
+  "dependencies": {
+    "pymodbus": {
+      "expected": "3.16.1",
+      "installed": "3.16.1",
+      "ok": true
+    },
+    "pyserial": {
+      "expected": "3.5",
+      "installed": "3.5",
+      "ok": true
+    }
+  },
+  "resources": {
+    "e521_monitor.py": {
+      "configured_path": "/home/zss/workspace/py2plc/wsl-tools/e521_monitor.py",
+      "local_path": "/home/zss/workspace/py2plc/wsl-tools/e521_monitor.py",
+      "exists": true,
+      "status": "present"
+    },
+    "virtual_easy521.py": {
+      "configured_path": "/home/zss/workspace/py2plc/wsl-tools/virtual_easy521.py",
+      "local_path": "/home/zss/workspace/py2plc/wsl-tools/virtual_easy521.py",
+      "exists": true,
+      "status": "present"
+    },
+    "e521_regs.py": {
+      "configured_path": "/home/zss/workspace/py2plc/wsl-tools/e521_regs.py",
+      "local_path": "/home/zss/workspace/py2plc/wsl-tools/e521_regs.py",
+      "exists": true,
+      "status": "present"
+    },
+    "autoshop_ui.ps1": {
+      "configured_path": "/home/zss/workspace/py2plc/plc/tools/autoshop_ui.ps1",
+      "local_path": "/home/zss/workspace/py2plc/plc/tools/autoshop_ui.ps1",
+      "exists": true,
+      "status": "present",
+      "integrity": {
+        "status": "read",
+        "sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+        "bytes": 34393
+      }
+    },
+    "read_autoshop_online.ps1": {
+      "configured_path": "/home/zss/workspace/py2plc/plc/tools/read_autoshop_online.ps1",
+      "local_path": "/home/zss/workspace/py2plc/plc/tools/read_autoshop_online.ps1",
+      "exists": true,
+      "status": "present",
+      "integrity": {
+        "status": "read",
+        "sha256": "6d8d29948673e07a2448d262b1b452a8de531c1ed04cf145d33e69069b25d793",
+        "bytes": 15285
+      }
+    },
+    "compile_vendor_st.ps1": {
+      "configured_path": "/home/zss/workspace/py2plc/plc/tools/compile_vendor_st.ps1",
+      "local_path": "/home/zss/workspace/py2plc/plc/tools/compile_vendor_st.ps1",
+      "exists": true,
+      "status": "present",
+      "integrity": {
+        "status": "read",
+        "sha256": "1dd95f471bcb225f8bde3e9fe70f7e3287555e7e988c1c6745e18d22f78d26d9",
+        "bytes": 15748
+      }
+    },
+    "prepare_vendor_st.py": {
+      "configured_path": "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+      "local_path": "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+      "exists": true,
+      "status": "present",
+      "integrity": {
+        "status": "read",
+        "sha256": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d",
+        "bytes": 10926
+      }
+    },
+    "compile_vendor_st.py": {
+      "configured_path": "/home/zss/workspace/py2plc/tools/compile_vendor_st.py",
+      "local_path": "/home/zss/workspace/py2plc/tools/compile_vendor_st.py",
+      "exists": true,
+      "status": "present",
+      "integrity": {
+        "status": "read",
+        "sha256": "1e65912ca8e1872ecda1bcf9832263c3df665f03ac3d67aa73babbc3f3210b6e",
+        "bytes": 13915
+      }
+    }
+  },
+  "windows": {
+    "powershell": {
+      "configured_path": "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "local_path": "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "exists": true,
+      "status": "present"
+    },
+    "autoshop": {
+      "configured_path": "E:\\Software\\AutoShop\\AutoShop.exe",
+      "local_path": "/mnt/e/Software/AutoShop/AutoShop.exe",
+      "exists": true,
+      "status": "present"
+    },
+    "usbipd": {
+      "configured_path": "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+      "local_path": "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+      "exists": true,
+      "status": "present"
+    },
+    "bridge_script": {
+      "configured_path": "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "local_path": "/home/zss/workspace/py2plc/plc/tools/autoshop_ui.ps1",
+      "exists": true,
+      "status": "present"
+    }
+  },
+  "health_scope": "local-monitor-and-simulator-prerequisites",
+  "easy521": {
+    "schema": "plcidf.easy521-capability-diagnostics.v1",
+    "target": "easy521",
+    "scope": "local-files-and-implementation-metadata-only",
+    "current_device": "not-observed",
+    "verification_levels": {
+      "local_candidate": "not-observed",
+      "project": "not-observed",
+      "binary": "unverified",
+      "runtime": "unverified"
+    },
+    "modules": {
+      "native_autoshop": {
+        "configured_path": "/home/zss/workspace/py2plc/src/plc_idf/native_autoshop.py",
+        "local_path": "/home/zss/workspace/py2plc/src/plc_idf/native_autoshop.py",
+        "exists": true,
+        "status": "present"
+      },
+      "native_deploy": {
+        "configured_path": "/home/zss/workspace/py2plc/src/plc_idf/native_deploy.py",
+        "local_path": "/home/zss/workspace/py2plc/src/plc_idf/native_deploy.py",
+        "exists": true,
+        "status": "present"
+      },
+      "native_release": {
+        "configured_path": "/home/zss/workspace/py2plc/src/plc_idf/native_release.py",
+        "local_path": "/home/zss/workspace/py2plc/src/plc_idf/native_release.py",
+        "exists": true,
+        "status": "present"
+      },
+      "autoshop_vendor": {
+        "configured_path": "/home/zss/workspace/py2plc/src/plc_idf/autoshop_vendor.py",
+        "local_path": "/home/zss/workspace/py2plc/src/plc_idf/autoshop_vendor.py",
+        "exists": true,
+        "status": "present"
+      },
+      "autoshop_online": {
+        "configured_path": "/home/zss/workspace/py2plc/src/plc_idf/autoshop_online.py",
+        "local_path": "/home/zss/workspace/py2plc/src/plc_idf/autoshop_online.py",
+        "exists": true,
+        "status": "present"
+      }
+    },
+    "working_project": {
+      "configured_path": "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+      "local_path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV",
+      "directory_exists": true,
+      "active_window_verified": false
+    },
+    "vendor": {
+      "adapter_metadata": {
+        "name": "autoshop-4.12.0.2-calibrated-desktop",
+        "calibrated": true,
+        "capabilities": {
+          "download": true,
+          "vendor_result": true,
+          "program_compare": true,
+          "runtime_control": false,
+          "connection_identity": false,
+          "prepared_release": true
+        },
+        "version": "4.12.0.2",
+        "comparison_layout": {
+          "rect": [
+            -16,
+            -16,
+            3872,
+            2096
+          ],
+          "screen": [
+            3840,
+            2160
+          ],
+          "app_dpi": 96,
+          "system_dpi": 192
+        },
+        "limits": [
+          "GUI steps calibrated; adapter integration requires live acceptance",
+          "vendor comparison may recompile and invalidate the selected build",
+          "no CPU execution or physical I/O claim"
+        ]
+      },
+      "on_disk_autoshop": {
+        "status": "read",
+        "file_version": "4.12.0.0",
+        "source": "on-disk PE RT_VERSION/VS_FIXEDFILEINFO",
+        "process_version_verified": false,
+        "expected_ui_title_version": "4.12.0.2",
+        "compatibility_verified": false,
+        "note": "Disk FileVersion and UI title versions can differ; the active calibrated UI still needs its own check"
+      },
+      "running_autoshop_version": null,
+      "plc_firmware_version": null,
+      "current_layout_verified": false,
+      "required_layout": {
+        "rect": [
+          -16,
+          -16,
+          3872,
+          2096
+        ],
+        "screen": [
+          3840,
+          2160
+        ],
+        "app_dpi": 96,
+        "system_dpi": 192
+      },
+      "object_compilers": [
+        {
+          "configured_path": "E:\\Software\\AutoShop\\Bin\\STLang\\StLang.exe",
+          "local_path": "/mnt/e/Software/AutoShop/Bin/STLang/StLang.exe",
+          "exists": true,
+          "status": "read",
+          "sha256": "b69439a1bb91f8dc6d982760023518671eff80e4cb0e90cc509c56e87e4f424a",
+          "bytes": 25144320,
+          "expected_sha256": "b69439a1bb91f8dc6d982760023518671eff80e4cb0e90cc509c56e87e4f424a",
+          "hash_matches": true,
+          "kernel": {
+            "configured_path": "E:\\Software\\AutoShop\\Bin\\STLang\\Kernel.dll",
+            "local_path": "/mnt/e/Software/AutoShop/Bin/STLang/Kernel.dll",
+            "exists": true,
+            "status": "present"
+          }
+        },
+        {
+          "configured_path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\StLang.exe",
+          "local_path": "/mnt/e/Software/AutoShop/Bin/STLang_New/StLang.exe",
+          "exists": true,
+          "status": "read",
+          "sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847",
+          "bytes": 25144320,
+          "expected_sha256": "a9e2eee650729aa25c5b8f2fa1b595776c219d63c0b63f73420e59270ea54847",
+          "hash_matches": true,
+          "kernel": {
+            "configured_path": "E:\\Software\\AutoShop\\Bin\\STLang_New\\Kernel.dll",
+            "local_path": "/mnt/e/Software/AutoShop/Bin/STLang_New/Kernel.dll",
+            "exists": true,
+            "status": "present"
+          }
+        }
+      ]
+    },
+    "capabilities": {
+      "source_build": {
+        "implemented": true,
+        "scope": "MAIN body into an existing vendor project and a complete vendor application",
+        "status": "requires-observation",
+        "local_prerequisites": {
+          "ok": true,
+          "checks": {
+            "powershell": true,
+            "configured_ui_script": true,
+            "autoshop_executable": true,
+            "native_autoshop_module": true,
+            "working_project_directory": true
+          }
+        },
+        "current_verification": "not-observed",
+        "missing_conditions": [
+          {
+            "code": "active_project_main",
+            "status": "not-observed",
+            "message": "The exact working project must be open with a clean writable MAIN editor"
+          },
+          {
+            "code": "fresh_vendor_build",
+            "status": "not-observed",
+            "message": "Fresh required application artifacts, vendor zero-error diagnostics and source hashes must agree"
+          }
+        ],
+        "executed_by_doctor": false,
+        "creates_native_project": false,
+        "imports_variables": false,
+        "gui_required": true,
+        "next_command": [
+          "plcidf",
+          "build",
+          "--source",
+          "MAIN_body.st",
+          "--working-project",
+          "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+          "--build-record",
+          "build-record.json",
+          "--json"
+        ]
+      },
+      "vendor_object_only": {
+        "implemented": true,
+        "scope": "ST body/container and explicit globals to one ARM relocatable MAIN.o; no application link or download",
+        "status": "requires-observation",
+        "local_prerequisites": {
+          "ok": true,
+          "checks": {
+            "powershell": true,
+            "object_helper": true,
+            "prepare_python": true,
+            "compile_python": true,
+            "pinned_compiler_and_kernel": true
+          }
+        },
+        "current_verification": "not-observed",
+        "missing_conditions": [
+          {
+            "code": "supported_input_subset",
+            "status": "not-observed",
+            "message": "The preparer must accept the body and explicit global definitions; it does not import a complete AutoShop project"
+          },
+          {
+            "code": "fresh_object_build",
+            "status": "not-observed",
+            "message": "Use a new output directory and verify all diagnostics, IPC completion, input hashes and ARM MAIN entry"
+          }
+        ],
+        "executed_by_doctor": false,
+        "gui_required": false,
+        "windows_compiler_required": true,
+        "complete_application": false,
+        "prepare_argv": [
+          "/home/zss/workspace/py2plc/.venv/bin/python3",
+          "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+          "--source",
+          "MAIN_body.st",
+          "--globals",
+          "globals.json",
+          "--output-dir",
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/plcidf-st-input-NEW"
+        ],
+        "compile_argv": [
+          "/home/zss/workspace/py2plc/.venv/bin/python3",
+          "/home/zss/workspace/py2plc/tools/compile_vendor_st.py",
+          "--compiler",
+          "E:\\Software\\AutoShop\\Bin\\STLang\\StLang.exe",
+          "--input-dir",
+          "E:\\PLCProjects\\PLCIDF_LAB_20261017\\plcidf-st-input-NEW",
+          "--build-dir",
+          "E:\\PLCProjects\\PLCIDF_LAB_20261017\\plcidf-object-NEW",
+          "--timeout-s",
+          "4",
+          "--powershell-exe",
+          "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe"
+        ],
+        "globals_schema": {
+          "schema": "plcidf.vendor-main-source.v1",
+          "globals": {
+            "COUNTER": "DINT"
+          }
+        },
+        "example_body": "COUNTER := COUNTER + 1;",
+        "output_directory_rule": "Replace NEW with a fresh name; each output directory must not already exist",
+        "supported_explicit_global_types": [
+          "BOOL",
+          "INT",
+          "DINT",
+          "REAL"
+        ]
+      },
+      "download": {
+        "implemented": true,
+        "scope": "Single native application download with recorded build, backup and field facts",
+        "status": "requires-observation",
+        "local_prerequisites": {
+          "ok": true,
+          "checks": {
+            "powershell": true,
+            "configured_ui_script": true,
+            "autoshop_executable": true,
+            "usbipd": true,
+            "native_deploy_module": true
+          }
+        },
+        "current_verification": "not-observed",
+        "missing_conditions": [
+          {
+            "code": "current_target_and_layout",
+            "status": "not-observed",
+            "message": "Exact USB identity, active project, vendor version and desktop layout must match"
+          },
+          {
+            "code": "verified_records",
+            "status": "not-observed",
+            "message": "A current verified build record, PLC upload backup hashes and field facts are required"
+          },
+          {
+            "code": "operation_result",
+            "status": "not-observed",
+            "message": "Fresh vendor completion must bind this operation's prepared local release; the retained snapshot must still verify"
+          }
+        ],
+        "executed_by_doctor": false,
+        "auto_run": false,
+        "current_download_verified": false,
+        "prepared_release": {
+          "implemented": true,
+          "scope": "Track a locally frozen intent and candidate application snapshot with hashes",
+          "current_verification": "not-observed",
+          "release_hash": null,
+          "device_binary_binding": "unverified"
+        }
+      },
+      "source_consistency": {
+        "implemented": true,
+        "scope": "Vendor project/source comparison; this is not an independent device binary hash",
+        "status": "requires-observation",
+        "local_prerequisites": {
+          "ok": true,
+          "checks": {
+            "powershell": true,
+            "configured_ui_script": true,
+            "autoshop_executable": true,
+            "vendor_adapter_module": true
+          }
+        },
+        "current_verification": "not-observed",
+        "missing_conditions": [
+          {
+            "code": "fresh_source_comparison",
+            "status": "not-observed",
+            "message": "A new vendor project comparison must match the frozen intent and retained release snapshot; vendor recompilation does not prove device byte equality"
+          }
+        ],
+        "executed_by_doctor": false,
+        "device_binary_identity_verified": false
+      },
+      "device_binary_identity": {
+        "implemented": false,
+        "scope": "Independently bind device executable bytes/hash to the selected build",
+        "status": "not-implemented",
+        "local_prerequisites": {
+          "ok": true,
+          "checks": {}
+        },
+        "current_verification": "not-observed",
+        "missing_conditions": [
+          {
+            "code": "device_executable_readback",
+            "status": "not-implemented",
+            "message": "No calibrated executable-byte upload or device application hash reader is implemented"
+          }
+        ],
+        "executed_by_doctor": false
+      },
+      "runtime": {
+        "implemented": true,
+        "scope": "Parse observed RUN/STOP bits and check probe scan/heartbeat samples",
+        "status": "requires-observation",
+        "local_prerequisites": {
+          "ok": true,
+          "checks": {
+            "native_reader": true,
+            "online_parser_module": true
+          }
+        },
+        "current_verification": "not-observed",
+        "missing_conditions": [
+          {
+            "code": "current_power_and_mode",
+            "status": "not-observed",
+            "message": "Current power and physical mode facts were not collected by doctor"
+          },
+          {
+            "code": "live_session_identity",
+            "status": "not-observed",
+            "message": "A live device identity must accompany current runtime observations"
+          },
+          {
+            "code": "scan_progress_and_program_binding",
+            "status": "not-observed",
+            "message": "Fresh coherent scan/heartbeat progression and matching program identity are required"
+          }
+        ],
+        "executed_by_doctor": false,
+        "control_implemented": false,
+        "cpu_execution_verified": false,
+        "real_time_verified": false
+      },
+      "monitor_vendor_usb": {
+        "implemented": true,
+        "scope": "Bounded MSAA online-table values with separate connection/runtime quality",
+        "status": "requires-observation",
+        "local_prerequisites": {
+          "ok": true,
+          "checks": {
+            "powershell": true,
+            "usbipd": true,
+            "native_reader": true
+          }
+        },
+        "current_verification": "not-observed",
+        "missing_conditions": [
+          {
+            "code": "online_device_identity",
+            "status": "not-implemented",
+            "message": "USB presence, readable values and an online label do not independently identify the live vendor device session"
+          },
+          {
+            "code": "visible_values_and_state",
+            "status": "not-observed",
+            "message": "The exact project must expose readable current values; missing M8000/M8001 leaves runtime state unverified"
+          }
+        ],
+        "executed_by_doctor": false,
+        "connection_verified": false,
+        "runtime_verified": false,
+        "next_command": [
+          "plcidf",
+          "monitor",
+          "--transport",
+          "vendor-usb",
+          "--working-project",
+          "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+          "--once",
+          "--timeout",
+          "10",
+          "--json"
+        ]
+      }
+    },
+    "next_steps": [
+      {
+        "id": "review_missing_conditions",
+        "action": "Inspect each capability's missing_conditions; local readiness is not device verification"
+      },
+      {
+        "id": "prepare_vendor_object_input",
+        "argv": [
+          "/home/zss/workspace/py2plc/.venv/bin/python3",
+          "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+          "--source",
+          "MAIN_body.st",
+          "--globals",
+          "globals.json",
+          "--output-dir",
+          "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/plcidf-st-input-NEW"
+        ],
+        "starts_download": false,
+        "purpose": "Prepare the restricted body and explicit globals locally; output is intermediate input, not a PLC application"
+      },
+      {
+        "id": "compile_vendor_object",
+        "argv": [
+          "/home/zss/workspace/py2plc/.venv/bin/python3",
+          "/home/zss/workspace/py2plc/tools/compile_vendor_st.py",
+          "--compiler",
+          "E:\\Software\\AutoShop\\Bin\\STLang\\StLang.exe",
+          "--input-dir",
+          "E:\\PLCProjects\\PLCIDF_LAB_20261017\\plcidf-st-input-NEW",
+          "--build-dir",
+          "E:\\PLCProjects\\PLCIDF_LAB_20261017\\plcidf-object-NEW",
+          "--timeout-s",
+          "4",
+          "--powershell-exe",
+          "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe"
+        ],
+        "starts_download": false,
+        "purpose": "Optional Windows host-only object compilation after input preparation; no GUI or PLC transport"
+      },
+      {
+        "id": "preview_source_build",
+        "argv": [
+          "plcidf",
+          "build",
+          "--source",
+          "MAIN_body.st",
+          "--working-project",
+          "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+          "--build-record",
+          "build-record.json",
+          "--json"
+        ],
+        "starts_download": false,
+        "purpose": "Review an existing working project's MAIN change; preview may read Windows UI"
+      },
+      {
+        "id": "read_current_values",
+        "argv": [
+          "plcidf",
+          "monitor",
+          "--transport",
+          "vendor-usb",
+          "--working-project",
+          "E:\\PLCProjects\\PLCIDF_LAB_20261017\\BESS_E521_DEV",
+          "--once",
+          "--timeout",
+          "10",
+          "--json"
+        ],
+        "starts_download": false,
+        "purpose": "Request one bounded read-only snapshot; inspect values_read, connection_verified and plc_state separately"
+      },
+      {
+        "id": "binary_and_runtime_gap",
+        "action": "Establish documented executable readback and fresh scan evidence before claiming program-bound execution"
+      }
+    ],
+    "device_actions_performed": [],
+    "historical_results_used": false
+  },
+  "capabilities": {
+    "project": {
+      "scaffold": true,
+      "offline_check": true,
+      "complete_st_compiler": false,
+      "native_project_creation": false
+    },
+    "monitor": {
+      "available": true,
+      "transports": [
+        "tcp",
+        "serial"
+      ],
+      "read_function_codes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "variable_debugger": false,
+      "program_identity_verified": false
+    },
+    "sim": {
+      "available": true,
+      "scenarios": [
+        "steady",
+        "low_voltage",
+        "overload"
+      ],
+      "executes_user_st": false
+    },
+    "build": {
+      "backend": "native_autoshop",
+      "windows_files_present": true,
+      "main_working_copy_verification_supported": true,
+      "verified_command": "build --source FILE --working-project WINDOWS_PATH",
+      "scope": "Existing AutoShop MAIN working project; no variable import or native project creation",
+      "result_verification_supported": true,
+      "verification_status": "implemented-not-observed",
+      "legacy_bridge": {
+        "backend": "bridge_autoshop",
+        "result_verification_supported": false,
+        "verification_status": "not-implemented"
+      }
+    },
+    "flash": {
+      "backend": "native_deploy/autoshop_vendor",
+      "windows_files_present": true,
+      "result_verification_supported": true,
+      "verification_status": "implemented-not-observed",
+      "legacy_bridge": {
+        "backend": "bridge_autoshop",
+        "result_verification_supported": false,
+        "verification_status": "not-implemented"
+      }
+    }
+  },
+  "limitations": [
+    "No Windows commands, GUI actions, network or USB probes were run.",
+    "On-disk version metadata does not verify the running process, connectivity or PLC identity.",
+    "Simulator plays fixed BESS scenarios and does not execute project ST.",
+    "Offline project checks do not prove vendor compilation or scan timing."
+  ]
+}

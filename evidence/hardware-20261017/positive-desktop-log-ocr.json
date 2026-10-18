@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "engine": "Windows.Media.Ocr",
+  "ok": true,
+  "status": "ok",
+  "text": "计 符 号 ： 79 ， STFI c 符 号 2 ， 变 里 符 号 ， 7 7 ， 凵 函 符 号 ： 刂 充 计 一 误 ） 步 占 用 / 開 ） 总 夻 里 ， 非 保 持 变 里 区 使 用 刂 25 192 眠 亻 呆 持 变 里 区 使 用 刂 12 总 行 ： 212 刂 26 / 1 吖 1 7 18 23 刂 5 完 成 程 序 编 译 6 / 1 刂 / 1 7 18 ' 23 刂 5 亮 成 编 译 @国 编 译 湮 讯 转 换 查 找 结 果 交 叉 引 用",
+  "lines": [
+    "计 符 号 ： 79 ， STFI c 符 号 2 ， 变 里 符 号 ， 7 7 ， 凵 函 符 号 ： 刂",
+    "充 计 一 误 ） 步 占 用 / 開 ） 总 夻 里 ， 非 保 持 变 里 区 使 用 刂 25 192 眠 亻 呆 持 变 里 区 使 用 刂 12",
+    "总 行 ： 212",
+    "刂 26 / 1 吖 1 7 18 23 刂 5 完 成 程 序 编 译",
+    "6 / 1 刂 / 1 7 18 ' 23 刂 5 亮 成 编 译",
+    "@国 编 译 湮 讯 转 换 查 找 结 果",
+    "交 叉 引 用"
+  ],
+  "language": "zh-Hans-CN",
+  "available_languages": [
+    "zh-Hans-CN"
+  ],
+  "error": null,
+  "stage": "recognize",
+  "returncode": 0,
+  "stdout": "{\"schema_version\":1,\"status\":\"ok\",\"text\":\"计 符 号 ： 79 ， STFI c 符 号 2 ， 变 里 符 号 ， 7 7 ， 凵 函 符 号 ： 刂 充 计 一 误 ） 步 占 用 / 開 ） 总 夻 里 ， 非 保 持 变 里 区 使 用 刂 25 192 眠 亻 呆 持 变 里 区 使 用 刂 12 总 行 ： 212 刂 26 / 1 吖 1 7 18 23 刂 5 完 成 程 序 编 译 6 / 1 刂 / 1 7 18 \\u0027 23 刂 5 亮 成 编 译 @国 编 译 湮 讯 转 换 查 找 结 果 交 叉 引 用\",\"lines\":[\"计 符 号 ： 79 ， STFI c 符 号 2 ， 变 里 符 号 ， 7 7 ， 凵 函 符 号 ： 刂\",\"充 计 一 误 ） 步 占 用 / 開 ） 总 夻 里 ， 非 保 持 变 里 区 使 用 刂 25 192 眠 亻 呆 持 变 里 区 使 用 刂 12\",\"总 行 ： 212\",\"刂 26 / 1 吖 1 7 18 23 刂 5 完 成 程 序 编 译\",\"6 / 1 刂 / 1 7 18 \\u0027 23 刂 5 亮 成 编 译\",\"@国 编 译 湮 讯 转 换 查 找 结 果\",\"交 叉 引 用\"],\"language\":\"zh-Hans-CN\",\"available_languages\":[\"zh-Hans-CN\"],\"error\":null,\"stage\":\"recognize\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "windows_path": "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\evidence\\hardware-20261017\\plc-menu-desktop.png",
+  "scale": 2,
+  "region": [
+    0,
+    1820,
+    1800,
+    200
+  ]
+}

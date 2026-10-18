@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "result": "passed",
+  "timestamp_utc": "2026-10-17T15:13:07.908486+00:00",
+  "source_revision": "431b255d50ae82816ad3f371a6fb709289afaebe",
+  "working_tree_dirty": true,
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "wheel": "plc_idf-0.2.0-py3-none-any.whl",
+  "wheel_sha256": "2d03679078e787365549f34fbe22f4de5753efbe395050fd526b1d94bb23a6c8",
+  "sdist": "plc_idf-0.2.0.tar.gz",
+  "sdist_sha256": "415b47deb931ddbcddb0cc97c5e93dd68fa9e131651af2b3089ed29479a21a51",
+  "runtime_asset_sha256": {
+    "wsl-tools/e521_monitor.py": "159700838a7ba10ad5985aa63b6f8cf5b95b8f7ad2204fc1edfd3c96ec245162",
+    "wsl-tools/virtual_easy521.py": "668cd74b27a2a0f5026bed51e2e9b217a50ed01a5d2caa0aa6683ffc641d40c7",
+    "wsl-tools/e521_regs.py": "3aa5912562d92c90211e5228a5df1b68db6825c38638f12fda950d067c95fa23",
+    "plc/tools/autoshop_ui.ps1": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+    "plc/tools/read_autoshop_online.ps1": "6d8d29948673e07a2448d262b1b452a8de531c1ed04cf145d33e69069b25d793",
+    "plc/tools/compile_vendor_st.ps1": "1dd95f471bcb225f8bde3e9fe70f7e3287555e7e988c1c6745e18d22f78d26d9",
+    "examples/easy521_native_probe/MAIN_plus1_body.st": "0546c0173ce67a065ed8041ccd29b8f666f5463f1db83fa30fa5844f5106db07",
+    "examples/easy521_native_probe/MAIN_plus2_body.st": "392ae08c3e1e2bbed430af326d287e042bf15d3dc8f674712a6ed748f40acc09",
+    "examples/easy521_native_probe/README.md": "a8a1a57fef4fac838ecdfe819752ee8bf02ff3d4765edbbbdccce3dde8e6bf0d",
+    "examples/easy521_native_probe/source-review.json": "4b40dcd2a4a05a0cb1114897af688f6a10ccb77e8061f3fa5d1c6dfa216a1cff",
+    "plc/easy521/MAIN_5ms_variables.csv": "1a5afad0c4bae154cafd2d7aa5329b63d179cae1cbbec3014f9a7a2590d14d6e",
+    "plc/easy521/autoshop_global_import.csv": "2ec0225aaa9be79e57f2780ddbdbfdd174d90b778dc225bc532040c361ce89bc",
+    "plc/easy521/autoshop/BESS_E521_DEV/VarNameAndAddr.csv": "ebdd331ebf5732c6377c09db368862d75ab73ad14b5f44d5a3776ee7a17e6e75",
+    "examples/open_linux/counter/main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+    "examples/open_linux/motor/main.st": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248",
+    "examples/open_linux/motor/plcidf.json": "f375d670c365bb95297e9f0eadc4c287182c494a1cb7d5fcd11d2bc3ed932927",
+    "examples/open_linux/motor/scenarios.json": "71df9a2b0f512bfe963a67a02a7e58763ca3cea45ccab0dbe72e75f7d0891cf3",
+    "examples/open_linux/motor/README.md": "b97f1dc8a0fc92ac90f37c4fc867d815c8664c0ccb93b3fba29d01b464f0a847",
+    "examples/open_linux/motor/AGENTS.md": "07e050a42cf4704815e8ca8e30d53cbb2388da5127578219db1594e3f66e3a52",
+    "examples/open_linux/analog_hysteresis/main.st": "6955f54be84ce678b069618e412aa48cc18b69b752573dea97643f20ebf9109b",
+    "examples/open_linux/analog_hysteresis/plcidf.json": "a3ea268afdd2396975f234b34dda4d2893a93afbb688e8e9269152f7b03a898d",
+    "examples/open_linux/analog_hysteresis/scenarios.json": "c89d2a781a21b375f90defbe16f2d2a61eebb554fff2e6a78f2aa002e8543464",
+    "examples/open_linux/analog_hysteresis/README.md": "3c75316825c3235d3b46a7e8c98e1b6cd11420674d10aa500bbd4f959a029f5a",
+    "examples/open_linux/analog_hysteresis/AGENTS.md": "07e050a42cf4704815e8ca8e30d53cbb2388da5127578219db1594e3f66e3a52",
+    "tools/bootstrap_open_linux.py": "0dc96412c5bafcbf5be5805c588fb9db4066e693f3e6d731053df25864cfb6df"
+  },
+  "installed_paths": {
+    "module": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/__init__.py",
+    "root": "/tmp/plcidf-distribution-3hwpx_u9/user-project",
+    "monitor_dir": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/wsl-tools",
+    "bridge": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/plc/tools/autoshop_ui.ps1",
+    "online_reader": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/plc/tools/read_autoshop_online.ps1",
+    "vendor_compiler": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/plc/tools/compile_vendor_st.ps1",
+    "vendor_adapter_metadata": {
+      "name": "autoshop-4.12.0.2-calibrated-desktop",
+      "calibrated": true,
+      "capabilities": {
+        "download": true,
+        "vendor_result": true,
+        "program_compare": true,
+        "runtime_control": false,
+        "connection_identity": false
+      },
+      "version": "4.12.0.2",
+      "comparison_layout": {
+        "rect": [
+          -16,
+          -16,
+          3872,
+          2096
+        ],
+        "screen": [
+          3840,
+          2160
+        ],
+        "app_dpi": 96,
+        "system_dpi": 192
+      },
+      "limits": [
+        "GUI steps calibrated; adapter integration requires live acceptance",
+        "vendor comparison may recompile and invalidate the selected build",
+        "no CPU execution or physical I/O claim"
+      ]
+    },
+    "bridge_windows": "\\\\wsl.localhost\\Ubuntu\\tmp\\plcidf-distribution-3hwpx_u9\\venv\\lib\\python3.12\\site-packages\\plc_idf\\_resources\\plc\\tools\\autoshop_ui.ps1",
+    "evidence_path": "/tmp/plcidf-distribution-3hwpx_u9/user-project/logs/evidence.jsonl",
+    "bootstrap": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/tools/bootstrap_open_linux.py",
+    "st_template": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/counter/main.st",
+    "installed_st_templates": [
+      "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/easy521_native_probe/MAIN_plus1_body.st",
+      "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/easy521_native_probe/MAIN_plus2_body.st",
+      "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/analog_hysteresis/main.st",
+      "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/counter/main.st",
+      "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/motor/main.st"
+    ],
+    "control_examples": {
+      "motor": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/motor",
+      "analog_hysteresis": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/analog_hysteresis"
+    },
+    "pymodbus": "3.16.1",
+    "pyserial": "3.5"
+  },
+  "alias_version": "plcidf 0.2.0",
+  "tested_scenarios": [
+    "steady",
+    "low_voltage",
+    "overload"
+  ],
+  "open_linux_checks": {
+    "targets": {
+      "schema_version": 2,
+      "command": "targets",
+      "ok": true,
+      "hardware_checked": false,
+      "profiles": [
+        {
+          "schema": "plcidf.target-profile.v2",
+          "id": "easy521",
+          "name": "Inovance Easy521 / existing vendor runtime",
+          "compile_target": {
+            "dialect": "AutoShop LiteST",
+            "compiler_backend": "autoshop-working-project"
+          },
+          "runtime_backend": "inovance-vendor",
+          "host_platform": "Windows AutoShop + Linux CLI",
+          "transport_kinds": [
+            "vendor-usb",
+            "modbus-tcp",
+            "modbus-serial"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "monitor"
+          ],
+          "limitations": [
+            "Build requires an existing compatible AutoShop working project",
+            "Application download and real PLC runtime results remain unverified",
+            "USB BUSID and VID/PID checks are retained in v1 deployment paths"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        },
+        {
+          "schema": "plcidf.target-profile.v2",
+          "id": "open-linux",
+          "name": "Local Linux / MatIEC scan runtime",
+          "compile_target": {
+            "dialect": "MatIEC IEC ST subset",
+            "compiler_backend": "matiec-gcc"
+          },
+          "runtime_backend": "plcidf-local-scan",
+          "host_platform": "Linux",
+          "transport_kinds": [
+            "local-filesystem"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "run",
+            "stop",
+            "monitor",
+            "verify"
+          ],
+          "limitations": [
+            "Local runtime only; no physical I/O provider or remote device deployment",
+            "Functional scan execution does not validate hard real-time deadlines",
+            "Application packages are not compatible with Easy521 vendor firmware"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        }
+      ]
+    },
+    "new": {
+      "schema_version": 2,
+      "ok": true,
+      "root": "/tmp/plcidf-distribution-3hwpx_u9/user-project/open_counter",
+      "validation": "offline-project-contract-check",
+      "compiled": false,
+      "native_project_created": false,
+      "profile": "open-linux",
+      "source_hashes": {
+        "plcidf.json": "0e00b7065c4f1d334b8cec15b15b99e7ab428fab46193d70ebf4c0c7db66416e",
+        "main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140"
+      },
+      "limitations": [
+        "ST syntax and semantics require the MatIEC compiler",
+        "No execution, physical I/O or real-time validation"
+      ],
+      "diagnostics": [],
+      "command": "new"
+    },
+    "check": {
+      "schema_version": 2,
+      "ok": true,
+      "root": "/tmp/plcidf-distribution-3hwpx_u9/user-project/open_counter",
+      "validation": "offline-project-contract-check",
+      "compiled": false,
+      "native_project_created": false,
+      "profile": "open-linux",
+      "source_hashes": {
+        "plcidf.json": "0e00b7065c4f1d334b8cec15b15b99e7ab428fab46193d70ebf4c0c7db66416e",
+        "main.st": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140"
+      },
+      "limitations": [
+        "ST syntax and semantics require the MatIEC compiler",
+        "No execution, physical I/O or real-time validation"
+      ],
+      "diagnostics": [],
+      "command": "check"
+    },
+    "complete_control_examples": {
+      "motor": {
+        "schema_version": 2,
+        "ok": true,
+        "root": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/motor",
+        "validation": "offline-project-contract-check",
+        "compiled": false,
+        "native_project_created": false,
+        "profile": "open-linux",
+        "source_hashes": {
+          "plcidf.json": "f375d670c365bb95297e9f0eadc4c287182c494a1cb7d5fcd11d2bc3ed932927",
+          "main.st": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248"
+        },
+        "limitations": [
+          "ST syntax and semantics require the MatIEC compiler",
+          "No execution, physical I/O or real-time validation"
+        ],
+        "diagnostics": [],
+        "command": "check"
+      },
+      "analog_hysteresis": {
+        "schema_version": 2,
+        "ok": true,
+        "root": "/tmp/plcidf-distribution-3hwpx_u9/venv/lib/python3.12/site-packages/plc_idf/_resources/examples/open_linux/analog_hysteresis",
+        "validation": "offline-project-contract-check",
+        "compiled": false,
+        "native_project_created": false,
+        "profile": "open-linux",
+        "source_hashes": {
+          "plcidf.json": "a3ea268afdd2396975f234b34dda4d2893a93afbb688e8e9269152f7b03a898d",
+          "main.st": "6955f54be84ce678b069618e412aa48cc18b69b752573dea97643f20ebf9109b"
+        },
+        "limitations": [
+          "ST syntax and semantics require the MatIEC compiler",
+          "No execution, physical I/O or real-time validation"
+        ],
+        "diagnostics": [],
+        "command": "check"
+      }
+    },
+    "motor_new": {
+      "schema_version": 2,
+      "ok": true,
+      "root": "/tmp/plcidf-distribution-3hwpx_u9/user-project/motor_project",
+      "validation": "offline-project-contract-check",
+      "compiled": false,
+      "native_project_created": false,
+      "profile": "open-linux",
+      "source_hashes": {
+        "plcidf.json": "f58842fc0216e87acf6c82621062c4578216881b25c4823b06a2308fb9659580",
+        "main.st": "335a5a72a75e6f04771d26b0752b2caa61e636175df6b51d78cd63863a991248"
+      },
+      "limitations": [
+        "ST syntax and semantics require the MatIEC compiler",
+        "No execution, physical I/O or real-time validation"
+      ],
+      "diagnostics": [],
+      "command": "new"
+    },
+    "motor_verification": null,
+    "project_manifest": {
+      "schema_version": 2,
+      "name": "open_counter",
+      "profile_id": "open-linux",
+      "compile_target": {
+        "dialect": "MatIEC IEC ST subset",
+        "compiler_backend": "matiec-gcc"
+      },
+      "source": "main.st",
+      "toolchain": {
+        "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e"
+      },
+      "task": {
+        "program": "MAIN",
+        "configuration": "Config0",
+        "resource": "Res0",
+        "name": "scan",
+        "instance": "instance0",
+        "cycle_ms": 20
+      },
+      "io": {
+        "provider": "memory-only",
+        "bindings": {}
+      },
+      "observables": {
+        "COUNTER": "DINT",
+        "HEARTBEAT": "BOOL"
+      }
+    },
+    "template_sha256": "2d27c5ae85b22a4d447d1609354859f3c4cdf0a6e43ac7ed110101f94eaa3140",
+    "doctor_missing_toolchain": {
+      "returncode": 1,
+      "expected_returncode": 1,
+      "result": {
+        "ok": false,
+        "status": "unavailable",
+        "error": "cannot read manifest /tmp/plcidf-distribution-3hwpx_u9/deliberately_absent_toolchain/toolchain.json: [Errno 2] No such file or directory: '/tmp/plcidf-distribution-3hwpx_u9/deliberately_absent_toolchain/toolchain.json'",
+        "toolchain_dir": "/tmp/plcidf-distribution-3hwpx_u9/deliberately_absent_toolchain",
+        "command": "doctor",
+        "target": "open-linux",
+        "hardware_checked": false,
+        "target_profile": {
+          "schema": "plcidf.target-profile.v2",
+          "id": "open-linux",
+          "name": "Local Linux / MatIEC scan runtime",
+          "compile_target": {
+            "dialect": "MatIEC IEC ST subset",
+            "compiler_backend": "matiec-gcc"
+          },
+          "runtime_backend": "plcidf-local-scan",
+          "host_platform": "Linux",
+          "transport_kinds": [
+            "local-filesystem"
+          ],
+          "operations": [
+            "new",
+            "check",
+            "build",
+            "flash",
+            "run",
+            "stop",
+            "monitor",
+            "verify"
+          ],
+          "limitations": [
+            "Local runtime only; no physical I/O provider or remote device deployment",
+            "Functional scan execution does not validate hard real-time deadlines",
+            "Application packages are not compatible with Easy521 vendor firmware"
+          ],
+          "capability_evidence": "implementation-description; verify each operation",
+          "device_instance": null,
+          "hardware_checked": false
+        },
+        "schema_version": 2
+      }
+    },
+    "bootstrap_help_checked": true,
+    "toolchain_downloaded": false,
+    "native_compilation_executed": false,
+    "local_runtime_started": false
+  },
+  "monitor_output": "[monitor] 字序: 假定默认 ABCD，未经判别（首次接真机建议先跑 --calibrate 或用已知值确认 --word-order）\n=== Easy521 监测 @ tcp://127.0.0.1:55293  unit=1  2026-10-17T15:13:05.084+00:00\n--- 字序: ABCD（大端直排，reg0=高字，项目契约）\n--- 质量: 字序来源=default；数据新鲜度/PLC扫描进度/工程匹配均未验证\n量名        寄存器       原始字(w0,w1)                   解码值  单位   范围检查\nVpu       0-1       (0x3f80,0x01bc)          1.00005  pu   ok  # 节点电压标幺值\nPline     2-3       (0x3ee6,0x78e4)          0.45014  pu   ok  # 馈线有功功率\nQline     4-5       (0x3e38,0x6da8)          0.18011  pu   ok  # 馈线无功功率\nloading   6-7       (0x3ef5,0xd8c0)          0.48017  -    ok  # 线路负载率\nSOC       8-9       (0x3f4c,0xca27)          0.79996  -    ok  # 储能荷电状态\nPess      10-11     (0x3e99,0xac17)          0.30014  pu   ok  # 储能实测有功功率\nQess      12-13     (0x3d4d,0x3bbe)          0.05011  pu   ok  # 储能实测无功功率\nPcmd      14-15     (0x3e99,0x999a)          0.30000  pu   ok  # 储能有功指令\nQcmd      16-17     (0x3d4c,0xcccd)          0.05000  pu   ok  # 储能无功指令\nD18(mode) 18        -                              0       normal 正常\nFC03 原始字   : [16256, 444, 16102, 30948, 15928, 28072, 16117, 55488, 16204, 51751, 16025, 44055, 15693, 15294, 16025, 39322, 15692, 52429, 0]\n",
+  "evidence_events": 13,
+  "hardware_accessed": false,
+  "note": "Temporary installation paths are removed after validation."
+}
