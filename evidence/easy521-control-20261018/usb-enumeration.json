@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-10-18T14:41:35.165597+00:00",
+  "argv": [
+    "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+    "list"
+  ],
+  "returncode": 0,
+  "stdout": "Connected:\nBUSID  VID:PID    DEVICE                                                        STATE\n1-5    0489:e0cd  MediaTek Bluetooth Adapter                                    Not shared\n2-1    174f:181d  Integrated Camera, Integrated IR Camera, Camera DFU Device    Not shared\n6-1    046d:c52b  Logitech USB Input Device, USB 输入设备                           Not shared\n6-2    20dd:5191  USB 输入设备                                                      Not shared\n6-3    1ea7:0066  USB 输入设备                                                      Not shared\n6-4    1a2c:7fff  USB 输入设备                                                      Not shared\n7-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared\n8-3    0471:a531  H5U USB Device                                                Not shared\n8-4    35bb:d00b  HECATE Co-Installer Device, USB 输入设备                          Not shared\n\nPersisted:\nGUID                                  DEVICE\n94ed4ff5-3008-47cf-9c47-6022b6832257  H5U USB Device\n\n",
+  "stderr": "",
+  "timed_out": false,
+  "device_write": false
+}

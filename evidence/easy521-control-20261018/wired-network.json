@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-10-18T14:41:35.001843+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "[Console]::OutputEncoding=[Text.Encoding]::UTF8; $ErrorActionPreference='Stop'; $rows=@(Get-NetAdapter -Physical | Where-Object {$_.InterfaceDescription -match 'Realtek|Ethernet|以太网'} | ForEach-Object { $n=$_; $ips=@(Get-NetIPAddress -InterfaceIndex $n.ifIndex -AddressFamily IPv4 -ErrorAction SilentlyContinue | Select-Object IPAddress,PrefixLength,AddressState); [ordered]@{name=$n.Name;description=$n.InterfaceDescription;interface_index=$n.ifIndex;status=[string]$n.Status;link_speed=$n.LinkSpeed;ipv4=$ips} }); [ordered]@{observed_at=[DateTimeOffset]::Now.ToString('o');adapters=$rows;scope='physical Ethernet only; read-only inventory'}|ConvertTo-Json -Depth 6 -Compress"
+  ],
+  "returncode": 0,
+  "stdout": "{\"observed_at\":\"2026-10-18T22:41:34.8782202+08:00\",\"adapters\":[{\"name\":\"以太网 2\",\"description\":\"Realtek USB GbE Family Controller\",\"interface_index\":10,\"status\":\"Disconnected\",\"link_speed\":\"0 bps\",\"ipv4\":[{\"IPAddress\":\"169.254.25.85\",\"PrefixLength\":16,\"AddressState\":1}]}],\"scope\":\"physical Ethernet only; read-only inventory\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "device_write": false
+}

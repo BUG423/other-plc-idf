@@ -1,0 +1,968 @@
+{
+  "schema": "plcidf.easy521-offline-download-paths.v1",
+  "date": "2026-10-18",
+  "scope": {
+    "static_local_files_only": true,
+    "vendor_code_executed": false,
+    "gui_usb_plc_accessed": false,
+    "vendor_binary_embedded": false
+  },
+  "tools": {
+    "objdump": "GNU objdump (GNU Binutils for Ubuntu) 2.42",
+    "python": "3.12.3"
+  },
+  "binaries_and_configs": [
+    {
+      "path": "/mnt/e/Software/AutoShop/AutoShop.exe",
+      "size": 55592960,
+      "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/CommunicaterModule.dll",
+      "size": 22724096,
+      "sha256": "e4db40d8053c9768a7d3ba79fbc96909019933a5753e8559ed5e5cfe8f1ac3ed"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/InterfaceMgr.dll",
+      "size": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/device/H6UA8.dll",
+      "size": 3259904,
+      "sha256": "565226d0d4c493ac69f7d68e98e324dc8c2649caed079dcc8b4bbf18198a0a8e"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/ProgCompear.exe",
+      "size": 12382208,
+      "sha256": "ebed858a3d59575c73336543531d02e7c5f5eef80cda30ea16e3567d097d9d83"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/config.ini",
+      "size": 1049,
+      "sha256": "373c7ec01889c8754cd3471c20b1c839a86bd88f5f618908c2876f07947cd6d1"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Simulator/h5u_daemon.exe",
+      "size": 628652,
+      "sha256": "abfb982cbb1df44f8df83f8ab83734e68b5df5dc5ff0af97cd1bbf111b41e2bd"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Simulator/monitor.dll",
+      "size": 191481,
+      "sha256": "e295afeaada8465f75a85d8ab1def16c0e991ab252abe22764d60bb217182188"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Simulator/mp_core.dll",
+      "size": 279698,
+      "sha256": "69770ad2b0c3f0bacf2cda5cdd1a320442e31a46a693b54404cb3125426b1e4f"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Simulator/common_server.dll",
+      "size": 270313,
+      "sha256": "ac9a436b8c34e94a786626afe9cef2b4057914cad6b1439cdd6ef2ce2137af81"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Simulator/port.dll",
+      "size": 134801,
+      "sha256": "215a15ec26d29c228d1aa26ea50f40bf39d9612a23f20ede73415653be381377"
+    }
+  ],
+  "actual_historical_download": {
+    "evidence": {
+      "path": "/home/zss/workspace/py2plc/evidence/easy521-application-20261017/150900127646-production-download-reconcile.json",
+      "size": 1673,
+      "sha256": "fe827d39d08835bfb4e2ee44110c679a1fd7f57c8c09e033aef7d9e20dcc7fa6"
+    },
+    "download_log_files_count": 18,
+    "files": [
+      {
+        "download_log_name": "project",
+        "current_same_basename_candidates": [],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "userprog.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/PLC/userprog.foid",
+            "size": 215,
+            "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/userprog.foid",
+            "size": 294,
+            "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/OnlineVersion/V0/userprog.foid",
+            "size": 215,
+            "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "stprog.o",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+            "size": 127464,
+            "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/OnlineVersion/V0/stprog.o",
+            "size": 127452,
+            "sha256": "df93b06dad69d06889bdca5905c0930e4665a6c7b2338e5b304ccabfaf235bdf"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "stuserprog.o",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/PLC/stuserprog.o",
+            "size": 6228,
+            "sha256": "447dbee4ae2e2a62db151cdb2d264cfb665ff8173b2d63be274a9b53985381b1"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stuserprog.o",
+            "size": 6240,
+            "sha256": "09c96e5511da4e0035c4427a9635ec70134a2258c357c952788f7f7069f718f9"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/OnlineVersion/V0/stuserprog.o",
+            "size": 6228,
+            "sha256": "447dbee4ae2e2a62db151cdb2d264cfb665ff8173b2d63be274a9b53985381b1"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "symbol.sym",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/PLC/symbol.sym",
+            "size": 218,
+            "sha256": "ae0ffdc0c43b2fcf74f200464c7dd4ab9a9b4f1856c357012c8ac9453ba08e5f"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/symbol.sym",
+            "size": 218,
+            "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/OnlineVersion/V0/symbol.sym",
+            "size": 218,
+            "sha256": "ae0ffdc0c43b2fcf74f200464c7dd4ab9a9b4f1856c357012c8ac9453ba08e5f"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "varsinfo.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/varsinfo.foid",
+            "size": 423,
+            "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/varsinfo.foid",
+            "size": 423,
+            "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/OnlineVersion/V0/varsinfo.foid",
+            "size": 173,
+            "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "syscfg.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/syscfg.foid",
+            "size": 789,
+            "sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "ethercat.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/ethercat.foid",
+            "size": 270,
+            "sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "modbus.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/modbus.foid",
+            "size": 73,
+            "sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "canlink.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/canlink.foid",
+            "size": 72,
+            "sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "modcfg.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/modcfg.foid",
+            "size": 579,
+            "sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "EIP.dat",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/EIP.dat",
+            "size": 340,
+            "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "EIPIns.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/EIPIns.foid",
+            "size": 88,
+            "sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/EIPIns.foid",
+            "size": 88,
+            "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/OnlineVersion/V0/EIPIns.foid",
+            "size": 88,
+            "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "ecttrans.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/ecttrans.foid",
+            "size": 9,
+            "sha256": "11fe87bbabe3f9c7fe22e69a6abdfd0eafb2053d3e2a13c5a3491ea8298bc927"
+          },
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/ecttrans.foid",
+            "size": 73,
+            "sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "dataLog.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/dataLog.foid",
+            "size": 261,
+            "sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "OpcUAServer.dat",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/OpcUAServer.dat",
+            "size": 307,
+            "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "sftpserver.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/sftpserver.foid",
+            "size": 146,
+            "sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      },
+      {
+        "download_log_name": "Ecam.foid",
+        "current_same_basename_candidates": [
+          {
+            "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/Ecam.foid",
+            "size": 118,
+            "sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80"
+          }
+        ],
+        "transport_bytes_confirmed": false
+      }
+    ],
+    "limits": [
+      "Names and success messages are real historical observations; no USB payload capture exists here.",
+      "Present local file hashes do not attest historical transport bytes.",
+      "project source archive packing remains opaque."
+    ]
+  },
+  "source_backup": {
+    "record": {
+      "path": "/home/zss/workspace/py2plc/evidence/easy521-application-20261017/backup-record.json",
+      "size": 284,
+      "sha256": "ccf647f6f53293460e19dd8c56b4bc5ae865e952d485e6beab9434a5d8fd5002"
+    },
+    "archive": {
+      "path": "/mnt/e/PLCProjects/PLC_USB_BACKUP_20261017_1845.zip",
+      "size": 64636,
+      "sha256": "1672b4d50cd2cb8b985a2c220c87ed175a125ec0a78f395e6f4523bde6d5b386"
+    },
+    "files": 62,
+    "contains_stprog_o": false,
+    "contains_stuserprog_o": false,
+    "byte_restore_verified": false
+  },
+  "direct_download_calls": {
+    "binary": "AutoShop.exe",
+    "dll": "InterfaceMgr.dll",
+    "symbol": "?DownloadFile@IH530Communicate@@SAJV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@0PAVCWnd@@0W4EnumExecuteMode@@W4EnumCommandLevel@@@Z",
+    "iat_va": "0x1eb11d8",
+    "callsite_vas": [
+      "0x931b5c",
+      "0x934068",
+      "0xe64016",
+      "0xe64293",
+      "0xe64485",
+      "0xe646b4",
+      "0xe64941",
+      "0xe64c00",
+      "0xe6b380",
+      "0xe6b845",
+      "0xe6babd",
+      "0xe6bd6a",
+      "0xe6cfc9",
+      "0xe6e288",
+      "0xe6ec28",
+      "0xe6ffcd",
+      "0xe70d57",
+      "0xe70fb5",
+      "0xe711d9",
+      "0xe71408",
+      "0xe7166e",
+      "0xe7191b",
+      "0xe73189",
+      "0xe737d8",
+      "0xe739b6",
+      "0xe73b65",
+      "0xe73d01",
+      "0xe73f0e",
+      "0xe74134",
+      "0xe74328",
+      "0x16b7bcd"
+    ],
+    "selected_verified_instruction": "0xe64016: call DWORD PTR ds:0x1eb11d8; 0xe6401c: add esp,0x18",
+    "finding": "Direct file-transfer calls are below GUI compilation orchestration; no headless host contract or target initialization proved.",
+    "can_skip_gui_recompile_now": false
+  },
+  "legacy_program_validate": {
+    "binary": "CommunicaterModule.dll",
+    "export_va": "0x10009700",
+    "command_ctor_va": "0x1001f490",
+    "command_object_bytes": 48,
+    "command_vtable_va": "0x100651fc",
+    "constructor_field_0x2c": 85,
+    "enqueue_call_va": "0x10009778",
+    "enqueue_target_va": "0x10007be0",
+    "enqueue_target_export": "RunCommThread",
+    "directly_imported_by_autoshop_exe": false,
+    "compiler_imports": [],
+    "limits": [
+      "This wrapper enqueues a communication command, not compilation.",
+      "Do not equate this legacy class or constructor constant 0x55 with Easy521 command support."
+    ]
+  },
+  "h6ua8_device_plugin": {
+    "exports": [
+      "GetModuleIdentifier",
+      "ReadHardwareInfo",
+      "ReadIstructionInfo",
+      "ReadSysDataType",
+      "ReadSysVar"
+    ],
+    "text_raw_bytes": 16896,
+    "resource_section_raw_bytes": 3223552,
+    "finding": "Device model resource module: hardware/instruction/system-variable resources; no application downloader exports."
+  },
+  "download_dialog_config": {
+    "file": "/mnt/e/Software/AutoShop/config.ini",
+    "DownLoadFile": {
+      "Show": "1",
+      "Hcpp": "1"
+    },
+    "CreateDownLoadFile": {
+      "Show": "1",
+      "Hcpp": "1"
+    },
+    "COMM": {
+      "Logout": "0",
+      "NeedLogin": "0",
+      "TimeOut": "3000"
+    },
+    "finding": "Show/Hcpp match prompt/source options by naming and current observed values, not a proven CLI/API bypass."
+  },
+  "simulator": {
+    "daemon": "Simulator/h5u_daemon.exe",
+    "main_va": "0x4081d0",
+    "getopt_string_va": "0x40a07a",
+    "getopt_options": "dp:w:",
+    "default_workplace": "app\\",
+    "cli_option_semantics": {
+      "d": "create_daemon",
+      "p": "atoi -> execute_threads port",
+      "w": "setup_workplace"
+    },
+    "monitor_binary": "Simulator/monitor.dll",
+    "monitor_va": "0x663471d0",
+    "default_port_decimal": 12939,
+    "tcp_server_va": "0x663474e4",
+    "loopback_address_instruction_va": "0x663475ce",
+    "loopback_address": "127.0.0.1",
+    "client_va": "0x66347290",
+    "first_receive_bytes": 8,
+    "length_field": {
+      "offset": 0,
+      "width": 2,
+      "endian": "little"
+    },
+    "dispatch_binary": "Simulator/mp_core.dll",
+    "dispatch_va": "0x6590b358",
+    "version_byte_offset": 2,
+    "dispatch_selector_offset": 3,
+    "payload_offset": 8,
+    "file_route_symbols": [
+      "mp_file_input",
+      "mp_index_read_normal_file",
+      "mp_index_verify_normal_file",
+      "mp_index_write_normal_file"
+    ],
+    "limits": [
+      "All values are static disassembly facts for this Windows simulator build only.",
+      "No simulator was started and no client request was sent.",
+      "This does not establish USB or physical Easy521 protocol compatibility.",
+      "mp_input routes include write/control; an unclassified request is not read-only."
+    ]
+  },
+  "ready_uploader_search": {
+    "application_uploader_cli_verified": false,
+    "ProgCompear_exe": "GUI down/updown comparison strings; no uploader contract observed",
+    "InoLoaderPro": "Existing local product table excludes Easy521; firmware burning is not application upload",
+    "sdk_headers_or_easy521_examples_found": false
+  },
+  "reproduction_commands": [
+    [
+      "objdump",
+      "-p",
+      "/mnt/e/Software/AutoShop/AutoShop.exe"
+    ],
+    [
+      "objdump",
+      "-d",
+      "-M",
+      "intel",
+      "--start-address=0x10009700",
+      "--stop-address=0x100097b0",
+      "/mnt/e/Software/AutoShop/CommunicaterModule.dll"
+    ],
+    [
+      "objdump",
+      "-d",
+      "-M",
+      "intel",
+      "--disassemble=_main",
+      "/mnt/e/Software/AutoShop/Simulator/h5u_daemon.exe"
+    ],
+    [
+      "objdump",
+      "-d",
+      "-M",
+      "intel",
+      "--disassemble=_monitor",
+      "/mnt/e/Software/AutoShop/Simulator/monitor.dll"
+    ],
+    [
+      "objdump",
+      "-d",
+      "-M",
+      "intel",
+      "--disassemble=_monitor_tcp_server",
+      "/mnt/e/Software/AutoShop/Simulator/monitor.dll"
+    ],
+    [
+      "objdump",
+      "-d",
+      "-M",
+      "intel",
+      "--disassemble=_mp_input",
+      "/mnt/e/Software/AutoShop/Simulator/mp_core.dll"
+    ]
+  ],
+  "next_bounded_steps": [
+    "Static xref DownloadFile callers to identify source/remote path construction and command enums with ABI owner.",
+    "Freeze actual staged transfer set, including PLC/, Temp/, Temp/DownLoad/, before any separately authorized transfer.",
+    "Use simulator as a separate local protocol laboratory only after independent host-execution approval; do not send its packets to Easy521."
+  ],
+  "simulator_followup": {
+    "method": "COFF named-function disassembly and literal argument extraction; no process/socket/DLL execution",
+    "header": {
+      "size": 8,
+      "fields": [
+        {
+          "offset": 0,
+          "bytes": 2,
+          "meaning": "total frame bytes",
+          "endian": "little"
+        },
+        {
+          "offset": 2,
+          "bytes": 1,
+          "meaning": "version; parser rejects >2; canonical producer version unconfirmed"
+        },
+        {
+          "offset": 3,
+          "bytes": 1,
+          "meaning": "protocol selector registered by mp_connect"
+        },
+        {
+          "offset": 4,
+          "bytes": 4,
+          "meaning": "opaque here; no validated host producer assignment; preserved by inspected dispatch"
+        }
+      ]
+    },
+    "selectors": [
+      {
+        "selector": "0x00",
+        "handler": "mp_scan_input"
+      },
+      {
+        "selector": "0x01",
+        "handler": "mp_index_input"
+      },
+      {
+        "selector": "0x03",
+        "handler": "mp_mem_input"
+      },
+      {
+        "selector": "0x04",
+        "handler": "mp_file_input"
+      },
+      {
+        "selector": "0x05",
+        "handler": "mp_trace_input"
+      },
+      {
+        "selector": "0x80",
+        "handler": "mp_login_input"
+      },
+      {
+        "selector": "0x81",
+        "handler": "mp_logout_input"
+      }
+    ],
+    "registration_va": "0x659085c4",
+    "index_handler_va": "0x65909d14",
+    "index_payload": {
+      "request_offsets_relative_to_payload": [
+        {
+          "offset": 0,
+          "bytes": 1,
+          "meaning": "1=read, 2=write, 3=verify, 4=another write variant"
+        },
+        {
+          "offset": 1,
+          "bytes": 1,
+          "meaning": "not interpreted by inspected branch; no semantics asserted"
+        },
+        {
+          "offset": 2,
+          "bytes": 4,
+          "meaning": "index",
+          "endian": "little"
+        },
+        {
+          "offset": 6,
+          "bytes": 4,
+          "meaning": "requested length",
+          "endian": "little"
+        },
+        {
+          "offset": 10,
+          "meaning": "write/verify data for relevant opcode"
+        }
+      ],
+      "response": {
+        "read_opcode": "0x05",
+        "read_data_offset": 2,
+        "error_opcode": "0x0f",
+        "error_u32_offset": 2,
+        "write_ack_opcode": "0x06",
+        "read_payload_bytes": "requested length + 2",
+        "error_payload_bytes": 6
+      }
+    },
+    "command_mapping_va": "0x65909064",
+    "command_mappings": [
+      {
+        "index": "0xff100000",
+        "read_callback": "mp_index_read_plc_version",
+        "write_callback": "mp_index_write_autoshop_version",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff000000",
+        "read_callback": "mp_index_read_status_word",
+        "write_callback": "mp_index_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff000010",
+        "read_callback": "mp_index_read_load_down_file_status",
+        "write_callback": "mp_index_write_load_down_file_control",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff100020",
+        "read_callback": "mp_index_read_plc_ROMsize",
+        "write_callback": "0x0",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff000050",
+        "read_callback": "mp_index_get_driver_type",
+        "write_callback": "0x0",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff000020",
+        "read_callback": "0x0",
+        "write_callback": "mp_index_write_simulator_sts",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff000030",
+        "read_callback": "mp_index_read_system_init_status",
+        "write_callback": "0x0",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff000100",
+        "read_callback": "0x0",
+        "write_callback": "mp_index_write_load_default_app",
+        "flags": "0x203"
+      },
+      {
+        "index": "0xff001000",
+        "read_callback": "mp_index_read_time",
+        "write_callback": "mp_index_write_time",
+        "flags": "0x203"
+      },
+      {
+        "index": "0xff001001",
+        "read_callback": "mp_index_read_zone",
+        "write_callback": "mp_index_write_zone",
+        "flags": "0x203"
+      },
+      {
+        "index": "0xff001002",
+        "read_callback": "mp_index_read_local_time",
+        "write_callback": "0x0",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff008000",
+        "read_callback": "mp_index_userprog_online_read_status_word",
+        "write_callback": "mp_index_userprog_online_write_control_word",
+        "flags": "0x203"
+      },
+      {
+        "index": "0xff010000",
+        "read_callback": "mp_index_ect_scan_read_status_word",
+        "write_callback": "mp_index_ect_scan_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff010001",
+        "read_callback": "mp_index_ect_set_alias_read_status_word",
+        "write_callback": "mp_index_ect_set_alias_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff010002",
+        "read_callback": "mp_index_ect_slave_state_switching_read_status_word",
+        "write_callback": "mp_index_ect_slave_state_switching_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff010003",
+        "read_callback": "mp_index_ect_slave_coe_sdo_read_status_word",
+        "write_callback": "mp_index_ect_slave_coe_sdo_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff020000",
+        "read_callback": "mp_index_read_device_unique_id",
+        "write_callback": "0x0",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff030000",
+        "read_callback": "mp_index_lem_scan_start_write_control_word",
+        "write_callback": "mp_index_lem_scan_read_status_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff030001",
+        "read_callback": "mp_index_lem_scan_finish_write_control_word",
+        "write_callback": "mp_index_lem_scan_finish_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff040000",
+        "read_callback": "mp_index_extcard_scan_read_status_word",
+        "write_callback": "mp_index_extcard_scan_start_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff040001",
+        "read_callback": "0x0",
+        "write_callback": "mp_index_extcard_scan_finish_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xffa00000",
+        "read_callback": "mp_index_read_upgrade_status_word",
+        "write_callback": "mp_index_write_upgrade_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xffb00000",
+        "read_callback": "mp_index_read_iptables_status_word",
+        "write_callback": "mp_index_write_iptables_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xffc00000",
+        "read_callback": "mp_index_read_pn_rtu_status_word",
+        "write_callback": "mp_index_write_pn_rtu_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff050000",
+        "read_callback": "mp_index_ethip_read_scanstatusword",
+        "write_callback": "mp_index_ethip_write_scancontrolword",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff050001",
+        "read_callback": "mp_index_ethip_read_endscanstatusword",
+        "write_callback": "mp_index_ethip_write_endscancontrolword",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff000040",
+        "read_callback": "mp_index_mcheck_read_control",
+        "write_callback": "mp_index_mcheck_write_control",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff100010",
+        "read_callback": "mp_index_offline_trace_read_info",
+        "write_callback": "mp_index_offline_trace_write_control",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff060000",
+        "read_callback": "mp_index_opcua_read_status_word",
+        "write_callback": "mp_index_opcua_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff060001",
+        "read_callback": "0x0",
+        "write_callback": "mp_index_opcua_write_finish_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff0a0000",
+        "read_callback": "mp_index_vlanip_read_status_word",
+        "write_callback": "mp_index_vlanip_write_control_word",
+        "flags": "0x3"
+      },
+      {
+        "index": "0xff000800",
+        "read_callback": "mp_index_read_dhcp_status_word",
+        "write_callback": "0x0",
+        "flags": "0x3"
+      }
+    ],
+    "read_only_status_targets": [
+      {
+        "index": "0xff000000",
+        "callback": "mp_index_read_status_word",
+        "callback_va": "0x6590a6c4",
+        "required_bytes": 1,
+        "source": "g_dev_status_word",
+        "state_bit_semantics_confirmed": false
+      },
+      {
+        "index": "0xff000030",
+        "callback": "mp_index_read_system_init_status",
+        "callback_va": "0x6590a6f8",
+        "required_bytes": 1
+      },
+      {
+        "index": "0xff100000",
+        "callback": "mp_index_read_plc_version",
+        "callback_va": "0x6590a64c",
+        "required_bytes": 240
+      }
+    ],
+    "ih530_crosscheck": {
+      "external_observation": "H530Communicate.dll GetPLCRunMode execution uses logical 0xff010000 and 4-byte result before executor RVA0xc6c0",
+      "simulator_same_numeric_index": "0xff010000 maps EtherCAT scan status/control, not CPU state",
+      "result": "conflict; no direct equality or compatibility inference",
+      "missing": "mapping/encoding inside H530 executor RVA0xc6c0 plus a validated simulator client producer"
+    },
+    "indexed_file_mappings": [
+      {
+        "start": "0x00011000",
+        "end": "0x000110ff",
+        "filename": "default\\alias.foid",
+        "flags": "0x3",
+        "read": "mp_index_read_normal_file",
+        "write": "mp_index_write_alias_file",
+        "verify": "mp_index_verify_normal_file"
+      },
+      {
+        "start": "0x00028000",
+        "end": "0x000280ff",
+        "filename": "varsinfo.foid",
+        "flags": "0x1",
+        "read": "mp_index_read_normal_file",
+        "write": null,
+        "verify": "mp_index_verify_normal_file"
+      }
+    ],
+    "indexed_file_limits": "These are FOID index routes calling foid_open/read/compare, not arbitrary raw ELF byte-offset reads.",
+    "file_selector_payload": {
+      "handler_va": "0x65908a00",
+      "opcodes": {
+        "1": "route create/open",
+        "2": "route create/open with write/truncate branch",
+        "5": "route write",
+        "6": "route read",
+        "15": "route destroy"
+      },
+      "create_filename_offset": 18,
+      "create_other_fields": "password check begins at payload+2; fields at +10/+14 observed but complete contract not recovered",
+      "write_truncate_call_va": "0x659077fc",
+      "limits": "Route creation is not classified universally read-only; opcode2 can truncate files."
+    },
+    "path_translation": {
+      "va": "0x65907df4",
+      "slash_normalization": "/ to \\",
+      "prefix_rewrites": [
+        {
+          "from": "\\am600-nand\\",
+          "to": ".\\"
+        },
+        {
+          "from": "PrgBackup\\",
+          "to": ""
+        }
+      ],
+      "leading_backslash": "removed for other leading-backslash paths",
+      "scope": "Windows simulator workspace-relative mapping only; no physical PLC filesystem claim"
+    },
+    "still_missing": [
+      "Canonical assignment/sequence semantics of outer bytes 4..7.",
+      "Validated version, login/session lifecycle and initial state from an actual simulator client producer.",
+      "Read-only status byte RUN/STOP bit semantics.",
+      "Complete create/open/password/permissions/commit/abort file transaction.",
+      "Cross-layer IH530 logical ID encoding, physical USB framing and target compatibility."
+    ],
+    "next_minimal_local_lab": "After separately allowed host execution, isolate a copied simulator workspace and permit only selector1/opcode1/index0xff000000/length1; compare raw byte with local runtime state. No byte values or live outcome assumed.",
+    "reproduction_commands": [
+      [
+        "objdump",
+        "-d",
+        "-M",
+        "intel",
+        "--disassemble=_mp_index_cmd_mapping",
+        "/mnt/e/Software/AutoShop/Simulator/mp_core.dll"
+      ],
+      [
+        "objdump",
+        "-d",
+        "-M",
+        "intel",
+        "--disassemble=_mp_connect",
+        "/mnt/e/Software/AutoShop/Simulator/mp_core.dll"
+      ],
+      [
+        "objdump",
+        "-d",
+        "-M",
+        "intel",
+        "--disassemble=_mp_index_input",
+        "/mnt/e/Software/AutoShop/Simulator/mp_core.dll"
+      ],
+      [
+        "objdump",
+        "-d",
+        "-M",
+        "intel",
+        "--disassemble=_mp_index_file_mapping",
+        "/mnt/e/Software/AutoShop/Simulator/mp_core.dll"
+      ],
+      [
+        "objdump",
+        "-D",
+        "-M",
+        "intel",
+        "--start-address=0x65907df4",
+        "--stop-address=0x65907f20",
+        "/mnt/e/Software/AutoShop/Simulator/mp_core.dll"
+      ]
+    ]
+  }
+}

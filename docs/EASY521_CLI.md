@@ -1,8 +1,10 @@
 # Easy521 的 WSL CLI 实验入口
 
-本机已经真实完成两个内存探针的应用下载、厂商程序一致性正反校验。CPU RUN 被拒绝，未完成运行验收；额定 24V 主供电尚未连接。完整记录和证据见 [本轮设备报告](management/EASY521_APPLICATION_2026-10-17.md)。
+2026-10-17 已真实完成两个内存探针的应用下载、厂商程序一致性正反校验。当时 CPU RUN 被拒绝，未完成运行验收；用户报告额定 24V 主供电未连接。完整记录和证据见 [该轮设备报告](management/EASY521_APPLICATION_2026-10-17.md)，不代表今天重新观察了供电或 CPU 状态。
 
 2026-10-18 更新：普通受限正文和显式基础类型全局表已可不经过 AutoShop 界面生成中间输入并真实编译 ARM 对象；本地 intent/release 追溯与诊断已补齐。完整链接/设备字节绑定仍开放，当前供电未重新观察。见 [新交付报告](management/HOST_TOOLCHAIN_DELIVERY_2026-10-18.md) 和 [离线诊断](usage/easy521-doctor.md)。
+
+直接数据控制入口另见 [Easy521 直接控制研究与用法](management/EASY521_DIRECT_CONTROL_2026-10-18.md)：仓库内新增 Linux D 区单次读写/读回工具；它要求真实 IP 和明确地址用途，写默认预览。本轮网口无链路，尚未实测 Easy521 Modbus；数据读写不替代 CPU RUN 或新 ST 应用下载。
 
 当前路线保留已安装 Windows AutoShop 4.12.0.2 和交互桌面，由 WSL 发起命令。下载适配器只接受本次标定的 3840×2160、应用 DPI 96/系统 DPI 192、最大化 MAIN 窗口；其他布局拒绝。它还不能支持任意 AutoShop 版本或其他 PLC 型号。开放 Linux 的 [AI 场景验收](AI_PROGRAMMING.md) 可独立使用。
 

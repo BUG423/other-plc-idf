@@ -1,0 +1,103 @@
+{
+  "schema": "plcidf.direct-control-software-validation.v1",
+  "observed_at": "2026-10-18T14:56:20.689490+00:00",
+  "scope": "software and localhost loopback only; no PLC Modbus, Windows GUI, CPU mode or device writes",
+  "base_revision": "fa0c2d58b841acfa8dc3dac05f3114c68e809150",
+  "checks": [
+    {
+      "record": "tools-unittest.json",
+      "passed": 68,
+      "includes_new_d_control_tests": 14,
+      "exit_code": 0
+    },
+    {
+      "record": "monitor-regression.json",
+      "passed": 82,
+      "exit_code": 0
+    }
+  ],
+  "non_overlapping_passed": 150,
+  "new_tool_cases_are_subset_of_tools_tests": true,
+  "independent_code_review": "root and architecture_review inspected final client and pinned pymodbus connection/retry behavior; no blocking findings",
+  "preview_cli": {
+    "argv": [
+      ".venv/bin/python",
+      "tools/easy521_d_control.py",
+      "write",
+      "--host",
+      "192.0.2.10",
+      "--d",
+      "100",
+      "--value",
+      "123"
+    ],
+    "returncode": 0,
+    "result": {
+      "schema": "plcidf.easy521-d-control.v1",
+      "ok": true,
+      "status": "preview",
+      "stage": "preview",
+      "command": "write",
+      "timestamp_utc": "2026-10-18T14:56:20.684414+00:00",
+      "retries": 0,
+      "automatic_reconnect": false,
+      "packet_capture_scope": "library send attempts and received buffers; not proof of remote receipt",
+      "connection": {
+        "attempted": false,
+        "established": false
+      },
+      "write": {
+        "status": "not-started",
+        "attempted": false,
+        "calls": 0,
+        "packet_send_attempts": 0
+      },
+      "readback": {
+        "status": "not-started",
+        "attempted": false
+      },
+      "packets": [],
+      "assurance": {
+        "model_identity": "unverified",
+        "cpu_execution": "unverified",
+        "persistence": "unverified",
+        "application_changed": "unverified",
+        "named_variable_binding": "unverified"
+      },
+      "target": {
+        "host": "192.0.2.10",
+        "port": 502,
+        "unit_id": 1
+      },
+      "address": {
+        "area": "D",
+        "number": 100,
+        "raw_holding_register": 100,
+        "count": 1
+      },
+      "timeout_s": 3.0,
+      "timeout_scope": "per connection/request",
+      "requested_value": 123
+    }
+  },
+  "files": [
+    {
+      "path": "tools/easy521_d_control.py",
+      "sha256": "37d52cb4949b6866ff8c2529e0b3f7a0a9f4348fd16b01dfadccb9943b4ab846"
+    },
+    {
+      "path": "tools/tests/test_easy521_d_control.py",
+      "sha256": "8317a8a021c24ec253f57d9c2e4603c85906186b6a91dfe3a7270e9c97e03b20"
+    }
+  ],
+  "manual_sha256_independently_recomputed": {
+    "programming_1022_pages": "799760718dd7b7fe48e92034fddba767d54d3b3040b64eefb07d6e36c237f03d",
+    "user_177_pages": "e793971a545f5b4c89e067957ac73973546f6df354f586a62c041995df5dc5da"
+  },
+  "hardware_acceptance": {
+    "modbus_tested": false,
+    "cpu_execution_verified": false,
+    "new_st_deployment_verified": false,
+    "physical_outputs_tested": false
+  }
+}

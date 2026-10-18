@@ -1,6 +1,12 @@
 # docs/research — 协议与固件研究
 
-> **2026-10-17 状态**：公开资料与本地离线研究已有交付；尚未启动真机私有协议抓包或固件操作。文档研究可继续，硬件操作遵守既有操作边界。
+> **2026-10-18 状态**：已实际脱离 GUI 编译普通 ST 为厂商 ARM 对象；本轮继续核对直接控制与完整应用下载接口。尚未完成无 GUI 真机应用下载、CPU 扫描验收或系统固件替换。后面的历史研究保留其日期与当时范围。
+
+- [Easy521 最简单直接的控制方式](../management/EASY521_DIRECT_CONTROL_2026-10-18.md)：Modbus 数据控制、CPU 模式、应用下载与系统固件四层分开；附本轮物理网口/USB 枚举和可运行 Linux D 区工具。
+- [官方数据协议的准确范围](firmware/13-documented-control-routes-2026-10-18.md)：Modbus/FINS/OPC UA 地址、变量发布、CPU STOP 语义与归档变量实际绑定。
+- [无 GUI 通信实现与本地变量服务](firmware/12-interface-control-2026-10-18.md)：IH530 工厂/状态查询链及匹配 PDB 的包头、枚举和数据提供关系缺口。
+- [完整应用文件与下载调用点](firmware/14-easy521-download-paths-2026-10-18.md)：真实18文件成功项、31个调用点及独立本地仿真器协议入口。
+- [普通 ST 到 ARM 对象的真实实验](firmware/11-plain-main-object-2026-10-18.md)：文本预处理、隐式声明、正负实验与未完成的完整应用链接。
 
 - [平台路线与固件可行性复核](firmware/03-feasibility-assessment-2026-10-17.md)：四条路线、事实/推断/TBD、历史调查勘误及研究门槛。
 - [ARM ELF 离线证据](firmware/20261017-offline-elf-inspection.json)：工具版本、目标属性、原始输出、文件哈希。

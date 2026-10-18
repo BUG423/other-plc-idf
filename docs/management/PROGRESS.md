@@ -1,5 +1,17 @@
 # 进展记录
 
+## 2026-10-18：深究 Easy521 的最短直接控制入口
+
+三个 AI 技术代理并行核对手册、通信库和下载链，另一 AI 代理独立审计新工具；统筹检查现场主机连接并复核交付。按此前 Easy521 实物研究，用户新写的 Easy512 尚未确认为另一型号。详细结果见[直接控制报告](EASY521_DIRECT_CONTROL_2026-10-18.md)。
+
+- **Linux 数据入口**：新增 `tools/easy521_d_control.py`，显式 IP、D0–D7999、原始 uint16、FC03读取；单字写默认离线预览，`--execute` 后一次FC06并在同连接读回。零重试、禁止自动重连；写后异常/超时/不一致为unknown。独立工具不改变原只读monitor，也不宣称CPU运行、业务生效或ST部署。
+- **文档纠正与工程绑定**：默认Modbus502、FINS9600、OPC UA需激活/公开变量；UA在CPU STOP后可继续服务。M8000只读且不在默认M区映射。归档19个BESS变量均私有、无软元件绑定，原D0–D17 CSV不能当现场映射。见[研究13](../research/firmware/13-documented-control-routes-2026-10-18.md)。
+- **无界面通信/下载研究**：实际追通IH530工厂注册与GetPLCRunMode代码链；匹配PDB解出本地变量服务结构，但未建立直接CPU控制。真实历史下载为18个文件成功项，找到31处DownloadFile调用；本地仿真器32条命令映射与IH530同值常量存在语义冲突，未向设备试发。完整初始化、枚举、封装/提交和字节校验仍缺。见[研究12](../research/firmware/12-interface-control-2026-10-18.md)与[研究14](../research/firmware/14-easy521-download-paths-2026-10-18.md)。
+- **现场只读观察**：22:41（上海）Realtek物理网口Disconnected/0bps；USB为8-3/0471:a531/H5U，旧6-3已是输入设备。没有沿用旧定位写入、扫描猜测IP或执行PLC协议请求。没有重新观察24V、RUN灯或当前CPU状态；未证实USB-only是RUN拒绝唯一根因。
+- **验证**：现有tools unittest discover **68项通过**，含新增14项实际回环报文测试；只读monitor **82项通过**，两组不重叠共150项。独立审计、CLI纯预览、手册SHA256复算、JSON/本地链接与diff检查通过。原始结果见[本轮验证](../../evidence/easy521-control-20261018/software-validation.json)。这批是有针对性的本地回归，未重跑完整源码套件；远程CI随提交核验。
+
+本轮未下载、RUN/STOP、操作物理输出或替换固件。准确SoC/OS/BSP仍未确认；T07/T08/T09/R01/R02继续开放。新工具须在取得真实IP、服务和地址用途后进行硬件验收；未因模拟服务器通过而标记Easy521控制完成。进展同步PR #13与总跟踪 #12，未合并默认分支、未启用后台持续研发。
+
 ## 2026-10-18：自主推进普通 ST 无界面对象编译与部署候选追溯
 
 用户要求继续工作。三个 AI 代理并行实施，统筹独立复核实际编译和工作副本；[交付报告](HOST_TOOLCHAIN_DELIVERY_2026-10-18.md) 与 [ADR-0004](../architecture/ADR-0004-vendor-build-release.md) 记录最终结果。

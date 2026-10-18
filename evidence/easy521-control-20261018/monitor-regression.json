@@ -1,0 +1,16 @@
+{
+  "schema": "plcidf.software-check.v1",
+  "started_at": "2026-10-18T14:55:18.700189+00:00",
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "wsl-tools/tests",
+    "-q"
+  ],
+  "returncode": 0,
+  "duration_s": 17.856,
+  "scope": "mock and localhost monitor regression; no Windows or PLC operations",
+  "stdout": "........................................................................ [ 87%]\n..........                                                               [100%]\n",
+  "stderr": ""
+}
