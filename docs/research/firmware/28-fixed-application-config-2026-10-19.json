@@ -1,0 +1,979 @@
+{
+  "schema": "plcidf.easy521-fixed-config-research.v1",
+  "recorded_at_utc": "2026-10-19T07:19:38.889510+00:00",
+  "scope": "offline-existing-fixed-interface-candidate",
+  "windows_processes_executed": false,
+  "device_access": false,
+  "tool": "tools/prepare_easy521_application.py",
+  "tool_sha256": "fba6cd682938cbab12f1dd080bdc4dc6eb9eb6d146ab098c4a282109f7652a0b",
+  "template_inputs": {
+    "files": [
+      {
+        "name": "Temp/userprog.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/userprog.foid",
+        "size": 294,
+        "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c"
+      },
+      {
+        "name": "Temp/varsinfo.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/varsinfo.foid",
+        "size": 423,
+        "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d"
+      },
+      {
+        "name": "Temp/symbol.sym",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/symbol.sym",
+        "size": 218,
+        "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92"
+      },
+      {
+        "name": "Output.sdt",
+        "source": ".plcidf/research-22-foid-20261019/project/Output.sdt",
+        "size": 182,
+        "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+      },
+      {
+        "name": "Temp/DownLoad/EIPIns.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/EIPIns.foid",
+        "size": 88,
+        "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26"
+      },
+      {
+        "name": "Temp/DownLoad/Ecam.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/Ecam.foid",
+        "size": 118,
+        "sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80"
+      },
+      {
+        "name": "Temp/DownLoad/OpcUAServer.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/OpcUAServer.foid",
+        "size": 97,
+        "sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd"
+      },
+      {
+        "name": "Temp/DownLoad/canlink.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/canlink.foid",
+        "size": 72,
+        "sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81"
+      },
+      {
+        "name": "Temp/DownLoad/dataLog.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/dataLog.foid",
+        "size": 261,
+        "sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4"
+      },
+      {
+        "name": "Temp/DownLoad/ecttrans.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/ecttrans.foid",
+        "size": 73,
+        "sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538"
+      },
+      {
+        "name": "Temp/DownLoad/ethercat.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/ethercat.foid",
+        "size": 270,
+        "sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e"
+      },
+      {
+        "name": "Temp/DownLoad/ethip.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/ethip.foid",
+        "size": 301,
+        "sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac"
+      },
+      {
+        "name": "Temp/DownLoad/modbus.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/modbus.foid",
+        "size": 73,
+        "sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190"
+      },
+      {
+        "name": "Temp/DownLoad/modcfg.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/modcfg.foid",
+        "size": 579,
+        "sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48"
+      },
+      {
+        "name": "Temp/DownLoad/sftpserver.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/sftpserver.foid",
+        "size": 146,
+        "sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2"
+      },
+      {
+        "name": "Temp/DownLoad/syscfg.foid",
+        "source": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/syscfg.foid",
+        "size": 789,
+        "sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c"
+      },
+      {
+        "name": "Output.prg",
+        "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.prg",
+        "size": 56,
+        "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+      },
+      {
+        "name": "VarsInfo.vi",
+        "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/VarsInfo.vi",
+        "size": 284,
+        "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95"
+      },
+      {
+        "name": "ILIndex.idx",
+        "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/ILIndex.idx",
+        "size": 142,
+        "sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21"
+      },
+      {
+        "name": "Config.sdt",
+        "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Config.sdt",
+        "size": 371,
+        "sha256": "af9e01cb471c8c7d6b4c41605192adeed28f03f6b3570675bea97ae24760f664"
+      },
+      {
+        "name": "变量表.gvt",
+        "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/变量表.gvt",
+        "size": 1503,
+        "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
+      },
+      {
+        "name": "VarNameAndAddr.csv",
+        "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/VarNameAndAddr.csv",
+        "size": 24548,
+        "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+      }
+    ],
+    "same_vendor_build_verified": false
+  },
+  "source_archive": {
+    "path": ".plcidf/research-22-foid-20261019/project/BESS_E521_DEV.hcpp",
+    "sha256": "42d6b319152f9cdd15abb4ac50a5ebb734c139058af79e9997479578371659a2",
+    "compressed_stream_offset": 36,
+    "expanded_size": 83017,
+    "entry_count": 54,
+    "trailing_unexplained_bytes": 4,
+    "entries": [
+      {
+        "name": "BESS_E521_DEV.hcp",
+        "size": 55454,
+        "sha256": "d1f48371b66352cf8e0088e358c5160cb1a4c4d9bb360da8c273ba5a5ac2986c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "MAIN.ST",
+        "size": 1757,
+        "sha256": "fd060d7ed31f43308eee554bc9a7077834815f0fae7be0b102efca5163a57d68",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "SBR_001.ST",
+        "size": 233,
+        "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "INT_001.ST",
+        "size": 233,
+        "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "Config.sdt",
+        "size": 371,
+        "sha256": "af9e01cb471c8c7d6b4c41605192adeed28f03f6b3570675bea97ae24760f664",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "PortConfig.cfg",
+        "size": 265,
+        "sha256": "06f8615e878e0fdc8dfd617f76e8b229d97e3878bb9a2ad88d198526652b3603",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "变量表.gvt",
+        "size": 1503,
+        "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "变量表.csv",
+        "size": 1296,
+        "sha256": "62f23b0ad6666da734f188412f5ed8ce49868abfbf4b8d0aca1f9172f1c4a5e3",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "功能块实例.fbi",
+        "size": 510,
+        "sha256": "a45ea7ff194093e45f9a4fa7b10961ebdf4f314b703ac06931582c9f0d9a15e6",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "FCInstTbl.fci",
+        "size": 221,
+        "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "SYS_ETHERCAT.ecgvt",
+        "size": 221,
+        "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "SYS_EIP.eIPgvt",
+        "size": 221,
+        "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "varid.vid",
+        "size": 256,
+        "sha256": "f10fdeb85027095a03ecc1ce50557a33bb3669d0f2a92f5fd6d3850bfc911824",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "VarList.gdt",
+        "size": 209,
+        "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "ElemBitComm.gdtx",
+        "size": 209,
+        "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "MAIN.mon",
+        "size": 554,
+        "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "ElemUseInfo.esi",
+        "size": 214,
+        "sha256": "09fdbdc578dde7a0763b83b64eba98746e4208742cbb3b5487509b18b50816a8",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "GL20ModuleCfg.data",
+        "size": 253,
+        "sha256": "b06bc7078c0e0df802d849839fd1b9e901814506be18785a81065f63ab079e13",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "h6u_expandCard.data",
+        "size": 209,
+        "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "h6u_expandCard.data",
+        "size": 209,
+        "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "TcpModbusConfig.cfg",
+        "size": 8,
+        "sha256": "2b4a11fa9359588975ca08fda63a08543abbde3f88753e01b523be7f804a4e83",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "EtherCat.dat",
+        "size": 243,
+        "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "config.ini",
+        "size": 29,
+        "sha256": "a2832fb685683a26344d61c567e7f58c8b947c76a9f84846a395ede84af8199c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "H530QUICKMONTABLE.qmt",
+        "size": 554,
+        "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "EIP.dat",
+        "size": 340,
+        "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "OpcUAServer.dat",
+        "size": 307,
+        "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "SFTPServer.dat",
+        "size": 171,
+        "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "etherCat.data",
+        "size": 2,
+        "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "h5u_moduleCfg.data",
+        "size": 225,
+        "sha256": "696bdab8fd3098aba68d0c18b6b35fdc552f7d14ec6739b1fdc39a98e3533c15",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "_SYS_CAN.svt",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "_SYS_COM.svt",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "_SYS_COM_SAVE.svt",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "_SYS_ECAT_MASTER.svt",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "_SYS_ECAT_SLAVE.svt",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "_SYS_ETHERNET.svt",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "_SYS_INFO.svt",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "_SYS_PN.svt",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "PID_AT.flib",
+        "size": 240,
+        "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "PID_AT-PID_AT.libtemp",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "PID_ATC.flib",
+        "size": 240,
+        "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "PID_ATC-PID_ATC.libtemp",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "TRIG.flib",
+        "size": 240,
+        "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "TRIG-R_TRIG.libtemp",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "TRIG-F_TRIG.libtemp",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "FB_BESS_AdaptiveSupervisor_Easy521.FB",
+        "size": 10384,
+        "sha256": "0a9d9836c86594f2954a30432cbf3de745296f3ea2d2bc5ec9ee8e8f1ad3afdd",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "AXIS_CTRL.flib",
+        "size": 240,
+        "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "AXIS_CTRL-SUSERAXIS.libtemp",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "AXIS_CTRL-AXIS_CTRL.libtemp",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "GetServoSN.flib",
+        "size": 240,
+        "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "GetServoSN-GetServoSN.libtemp",
+        "size": 207,
+        "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "dataLog.data",
+        "size": 197,
+        "sha256": "f3a0abebf69ea2227363120c9ee1cc4576997c897edd826107eb37124087f7a2",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "webserver.dat",
+        "size": 88,
+        "sha256": "df466b859e5bde34d465bd523a3ef731ab30e4015d61ae3ac70fce2692f5f064",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "LoginPassowrd.dat",
+        "size": 17,
+        "sha256": "4facbf88d978289015360dd932d58748d165a0bf8a3d01c40cef08ea134a0bb3",
+        "matches_current_project_file": true
+      },
+      {
+        "name": "folder.txt",
+        "size": 259,
+        "sha256": "41a5af25c9341d009292d9d79d6ee1575036634ca736aec22c1f3dd11f285cc0",
+        "matches_current_project_file": true
+      }
+    ],
+    "contains_new_native_source": false
+  },
+  "static_component": {
+    "source": ".plcidf/research-22-foid-20261019/vendor/AutoShop.exe",
+    "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e",
+    "address_kind": "preferred-PE-VA",
+    "empty_marker_writer": {
+      "entry": "0xe71ce0",
+      "argument_branch": "0xe71d12",
+      "no_source_branch": "0xe71f69",
+      "path_literal": "0x1f595e0",
+      "path": "\\Temp\\Empty.hcpp",
+      "value_literal": "0x1f595d8",
+      "value": "Empty",
+      "write_call": "0xe72008"
+    },
+    "empty_marker_validator": {
+      "entry": "0xe752f0",
+      "length_5_branch": "0xe753d7",
+      "compare_call": "0xe75429",
+      "comparison_literal": "0x1f596c8",
+      "value": "Empty"
+    },
+    "index_table_reader": {
+      "entry": "0x169d2e0",
+      "filename_literal": "0x1ffe7ac",
+      "filename": "\\ILIndex.idx",
+      "header_bytes": 26,
+      "count_offset": 26,
+      "table_offset": 30
+    },
+    "index_table_writer": {
+      "entry": "0x169db10",
+      "tag_write": "0x169df4e",
+      "tag": 262400,
+      "count_times_4": "0x169df6c"
+    }
+  },
+  "interface": {
+    "userprog_records": [
+      {
+        "tag": 256,
+        "offset": 0,
+        "value_offset": 8,
+        "size": 4,
+        "sha256": "4455173f1f1df38b5dce03e1b53a4e740b04d29a0ae987cb7ab094f8470d3f4d"
+      },
+      {
+        "tag": 512,
+        "offset": 12,
+        "value_offset": 20,
+        "size": 32,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+      },
+      {
+        "tag": 513,
+        "offset": 52,
+        "value_offset": 60,
+        "size": 4,
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+      },
+      {
+        "tag": 262144,
+        "offset": 64,
+        "value_offset": 72,
+        "size": 56,
+        "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+      },
+      {
+        "tag": 262400,
+        "offset": 128,
+        "value_offset": 136,
+        "size": 112,
+        "sha256": "ed8bb93782bf125bdfe0b7cd111d291d6f08ad07a5ce1382ff289f5e1dd0bbef"
+      },
+      {
+        "tag": 640,
+        "offset": 248,
+        "value_offset": 256,
+        "size": 38,
+        "sha256": "0a246d054466858f56997768865f29f6087eb0ac0912d38c5f7849474998072d"
+      }
+    ],
+    "varsinfo_records": [
+      {
+        "tag": 163840,
+        "offset": 0,
+        "value_offset": 8,
+        "size": 38,
+        "sha256": "0a246d054466858f56997768865f29f6087eb0ac0912d38c5f7849474998072d"
+      },
+      {
+        "tag": 256,
+        "offset": 46,
+        "value_offset": 54,
+        "size": 4,
+        "sha256": "4455173f1f1df38b5dce03e1b53a4e740b04d29a0ae987cb7ab094f8470d3f4d"
+      },
+      {
+        "tag": 512,
+        "offset": 58,
+        "value_offset": 66,
+        "size": 32,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+      },
+      {
+        "tag": 513,
+        "offset": 98,
+        "value_offset": 106,
+        "size": 4,
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+      },
+      {
+        "tag": 196608,
+        "offset": 110,
+        "value_offset": 118,
+        "size": 284,
+        "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95"
+      },
+      {
+        "tag": 196623,
+        "offset": 402,
+        "value_offset": 410,
+        "size": 1,
+        "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+      },
+      {
+        "tag": 196640,
+        "offset": 411,
+        "value_offset": 419,
+        "size": 4,
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+      }
+    ],
+    "project_identifier": "{48553A76-85E1-410b-BED3-04DAA47C2759}",
+    "instruction_index_count": 28,
+    "instruction_index_nonempty": [
+      {
+        "index": 16,
+        "value": 0
+      },
+      {
+        "index": 19,
+        "value": 1
+      },
+      {
+        "index": 24,
+        "value": 2
+      }
+    ],
+    "output_instruction_payload_equal": true,
+    "instruction_index_payload_equal": true,
+    "variable_allocation_payload_equal": true,
+    "entry_names": [
+      "MAIN",
+      "SBR_001"
+    ],
+    "task_period_us": null,
+    "retention_semantics": "unknown",
+    "runtime_instruction_to_entry_semantics_verified": false
+  },
+  "candidates": [
+    {
+      "increment": 1,
+      "manifest": ".plcidf/research-28-fixed-config-20261019/candidate-final-plus1/application-candidate.json",
+      "manifest_sha256": "f6ed1d0e43b4521a237dc7f3fd5b3e7f8766f9ab0fc519b12b6a10395c29dbfe",
+      "source_sha256": "59e932425313c46c29086483faf00d618c3e6f54edf3097a61c06d341f115c6b",
+      "files": [
+        {
+          "index": 0,
+          "remote_name": "project.hcpp",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/project.hcpp",
+          "size": 5,
+          "sha256": "c6c094bc0054f9cbe34102ff49f86b3928b5ac09f3d2ac87e170d0500675921f",
+          "origin": "generated-vendor-no-source-marker"
+        },
+        {
+          "index": 1,
+          "remote_name": "userprog.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/userprog.foid",
+          "size": 294,
+          "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c",
+          "origin": "reassembled-fixed-interface-inherited-header"
+        },
+        {
+          "index": 2,
+          "remote_name": "stprog.o",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/stprog.o",
+          "size": 143708,
+          "sha256": "318040ea24813ea691a6d7f17129a30fbbb1aa83bef3a30340d3ade2e370fb90",
+          "origin": "new-linked-object"
+        },
+        {
+          "index": 3,
+          "remote_name": "stuserprog.o",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/stuserprog.o",
+          "size": 4188,
+          "sha256": "db68036ff92013340ffc1eb64b5a9ad9718be20d7df135b835c46d3b203e64a4",
+          "origin": "new-linked-object"
+        },
+        {
+          "index": 4,
+          "remote_name": "symbol.sym",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/symbol.sym",
+          "size": 218,
+          "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92",
+          "origin": "inherited-fixed-interface"
+        },
+        {
+          "index": 5,
+          "remote_name": "varsinfo.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/varsinfo.foid",
+          "size": 423,
+          "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d",
+          "origin": "inherited-fixed-interface"
+        },
+        {
+          "index": 6,
+          "remote_name": "syscfg.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/syscfg.foid",
+          "size": 789,
+          "sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 7,
+          "remote_name": "ethercat.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/ethercat.foid",
+          "size": 270,
+          "sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 8,
+          "remote_name": "modbus.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/modbus.foid",
+          "size": 73,
+          "sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 9,
+          "remote_name": "canlink.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/canlink.foid",
+          "size": 72,
+          "sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 10,
+          "remote_name": "modcfg.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/modcfg.foid",
+          "size": 579,
+          "sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 11,
+          "remote_name": "ethip.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/ethip.foid",
+          "size": 301,
+          "sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 12,
+          "remote_name": "EIPIns.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/EIPIns.foid",
+          "size": 88,
+          "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 13,
+          "remote_name": "ecttrans.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/ecttrans.foid",
+          "size": 73,
+          "sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 14,
+          "remote_name": "dataLog.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/dataLog.foid",
+          "size": 261,
+          "sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 15,
+          "remote_name": "OpcUAServer.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/OpcUAServer.foid",
+          "size": 97,
+          "sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 16,
+          "remote_name": "sftpserver.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/sftpserver.foid",
+          "size": 146,
+          "sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 17,
+          "remote_name": "Ecam.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1/files/Ecam.foid",
+          "size": 118,
+          "sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80",
+          "origin": "inherited-fixed-configuration"
+        }
+      ],
+      "capabilities": {
+        "candidate_file_set_complete": true,
+        "native_source_chain_report_checked": true,
+        "downloadable": false,
+        "runtime_abi_verified": false,
+        "device_accepted": false,
+        "device_executed": false
+      }
+    },
+    {
+      "increment": 2,
+      "manifest": ".plcidf/research-28-fixed-config-20261019/candidate-final-plus2/application-candidate.json",
+      "manifest_sha256": "07938944b3a32c0f0e59bfcf28562f60eafdd67ff49df51059d7f76253ab9029",
+      "source_sha256": "427eddb4d530d32347e9861b9e8834ae455c5e6ee3806927b186d6aadf377e8a",
+      "files": [
+        {
+          "index": 0,
+          "remote_name": "project.hcpp",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/project.hcpp",
+          "size": 5,
+          "sha256": "c6c094bc0054f9cbe34102ff49f86b3928b5ac09f3d2ac87e170d0500675921f",
+          "origin": "generated-vendor-no-source-marker"
+        },
+        {
+          "index": 1,
+          "remote_name": "userprog.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/userprog.foid",
+          "size": 294,
+          "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c",
+          "origin": "reassembled-fixed-interface-inherited-header"
+        },
+        {
+          "index": 2,
+          "remote_name": "stprog.o",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/stprog.o",
+          "size": 143708,
+          "sha256": "314ecb7828b691975b90814aa8ab7d04ce16c3236d0f0f5b0b83a09841c15332",
+          "origin": "new-linked-object"
+        },
+        {
+          "index": 3,
+          "remote_name": "stuserprog.o",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/stuserprog.o",
+          "size": 4188,
+          "sha256": "4155b308cd15b3e74b1db46c6876d4ea9858b6175d61f3d3be07831cfb9e1c4b",
+          "origin": "new-linked-object"
+        },
+        {
+          "index": 4,
+          "remote_name": "symbol.sym",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/symbol.sym",
+          "size": 218,
+          "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92",
+          "origin": "inherited-fixed-interface"
+        },
+        {
+          "index": 5,
+          "remote_name": "varsinfo.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/varsinfo.foid",
+          "size": 423,
+          "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d",
+          "origin": "inherited-fixed-interface"
+        },
+        {
+          "index": 6,
+          "remote_name": "syscfg.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/syscfg.foid",
+          "size": 789,
+          "sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 7,
+          "remote_name": "ethercat.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/ethercat.foid",
+          "size": 270,
+          "sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 8,
+          "remote_name": "modbus.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/modbus.foid",
+          "size": 73,
+          "sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 9,
+          "remote_name": "canlink.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/canlink.foid",
+          "size": 72,
+          "sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 10,
+          "remote_name": "modcfg.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/modcfg.foid",
+          "size": 579,
+          "sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 11,
+          "remote_name": "ethip.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/ethip.foid",
+          "size": 301,
+          "sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 12,
+          "remote_name": "EIPIns.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/EIPIns.foid",
+          "size": 88,
+          "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 13,
+          "remote_name": "ecttrans.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/ecttrans.foid",
+          "size": 73,
+          "sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 14,
+          "remote_name": "dataLog.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/dataLog.foid",
+          "size": 261,
+          "sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 15,
+          "remote_name": "OpcUAServer.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/OpcUAServer.foid",
+          "size": 97,
+          "sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 16,
+          "remote_name": "sftpserver.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/sftpserver.foid",
+          "size": 146,
+          "sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2",
+          "origin": "inherited-fixed-configuration"
+        },
+        {
+          "index": 17,
+          "remote_name": "Ecam.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus2/files/Ecam.foid",
+          "size": 118,
+          "sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80",
+          "origin": "inherited-fixed-configuration"
+        }
+      ],
+      "capabilities": {
+        "candidate_file_set_complete": true,
+        "native_source_chain_report_checked": true,
+        "downloadable": false,
+        "runtime_abi_verified": false,
+        "device_accepted": false,
+        "device_executed": false
+      }
+    }
+  ],
+  "changed_payload_names_between_variants": [
+    "stprog.o",
+    "stuserprog.o"
+  ],
+  "tests": {
+    "command": ".venv/bin/python -m unittest discover -s tools/tests -p test_prepare_easy521_application.py -v",
+    "passed": 15,
+    "skipped": 0,
+    "kind": "synthetic offline negative and assembly tests"
+  },
+  "remaining_unknowns": [
+    "Instruction-index to runtime MAIN invocation semantics",
+    "Task period and retention-field semantics",
+    "Model/firmware feature-selection conditions for this exact 18-file subset",
+    "Original build-batch provenance of inherited configuration cache",
+    "PLC acceptance and actual ARM execution"
+  ]
+}

@@ -55,6 +55,13 @@ jobs:
         # ARM code is generated and structurally checked; only the separately
         # lowered x86 harness executes. Neither step accesses a PLC.
         run: python -m pytest tools/tests/test_compile_easy521_native_probe.py -q
+      - name: Source to linked and bound existing-interface ARM candidates
+        env:
+          PLCIDF_TEST_LLC: /usr/lib/llvm-20/bin/llc
+          PLCIDF_TEST_LLD: /usr/bin/ld.lld
+        # Synthetic project fixtures exercise the real compiler/linker chain;
+        # proprietary templates and physical PLCs are not CI inputs.
+        run: python -m pytest tools/tests/test_bind_native_application.py -q
       - name: Bootstrap pinned MatIEC without Windows
         run: python tools/bootstrap_open_linux.py --directory /tmp/plcidf-matiec --jobs 2
       - name: Real ST compiler and runtime regression

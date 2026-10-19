@@ -1,0 +1,6 @@
+{
+  "schema": "plcidf.vendor-main-source.v1",
+  "globals": {
+    "g_rBESS_Pcmd": "REAL"
+  }
+}

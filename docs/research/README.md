@@ -2,6 +2,10 @@
 
 > **2026-10-19供电后更新**：20号记录24 V台架的固定变量读回、灯程序真实编译/下载/比较、状态与时钟变化，以及用户确认Y0闪烁、STOP后熄灭。18号更正仍适用：旧ff010000/4B不是CPU状态。完整Linux原生包装、无GUI下装及设备字节绑定仍开放；历史报告保留其当时状态。
 
+- [原生应用文件真机读回](firmware/32-native-application-readback-2026-10-19.md)：17个执行/配置文件的实际字节哈希、失败和ZLP修复；不冒充新程序运行或恢复演练。
+- [固定接口完整候选](firmware/28-fixed-application-config-2026-10-19.md)：18文件组合、任务/变量关联和合法Empty源码标记，原生下装另验。
+- [新ST到已绑定对象](firmware/27-native-bound-application-2026-10-19.md)：REAL +1/+2真实编译、两级链接、同工程GVT/CSV绑定，保持/周期语义保留unknown。
+- [原生应用文件协议](firmware/26-native-application-protocol-2026-10-19.md)：真实H530执行链、限定读取/写入API、失败不重放与USB零长度包边界。
 - [原生Linux真机状态与时钟读取](firmware/25-native-linux-device-reads-2026-10-19.md)：本设备8次固定读成功、接口1更正与host驱动/权限恢复；完整原生应用仍开放。
 - [原生Linux USB后端初稿](firmware/24-linux-native-usb-2026-10-19.md)：单次固定读取实现、WSL主机模块准备与无目标拒绝；当时待共享，接口假设和新真机结果由25号补充。
 - [受限ST到ARM对象](firmware/23-linux-st-abi-2026-10-19.md)：独立源码前端、真实LLVM ARM输出、局部ABI与同IR主机语义验证；不是完整应用。

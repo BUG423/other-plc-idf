@@ -97,6 +97,23 @@ def test_native_usb_preview_imports_without_loading_libusb(tmp_path, kind):
     assert preview["device_access"] is False
 
 
+def test_application_preview_imports_without_any_external_access(tmp_path):
+    preview = distribution_check.preview_usb_application_reader(
+        Path(sys.executable), REPO_ROOT / "tools/easy521_application_usb.py",
+        cwd=tmp_path, env=dict(os.environ))
+    assert preview["status"] == "preview" and preview["requests"] == []
+    assert preview["device_access"] is False and preview["plc_change_possible"] is False
+    frame = bytes.fromhex(preview["open_preview_hex"])
+    assert frame[8] == 1 and frame[26:] == b"userprog.foid\0"
+
+
+def test_native_application_dependencies_import_and_parse_without_compiler(tmp_path):
+    result = distribution_check.check_native_application_imports(
+        Path(sys.executable), REPO_ROOT / "tools", cwd=tmp_path, env=dict(os.environ))
+    assert result["parsed_profiles"] == ["counter-dint-increment-v1", "bess-pcmd-real-increment-v1"]
+    assert result["native_compilation_executed"] is False and result["device_access"] is False
+
+
 @pytest.mark.parametrize("access", [
     "import subprocess; subprocess.run(['must-not-run'])",
     "import socket; socket.socket()",
@@ -112,3 +129,25 @@ def test_usb_memory_preview_guard_rejects_external_access(tmp_path, capsys, acce
         distribution_check.preview_usb_memory_reader(
             Path(sys.executable), reader, cwd=tmp_path, env=dict(os.environ))
     assert "preview external access is forbidden" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize("access", [
+    "import subprocess; subprocess.run(['must-not-run'])",
+    "import socket; socket.socket()",
+    "from plc_idf.lease import ResourceLease; ResourceLease('must-not-lock')",
+    "import secrets; secrets.randbits(16)",
+    "import ctypes; ctypes.CDLL('must-not-load')",
+    "import ctypes.util; ctypes.util.find_library('must-not-discover')",
+    "from pathlib import Path; Path('must-not-probe').exists()",
+    "open('must-not-write', 'w')",
+    "import os; os.mkdir('must-not-create')",
+])
+def test_application_preview_guard_rejects_external_and_filesystem_access(tmp_path, capsys, access):
+    reader = tmp_path / "bad_application_preview.py"
+    reader.write_text(access + "\n", encoding="utf-8")
+    with pytest.raises(RuntimeError, match="Unexpected exit"):
+        distribution_check.preview_usb_application_reader(
+            Path(sys.executable), reader, cwd=tmp_path, env=dict(os.environ))
+    assert "application preview external access is forbidden" in capsys.readouterr().err
+    assert not (tmp_path / "must-not-write").exists()
+    assert not (tmp_path / "must-not-create").exists()

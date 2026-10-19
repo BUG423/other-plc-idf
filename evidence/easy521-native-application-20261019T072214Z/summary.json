@@ -1,0 +1,891 @@
+{
+  "schema": "plcidf.native-application-bench-summary.v1",
+  "date": "2026-10-19",
+  "target": {
+    "reported_model": "Easy521 TN",
+    "vidpid": "0471:a531",
+    "linux_device": "001:002",
+    "windows_busid": "7-2",
+    "serial": null,
+    "permanent_cpu_identity": null,
+    "descriptor_sha256": "be0da4a2a37147d2e0068bb492bf0eb89ea067e2808ecdcf6a756b0ddbd51351"
+  },
+  "sessions": [
+    {
+      "private_directory": ".plcidf/native-application-backup-20261019T072214Z",
+      "private_session_sha256": "97b5be22ce0f1adfbe33399830307f16b3e2ade143217f3f1763c02b5b22b506",
+      "started_at": "2026-10-19T07:22:39.757608+00:00",
+      "finished_at": "2026-10-19T07:22:40.082296+00:00",
+      "protocol_completed": true,
+      "error": null,
+      "cpu_mode_write_requested": false,
+      "plc_application_write_requested": false,
+      "source_sha256": {
+        ".plcidf/native-application-backup-20261019T072214Z/run_native_read_session.py": "fb69826c7d89f0135452c98a006430e216072c321868902519a3689a149e2b81",
+        ".plcidf/native-application-backup-20261019T072214Z/guard_native_read.py": "2e8b99bdcdc1bb50410f2cc16a3c077e5ea76e4e3d6c94d8efa081c9fb48b607",
+        "tools/easy521_linux_usb.py": "e088e53bfd5f72d3546b77523e7c2a9a727d73b6b767356de0c2401315a1f8e3",
+        "tools/read_easy521_usb_runtime.py": "14bb81256e7b8b3c9eab1c40fa96a24b1f76af59f1c12fff306d0552e2da0de4",
+        "tools/read_easy521_usb_memory.py": "6b2e5a6aee488eac90bea9a639d4addf49d2399af10bd08b78f6c1e06f9e1c1c",
+        "tools/easy521_application_protocol.py": "2677ce92031b61acd5fd56781d6d2ef125e58fabacb91462841716b343120f70",
+        "tools/easy521_application_usb.py": "b4f07d63bb2ca2382a73eb85daa6be727ffaf667d462dffbb2243f0ed2661552"
+      },
+      "original_identity": {
+        "idVendor": "0471",
+        "idProduct": "a531",
+        "busnum": "1",
+        "devnum": "2",
+        "bConfigurationValue": "2"
+      },
+      "cleanup": {
+        "started_at": "2026-10-19T07:22:40.078835+00:00",
+        "errors": [],
+        "drivers": {
+          "1-1:2.0": "/sys/bus/usb/drivers/cdc_acm",
+          "1-1:2.1": "/sys/bus/usb/drivers/cdc_acm"
+        },
+        "drivers_restored": true,
+        "node_restored": true,
+        "finished_at": "2026-10-19T07:22:40.082282+00:00"
+      },
+      "observations": [
+        {
+          "report_name": "01-runtime-gcm-state.json",
+          "private_report_sha256": "348c48d1057c63177912c63ed0786e09520ce236e15a5bba1cbdbad00b307fce",
+          "ok": true,
+          "status": "observed",
+          "stage": "complete",
+          "request_outcome": "correlated_raw_data",
+          "diagnostics": [],
+          "gcm_raw_value": 1
+        },
+        {
+          "report_name": "02-application-userprog.foid.json",
+          "private_report_sha256": "103603eacd1a13ea2ae6f20ef86ef0209d982df1626a30fcc4f8c6ee14662943",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "userprog.foid",
+          "file_bytes": 215,
+          "file_sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "03-runtime-gcm-state.json",
+          "private_report_sha256": "59bd53a3b56fca2c9820b98022c1e8049fd2c3d4a40ac12052a3347bcff67938",
+          "ok": true,
+          "status": "observed",
+          "stage": "complete",
+          "request_outcome": "correlated_raw_data",
+          "diagnostics": [],
+          "gcm_raw_value": 1
+        }
+      ]
+    },
+    {
+      "private_directory": ".plcidf/native-full-backup-20261019T072335Z",
+      "private_session_sha256": "a2ebf1e4c1451eab57017dc18d6dbc121983c5c8e8a691adac0428824011e183",
+      "started_at": "2026-10-19T07:23:44.664036+00:00",
+      "finished_at": "2026-10-19T07:23:45.038603+00:00",
+      "protocol_completed": false,
+      "error": "One native observation failed; no further requests issued",
+      "cpu_mode_write_requested": false,
+      "plc_application_write_requested": false,
+      "source_sha256": {
+        ".plcidf/native-full-backup-20261019T072335Z/run_native_read_session.py": "74249c486030e93405e5973ae95a6397d681578fe0a300cb313f931341bee74b",
+        ".plcidf/native-full-backup-20261019T072335Z/guard_native_read.py": "1d291798f5efe733e9a04454ea3cdd69e3b37c2317471fc75569b9ca1c8a92d3",
+        "tools/easy521_linux_usb.py": "e088e53bfd5f72d3546b77523e7c2a9a727d73b6b767356de0c2401315a1f8e3",
+        "tools/read_easy521_usb_runtime.py": "14bb81256e7b8b3c9eab1c40fa96a24b1f76af59f1c12fff306d0552e2da0de4",
+        "tools/read_easy521_usb_memory.py": "6b2e5a6aee488eac90bea9a639d4addf49d2399af10bd08b78f6c1e06f9e1c1c",
+        "tools/easy521_application_protocol.py": "2677ce92031b61acd5fd56781d6d2ef125e58fabacb91462841716b343120f70",
+        "tools/easy521_application_usb.py": "b4f07d63bb2ca2382a73eb85daa6be727ffaf667d462dffbb2243f0ed2661552"
+      },
+      "original_identity": {
+        "idVendor": "0471",
+        "idProduct": "a531",
+        "busnum": "1",
+        "devnum": "2",
+        "bConfigurationValue": "2"
+      },
+      "cleanup": {
+        "started_at": "2026-10-19T07:23:45.034647+00:00",
+        "errors": [],
+        "drivers": {
+          "1-1:2.0": "/sys/bus/usb/drivers/cdc_acm",
+          "1-1:2.1": "/sys/bus/usb/drivers/cdc_acm"
+        },
+        "drivers_restored": true,
+        "node_restored": true,
+        "finished_at": "2026-10-19T07:23:45.038578+00:00"
+      },
+      "observations": [
+        {
+          "report_name": "01-runtime-gcm-state.json",
+          "private_report_sha256": "5052dc7adea2ce9902baf59dc89f55691f82bd4f129932c19de26c03fd687e14",
+          "ok": true,
+          "status": "observed",
+          "stage": "complete",
+          "request_outcome": "correlated_raw_data",
+          "diagnostics": [],
+          "gcm_raw_value": 1
+        },
+        {
+          "report_name": "02-application-project.hcpp.json",
+          "private_report_sha256": "327d865cb94ca6db65efd24187e4f9d3e8e35f538f63eeb1e0e459e64170698d",
+          "ok": false,
+          "status": "failed",
+          "stage": "validate",
+          "request_outcome": "device_error_response",
+          "diagnostics": [
+            {
+              "code": "E_APPLICATION_UPLOAD",
+              "stage": "validate",
+              "message": "Device returned application error 132; no fallback/replay"
+            }
+          ],
+          "remote_name": "project.hcpp",
+          "file_bytes": null,
+          "file_sha256": null,
+          "request_count": 1,
+          "bulk_out_calls": 1,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read"
+          ],
+          "failed_requests": [
+            {
+              "action": "file-open-read",
+              "outcome": "device_error_response",
+              "out_transferred": 39,
+              "in_calls": [
+                {
+                  "rc": 0,
+                  "transferred": 14
+                }
+              ],
+              "decoded_error": 132
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "private_directory": ".plcidf/native-execution-backup-20261019T072430Z",
+      "private_session_sha256": "0f5cf3b4931f1ab26cc6f9f1d73780e3cd3eb94903fd38d6c3f4475faa999376",
+      "started_at": "2026-10-19T07:24:40.165171+00:00",
+      "finished_at": "2026-10-19T07:24:40.384405+00:00",
+      "protocol_completed": false,
+      "error": "One native observation failed; no further requests issued",
+      "cpu_mode_write_requested": false,
+      "plc_application_write_requested": false,
+      "source_sha256": {
+        ".plcidf/native-execution-backup-20261019T072430Z/run_native_read_session.py": "ae4b8218725bd0cebfeab6d5d625333fc4e4c77ee87b0437236c45fc3569c515",
+        ".plcidf/native-execution-backup-20261019T072430Z/guard_native_read.py": "1d291798f5efe733e9a04454ea3cdd69e3b37c2317471fc75569b9ca1c8a92d3",
+        "tools/easy521_linux_usb.py": "e088e53bfd5f72d3546b77523e7c2a9a727d73b6b767356de0c2401315a1f8e3",
+        "tools/read_easy521_usb_runtime.py": "14bb81256e7b8b3c9eab1c40fa96a24b1f76af59f1c12fff306d0552e2da0de4",
+        "tools/read_easy521_usb_memory.py": "6b2e5a6aee488eac90bea9a639d4addf49d2399af10bd08b78f6c1e06f9e1c1c",
+        "tools/easy521_application_protocol.py": "2677ce92031b61acd5fd56781d6d2ef125e58fabacb91462841716b343120f70",
+        "tools/easy521_application_usb.py": "dcdc5bb342149222184a6dd62059a37cf91541fe53559b6bdaef8adcf2fce02a"
+      },
+      "original_identity": {
+        "idVendor": "0471",
+        "idProduct": "a531",
+        "busnum": "1",
+        "devnum": "2",
+        "bConfigurationValue": "2"
+      },
+      "cleanup": {
+        "started_at": "2026-10-19T07:24:40.381343+00:00",
+        "errors": [],
+        "drivers": {
+          "1-1:2.0": "/sys/bus/usb/drivers/cdc_acm",
+          "1-1:2.1": "/sys/bus/usb/drivers/cdc_acm"
+        },
+        "drivers_restored": true,
+        "node_restored": true,
+        "finished_at": "2026-10-19T07:24:40.384392+00:00"
+      },
+      "observations": [
+        {
+          "report_name": "01-runtime-gcm-state.json",
+          "private_report_sha256": "48f636fb159a64f4e006be9148b24b72dc2545b18cab7bcbe7b782c7a9922e96",
+          "ok": true,
+          "status": "observed",
+          "stage": "complete",
+          "request_outcome": "correlated_raw_data",
+          "diagnostics": [],
+          "gcm_raw_value": 1
+        },
+        {
+          "report_name": "02-application-stprog.o.json",
+          "private_report_sha256": "8977aefd76e8d18b0a13d21ec733a05c199b36c70673ef694bbae65e69b49c2b",
+          "ok": false,
+          "status": "failed",
+          "stage": "receive",
+          "request_outcome": "unknown",
+          "diagnostics": [
+            {
+              "code": "E_APPLICATION_UPLOAD",
+              "stage": "receive",
+              "message": "Empty or oversized application response"
+            }
+          ],
+          "remote_name": "stprog.o",
+          "file_bytes": null,
+          "file_sha256": null,
+          "request_count": 3,
+          "bulk_out_calls": 3,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": [
+            {
+              "action": "file-read",
+              "outcome": "unknown",
+              "out_transferred": 14,
+              "in_calls": [
+                {
+                  "rc": 0,
+                  "transferred": 0
+                }
+              ],
+              "decoded_error": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "private_directory": ".plcidf/native-execution-backup-zlp-20261019T072754Z",
+      "private_session_sha256": "64b13f20924b5fc92d8d6c70e9252dd8ca3d5ecddaa15fb24c74379fa8817e50",
+      "started_at": "2026-10-19T07:28:03.518204+00:00",
+      "finished_at": "2026-10-19T07:28:06.798861+00:00",
+      "protocol_completed": true,
+      "error": null,
+      "cpu_mode_write_requested": false,
+      "plc_application_write_requested": false,
+      "source_sha256": {
+        ".plcidf/native-execution-backup-zlp-20261019T072754Z/run_native_read_session.py": "32f1dd4d0de39042ac5860b654628609d4909092bd4403ed95a1b44b4c52452e",
+        ".plcidf/native-execution-backup-zlp-20261019T072754Z/guard_native_read.py": "a63ef91c85a03427edd9e8ef65f6a781f1d5e5328a3a8111478aaed862b288f0",
+        "tools/easy521_linux_usb.py": "e088e53bfd5f72d3546b77523e7c2a9a727d73b6b767356de0c2401315a1f8e3",
+        "tools/read_easy521_usb_runtime.py": "14bb81256e7b8b3c9eab1c40fa96a24b1f76af59f1c12fff306d0552e2da0de4",
+        "tools/read_easy521_usb_memory.py": "6b2e5a6aee488eac90bea9a639d4addf49d2399af10bd08b78f6c1e06f9e1c1c",
+        "tools/easy521_application_protocol.py": "2677ce92031b61acd5fd56781d6d2ef125e58fabacb91462841716b343120f70",
+        "tools/easy521_application_usb.py": "e71b299c12ec51ea1f1dbc8474ff67604af63efcf9be8cdddad8eecd4612600a"
+      },
+      "original_identity": {
+        "idVendor": "0471",
+        "idProduct": "a531",
+        "busnum": "1",
+        "devnum": "2",
+        "bConfigurationValue": "2"
+      },
+      "cleanup": {
+        "started_at": "2026-10-19T07:28:06.795062+00:00",
+        "errors": [],
+        "drivers": {
+          "1-1:2.0": "/sys/bus/usb/drivers/cdc_acm",
+          "1-1:2.1": "/sys/bus/usb/drivers/cdc_acm"
+        },
+        "drivers_restored": true,
+        "node_restored": true,
+        "finished_at": "2026-10-19T07:28:06.798845+00:00"
+      },
+      "observations": [
+        {
+          "report_name": "01-passive-pending-read-frames.json",
+          "private_report_sha256": "bcd4548ae86dd4ae247149240abac467c098536c241f512418b00a655503d440",
+          "ok": true,
+          "status": "passive-receive-finished",
+          "stage": "complete",
+          "request_outcome": "not_sent",
+          "diagnostics": [],
+          "bulk_out_calls": 0,
+          "passive_reads": [
+            {
+              "rc": 0,
+              "bytes": 512,
+              "packet_sha256": "7bdb2e90ffb0c8f91e3005abc2d5e46e8cdc9ce7a62149b5498936250301fcdf"
+            },
+            {
+              "rc": 0,
+              "bytes": 0,
+              "packet_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "rc": -7,
+              "bytes": 0,
+              "packet_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          ],
+          "passive_first_frame": {
+            "sequence": 23499,
+            "selector": 4,
+            "operation": 5,
+            "block": 1,
+            "data_bytes": 494,
+            "matches_previous_pending_block1": true
+          }
+        },
+        {
+          "report_name": "02-runtime-gcm-state.json",
+          "private_report_sha256": "69749b25015f29c3a906b5d40951e6eed052ea6ef6118a25d52b244f181ca6da",
+          "ok": true,
+          "status": "observed",
+          "stage": "complete",
+          "request_outcome": "correlated_raw_data",
+          "diagnostics": [],
+          "gcm_raw_value": 1
+        },
+        {
+          "report_name": "03-application-stprog.o.json",
+          "private_report_sha256": "0b3db243e88ea6ce0f1d2655e093f6957e74d5010923935bc23c64d0484c3872",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "stprog.o",
+          "file_bytes": 125848,
+          "file_sha256": "69f3e60db59df3eae06cc96d9ad3716a08c114b8ffcb3a3bc369a56510b17fff",
+          "request_count": 256,
+          "bulk_out_calls": 256,
+          "accepted_prior_full_packet_zlp": 254,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "04-application-stuserprog.o.json",
+          "private_report_sha256": "e3bb6f2f1e98158aeaa3ab067855afde2dc0ef2e52d9c44878da5f9ebaad51c8",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "stuserprog.o",
+          "file_bytes": 4592,
+          "file_sha256": "1c948cd6ec7ba3d56e8daa1f59ae6ab5584711b462f038752696fcca15b32bc0",
+          "request_count": 11,
+          "bulk_out_calls": 11,
+          "accepted_prior_full_packet_zlp": 9,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "05-application-symbol.sym.json",
+          "private_report_sha256": "bc11c81973cad1e3afcd50ab8049226ec95c8be3aec3a64d8e008717bcef08c0",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "symbol.sym",
+          "file_bytes": 218,
+          "file_sha256": "1852d6682398014c33e51596b38fac7bf976c3c3b5f6477670662c7d03a7e2fb",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "06-application-userprog.foid.json",
+          "private_report_sha256": "e6f7f45e7f74b0932cd3b990f7224d6e75c55391db169ad9937c4a847cb4d6dc",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "userprog.foid",
+          "file_bytes": 215,
+          "file_sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "07-application-varsinfo.foid.json",
+          "private_report_sha256": "20c24d7833e95b2ea1d6652a4d69f23aec2ad68de5f8ed6637b1f8bd19fc3249",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "varsinfo.foid",
+          "file_bytes": 173,
+          "file_sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "08-application-syscfg.foid.json",
+          "private_report_sha256": "95cb9de1aefe77e4eec953d007cfbc554a582fe23448a39729b8b52184bb0288",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "syscfg.foid",
+          "file_bytes": 789,
+          "file_sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560",
+          "request_count": 3,
+          "bulk_out_calls": 3,
+          "accepted_prior_full_packet_zlp": 1,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "09-application-ethercat.foid.json",
+          "private_report_sha256": "9118fefcdb0828b2d77e259eb4a459be95bb0533219ab119542ca42d72f838d5",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "ethercat.foid",
+          "file_bytes": 270,
+          "file_sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "10-application-modbus.foid.json",
+          "private_report_sha256": "51a912a990b3091a4440544f69a00d21bd2e4e989286a407c277c51839587f30",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "modbus.foid",
+          "file_bytes": 73,
+          "file_sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "11-application-canlink.foid.json",
+          "private_report_sha256": "32d0bf76501f3f22084852b775efe4fc20d03442c907e8544893cad0ee42c106",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "canlink.foid",
+          "file_bytes": 72,
+          "file_sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "12-application-modcfg.foid.json",
+          "private_report_sha256": "bea90046be5966a1a506ab23a64ebd8272f793aa811f165d752da07dc85e3646",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "modcfg.foid",
+          "file_bytes": 579,
+          "file_sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab",
+          "request_count": 3,
+          "bulk_out_calls": 3,
+          "accepted_prior_full_packet_zlp": 1,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "13-application-ethip.foid.json",
+          "private_report_sha256": "52c4fe53ec2cce73a1f7f8a71c0e3beec00c508a914ccb9bc6a82148e3fab342",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "ethip.foid",
+          "file_bytes": 301,
+          "file_sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "14-application-EIPIns.foid.json",
+          "private_report_sha256": "cf70531d13307ed0639634bdd2dc5df07fda6cf6a669644791e5e30a573c4fd6",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "EIPIns.foid",
+          "file_bytes": 88,
+          "file_sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "15-application-ecttrans.foid.json",
+          "private_report_sha256": "ec3c198415a70f10eb957b0933b3e2217671e2591175e208fee34dd6ade29166",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "ecttrans.foid",
+          "file_bytes": 73,
+          "file_sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "16-application-dataLog.foid.json",
+          "private_report_sha256": "cb21ef27ef0c2149d1de9bd32a7847f6283280fe13e0e1ccd33f7619ca17e9f9",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "dataLog.foid",
+          "file_bytes": 261,
+          "file_sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "17-application-OpcUAServer.foid.json",
+          "private_report_sha256": "6ae61cb249c010a6958f26522e9f8b5fd8de38a7d3bf8afcbfb368dcb16a35f5",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "OpcUAServer.foid",
+          "file_bytes": 97,
+          "file_sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "18-application-sftpserver.foid.json",
+          "private_report_sha256": "d190f7cfbecfbd5fe15aa68580ac93b4eb4b67b265d2ac24265b7052f5b36b1f",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "sftpserver.foid",
+          "file_bytes": 146,
+          "file_sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "19-application-Ecam.foid.json",
+          "private_report_sha256": "91b940d7e7a0474f87cdee2dd2a7518156a1b3089ead94ab03afcd11afa918c0",
+          "ok": true,
+          "status": "file-read",
+          "stage": "complete",
+          "request_outcome": "correlated_file_data",
+          "diagnostics": [],
+          "remote_name": "Ecam.foid",
+          "file_bytes": 118,
+          "file_sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f",
+          "request_count": 2,
+          "bulk_out_calls": 2,
+          "accepted_prior_full_packet_zlp": 0,
+          "actions": [
+            "file-open-read",
+            "file-read"
+          ],
+          "failed_requests": []
+        },
+        {
+          "report_name": "20-runtime-gcm-state.json",
+          "private_report_sha256": "57786aba0955425b7229507003d613814209ce0fdda45e14e29117a8bfff1bdd",
+          "ok": true,
+          "status": "observed",
+          "stage": "complete",
+          "request_outcome": "correlated_raw_data",
+          "diagnostics": [],
+          "gcm_raw_value": 1
+        }
+      ]
+    }
+  ],
+  "application_files": [
+    {
+      "remote_name": "stprog.o",
+      "bytes": 125848,
+      "sha256": "69f3e60db59df3eae06cc96d9ad3716a08c114b8ffcb3a3bc369a56510b17fff"
+    },
+    {
+      "remote_name": "stuserprog.o",
+      "bytes": 4592,
+      "sha256": "1c948cd6ec7ba3d56e8daa1f59ae6ab5584711b462f038752696fcca15b32bc0"
+    },
+    {
+      "remote_name": "symbol.sym",
+      "bytes": 218,
+      "sha256": "1852d6682398014c33e51596b38fac7bf976c3c3b5f6477670662c7d03a7e2fb"
+    },
+    {
+      "remote_name": "userprog.foid",
+      "bytes": 215,
+      "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396"
+    },
+    {
+      "remote_name": "varsinfo.foid",
+      "bytes": 173,
+      "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603"
+    },
+    {
+      "remote_name": "syscfg.foid",
+      "bytes": 789,
+      "sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560"
+    },
+    {
+      "remote_name": "ethercat.foid",
+      "bytes": 270,
+      "sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73"
+    },
+    {
+      "remote_name": "modbus.foid",
+      "bytes": 73,
+      "sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f"
+    },
+    {
+      "remote_name": "canlink.foid",
+      "bytes": 72,
+      "sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887"
+    },
+    {
+      "remote_name": "modcfg.foid",
+      "bytes": 579,
+      "sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab"
+    },
+    {
+      "remote_name": "ethip.foid",
+      "bytes": 301,
+      "sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd"
+    },
+    {
+      "remote_name": "EIPIns.foid",
+      "bytes": 88,
+      "sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25"
+    },
+    {
+      "remote_name": "ecttrans.foid",
+      "bytes": 73,
+      "sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd"
+    },
+    {
+      "remote_name": "dataLog.foid",
+      "bytes": 261,
+      "sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55"
+    },
+    {
+      "remote_name": "OpcUAServer.foid",
+      "bytes": 97,
+      "sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f"
+    },
+    {
+      "remote_name": "sftpserver.foid",
+      "bytes": 146,
+      "sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81"
+    },
+    {
+      "remote_name": "Ecam.foid",
+      "bytes": 118,
+      "sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f"
+    }
+  ],
+  "execution_files_read_count": 17,
+  "execution_files_bytes": 133913,
+  "complete_backup_restore_verified": false,
+  "source_archive_read": false,
+  "source_archive_error_u32": 132,
+  "source_archive_error_semantics": "unknown",
+  "credential_encoding": "explicit zero8 accepted for these read requests on this device; no general password-policy claim",
+  "gcm_before_after": [
+    1,
+    1
+  ],
+  "native_download_executed": false,
+  "native_application_runtime_verified": false,
+  "hardware_writes": [],
+  "public_examples": [
+    {
+      "revision": "plus1",
+      "build": "/home/zss/workspace/py2plc/.plcidf/native-public-examples-20261019T072711Z/plus1-build/candidate-report.json",
+      "application": "/home/zss/workspace/py2plc/.plcidf/native-public-examples-20261019T072711Z/plus1-application/application-candidate.json",
+      "source_sha256": "31959306445c2ce91fd696c3f65b7128f015f291635af80184a93fa99dd6fd2a",
+      "stprog_sha256": "318040ea24813ea691a6d7f17129a30fbbb1aa83bef3a30340d3ade2e370fb90",
+      "files": 18
+    },
+    {
+      "revision": "plus2",
+      "build": "/home/zss/workspace/py2plc/.plcidf/native-public-examples-20261019T072711Z/plus2-build/candidate-report.json",
+      "application": "/home/zss/workspace/py2plc/.plcidf/native-public-examples-20261019T072711Z/plus2-application/application-candidate.json",
+      "source_sha256": "76bd90cf8eb545fee3b76f4fc67ebce272ceaecfe730c8ff3aaf15c758e196fb",
+      "stprog_sha256": "314ecb7828b691975b90814aa8ab7d04ce16c3236d0f0f5b0b83a09841c15332",
+      "files": 18
+    }
+  ],
+  "binary_storage": "Private .plcidf only; public metadata contains hashes, counts and local protocol structure.",
+  "pcmd_pre_download_baseline": {
+    "private_directory": "/home/zss/workspace/py2plc/.plcidf/native-pcmd-baseline-20261019T073325Z",
+    "observations": [
+      {
+        "report_name": "01-runtime-gcm-state.json",
+        "private_report_sha256": "300bc04f138ba7918acd7b3ad4ebf376adac6e685ad5634b82fe1cd571d4bf1f",
+        "ok": true,
+        "raw_value": 1,
+        "symbol": null,
+        "address_hex": null,
+        "raw_bits_u32": null,
+        "value_candidate": null
+      },
+      {
+        "report_name": "02-memory-pcmd.json",
+        "private_report_sha256": "bea7599d8bdf9b1c737506bca04fc6a498859a5ab54d62e9d28636aa142d8bff",
+        "ok": true,
+        "raw_value": null,
+        "symbol": "g_rBESS_Pcmd",
+        "address_hex": "0x21000f0",
+        "raw_bits_u32": 0,
+        "value_candidate": 0.0
+      },
+      {
+        "report_name": "03-memory-pcmd.json",
+        "private_report_sha256": "1762668006ddfdc4872fb91d38e923bced6d6043488d8c44c978454f6de08c25",
+        "ok": true,
+        "raw_value": null,
+        "symbol": "g_rBESS_Pcmd",
+        "address_hex": "0x21000f0",
+        "raw_bits_u32": 0,
+        "value_candidate": 0.0
+      },
+      {
+        "report_name": "04-memory-pcmd.json",
+        "private_report_sha256": "e8808f6469b7df33c868232437cf8255a4881674dd52f3428dc38192abf21ee0",
+        "ok": true,
+        "raw_value": null,
+        "symbol": "g_rBESS_Pcmd",
+        "address_hex": "0x21000f0",
+        "raw_bits_u32": 0,
+        "value_candidate": 0.0
+      },
+      {
+        "report_name": "05-runtime-gcm-state.json",
+        "private_report_sha256": "09368d86a19e69fb918cadabc5f3e029c103fd7c660196d70b13a8a3cbf3623e",
+        "ok": true,
+        "raw_value": 1,
+        "symbol": null,
+        "address_hex": null,
+        "raw_bits_u32": null,
+        "value_candidate": null
+      }
+    ],
+    "cleanup": {
+      "started_at": "2026-10-19T07:33:39.748193+00:00",
+      "errors": [],
+      "drivers": {
+        "1-1:2.0": "/sys/bus/usb/drivers/cdc_acm",
+        "1-1:2.1": "/sys/bus/usb/drivers/cdc_acm"
+      },
+      "drivers_restored": true,
+      "node_restored": true,
+      "finished_at": "2026-10-19T07:33:39.752578+00:00"
+    },
+    "new_source_deployed": false,
+    "interpretation": "fixed GVT-derived address replies with zero bits; not proof of new source execution"
+  }
+}

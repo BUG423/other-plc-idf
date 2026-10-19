@@ -36,6 +36,16 @@ ASSETS = (
     "tools/easy521_protocol.py",
     "tools/read_easy521_usb_runtime.py",
     "tools/easy521_linux_usb.py",
+    "tools/compile_easy521_native_probe.py",
+    "tools/bind_native_application.py",
+    "tools/prepare_easy521_application.py",
+    "tools/easy521_application_protocol.py",
+    "tools/easy521_application_usb.py",
+    "tools/inspect_vendor_application.py",
+    "tools/inspect_vendor_variables.py",
+    "tools/inspect_easy521_foid.py",
+    "tools/link_vendor_application.py",
+    "tools/bind_vendor_globals.py",
     "examples/easy521_native_probe/MAIN_plus1_body.st",
     "examples/easy521_native_probe/MAIN_plus2_body.st",
     "examples/easy521_native_probe/README.md",
@@ -65,6 +75,13 @@ OPEN_LINUX_SOURCES = (
 EASY521_SOURCES = (
     "examples/easy521_native_probe/MAIN_plus1_body.st",
     "examples/easy521_native_probe/MAIN_plus2_body.st",
+)
+NATIVE_APPLICATION_TOOLS = (
+    "compile_easy521_native_probe.py", "bind_native_application.py",
+    "prepare_easy521_application.py", "easy521_application_protocol.py",
+    "easy521_application_usb.py", "inspect_vendor_application.py",
+    "inspect_vendor_variables.py", "inspect_easy521_foid.py",
+    "link_vendor_application.py", "bind_vendor_globals.py",
 )
 
 
@@ -156,6 +173,110 @@ def preview_usb_runtime_reader(python: Path, reader: Path, *, cwd: Path,
     return preview
 
 
+def preview_usb_application_reader(python: Path, reader: Path, *, cwd: Path,
+                                   env: dict[str, str]) -> dict:
+    """Exercise the installed application reader's actual CLI preview.
+
+    The child process may import its installed Python resources, but cannot
+    spawn processes, open sockets, load libusb, create a lease, generate a
+    sequence, inspect an output path, or mutate the filesystem. Returned JSON
+    must contain only a fixed op1 read-open preview and no actual requests.
+    Credential zero bytes here are explicit preview input, not verified device
+    credentials. Nothing claims upload, download, compilation or execution.
+    """
+    code = "\n".join([
+        "import ctypes, ctypes.util, os, pathlib, runpy, secrets, socket, subprocess, sys",
+        "import plc_idf.interop as interop",
+        "import plc_idf.lease as leases",
+        "def forbidden(*args, **kwargs):",
+        "    raise AssertionError('application preview external access is forbidden')",
+        "subprocess.run = subprocess.Popen = forbidden",
+        "socket.socket = socket.create_connection = forbidden",
+        "interop.run_command = leases.ResourceLease = forbidden",
+        "secrets.randbits = forbidden",
+        "ctypes.CDLL = ctypes.util.find_library = forbidden",
+        "pathlib.Path.exists = forbidden",
+        "def audit(event, arguments):",
+        "    if event in ('os.mkdir', 'os.remove', 'os.rename', 'os.chmod', 'os.chown', 'os.rmdir', 'os.symlink', 'os.link'):",
+        "        forbidden()",
+        "    if event == 'open':",
+        "        mode, flags = arguments[1], arguments[2]",
+        "        if (isinstance(mode, str) and any(c in mode for c in 'wax+')) or (isinstance(flags, int) and flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC | os.O_APPEND)):",
+        "            forbidden()",
+        "sys.dont_write_bytecode = True",
+        "sys.addaudithook(audit)",
+        "sys.argv = [sys.argv[1], '--remote-name', 'userprog.foid', '--credential-hex', '0000000000000000']",
+        "runpy.run_path(sys.argv[0], run_name='__main__')",
+    ])
+    process = run([str(python), "-c", code, str(reader)], cwd=cwd, env=env)
+    preview = json.loads(process.stdout)
+    frame = bytes.fromhex(preview.get("open_preview_hex", ""))
+    if (preview.get("schema") != "plcidf.native-application-transaction.v1"
+            or preview.get("ok") is not True or preview.get("status") != "preview"
+            or preview.get("action") != "upload-read" or preview.get("device_access") is not False
+            or preview.get("plc_change_possible") is not False
+            or preview.get("application_execution_verified") is not False
+            or preview.get("complete_application_verified") is not False
+            or preview.get("requests") != [] or preview.get("automatic_retries") != 0
+            or len(frame) != 40 or frame[2:4] != b"\x01\x04" or frame[8:10] != b"\x01\x00"
+            or frame[18:26] != (494).to_bytes(4, "little") + bytes(4)
+            or frame[26:] != b"userprog.foid\0"):
+        raise RuntimeError("Installed application reader did not preserve guarded op1-only preview")
+    return preview
+
+
+def check_native_application_imports(python: Path, directory: Path, *, cwd: Path,
+                                     env: dict[str, str]) -> dict:
+    """Import all installed native build/packaging helpers without compiler I/O.
+
+    The standalone resource directory is explicit, so checkout ``tools`` cannot
+    supply a missing dependency. Two in-memory source profiles are parsed and
+    lowered to IR. LLVM, vendor programs and devices are never invoked. Return
+    identities and evidence of parsing only, with compilation/execution false.
+    """
+    code = "\n".join([
+        "import ctypes, ctypes.util, importlib.util, json, pathlib, socket, subprocess, sys",
+        "import plc_idf.interop as interop",
+        "import plc_idf.lease as leases",
+        "def forbidden(*args, **kwargs):",
+        "    raise AssertionError('native application import external access is forbidden')",
+        "subprocess.run = subprocess.Popen = forbidden",
+        "socket.socket = socket.create_connection = forbidden",
+        "ctypes.CDLL = ctypes.util.find_library = forbidden",
+        "interop.run_command = leases.ResourceLease = forbidden",
+        "directory = pathlib.Path(sys.argv[1])",
+        "sys.path.insert(0, str(directory))",
+        "modules = {}",
+        "for filename in json.loads(sys.argv[2]):",
+        "    path = directory / filename",
+        "    spec = importlib.util.spec_from_file_location('_installed_' + filename[:-3], path)",
+        "    module = importlib.util.module_from_spec(spec)",
+        "    spec.loader.exec_module(module)",
+        "    modules[filename] = module",
+        "compiler = modules['compile_easy521_native_probe.py']",
+        "cases = [(compiler.PROFILE, b'COUNTER := COUNTER + 1;', {'COUNTER':'DINT'}),",
+        "         (compiler.REAL_PROFILE, b'g_rBESS_Pcmd := g_rBESS_Pcmd + 2.0;', {'g_rBESS_Pcmd':'REAL'})]",
+        "parsed = []",
+        "for profile, source, globals_map in cases:",
+        "    declarations = json.dumps({'schema':'plcidf.vendor-main-source.v1','globals':globals_map}).encode()",
+        "    result = compiler.parse_probe(source, declarations, profile=profile)",
+        "    ir = compiler.emit_ir(result)",
+        "    assert b'define void @MAIN()' in ir and result['initial_value'] is None",
+        "    parsed.append(result['profile'])",
+        "print(json.dumps({'modules': {name:str(pathlib.Path(module.__file__)) for name,module in modules.items()},",
+        "    'parsed_profiles':parsed,'native_compilation_executed':False,'device_access':False,'windows_access':False}))",
+    ])
+    result = json.loads(run([str(python), "-c", code, str(directory),
+                            json.dumps(NATIVE_APPLICATION_TOOLS)], cwd=cwd, env=env).stdout)
+    if (set(result.get("modules", {})) != set(NATIVE_APPLICATION_TOOLS)
+            or any(not Path(path).is_relative_to(directory) for path in result["modules"].values())
+            or result.get("parsed_profiles") != ["counter-dint-increment-v1", "bess-pcmd-real-increment-v1"]
+            or any(result.get(key) is not False for key in
+                   ("native_compilation_executed", "device_access", "windows_access"))):
+        raise RuntimeError("Installed native application dependency closure/import contract failed")
+    return result
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--report", type=Path)
@@ -163,6 +284,8 @@ def main() -> int:
                         help="Keep the built wheel and sdist in this directory")
     parser.add_argument("--toolchain-dir", type=Path,
                         help="Use this existing local MatIEC toolchain to verify the installed motor project; never downloads a toolchain")
+    parser.add_argument("--skip-git-metadata", action="store_true",
+                        help="Do not invoke Git; report source revision and worktree status as unknown")
     args = parser.parse_args()
     toolchain_dir = args.toolchain_dir.expanduser().resolve() if args.toolchain_dir else None
     env = dict(os.environ)
@@ -220,6 +343,8 @@ def main() -> int:
             "runtime_codec = runtime_asset(root, 'tools/easy521_protocol.py')",
             "runtime_helper = runtime_asset(root, 'plc/tools/read_easy521_usb_runtime.ps1')",
             "native_usb = runtime_asset(root, 'tools/easy521_linux_usb.py')",
+            "native_application_assets = {name: runtime_asset(root, 'tools/' + name) for name in "
+                + repr(NATIVE_APPLICATION_TOOLS) + "}",
             "bootstrap = runtime_asset(root, 'tools/bootstrap_open_linux.py')",
             "template = runtime_asset(root, 'examples/open_linux/counter/main.st')",
             "motor = runtime_asset(root, 'examples/open_linux/motor/main.st').parent",
@@ -236,6 +361,7 @@ def main() -> int:
             "assert all(p.is_file() and p.is_relative_to(package) for p in (runtime_reader, runtime_codec, runtime_helper, native_usb))",
             "assert runtime_codec == runtime_reader.with_name('easy521_protocol.py')",
             "assert native_usb == memory_reader.with_name('easy521_linux_usb.py') == runtime_reader.with_name('easy521_linux_usb.py')",
+            "assert all(p.is_file() and p.is_relative_to(package) and p.parent == native_usb.parent for p in native_application_assets.values())",
             "assert runtime_asset(memory_reader.parents[1], 'plc/tools/read_easy521_usb_memory.ps1') == memory_helper",
             "assert bootstrap.is_file() and bootstrap.is_relative_to(package)",
             "assert template.is_file() and template.is_relative_to(package)",
@@ -255,6 +381,7 @@ def main() -> int:
             "'usb_memory_helper': str(memory_helper),",
             "'usb_runtime_reader': str(runtime_reader), 'usb_runtime_codec': str(runtime_codec),",
             "'usb_runtime_helper': str(runtime_helper), 'native_usb': str(native_usb),",
+            "'native_application_assets': {name:str(path) for name,path in native_application_assets.items()},",
             "'vendor_adapter_metadata': vendor_metadata,",
             "'bridge_windows': cfg.bridge.tools_ps1_windows,",
             "'evidence_path': str(evidence_path(cfg)),",
@@ -281,9 +408,17 @@ def main() -> int:
             if (preview.get("transport_kind") != "linux-native-libusb1"
                     or preview.get("linux_native_usb") is not True):
                 raise RuntimeError("Installed native USB preview chose a different backend")
+        application_imports = check_native_application_imports(
+            python, Path(paths["native_usb"]).parent, cwd=project, env=env)
+        application_preview = preview_usb_application_reader(
+            python, Path(paths["native_application_assets"]["easy521_application_usb.py"]),
+            cwd=project, env=env)
         cli = venv / "bin/plcidf"
         for worker in ("prepare_vendor_worker", "compile_vendor_worker"):
             run([str(python), paths[worker], "--help"], cwd=project, env=env)
+        for name in ("compile_easy521_native_probe.py", "bind_native_application.py",
+                     "prepare_easy521_application.py"):
+            run([str(python), paths["native_application_assets"][name], "--help"], cwd=project, env=env)
         body, globals_file = project / "counter.st", project / "globals.json"
         body.write_text("COUNTER := COUNTER + 1;\n", encoding="utf-8")
         globals_file.write_text(json.dumps({"schema": "plcidf.vendor-main-source.v1",
@@ -409,10 +544,11 @@ def main() -> int:
             "schema_version": 1,
             "result": "passed",
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-            "source_revision": run(["git", "rev-parse", "HEAD"],
-                                   cwd=ROOT, env=env).stdout.strip(),
-            "working_tree_dirty": bool(run(["git", "status", "--porcelain"],
-                                           cwd=ROOT, env=env).stdout.strip()),
+            "source_revision": None if args.skip_git_metadata else run(
+                ["git", "rev-parse", "HEAD"], cwd=ROOT, env=env).stdout.strip(),
+            "working_tree_dirty": None if args.skip_git_metadata else bool(run(
+                ["git", "status", "--porcelain"], cwd=ROOT, env=env).stdout.strip()),
+            "git_metadata_queried": not args.skip_git_metadata,
             "python_version": sys.version,
             "wheel": wheel.name,
             "wheel_sha256": hashlib.sha256(wheel.read_bytes()).hexdigest(),
@@ -436,6 +572,16 @@ def main() -> int:
                 "runtime": runtime_previews,
                 "guarded_access": ["subprocess", "socket", "interop", "device_lease",
                                    "random_sequence", "libusb_load", "library_discovery"],
+                "hardware_accessed": False,
+            },
+            "native_application_resources": {
+                "imports": application_imports,
+                "upload_preview": application_preview,
+                "worker_help_checked": ["compile_easy521_native_probe.py", "bind_native_application.py",
+                                         "prepare_easy521_application.py"],
+                "guarded_access": ["subprocess", "socket", "interop", "device_lease", "random_sequence",
+                                   "libusb_load", "library_discovery", "output_path_probe", "filesystem_mutation"],
+                "native_compilation_executed": False,
                 "hardware_accessed": False,
             },
             "open_linux_checks": {

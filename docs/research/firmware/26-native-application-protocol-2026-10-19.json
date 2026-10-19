@@ -1,0 +1,218 @@
+{
+  "schema": "plcidf.native-application-protocol-research.v1",
+  "recorded_at": "2026-10-19T07:20:09.820518+00:00",
+  "scope": "offline vendor host binary inspection; no Windows execution/DLL loading/device access",
+  "sources": {
+    "H530Communicate.dll": {
+      "local_path": "/mnt/e/Software/AutoShop/H530Communicate.dll",
+      "bytes": 22864896,
+      "sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698"
+    },
+    "InterfaceMgr.dll": {
+      "local_path": "/mnt/e/Software/AutoShop/InterfaceMgr.dll",
+      "bytes": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192"
+    },
+    "AutoShop.exe": {
+      "local_path": "/mnt/e/Software/AutoShop/AutoShop.exe",
+      "bytes": 55592960,
+      "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e"
+    },
+    "Simulator/mp_core.dll": {
+      "local_path": "/mnt/e/Software/AutoShop/Simulator/mp_core.dll",
+      "bytes": 279698,
+      "sha256": "69770ad2b0c3f0bacf2cda5cdd1a320442e31a46a693b54404cb3125426b1e4f"
+    },
+    "mfc90u.dll": {
+      "local_path": "/mnt/c/Windows/WinSxS/Fusion/x86_microsoft.vc90.mfc_1fc8b3b9a1e18e3b_none_eaa49612b1f5b2ea/9.0/9.0.30729.1/mfc90u.dll",
+      "bytes": 3783672,
+      "sha256": "443fd2e5fce845e3e682f6057081b8209e4b7d1f50e2938f7cfc003f2a6b1a01"
+    }
+  },
+  "code_ranges": [
+    {
+      "role": "upload_vtable",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x7c20c",
+      "end_exclusive_rva": "0x7c250",
+      "sha256": "e4ca393e05c577e8511b1baf798f49064609cccdb29e435646adfec7e73116fe"
+    },
+    {
+      "role": "download_vtable",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x79d3c",
+      "end_exclusive_rva": "0x79d80",
+      "sha256": "ef9f11da52242e175e2c9abd364cb7fce789ce9087176e8290155ebc7d476b79"
+    },
+    {
+      "role": "upload_parameters",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x1f770",
+      "end_exclusive_rva": "0x1f880",
+      "sha256": "d2c2fa6173724d31b9c3cc914f20d93daab35c5c7ff844fff5d85f1e655daabe"
+    },
+    {
+      "role": "upload_open_body",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x1fa00",
+      "end_exclusive_rva": "0x1fb8d",
+      "sha256": "03f8d8d4f4912ba58bc09be95e567be07004022da58927e32ca06bcecc1af829"
+    },
+    {
+      "role": "upload_execute",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x1fce0",
+      "end_exclusive_rva": "0x200c8",
+      "sha256": "032a60fe3d2cace604cb5e34b8a6b4dc7ebd3444ee87e6f227392c00dfefb4a5"
+    },
+    {
+      "role": "download_open_body",
+      "module": "H530Communicate.dll",
+      "start_rva": "0xd300",
+      "end_exclusive_rva": "0xd440",
+      "sha256": "eb7a8ba933be2eedce65e0e218bf0ec4837dd65471b27cc268d808142181e043"
+    },
+    {
+      "role": "download_execute",
+      "module": "H530Communicate.dll",
+      "start_rva": "0xd440",
+      "end_exclusive_rva": "0xd79c",
+      "sha256": "4abb034832b585e751f170873a4e32d1876b6fd866fa7e0c980f85927e8a3592"
+    },
+    {
+      "role": "set_gcm_command",
+      "module": "H530Communicate.dll",
+      "start_rva": "0xde00",
+      "end_exclusive_rva": "0xde66",
+      "sha256": "b8ddf8bf6fa835508bd02d6962d7f0f590577ef60ed30ef2a3e980798be44bd8"
+    },
+    {
+      "role": "set_index_common",
+      "module": "H530Communicate.dll",
+      "start_rva": "0xc7d0",
+      "end_exclusive_rva": "0xc8e3",
+      "sha256": "ce2e9c18e137142ce0c018699afaf84cfdea95a997bba5980ed9e49d3e8f4aca"
+    },
+    {
+      "role": "frame_constructor",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x28050",
+      "end_exclusive_rva": "0x280cc",
+      "sha256": "18455fa9eca1e1b82214c3f9244b5f515cfb4ca07043298f6ca942aa9324badd"
+    },
+    {
+      "role": "packetizer",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x280d0",
+      "end_exclusive_rva": "0x28351",
+      "sha256": "bd8475023641be9284a9189209e655d5d7b35cb7660319600422db4fbe538bca"
+    },
+    {
+      "role": "file_response_assembly",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x28660",
+      "end_exclusive_rva": "0x28746",
+      "sha256": "8a3bda7dded3d51bb08e01c18439ed084ce3726cec8b32d5a30d07c7f20e768c"
+    },
+    {
+      "role": "ack_parser",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x288c0",
+      "end_exclusive_rva": "0x28910",
+      "sha256": "5f7da601b11592013ebc6e060b85318e301657027bdfd8958b96c3a60026a8cb"
+    },
+    {
+      "role": "usb_constructor",
+      "module": "H530Communicate.dll",
+      "start_rva": "0x295d0",
+      "end_exclusive_rva": "0x29670",
+      "sha256": "26d10118ebefdbcb6bda104b8c6620136f9110067950ba7336f3236d2f04e952"
+    }
+  ],
+  "real_host_chains": {
+    "upload": "IH530 facade68fc0 -> slot104 -> implementation5c10 -> CUploadFileCommand vtable7c20c slot3c=1f890 -> 1fce0",
+    "download": "IH530 facade68ef0 -> slotfc -> implementation5ac0 -> CDownloadFileCommand vtable79d3c slot3c=d130 -> d440/d7a0",
+    "set_gcm": "IH530 facade68a10 -> slota8 -> implementation50d0 -> CGCMStateCommand vtable79e54 slot3c=dcb0 -> de00 -> c7d0"
+  },
+  "wire": {
+    "header": "LE16 total, u8 version1, u8 selector, LE16 sequence, reserved_u16zero, u8 operation, ordinary_flags_u8zero",
+    "file_selector": 4,
+    "read_open_operation": 1,
+    "write_open_operation": 2,
+    "file_open_body": "explicit credential8; LE32 chunk_bytes; LE32 file_bytes (0 for read); ASCII allowlisted basename plus NUL",
+    "usb_read_chunk_bytes": 494,
+    "usb_write_chunk_bytes": 40960,
+    "read_request_operation": 6,
+    "read_request_body": "LE32 zero-based block_number",
+    "read_response_operation": 5,
+    "read_response_body": "LE32 block_number, LE32 data_bytes, exact data",
+    "write_request_operation": 5,
+    "write_request_body": "LE32 block_number, LE32 data_bytes, exact data; no extra NUL transmitted",
+    "ack_operation": 6,
+    "ack_body": "one LE32 (file length on read-open; raw ACK information otherwise)",
+    "error_operation": 15,
+    "error_body": "one LE32 error code, even0/1 is not success",
+    "gcm_set": "selector1/op2; LE32 indexff000000; LE32 length1; u8state0..3",
+    "file_transaction": "GCMraw2 -> reviewed ordered file open2/write5 -> GCMraw3; no automatic RUN/rollback",
+    "sequence": "u16 advances each frame and wraps; not authentication",
+    "flags": "File/GCM command execute chains do not arm one-shot override; whole-DLL stores to protocol6a/6e/72 isolated to other command chains f76e,f84b,100dc plus base initializer"
+  },
+  "credential_boundary": "Caller must supply exact8 bytes. H530 IAT74030 is InterfaceMgr EncodingManager::ConvertToCStringAFromUnicode_BaseOrUTF returning HString; IAT7408c is HString::GetBuffer. InterfaceMgr5e4c0 constructs HString through MFC90u ordinal310 and5b430 forwards GetBuffer to ordinal2697. Empty CString at call sites does not prove all trailing wire bytes or device password policy. No default credential or login bypass implemented.",
+  "path_boundary": "Exact report16 basenames only; no inferred /am600-nand, default, PrgBackup or arbitrary path",
+  "simulator_secondary": {
+    "create_read": "file_route_create op1 opens read route, op2 is destructive truncate/create branch; not Easy521 firmware proof",
+    "read": "file_route_read increments block sequence and destroys route at full length; actual PLC route cleanup remains unknown",
+    "password": "Simulator verify_password returns true unconditionally; explicitly NOT an Easy521 credential policy"
+  },
+  "acceptance": {
+    "static_contract": true,
+    "fake_c_abi_tests": 90,
+    "native_plc_application_read": false,
+    "native_plc_application_write": false,
+    "complete_application_compiler": false,
+    "application_execution": false
+  },
+  "experiment_plan": [
+    "Fresh native descriptor identity check; explicit host free interface and node permissions handled by root only.",
+    "Read GCM separately before experiment; no control request inside file upload.",
+    "Choose current known-empty credential encoding explicitly, not tool default; preview exact userprog.foid open-read.",
+    "One session open-read userprog.foid, parse correlated op6 length bounded to8MiB, read op6 numbered494B blocks, save new private path and SHA256.",
+    "On any timeout/malformed/device-error stop without request replay/path fallback; preserve raw bytes and route cleanup unknown.",
+    "After successful cleanup separately read GCM; compare backup byte hashes with correctly frozen source candidates without claiming full application identity."
+  ],
+  "limitations": [
+    "True remote routing and credentials still need read-only hardware acceptance.",
+    "Application transaction state2/3 meanings/activation and errors need independent hardware evidence.",
+    "Ordered transfer ACK does not prove complete model/version-dependent file closure or restorable backup.",
+    "No automatic firmware flash, remote shell, arbitrary index, system-file path or driver detachment."
+  ],
+  "pcmd_fixed_profile": {
+    "symbol": "g_rBESS_Pcmd",
+    "type": "REAL",
+    "width_bits": 32,
+    "address": "0x021000f0",
+    "source": "frozen VarNameAndAddr.csv line275 plus independent GVT in report17/27; same fixed read in native and Windows transport",
+    "read_only": true
+  },
+  "interruption_boundary": "Application API/CLI preserves actual device_access, requests, unknown outcome and cleanup on KeyboardInterrupt; CLI exits130.",
+  "zlp_correction": {
+    "date": "2026-10-19",
+    "failed_observation": ".plcidf/native-execution-backup-20261019T072430Z/02-application-stprog.o.json",
+    "observed": "Open ACK125848; block0 correlated512B; block1 singleOUT then rc0/count0; old implementation stopped unknown; history retained",
+    "interpretation": "Possible prior full-size response termination ZLP; not proof all0B transfers are harmless",
+    "rule": "Within same session only: previous accepted response512B in one512B IN permits at most one leading rc0/count0 IN before next correlated response; no additional OUT/reconnect, same deadline and4-IN bound",
+    "reject": "No previous full response, second empty transfer, empty transfer inside partial frame, errors/timeouts are refused",
+    "cross_session": "No ZLP allowance is inherited across new sessions; no speculative trailing drain added",
+    "primary_sources": [
+      "https://docs.kernel.org/driver-api/usb/usb.html",
+      "https://libusb.sourceforge.io/api-1.0/libusb_packetoverflow.html"
+    ]
+  },
+  "credential_runtime_boundary": {
+    "MFC_image_base": "0x789e0000",
+    "constructor_ordinal310_va": "0x78bf2035",
+    "get_buffer_ordinal2697_va": "0x78aba0f0",
+    "guarantee": "An empty converted string is NUL terminated; trailing seven bytes of8B host copy are not established as zero. No memory execution or heap probe performed.",
+    "device_candidate_observation": "Root reports this Easy521 accepted explicit zero8 and basename userprog.foid; that is scoped hardware evidence, not a universal padding/password rule."
+  }
+}

@@ -19,10 +19,11 @@ flowchart LR
     CLI --> OPEN["🐧 Linux 本地后端<br/>MatIEC → C → GCC → ELF"]
     CLI --> VENDOR["🪟 Easy521 兼容后端<br/>已有 Windows AutoShop 工程"]
     AI --> DATA["🔌 Modbus TCP 工具<br/>D 区读写与读回"]
-    AI --> USB["🔎 独立 USB 只读查询<br/>Windows / Linux 状态与时钟已实测"]
-    AI --> OBJECT["🧩 ARM 对象研究<br/>厂商编译 / Linux 单句探针"]
+    AI --> USB["🔎 独立 USB 只读查询<br/>Linux 状态、时钟与应用文件已实测"]
+    AI --> OBJECT["🧩 Linux 原生候选<br/>受限 ST → ARM → 绑定 → 18 文件"]
     VENDOR --> PLC["🎛️ Easy521<br/>应用下装已有实测"]
     USB --> PLC
+    OBJECT -.->|"原生下装与执行待验收"| PLC
     DATA -.->|"真机数据控制待验收"| PLC
     OPEN --> REPORT["📋 编译记录与逐扫描断言"]
     PLC -.->|"设备数据与人工观察"| FEEDBACK["📝 反馈与下一轮需求"]
@@ -34,7 +35,7 @@ flowchart LR
     style PLC fill:#fff7ed,stroke:#f97316,color:#7c2d12
 ```
 
-Linux 后端已能真实编译、执行与验收 ST。Easy521 接入 24 V 后，已完成灯程序的厂商编译、USB 下装和程序一致性校验；用户现场确认输出区 Y0 闪烁、STOP 后熄灭，见[此前真机记录](docs/research/firmware/20-powered-led-bench-2026-10-19.md)。新增原生 Linux libusb 读取已在本设备完成状态、运行标志及变化时钟的8次有效读取，临时host准备后驱动/权限恢复，见[最新原生真机记录](docs/research/firmware/25-native-linux-device-reads-2026-10-19.md)。完整真机下装仍依赖 Windows 工具；Linux 单 DINT 自增 ST→ARM 对象、两级链接和配置 FOID 检查不能替代完整应用包装与原生下装。
+Linux 本地后端已能真实编译、执行与验收 ST。Easy521 已完成 Windows 厂商工具下装与 Y0 灯实验；原生 Linux libusb 已读回状态、变化时钟及 17 个执行/配置文件，见[真机应用读回](docs/research/firmware/32-native-application-readback-2026-10-19.md)。Linux 新 ST 编译、两级链接、既有变量绑定与 18 文件候选组合已通过本地验证；原生下装、新应用运行及修改后的两轮真机行为仍待验收。
 
 ---
 
@@ -45,8 +46,8 @@ Linux 后端已能真实编译、执行与验收 ST。Easy521 接入 24 V 后，
 | 🤖 **AI 编程与需求验收** | AI 直接修改 ST 和场景文件；`verify` 执行真实编译与逐扫描 expected/actual 断言，支持电机逻辑和 REAL 滞回示例。 |
 | 🐧 **Linux 原生运行** | 固定 MatIEC 工具链，提供工程创建、构建、部署、本地运行、监测与停止；物理 I/O 和工业实时性另行验收。 |
 | 🎛️ **Easy521 工程兼容** | WSL 调用已安装 AutoShop，支持已有工程 MAIN 同步、真实编译、下载与证据记录；当前保留 Windows 依赖。 |
-| 🧩 **独立对象编译与链接** | Windows StLang 支持受限正文；Linux 已真实编译单 DINT 自增 ST 并完成两级链接，另有固定 8 项既有全局绑定与 FOID 结构检查。均不是完整原生应用。 |
-| 🔌 **数据控制与监测** | Windows USB 已实测；原生 Linux libusb 状态/标志/时钟读取在本设备通过，需可访问节点和空闲接口，host准备另列。D 区工具支持单次写入和读回，业务地址须先绑定。 |
+| 🧩 **原生编译与应用候选** | Linux 受限 DINT/REAL ST 编译、两级链接、同工程 GVT/CSV 绑定；固定既有配置组合 18 文件候选。支持范围严格限定，候选不等于真机执行通过。 |
+| 🔌 **数据控制与监测** | 原生 Linux 已实测状态/时钟及应用文件读取，默认预览；需可访问节点和空闲接口，host 准备另列。原生写入 API 的设备接受和执行另验；D 区业务地址须先绑定。 |
 | 📝 **现场反馈** | 人工记录、仪器记录校验及多轮摘要；关联需求/程序/目标，核对日期与附件哈希，未知项保留。 |
 | 📋 **可追溯记录** | 源码、构建产物、部署候选与验证结果分开记录；超时或无法核验时返回失败或 unknown，不自动重放设备写操作。 |
 
@@ -104,6 +105,15 @@ python tools/read_easy521_usb_runtime.py --transport linux-native --profile gcm-
 
 实际读取另需将 USB 附加到 Linux、核对 Linux `BUS:ADDRESS`、节点权限与接口占用，并显式执行；默认不切换归属、解绑驱动或回退 Windows。实际控制接口0/数据接口1及本轮host准备见[原生真机记录](docs/research/firmware/25-native-linux-device-reads-2026-10-19.md)，[24号](docs/research/firmware/24-linux-native-usb-2026-10-19.md)保留初稿与前置实验。
 
+应用文件读取同样默认零设备访问预览，凭据必须显式提供；下面的全零编码只在本台设备的读取实验中被接受：
+
+```bash
+python tools/easy521_application_usb.py \
+  --remote-name userprog.foid --credential-hex 0000000000000000
+```
+
+实际执行、私有输出、超时和大文件 USB 边界见[应用协议](docs/research/firmware/26-native-application-protocol-2026-10-19.md)。带完整注释的原生构建样例见 [easy521_native_memory](examples/easy521_native_memory)，仅适用于已固定的既有变量与任务接口。
+
 ### 4. 读取或预览 Modbus 数据操作
 
 确认真实 PLC IP 和寄存器用途后，在仓库内运行：
@@ -145,6 +155,8 @@ python -m pytest tools/tests -q
 | [A9/B9 接线](docs/usage/EASY521_LOAD_WIRING.md) / [Linux 最新验证](docs/research/firmware/21-linux-existing-global-bindings-2026-10-19.md) | TN/TP 负载回路、真实本地闭环与 Easy521 原生构建进展 |
 | [FOID 配置](docs/research/firmware/22-linux-foid-packaging-2026-10-19.md) / [原生 ST 探针](docs/research/firmware/23-linux-st-abi-2026-10-19.md) / [原生 USB](docs/research/firmware/24-linux-native-usb-2026-10-19.md) | 并行推进的严格离线检查、受限源码编译和只读通信后端，完整原生应用仍未通过 |
 | [Linux USB 真机读取](docs/research/firmware/25-native-linux-device-reads-2026-10-19.md) | 控制/数据接口纠正、8次状态/时钟读取、审计守卫与host恢复，应用下载另验 |
+| [原生应用协议](docs/research/firmware/26-native-application-protocol-2026-10-19.md) / [编译绑定](docs/research/firmware/27-native-bound-application-2026-10-19.md) / [配置候选](docs/research/firmware/28-fixed-application-config-2026-10-19.md) | 单次原生文件事务、新 ST 实际编译及固定接口 18 文件组合；设备运行另验 |
+| [原生应用真机读回](docs/research/firmware/32-native-application-readback-2026-10-19.md) | 17 个执行/配置文件、设备哈希、USB 边界修复、历史失败和主机恢复 |
 | [直接控制研究](docs/management/EASY521_DIRECT_CONTROL_2026-10-18.md) | 数据协议、CPU 模式、应用下载和底层系统的证据边界 |
 | [实施计划](docs/management/PLAN.md) / [进展](docs/management/PROGRESS.md) | 任务、验收条件、分工与 GitHub 跟踪 |
 | [协议与固件研究](docs/research/README.md) | 手册核验、通信实现、链接/包装及芯片资料研究 |

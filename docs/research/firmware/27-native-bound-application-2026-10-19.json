@@ -1,0 +1,1045 @@
+{
+  "schema": "plcidf.native-bound-application-research.v1",
+  "observed_date": "2026-10-19",
+  "scope": "fixed existing project REAL ST -> new ARM MAIN -> two native links -> GVT-derived SInfo binding",
+  "device_access": false,
+  "windows_access": false,
+  "runtime_abi_verified": false,
+  "downloadable": false,
+  "complete_application": false,
+  "private_root": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019",
+  "cases": [
+    {
+      "step_real": "1.0",
+      "candidate_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/candidate-report.json",
+        "sha256": "0ff0886bafa4af5bd13f627b2f369cd7ca3b8ad0cd9fdd74849c64ce1d3fa841"
+      },
+      "source_chain": {
+        "source_sha256": "59e932425313c46c29086483faf00d618c3e6f54edf3097a61c06d341f115c6b",
+        "globals_sha256": "1470f5804e51d419e2f0f2e428f7b21e363630705f719bb2987e9128c5e23f34",
+        "ir_sha256": "c15612bbc66140f7afa5d17dd980dff0b2e4f894e2459d919651c34e1c11ce61",
+        "pou_sha256": "e72500955d9b0962d3a085a414e0d90539a445c6879e060fc16f12ed9470a385",
+        "compiler_report_sha256": "2748ff56e8dee3ef4f346639230c87b77f3335528cec978b79e88e391b9fb5a4",
+        "link_report_sha256": "f26c1ad1ad07007df50a64cf8b18e5e3036639ec3098d06a9245376dfeb9db05",
+        "association": "observed-native-compile-two-links-and-existing-GVT-binding",
+        "cryptographic_build_attestation": false
+      },
+      "interface": {
+        "gvt_records_checked": 19,
+        "csv_rows_checked": 19,
+        "binding": {
+          "gvt_name": "g_rBESS_Pcmd",
+          "elf_name": "G_RBESS_PCMD",
+          "iec_type": "REAL",
+          "width_bits": 32,
+          "address": 34603248,
+          "gvt_record_offset": 889,
+          "gvt_address_offset": 916,
+          "csv_line": 275,
+          "sinfo_type": 8
+        },
+        "initial_text": "0",
+        "opaque_gvt_flags_hex": "01010000",
+        "retained": null,
+        "task_period_ms": null,
+        "retention_check": "exact-existing-GVT-Config.sdt-VarsInfo.vi-hashes",
+        "period_check": "exact-existing-Config.sdt-Output.sdt-ILIndex.idx-hashes",
+        "index_values": [
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          0,
+          4294967295,
+          4294967295,
+          1,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          2,
+          4294967295,
+          4294967295,
+          4294967295
+        ],
+        "entry_symbols_preserved": [
+          "MAIN",
+          "SBR_001"
+        ],
+        "task_runtime_call_verified": false,
+        "baseline_build_origin_verified": false
+      },
+      "inputs": [
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/变量表.gvt",
+          "bytes": 1503,
+          "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/VarNameAndAddr.csv",
+          "bytes": 24548,
+          "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/VarsInfo.vi",
+          "bytes": 284,
+          "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/ReAllocVarsInfo.vi",
+          "bytes": 4,
+          "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/ILIndex.idx",
+          "bytes": 142,
+          "sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.prg",
+          "bytes": 56,
+          "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.sdt",
+          "bytes": 182,
+          "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Config.sdt",
+          "bytes": 371,
+          "sha256": "af9e01cb471c8c7d6b4c41605192adeed28f03f6b3570675bea97ae24760f664"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/userprog.foid",
+          "bytes": 294,
+          "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/varsinfo.foid",
+          "bytes": 423,
+          "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/symbol.sym",
+          "bytes": 218,
+          "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/SBR_001.o",
+          "bytes": 1792,
+          "sha256": "0427a175b83bd445b632a449e92fde9276b2a703737e7ceadaca08d4f1d6d411"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_SysLib.o",
+          "bytes": 2808,
+          "sha256": "2fde5706b01135ac15db5f17b6847dd361894c909ecaa6a3cf9cca2f132782d2"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_STCLib.o",
+          "bytes": 122944,
+          "sha256": "047dad6fa718170625f0a78d927df304f3a6f681970009324a7179397958d95e"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/sources/plus1.st",
+          "bytes": 154,
+          "sha256": "59e932425313c46c29086483faf00d618c3e6f54edf3097a61c06d341f115c6b"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/sources/globals.json",
+          "bytes": 76,
+          "sha256": "1470f5804e51d419e2f0f2e428f7b21e363630705f719bb2987e9128c5e23f34"
+        }
+      ],
+      "tool_components": [
+        {
+          "path": "/home/zss/workspace/py2plc/tools/bind_native_application.py",
+          "sha256": "64b957d712a61dd1159ed41e9bf61a22419d9e7c40cc5845cc39ca71776e369e"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/bind_vendor_globals.py",
+          "sha256": "626922058cbca6596484e811c3e01d17c6424094926aae3b13200e6fd2aa7f41"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py",
+          "sha256": "cae1f517bf8c42fcfe0a20ee28899f17eeaf7267e4394a9454740045ca1368ce"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py",
+          "sha256": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_variables.py",
+          "sha256": "108421e86cf05a74f91b91a3cd5e9ad5c68e4dc67c05190aab6a2b404a1472c3"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/link_vendor_application.py",
+          "sha256": "b41f612085db21a581b7ee9813462505e0ffa753b21c834d4369be54a2e272ac"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+          "sha256": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d"
+        }
+      ],
+      "compiler": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llc",
+        "bytes": 176944,
+        "sha256": "994d679339b301a81bcc969d475bc1082da1cbfae40b2f3da9421cc85324a6d3",
+        "version": "Ubuntu LLVM version 20.1.2"
+      },
+      "compiler_command": {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llc",
+          "-mtriple=thumbv7-none-eabi",
+          "-mattr=+v7,+thumb2,+vfp3,+neon,+reserve-r9",
+          "-float-abi=soft",
+          "-relocation-model=static",
+          "-filetype=obj",
+          "-O=2",
+          "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/native-main/MAIN.ll",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/native-main/MAIN.o"
+        ],
+        "timeout_s": 10.0,
+        "attempts": 1,
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "arm_main": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/native-main/MAIN.o",
+        "sha256": "e72500955d9b0962d3a085a414e0d90539a445c6879e060fc16f12ed9470a385",
+        "bytes": 760,
+        "function_bytes": 34,
+        "external_symbols": [
+          "G_RBESS_PCMD"
+        ],
+        "arm_attributes": [
+          "Attribute Section: aeabi",
+          "File Attributes",
+          "  Tag_conformance: \"2.09\"",
+          "  Tag_CPU_arch: v7",
+          "  Tag_CPU_arch_profile: Application",
+          "  Tag_ARM_ISA_use: Yes",
+          "  Tag_THUMB_ISA_use: Thumb-2",
+          "  Tag_FP_arch: VFPv3",
+          "  Tag_Advanced_SIMD_arch: NEONv1",
+          "  Tag_ABI_PCS_R9_use: Unused",
+          "  Tag_ABI_PCS_GOT_use: direct",
+          "  Tag_ABI_FP_denormal: Needed",
+          "  Tag_ABI_FP_exceptions: Needed",
+          "  Tag_ABI_FP_number_model: IEEE 754",
+          "  Tag_ABI_align_needed: 8-byte",
+          "  Tag_ABI_align_preserved: 8-byte, except leaf SP",
+          "  Tag_ABI_optimization_goals: Prefer Speed",
+          "  Tag_CPU_unaligned_access: v6",
+          "  Tag_ABI_FP_16bit_format: IEEE 754"
+        ],
+        "private_disassembly_sha256": "825f1bc955c3063821cc20147ba1c2d4e2b2b8593abd0ed10444488674e65615"
+      },
+      "linker": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+        "resolved_path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/lld",
+        "sha256": "5c8dc44318df21528d0456cae914061cdc30221e40445b8cef84ba57f352445b",
+        "version": "Ubuntu LLD 20.1.2 (compatible with GNU linkers)"
+      },
+      "link_commands": [
+        {
+          "argv": [
+            "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+            "--version"
+          ],
+          "returncode": 0,
+          "attempt": 1
+        },
+        {
+          "argv": [
+            "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+            "-relocatable",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/linked/inputs/pou-000.o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/linked/inputs/pou-001.o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/linked/inputs/syslib.o",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/linked/stuserprog.o"
+          ],
+          "returncode": 0,
+          "attempt": 1
+        },
+        {
+          "argv": [
+            "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+            "-relocatable",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/linked/stuserprog.o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/linked/inputs/stclib.o",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/linked/stprog.o"
+          ],
+          "returncode": 0,
+          "attempt": 1
+        }
+      ],
+      "bound_outputs": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/bound/stuserprog.o",
+          "bytes": 4188,
+          "sha256": "db68036ff92013340ffc1eb64b5a9ad9718be20d7df135b835c46d3b203e64a4",
+          "input_sha256": "c50750b87ec31ac04e67fd6a9e95330b440d243ade385eebe981ed95d646e3b6",
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 79,
+                "symbol_entry_offset": 2236,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  2240,
+                  2241,
+                  2242,
+                  2243,
+                  2248
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 2240,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 2242,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 2243,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 2248,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          },
+          "elf_summary": {
+            "defined_names_count": 11,
+            "undefined_names_count": 3,
+            "relocation_count": 45
+          }
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus1/bound/stprog.o",
+          "bytes": 143708,
+          "sha256": "318040ea24813ea691a6d7f17129a30fbbb1aa83bef3a30340d3ade2e370fb90",
+          "input_sha256": "f70406a36151573ab6715b1ec2b6c395c29505f87939cdb53a6a939cfe552a85",
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 1565,
+                "symbol_entry_offset": 121936,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  121940,
+                  121941,
+                  121942,
+                  121943,
+                  121948
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 121940,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 121942,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 121943,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 121948,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          },
+          "elf_summary": {
+            "defined_names_count": 54,
+            "undefined_names_count": 16,
+            "relocation_count": 3826
+          }
+        }
+      ],
+      "host_semantics": {
+        "target": "x86_64-pc-linux-gnu",
+        "same_ir_sha256": "c15612bbc66140f7afa5d17dd980dff0b2e4f894e2459d919651c34e1c11ce61",
+        "host_object_sha256": "2aaaa5bf92d1c9320472dd16db29fa78a992f27fc0a4200cc862035a4d241ef2",
+        "driver_sha256": "222f0d4cb179bf2490e14d84b53d0e9648a07a196ea7deec13b0275cd29045eb",
+        "executable_sha256": "ccf8cd8ce3b5b1a0ea9ac2123d92702d6dcb2ab522a70177b12074420c3a71eb",
+        "initial_values": [
+          0.0,
+          -1.5,
+          16777216.0,
+          33554432.0,
+          1.401298464324817e-45
+        ],
+        "scans_per_initial": 3,
+        "observed_float32_hex": [
+          "3f800000",
+          "40000000",
+          "40400000",
+          "bf000000",
+          "3f000000",
+          "3fc00000",
+          "4b800000",
+          "4b800000",
+          "4b800000",
+          "4c000000",
+          "4c000000",
+          "4c000000",
+          "3f800000",
+          "40000000",
+          "40400000"
+        ],
+        "expected_float32_hex": [
+          "3f800000",
+          "40000000",
+          "40400000",
+          "bf000000",
+          "3f000000",
+          "3fc00000",
+          "4b800000",
+          "4b800000",
+          "4b800000",
+          "4c000000",
+          "4c000000",
+          "4c000000",
+          "3f800000",
+          "40000000",
+          "40400000"
+        ],
+        "passed": true,
+        "arm_or_device_execution": false
+      }
+    },
+    {
+      "step_real": "2.0",
+      "candidate_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/candidate-report.json",
+        "sha256": "b200f27356bc2cf1876111874d422f8b29c4493521e852bb52247480a65368fa"
+      },
+      "source_chain": {
+        "source_sha256": "427eddb4d530d32347e9861b9e8834ae455c5e6ee3806927b186d6aadf377e8a",
+        "globals_sha256": "1470f5804e51d419e2f0f2e428f7b21e363630705f719bb2987e9128c5e23f34",
+        "ir_sha256": "1892d67a492c5ab55d2d51e8d2ab27acd14be0b9ba2b35ca5fedaffcdc574758",
+        "pou_sha256": "b32360fd713d230e9673ef1e46b9cfbb6cb44b5d89f2e6fce88203a52a76c6ee",
+        "compiler_report_sha256": "178a8bc364cc309d38af24c7ec8b3de7d7a31a0ea6d9375aa4cb0b46706592ca",
+        "link_report_sha256": "c211d5dbf591b5510be3bb8a82fdb9dabf59f87c0ca37083530cb805fea9805f",
+        "association": "observed-native-compile-two-links-and-existing-GVT-binding",
+        "cryptographic_build_attestation": false
+      },
+      "interface": {
+        "gvt_records_checked": 19,
+        "csv_rows_checked": 19,
+        "binding": {
+          "gvt_name": "g_rBESS_Pcmd",
+          "elf_name": "G_RBESS_PCMD",
+          "iec_type": "REAL",
+          "width_bits": 32,
+          "address": 34603248,
+          "gvt_record_offset": 889,
+          "gvt_address_offset": 916,
+          "csv_line": 275,
+          "sinfo_type": 8
+        },
+        "initial_text": "0",
+        "opaque_gvt_flags_hex": "01010000",
+        "retained": null,
+        "task_period_ms": null,
+        "retention_check": "exact-existing-GVT-Config.sdt-VarsInfo.vi-hashes",
+        "period_check": "exact-existing-Config.sdt-Output.sdt-ILIndex.idx-hashes",
+        "index_values": [
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          0,
+          4294967295,
+          4294967295,
+          1,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          2,
+          4294967295,
+          4294967295,
+          4294967295
+        ],
+        "entry_symbols_preserved": [
+          "MAIN",
+          "SBR_001"
+        ],
+        "task_runtime_call_verified": false,
+        "baseline_build_origin_verified": false
+      },
+      "inputs": [
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/变量表.gvt",
+          "bytes": 1503,
+          "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/VarNameAndAddr.csv",
+          "bytes": 24548,
+          "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/VarsInfo.vi",
+          "bytes": 284,
+          "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/ReAllocVarsInfo.vi",
+          "bytes": 4,
+          "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/ILIndex.idx",
+          "bytes": 142,
+          "sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.prg",
+          "bytes": 56,
+          "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.sdt",
+          "bytes": 182,
+          "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Config.sdt",
+          "bytes": 371,
+          "sha256": "af9e01cb471c8c7d6b4c41605192adeed28f03f6b3570675bea97ae24760f664"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/userprog.foid",
+          "bytes": 294,
+          "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/varsinfo.foid",
+          "bytes": 423,
+          "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/symbol.sym",
+          "bytes": 218,
+          "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92"
+        },
+        {
+          "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/STTemp/SBR_001.o",
+          "bytes": 1792,
+          "sha256": "0427a175b83bd445b632a449e92fde9276b2a703737e7ceadaca08d4f1d6d411"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_SysLib.o",
+          "bytes": 2808,
+          "sha256": "2fde5706b01135ac15db5f17b6847dd361894c909ecaa6a3cf9cca2f132782d2"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_STCLib.o",
+          "bytes": 122944,
+          "sha256": "047dad6fa718170625f0a78d927df304f3a6f681970009324a7179397958d95e"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/sources/plus2.st",
+          "bytes": 154,
+          "sha256": "427eddb4d530d32347e9861b9e8834ae455c5e6ee3806927b186d6aadf377e8a"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/sources/globals.json",
+          "bytes": 76,
+          "sha256": "1470f5804e51d419e2f0f2e428f7b21e363630705f719bb2987e9128c5e23f34"
+        }
+      ],
+      "tool_components": [
+        {
+          "path": "/home/zss/workspace/py2plc/tools/bind_native_application.py",
+          "sha256": "64b957d712a61dd1159ed41e9bf61a22419d9e7c40cc5845cc39ca71776e369e"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/bind_vendor_globals.py",
+          "sha256": "626922058cbca6596484e811c3e01d17c6424094926aae3b13200e6fd2aa7f41"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py",
+          "sha256": "cae1f517bf8c42fcfe0a20ee28899f17eeaf7267e4394a9454740045ca1368ce"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py",
+          "sha256": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_variables.py",
+          "sha256": "108421e86cf05a74f91b91a3cd5e9ad5c68e4dc67c05190aab6a2b404a1472c3"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/link_vendor_application.py",
+          "sha256": "b41f612085db21a581b7ee9813462505e0ffa753b21c834d4369be54a2e272ac"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+          "sha256": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d"
+        }
+      ],
+      "compiler": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llc",
+        "bytes": 176944,
+        "sha256": "994d679339b301a81bcc969d475bc1082da1cbfae40b2f3da9421cc85324a6d3",
+        "version": "Ubuntu LLVM version 20.1.2"
+      },
+      "compiler_command": {
+        "argv": [
+          "/home/zss/workspace/py2plc/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llc",
+          "-mtriple=thumbv7-none-eabi",
+          "-mattr=+v7,+thumb2,+vfp3,+neon,+reserve-r9",
+          "-float-abi=soft",
+          "-relocation-model=static",
+          "-filetype=obj",
+          "-O=2",
+          "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/native-main/MAIN.ll",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/native-main/MAIN.o"
+        ],
+        "timeout_s": 10.0,
+        "attempts": 1,
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "arm_main": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/native-main/MAIN.o",
+        "sha256": "b32360fd713d230e9673ef1e46b9cfbb6cb44b5d89f2e6fce88203a52a76c6ee",
+        "bytes": 760,
+        "function_bytes": 34,
+        "external_symbols": [
+          "G_RBESS_PCMD"
+        ],
+        "arm_attributes": [
+          "Attribute Section: aeabi",
+          "File Attributes",
+          "  Tag_conformance: \"2.09\"",
+          "  Tag_CPU_arch: v7",
+          "  Tag_CPU_arch_profile: Application",
+          "  Tag_ARM_ISA_use: Yes",
+          "  Tag_THUMB_ISA_use: Thumb-2",
+          "  Tag_FP_arch: VFPv3",
+          "  Tag_Advanced_SIMD_arch: NEONv1",
+          "  Tag_ABI_PCS_R9_use: Unused",
+          "  Tag_ABI_PCS_GOT_use: direct",
+          "  Tag_ABI_FP_denormal: Needed",
+          "  Tag_ABI_FP_exceptions: Needed",
+          "  Tag_ABI_FP_number_model: IEEE 754",
+          "  Tag_ABI_align_needed: 8-byte",
+          "  Tag_ABI_align_preserved: 8-byte, except leaf SP",
+          "  Tag_ABI_optimization_goals: Prefer Speed",
+          "  Tag_CPU_unaligned_access: v6",
+          "  Tag_ABI_FP_16bit_format: IEEE 754"
+        ],
+        "private_disassembly_sha256": "82b745b9cd199b1d5a813d1693d0a99c967b860f3e624127f2f8a9f1c1fd9d37"
+      },
+      "linker": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+        "resolved_path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/lld",
+        "sha256": "5c8dc44318df21528d0456cae914061cdc30221e40445b8cef84ba57f352445b",
+        "version": "Ubuntu LLD 20.1.2 (compatible with GNU linkers)"
+      },
+      "link_commands": [
+        {
+          "argv": [
+            "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+            "--version"
+          ],
+          "returncode": 0,
+          "attempt": 1
+        },
+        {
+          "argv": [
+            "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+            "-relocatable",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/linked/inputs/pou-000.o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/linked/inputs/pou-001.o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/linked/inputs/syslib.o",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/linked/stuserprog.o"
+          ],
+          "returncode": 0,
+          "attempt": 1
+        },
+        {
+          "argv": [
+            "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+            "-relocatable",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/linked/stuserprog.o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/linked/inputs/stclib.o",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/linked/stprog.o"
+          ],
+          "returncode": 0,
+          "attempt": 1
+        }
+      ],
+      "bound_outputs": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/bound/stuserprog.o",
+          "bytes": 4188,
+          "sha256": "4155b308cd15b3e74b1db46c6876d4ea9858b6175d61f3d3be07831cfb9e1c4b",
+          "input_sha256": "875ae8ad13b6a2192465e2ca3f06731683ff2659631d559c333d92ecd926166e",
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 79,
+                "symbol_entry_offset": 2236,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  2240,
+                  2241,
+                  2242,
+                  2243,
+                  2248
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 2240,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 2242,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 2243,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 2248,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          },
+          "elf_summary": {
+            "defined_names_count": 11,
+            "undefined_names_count": 3,
+            "relocation_count": 45
+          }
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-27-native-bound-20261019/candidate-final-plus2/bound/stprog.o",
+          "bytes": 143708,
+          "sha256": "314ecb7828b691975b90814aa8ab7d04ce16c3236d0f0f5b0b83a09841c15332",
+          "input_sha256": "39e7cdb1dc46f261a636cc7f08005229000cc71bfb4c60f513482ef13e114389",
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 1565,
+                "symbol_entry_offset": 121936,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  121940,
+                  121941,
+                  121942,
+                  121943,
+                  121948
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 121940,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 121942,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 121943,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 121948,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          },
+          "elf_summary": {
+            "defined_names_count": 54,
+            "undefined_names_count": 16,
+            "relocation_count": 3826
+          }
+        }
+      ],
+      "host_semantics": {
+        "target": "x86_64-pc-linux-gnu",
+        "same_ir_sha256": "1892d67a492c5ab55d2d51e8d2ab27acd14be0b9ba2b35ca5fedaffcdc574758",
+        "host_object_sha256": "65c5d717974467d307640327c57d573d5b61414a48440c3382dc7323b2c8d0fd",
+        "driver_sha256": "222f0d4cb179bf2490e14d84b53d0e9648a07a196ea7deec13b0275cd29045eb",
+        "executable_sha256": "c60ad0bfa1db7e12a476e67293f9dd8acbf65ecba1d28596cbfefd179d6ec716",
+        "initial_values": [
+          0.0,
+          -1.5,
+          16777216.0,
+          33554432.0,
+          1.401298464324817e-45
+        ],
+        "scans_per_initial": 3,
+        "observed_float32_hex": [
+          "40000000",
+          "40800000",
+          "40c00000",
+          "3f000000",
+          "40200000",
+          "40900000",
+          "4b800001",
+          "4b800002",
+          "4b800003",
+          "4c000000",
+          "4c000000",
+          "4c000000",
+          "40000000",
+          "40800000",
+          "40c00000"
+        ],
+        "expected_float32_hex": [
+          "40000000",
+          "40800000",
+          "40c00000",
+          "3f000000",
+          "40200000",
+          "40900000",
+          "4b800001",
+          "4b800002",
+          "4b800003",
+          "4c000000",
+          "4c000000",
+          "4c000000",
+          "40000000",
+          "40800000",
+          "40c00000"
+        ],
+        "passed": true,
+        "arm_or_device_execution": false
+      }
+    }
+  ],
+  "vendor_real_reference": {
+    "path": "/mnt/e/PLCProjects/PLCIDF_STLANG_HEADLESS_20261017_144238_504888a2/type-isolation-3d04e18a/one-real/build/MAIN.o",
+    "sha256": "3a3b16d5b68f4588e7687d3970ce965f7dfdad1e77921da20c078eed774c2da7",
+    "source_text": "VALUE := VALUE + 0.5;",
+    "declared_type": "REAL",
+    "observation": "load f32; convert to f64; call _ST_DOUBLE_ADD via r0/r1/r2/r3; convert to f32; store f32",
+    "comparison_only_never_compilation_input": true,
+    "syslib_sha256": "2fde5706b01135ac15db5f17b6847dd361894c909ecaa6a3cf9cca2f132782d2",
+    "helper": "_ST_DOUBLE_ADD",
+    "helper_observation": "moves r0/r1 and r2/r3 into d17/d16, vadd.f64, moves result back to r0/r1, returns; no memory write or further call"
+  },
+  "tests": {
+    "compiler_test_methods": 20,
+    "compiler_real_llvm_methods": 5,
+    "pipeline_test_methods": 11,
+    "pipeline_real_llvm_lld_methods": 2,
+    "combined_passed": 31,
+    "skipped": 0,
+    "pipeline_fixtures": "synthetic only, pins/preamble deliberately replaced in test scope; production real-project run separately recorded above",
+    "new_real_host_samples": 30
+  },
+  "limits": [
+    "The fixed existing g_rBESS_Pcmd storage is temporarily used as a memory probe; original BESS business MAIN logic is replaced.",
+    "Only one REAL self-add statement with 1.0/2.0; no I/O/TON/IF/additional declarations.",
+    "Period and retention numeric meanings remain unknown; their exact serialized project interface is unchanged and hash checked.",
+    "Ordinary-global vendor address is not a raw pointer or Modbus/D-register mapping; final symbol remains type8 UND.",
+    "Entire application configuration/FOID and native device transaction remain separate integration/acceptance steps.",
+    "The two vendor libraries and SBR_001 are precompiled reused inputs; only MAIN source is compiled natively here.",
+    "No ARM execution, device state change or device program readback was performed."
+  ]
+}

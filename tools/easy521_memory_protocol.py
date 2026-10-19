@@ -21,6 +21,10 @@ GVT_SHA256 = "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
 CSV_SHA256 = "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
 # symbol, IEC scalar type, width in bits, opaque assigned address, source
 PROFILES = MappingProxyType({
+    # Report26's native application acceptance reads the pre-existing Pcmd
+    # allocation, not a newly guessed address. Frozen VarNameAndAddr.csv line275
+    # and independent GVT both give REAL32 / 0x021000f0 (report17/27 bindings).
+    "pcmd": ("g_rBESS_Pcmd", "REAL", 32, 0x021000F0, "GVT+CSV"),
     "revision": ("g_rBESS_SensVP", "REAL", 32, 0x02100140, "GVT+CSV"),
     "step": ("g_rBESS_SensVQ", "REAL", 32, 0x02100160, "GVT+CSV"),
     "scan-counter": ("g_iBESS_Mode", "INT", 16, 0x02100130, "GVT+CSV"),

@@ -78,7 +78,7 @@ def test_fixed_marker_candidate_binds_evidence_but_does_not_claim_hardware_calib
     assert result["helper"]["sha256_after"]==result["helper"]["sha256"]
 
 
-@pytest.mark.parametrize("profile,value",[("scan-counter",123),("confidence",246.0),("heartbeat",True),("m8013",False),("published-scan",100.0),("step",2.0)])
+@pytest.mark.parametrize("profile,value",[("pcmd",0.125),("scan-counter",123),("confidence",246.0),("heartbeat",True),("m8013",False),("published-scan",100.0),("step",2.0)])
 def test_each_scalar_candidate_profile_is_explicit_and_exact(env,profile,value):
     fake=FakeRunner(payload=json.dumps(record(profile,value)))
     result=execute(env,fake,profile=profile)

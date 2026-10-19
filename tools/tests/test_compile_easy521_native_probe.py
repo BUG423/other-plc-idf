@@ -20,6 +20,7 @@ spec = importlib.util.spec_from_file_location(
 probe = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(probe)
 DECL = b'{"schema":"plcidf.vendor-main-source.v1","globals":{"COUNTER":"DINT"}}'
+REAL_DECL = b'{"schema":"plcidf.vendor-main-source.v1","globals":{"g_rBESS_Pcmd":"REAL"}}'
 
 
 class ParseTests(unittest.TestCase):
@@ -74,6 +75,23 @@ class ParseTests(unittest.TestCase):
         for data in (b'', b'not an object', Path('/usr/bin/true').read_bytes()):
             with self.assertRaises(ValueError):
                 probe.inspect_probe_object(data)
+
+    def test_existing_real_profile_is_explicit_and_exact(self):
+        source = b'g_rBESS_Pcmd := g_rBESS_Pcmd + 2.0;'
+        parsed = probe.parse_probe(source, REAL_DECL, profile=probe.REAL_PROFILE)
+        self.assertEqual(parsed['symbol'], 'G_RBESS_PCMD')
+        self.assertEqual(parsed['type'], 'REAL')
+        self.assertEqual(parsed['increment_real'], '2.0')
+        with self.assertRaises(ValueError):
+            probe.parse_probe(source, REAL_DECL)
+        for body in (b'g_rBESS_Pcmd := g_rBESS_Pcmd + 3.0;',
+                     b'g_rBESS_Pcmd := g_rBESS_Pcmd + 1;',
+                     b'g_rBESS_Pcmd := g_rBESS_Pcmd + 1.0; Y0 := TRUE;',
+                     b'g_rBESS_Qcmd := g_rBESS_Qcmd + 1.0;'):
+            with self.assertRaises(ValueError):
+                probe.parse_probe(body, REAL_DECL, profile=probe.REAL_PROFILE)
+        with self.assertRaises(ValueError):
+            probe.parse_probe(source, DECL, profile=probe.REAL_PROFILE)
 
 
 class FailureTests(unittest.TestCase):
@@ -253,6 +271,45 @@ class RealLLVMTests(unittest.TestCase):
         for data in (wrong_arch, wrong_eabi, added_helper):
             with self.assertRaises(ValueError):
                 probe.inspect_probe_object(data)
+
+    @unittest.skipUnless(shutil.which('gcc'), 'Host REAL semantic harness requires GCC')
+    def test_existing_real_arm_profile_and_host_precision_boundaries(self):
+        self.globals.write_bytes(REAL_DECL)
+        hashes = []
+        for step in (1, 2):
+            source = self.root / f'real-plus{step}.st'
+            source.write_text(f'g_rBESS_Pcmd := g_rBESS_Pcmd + {step}.0;')
+            result = probe.compile_probe(source=source, globals_path=self.globals,
+                                         profile=probe.REAL_PROFILE, llc=self.llc,
+                                         output_dir=self.root / f'real-build-{step}')
+            self.assertTrue(result['ok'], result)
+            hashes.append(result['object']['sha256'])
+            self.assertEqual(result['object']['inspection']['elf']['undefined_global_weak']['names'], ['G_RBESS_PCMD'])
+            with self.assertRaises(ValueError):
+                probe.inspect_probe_object(Path(result['object']['path']).read_bytes())
+            output = Path(result['output_directory'])
+            subprocess.run([str(self.llc), '-mtriple=x86_64-pc-linux-gnu', '-relocation-model=pic',
+                            '-filetype=obj', str(output / 'MAIN.ll'), '-o', str(output / 'host.o')],
+                           check=True, capture_output=True, text=True, timeout=10)
+            harness = output / 'host.c'
+            harness.write_text('#include <stdint.h>\n#include <stdio.h>\n#include <string.h>\n'
+                               'float G_RBESS_PCMD; extern void MAIN(void);\n'
+                               'int main(void){float starts[]={0.0f,-1.5f,16777216.0f,33554432.0f,0x1p-149f};\n'
+                               'for(unsigned i=0;i<5;i++){G_RBESS_PCMD=starts[i];for(unsigned j=0;j<3;j++){\n'
+                               'MAIN();uint32_t bits;memcpy(&bits,&G_RBESS_PCMD,4);printf("%08x\\n",bits);}}return 0;}\n')
+            executable = output / 'host-runner'
+            subprocess.run(['gcc', '-std=c11', '-Wall', '-Werror', str(harness), str(output / 'host.o'),
+                            '-o', str(executable)], check=True, capture_output=True, text=True, timeout=10)
+            observed = subprocess.run([str(executable)], check=True, capture_output=True, text=True, timeout=2).stdout.splitlines()
+            expected = []
+            for initial in (0.0, -1.5, 16777216.0, 33554432.0, 2.0**-149):
+                value = initial
+                for _ in range(3):
+                    packed = struct.pack('<f', float(value) + step)
+                    value = struct.unpack('<f', packed)[0]
+                    expected.append(f'{struct.unpack("<I", packed)[0]:08x}')
+            self.assertEqual(observed, expected)
+        self.assertEqual(len(set(hashes)), 2)
 
     @unittest.skipUnless(shutil.which('gcc'), 'Host semantic harness requires GCC')
     def test_same_ir_executes_correctly_on_host_including_overflow(self):

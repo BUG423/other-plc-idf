@@ -40,6 +40,16 @@ def test_heartbeat_address_is_actual_bit_allocation_not_table_end_guess():
     assert codec.profile_info("m8013")["address_u32"]==0x06201822
 
 
+def test_pcmd_fixed_read_uses_independently_allocated_gvt_and_csv_symbol():
+    info = codec.profile_info("pcmd")
+    assert (info["symbol"], info["iec_type"], info["width_bits"], info["address_u32"]) == (
+        "g_rBESS_Pcmd", "REAL", 32, 0x021000F0)
+    assert info["allocation_gvt_sha256"] == codec.GVT_SHA256
+    request = codec.build_read_request(profile="pcmd", sequence=0x1234)
+    assert request.hex() == "1600010334120000010001000000f000100220000000"
+    assert candidate_reply("pcmd", struct.pack("<f", 0.125))["value_candidate"] == 0.125
+
+
 @pytest.mark.parametrize("sequence",[True,-1,65536,1.0,None])
 def test_invalid_sequence(sequence):
     with pytest.raises(codec.ProtocolError):codec.build_read_request(profile="revision",sequence=sequence)

@@ -1,0 +1,32 @@
+{
+  "schema": "plcidf.native-application-validation.v1",
+  "scope": "software, real local compiler/linker and separately linked hardware read evidence",
+  "commands": [
+    {
+      "command": "env PLCIDF_TEST_LLC=<local-LLVM20-llc> PLCIDF_TEST_LLD=<local-LLD20> .venv/bin/python -m pytest tools/tests -q --ignore=tools/tests/test_compile_easy521_matiec_probe.py --ignore=tools/tests/test_inspect_easy521_live_application.py",
+      "returncode": 0,
+      "private_junit_path": ".plcidf/native-app-milestone-tools.xml",
+      "junit_sha256": "1cfb34efb77e93a03a4c235ff4279cddb296401bf04d8fbb47d4ea702f36bd5e",
+      "failures": 0,
+      "errors": 0,
+      "note": "JUnit may include nested unittest subtest records; no duplicate test totals are summed."
+    },
+    {
+      "command": ".venv/bin/python -m pytest src/plc_idf/tests wsl-tools/tests -q -k 'not test_devices_real_readonly'",
+      "returncode": 0,
+      "private_junit_path": ".plcidf/native-app-milestone-source.xml",
+      "junit_sha256": "b9f151431881938ce238a52bd81fca7619f1689c180e25d5f19a8c4d2c394707",
+      "failures": 0,
+      "errors": 0,
+      "note": "JUnit may include nested unittest subtest records; no duplicate test totals are summed."
+    }
+  ],
+  "distribution": {
+    "private_report": ".plcidf/distribution-native-application-20261019.json",
+    "sha256": "c96d4e03bd5b5ea3b6e05255e75366e8e47365ec84f73405d75831f52f4c3b9d",
+    "status": null,
+    "ok": null,
+    "resource_assets": 44,
+    "scope": "sdist/wheel isolated import and guarded preview; not PLC execution"
+  }
+}
