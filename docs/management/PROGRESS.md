@@ -1,5 +1,15 @@
 # 进展记录
 
+## 2026-10-19本轮真机：原生17文件传输读回、STOP与RUN故障
+
+用户确认所有输出仍悬空后，统筹执行一次新候选下装。首次raw2获得9字节正ACK，旧解析器退出为unknown；[38号修正](../research/firmware/38-empty-write-ack-2026-10-19.md)经原厂调用链和局部应答核对后，另立显式人工继续会话，仅发送剩余17次open、20次data和一次raw3，没有重发raw2或自动RUN。随后17文件全部独立读回与候选一致，其中15项与原机相同、仅两个ARM对象改变。
+
+原生STOP获得ACK、GCM0及M8001读回；随后RUN虽有ACK，首次GCM仍0，用户报告RUN灯灭、ERR红灯亮。后续协议读无有效结果，用户报告双断24V与Type-C后重接ERR仍亮。新枚举001:003的错误数量读取、文件通道及交回Windows后的原厂libusb0固定GCM检查均失败；故障码、CPU当前状态和原因仍未知。17文件精确原始备份已准备，**尚未写回，恢复与新应用运行均未完成**。全部事实、人工观察与时间字段异常见[39号故障记录](../research/firmware/39-native-download-fault-2026-10-19.md)及[公开摘要](../../evidence/easy521-native-fault-20261019T083854Z/summary.json)。
+
+并行软件成果为：[37号](../research/firmware/37-matiec-io-probe-2026-10-19.md)三BOOL I/O描述符和中断钩子探针；[40号](../research/firmware/40-unaligned-external-memory-2026-10-19.md)撤销未知外部地址的align4假设并审计真实字节访存；[41号](../research/firmware/41-fixed-error-diagnostics-2026-10-19.md)固定错误数量/列表/实例只读查询；[42号](../research/firmware/42-explicit-state-wait-2026-10-19.md)显式单次RUN/STOP后有界独立状态等待。对齐与FPU等启动风险仍待物理诊断，不能将软件修正称为故障已排除。
+
+统筹全工具、源包测试通过；实际MatIEC/Clang/LLVM/LLD的97项检查及40个subtests通过，sdist→wheel→新venv→仓库外安装的47资源校验通过。CI补入真实I/O探针主机桩验证；它们均不替代真机恢复或运行验收。当前优先确认实体STOP并恢复通信/原始程序，暂不继续新候选RUN。
+
 ## 2026-10-19本轮后续：真实MatIEC条件程序到现机候选及原生命令
 
 统筹进一步从公开 `conditional_plus1.st`／`conditional_plus2.st` 真实执行MatIEC→C→Clang ARM→两级LLD→GVT绑定→18文件组合→17文件现机派生，并通过原生下装CLI预览。各52B MAIN不同、绑定对象/源/清单逐级哈希核对；同C/适配器x86各12次调用及NaN复位分支正确，没有把主机行为当ARM/PLC执行。见[36集成](../research/firmware/36-native-linux-integration-2026-10-19.md)与[元数据](../../evidence/easy521-native-matiec-20261019T075356Z/summary.json)。

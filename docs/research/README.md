@@ -2,6 +2,16 @@
 
 > **2026-10-19供电后更新**：20号记录24 V台架的固定变量读回、灯程序真实编译/下载/比较、状态与时钟变化，以及用户确认Y0闪烁、STOP后熄灭。18号更正仍适用：旧ff010000/4B不是CPU状态。完整Linux原生包装、无GUI下装及设备字节绑定仍开放；历史报告保留其当时状态。
 
+**后续真机结果**：[39](firmware/39-native-download-fault-2026-10-19.md)取得17文件原生下装读回一致及STOP读回，但新应用RUN失败；冷启动后ERR仍亮且查询超时，恢复未完成。以下早期“下装待测”描述是各批次当时的边界。
+
+- [ELF差分与恢复条件](firmware/43-elf-loader-boundaries-2026-10-19.md)：三组对象未发现额外确定违规，FPU与确切故障阶段未知；STOP、双断等待及TF应用恢复前提分别核实。
+- [厂商恢复入口核查](firmware/44-offline-recovery-interfaces-2026-10-19.md)：ClearApp与SimpleCommand均不能当作独立恢复通道；手册列出的USB固件与TF应用路径仍需匹配文件、硬件及独立验收。
+- [显式状态等待](firmware/42-explicit-state-wait-2026-10-19.md)：一次RUN/STOP请求之后仅作有界独立状态查询，读失败保留unknown，不重发写入。
+- [固定故障诊断](firmware/41-fixed-error-diagnostics-2026-10-19.md)：错误数量、列表与实例的静态来源及严格帧长度；本台实际故障码仍未读到。
+- [外部变量对齐修正](firmware/40-unaligned-external-memory-2026-10-19.md)：撤销未经证明的align4承诺，实际字节访问审计与错位主机验证；不是已确认的故障定因或真机修复。
+- [短写ACK修正](firmware/38-empty-write-ack-2026-10-19.md)：限定9字节正ACK，保留首次unknown与显式人工续传证据。
+- [MatIEC I/O探针](firmware/37-matiec-io-probe-2026-10-19.md)：三BOOL描述符与中断钩子的真实ARM构建和主机桩验证；尚无完整I/O下装运行验收。
+
 - [原生条件ST与命令集成](firmware/36-native-linux-integration-2026-10-19.md)：统筹从公开源实际编译到现机17文件候选、主机分支验证及原生CLI预览；无新设备写入。
 - [原生RUN/STOP/下装CLI](firmware/35-cli-native-application-2026-10-19.md)：默认预览、固定清单快照、未知写结果与候选策略边界。
 - [灯程序I/O ABI](firmware/34-native-io-abi-2026-10-19.md)：READ_BITS/WRITE_BITS描述符、低字节返回和中断钩子，未猜成裸RAM映射。

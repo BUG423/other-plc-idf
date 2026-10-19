@@ -1,0 +1,880 @@
+{
+  "schema": "plcidf.research.easy521-unaligned-external.v1",
+  "recorded_date": "2026-10-19",
+  "scope": "offline alignment correction and new immutable candidates; no device operation by this worker",
+  "historical_failure_preserved": ".plcidf/native-integrated-matiec-20261019T075356Z",
+  "evidence": {
+    "reference_loader": "Simulator_CompileSystem.dll; reference only, not physical Easy521 firmware",
+    "type8_variable_resolution_VA": "0x6a74a9d8",
+    "variable_address_callback_VA": "0x6a74c938",
+    "address_mapping_VA": "0x6a7490a0",
+    "mapping": "page=(operand>>19)&0xff; bit_offset=operand&0x7ffff; pointer=page.base+(bit_offset>>3)",
+    "Pcmd_operand": "0x021000f0",
+    "Pcmd_reference_page": 66,
+    "Pcmd_reference_byte_offset": 30,
+    "physical_page_base": null,
+    "physical_alignment_fault_confirmed": false,
+    "prior_MAIN_external_transfer": [
+      "VLDR at MAIN+0xc",
+      "conditional VLDR at MAIN+0x22",
+      "VSTR at MAIN+0x2a"
+    ],
+    "compiler_alignment_promise_before": 4,
+    "compiler_alignment_promise_after": 1,
+    "fault_causality": "unverified: observed reference mapping and codegen establish unsupported alignment assumption, not exact device exception cause"
+  },
+  "baseline_library_comparison": {
+    "device_stprog_sha256": "69f3e60db59df3eae06cc96d9ad3716a08c114b8ffcb3a3bc369a56510b17fff",
+    "SysLib_New_STCLib_sha256": "047dad6fa718170625f0a78d927df304f3a6f681970009324a7179397958d95e",
+    "old_STCLib_sha256": "9d51c094cce25d1d7fac96be2d7d8ae120e33b39ff0bb315242f8340da4e738c",
+    "new_exported_functions": 43,
+    "new_identical_function_bodies_to_device": 43,
+    "old_identical_function_bodies_to_device": 3,
+    "SysLib_exported_functions": 9,
+    "SysLib_identical_function_bodies_to_device": 9,
+    "conclusion": "The actual working LED baseline uses the New library branch; no library switch is justified."
+  },
+  "fix": {
+    "generated_C_modified": false,
+    "external_C_type": "IEC_REAL typedef with __attribute__((aligned(1))) for declaration and accessor casts",
+    "clang_codegen": "-mno-unaligned-access; C -> actual LLVM IR -> actual ARM assembly -> assembled object",
+    "restricted_LLVM_codegen": "both REAL and unknown-address DINT use align1; llc +strict-align; paired same-IR/backend-flag assembly audit",
+    "access_atomic": false,
+    "concurrent_writer_supported": false,
+    "concurrent_reader_coherence_verified": false,
+    "runtime_abi_verified": false,
+    "runtime_scheduling_verified": false,
+    "downloadable": false,
+    "device_access": false
+  },
+  "experiments": [
+    {
+      "step": 1,
+      "source": {
+        "path": "/home/zss/workspace/py2plc/examples/easy521_native_memory/conditional_plus1.st",
+        "sha256": "4f9dba05f28f5b3d300b752856d9e1648b308f26a7f99c2480abafa5e6d416f1",
+        "unchanged_from_failed_candidate": true
+      },
+      "candidate_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/candidate-report.json",
+        "sha256": "29826b4524412cb2110fd538b668b158fac455d6de344d97d2ed9ee8c2f75ef2"
+      },
+      "compiler_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/matiec-probe-report.json",
+        "sha256": "d9813221aacc49819757b59410d13c12e384d7e0b88ef3db16b34356538168b8"
+      },
+      "link_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/linked/link-report.json",
+        "sha256": "2456adb1c26a69349722569e08d104296143d0e57c2f7c664937bb8e3e91be43"
+      },
+      "generated_C": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/generated/POUS.c",
+        "sha256": "28e3eae37dde5c01980f3f81c22f45bb3496addfcea28e0938be1c74e583c227",
+        "unchanged_from_failed_candidate": true
+      },
+      "adapter": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/wrapper.c",
+        "sha256": "76b8271b7aab80ec1d24932b6d9fa121dd0c52069436bc63f335f39e05e8770f"
+      },
+      "alignment_ir": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.ll",
+        "sha256": "b2c8a0cc4c269c69239032e0e5f0d90583501038861c3a4c3c9f1f8e23285411",
+        "inspection": {
+          "external_alignment_bytes": 1,
+          "external_symbol": "G_RBESS_PCMD",
+          "volatile_loads": 2,
+          "volatile_stores": 1,
+          "access_atomic": false,
+          "concurrent_writer_supported": false
+        },
+        "used_for_arm_codegen": true
+      },
+      "arm_assembly": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.s",
+        "sha256": "022e7cddb8857ed9fe4047e13111c3bae43840969e3a6a96c610c57b52b2ae22",
+        "inspection": {
+          "byte_loads": 8,
+          "byte_stores": 4,
+          "stack_or_literal_accesses": 1,
+          "nonbyte_general_register_accesses": 0,
+          "access_atomic": false,
+          "concurrent_writer_supported": false,
+          "scope": "bounded-generated-MAIN-assembly-not-runtime-execution"
+        },
+        "used_for_object_assembly": true
+      },
+      "main": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.o",
+        "sha256": "7f34108912a4d9763324a80e8819504e023c29fe66f4025701d4700757050e28",
+        "function_bytes": 112,
+        "elf_global_definitions": [
+          "MAIN"
+        ],
+        "elf_global_undefined": [
+          "G_RBESS_PCMD"
+        ],
+        "relocations": {
+          "R_ARM_PREL31": 1,
+          "R_ARM_THM_MOVT_ABS": 1,
+          "R_ARM_THM_MOVW_ABS_NC": 1
+        }
+      },
+      "independent_object_disassembly": {
+        "tool": "/home/zss/workspace/py2plc/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llvm-objdump",
+        "tool_sha256": "9f51dba7ff6a776d6bf6e6c8e82aeaef24850a82be978c752183746eb3a6169f",
+        "artifact": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-MAIN-disassembly.txt",
+        "sha256": "224b947b25f918c38533dddf718e01c55fe2a5c169aa090145a8958ebebc07f9",
+        "byte_loads": 8,
+        "byte_stores": 4,
+        "other_data_access": "one PC-relative VFP constant load, no VFP or word transfer through external base"
+      },
+      "bound_outputs": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/bound/stuserprog.o",
+          "sha256": "756c8877c3c80c4f31a68e7fd29add38a632f87aedd5496f0bdde6f8ca3fc6b9",
+          "bytes": 4460,
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 82,
+                "symbol_entry_offset": 2424,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  2428,
+                  2429,
+                  2430,
+                  2431,
+                  2436
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 2428,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 2430,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 2431,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 2436,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          }
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/bound/stprog.o",
+          "sha256": "4ece269ba5a3f7d9a18785edd2a89a8c9450803cfa0804bd4373a40619bd9304",
+          "bytes": 143980,
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 1568,
+                "symbol_entry_offset": 122124,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  122128,
+                  122129,
+                  122130,
+                  122131,
+                  122136
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 122128,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 122130,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 122131,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 122136,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          }
+        }
+      ],
+      "existing_binding": {
+        "gvt_name": "g_rBESS_Pcmd",
+        "elf_name": "G_RBESS_PCMD",
+        "iec_type": "REAL",
+        "width_bits": 32,
+        "address": 34603248,
+        "gvt_record_offset": 889,
+        "gvt_address_offset": 916,
+        "csv_line": 275,
+        "sinfo_type": 8
+      },
+      "tool_components": [
+        {
+          "path": "/home/zss/workspace/py2plc/tools/bind_native_application.py",
+          "sha256": "d1cb4fc65e99149204b70865c63db182aacbba611a03c1d96f80bafb9acee333"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/bind_vendor_globals.py",
+          "sha256": "626922058cbca6596484e811c3e01d17c6424094926aae3b13200e6fd2aa7f41"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/compile_easy521_matiec_probe.py",
+          "sha256": "dda1483af1bfd85ae17c0ab4f81b38024513892e0b8b0bd66c7fcb9a0bec4fca"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py",
+          "sha256": "96d33ea4263748d7d9b44384de657621e75eae88272f79955aa55fd608a5b646"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py",
+          "sha256": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_variables.py",
+          "sha256": "108421e86cf05a74f91b91a3cd5e9ad5c68e4dc67c05190aab6a2b404a1472c3"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/link_vendor_application.py",
+          "sha256": "b41f612085db21a581b7ee9813462505e0ffa753b21c834d4369be54a2e272ac"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+          "sha256": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d"
+        }
+      ],
+      "actual_compile_commands": [
+        {
+          "argv": [
+            "/home/zss/.cache/plcidf/matiec/bin/iec2c",
+            "-I",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/matiec/lib",
+            "-T",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/generated",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/source.st"
+          ],
+          "returncode": 0,
+          "stdout": "POUS.c\nPOUS.h\nLOCATED_VARIABLES.h\nGLOBALS.h\n",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "-print-resource-dir"
+          ],
+          "returncode": 0,
+          "stdout": "/usr/lib/llvm-20/lib/clang/20\n",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "--target=armv7a-none-eabi",
+            "-mthumb",
+            "-mcpu=cortex-a8",
+            "-mfpu=neon",
+            "-mfloat-abi=softfp",
+            "-ffixed-r9",
+            "-mno-unaligned-access",
+            "-ffreestanding",
+            "-fno-builtin",
+            "-fno-pic",
+            "-fno-unwind-tables",
+            "-fno-asynchronous-unwind-tables",
+            "-fno-stack-protector",
+            "-O2",
+            "-std=c11",
+            "-Werror=literal-range",
+            "-MD",
+            "-MF",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.d",
+            "-MT",
+            "PLCIDF_MAIN",
+            "-isystem",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/matiec/lib/C",
+            "-I",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/generated",
+            "-S",
+            "-emit-llvm",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/wrapper.c",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.ll"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "--target=armv7a-none-eabi",
+            "-mthumb",
+            "-mcpu=cortex-a8",
+            "-mfpu=neon",
+            "-mfloat-abi=softfp",
+            "-ffixed-r9",
+            "-mno-unaligned-access",
+            "-O2",
+            "-S",
+            "-x",
+            "ir",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.ll",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.s"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "--target=armv7a-none-eabi",
+            "-mthumb",
+            "-mcpu=cortex-a8",
+            "-mfpu=neon",
+            "-mfloat-abi=softfp",
+            "-ffixed-r9",
+            "-mno-unaligned-access",
+            "-c",
+            "-x",
+            "assembler",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.s",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/bin/x86_64-linux-gnu-readelf",
+            "-A",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/native-main/MAIN.o"
+          ],
+          "returncode": 0,
+          "stdout": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: None\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n",
+          "stderr": "",
+          "timeout_s": 10.0
+        }
+      ],
+      "arm_attributes": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: None\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n"
+    },
+    {
+      "step": 2,
+      "source": {
+        "path": "/home/zss/workspace/py2plc/examples/easy521_native_memory/conditional_plus2.st",
+        "sha256": "9f4b6dfe6fa472b5fd0574f7058f9c8ecfb2046bec77bf2d5bcb037a6b658073",
+        "unchanged_from_failed_candidate": true
+      },
+      "candidate_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/candidate-report.json",
+        "sha256": "72a7d3f5de477963bc9e12de1c76372ff09757804f771b11bf58c01daa405a1e"
+      },
+      "compiler_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/matiec-probe-report.json",
+        "sha256": "134f65feded6af641e0496594d23ff617d0c642cb155903bf19db5c452467349"
+      },
+      "link_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/linked/link-report.json",
+        "sha256": "ffa372fc62909e03b479d5ff19364c75d4156fa3fbd0dc2d90926e2d63fe62a0"
+      },
+      "generated_C": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/generated/POUS.c",
+        "sha256": "ee80a4001aa1054f0c8dd7371241af7f8198ac7438967f1c609995d5b47e9fac",
+        "unchanged_from_failed_candidate": true
+      },
+      "adapter": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/wrapper.c",
+        "sha256": "76b8271b7aab80ec1d24932b6d9fa121dd0c52069436bc63f335f39e05e8770f"
+      },
+      "alignment_ir": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.ll",
+        "sha256": "14609d0d0b27f18cb9b7aa64c2e1aca2a3b506970c558ab9ee53a3af29023df1",
+        "inspection": {
+          "external_alignment_bytes": 1,
+          "external_symbol": "G_RBESS_PCMD",
+          "volatile_loads": 2,
+          "volatile_stores": 1,
+          "access_atomic": false,
+          "concurrent_writer_supported": false
+        },
+        "used_for_arm_codegen": true
+      },
+      "arm_assembly": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.s",
+        "sha256": "c185667c358e67336a28db4043064208913873698bc1615b83b863dc1ed1e823",
+        "inspection": {
+          "byte_loads": 8,
+          "byte_stores": 4,
+          "stack_or_literal_accesses": 1,
+          "nonbyte_general_register_accesses": 0,
+          "access_atomic": false,
+          "concurrent_writer_supported": false,
+          "scope": "bounded-generated-MAIN-assembly-not-runtime-execution"
+        },
+        "used_for_object_assembly": true
+      },
+      "main": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.o",
+        "sha256": "f61cdbec7dc821fabea975f025bbc3a4ce583f8f8073d64afcd23d578fcb624d",
+        "function_bytes": 112,
+        "elf_global_definitions": [
+          "MAIN"
+        ],
+        "elf_global_undefined": [
+          "G_RBESS_PCMD"
+        ],
+        "relocations": {
+          "R_ARM_PREL31": 1,
+          "R_ARM_THM_MOVT_ABS": 1,
+          "R_ARM_THM_MOVW_ABS_NC": 1
+        }
+      },
+      "independent_object_disassembly": {
+        "tool": "/home/zss/workspace/py2plc/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llvm-objdump",
+        "tool_sha256": "9f51dba7ff6a776d6bf6e6c8e82aeaef24850a82be978c752183746eb3a6169f",
+        "artifact": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-MAIN-disassembly.txt",
+        "sha256": "15556f14162cbf94a5bb5c65410ba1e2991cde849eae7a99077526174f5a488a",
+        "byte_loads": 8,
+        "byte_stores": 4,
+        "other_data_access": "one PC-relative VFP constant load, no VFP or word transfer through external base"
+      },
+      "bound_outputs": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/bound/stuserprog.o",
+          "sha256": "4fe3929a43a082f2176fa760f7ffcd82f44cc89796d5ffcd3d763fe01c11cdc5",
+          "bytes": 4460,
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 82,
+                "symbol_entry_offset": 2424,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  2428,
+                  2429,
+                  2430,
+                  2431,
+                  2436
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 2428,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 2430,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 2431,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 2436,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          }
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/bound/stprog.o",
+          "sha256": "28009b49f5edd2dbed710ef0851c4183d1e324bc72827a9d234db53a55999b17",
+          "bytes": 143980,
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 1568,
+                "symbol_entry_offset": 122124,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  122128,
+                  122129,
+                  122130,
+                  122131,
+                  122136
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 122128,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 122130,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 122131,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 122136,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          }
+        }
+      ],
+      "existing_binding": {
+        "gvt_name": "g_rBESS_Pcmd",
+        "elf_name": "G_RBESS_PCMD",
+        "iec_type": "REAL",
+        "width_bits": 32,
+        "address": 34603248,
+        "gvt_record_offset": 889,
+        "gvt_address_offset": 916,
+        "csv_line": 275,
+        "sinfo_type": 8
+      },
+      "tool_components": [
+        {
+          "path": "/home/zss/workspace/py2plc/tools/bind_native_application.py",
+          "sha256": "d1cb4fc65e99149204b70865c63db182aacbba611a03c1d96f80bafb9acee333"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/bind_vendor_globals.py",
+          "sha256": "626922058cbca6596484e811c3e01d17c6424094926aae3b13200e6fd2aa7f41"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/compile_easy521_matiec_probe.py",
+          "sha256": "dda1483af1bfd85ae17c0ab4f81b38024513892e0b8b0bd66c7fcb9a0bec4fca"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py",
+          "sha256": "96d33ea4263748d7d9b44384de657621e75eae88272f79955aa55fd608a5b646"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py",
+          "sha256": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_variables.py",
+          "sha256": "108421e86cf05a74f91b91a3cd5e9ad5c68e4dc67c05190aab6a2b404a1472c3"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/link_vendor_application.py",
+          "sha256": "b41f612085db21a581b7ee9813462505e0ffa753b21c834d4369be54a2e272ac"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+          "sha256": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d"
+        }
+      ],
+      "actual_compile_commands": [
+        {
+          "argv": [
+            "/home/zss/.cache/plcidf/matiec/bin/iec2c",
+            "-I",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/matiec/lib",
+            "-T",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/generated",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/source.st"
+          ],
+          "returncode": 0,
+          "stdout": "POUS.c\nPOUS.h\nLOCATED_VARIABLES.h\nGLOBALS.h\n",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "-print-resource-dir"
+          ],
+          "returncode": 0,
+          "stdout": "/usr/lib/llvm-20/lib/clang/20\n",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "--target=armv7a-none-eabi",
+            "-mthumb",
+            "-mcpu=cortex-a8",
+            "-mfpu=neon",
+            "-mfloat-abi=softfp",
+            "-ffixed-r9",
+            "-mno-unaligned-access",
+            "-ffreestanding",
+            "-fno-builtin",
+            "-fno-pic",
+            "-fno-unwind-tables",
+            "-fno-asynchronous-unwind-tables",
+            "-fno-stack-protector",
+            "-O2",
+            "-std=c11",
+            "-Werror=literal-range",
+            "-MD",
+            "-MF",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.d",
+            "-MT",
+            "PLCIDF_MAIN",
+            "-isystem",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/matiec/lib/C",
+            "-I",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/generated",
+            "-S",
+            "-emit-llvm",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/wrapper.c",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.ll"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "--target=armv7a-none-eabi",
+            "-mthumb",
+            "-mcpu=cortex-a8",
+            "-mfpu=neon",
+            "-mfloat-abi=softfp",
+            "-ffixed-r9",
+            "-mno-unaligned-access",
+            "-O2",
+            "-S",
+            "-x",
+            "ir",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.ll",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.s"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "--target=armv7a-none-eabi",
+            "-mthumb",
+            "-mcpu=cortex-a8",
+            "-mfpu=neon",
+            "-mfloat-abi=softfp",
+            "-ffixed-r9",
+            "-mno-unaligned-access",
+            "-c",
+            "-x",
+            "assembler",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.s",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.o"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/bin/x86_64-linux-gnu-readelf",
+            "-A",
+            "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus2-build/native-main/MAIN.o"
+          ],
+          "returncode": 0,
+          "stdout": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: None\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n",
+          "stderr": "",
+          "timeout_s": 10.0
+        }
+      ],
+      "arm_attributes": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: None\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n"
+    }
+  ],
+  "verification": {
+    "command": "PLCIDF_TEST_LLC=<local llc20> PLCIDF_TEST_LLD=<local ld.lld20> PLCIDF_TEST_MATIEC_ROOT=/home/zss/.cache/plcidf/matiec PLCIDF_TEST_CLANG=/usr/bin/clang-20 .venv/bin/pytest -o addopts='' -q tools/tests/test_compile_easy521_native_probe.py tools/tests/test_compile_easy521_matiec_probe.py tools/tests/test_bind_native_application.py",
+    "exit_code": 0,
+    "tests_passed": 59,
+    "subtests_passed": 36,
+    "includes": [
+      "REAL and DINT align1 promises; reject align4 IR",
+      "reject direct VFP/word general-register access and helper calls",
+      "actual ARM object disassembly for both restricted profiles",
+      "actual C -> audited IR -> audited assembly -> object pipeline",
+      "single-writer host byte-offset2 storage with UBSan, no reset and unchanged neighboring bytes",
+      "unchanged generated MatIEC C and original fixed allocation/libraries/task metadata",
+      "rejection of unknown syntax and changed provenance"
+    ]
+  },
+  "limits": [
+    "No physical error code, physical mapping/page alignment or exact fault instruction was read by this worker.",
+    "Simulator address and loading paths are corroborating reference evidence, not Easy521 firmware certification.",
+    "Byte stores are non-atomic; concurrent USB reads may observe torn REAL values. Preserve raw samples; STOP-stable observations are stronger than one RUN sample.",
+    "No interrupt dispatch hook, timers, new allocation, concurrent writer synchronization or firmware replacement is implemented.",
+    "Runtime recovery/download/run acceptance remains the coordinator separate device experiment."
+  ]
+}

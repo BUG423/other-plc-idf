@@ -23,7 +23,7 @@ flowchart LR
     AI --> OBJECT["🧩 Linux 原生候选<br/>受限 ST → ARM → 绑定 → 18 文件"]
     VENDOR --> PLC["🎛️ Easy521<br/>应用下装已有实测"]
     USB --> PLC
-    OBJECT -.->|"原生下装与执行待验收"| PLC
+    OBJECT -.->|"下装读回通过 · RUN故障待恢复"| PLC
     DATA -.->|"真机数据控制待验收"| PLC
     OPEN --> REPORT["📋 编译记录与逐扫描断言"]
     PLC -.->|"设备数据与人工观察"| FEEDBACK["📝 反馈与下一轮需求"]
@@ -35,7 +35,7 @@ flowchart LR
     style PLC fill:#fff7ed,stroke:#f97316,color:#7c2d12
 ```
 
-Linux 本地后端已能真实编译、执行与验收 ST。Easy521 已完成 Windows 厂商工具下装与 Y0 灯实验；原生 Linux libusb 已读回状态、变化时钟及 17 个执行/配置文件，见[真机应用读回](docs/research/firmware/32-native-application-readback-2026-10-19.md)。Linux 新 ST 编译、两级链接、既有变量绑定与 18 文件候选组合已通过本地验证；原生下装、新应用运行及修改后的两轮真机行为仍待验收。
+Linux 本地后端已能真实编译、执行与验收 ST。Easy521 此前完成 Windows 厂商工具下装与 Y0 灯实验；本轮原生 Linux 下装的 17 个执行/配置文件均已独立读回一致，STOP 也取得状态读回。随后新应用 RUN 测试失败，用户报告 ERR 红灯，断电重接后通信查询仍超时，原程序恢复尚未完成，见[真机故障记录](docs/research/firmware/39-native-download-fault-2026-10-19.md)。完整原生运行闭环仍在开发。
 
 ---
 
@@ -47,7 +47,7 @@ Linux 本地后端已能真实编译、执行与验收 ST。Easy521 已完成 Wi
 | 🐧 **Linux 原生运行** | 固定 MatIEC 工具链，提供工程创建、构建、部署、本地运行、监测与停止；物理 I/O 和工业实时性另行验收。 |
 | 🎛️ **Easy521 工程兼容** | WSL 调用已安装 AutoShop，支持已有工程 MAIN 同步、真实编译、下载与证据记录；当前保留 Windows 依赖。 |
 | 🧩 **原生编译与应用候选** | 真实 MatIEC 条件 ST→C→ARM、两级链接、同工程 GVT/CSV 绑定，保留旧单句 LLVM 后端；可组合固定配置或继承本机读回配置。原生执行另验。 |
-| 🔌 **数据控制与监测** | 原生 Linux 已实测状态/时钟及应用文件读取，默认预览；需可访问节点和空闲接口，host 准备另列。原生写入 API 的设备接受和执行另验；D 区业务地址须先绑定。 |
+| 🔌 **数据控制与监测** | 原生 Linux 已实测状态/时钟、应用下装后逐文件读回与 STOP；新应用 RUN 失败待恢复。新增固定故障查询及显式状态等待，软件验证与设备结果分列；D 区业务地址须先绑定。 |
 | 📝 **现场反馈** | 人工记录、仪器记录校验及多轮摘要；关联需求/程序/目标，核对日期与附件哈希，未知项保留。 |
 | 📋 **可追溯记录** | 源码、构建产物、部署候选与验证结果分开记录；超时或无法核验时返回失败或 unknown，不自动重放设备写操作。 |
 
@@ -115,6 +115,8 @@ python tools/easy521_application_usb.py \
 实际执行、私有输出、超时和大文件 USB 边界见[应用协议](docs/research/firmware/26-native-application-protocol-2026-10-19.md)。带完整注释的原生构建样例见 [easy521_native_memory](examples/easy521_native_memory)，仅适用于已固定的既有变量与任务接口。
 
 新增 `run`、`stop` 与 `download --manifest` 原生命令，默认预览。MatIEC 条件示例到本机配置候选的完整命令、主机语义验证及真机待验项见[Linux 原生集成](docs/research/firmware/36-native-linux-integration-2026-10-19.md)。
+
+`run/stop --wait-state` 可显式增加有界独立状态查询，写指令只发一次；未加此参数时仅报告 ACK。见[状态等待](docs/research/firmware/42-explicit-state-wait-2026-10-19.md)。[外部变量对齐修正](docs/research/firmware/40-unaligned-external-memory-2026-10-19.md)与[三 BOOL I/O 编译探针](docs/research/firmware/37-matiec-io-probe-2026-10-19.md)仍是待真机验收的候选，不能用于声称故障已修复。
 
 ### 4. 读取或预览 Modbus 数据操作
 

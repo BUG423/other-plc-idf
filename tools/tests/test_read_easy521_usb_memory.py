@@ -86,6 +86,26 @@ def test_each_scalar_candidate_profile_is_explicit_and_exact(env,profile,value):
     assert fake.calls[1][-2:]==["-ReadProfile",profile]
 
 
+@pytest.mark.parametrize("profile,data", [
+    ("cur-error-count",struct.pack("<h",1)),
+    ("cur-error-list",struct.pack("<h",1)+struct.pack("<hhii",5056,0,1,2)+b"\0"*492),
+    ("cur-error-instances",b"\0"*168)])
+def test_windows_bridge_diagnostic_profiles_preserve_exact_multichunk_raw_reply(env, profile, data):
+    payload=record()
+    request=reader.codec.build_read_request(profile=profile,sequence=4660)
+    response=struct.pack("<H",22+len(data))+request[2:8]+b"\x02\0"+request[10:]+data
+    payload["read_profile"]=profile
+    payload["result"].update(request_hex=request.hex(),response_hex=response.hex(),
+        read_rcs=[len(response[i:i+512]) for i in range(0,len(response),512)])
+    fake=FakeRunner(payload=json.dumps(payload))
+    result=execute(env,fake,profile=profile)
+    assert result["ok"] and result["decoded"]["data_hex"]==data.hex() and len(fake.calls)==2
+    assert result["symbol"]["allocation_gvt_sha256"] is None
+    if profile=="cur-error-list":
+        assert result["value_candidate"]["entries"][0]["error_code_u16"]==5056
+        assert payload["result"]["read_rcs"]==[512,16]
+
+
 @pytest.mark.parametrize("listing",[LIST.replace("7-2","6-4"),LIST+"7-3    0471:a531  Another PLC   Not shared\n",LIST.replace("Not shared","Attached"),LIST.replace("Not shared","Shared"),"bad table"])
 def test_stale_ambiguous_or_owned_device_never_runs_helper(env,listing):
     fake=FakeRunner(listing=listing);result=execute(env,fake)

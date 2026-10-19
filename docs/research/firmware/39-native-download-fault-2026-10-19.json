@@ -1,0 +1,785 @@
+{
+  "schema": "plcidf.research-report.v1",
+  "report": 39,
+  "title": "Easy521 原生应用真实下装与 RUN 故障记录",
+  "date": "2026-10-19",
+  "summary_path": "evidence/easy521-native-fault-20261019T083854Z/summary.json",
+  "summary_sha256": "0afffbbce457b67804fc8d60d9fd0ca28dd72fd04d8d89463d1ef56b79d642ae",
+  "cutoff": "2026-10-19T08:41:03+00:00",
+  "status": "fault-observed-not-recovered-at-cutoff",
+  "source_sha256": "4f9dba05f28f5b3d300b752856d9e1648b308f26a7f99c2480abafa5e6d416f1",
+  "candidate_manifest_sha256": "ce5f75a77680e25da792a9491b0b77c4504052f10cc02908e2537e4d7618cc33",
+  "files_readback_verified": 17,
+  "physical_error_code": null,
+  "fault_cause_confirmed": false,
+  "alignment_hypothesis_is_not_confirmed_cause": true,
+  "scope_device_access": false,
+  "historical_inputs": [
+    {
+      "path": ".plcidf/active-native-after-gcm2.json",
+      "size": 87,
+      "sha256": "c349935ae0653cfa339f993029f2f24365056a3b4cc6571f585319e177478da3"
+    },
+    {
+      "path": ".plcidf/active-native-after-run1.json",
+      "size": 87,
+      "sha256": "f9c050dee0f952fe89b930a1b8ea4853c5c5df89c19f4489f1b0e5393d87f695"
+    },
+    {
+      "path": ".plcidf/active-native-coldplug-diagnostic.json",
+      "size": 95,
+      "sha256": "efc00bdcd715f048206b517d6c2573b013afe99ef7788f8bed079d4c6c46d0ec"
+    },
+    {
+      "path": ".plcidf/active-native-coldplug-file-health.json",
+      "size": 96,
+      "sha256": "35aa2b1f381ce461e75cc7026b9164563ef62366237b1d9de39d2ee7529ff14d"
+    },
+    {
+      "path": ".plcidf/active-native-download-plus1-continuation.json",
+      "size": 100,
+      "sha256": "9f2cb6834b53966a8f48e3d7ffac06ca43fa09976612a62faf3ed9e5d354537f"
+    },
+    {
+      "path": ".plcidf/active-native-download-plus1.json",
+      "size": 91,
+      "sha256": "cf25265d0107be79cfb587733a91f8c04792d9122eef4e9faa435ff2d6a4bed8"
+    },
+    {
+      "path": ".plcidf/active-native-error-count.json",
+      "size": 88,
+      "sha256": "43621217aa96585bc043cca5478476c88ca555e2948a2d5f4c8c4c3e542d902b"
+    },
+    {
+      "path": ".plcidf/active-native-file-health.json",
+      "size": 88,
+      "sha256": "319f5f752f368d844390e79814c9ada2e48ee475858ab7e77e3599dd85ae0943"
+    },
+    {
+      "path": ".plcidf/active-native-plus1-runstop.json",
+      "size": 90,
+      "sha256": "349500c007bd3169eee664bec9d6197e68f0a58869a77c752eb12c7b5c78a068"
+    },
+    {
+      "path": ".plcidf/active-native-predeploy.json",
+      "size": 115,
+      "sha256": "418ab55037f6a3962f3ad6072091540e408b5a7757d4bd61a1be4d2ef9a1d59e"
+    },
+    {
+      "path": ".plcidf/active-windows-fault-recovery.json",
+      "size": 91,
+      "sha256": "0d69f58534bf5a335d9bddcba73a0db390fb4e8e7fe8c6ad9dfb2d34f1a3504e"
+    },
+    {
+      "path": ".plcidf/easy521-exact-baseline-recovery-20261019T083219Z/recovery-manifest.json",
+      "size": 33525,
+      "sha256": "c1ef6bd3befe56928e856000b80ed31e191df96281699d05b8b23192a91b1a3a"
+    },
+    {
+      "path": ".plcidf/native-after-gcm2-20261019T081135Z/01-runtime-gcm-state.json",
+      "size": 3704,
+      "sha256": "6e1b4dac0dd5281eb2497410f93bb3d9dfb186bebb871a247002a7c966a0b8d3"
+    },
+    {
+      "path": ".plcidf/native-after-gcm2-20261019T081135Z/02-memory-m8000.json",
+      "size": 4554,
+      "sha256": "5f5eb657aa9e378e4a9b80ce09640ce6a77c61ba4fee9e6aa141edc49625cfe1"
+    },
+    {
+      "path": ".plcidf/native-after-gcm2-20261019T081135Z/03-memory-m8001.json",
+      "size": 4556,
+      "sha256": "30401dba7ef4fb57712d8ebfe4487e2bbc1f171b83d608686a17745c1ee9bcdd"
+    },
+    {
+      "path": ".plcidf/native-after-gcm2-20261019T081135Z/04-memory-pcmd.json",
+      "size": 4701,
+      "sha256": "29edba6bbe6df759c66a89bf2507430bdb764041333c929877571c7c131d8cd8"
+    },
+    {
+      "path": ".plcidf/native-after-gcm2-20261019T081135Z/native-read-session.json",
+      "size": 20263,
+      "sha256": "23a3537cae88555bb4bb712f2fe1c3de3dcd8d28730276f4c1d839d3189bbbf7"
+    },
+    {
+      "path": ".plcidf/native-after-gcm2-20261019T081135Z/session-invocation.json",
+      "size": 405,
+      "sha256": "d0d55e8f3a10f29c8b5badc2d857bb067a2087bd6f251fe3d52bbec7e5f2ff07"
+    },
+    {
+      "path": ".plcidf/native-after-run1-20261019T082013Z/01-runtime-gcm-state.json",
+      "size": 3020,
+      "sha256": "1a319f8517a8063632bb0c776e82ed35cb7b73808fec4640f6832074c29ad600"
+    },
+    {
+      "path": ".plcidf/native-after-run1-20261019T082013Z/native-read-session.json",
+      "size": 5714,
+      "sha256": "31b92fde2e1997a5d57c5304c11c03ab17fe84f50b805c0a10ec1fddb3ab8454"
+    },
+    {
+      "path": ".plcidf/native-after-run1-20261019T082013Z/session-invocation.json",
+      "size": 449,
+      "sha256": "60df9a5e183506e3bf0c0111cb882d62e4d54fd3ffe732b697918398f39450b2"
+    },
+    {
+      "path": ".plcidf/native-coldplug-diagnostic-20261019T083854Z/01-memory-cur-error-count.json",
+      "size": 3574,
+      "sha256": "3bfab2505140281bcdf78be0bd6ce8e474b4a9a5e12fe812302f84757a325184"
+    },
+    {
+      "path": ".plcidf/native-coldplug-diagnostic-20261019T083854Z/native-read-session.json",
+      "size": 6283,
+      "sha256": "a86d373936fb9501b30fcc7a74682d411e06f4a5994993d64b937eb202f9b8bf"
+    },
+    {
+      "path": ".plcidf/native-coldplug-diagnostic-20261019T083854Z/session-invocation.json",
+      "size": 458,
+      "sha256": "7d47183d41d9a7316a25f79995944f320757ddb7bb75e131c4eb76383c2f18d2"
+    },
+    {
+      "path": ".plcidf/native-coldplug-diagnostic-20261019T083854Z/user-observation.json",
+      "size": 358,
+      "sha256": "5e5d248fc46d66cd1c77095cfa529d64988e9b6c15d952dd62fcde01347e1bb2"
+    },
+    {
+      "path": ".plcidf/native-coldplug-file-health-20261019T083957Z/01-application-userprog.foid.json",
+      "size": 2462,
+      "sha256": "067c138579e6f78149e1ccba964e6daa9ef1b6bece70a947e7ef81db5308f6c3"
+    },
+    {
+      "path": ".plcidf/native-coldplug-file-health-20261019T083957Z/native-read-session.json",
+      "size": 5421,
+      "sha256": "7d4ea1f397a22a68289daf22cd1abae61c849de354d7c013d11905f4a4b96edb"
+    },
+    {
+      "path": ".plcidf/native-coldplug-file-health-20261019T083957Z/session-invocation.json",
+      "size": 451,
+      "sha256": "f00f695942843fc38c28e0116ddcfbec704d035f7e78999c059dd9035ef89ea1"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-20261019T080940Z/01-runtime-gcm-state.json",
+      "size": 3708,
+      "sha256": "8d388e25542b1e47782eceb38f20a402007da4ce161a4afe9978b82f52f522f8"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-20261019T080940Z/02-download-plus1.json",
+      "size": 44713,
+      "sha256": "26108ce7f22084932219bd63f8b4c90104e2bb8b2c00c665dbd33e082ff42e78"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-20261019T080940Z/native-read-session.json",
+      "size": 45689,
+      "sha256": "d18bbf052219531805e816ec96ede4242296aa1c3a1e99a0799106d76dfcf304"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-20261019T080940Z/session-invocation.json",
+      "size": 458,
+      "sha256": "ce159e58df81f243a5b03e7a7972660dec75df4bef9b65723524b71b9b247c6f"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/01-runtime-gcm-state.json",
+      "size": 3708,
+      "sha256": "916ed724b31ae9d4a84851c00155cd83a5f4dd0b42abbd5039d6089944f882e4"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/02-continue-download-plus1.json",
+      "size": 370543,
+      "sha256": "aa8f966950b0fe6a60e757b722a375f0b1320cdb4ed6a587ff02e73f70c5a75d"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/03-runtime-gcm-state.json",
+      "size": 3708,
+      "sha256": "0342dcf5b092163220e3b0c8683030882e82ee2a8be48b7e688e2bb5139eb953"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/04-application-userprog.foid.json",
+      "size": 4412,
+      "sha256": "9e0f69b6f284970941f9d153634d2c3d9b0a2262f0f2b7f1495cfc60e99347bd"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/05-application-stprog.o.json",
+      "size": 791242,
+      "sha256": "26146aeb53dfe29d05f849c224c97a8b119f854ec7d1c41676492534c69267e5"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/06-application-stuserprog.o.json",
+      "size": 26965,
+      "sha256": "8446190eccaf7d2f8435983445a50f2c2e3515c34ce78617181fc9d0392c475a"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/07-application-symbol.sym.json",
+      "size": 4406,
+      "sha256": "8ccf30f3e97701aa66e18d88c976e2e8171a1206a03178b658dc7dddb63d2e71"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/08-application-varsinfo.foid.json",
+      "size": 4244,
+      "sha256": "9651c966042d11c58457ae617af3a1e359368b800c4f4ba80b7a6956ba6484e0"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/09-application-syscfg.foid.json",
+      "size": 7423,
+      "sha256": "f53ea4c7209c71eb7645b17a01ab3244e94af4751f64b85ada3b19cbd3d20201"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/10-application-ethercat.foid.json",
+      "size": 4632,
+      "sha256": "cdccb898efb229b70e58121857fd475809256475a1eb3e728b91570889299d78"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/11-application-modbus.foid.json",
+      "size": 3827,
+      "sha256": "c8cf80ccb7412d0060221fe5e93f63732773de1cdd3697fb3879af246cd53122"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/12-application-canlink.foid.json",
+      "size": 3829,
+      "sha256": "f4e031e1d23619466a45a4a934c5b370e943b7c3233636ae88aacda957ec66e1"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/13-application-modcfg.foid.json",
+      "size": 6582,
+      "sha256": "676b14bee880515cc718aed2f4384e5c361171f131eeaff01053cbc2828aa6b7"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/14-application-ethip.foid.json",
+      "size": 4738,
+      "sha256": "cec7eab9061d06defeaa6032e2f9d930f29f2dd28a5416a0edba3c342bca0bf7"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/15-application-EIPIns.foid.json",
+      "size": 3888,
+      "sha256": "5abb89056fab556a11c8117b0323a690a461fe3fe1b955d15617834262ed002f"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/16-application-ecttrans.foid.json",
+      "size": 3839,
+      "sha256": "2546a848a6b1fa3675057ba5d16f11e271381ad2dcb9adc6baf6968e69b49288"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/17-application-dataLog.foid.json",
+      "size": 4590,
+      "sha256": "be9e5710e4735995add60c4ee415eac98189c04530ddbca7829e18adc0fd7f22"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/18-application-OpcUAServer.foid.json",
+      "size": 3952,
+      "sha256": "ec6faad1a638974159552f60dc5d8074797417ae14ba2f0077ed4d7a47c37409"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/19-application-sftpserver.foid.json",
+      "size": 4148,
+      "sha256": "33a9ff910fa2adbcfa150e591e77b297b1036807869bd1f2713e70f7a73f05bc"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/20-application-Ecam.foid.json",
+      "size": 4000,
+      "sha256": "1b86ac836d8f5d8fbb39a6290e896158a325c3babc9508bdec9b631216f18c36"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/21-runtime-gcm-state.json",
+      "size": 3708,
+      "sha256": "04b78e777dd82da0e56420fd6adf0525ec11bf455b0894ed192ab33bfc3949fe"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/EIPIns.foid",
+      "size": 88,
+      "sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/Ecam.foid",
+      "size": 118,
+      "sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/OpcUAServer.foid",
+      "size": 97,
+      "sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/canlink.foid",
+      "size": 72,
+      "sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/dataLog.foid",
+      "size": 261,
+      "sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/ecttrans.foid",
+      "size": 73,
+      "sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/ethercat.foid",
+      "size": 270,
+      "sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/ethip.foid",
+      "size": 301,
+      "sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/modbus.foid",
+      "size": 73,
+      "sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/modcfg.foid",
+      "size": 579,
+      "sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/native-read-session.json",
+      "size": 1196886,
+      "sha256": "2e485a812334a83680a3d873004a3b252d8fdabd73908ef1c13e3332ac5baac8"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/session-invocation.json",
+      "size": 405,
+      "sha256": "33fa963417b8ecc52270b255c2b8e522fccf80e0e7b04af09c1f128c72f208d4"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/sftpserver.foid",
+      "size": 146,
+      "sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/stprog.o",
+      "size": 143920,
+      "sha256": "7751d52e968304c16144d487900c350061d4e2727c96045219d1cc54a3a7936d"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/stuserprog.o",
+      "size": 4400,
+      "sha256": "7983e09571b12d69064b8713b9324806168d37b85b9f4ef135a132477629c92b"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/symbol.sym",
+      "size": 218,
+      "sha256": "1852d6682398014c33e51596b38fac7bf976c3c3b5f6477670662c7d03a7e2fb"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/syscfg.foid",
+      "size": 789,
+      "sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/userprog.foid",
+      "size": 215,
+      "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396"
+    },
+    {
+      "path": ".plcidf/native-download-plus1-continue-20261019T081331Z/varsinfo.foid",
+      "size": 173,
+      "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603"
+    },
+    {
+      "path": ".plcidf/native-error-count-20261019T082941Z/01-memory-cur-error-count.json",
+      "size": 3574,
+      "sha256": "344643fa65d39c4dc507e6d0bb62dfa54aa07f1c98d6e3687b07d4cc0472c3dc"
+    },
+    {
+      "path": ".plcidf/native-error-count-20261019T082941Z/native-read-session.json",
+      "size": 6259,
+      "sha256": "25abc60da8b70cda05aae388e4f50b63d6e67355f60d875da39ff5f0f924483a"
+    },
+    {
+      "path": ".plcidf/native-error-count-20261019T082941Z/session-invocation.json",
+      "size": 459,
+      "sha256": "cfe04efc58332f0f15fadbd562b885397ac45ed4cf0078bea54eb78164197f79"
+    },
+    {
+      "path": ".plcidf/native-file-health-20261019T082618Z/01-application-userprog.foid.json",
+      "size": 2546,
+      "sha256": "e56082739760bec1f464f12de472cb877ef8eb216bac9b4b51dc2e66055bd71d"
+    },
+    {
+      "path": ".plcidf/native-file-health-20261019T082618Z/native-read-session.json",
+      "size": 5444,
+      "sha256": "dfed030eb2516f9300f019e86e24b435bde2a94b01ad2e77862ab467ae7a1911"
+    },
+    {
+      "path": ".plcidf/native-file-health-20261019T082618Z/session-invocation.json",
+      "size": 467,
+      "sha256": "7aafe11a0106a3fa5f91b28dda3b2a0bce34e7ddb8d3714d5fb203ad23992b88"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-build/candidate-report.json",
+      "size": 48449,
+      "sha256": "eae73d729f925d46adf623d62f1561c83148fefd683a3f090f2133a7c31932d6"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-build/linked/link-report.json",
+      "size": 40153,
+      "sha256": "74f5ca4244a44df3505798190256e8ffbba7ee6d14e2f4ea145e63530b4ab4e7"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-build/native-main/MAIN.o",
+      "size": 940,
+      "sha256": "ed414bd6e1f47818cdfd01407587c696ab237dc26d024cba37581f867a66e34f"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-build/native-main/matiec-probe-report.json",
+      "size": 58073,
+      "sha256": "f3f300e40e394351256bf5039e29262630585edc790bb7403a2f36c3eac93f30"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/EIPIns.foid",
+      "size": 88,
+      "sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/Ecam.foid",
+      "size": 118,
+      "sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/OpcUAServer.foid",
+      "size": 97,
+      "sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/canlink.foid",
+      "size": 72,
+      "sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/dataLog.foid",
+      "size": 261,
+      "sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/ecttrans.foid",
+      "size": 73,
+      "sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/ethercat.foid",
+      "size": 270,
+      "sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/ethip.foid",
+      "size": 301,
+      "sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/modbus.foid",
+      "size": 73,
+      "sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/modcfg.foid",
+      "size": 579,
+      "sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/sftpserver.foid",
+      "size": 146,
+      "sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/stprog.o",
+      "size": 143920,
+      "sha256": "7751d52e968304c16144d487900c350061d4e2727c96045219d1cc54a3a7936d"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/stuserprog.o",
+      "size": 4400,
+      "sha256": "7983e09571b12d69064b8713b9324806168d37b85b9f4ef135a132477629c92b"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/symbol.sym",
+      "size": 218,
+      "sha256": "1852d6682398014c33e51596b38fac7bf976c3c3b5f6477670662c7d03a7e2fb"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/syscfg.foid",
+      "size": 789,
+      "sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/userprog.foid",
+      "size": 215,
+      "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/varsinfo.foid",
+      "size": 173,
+      "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603"
+    },
+    {
+      "path": ".plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/live-application-candidate.json",
+      "size": 37831,
+      "sha256": "ce5f75a77680e25da792a9491b0b77c4504052f10cc02908e2537e4d7618cc33"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/01-memory-pcmd.json",
+      "size": 4699,
+      "sha256": "ac90ff80e3348908b70ccbb5d748b519dd1d3e2a3900368fa7db500a9b4364aa"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/02-stop-stop.json",
+      "size": 2358,
+      "sha256": "aa5d04f6f314e5a3438b3ed027076c3bd5088080f4ad2cd719a7f76f66bf1920"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/03-runtime-gcm-state.json",
+      "size": 3709,
+      "sha256": "cad032fd7824a9f9b82d9f095d642be0fc88e28039cf4cfdf2b503e65256bd28"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/04-memory-m8001.json",
+      "size": 4554,
+      "sha256": "de24567b49b1cc44ab8300b56b41395034f97fbf06626c2852370219fc608b33"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/05-memory-pcmd.json",
+      "size": 4701,
+      "sha256": "c354770566bb373c1c978328e467953eda968112f2ed81e83eea572d30cc2bba"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/06-memory-pcmd.json",
+      "size": 4701,
+      "sha256": "6d4930341ab1d40ae2765be51709cd6cf6a763508df41dbcfc7e42473ee1c02a"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/07-memory-pcmd.json",
+      "size": 4701,
+      "sha256": "cc3706935dc6e81808e44cb90c8f966691228225aa149234cec0fdffbccef0ab"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/08-run-run.json",
+      "size": 2358,
+      "sha256": "5aebe7bba719788647f0f863b8234ff1c821f682df41109310cc47fbcdf6389d"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/09-runtime-gcm-state.json",
+      "size": 3709,
+      "sha256": "d929d21e60ead87221448c10c3f77d08b398fd1ac5b596e32671ca2f4e34c20b"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/native-read-session.json",
+      "size": 39078,
+      "sha256": "71daf82ee702f1e82e17accaaae1cd84ffea6b4d88d2e5e545d3e428132da24f"
+    },
+    {
+      "path": ".plcidf/native-plus1-runstop-20261019T081555Z/session-invocation.json",
+      "size": 450,
+      "sha256": "b816ad09bb17285d00372e8b454b4e80d5283bb0aaa13cf7f271ccdf09b826f3"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/01-runtime-gcm-state.json",
+      "size": 3706,
+      "sha256": "fc09dc1c282ccb04e0ac02eea46362867c081178e6650c9cc2854076d38d9fd4"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/02-application-stprog.o.json",
+      "size": 691892,
+      "sha256": "d9417975f523286f60cca7dbd5a6d59de8e4f16f5d1a4005a2cee9c5a1a43183"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/03-application-stuserprog.o.json",
+      "size": 28338,
+      "sha256": "b523b2159381495dfb67bfe005adea5d641b9f1844cbc70c9594ca312da6653a"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/04-application-symbol.sym.json",
+      "size": 4317,
+      "sha256": "ad1f5bbbca7656fb4279681ff13a52d94b0d3b14362a56e564304a34ddc144b5"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/05-application-userprog.foid.json",
+      "size": 4323,
+      "sha256": "bc71e24127f542844f785fbfab121e081cd2767aac4869308087f6cc7e579fa2"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/06-application-varsinfo.foid.json",
+      "size": 4155,
+      "sha256": "ddd78263d2d5ca686f1cab9e62dbbad744168186ff16918b15fdcebcc60a3997"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/07-application-syscfg.foid.json",
+      "size": 7331,
+      "sha256": "9b706e119be31b35672318747004d18adaa5bcfb6b66990293d94b085f474271"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/08-application-ethercat.foid.json",
+      "size": 4543,
+      "sha256": "b1c856b4a6dbbe97976b35223dbc0a2de3a5309abc275cb49b6469e9fabe63d3"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/09-application-modbus.foid.json",
+      "size": 3738,
+      "sha256": "1cb8873abbf2a6eec07088345d18a46cb8ac727ce0227440e716ab71104d1751"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/10-application-canlink.foid.json",
+      "size": 3740,
+      "sha256": "f25ecc9ad97dd964e8df97136684fd3c8c61366c7b40b8346051afbc73c7931b"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/11-application-modcfg.foid.json",
+      "size": 6493,
+      "sha256": "3c2814ebc26a6e84d0a911b81310b0c1fa863743a2552513c68d7468a4c6997b"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/12-application-ethip.foid.json",
+      "size": 4649,
+      "sha256": "a406bf40f5991b55f123201e663046029e2dd627cfb6beda4631aeb570937bd0"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/13-application-EIPIns.foid.json",
+      "size": 3799,
+      "sha256": "023225b278fa50accaf57460f781cf6d1481d90934cb4de41013992bf5fe942b"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/14-application-ecttrans.foid.json",
+      "size": 3750,
+      "sha256": "f22b1225d61b91f1105100fe33d9ee2f32a4d54d795debc559e6124578ab1fcf"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/15-application-dataLog.foid.json",
+      "size": 4501,
+      "sha256": "da63b2cab7ecee11c7e2aad64f61ca48af894eadd17cf1cc7c3832c0cba573c6"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/16-application-OpcUAServer.foid.json",
+      "size": 3865,
+      "sha256": "7f53431f7dce4a16c3e5598d7d85959f98652791f80fe74003a4867fbf6b68e6"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/17-application-sftpserver.foid.json",
+      "size": 4059,
+      "sha256": "49d42e8f8cd35a1eadfa19bbe3e3a6d1bf6a1a0b23f83453f6201ccf9e8a9dce"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/18-application-Ecam.foid.json",
+      "size": 3911,
+      "sha256": "ed8cd43a247de6c8ebade9a9da69d33013e63d2e4576a8a76cddcc612f4c107d"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/19-runtime-gcm-state.json",
+      "size": 3708,
+      "sha256": "7742da5afcaba8b23b5326b8161c7af9936a21b4f60a0c5603518f8570fb3196"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/EIPIns.foid",
+      "size": 88,
+      "sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/Ecam.foid",
+      "size": 118,
+      "sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/OpcUAServer.foid",
+      "size": 97,
+      "sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/canlink.foid",
+      "size": 72,
+      "sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/dataLog.foid",
+      "size": 261,
+      "sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/ecttrans.foid",
+      "size": 73,
+      "sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/ethercat.foid",
+      "size": 270,
+      "sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/ethip.foid",
+      "size": 301,
+      "sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/modbus.foid",
+      "size": 73,
+      "sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/modcfg.foid",
+      "size": 579,
+      "sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/native-read-session.json",
+      "size": 740277,
+      "sha256": "0f951633ed175befb918666c557dd1b5d23fca651819ff1c444b6f1dd4fc92b1"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/session-invocation.json",
+      "size": 405,
+      "sha256": "edfa2bc58dc8943f04155fcdc1660eadb7e86f31dd2022d6c58b7a651ef7232a"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/sftpserver.foid",
+      "size": 146,
+      "sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/stprog.o",
+      "size": 125848,
+      "sha256": "69f3e60db59df3eae06cc96d9ad3716a08c114b8ffcb3a3bc369a56510b17fff"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/stuserprog.o",
+      "size": 4592,
+      "sha256": "1c948cd6ec7ba3d56e8daa1f59ae6ab5584711b462f038752696fcca15b32bc0"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/symbol.sym",
+      "size": 218,
+      "sha256": "1852d6682398014c33e51596b38fac7bf976c3c3b5f6477670662c7d03a7e2fb"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/syscfg.foid",
+      "size": 789,
+      "sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/userprog.foid",
+      "size": 215,
+      "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396"
+    },
+    {
+      "path": ".plcidf/native-predeploy-20261019T080859Z/varsinfo.foid",
+      "size": 173,
+      "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603"
+    },
+    {
+      "path": ".plcidf/windows-fault-recovery-20261019T084031Z/ownership-handoff.json",
+      "size": 3581,
+      "sha256": "95eba6063703731aabda14648330d4f5c5b2a791a6d28224863294a6d51d05ad"
+    },
+    {
+      "path": ".plcidf/windows-fault-recovery-20261019T084031Z/windows-gcm-intent.json",
+      "size": 542,
+      "sha256": "9fa6d876a83901f3b6121872b0dcfa42b64b6362d0ce29b3304e3d13450c78f2"
+    },
+    {
+      "path": ".plcidf/windows-fault-recovery-20261019T084031Z/windows-gcm-result.json",
+      "size": 799,
+      "sha256": "d93b0a85a945deadab14d4c8fbd09f2498c17b5f1c1418c3eeff33cea7b335d2"
+    },
+    {
+      "path": "examples/easy521_native_memory/conditional_plus1.st",
+      "size": 910,
+      "sha256": "4f9dba05f28f5b3d300b752856d9e1648b308f26a7f99c2480abafa5e6d416f1"
+    }
+  ],
+  "previous_summary_sha256": "d2dec9eccc89c22ee1f5b6b5e9c8252e244f22f27b7eb3ea7c219a6c452e299f"
+}

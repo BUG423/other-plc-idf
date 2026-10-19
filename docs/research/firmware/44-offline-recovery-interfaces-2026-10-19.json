@@ -1,0 +1,220 @@
+{
+  "schema": "plcidf.easy521-offline-recovery-interfaces.v1",
+  "date": "2026-10-19",
+  "scope": "Offline vendor host binaries and existing local manual text only; no device I/O, Windows execution, recovery writer, firmware replacement or Git action.",
+  "sources": {
+    "h530": {
+      "path": "/mnt/e/Software/AutoShop/H530Communicate.dll",
+      "bytes": 22864896,
+      "sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698"
+    },
+    "interface_mgr": {
+      "path": "/mnt/e/Software/AutoShop/InterfaceMgr.dll",
+      "bytes": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192"
+    },
+    "autoshop": {
+      "path": "/mnt/e/Software/AutoShop/AutoShop.exe",
+      "bytes": 55592960,
+      "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e"
+    },
+    "programming_text": {
+      "path": ".plcidf/research-led-20261019/programming.json",
+      "bytes": 1172860,
+      "sha256": "c96e648e17910e78e02a88969f4cb63bcf65ce8e5ef1dbbfd5fc0dd0f3e151e5"
+    },
+    "easy_user_text": {
+      "path": ".plcidf/research-led-20261019/easy-user.json",
+      "bytes": 154784,
+      "sha256": "a3d9ce1a7c2fa18a62aa895920b51d5850e80b16449d4299d93054673325a06d"
+    },
+    "loader_user_config": {
+      "path": "/mnt/e/Software/AutoShop/InoLoaderPro_V100R002B021.B5/user_config.ini",
+      "bytes": 346,
+      "sha256": "7e91180a42ef999949bee3c05bb91bd8dc15e37df85364b84b7c72862e7cf15f"
+    },
+    "loader_product_info": {
+      "path": "/mnt/e/Software/AutoShop/InoLoaderPro_V100R002B021.B5/linkcfg/ProductInfo.txt",
+      "bytes": 198,
+      "sha256": "2c0e292c651204538c9cdb106761d86d321603fc4b268620c56f00bcbb150c6a"
+    }
+  },
+  "code_ranges": [
+    {
+      "source": "h530",
+      "rva_start": "0x56e0",
+      "rva_end_exclusive": "0x572d",
+      "bytes": 77,
+      "sha256": "5e64adbed01e00140ad79afd09211fd651bbfc92972283e93ae7aec7108a5854"
+    },
+    {
+      "source": "h530",
+      "rva_start": "0xc230",
+      "rva_end_exclusive": "0xc28b",
+      "bytes": 91,
+      "sha256": "9419e121c43623b833290344c4e816e56c64863b9469824c4be78f1b2df79cbd"
+    },
+    {
+      "source": "h530",
+      "rva_start": "0xc7d0",
+      "rva_end_exclusive": "0xc8e3",
+      "bytes": 275,
+      "sha256": "ce2e9c18e137142ce0c018699afaf84cfdea95a997bba5980ed9e49d3e8f4aca"
+    },
+    {
+      "source": "h530",
+      "rva_start": "0x62d0",
+      "rva_end_exclusive": "0x6339",
+      "bytes": 105,
+      "sha256": "7f464a934c1cd09195a593fa2830c918aff8535da9520109f0d40bf9835b02c8"
+    },
+    {
+      "source": "h530",
+      "rva_start": "0x304e0",
+      "rva_end_exclusive": "0x30578",
+      "bytes": 152,
+      "sha256": "b4b1d1eed21112a1660dd00bfdbfcc1d13daba449e986619e8166ec1162575a8"
+    },
+    {
+      "source": "h530",
+      "rva_start": "0xcbe0",
+      "rva_end_exclusive": "0xcc47",
+      "bytes": 103,
+      "sha256": "ba419b1b62ecb31aa2dc50a25647bcab3e193be381a505fd9a58f2b715a6edf2"
+    },
+    {
+      "source": "interface_mgr",
+      "rva_start": "0x68d10",
+      "rva_end_exclusive": "0x68d34",
+      "bytes": 36,
+      "sha256": "c5310365e46c0c79b36c7c5318f7bd47a0690ceb29b012650db8a93acc1074c1"
+    },
+    {
+      "source": "interface_mgr",
+      "rva_start": "0x69290",
+      "rva_end_exclusive": "0x692be",
+      "bytes": 46,
+      "sha256": "827ae826c3dad9628d5a8c3abbe539889b888fe0b122d96d8ed5e95bf97a0270"
+    },
+    {
+      "source": "autoshop",
+      "rva_start": "0x11ffd0b",
+      "rva_end_exclusive": "0x11ffd1b",
+      "bytes": 16,
+      "sha256": "9b63389b838bc7713617c8709ccfcf52d285b6d4c4ea0802d79808c1df0e65e4"
+    },
+    {
+      "source": "autoshop",
+      "rva_start": "0xa7323c",
+      "rva_end_exclusive": "0xa73259",
+      "bytes": 29,
+      "sha256": "326c611b967c86021604041e4ac6e6bfb6a57dd29afe8939f8b9581350aefd1c"
+    },
+    {
+      "source": "autoshop",
+      "rva_start": "0xa73306",
+      "rva_end_exclusive": "0xa73329",
+      "bytes": 35,
+      "sha256": "37dfd1e2dd7c833fa1f83355eef6effb9cf61b04358072ad3774404e06ac80d5"
+    }
+  ],
+  "clear_app": {
+    "facade": "InterfaceMgr RVA 0x68d10 -> virtual +0xd8",
+    "implementation": "CH530Communicate_HC vtable 0x791fc +0xd8 -> RVA 0x56e0",
+    "class": "RVA 0x5705 installs CClearAppCommand vtable 0x79924; +0x3c -> RVA 0xc230",
+    "actual_send": "RVA 0xc24f calls common RVA 0xc7d0; same runtime selector1/operation2 path as SetGCM; c7d0 uses bound protocol virtual +0x2c",
+    "local_arguments": {
+      "index": "0xff000100",
+      "payload_bytes": 1,
+      "payload_hex": "00",
+      "normalflag": 0
+    },
+    "qualification": "Index is passed through common symbol/address resolution because normalflag=0; not a newly established literal wire request. No evidence that ClearApp is serviced independently when runtime bulk path does not reply.",
+    "autoshop_call": "AutoShop RVA 0x11ffd0b pushes commandLevel0/executeMode1; RVA 0x11ffd0f calls IAT0x1eb0eb4 after connection/permission/UI checks. Not an autonomous boot path."
+  },
+  "simple_command": {
+    "facade": "InterfaceMgr RVA 0x69290 -> virtual +0x128 -> H530 RVA 0x62d0",
+    "class": "RVA 0x62fc installs CSimpleCommand vtable0x7df2c; +0x3c -> RVA0x304e0 ->0x30510",
+    "enum_branch0": "RVA0x30521..0x30536 writes DWORD1 to local index0xff000010 through common c7d0, normalflag1",
+    "nonzero_enum_branch": "RVA0x3053f..0x30572 reads same index with common c6c0 and copies returned DWORD",
+    "autoshop_calls": "AutoShop RVA0xa7324d passes enum0 once, then RVA0xa7331d polls enum0x7b bounded200; numeric enum0x7b selects the generic nonzero/read branch, not reset123.",
+    "cross_evidence": "Research14 simulator_followup names ff000010 read_load_down_file_status/write_load_down_file_control; simulator names are corroboration only, not physical protocol compatibility.",
+    "conclusion": "Download-file control/status helper over runtime protocol, not a proven CPUReset/recovery endpoint."
+  },
+  "control_command": {
+    "execute_rva": "0xcbe0",
+    "send_rva": "0xcc19",
+    "bound_protocol": "same protocol virtual+0x2c, selector1/op2, indexff008000/length4 + caller command DWORD",
+    "qualification": "No independent channel or reset enum established; not implemented or sent."
+  },
+  "recovery_channels": {
+    "usb_firmware_burning": {
+      "source": "programming_text",
+      "page": 990,
+      "section": "29.2.1",
+      "target_scope": "Easy family; Easy52X uses its own image, distinct from Easy30X/32X/50X",
+      "vendor_order": [
+        "Power PLC down",
+        "Open AutoShop Tools > firmware burning",
+        "Select vendor-supplied matching firmware file",
+        "Insert/reinsert USB cable, confirm only when vendor UI recognizes target"
+      ],
+      "application_effect": "Deletes prior application",
+      "status": "Documented vendor firmware path; boot USB identity/entry handshake/device applicability in present fault are unverified; matching vendor firmware image not obtained."
+    },
+    "firmware_upgrade": {
+      "source": "programming_text",
+      "page": 998,
+      "section": "29.2.3",
+      "target_scope": "Easy USB or Ethernet",
+      "application_effect": "Retains prior application",
+      "qualification": "Do not equate firmware upgrade with destructive firmware burning or recovery from unresponsive runtime."
+    },
+    "tf_program_download": {
+      "source": "easy_user_text",
+      "pages": [
+        131,
+        161,
+        162,
+        176
+      ],
+      "section": "Easy52X chapter6,6.6.2",
+      "requires": [
+        "GE20-TF or GE20-TF-RTC storage extension, B slot",
+        "FAT32 MicroSD <=32GB",
+        "Vendor Down/Updown artifact with matching model/password, PLCProgram directory"
+      ],
+      "qualification": "Documented boot-time application-loading route; current user has no such card/extension evidence; 17 native files alone are not a valid Down/Updown artifact."
+    },
+    "tf_firmware_burning": {
+      "source": "easy_user_text",
+      "page": 162,
+      "section": "6.6.3",
+      "application_effect": "Deletes application and user data",
+      "requires": "Matching vendor img, prepared TF storage path; no such image verified here"
+    },
+    "inoloader": {
+      "config_usb_vid": "0x0483",
+      "config_usb_pid": "0x5710",
+      "qualification": "Installed loader default IDs differ from observed runtime0471:a531; ProductInfo only generic PLC product-line label, no Easy521 mapping here; do not change IDs/choose unrelated image as recovery proof."
+    },
+    "cpu_reset_or_reset_communication": {
+      "result": "No independently serviced recovery/reset interface established by inspected facade exports and concrete ClearApp/Simple/Control sends. This is a bounded negative result, not proof firmware has none."
+    },
+    "panel_mfk": "Generic programming-manual MFK/7-segment procedures are not established for Easy521; do not prescribe them by extrapolation."
+  },
+  "validation": {
+    "method": "Offline PE exports/RTTI/vtable assertion + bounded x86 disassembly and local manual JSON extraction",
+    "device_operations": 0,
+    "windows_process_executions": 0,
+    "code_changes": 0,
+    "new_writer_implementations": 0,
+    "tests": "No code changed; four vtable assertions and source/code-range SHA checks passed."
+  },
+  "remaining_unknowns": [
+    "Actual PLC CPU/runtime error code (diagnostic query did not reply)",
+    "Whether physical STOP with full power cycle can permit vendor runtime communication",
+    "Matching Easy52X recovery image and vendor boot handshake/identity",
+    "Whether documented independent firmware/TF route is usable on this specific faulted unit"
+  ]
+}

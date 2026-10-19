@@ -21,6 +21,10 @@ HEADER = struct.Struct("<HBBHHBB")
 READ_CHUNK_BYTES = 494
 WRITE_CHUNK_BYTES = 40960
 MAX_APPLICATION_BYTES = 8 * 1024 * 1024
+# H530288c0 op6 length<=10 succeeds without consuming a DWORD. Confirmed
+# callers: SetGCM c8c5; Download open2 d574/d8c5, write5 d5a1/d8f4.
+# Read-open requires a file size, so it is deliberately absent here.
+EMPTY_ACK_ACTIONS = ("gcm-set", "file-open-write", "file-write")
 # The exact remote basenames come from the real AutoShop file vector in report16.
 # No directory traversal, firmware/system path, arbitrary command/index or alias
 # is exposed. Their existence on a particular PLC is established only by reads.
@@ -165,13 +169,30 @@ def _header(frame, *, maximum):
 def parse_response(frame, *, request, expected_data_bytes=None):
     """Correlate response and decode file size/block or ACK; no I/O.
 
-    Open/ACK/error replies are exactly14 bytes. Read block data has u32 block,
+    Read-open/error replies are exactly14 bytes in this supported subset.
+    The three explicit writer actions additionally accept the precise9B
+    header-only op6 observed for SetGCM in native
+    download20261019T080940Z. RVA288c0 returns success for op6 with length<=10;
+    it reads a u32 at offset10 only when length>10. No absent u32 or flag is
+    fabricated. Download d574/d5a1/d8c5/d8f4 use the same success return without
+    consuming the optional DWORD. Read-open/read-block and other short lengths
+    remain refused; this does not generalize all selector4 responses.
+    Read block data has u32 block,
     u32 byte-count and1..494 actual bytes. Optional expected_data_bytes binds it
     to the known open size so short/trailing/duplicate blocks cannot pass.
     Unknown response reserved/flags are preserved, matching report15's common
     response checks; they never authorize additional requests or operations.
     """
     original = parse_request(request)
+    if type(frame) is bytes and len(frame) == 9:
+        size, version, selector, sequence, reserved, operation = struct.unpack("<HBBHHB", frame)
+        if (original["action"] not in EMPTY_ACK_ACTIONS or size != 9 or version != 1
+                or selector != original["selector"] or sequence != original["sequence"] or operation != 6):
+            raise ProtocolError("Only a correlated exact9B acknowledgement for an explicit supported writer is accepted")
+        return {"sequence": sequence, "selector": selector, "operation": operation,
+                "reserved": reserved, "flags": None, "ok": True,
+                "ack_u32": None, "ack_payload_present": False,
+                "ack_format": ("gcm" if original["action"] == "gcm-set" else original["action"]) + "-header9-empty"}
     header = _header(frame, maximum=READ_CHUNK_BYTES + 18)
     if any(header[name] != original[name] for name in ("selector", "sequence")):
         raise ProtocolError("Response selector/sequence does not correlate with request")
@@ -182,7 +203,8 @@ def parse_response(frame, *, request, expected_data_bytes=None):
     if original["action"] != "file-read":
         if header["operation"] != 6 or len(frame) != 14:
             raise ProtocolError("Open/write/GCM request requires exact op6/u32 acknowledgement")
-        return {**header, "ok": True, "ack_u32": struct.unpack_from("<I", frame, 10)[0]}
+        return {**header, "ok": True, "ack_u32": struct.unpack_from("<I", frame, 10)[0],
+                "ack_payload_present": True, "ack_format": "header10-u32"}
     if header["operation"] != 5 or len(frame) < 19:
         raise ProtocolError("Read block requires op5 with block/count/data")
     block, length = struct.unpack_from("<II", frame, 10)

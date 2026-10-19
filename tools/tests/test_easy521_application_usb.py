@@ -24,13 +24,16 @@ spec.loader.exec_module(app)
 class FileUsb(base.FakeLibusb):
     def __init__(self, *, content=b"abc", failure_at=None, error_code=None, mutation=None,
                  out_status=None, out_count=None, in_status=None, in_partial=b"",
-                 zlp_after_full=False, zlp_count=1, on_zlp=None, **kwargs):
+                 zlp_after_full=False, zlp_count=1, on_zlp=None, short_gcm_ack=False,
+                 short_file_write_ack=False, **kwargs):
         super().__init__(**kwargs)
         self.content, self.failure_at, self.error_code, self.mutation = content, failure_at, error_code, mutation
         self.blocks, self.opened = [], False
         self.out_status, self.out_count, self.in_status, self.in_partial = out_status, out_count, in_status, in_partial
         self.zlp_after_full, self.zlp_count, self.pending_zlp = zlp_after_full, zlp_count, 0
         self.on_zlp = on_zlp
+        self.short_gcm_ack = short_gcm_ack
+        self.short_file_write_ack = short_file_write_ack
 
     def _bulk_transfer(self, handle, endpoint, data, length, transferred, timeout):
         assert 0 < timeout <= 10000
@@ -68,8 +71,13 @@ class FileUsb(base.FakeLibusb):
             operation, body = 5, struct.pack("<II", block, len(chunk)) + chunk
         else:
             operation, body = 6, struct.pack("<I", 0)
-        frame = bytearray(struct.pack("<HBBHHBB", 10 + len(body), 1, request[3],
-                                     int.from_bytes(request[4:6], "little"), 0, operation, 0) + body)
+        if ((self.short_gcm_ack and metadata["action"] == "gcm-set")
+                or (self.short_file_write_ack and metadata["action"] in ("file-open-write", "file-write"))):
+            frame = bytearray(struct.pack("<HBBHHB", 9, 1, request[3],
+                                          int.from_bytes(request[4:6], "little"), 0, operation))
+        else:
+            frame = bytearray(struct.pack("<HBBHHBB", 10 + len(body), 1, request[3],
+                                         int.from_bytes(request[4:6], "little"), 0, operation, 0) + body)
         if self.mutation == "sequence": frame[4] ^= 1
         if self.mutation == "count" and operation == 5: frame[14] ^= 1
         for index, byte in enumerate(frame): data[index] = byte
@@ -596,3 +604,219 @@ def test_unexpected_control_api_interrupt_keeps_possible_write_and_no_retry(monk
     report = json.loads(capsys.readouterr().out)
     assert len(calls) == 1 and report["plc_change_possible"] and report["device_access"] is None
     assert report["request_outcome"] == "unknown"
+
+
+def test_control_accepts_observed_header9_ack_without_fabricating_u32_and_without_readback(tmp_path):
+    fake = FileUsb(short_gcm_ack=True)
+    result = app.set_gcm_native(state=2, execute=True, linux_device="001:004", lease_directory=tmp_path,
+                               backend_factory=lambda: app.native.Libusb1Transport(library=fake))
+    assert result["ok"] and result["status"] == "control-acknowledged" and len(fake.sent) == 1
+    assert result["ack_u32"] is None and result["ack_payload_present"] is False
+    assert result["ack_format"] == "gcm-header9-empty" and result["cpu_state_verified"] is False
+    assert result["requests"][0]["decoded"]["flags"] is None
+    assert result["requests"][0]["read_calls"] == [{"rc": 0, "transferred": 9}]
+
+
+def test_download_header9_gcm_acks_leave_file_ack_contract_and_single_send_order_unchanged(tmp_path):
+    fake = FileUsb(short_gcm_ack=True)
+    result = download(tmp_path, fake)
+    assert result["ok"] and len(fake.sent) == 4
+    assert [x["action"] for x in result["requests"]] == ["gcm-set", "file-open-write", "file-write", "gcm-set"]
+    assert result["requests"][0]["decoded"]["ack_u32"] is None
+    assert result["requests"][1]["decoded"]["ack_u32"] == 0
+    assert result["requests"][2]["decoded"]["ack_u32"] == 0
+    assert result["requests"][3]["decoded"]["ack_payload_present"] is False
+
+
+def test_header9_with_other_operation_is_unknown_and_not_replayed(tmp_path):
+    fake = FileUsb(short_gcm_ack=True, error_code=0x84)
+    result = app.set_gcm_native(state=2, execute=True, linux_device="001:004", lease_directory=tmp_path,
+                               backend_factory=lambda: app.native.Libusb1Transport(library=fake))
+    assert not result["ok"] and result["request_outcome"] == "unknown" and len(fake.sent) == 1
+    assert result["requests"][0]["response_hex"].endswith("0f")
+    assert result["release_rc"] == 0 and result["close_called"] is True
+
+
+def test_download_all_three_explicit_writers_accept_header9_and_send_each_frame_once(tmp_path):
+    fake = FileUsb(short_gcm_ack=True, short_file_write_ack=True)
+    result = download(tmp_path, fake)
+    assert result["ok"] and len(fake.sent) == 4
+    assert all(x["decoded"]["ack_u32"] is None and not x["decoded"]["ack_payload_present"] for x in result["requests"])
+    assert [x["decoded"]["ack_format"] for x in result["requests"]] == [
+        "gcm-header9-empty", "file-open-write-header9-empty", "file-write-header9-empty", "gcm-header9-empty"]
+    assert not result["application_execution_verified"]
+
+
+def test_read_open_header9_is_unknown_not_zero_size_and_never_saves_empty_backup(tmp_path):
+    fake = FileUsb()
+    original = fake.libusb_bulk_transfer.implementation
+    def short_read_open(handle, endpoint, data, length, transferred, timeout):
+        rc = original(handle, endpoint, data, length, transferred, timeout)
+        if endpoint == 0x81:
+            data[0], data[1] = 9, 0
+            base.set_pointer(transferred, base.C.c_int, 9)
+        return rc
+    fake.libusb_bulk_transfer.implementation = short_read_open
+    result = upload(tmp_path, fake)
+    assert not result["ok"] and result["request_outcome"] == "unknown" and len(fake.sent) == 1
+    assert not (tmp_path / "backup.o").exists()
+
+
+WAIT_TARGET = {"linux_device":"001:004", "vidpid":"0471:a531", "bcd_device":784, "serial":None}
+
+
+def wait_substitutes(monkeypatch, values, *, control_ok=True, read_elapsed_s=0.01):
+    """Clock/control/read substitutes; no real sleep, USB or Windows."""
+    clock, writes, reads, sleeps = [100.0], [], [], []
+    monkeypatch.setattr(app.time, "monotonic", lambda: clock[0])
+    monkeypatch.setattr(app.time, "time", lambda: 1700000000+clock[0])
+    def sleep(seconds):
+        assert 0 <= seconds <= 0.1
+        sleeps.append(seconds)
+        clock[0]+=seconds
+    monkeypatch.setattr(app.time, "sleep", sleep)
+    def write(**kwargs):
+        writes.append(kwargs)
+        clock[0]+=0.02
+        return {**app._report("set-gcm"), "ok":control_ok, "status":"control-acknowledged" if control_ok else "failed",
+                "device_access":True, "plc_change_possible":True, "target":dict(WAIT_TARGET),
+                "request_outcome":"correlated_response" if control_ok else "unknown",
+                "requests":[{"write_calls":1,"request_hex":"19-byte-control-evidence"}]}
+    def read(**kwargs):
+        reads.append(kwargs)
+        assert kwargs["kind"]=="runtime" and kwargs["profile"]=="gcm-state" and kwargs["execute"] is True
+        assert 1 <= kwargs["timeout_ms"] <= 10000
+        clock[0]+=read_elapsed_s
+        value=values[min(len(reads)-1,len(values)-1)]
+        if isinstance(value,BaseException):raise value
+        if isinstance(value,dict):return value
+        return {"ok":True,"status":"observed","device_access":True,"transport_kind":"linux-native-libusb1",
+                "read_profile":"gcm-state","request_outcome":"correlated_raw_data","raw_value":value,
+                "request_hex":f"read-sequence-{len(reads)}","target":dict(WAIT_TARGET)}
+    monkeypatch.setattr(app,"set_gcm_native",write)
+    monkeypatch.setattr(app.native,"read_fixed",read)
+    return clock,writes,reads,sleeps
+
+
+@pytest.mark.parametrize("state,values,expected_reads", [(1,[0,0,1],3),(0,[1,0],2)])
+def test_explicit_wait_writes_once_then_new_valid_reads_until_target(monkeypatch,state,values,expected_reads):
+    clock,writes,reads,sleeps=wait_substitutes(monkeypatch,values)
+    result=app.set_gcm_and_wait_native(state=state,execute=True,linux_device="001:004")
+    assert result["ok"] and result["status"]=="state-confirmed" and result["cpu_state_verified"]
+    assert len(writes)==1 and len(reads)==expected_reads and result["causal_transition_verified"] is False
+    assert result["application_execution_verified"] is False and result["permanent_target_identity"]=="unknown"
+    assert result["control_result"]["requests"][0]["write_calls"]==1
+    assert len(result["state_observations"])==expected_reads
+    assert result["state_verification"]["raw_value"]==state
+    assert result["state_verification"]["request_hex"]==f"read-sequence-{expected_reads}"
+    assert all(x["finished_monotonic_s"]>=x["started_monotonic_s"] for x in result["state_observations"])
+    assert all(x["within_deadline"] for x in result["state_observations"])
+    if state==0:assert sleeps[0]==0.1
+
+
+def test_wait_read_failure_stops_unknown_with_ack_and_partial_read_report(monkeypatch):
+    failure={"ok":False,"status":"failed","request_outcome":"unknown","device_access":True,
+             "transport_record":{"response_hex":"0b00","read_calls":[{"rc":-7,"transferred":2}]}}
+    _,writes,reads,_=wait_substitutes(monkeypatch,[0,failure,1])
+    result=app.set_gcm_and_wait_native(state=1,execute=True,linux_device="001:004")
+    assert not result["ok"] and result["status"]=="state-read-failed" and result["request_outcome"]=="unknown"
+    assert len(writes)==1 and len(reads)==2 and result["control_result"]["ok"] is True
+    assert result["state_observations"][-1]["result"] is failure and not result["cpu_state_verified"]
+
+
+def test_wait_never_polls_after_failed_control(monkeypatch):
+    _,writes,reads,_=wait_substitutes(monkeypatch,[1],control_ok=False)
+    result=app.set_gcm_and_wait_native(state=1,execute=True,linux_device="001:004")
+    assert not result["ok"] and len(writes)==1 and not reads and result["stage"]=="control-failed"
+
+
+def test_wait_global_deadline_shrinks_three_phase_timeout_and_never_reissues_writer(monkeypatch):
+    clock,writes,reads,_=wait_substitutes(monkeypatch,[0],read_elapsed_s=0.02)
+    result=app.set_gcm_and_wait_native(state=1,execute=True,linux_device="001:004",wait_timeout_s=0.1)
+    assert not result["ok"] and result["status"]=="state-wait-timeout" and len(writes)==1
+    assert result["last_observed_state"]==0 and result["cpu_state_verified"] is False
+    assert reads[0]["timeout_ms"]<=33 and all(a["timeout_ms"]>b["timeout_ms"] for a,b in zip(reads,reads[1:]))
+    for observation in result["state_observations"]:
+        remaining=result["wait_deadline_monotonic_s"]-observation["started_monotonic_s"]
+        assert 3*observation["timeout_ms"] <= remaining*1000+1
+
+
+def test_late_target_read_is_recorded_but_not_promoted_to_on_time_success(monkeypatch):
+    _,writes,reads,_=wait_substitutes(monkeypatch,[1],read_elapsed_s=0.2)
+    result=app.set_gcm_and_wait_native(state=1,execute=True,linux_device="001:004",wait_timeout_s=0.1)
+    assert not result["ok"] and result["target_observed_after_deadline"] and not result["cpu_state_verified"]
+    assert result["wait_deadline_overrun_s"]>0 and len(writes)==len(reads)==1
+
+
+@pytest.mark.parametrize("mutation", ["location","vidpid","release","raw-bool","raw-outside","uncorrelated"])
+def test_wait_wrong_identity_or_invalid_state_stops_without_another_poll(monkeypatch,mutation):
+    observation={"ok":True,"transport_kind":"linux-native-libusb1","read_profile":"gcm-state",
+        "request_outcome":"correlated_raw_data","raw_value":1,"target":dict(WAIT_TARGET)}
+    if mutation=="location":observation["target"]["linux_device"]="001:005"
+    elif mutation=="vidpid":observation["target"]["vidpid"]="0000:0000"
+    elif mutation=="release":observation["target"]["bcd_device"]=785
+    elif mutation=="raw-bool":observation["raw_value"]=True
+    elif mutation=="raw-outside":observation["raw_value"]=4
+    elif mutation=="uncorrelated":observation["request_outcome"]="unknown"
+    _,writes,reads,_=wait_substitutes(monkeypatch,[observation,1])
+    result=app.set_gcm_and_wait_native(state=1,execute=True,linux_device="001:004")
+    assert not result["ok"] and result["request_outcome"]=="unknown" and len(writes)==len(reads)==1
+
+
+def test_wait_interrupt_preserves_control_and_unknown_read_boundary(monkeypatch):
+    _,writes,reads,_=wait_substitutes(monkeypatch,[KeyboardInterrupt()])
+    result=app.set_gcm_and_wait_native(state=1,execute=True,linux_device="001:004")
+    assert result["status"]=="interrupted" and result["control_result"]["ok"]
+    assert result["request_outcome"]=="unknown" and len(writes)==len(reads)==1
+    assert result["state_observations"][0]["read_outcome"]=="unknown"
+
+
+@pytest.mark.parametrize("state",[0,1])
+def test_wait_preview_has_zero_library_lease_nonce_or_sleep(monkeypatch,state):
+    def forbidden(*args,**kwargs):pytest.fail("wait preview accessed resource")
+    monkeypatch.setattr(app.native.C,"CDLL",forbidden)
+    monkeypatch.setattr(app.native,"ResourceLease",forbidden)
+    monkeypatch.setattr(app.secrets,"randbits",forbidden)
+    monkeypatch.setattr(app.time,"sleep",forbidden)
+    result=app.set_gcm_and_wait_native(state=state)
+    assert result["ok"] and result["status"]=="preview" and result["state_observations"]==[]
+    assert result["wait_timeout_s"]==(5.0 if state else 1.0) and result["device_access"] is False
+
+
+@pytest.mark.parametrize("timeout",[0,0.099,10.1,float("nan"),float("inf"),True])
+def test_bad_wait_timeout_prevents_writer_and_read(monkeypatch,timeout):
+    def forbidden(**kwargs):pytest.fail("invalid timeout invoked API")
+    monkeypatch.setattr(app,"set_gcm_native",forbidden)
+    monkeypatch.setattr(app.native,"read_fixed",forbidden)
+    result=app.set_gcm_and_wait_native(state=1,execute=True,linux_device="001:004",wait_timeout_s=timeout)
+    assert not result["ok"] and result["stage"]=="arguments" and result["device_access"] is False
+
+
+def test_wait_cli_requires_explicit_flag_for_timeout_and_does_not_write(monkeypatch,capsys):
+    monkeypatch.setattr(app,"set_gcm_native",lambda **kwargs:pytest.fail("invalid CLI wrote"))
+    assert app.main(["run","--wait-timeout-s","1"])==1
+    assert json.loads(capsys.readouterr().out)["device_access"] is False
+
+
+def test_wait_cli_routes_explicit_option_without_altering_default_control_call(monkeypatch,capsys):
+    calls=[]
+    def wait(**kwargs):
+        calls.append(kwargs)
+        return {**app._report("set-gcm-wait"),"ok":True,"status":"preview"}
+    monkeypatch.setattr(app,"set_gcm_and_wait_native",wait)
+    assert app.main(["run","--wait-state","--wait-timeout-s","0.5"])==0
+    assert calls==[{"state":1,"wait_timeout_s":0.5,"execute":False,"linux_device":None,"timeout_ms":2500,"session_timeout_s":30.0}]
+
+
+def test_minimum_explicit_stop_window_observes_once_instead_of_sleeping_entire_budget(monkeypatch):
+    _,writes,reads,sleeps=wait_substitutes(monkeypatch,[0])
+    result=app.set_gcm_and_wait_native(state=0,execute=True,linux_device="001:004",wait_timeout_s=0.1)
+    assert result["ok"] and len(writes)==len(reads)==1 and not sleeps
+    assert result["initial_poll_delay_s"]==0.0 and result["maximum_state_reads"]==1
+
+
+@pytest.mark.parametrize("state",[2,3,True])
+def test_wait_cannot_attach_to_download_gcm_or_coerced_boolean_states(monkeypatch,state):
+    monkeypatch.setattr(app,"set_gcm_native",lambda **kwargs:pytest.fail("unsupported state wrote"))
+    result=app.set_gcm_and_wait_native(state=state,execute=True,linux_device="001:004")
+    assert not result["ok"] and result["stage"]=="arguments" and result["device_access"] is False

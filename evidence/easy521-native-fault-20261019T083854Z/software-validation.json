@@ -1,0 +1,41 @@
+{
+  "schema": "plcidf.fault-software-validation.v1",
+  "recorded_at": "2026-10-19T08:46:07.179656+00:00",
+  "source_revision": "4e8a6fa20d292c9abf5f8a1ea6ab7727ff5e53b5",
+  "working_tree_dirty": true,
+  "device_access": false,
+  "hardware_recovery_verified": false,
+  "new_candidate_execution_verified": false,
+  "checks": [
+    {
+      "name": "all-tools",
+      "exit_code": 0,
+      "private_log": ".plcidf/post-fault-tools-tests-20261019.log",
+      "log_sha256": "fb3d963badbbd323ec26eae46726d46ddede4b08f392bbb10dafcd1d92a13916",
+      "scope": "offline codecs/mock/loopback plus locally available compiler tests"
+    },
+    {
+      "name": "source-package",
+      "exit_code": 0,
+      "private_log": ".plcidf/post-fault-package-tests-20261019.log",
+      "log_sha256": "a2ea25a5130f9dbd97b2d9e4a1771d518a4334ab85eac1b90fad55383b358e7c",
+      "scope": "source package regression; no new PLC write"
+    },
+    {
+      "name": "real-compilers",
+      "exit_code": 0,
+      "private_log": ".plcidf/post-fault-real-compiler-tests-20261019.log",
+      "log_sha256": "6ff60f4c17b54ce80b0d68c44d7b31799a39df492eed678e44ed0ec03b5fb993",
+      "scope": "real MatIEC/Clang/LLVM/LLD;97 tests and40 subtests; no ARM hardware execution"
+    }
+  ],
+  "distribution": {
+    "result": "passed",
+    "wheel_sha256": "ec6a2b5a58d8b1658baecdcfd6a69e6eb59302117917c50df5958021ba4e66ea",
+    "sdist_sha256": "f9aadc115bef5d458da7761db777861076e81c6e16805ea58378725f93ced4df",
+    "hardware_accessed": false,
+    "working_tree_dirty": true,
+    "runtime_resource_count": 47,
+    "current_source_hashes_match_tested_resources": true
+  }
+}

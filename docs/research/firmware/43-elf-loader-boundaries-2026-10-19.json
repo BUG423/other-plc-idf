@@ -1,0 +1,922 @@
+{
+  "schema": "plcidf.research.elf-loader-boundaries.v1",
+  "date": "2026-10-19",
+  "scope": "offline independent review only; no code modification, rebuild, device or Git operation",
+  "private_comparison": {
+    "path": ".plcidf/native-alignment-audit-20261019/three-elf-comparison.json",
+    "sha256": "367da3fec43dd5f8d73672307210530b656c4c39f391d80fea9d6d920f84f6e0"
+  },
+  "objects": [
+    {
+      "role": "original",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/stuserprog.o",
+      "sha256": "1c948cd6ec7ba3d56e8daa1f59ae6ab5584711b462f038752696fcca15b32bc0",
+      "elf_ident": "7f454c46010101000000000000000000",
+      "type": 1,
+      "machine": 40,
+      "entry": 0,
+      "flags": "0x5000200",
+      "program_headers": 0,
+      "section_count": 13,
+      "MAIN": [
+        {
+          "name": "MAIN",
+          "value": 1,
+          "bytes": 108,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "SBR_001": [
+        {
+          "name": "SBR_001",
+          "value": 109,
+          "bytes": 2,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "pcmd": null,
+      "undefined": [
+        {
+          "name": "_HC_INTERRUPTFCBYST",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_READ_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_WRITE_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_ERROR_ADD",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "__aeabi_unwind_cpp_pr0",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        }
+      ],
+      "relocation_types": {
+        "2": 28,
+        "0": 11,
+        "42": 11
+      },
+      "got_related_relocations": [],
+      "allocated_sections": [
+        {
+          "name": ".text",
+          "type": 1,
+          "flags": 6,
+          "bytes": 270,
+          "alignment": 4,
+          "link": 0,
+          "info": 0
+        },
+        {
+          "name": ".ARM.exidx",
+          "type": 1879048193,
+          "flags": 130,
+          "bytes": 88,
+          "alignment": 4,
+          "link": 1,
+          "info": 0
+        },
+        {
+          "name": ".bss",
+          "type": 8,
+          "flags": 3,
+          "bytes": 776,
+          "alignment": 8,
+          "link": 0,
+          "info": 0
+        }
+      ]
+    },
+    {
+      "role": "original",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/stprog.o",
+      "sha256": "69f3e60db59df3eae06cc96d9ad3716a08c114b8ffcb3a3bc369a56510b17fff",
+      "elf_ident": "7f454c46010101000000000000000000",
+      "type": 1,
+      "machine": 40,
+      "entry": 0,
+      "flags": "0x5000200",
+      "program_headers": 0,
+      "section_count": 13,
+      "MAIN": [
+        {
+          "name": "MAIN",
+          "value": 1,
+          "bytes": 108,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "SBR_001": [
+        {
+          "name": "SBR_001",
+          "value": 109,
+          "bytes": 2,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "pcmd": null,
+      "undefined": [
+        {
+          "name": "_HC_DINT_MOD",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_EXPT",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_FLOAT_MIN",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_INT64TODOUBLE",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_INTERRUPTFCBYST",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_COPY_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_READ_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_WRITE_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_ERROR_ADD",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LOG10",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_NOROUND",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_ROUND",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_SHL",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_SHR",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_WATCHDOG",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "__aeabi_unwind_cpp_pr0",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        }
+      ],
+      "relocation_types": {
+        "2": 2041,
+        "47": 841,
+        "48": 841,
+        "0": 54,
+        "42": 54
+      },
+      "got_related_relocations": [],
+      "allocated_sections": [
+        {
+          "name": ".text",
+          "type": 1,
+          "flags": 6,
+          "bytes": 63064,
+          "alignment": 4,
+          "link": 0,
+          "info": 0
+        },
+        {
+          "name": ".ARM.exidx",
+          "type": 1879048193,
+          "flags": 130,
+          "bytes": 432,
+          "alignment": 4,
+          "link": 1,
+          "info": 0
+        },
+        {
+          "name": ".bss",
+          "type": 8,
+          "flags": 3,
+          "bytes": 13936,
+          "alignment": 16,
+          "link": 0,
+          "info": 0
+        }
+      ]
+    },
+    {
+      "role": "failed",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/stuserprog.o",
+      "sha256": "7983e09571b12d69064b8713b9324806168d37b85b9f4ef135a132477629c92b",
+      "elf_ident": "7f454c46010101000000000000000000",
+      "type": 1,
+      "machine": 40,
+      "entry": 0,
+      "flags": "0x5000200",
+      "program_headers": 0,
+      "section_count": 15,
+      "MAIN": [
+        {
+          "name": "MAIN",
+          "value": 1,
+          "bytes": 52,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "SBR_001": [
+        {
+          "name": "SBR_001",
+          "value": 53,
+          "bytes": 2,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "pcmd": [
+        {
+          "name": "G_RBESS_PCMD",
+          "value": 34603248,
+          "bytes": 0,
+          "info": 24,
+          "other": 0,
+          "section": 0
+        }
+      ],
+      "undefined": [
+        {
+          "name": "G_RBESS_PCMD",
+          "info": 24,
+          "value": 34603248,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_ERROR_ADD",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "__aeabi_unwind_cpp_pr0",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        }
+      ],
+      "relocation_types": {
+        "47": 1,
+        "48": 1,
+        "2": 22,
+        "42": 11,
+        "0": 10
+      },
+      "got_related_relocations": [],
+      "allocated_sections": [
+        {
+          "name": ".text",
+          "type": 1,
+          "flags": 6,
+          "bytes": 214,
+          "alignment": 4,
+          "link": 0,
+          "info": 0
+        },
+        {
+          "name": ".ARM.exidx",
+          "type": 1879048193,
+          "flags": 130,
+          "bytes": 88,
+          "alignment": 4,
+          "link": 1,
+          "info": 0
+        },
+        {
+          "name": ".bss",
+          "type": 8,
+          "flags": 3,
+          "bytes": 512,
+          "alignment": 8,
+          "link": 0,
+          "info": 0
+        }
+      ]
+    },
+    {
+      "role": "failed",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-integrated-matiec-20261019T075356Z/plus1-live/files/stprog.o",
+      "sha256": "7751d52e968304c16144d487900c350061d4e2727c96045219d1cc54a3a7936d",
+      "elf_ident": "7f454c46010101000000000000000000",
+      "type": 1,
+      "machine": 40,
+      "entry": 0,
+      "flags": "0x5000200",
+      "program_headers": 0,
+      "section_count": 15,
+      "MAIN": [
+        {
+          "name": "MAIN",
+          "value": 1,
+          "bytes": 52,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "SBR_001": [
+        {
+          "name": "SBR_001",
+          "value": 53,
+          "bytes": 2,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "pcmd": [
+        {
+          "name": "G_RBESS_PCMD",
+          "value": 34603248,
+          "bytes": 0,
+          "info": 24,
+          "other": 0,
+          "section": 0
+        }
+      ],
+      "undefined": [
+        {
+          "name": "G_RBESS_PCMD",
+          "info": 24,
+          "value": 34603248,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_DINT_MOD",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_EXPT",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_FLOAT_MIN",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_INT64TODOUBLE",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_COPY_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_READ_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_WRITE_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_ERROR_ADD",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LOG10",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_NOROUND",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_ROUND",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_SHL",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_SHR",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_WATCHDOG",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "__aeabi_unwind_cpp_pr0",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        }
+      ],
+      "relocation_types": {
+        "47": 842,
+        "48": 842,
+        "2": 2035,
+        "42": 54,
+        "0": 53
+      },
+      "got_related_relocations": [],
+      "allocated_sections": [
+        {
+          "name": ".text",
+          "type": 1,
+          "flags": 6,
+          "bytes": 63008,
+          "alignment": 4,
+          "link": 0,
+          "info": 0
+        },
+        {
+          "name": ".ARM.exidx",
+          "type": 1879048193,
+          "flags": 130,
+          "bytes": 432,
+          "alignment": 4,
+          "link": 1,
+          "info": 0
+        },
+        {
+          "name": ".bss",
+          "type": 8,
+          "flags": 3,
+          "bytes": 13664,
+          "alignment": 16,
+          "link": 0,
+          "info": 0
+        }
+      ]
+    },
+    {
+      "role": "fixed40",
+      "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/bound/stuserprog.o",
+      "sha256": "756c8877c3c80c4f31a68e7fd29add38a632f87aedd5496f0bdde6f8ca3fc6b9",
+      "elf_ident": "7f454c46010101000000000000000000",
+      "type": 1,
+      "machine": 40,
+      "entry": 0,
+      "flags": "0x5000200",
+      "program_headers": 0,
+      "section_count": 15,
+      "MAIN": [
+        {
+          "name": "MAIN",
+          "value": 1,
+          "bytes": 112,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "SBR_001": [
+        {
+          "name": "SBR_001",
+          "value": 113,
+          "bytes": 2,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "pcmd": [
+        {
+          "name": "G_RBESS_PCMD",
+          "value": 34603248,
+          "bytes": 0,
+          "info": 24,
+          "other": 0,
+          "section": 0
+        }
+      ],
+      "undefined": [
+        {
+          "name": "G_RBESS_PCMD",
+          "info": 24,
+          "value": 34603248,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_ERROR_ADD",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "__aeabi_unwind_cpp_pr0",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        }
+      ],
+      "relocation_types": {
+        "47": 1,
+        "48": 1,
+        "2": 22,
+        "42": 11,
+        "0": 10
+      },
+      "got_related_relocations": [],
+      "allocated_sections": [
+        {
+          "name": ".text",
+          "type": 1,
+          "flags": 6,
+          "bytes": 274,
+          "alignment": 4,
+          "link": 0,
+          "info": 0
+        },
+        {
+          "name": ".ARM.exidx",
+          "type": 1879048193,
+          "flags": 130,
+          "bytes": 88,
+          "alignment": 4,
+          "link": 1,
+          "info": 0
+        },
+        {
+          "name": ".bss",
+          "type": 8,
+          "flags": 3,
+          "bytes": 512,
+          "alignment": 8,
+          "link": 0,
+          "info": 0
+        }
+      ]
+    },
+    {
+      "role": "fixed40",
+      "path": "/home/zss/workspace/py2plc/.plcidf/research-40-unaligned-20261019/plus1-build/bound/stprog.o",
+      "sha256": "4ece269ba5a3f7d9a18785edd2a89a8c9450803cfa0804bd4373a40619bd9304",
+      "elf_ident": "7f454c46010101000000000000000000",
+      "type": 1,
+      "machine": 40,
+      "entry": 0,
+      "flags": "0x5000200",
+      "program_headers": 0,
+      "section_count": 15,
+      "MAIN": [
+        {
+          "name": "MAIN",
+          "value": 1,
+          "bytes": 112,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "SBR_001": [
+        {
+          "name": "SBR_001",
+          "value": 113,
+          "bytes": 2,
+          "info": 18,
+          "other": 0,
+          "section": 1
+        }
+      ],
+      "pcmd": [
+        {
+          "name": "G_RBESS_PCMD",
+          "value": 34603248,
+          "bytes": 0,
+          "info": 24,
+          "other": 0,
+          "section": 0
+        }
+      ],
+      "undefined": [
+        {
+          "name": "G_RBESS_PCMD",
+          "info": 24,
+          "value": 34603248,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_DINT_MOD",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_EXPT",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_FLOAT_MIN",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_INT64TODOUBLE",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_COPY_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_READ_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_DEV_MEM_WRITE_BITS",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LD_ERROR_ADD",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_LOG10",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_NOROUND",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_ROUND",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_SHL",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_SHR",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "_HC_WATCHDOG",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        },
+        {
+          "name": "__aeabi_unwind_cpp_pr0",
+          "info": 16,
+          "value": 0,
+          "bytes": 0
+        }
+      ],
+      "relocation_types": {
+        "47": 842,
+        "48": 842,
+        "2": 2035,
+        "42": 54,
+        "0": 53
+      },
+      "got_related_relocations": [],
+      "allocated_sections": [
+        {
+          "name": ".text",
+          "type": 1,
+          "flags": 6,
+          "bytes": 63068,
+          "alignment": 4,
+          "link": 0,
+          "info": 0
+        },
+        {
+          "name": ".ARM.exidx",
+          "type": 1879048193,
+          "flags": 130,
+          "bytes": 432,
+          "alignment": 4,
+          "link": 1,
+          "info": 0
+        },
+        {
+          "name": ".bss",
+          "type": 8,
+          "flags": 3,
+          "bytes": 13664,
+          "alignment": 16,
+          "link": 0,
+          "info": 0
+        }
+      ]
+    }
+  ],
+  "conclusions": {
+    "additional_definitive_loader_violation_found": false,
+    "common_final_elf_flags": "0x05000200",
+    "common_Main_symbol": "GLOBAL STT_FUNC, Thumb value bit0=1, contained in allocated executable text",
+    "got_sections_or_got_relocation_added": false,
+    "new_relocation_type_added": false,
+    "new_runtime_function_import_added": false,
+    "new_variable": "G_RBESS_PCMD, vendor type8 UND, value0x021000f0; reference loader has dedicated variable callback",
+    "removed_runtime_import": "_HC_INTERRUPTFCBYST; runtime scheduling compatibility remains unverified",
+    "library_branch": "SysLib_New matches the original baseline; do not switch libraries without new evidence",
+    "storage_vs_activation": "Exact17-file readback proves stored bytes; it does not prove module loaded, scheduled or executed.",
+    "FPU_capability_or_context_verified": false,
+    "failure_phase_verified": false,
+    "physical_application_vs_communication_start_order_verified": false,
+    "corrected40_runtime_verified": false
+  },
+  "FPU_boundary": {
+    "failed_MAIN_first_instruction": "VMOV.F32 before external VLDR",
+    "corrected40": "External transfers are strict bytes; register floating-point operations remain.",
+    "meaning": "Matching VFP attributes and dormant vendor library functions do not prove physical FPU availability or task context setup. No exact exception code was read.",
+    "future_control_only_after_recovery": "A new constant-REAL marker could be compiled and independently checked to contain no VFP instructions before considering a controlled execution comparison; no such candidate was built or run here."
+  },
+  "coordinator_communication_evidence": [
+    {
+      "kind": "cold_error_count",
+      "path": ".plcidf/native-coldplug-diagnostic-20261019T083854Z/01-memory-cur-error-count.json",
+      "sha256": "3bfab2505140281bcdf78be0bd6ce8e474b4a9a5e12fe812302f84757a325184",
+      "observed": {
+        "stage": "receive",
+        "out_rc": 0,
+        "out_transferred": 22,
+        "read_calls": [
+          {
+            "rc": -7,
+            "transferred": 0
+          }
+        ],
+        "request_outcome": "unknown"
+      }
+    },
+    {
+      "kind": "cold_file_health",
+      "path": ".plcidf/native-coldplug-file-health-20261019T083957Z/01-application-userprog.foid.json",
+      "sha256": "067c138579e6f78149e1ccba964e6daa9ef1b6bece70a947e7ef81db5308f6c3",
+      "observed": {
+        "stage": "send-read-request",
+        "out_rc": -7,
+        "out_transferred": 0,
+        "read_calls": [],
+        "request_outcome": "unknown"
+      }
+    },
+    {
+      "kind": "windows_gcm",
+      "path": ".plcidf/windows-fault-recovery-20261019T084031Z/windows-gcm-result.json",
+      "sha256": "d93b0a85a945deadab14d4c8fbd09f2498c17b5f1c1418c3eeff33cea7b335d2",
+      "observed": {
+        "stage": "receive",
+        "claim_rc": 0,
+        "out_result": 18,
+        "read_rcs": [
+          -116
+        ],
+        "scope": "Windows factory libusb0 single fixed GCM read, performed by coordinator"
+      }
+    }
+  ],
+  "communication_inference": "Some fixed requests were fully sent with no IN response; one file-read OUT itself timed out at0B and made no IN call. Descriptor/control availability does not prove application-protocol service health. No inference that every OUT succeeded.",
+  "manual": {
+    "path": "/mnt/e/Software/AutoShop/Manual/H5U&Easy_Manual/Easy系列可编程逻辑控制器用户手册.PDF",
+    "sha256": "e793971a545f5b4c89e067957ac73973546f6df354f586a62c041995df5dc5da",
+    "existing_extracted_text": ".plcidf/easy-user-manual-current.txt",
+    "text_sha256": "558218209790b895feaa0a8b6003cf28d196772167679d953612cff1d82a2c8e",
+    "Easy52X_pages": {
+      "137": "physical RUN/STOP switch controls host running/stopped",
+      "138": "When restarting after fault, remove24V and USB supply and wait at least10 seconds after PWR extinguishes before power-on",
+      "161": "Write the program in STOP state",
+      "162": "TF user-program download is separate from firmware flashing: <=32GB FAT32, TF storage expansion card, AutoShop-generated model/password-correct Down/Updown in PLCProgram; power-on copy ends in STOP"
+    },
+    "physical_STOP_confirmed_in_current_review": false,
+    "cold_boot_prevents_user_execution_or_restores_protocol_verified": false,
+    "TF_card_or_expansion_present": null,
+    "native17files_as_TF_download_package_supported": false,
+    "firmware_erase_recommended": false
+  },
+  "next_independent_checks": [
+    "Record unambiguous physical STOP position and complete power-off interval, then one bounded status observation if the coordinator elects it; never infer that this necessarily restores the service.",
+    "Keep known baseline restoration and corrected candidate separately identified; do not label a transfer ACK or stored file hash as loaded/executed.",
+    "If ordinary application-protocol responses remain unavailable, no recovered command contract here establishes an alternate reset, clear, BOOT or firmware erase operation.",
+    "The documented TF application-transfer path is conditional on real expansion hardware and a valid factory download package; it is not evidence of an immediately available recovery route."
+  ]
+}

@@ -233,6 +233,55 @@ def execute(tmp_path, fake=None, **kwargs):
                           **kwargs)
 
 
+def diagnostic_frame(profile, raw, sequence=0x1234):
+    request = usb._MEMORY.build_read_request(profile=profile, sequence=sequence)
+    return struct.pack("<H", 22+len(raw)) + request[2:8] + b"\x02\0" + request[10:] + raw
+
+
+@pytest.mark.parametrize("profile,raw,frame_bytes", [
+    ("cur-error-count", struct.pack("<h", 1), 24),
+    ("cur-error-list", struct.pack("<h", 1)+struct.pack("<hhii",5056,0,1,2)+b"\0"*492, 528),
+    ("cur-error-instances", b"\0"*168, 190)])
+def test_native_fixed_diagnostics_support_only_exact_bound_and_one_out(tmp_path, monkeypatch, profile, raw, frame_bytes):
+    monkeypatch.setattr(usb.secrets, "randbits", lambda count: 0x1234)
+    frame = diagnostic_frame(profile, raw)
+    assert len(frame) == frame_bytes
+    fake = FakeLibusb(chunks=[frame[i:i+512] for i in range(0,len(frame),512)])
+    result = execute(tmp_path, fake, kind="memory", profile=profile)
+    assert result["ok"] and len(fake.sent) == 1 and fake.received == (frame_bytes+511)//512
+    assert result["data_hex"] == raw.hex() and result["cpu_state_verified"] is False
+    assert fake.names[-4:] == ["release_interface", "close", "free_device_list", "exit"]
+
+
+def test_large_diagnostic_allowance_does_not_leak_to_small_existing_profile(tmp_path, monkeypatch):
+    monkeypatch.setattr(usb.secrets, "randbits", lambda count: 0x1234)
+    frame = diagnostic_frame("cur-error-list", b"\0"*506)
+    fake = FakeLibusb(chunks=[frame[:512],frame[512:]])
+    result = execute(tmp_path, fake, kind="memory", profile="pcmd")
+    assert not result["ok"] and len(fake.sent) == 1 and fake.received == 1
+    assert result["request_outcome"] == "unknown"
+
+
+@pytest.mark.parametrize("tail", [b"", b"\0"*17])
+def test_diagnostic_second_chunk_missing_or_trailing_stops_without_replay(tmp_path, monkeypatch, tail):
+    monkeypatch.setattr(usb.secrets, "randbits", lambda count: 0x1234)
+    frame = diagnostic_frame("cur-error-list", b"\0"*506)
+    fake = FakeLibusb(chunks=[frame[:512],tail])
+    result = execute(tmp_path, fake, kind="memory", profile="cur-error-list")
+    assert not result["ok"] and len(fake.sent) == 1 and fake.received == 2
+    assert result["request_outcome"] == "unknown" and result["transport_record"]["close_called"]
+
+
+def test_all_diagnostic_previews_do_not_load_or_touch_devices(monkeypatch):
+    def forbidden(*args, **kwargs):pytest.fail("diagnostic preview accessed device or lease")
+    monkeypatch.setattr(usb.C,"CDLL",forbidden)
+    monkeypatch.setattr(usb,"ResourceLease",forbidden)
+    monkeypatch.setattr(usb.secrets,"randbits",forbidden)
+    for profile in ("cur-error-count","cur-error-list","cur-error-instances"):
+        result=usb.read_fixed(kind="memory",profile=profile)
+        assert result["ok"] and result["status"]=="preview" and result["device_access"] is False
+
+
 def test_preview_never_loads_library_enumerates_uses_random_or_acquires_lease(monkeypatch):
     def forbidden(*args, **kwargs):
         pytest.fail("preview accessed an external resource")

@@ -124,7 +124,7 @@ def _validate_transport(record: dict, request: bytes, profile: str) -> dict:
     if (len(descriptor) != 18 or descriptor[:2] != b"\x12\x01"
             or descriptor[8:12] != bytes.fromhex("710431a5")):
         raise ValueError("Helper descriptor does not match the selected USB product")
-    response = _hex(result.get("response_hex"), maximum_bytes=26, name="response_hex")
+    response = _hex(result.get("response_hex"), maximum_bytes=codec.response_frame_bytes(profile), name="response_hex")
     reads = result.get("read_rcs")
     if (not isinstance(reads, list) or not 1 <= len(reads) <= 4
             or any(type(count) is not int or not 1 <= count <= 512 for count in reads)

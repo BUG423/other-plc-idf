@@ -101,3 +101,50 @@ def test_arbitrary_operation_flags_chunk_or_length_cannot_pass_request_guard(off
 def test_unsupported_state_is_not_silently_coerced_to_stop(state):
     with pytest.raises(codec.ProtocolError):
         codec.build_gcm_set(state=state, sequence=0)
+
+
+def test_actual_gcm_header9_empty_ack_preserves_missing_fields_instead_of_inventing_zero():
+    request = bytes.fromhex("130001014f9d00000200000000ff0100000002")
+    frame = bytes.fromhex("090001014f9d000006")
+    result = codec.parse_response(frame, request=request)
+    assert result["ok"] and result["ack_format"] == "gcm-header9-empty"
+    assert result["ack_u32"] is None and result["flags"] is None and result["ack_payload_present"] is False
+
+
+@pytest.mark.parametrize("mutation", ["size", "version", "selector", "sequence", "operation", "error", "trailing", "truncated"])
+def test_header9_gcm_ack_rejects_uncorrelated_other_operation_and_bad_length(mutation):
+    request = codec.build_gcm_set(state=2, sequence=0x9D4F)
+    frame = bytearray.fromhex("090001014f9d000006")
+    if mutation == "size": frame[0] = 10
+    elif mutation == "version": frame[2] = 2
+    elif mutation == "selector": frame[3] = 4
+    elif mutation == "sequence": frame[4] ^= 1
+    elif mutation == "operation": frame[8] = 5
+    elif mutation == "error": frame[8] = 15
+    elif mutation == "trailing": frame += b"\0"
+    elif mutation == "truncated": frame = frame[:-1]
+    with pytest.raises(codec.ProtocolError): codec.parse_response(bytes(frame), request=request)
+
+
+@pytest.mark.parametrize("original_request", [codec.build_file_open(remote_name="stprog.o", credential=b"\0" * 8, sequence=7),
+    codec.build_file_read(block=0, sequence=7)])
+def test_header9_ack_cannot_become_read_open_file_size_or_read_block(original_request):
+    frame = struct.pack("<HBBHHB", 9, 1, 4, 7, 0, 6)
+    with pytest.raises(codec.ProtocolError): codec.parse_response(frame, request=original_request)
+
+
+@pytest.mark.parametrize("original_request", [
+    codec.build_file_open(remote_name="stprog.o", credential=b"\0" * 8, sequence=7, direction="write", file_bytes=3),
+    codec.build_file_write(block=0, data=b"abc", sequence=7)])
+def test_actual_download_callers_accept_header9_success_without_consuming_u32(original_request):
+    frame = struct.pack("<HBBHHB", 9, 1, 4, 7, 0, 6)
+    result = codec.parse_response(frame, request=original_request)
+    assert result["ok"] and result["ack_u32"] is None and result["ack_payload_present"] is False
+    assert result["ack_format"].startswith(codec.parse_request(original_request)["action"])
+
+
+@pytest.mark.parametrize("size", [10, 11, 12, 13])
+def test_other_short_gcm_ack_lengths_are_not_guessed_from_host_permissiveness(size):
+    request = codec.build_gcm_set(state=2, sequence=7)
+    frame = struct.pack("<HBBHHBB", size, 1, 1, 7, 0, 6, 0) + b"\0" * (size - 10)
+    with pytest.raises(codec.ProtocolError): codec.parse_response(frame, request=request)

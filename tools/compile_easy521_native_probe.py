@@ -15,6 +15,9 @@ probe in research 23. Vendor helper arithmetic, variable binding, task schedulin
 physical I/O, packaging and execution are NOT reproduced or established here.
 Overflow is explicitly modulo 2**32 for this research profile, not an assertion
 about all vendor ST arithmetic. No Windows, network or device APIs are present.
+Opaque runtime bindings provide no four-byte alignment guarantee. Both profiles
+therefore use align1 and strict-align byte transfers; these are non-atomic and
+require one writer. See research40; this does not verify physical runtime ABI.
 """
 from __future__ import annotations
 
@@ -116,8 +119,10 @@ def emit_ir(parsed: dict) -> bytes:
     The external i32 storage mirrors only the inspected COUNTER memory shape.
     No nsw/nuw flags are used: the DINT profile's add is modulo 2**32. REAL
     preserves the observed f32 -> f64 add -> f32 conversion without fast math.
-    Volatile memory accesses retain each scan's load/store. The eventual address,
-    alignment guarantee, retention and runtime binding remain unverified.
+    Volatile memory accesses retain each scan's load/store. align1 deliberately
+    makes no unproved allocation-alignment promise; strict-align code generation
+    must split external accesses into non-atomic bytes. Retention/runtime binding
+    and synchronization with concurrent readers/writers remain unverified.
     """
     if parsed.get('profile') == REAL_PROFILE:
         increment = {'1.0': '1.000000e+00', '2.0': '2.000000e+00'}.get(parsed.get('increment_real'))
@@ -127,15 +132,15 @@ def emit_ir(parsed: dict) -> bytes:
         # calls _ST_DOUBLE_ADD, then narrows to f32. Preserve those conversion
         # steps without adding fast-math flags or copying vendor machine code.
         return f'''source_filename = "plcidf-native-bess-pcmd-probe"
-@G_RBESS_PCMD = external global float, align 4
+@G_RBESS_PCMD = external global float, align 1
 
 define void @MAIN() nounwind {{
 entry:
-  %before = load volatile float, ptr @G_RBESS_PCMD, align 4
+  %before = load volatile float, ptr @G_RBESS_PCMD, align 1
   %wide = fpext float %before to double
   %after_wide = fadd double %wide, {increment}
   %after = fptrunc double %after_wide to float
-  store volatile float %after, ptr @G_RBESS_PCMD, align 4
+  store volatile float %after, ptr @G_RBESS_PCMD, align 1
   ret void
 }}
 '''.encode('ascii')
@@ -144,16 +149,93 @@ entry:
             or not 1 <= increment <= 32767):
         raise ValueError('Invalid parsed probe')
     return f'''source_filename = "plcidf-native-memory-probe"
-@COUNTER = external global i32, align 4
+@COUNTER = external global i32, align 1
 
 define void @MAIN() nounwind {{
 entry:
-  %before = load volatile i32, ptr @COUNTER, align 4
+  %before = load volatile i32, ptr @COUNTER, align 1
   %after = add i32 %before, {increment}
-  store volatile i32 %after, ptr @COUNTER, align 4
+  store volatile i32 %after, ptr @COUNTER, align 1
   ret void
 }}
 '''.encode('ascii')
+
+
+def inspect_alignment_ir(data: bytes, *, symbol='G_RBESS_PCMD', scalar='float') -> dict:
+    """Audit actual bounded LLVM IR for the one external scalar's align1 accesses.
+
+    This inspects generated IR, never translates ST. Reject references that are
+    not an align1 external declaration/volatile scalar load/store, and require
+    an actual write. No physical address, atomicity or runtime claim follows.
+    """
+    if symbol not in ('G_RBESS_PCMD', 'COUNTER') or scalar not in ('float', 'i32') or len(data) > MAX_OBJECT:
+        raise ValueError('Unsupported alignment IR profile or size')
+    lines = [line.strip() for line in data.decode('utf-8').splitlines() if '@' + symbol in line]
+    declaration = re.compile(r'@' + symbol + r' = external(?: dso_local)? global ' + scalar + r', align 1')
+    load = re.compile(r'%[-\w.]+ = load volatile ' + scalar + r', ptr @' + symbol + r', align 1(?:, .*)?')
+    store = re.compile(r'store volatile ' + scalar + r' .+, ptr @' + symbol + r', align 1(?:, .*)?')
+    counts = {'declarations': 0, 'loads': 0, 'stores': 0}
+    for line in lines:
+        key = ('declarations' if declaration.fullmatch(line) else 'loads' if load.fullmatch(line)
+               else 'stores' if store.fullmatch(line) else None)
+        if key is None:
+            raise ValueError('External IR access is not an explicit align1 volatile scalar: ' + line)
+        counts[key] += 1
+    if counts['declarations'] != 1 or counts['stores'] < 1:
+        raise ValueError('Expected one align1 external declaration and at least one actual store')
+    return {'external_alignment_bytes': 1, 'external_symbol': symbol,
+            'volatile_loads': counts['loads'], 'volatile_stores': counts['stores'],
+            'access_atomic': False, 'concurrent_writer_supported': False}
+
+
+def inspect_byte_transfer_assembly(data: bytes, *, ir_inspection: dict) -> dict:
+    """Audit one actual LLVM/Clang ARM MAIN assembly for strict byte transfers.
+
+    Reject helper calls and non-byte memory accesses through general registers.
+    Known stack operations and PC-relative literal loads remain permitted. This
+    bounded compiler-output audit is not a general ARM disassembler; unsupported
+    emitted forms fail closed. It proves the inspected assembly's access shape,
+    not execution or physical-device atomicity.
+    """
+    if len(data) > MAX_OBJECT:
+        raise ValueError('ARM assembly exceeds the bounded probe size')
+    lines = data.decode('utf-8').splitlines()
+    starts = [i for i, line in enumerate(lines) if re.fullmatch(r'MAIN:\s*(?:@.*)?', line)]
+    if len(starts) != 1:
+        raise ValueError('Expected one ARM MAIN assembly label')
+    counts = {'byte_loads': 0, 'byte_stores': 0, 'stack_or_literal_accesses': 0}
+    ended = False
+    for line in lines[starts[0] + 1:]:
+        if re.match(r'\s*\.Lfunc_end[0-9]+:', line):
+            ended = True
+            break
+        code = line.split('@', 1)[0].strip()
+        if not code or code.startswith('.') or code.endswith(':'):
+            continue
+        parts = code.split(None, 1)
+        opcode, operands = parts[0].lower(), parts[1] if len(parts) > 1 else ''
+        if opcode in ('bl', 'blx', 'bl.w', 'blx.w'):
+            raise ValueError('Strict byte-transfer probe cannot call a helper')
+        if opcode.startswith(('ldrb', 'ldrsb')):
+            counts['byte_loads'] += 1
+        elif opcode.startswith('strb'):
+            counts['byte_stores'] += 1
+        elif opcode.startswith(('push', 'pop', 'vpush', 'vpop')):
+            counts['stack_or_literal_accesses'] += 1
+        elif opcode.startswith(('ldr', 'str', 'vld', 'vst', 'ldm', 'stm')):
+            stack_or_pc = re.search(r'\[(?:sp|pc)(?:,|\])', operands)
+            literal = opcode.startswith('vldr') and re.search(r',\s*\.LCPI[0-9_]+', operands)
+            if not stack_or_pc and not literal:
+                raise ValueError('Non-byte memory access through an unproved-alignment base: ' + code)
+            counts['stack_or_literal_accesses'] += 1
+    if not ended:
+        raise ValueError('ARM MAIN assembly is missing its bounded end label')
+    if (counts['byte_loads'] < 4 * ir_inspection['volatile_loads']
+            or counts['byte_stores'] < 4 * ir_inspection['volatile_stores']):
+        raise ValueError('ARM byte transfers do not cover every align1 scalar access')
+    return {**counts, 'nonbyte_general_register_accesses': 0,
+            'access_atomic': False, 'concurrent_writer_supported': False,
+            'scope': 'bounded-generated-MAIN-assembly-not-runtime-execution'}
 
 
 def inspect_probe_object(data: bytes, *, profile=PROFILE) -> dict:
@@ -238,10 +320,14 @@ def compile_probe(*, source, globals_path, llc, output_dir, timeout_s=10.0, prof
             raise ValueError('Output directory must be new with an existing parent')
         parsed = parse_probe(blobs[0], blobs[1], profile=profile)
         ir = emit_ir(parsed)
+        alignment = inspect_alignment_ir(ir, symbol=parsed['symbol'],
+                                         scalar='float' if profile == REAL_PROFILE else 'i32')
         components = [Path(__file__).absolute(), Path(_prepare.__file__).absolute(),
                       Path(_inspect.__file__).absolute()]
         component_blobs = [_read(p, MAX_OBJECT) for p in components]
-        report.update(parsed=parsed, inputs=[{'path': str(p), 'bytes': len(b), 'sha256': _sha(b)} for p, b in zip(paths[:2], blobs[:2])],
+        report.update(parsed=parsed, ir_alignment=alignment,
+                      access_atomic=False, concurrent_writer_supported=False,
+                      inputs=[{'path': str(p), 'bytes': len(b), 'sha256': _sha(b)} for p, b in zip(paths[:2], blobs[:2])],
                       compiler={'path': str(paths[2]), 'bytes': len(binary), 'sha256': _sha(binary)},
                       output_directory=str(output), frontend_components=[
                           {'path': str(p), 'bytes': len(b), 'sha256': _sha(b)}
@@ -262,7 +348,7 @@ def compile_probe(*, source, globals_path, llc, output_dir, timeout_s=10.0, prof
         if version.returncode or version.stderr.strip() or 'LLVM version' not in version.stdout:
             raise ValueError('llc --version did not identify LLVM cleanly')
         report['compiler']['version'] = version.stdout.splitlines()[0]
-        argv = [str(paths[2]), '-mtriple=' + TRIPLE, '-mattr=+v7,+thumb2,+vfp3,+neon,+reserve-r9',
+        argv = [str(paths[2]), '-mtriple=' + TRIPLE, '-mattr=+v7,+thumb2,+vfp3,+neon,+reserve-r9,+strict-align',
                 '-float-abi=soft', '-relocation-model=static', '-filetype=obj', '-O=2',
                 str(output / 'MAIN.ll'), '-o', str(output / 'MAIN.o')]
         report['stage'] = 'compile'
@@ -274,6 +360,28 @@ def compile_probe(*, source, globals_path, llc, output_dir, timeout_s=10.0, prof
             raise ValueError('llc failed or emitted unexpected diagnostics')
         object_bytes = _read(output / 'MAIN.o', MAX_OBJECT)
         report['stage'] = 'verify'
+        if _read(output / 'MAIN.ll', MAX_SOURCE) != ir or _read(paths[0], MAX_SOURCE) != blobs[0]:
+            raise ValueError('Source or frozen IR changed before paired assembly lowering')
+        # The paired assembly uses the exact same frozen IR/backend flags as
+        # the object, changing only output file type. It is not handwritten or
+        # copied vendor code; runtime/device verification remains false.
+        asm_argv = [('-filetype=asm' if item == '-filetype=obj' else
+                     str(output / 'MAIN.s') if item == str(output / 'MAIN.o') else item) for item in argv]
+        report['stage'] = 'assembly-audit'
+        assembly_result = runner(asm_argv, stdin=subprocess.DEVNULL, capture_output=True, text=True,
+                                 timeout=timeout_s, check=False)
+        report['assembly_command'] = {'argv': asm_argv, 'timeout_s': timeout_s, 'attempts': 1,
+                                      'returncode': assembly_result.returncode,
+                                      'stdout': assembly_result.stdout[:4096], 'stderr': assembly_result.stderr[:4096]}
+        if assembly_result.returncode or assembly_result.stdout.strip() or assembly_result.stderr.strip():
+            raise ValueError('llc assembly lowering failed or emitted unexpected diagnostics')
+        assembly = _read(output / 'MAIN.s', MAX_OBJECT)
+        assembly_inspection = inspect_byte_transfer_assembly(assembly, ir_inspection=alignment)
+        (output / 'MAIN.s').chmod(0o444)
+        report['arm_assembly'] = {'path': str(output / 'MAIN.s'), 'sha256': _sha(assembly),
+                                  'inspection': assembly_inspection,
+                                  'paired_codegen_same_ir_and_flags': True}
+        report['stage'] = 'verify'
         inspection = inspect_probe_object(object_bytes, profile=profile)
         for path, data in zip(paths, blobs):
             if _read(path, 256 * 1024 * 1024 if path == paths[2] else MAX_SOURCE) != data:
@@ -284,6 +392,8 @@ def compile_probe(*, source, globals_path, llc, output_dir, timeout_s=10.0, prof
         for path, data in zip(components, component_blobs):
             if _read(path, MAX_OBJECT) != data:
                 raise ValueError('Frontend component changed during compilation')
+        if _read(output / 'MAIN.s', MAX_OBJECT) != assembly:
+            raise ValueError('ARM assembly changed during compilation')
         (output / 'MAIN.o').chmod(0o444)
         report.update(object={'path': str(output / 'MAIN.o'), 'bytes': len(object_bytes),
                               'sha256': _sha(object_bytes), 'inspection': inspection},

@@ -73,6 +73,13 @@ jobs:
         # Generated C is compiled unchanged. Only the separately built x86
         # harness executes; physical ARM execution remains a device acceptance.
         run: python -m pytest tools/tests/test_compile_easy521_matiec_probe.py tools/tests/test_bind_native_application.py -q -k matiec
+      - name: Real MatIEC descriptor I/O probe and host callback ordering
+        env:
+          PLCIDF_TEST_MATIEC_ROOT: /tmp/plcidf-matiec
+          PLCIDF_TEST_CLANG: /usr/bin/clang-20
+        # Self-authored callback stubs execute on x86; this does not claim
+        # physical output behavior or validate the Easy521 runtime ABI.
+        run: python -m pytest tools/tests/test_compile_easy521_io_probe.py -q
       - name: Real ST compiler and runtime regression
         env:
           PLCIDF_OPEN_LINUX_TOOLCHAIN: /tmp/plcidf-matiec

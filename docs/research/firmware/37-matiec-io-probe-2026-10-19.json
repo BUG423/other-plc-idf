@@ -1,0 +1,529 @@
+{
+  "schema": "plcidf.easy521-matiec-io-probe-research.v1",
+  "recorded_at_utc": "2026-10-19T08:14:43.836744+00:00",
+  "scope": "real offline MatIEC BOOL/C/Clang ARM compilation and own Linux host callbacks",
+  "builds": [
+    {
+      "name": "clock",
+      "directory": ".plcidf/research-37-io-probe-20261019/frozen-clock",
+      "source_sha256": "6c51789d485457f9fc64ff34c2f0101f6c10db61bce1bd2a0f529c2c0111e7ed",
+      "object_sha256": "cbf5e14210e01bb5129d4d74cfa3e51f5775b180101a404a2ae3f807883791b2",
+      "main": {
+        "name": "MAIN",
+        "value": 1,
+        "size": 116,
+        "info": 18,
+        "other": 0,
+        "section": 2
+      },
+      "helper_symbols": {
+        "_HC_LD_DEV_MEM_READ_BITS": {
+          "name": "_HC_LD_DEV_MEM_READ_BITS",
+          "value": 0,
+          "size": 0,
+          "info": 16,
+          "other": 0,
+          "section": 0
+        },
+        "_HC_INTERRUPTFCBYST": {
+          "name": "_HC_INTERRUPTFCBYST",
+          "value": 0,
+          "size": 0,
+          "info": 16,
+          "other": 0,
+          "section": 0
+        },
+        "_HC_LD_DEV_MEM_WRITE_BITS": {
+          "name": "_HC_LD_DEV_MEM_WRITE_BITS",
+          "value": 0,
+          "size": 0,
+          "info": 16,
+          "other": 0,
+          "section": 0
+        }
+      },
+      "relocations": {
+        "entries": 4,
+        "types": {
+          "R_ARM_ABS32": 3,
+          "R_ARM_PREL31": 1
+        },
+        "sections": [
+          {
+            "name": ".rel.text",
+            "entries": 3,
+            "target_section": ".text",
+            "explicit_addends": false
+          },
+          {
+            "name": ".rel.ARM.exidx",
+            "entries": 1,
+            "target_section": ".ARM.exidx",
+            "explicit_addends": false
+          }
+        ],
+        "referenced_undefined_names": [
+          "_HC_INTERRUPTFCBYST",
+          "_HC_LD_DEV_MEM_READ_BITS",
+          "_HC_LD_DEV_MEM_WRITE_BITS"
+        ]
+      },
+      "compile_report_sha256": "0df88764491c4218e0de3ba4e9829c0ee76d00fa6739a9316e518a860629cc07",
+      "host": {
+        "argv": [
+          "gcc",
+          "-std=c11",
+          "-O2",
+          "-isystem",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/matiec/lib/C",
+          "-I",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/generated",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/wrapper.c",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/host-stub.c",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/host-stub"
+        ],
+        "compile_returncode": 0,
+        "stdout": "1 0 0 RHW\n1 1 0 RHW\n0 0 0 RHCW\n0 1 1 RHCW\n256 257 1 RHCW\n255 0 0 RHW\n0 255 255 RHCW\n257 1 0 RHW\n",
+        "returncode": 0,
+        "driver_sha256": "5a4977b8bc58d7947829be218d9ed45b1d607646950cc31bd236d71821537fdc",
+        "binary_sha256": "f8a73f9f7ca5532ceaeb596ef3ed641e6c3642c7f1de703f7a6c14030c7204b6",
+        "evidence_scope": "same wrapper/generated C on Linux host with own descriptor callbacks; no ARM or physical I/O execution"
+      },
+      "compilation_dependencies": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/wrapper.c",
+          "sha256": "dfdbedca6e525994f9647e98b6a4a83f68be10ebaa2cfa2aa3ecf14da9e7dd1c",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stdint.h",
+          "sha256": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stddef.h",
+          "sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_header_macro.h",
+          "sha256": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_ptrdiff_t.h",
+          "sha256": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_size_t.h",
+          "sha256": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wchar_t.h",
+          "sha256": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_null.h",
+          "sha256": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_max_align_t.h",
+          "sha256": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_offsetof.h",
+          "sha256": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/matiec/lib/C/iec_std_lib.h",
+          "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/limits.h",
+          "sha256": "1a74119a871309deaabdc8081d43fdb274137838c9e2bb874890c120db7a673a",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/float.h",
+          "sha256": "a29019c5ba04f9bf55a46f9bf75c63039a6015921ddde7298e057b2a188bebec",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stdarg.h",
+          "sha256": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_header_macro.h",
+          "sha256": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___gnuc_va_list.h",
+          "sha256": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_list.h",
+          "sha256": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_arg.h",
+          "sha256": "db0cca3b7768cf07807553fb88ea74e00cba4503e08a5f5504989fb3cc3e4cf1",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___va_copy.h",
+          "sha256": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_copy.h",
+          "sha256": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/matiec/lib/C/iec_types_all.h",
+          "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/matiec/lib/C/iec_types_list.h",
+          "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/matiec/lib/C/iec_types.h",
+          "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/matiec/lib/C/iec_std_functions.h",
+          "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/matiec/lib/C/accessor.h",
+          "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/generated/POUS.h",
+          "sha256": "a8c12221e08b81f376a1c568bb4ede5048f057ea5ac91a955f7df3f9614379b6",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/matiec/lib/C/iec_std_FB.h",
+          "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/generated/POUS.c",
+          "sha256": "3aa3650790afc7da50ed9637a9884d052879eba6e73861e41e9fd367cb1d1a9a",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-clock/matiec/lib/C/iec_std_FB_impl.h",
+          "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd",
+          "origin": "frozen-generated-or-matiec"
+        }
+      ],
+      "arm_attributes": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n",
+      "compiler_component_sha256": {
+        "/home/zss/workspace/py2plc/tools/compile_easy521_io_probe.py": "8053ccd65f9d0ac04db1da742fa1eb232293e1117e6fb16848c713bf8e8f7460",
+        "/home/zss/workspace/py2plc/tools/compile_easy521_matiec_probe.py": "a56ae33dee14c425f92716ed6efb7593be3f6a55ca5e1c1c7eab5a5f2a045cae",
+        "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py": "cae1f517bf8c42fcfe0a20ee28899f17eeaf7267e4394a9454740045ca1368ce",
+        "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d",
+        "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+      }
+    },
+    {
+      "name": "inverted",
+      "directory": ".plcidf/research-37-io-probe-20261019/frozen-inverted",
+      "source_sha256": "23a3114058d94bfad58459cc68b23451932350104e887168b314e4f6af9064e9",
+      "object_sha256": "cccb82c5da748706413a036e55de7ffa29c9b122bb4b1550479484997a2a765c",
+      "main": {
+        "name": "MAIN",
+        "value": 1,
+        "size": 124,
+        "info": 18,
+        "other": 0,
+        "section": 2
+      },
+      "helper_symbols": {
+        "_HC_LD_DEV_MEM_READ_BITS": {
+          "name": "_HC_LD_DEV_MEM_READ_BITS",
+          "value": 0,
+          "size": 0,
+          "info": 16,
+          "other": 0,
+          "section": 0
+        },
+        "_HC_INTERRUPTFCBYST": {
+          "name": "_HC_INTERRUPTFCBYST",
+          "value": 0,
+          "size": 0,
+          "info": 16,
+          "other": 0,
+          "section": 0
+        },
+        "_HC_LD_DEV_MEM_WRITE_BITS": {
+          "name": "_HC_LD_DEV_MEM_WRITE_BITS",
+          "value": 0,
+          "size": 0,
+          "info": 16,
+          "other": 0,
+          "section": 0
+        }
+      },
+      "relocations": {
+        "entries": 4,
+        "types": {
+          "R_ARM_ABS32": 3,
+          "R_ARM_PREL31": 1
+        },
+        "sections": [
+          {
+            "name": ".rel.text",
+            "entries": 3,
+            "target_section": ".text",
+            "explicit_addends": false
+          },
+          {
+            "name": ".rel.ARM.exidx",
+            "entries": 1,
+            "target_section": ".ARM.exidx",
+            "explicit_addends": false
+          }
+        ],
+        "referenced_undefined_names": [
+          "_HC_INTERRUPTFCBYST",
+          "_HC_LD_DEV_MEM_READ_BITS",
+          "_HC_LD_DEV_MEM_WRITE_BITS"
+        ]
+      },
+      "compile_report_sha256": "e236bcbfd077b039190f684746a3f9f433d23a623ead3746be33cb8e659dadb7",
+      "host": {
+        "argv": [
+          "gcc",
+          "-std=c11",
+          "-O2",
+          "-isystem",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/matiec/lib/C",
+          "-I",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/generated",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/wrapper.c",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/host-stub.c",
+          "-o",
+          "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/host-stub"
+        ],
+        "compile_returncode": 0,
+        "stdout": "1 0 0 RHW\n1 1 0 RHW\n0 0 1 RHCW\n0 1 0 RHCW\n256 257 0 RHCW\n255 0 0 RHW\n0 255 0 RHCW\n257 1 0 RHW\n",
+        "returncode": 0,
+        "driver_sha256": "bb70251f4032e966b9b9b82bab4d1e7a03a7c0bb325066f9f89d689bcb442c0c",
+        "binary_sha256": "72837d8a9ffb2992922b36d932dd4d8bed73af6f4719261dba5443f780035b7d",
+        "evidence_scope": "same wrapper/generated C on Linux host with own descriptor callbacks; no ARM or physical I/O execution"
+      },
+      "compilation_dependencies": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/wrapper.c",
+          "sha256": "dfdbedca6e525994f9647e98b6a4a83f68be10ebaa2cfa2aa3ecf14da9e7dd1c",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stdint.h",
+          "sha256": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stddef.h",
+          "sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_header_macro.h",
+          "sha256": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_ptrdiff_t.h",
+          "sha256": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_size_t.h",
+          "sha256": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wchar_t.h",
+          "sha256": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_null.h",
+          "sha256": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_max_align_t.h",
+          "sha256": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_offsetof.h",
+          "sha256": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/matiec/lib/C/iec_std_lib.h",
+          "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/limits.h",
+          "sha256": "1a74119a871309deaabdc8081d43fdb274137838c9e2bb874890c120db7a673a",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/float.h",
+          "sha256": "a29019c5ba04f9bf55a46f9bf75c63039a6015921ddde7298e057b2a188bebec",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stdarg.h",
+          "sha256": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_header_macro.h",
+          "sha256": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___gnuc_va_list.h",
+          "sha256": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_list.h",
+          "sha256": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_arg.h",
+          "sha256": "db0cca3b7768cf07807553fb88ea74e00cba4503e08a5f5504989fb3cc3e4cf1",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___va_copy.h",
+          "sha256": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_copy.h",
+          "sha256": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/matiec/lib/C/iec_types_all.h",
+          "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/matiec/lib/C/iec_types_list.h",
+          "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/matiec/lib/C/iec_types.h",
+          "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/matiec/lib/C/iec_std_functions.h",
+          "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/matiec/lib/C/accessor.h",
+          "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/generated/POUS.h",
+          "sha256": "a8c12221e08b81f376a1c568bb4ede5048f057ea5ac91a955f7df3f9614379b6",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/matiec/lib/C/iec_std_FB.h",
+          "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/generated/POUS.c",
+          "sha256": "aed0de5a513eea440fda932b66c2db2deaeb38fa2b1a6075975af38bde356ddf",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-37-io-probe-20261019/frozen-inverted/matiec/lib/C/iec_std_FB_impl.h",
+          "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd",
+          "origin": "frozen-generated-or-matiec"
+        }
+      ],
+      "arm_attributes": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n",
+      "compiler_component_sha256": {
+        "/home/zss/workspace/py2plc/tools/compile_easy521_io_probe.py": "8053ccd65f9d0ac04db1da742fa1eb232293e1117e6fb16848c713bf8e8f7460",
+        "/home/zss/workspace/py2plc/tools/compile_easy521_matiec_probe.py": "a56ae33dee14c425f92716ed6efb7593be3f6a55ca5e1c1c7eab5a5f2a045cae",
+        "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py": "cae1f517bf8c42fcfe0a20ee28899f17eeaf7267e4394a9454740045ca1368ce",
+        "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d",
+        "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+      }
+    }
+  ],
+  "tool": "tools/compile_easy521_io_probe.py",
+  "tool_sha256": "8053ccd65f9d0ac04db1da742fa1eb232293e1117e6fb16848c713bf8e8f7460",
+  "frontend": "pinned MatIEC iec2c, not a handwritten ST regex compiler",
+  "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e",
+  "profiles": {
+    "body_interface": "M8002/M8013 BOOL VAR_INPUT; Y0 BOOL VAR_OUTPUT; stack-only program context",
+    "lowering": "unmodified POUS.c plus fixed descriptor shim",
+    "runtime_helpers": [
+      "READ_BITS via one pointer, return low8",
+      "WRITE_BITS via one pointer, status ignored",
+      "INTERRUPTFCBYST uint32 return/no meaningful arguments, result discarded"
+    ],
+    "write_padding": "three explicit local zero bytes; physical ABI behavior unknown"
+  },
+  "validation": {
+    "tests_passed": 24,
+    "tests_skipped": 0,
+    "host_cases": 16,
+    "kind": "real compiler tests, generated-interface negatives, self-authored host stubs, ELF symbol/relocation mutations, timeout/integrity checks"
+  },
+  "evidence_limits": {
+    "device_access": false,
+    "Windows_executed": false,
+    "Git_invoked": false,
+    "new_ARM_code_executed": false,
+    "downloadable": false,
+    "physical_runtime_abi_verified": false,
+    "new_application_link_or_packaging_claimed": false
+  },
+  "unknowns": [
+    "Physical runtime helper typedef, errors, force/refresh and exact padding consumption",
+    "Target acceptance of this new C wrapper despite matched symbol classes/relocation categories",
+    "Interrupt hook behavior on actual firmware and interaction with task reentrancy",
+    "Task period and output refresh boundary",
+    "Full application identity/packaging and device deployment; root owns any hardware decision"
+  ]
+}

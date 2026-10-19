@@ -119,7 +119,8 @@ def _contract(kind, profile, sequence):
         selected = _RUNTIME_PROFILES[profile]
         return _RUNTIME.build_read_request(profile=selected, sequence=sequence), 14
     if kind == "memory" and isinstance(profile, str) and profile in _MEMORY.PROFILES:
-        return _MEMORY.build_read_request(profile=profile, sequence=sequence), 26
+        return (_MEMORY.build_read_request(profile=profile, sequence=sequence),
+                _MEMORY.response_frame_bytes(profile))
     raise ValueError("Choose runtime literal/gcm-state or a fixed memory profile; arbitrary reads are unsupported")
 
 

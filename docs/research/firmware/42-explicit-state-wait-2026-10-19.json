@@ -1,0 +1,121 @@
+{
+  "schema": "plcidf.explicit-native-state-wait-research.v1",
+  "recorded_at": "2026-10-19T08:42:50.864950+00:00",
+  "scope": "Offline optional CLI/control-wait wrapper and substitutes only; no USB preparation, device access or Windows execution",
+  "api": "set_gcm_and_wait_native(state,execute=False,linux_device=None,wait_timeout_s=None,timeout_ms=2500,session_timeout_s=30,...)",
+  "cli": "run|stop --wait-state [--wait-timeout-s0.1..10] [--execute --linux-device BUS:ADDRESS]",
+  "defaults": {
+    "ack_only_without_flag": true,
+    "run_wait_seconds": 5.0,
+    "stop_wait_seconds": 1.0,
+    "run_poll_interval_seconds": 0.01,
+    "stop_poll_interval_seconds": 0.1,
+    "run_default_maximum_reads": 500,
+    "stop_default_maximum_reads": 10
+  },
+  "provenance": {
+    "report": "41-fixed-error-diagnostics-2026-10-19.json",
+    "run": "AutoShop15f36b0 singleSet1;15f37b2 limit500;15f37c9 GetGCM;15f38b6 raw1 success;15f38d8 Sleep10ms",
+    "stop": "AutoShop44e49e singleSet0;44e4ca..520 limit10, Sleep100ms, GetGCM untilraw0"
+  },
+  "deadline": {
+    "starts": "after a correlated control ACK",
+    "scope": "one absolute monotonic wait window shared across all independent reads",
+    "per_read_timeout_ms": "min(configured_timeout_ms,floor(remaining_ms/3)) for unchanged GET_CONFIG/OUT/sharedIN timeout phases",
+    "less_than_3ms_remaining": "no further read",
+    "overrun": "recorded; even late target never marks on-time success",
+    "native_resource_calls": "enumeration/open/claim/release have no libusb timeout parameter; hard interruption not claimed",
+    "minimum_stop_window": "Explicit0.1s STOP starts with immediate observation rather than spending entire budget sleeping; default STOP keeps initial100ms delay"
+  },
+  "evidence": {
+    "control": "full independent ACK/failure report and start/finish timestamps retained",
+    "reads": "each full fixed-native GCM report, target, raw request/response, timeout and wall/monotonic start/finish retained",
+    "identity": "fresh BUS:ADDRESS/VID:PID/bcdDevice cross-check; permanent identity unknown; lease released/reacquired per operation",
+    "cpu_state_verified": "only correlated target state observed within deadline on matching descriptor/location",
+    "application_execution_verified": false,
+    "causal_transition_verified": false
+  },
+  "failures": [
+    "Writer failure or missing correlated ACK: no polling",
+    "Any one read failure/interruption: stopunknown immediately, no later read or writer replay",
+    "Valid non-target0..3: may perform next new fixed read within same budget",
+    "Identity/product/release mismatch, invalid/bool state or uncorrelated result: stopunknown",
+    "Deadline/read budget exhaustion: failed state-wait-timeout with last observed state, never automatic RUN/STOP/clear/recovery"
+  ],
+  "code": [
+    {
+      "path": "tools/easy521_application_usb.py",
+      "sha256": "42a04d44237b74ef2fa137c413e03de1b88184d5ac95a069393dd97165c32c52"
+    },
+    {
+      "path": "tools/tests/test_easy521_application_usb.py",
+      "sha256": "8f048975662bc33b2fb45ba676136fff596a16478d4e1fc5860d3660599cfa4d"
+    },
+    {
+      "path": "tools/easy521_linux_usb.py",
+      "sha256": "d01c4aad3a799400214650ed98c2748c4e2b7375044579ab3f04e99f82e35261"
+    },
+    {
+      "path": "tools/easy521_protocol.py",
+      "sha256": "9073ac6d448420728a33668ce37da24757ad7ea0529b8d623a7597758980a2cc"
+    }
+  ],
+  "previews": [
+    {
+      "path": ".plcidf/research-42-explicit-state-wait-20261019/run-ack-only-preview.json",
+      "sha256": "67d87d208dce60921d0da9ec8adb4064f61459d3becf2e225069fa7c3cef3a90",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "requested_state": 1
+    },
+    {
+      "path": ".plcidf/research-42-explicit-state-wait-20261019/run-wait-preview.json",
+      "sha256": "0a202f14a8d0a4dbdaf822abad7b60cd1cff6da86a3db7bacf5f045ce469a4e1",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "requested_state": 1,
+      "wait_timeout_s": 5.0,
+      "poll_interval_s": 0.01,
+      "initial_poll_delay_s": 0.0,
+      "maximum_state_reads": 500
+    },
+    {
+      "path": ".plcidf/research-42-explicit-state-wait-20261019/stop-minimum-wait-preview.json",
+      "sha256": "085a38ad73eb3024ad0498bfff41a0e60e6b9b58b7ee24499f664b5a66196fd8",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "requested_state": 0,
+      "wait_timeout_s": 0.1,
+      "poll_interval_s": 0.1,
+      "initial_poll_delay_s": 0.0,
+      "maximum_state_reads": 1
+    },
+    {
+      "path": ".plcidf/research-42-explicit-state-wait-20261019/stop-wait-preview.json",
+      "sha256": "c66d99868f30313b4e8dddee0d7eb419a557a02266659d2fb6694f9d7dff498a",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "requested_state": 0,
+      "wait_timeout_s": 1.0,
+      "poll_interval_s": 0.1,
+      "initial_poll_delay_s": 0.1,
+      "maximum_state_reads": 10
+    }
+  ],
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q tools/tests/test_easy521_application_usb.py tools/tests/test_easy521_application_protocol.py tools/tests/test_easy521_linux_usb.py --junitxml=.plcidf/research-42-explicit-state-wait-20261019/tests-final.xml",
+    "total": 269,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "application_usb_tests": 122,
+    "new_wait_cases": 27,
+    "junit_sha256": "2e115a3aba9b90db2a338ff1f63a717aef0654fa403f3e1910952d05b6e974a4",
+    "kind": "Mock control/fixed-reader, deterministic clock/sleep and C-ABI substitute regression; zero physical state transition tests"
+  },
+  "hardware_acceptance": false
+}

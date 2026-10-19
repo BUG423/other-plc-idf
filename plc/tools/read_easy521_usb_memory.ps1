@@ -1,7 +1,7 @@
 param(
     [switch]$Execute,
     [ValidateRange(0,65535)][int]$Sequence = 4660,
-    [ValidateSet('pcmd','revision','step','scan-counter','confidence','published-scan','published-value','heartbeat','m8000','m8001','m8013')]
+    [ValidateSet('pcmd','revision','step','scan-counter','confidence','published-scan','published-value','heartbeat','m8000','m8001','m8013','cur-error-count','cur-error-list','cur-error-instances')]
     [string]$ReadProfile = 'revision'
 )
 # Fixed selector3 READ candidates from research19 and the pinned GVT/CSV.
@@ -14,6 +14,9 @@ $ErrorActionPreference = 'Stop'
 $targets = @{
     # Existing GVT + frozen VarNameAndAddr.csv line275: REAL32, report17/27.
     'pcmd'=@(0x021000f0,32)
+    'cur-error-count'=@(0x06200700,16)
+    'cur-error-list'=@(0x06200700,4048)
+    'cur-error-instances'=@(0x06201900,1344)
     'revision'=@(0x02100140,32); 'step'=@(0x02100160,32)
     'scan-counter'=@(0x02100130,16); 'confidence'=@(0x021001c0,32)
     'published-scan'=@(0x02100180,32); 'published-value'=@(0x021001a0,32)
@@ -80,6 +83,11 @@ public static class PlcUsbMemoryRead {
         uint address; uint bits;
         switch(profile) {
             case "pcmd": address=0x021000f0; bits=32; break;
+            // Report41: selected CSV75/76 + SysVarDef/SysDataType. Fixed whole
+            // symbols only; no arbitrary address/offset or error clearing.
+            case "cur-error-count": address=0x06200700; bits=16; break;
+            case "cur-error-list": address=0x06200700; bits=4048; break;
+            case "cur-error-instances": address=0x06201900; bits=1344; break;
             case "revision": address=0x02100140; bits=32; break;
             case "step": address=0x02100160; bits=32; break;
             case "scan-counter": address=0x02100130; bits=16; break;
@@ -144,7 +152,8 @@ public static class PlcUsbMemoryRead {
                 for (int i=0;i<received;i++) bytes.Add(chunk[i]);
                 record["response_hex"]=BitConverter.ToString(bytes.ToArray()).Replace("-","").ToLowerInvariant();
                 if (bytes.Count>=2) expected=bytes[0] | (bytes[1]<<8);
-                if (expected>26 || (expected>=0 && expected<10) || bytes.Count>26) throw new InvalidOperationException("Response exceeds fixed scalar bounds");
+                int maximum=22+(int)((bits+7)/8);
+                if (expected>maximum || (expected>=0 && expected<10) || bytes.Count>maximum) throw new InvalidOperationException("Response exceeds exact fixed profile bounds");
                 if (expected>=0 && bytes.Count>=expected) {
                     if (bytes.Count!=expected) throw new InvalidOperationException("Trailing response bytes");
                     record["ok"]=true; record["stage"]="raw-frame-only";

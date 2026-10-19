@@ -9,6 +9,8 @@
 
 | 分区 | 路径 | 状态 | 一句话 |
 |---|---|---|---|
+| 当前真机故障与恢复 | [research/firmware/39-native-download-fault-2026-10-19.md](research/firmware/39-native-download-fault-2026-10-19.md) | 17 文件原生下装读回一致，STOP 已读回；RUN 失败 | 用户报告 ERR 红灯，重接后 Linux/Windows 查询均超时；原程序备份已准备，恢复未完成 |
+| 故障后的软件修正 | [40 对齐](research/firmware/40-unaligned-external-memory-2026-10-19.md) / [41 诊断](research/firmware/41-fixed-error-diagnostics-2026-10-19.md) / [42 状态等待](research/firmware/42-explicit-state-wait-2026-10-19.md) | 离线编译、协议与替身测试已完成 | 故障定因、修正版运行与故障码仍待真机证据 |
 | 原生USB真机读取 | [research/firmware/25-native-linux-device-reads-2026-10-19.md](research/firmware/25-native-linux-device-reads-2026-10-19.md) | 本设备8次固定读实测通过 | 接口1更正、状态/标志/变化时钟与host恢复；没有原生下载或CPU写操作 |
 | 原生并行开发初批 | [research/firmware/22-linux-foid-packaging-2026-10-19.md](research/firmware/22-linux-foid-packaging-2026-10-19.md) / [23](research/firmware/23-linux-st-abi-2026-10-19.md) / [24](research/firmware/24-linux-native-usb-2026-10-19.md) | FOID检查、受限ST→ARM和原生USB后端已实现 | 当批真机读取待共享，后续见25；完整配置生成/下装与ARM执行继续开放 |
 | 现场反馈 | [FEEDBACK_CAPTURE.md](FEEDBACK_CAPTURE.md) | 离线CLI已集成 | 人工记录、真实仪器记录校验、多轮摘要与未知身份 |

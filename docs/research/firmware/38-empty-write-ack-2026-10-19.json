@@ -1,0 +1,164 @@
+{
+  "schema": "plcidf.empty-write-ack-correction.v1",
+  "recorded_at": "2026-10-19T08:15:50.429888+00:00",
+  "scope": "Offline static H530 inspection, offline reparse of root-owned real evidence and substitute tests; no new device access",
+  "corrects": [
+    "26-native-application-protocol-2026-10-19.md SetGCM normal-response-u32 wording",
+    "35-cli-native-application-2026-10-19.md exact14B ACK subset limitation",
+    "agent-static-transfer-plan.json prior14B-only ACK contract"
+  ],
+  "original_failure": {
+    "path": ".plcidf/native-download-plus1-20261019T080940Z/02-download-plus1.json",
+    "sha256": "26108ce7f22084932219bd63f8b4c90104e2bb8b2c00c665dbd33e082ff42e78",
+    "status": "failed",
+    "request_outcome": "unknown",
+    "request_count": 1,
+    "request_hex": "130001014f9d00000200000000ff0100000002",
+    "response_hex": "090001014f9d000006",
+    "out_transferred": 19,
+    "read_calls": [
+      {
+        "rc": 0,
+        "transferred": 9
+      }
+    ],
+    "file_open_sent": false,
+    "raw3_sent": false,
+    "original_preserved": true
+  },
+  "reparse": {
+    "original_report": ".plcidf/native-download-plus1-20261019T080940Z/02-download-plus1.json",
+    "original_report_sha256": "26108ce7f22084932219bd63f8b4c90104e2bb8b2c00c665dbd33e082ff42e78",
+    "original_outcome_preserved": "unknown",
+    "parsed": {
+      "sequence": 40271,
+      "selector": 1,
+      "operation": 6,
+      "reserved": 0,
+      "flags": null,
+      "ok": true,
+      "ack_u32": null,
+      "ack_payload_present": false,
+      "ack_format": "gcm-header9-empty"
+    },
+    "device_access": false,
+    "request_sent": false,
+    "compiler_protocol_sha256": "a15d6c3bde0103f35f4919350ab1853e56614a47b356099b3cc84255b6025352",
+    "runtime_state_not_inferred": true
+  },
+  "static_source": {
+    "source": "/mnt/e/Software/AutoShop/H530Communicate.dll",
+    "source_bytes": 22864896,
+    "source_sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698",
+    "ranges": [
+      {
+        "role": "public_correlation",
+        "start_rva": "0x28610",
+        "end_exclusive_rva": "0x28657",
+        "sha256": "3afcd8f996b26ea4c151e6e439c6134e4945eb07f3a69041c559feefd612d709"
+      },
+      {
+        "role": "ack_optional_dword",
+        "start_rva": "0x288c0",
+        "end_exclusive_rva": "0x2890e",
+        "sha256": "a4e824804ff4858fb341c2202a300e73033745d353ddfc2e6cf36491525a24f2"
+      },
+      {
+        "role": "set_gcm_builder",
+        "start_rva": "0xde00",
+        "end_exclusive_rva": "0xde66",
+        "sha256": "b8ddf8bf6fa835508bd02d6962d7f0f590577ef60ed30ef2a3e980798be44bd8"
+      },
+      {
+        "role": "set_common_ack_consumption",
+        "start_rva": "0xc8b4",
+        "end_exclusive_rva": "0xc8e3",
+        "sha256": "0afde994e7a7357b358558fd59fca1b47466a7626bc2bdc82c12f4e93d4f63a6"
+      },
+      {
+        "role": "download_file_open_and_write_ack",
+        "start_rva": "0xd544",
+        "end_exclusive_rva": "0xd5b2",
+        "sha256": "1ed858429b7e3e4c6c15251f6a9ea1aa36c5c85b8afa657f72481d9f3e44bb09"
+      },
+      {
+        "role": "download_memory_open_and_write_ack",
+        "start_rva": "0xd895",
+        "end_exclusive_rva": "0xd905",
+        "sha256": "cc7468a322a9031814ef63047a83c35b7b74a1e10e90485c8df34735d739c43c"
+      }
+    ]
+  },
+  "consumer_chains": {
+    "gcm": "de00 -> c7d0 -> c8c5 calls288c0; success return used independently of optional DWORD",
+    "file_download_open2": "d544..d55b selector4/op2 -> d574 calls288c0 -> d57b tests return -> d581..d598 next write5; no successful DWORD consumption",
+    "file_download_write5": "d592/d594 selector4/op5 -> d5a1 calls288c0 -> d5a8 success jumpsd705; DWORD only failure pathd5ae",
+    "memory_download_open2": "d8a6/d8a8 -> d8c5 calls288c0 -> d8cc tests return; success goes directly to write5",
+    "memory_download_write5": "d8e5/d8e7 -> d8f4 calls288c0 -> d8fb success jumpsda7e; DWORD only failure pathd901"
+  },
+  "optional_dword_branch": {
+    "operation_byte_offset": 8,
+    "success_operation": 6,
+    "length_compare_rva": "0x288ea",
+    "short_success_branch_rva": "0x288ee ->0x288f5",
+    "short_success_condition": "total length<=10",
+    "dword_load_only_if_longer_rva": "0x288f0",
+    "payload_offset": 10,
+    "implementation_scope": "Only exact9B evidence-backed shape or existing exact14B shape; reject ambiguous10/11/12/13 lengths"
+  },
+  "supported_empty_ack_actions": [
+    "gcm-set",
+    "file-open-write",
+    "file-write"
+  ],
+  "rejected_short_actions": [
+    "file-open-read",
+    "file-read"
+  ],
+  "missing_fields": {
+    "flags": null,
+    "ack_u32": null,
+    "ack_payload_present": false
+  },
+  "correlation": [
+    "Exact9 bytes and declared total9",
+    "Version1",
+    "Selector and sequence equal the validated request",
+    "Operation6"
+  ],
+  "error_rule": "Shortop15 rejected as malformed; exact14B op15 remains device error for any u32 including0/1",
+  "code": [
+    {
+      "path": "tools/easy521_application_protocol.py",
+      "sha256": "a15d6c3bde0103f35f4919350ab1853e56614a47b356099b3cc84255b6025352"
+    },
+    {
+      "path": "tools/easy521_application_usb.py",
+      "sha256": "98b5c5f63236231e7cd3435a990105b7c6d7be9db95cceb29ac67141d059ca18"
+    },
+    {
+      "path": "tools/tests/test_easy521_application_protocol.py",
+      "sha256": "5cf041d168e7c0181505250b88ceac043bc57721366ccf84bc049c022bd565f7"
+    },
+    {
+      "path": "tools/tests/test_easy521_application_usb.py",
+      "sha256": "4ef41552359e9f76a7364cfdd7d69e585edd2f9703a9df9c22eb0e7ad9f1603c"
+    }
+  ],
+  "tests": {
+    "total": 235,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "junit": ".plcidf/research-38-empty-write-ack-20261019/tests-frozen.xml",
+    "junit_sha256": "72405f64d2d6ef59e9e27ceda6b8949d1b0c1b1230e9a0baf29844c3627d276f",
+    "command": ".venv/bin/python -m pytest -q tools/tests/test_easy521_application_protocol.py tools/tests/test_easy521_application_usb.py tools/tests/test_easy521_linux_usb.py --junitxml=.plcidf/research-38-empty-write-ack-20261019/tests-frozen.xml",
+    "scope": "Offline actual-frame parse and C-ABI substitute/mocks; 235 total includes existing tests; no physical writer invoked by this task"
+  },
+  "runtime_limits": [
+    "A successful empty ACK is no CPU state or application activation proof.",
+    "Only SetGCM9B shape has a physical observation in this record; file writer support is from actual H530 consumption chains and substitute tests.",
+    "Public APIs still send their normal complete transaction; no resume/replay or automatic state recovery was added.",
+    "The original raw2 write must not be automatically replayed because the old reader rejected its ACK."
+  ]
+}

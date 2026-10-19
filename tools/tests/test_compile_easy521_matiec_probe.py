@@ -93,6 +93,77 @@ def test_changed_st_branch_rule_produces_a_different_real_arm_object(tmp_path, t
     assert one["object"]["sha256"] != two["object"]["sha256"]
 
 
+def test_actual_ir_and_assembled_arm_chain_use_strict_nonatomic_byte_accesses(tmp_path, toolchain):
+    result = compile_body(tmp_path, toolchain)
+    assert result['ok'], result
+    assert result['external_alignment_bytes'] == 1 and result['strict_align']
+    assert result['access_atomic'] is False and result['concurrent_writer_supported'] is False
+    ir = result['alignment_ir']
+    assembly = result['arm_assembly']
+    assert ir['used_for_arm_codegen'] and assembly['used_for_object_assembly']
+    assert ir['inspection']['volatile_loads'] >= 1
+    assert assembly['inspection']['byte_loads'] >= 4 * ir['inspection']['volatile_loads']
+    assert assembly['inspection']['byte_stores'] >= 4 * ir['inspection']['volatile_stores']
+    assert assembly['inspection']['nonbyte_general_register_accesses'] == 0
+    commands = [entry['argv'] for entry in result['commands']]
+    lowering = next(argv for argv in commands if '-x' in argv and 'ir' in argv)
+    assembling = next(argv for argv in commands if '-x' in argv and 'assembler' in argv)
+    assert ir['path'] in lowering and assembly['path'] in assembling
+    assert '-mno-unaligned-access' in lowering and '-mno-unaligned-access' in assembling
+    assert '@G_RBESS_PCMD = external dso_local global float, align 1' in Path(ir['path']).read_text()
+
+
+def test_same_generated_c_handles_a_single_writer_at_byte_offset_two_without_reset(tmp_path, toolchain):
+    result = compile_body(tmp_path, toolchain)
+    assert result['ok'], result
+    root = tmp_path / 'build'
+    driver = root / 'unaligned-host.c'
+    driver.write_text(r'''#include <assert.h>
+#include <stdint.h>
+#include <string.h>
+_Alignas(8) unsigned char plc_bytes[16];
+__asm__(".globl G_RBESS_PCMD\n.set G_RBESS_PCMD, plc_bytes + 2");
+void MAIN(void);
+int main(void) {
+    assert(((uintptr_t)(plc_bytes+2) & 3) == 2);
+    const float initial[] = {-1.0f, 0.0f, 9.0f, 10.0f, 100.0f};
+    const float expected[] = {0.0f, 1.0f, 10.0f, 0.0f, 0.0f};
+    for(unsigned i=0;i<5;i++) {
+        memset(plc_bytes,0xa5,sizeof plc_bytes);
+        memcpy(plc_bytes+2,&initial[i],4);
+        MAIN();
+        float observed; memcpy(&observed,plc_bytes+2,4);
+        assert(observed==expected[i]);
+        for(unsigned j=0;j<16;j++) if(j<2 || j>=6) assert(plc_bytes[j]==0xa5);
+    }
+    return 0;
+}''')
+    binary = root / 'unaligned-host'
+    command = ['gcc', '-std=c11', '-O2', '-fsanitize=undefined', '-fno-sanitize-recover=all',
+               '-isystem', str(root/'matiec/lib/C'), '-I', str(root/'generated'),
+               str(root/'wrapper.c'), str(driver), '-o', str(binary)]
+    compiled = subprocess.run(command, capture_output=True, text=True, timeout=15)
+    assert compiled.returncode == 0, compiled.stderr
+    executed = subprocess.run([str(binary)], capture_output=True, text=True, timeout=5)
+    assert executed.returncode == 0, executed.stderr
+
+
+@pytest.mark.parametrize('artifact,stage', [('ir', 'alignment-ir'), ('assembly', 'assembly-audit')])
+def test_alignment_ir_or_arm_word_access_is_rejected_before_object_assembly(tmp_path, toolchain, artifact, stage):
+    def invalid_alignment(argv, **kwargs):
+        completed = subprocess.run(argv, **kwargs)
+        if artifact == 'ir' and '-emit-llvm' in argv:
+            path = tmp_path/'build/MAIN.ll'
+            path.write_text(path.read_text().replace('align 1', 'align 4'))
+        elif artifact == 'assembly' and '-x' in argv and 'ir' in argv:
+            path = tmp_path/'build/MAIN.s'
+            path.write_text('MAIN:\n vldr s0, [r0]\n bx lr\n.Lfunc_end0:\n')
+        return completed
+    result = compile_body(tmp_path, toolchain, runner=invalid_alignment)
+    assert not result['ok'] and result['stage'] == stage
+    assert not (tmp_path/'build/MAIN.o').exists()
+
+
 @pytest.mark.parametrize("body,stage", [
     ("g_rBESS_Pcmd := ;", "matiec"),
     ("unknown_variable := REAL#1.0;", "matiec"),

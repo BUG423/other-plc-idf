@@ -24,6 +24,31 @@ REAL_DECL = b'{"schema":"plcidf.vendor-main-source.v1","globals":{"g_rBESS_Pcmd"
 
 
 class ParseTests(unittest.TestCase):
+    def test_both_opaque_external_profiles_make_only_align1_promises(self):
+        for body, declarations, profile, symbol, scalar in (
+                (b'COUNTER := COUNTER + 1;', DECL, probe.PROFILE, 'COUNTER', 'i32'),
+                (b'g_rBESS_Pcmd := g_rBESS_Pcmd + 1.0;', REAL_DECL, probe.REAL_PROFILE, 'G_RBESS_PCMD', 'float')):
+            ir = probe.emit_ir(probe.parse_probe(body, declarations, profile=profile))
+            inspected = probe.inspect_alignment_ir(ir, symbol=symbol, scalar=scalar)
+            self.assertEqual(inspected['external_alignment_bytes'], 1)
+            self.assertFalse(inspected['access_atomic'])
+            self.assertFalse(inspected['concurrent_writer_supported'])
+            with self.assertRaisesRegex(ValueError, 'align1'):
+                probe.inspect_alignment_ir(ir.replace(b'align 1', b'align 4', 1), symbol=symbol, scalar=scalar)
+
+    def test_assembly_audit_refuses_word_or_vfp_external_access_and_helpers(self):
+        ir = {'volatile_loads': 1, 'volatile_stores': 1}
+        for access in ('vldr s0, [r0]', 'vstr s0, [r0]', 'ldr r1, [r0]',
+                       'strh r1, [r0]', 'bl memcpy'):
+            assembly = ('MAIN:\n ' + access + '\n.Lfunc_end0:\n').encode()
+            with self.assertRaises(ValueError):
+                probe.inspect_byte_transfer_assembly(assembly, ir_inspection=ir)
+        byte_assembly = ('MAIN:\n' + ' ldrb r1, [r0]\n' * 4 + ' strb r1, [r0]\n' * 4
+                         + ' bx lr\n.Lfunc_end0:\n').encode()
+        result = probe.inspect_byte_transfer_assembly(byte_assembly, ir_inspection=ir)
+        self.assertEqual(result['byte_loads'], 4)
+        self.assertEqual(result['byte_stores'], 4)
+
     def test_complete_profile_accepts_case_and_nested_comments(self):
         source = b'(* %Q0 is only a comment (* nested *) *)\ncounter := COUNTER + 2; // tail\n'
         parsed = probe.parse_probe(source, DECL)
@@ -238,6 +263,28 @@ class RealLLVMTests(unittest.TestCase):
             self.assertEqual((Path(result['output_directory']) / 'body.st').read_bytes(), source.read_bytes())
             hashes.append(result['object']['sha256'])
         self.assertEqual(len(set(hashes)), 3)
+
+    def test_real_object_disassembly_has_byte_external_transfers_for_both_profiles(self):
+        objdump = self.llc.with_name('llvm-objdump')
+        if not objdump.is_file():
+            self.skipTest('Adjacent llvm-objdump is required for independent object disassembly')
+        for profile, body, declaration in (
+                (probe.PROFILE, 'COUNTER := COUNTER + 1;', DECL),
+                (probe.REAL_PROFILE, 'g_rBESS_Pcmd := g_rBESS_Pcmd + 1.0;', REAL_DECL)):
+            source = self.root / (profile + '.st')
+            source.write_text(body)
+            self.globals.write_bytes(declaration)
+            result = probe.compile_probe(source=source, globals_path=self.globals, profile=profile,
+                                         llc=self.llc, output_dir=self.root / profile)
+            self.assertTrue(result['ok'], result)
+            self.assertEqual(result['ir_alignment']['external_alignment_bytes'], 1)
+            self.assertEqual(result['arm_assembly']['inspection']['nonbyte_general_register_accesses'], 0)
+            text = subprocess.run([str(objdump), '-d', '--disassemble-symbols=MAIN', result['object']['path']],
+                                  check=True, capture_output=True, text=True, timeout=10).stdout
+            self.assertGreaterEqual(text.count('\tldrb'), 4)
+            self.assertGreaterEqual(text.count('\tstrb'), 4)
+            self.assertNotRegex(text, r'\t(?:vldr|vstr)(?:\.[a-z0-9]+)?\s+[^\n]*\[r[0-9]+')
+            self.assertNotRegex(text, r'\t(?:ldr|str)(?:\.w)?\s+[^\n]*\[r[0-9]+')
 
     def test_source_and_ir_drift_after_real_compiler_are_rejected(self):
         for which in ('source', 'ir'):

@@ -1,0 +1,413 @@
+{
+  "schema": "plcidf.fixed-native-error-diagnostics-research.v1",
+  "recorded_at": "2026-10-19T08:31:33.727792+00:00",
+  "scope": "Fixed local-source diagnostic profiles; offline codec/C-ABI/Windows-runner substitutes and Linux CLI previews; no device access",
+  "discovery": {
+    "private_contract": ".plcidf/research-native-diagnostics-20261019/static-diagnostic-contract.json",
+    "sha256": "e534e555b7792cac1f9ee047bd77db4f92261a4e484e52218ba639bae82a1aff",
+    "sources": [
+      {
+        "path": "/mnt/e/Software/AutoShop/H530Communicate.dll",
+        "bytes": 22864896,
+        "sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698"
+      },
+      {
+        "path": "/mnt/e/Software/AutoShop/AutoShop.exe",
+        "bytes": 55592960,
+        "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e"
+      },
+      {
+        "path": "/mnt/e/Software/AutoShop/InterfaceMgr.dll",
+        "bytes": 1372672,
+        "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192"
+      },
+      {
+        "path": "/mnt/e/Software/AutoShop/xml/SysVarDef.xml",
+        "bytes": 74396,
+        "sha256": "0a614ca37ad2d29be1328e9f82e9f851676b71c6d92b03b8377006133e65469c"
+      },
+      {
+        "path": "/mnt/e/Software/AutoShop/xml/SysDataTypeDef.xml",
+        "bytes": 274416,
+        "sha256": "745ceecfda0da0b7313ab03b41f8fc6e2ef5e1bd0c8e3a14da238687ab3ca929"
+      },
+      {
+        "path": "/mnt/e/Software/AutoShop/ErrorMsg.xml",
+        "bytes": 293957,
+        "sha256": "38589c8bdb1b56e6603c2c7adb436f65364052b446c4659ed019f9792228e279"
+      },
+      {
+        "path": ".plcidf/research-17-variables-20261019/inputs/VarNameAndAddr.csv",
+        "bytes": 24548,
+        "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+      }
+    ],
+    "ranges": [
+      {
+        "module": "H530Communicate.dll",
+        "role": "current_errors_memory_read",
+        "start_va": "0x1000e110",
+        "end_exclusive_va": "0x1000e24a",
+        "sha256": "75d65cba692305cf42c8edb55266fe63f57633f5b7f9292957031311ba7d8eb0"
+      },
+      {
+        "module": "H530Communicate.dll",
+        "role": "current_error_instance_memory_read",
+        "start_va": "0x1000df20",
+        "end_exclusive_va": "0x1000e05b",
+        "sha256": "b321c7119108c262e776ac2d3c3132ce3895d433cc6b1d2f01c2b88b52bd8771"
+      },
+      {
+        "module": "AutoShop.exe",
+        "role": "run_once",
+        "start_va": "0x15f369f",
+        "end_exclusive_va": "0x15f36c6",
+        "sha256": "6cad5d66b739a6c892f1e5af47f1233e343a1f31374f4f89dfbd4455423a06b9"
+      },
+      {
+        "module": "AutoShop.exe",
+        "role": "run_poll_bound",
+        "start_va": "0x15f37a0",
+        "end_exclusive_va": "0x15f37df",
+        "sha256": "3f557a8c991c0fc579a5c77ac681d5f35da6fa5203da5dc61a5d0c7412953265"
+      },
+      {
+        "module": "AutoShop.exe",
+        "role": "run_poll_success_sleep",
+        "start_va": "0x15f38b6",
+        "end_exclusive_va": "0x15f38f3",
+        "sha256": "13e7a1023110a64448b6f4f87edac4e7addcf57b81c3dff019882caf24d0ae3b"
+      },
+      {
+        "module": "AutoShop.exe",
+        "role": "stop_once_poll",
+        "start_va": "0x44e487",
+        "end_exclusive_va": "0x44e520",
+        "sha256": "895243540f9d60c9be038e6f14ac35642c5c2da935c78f6247fad02f2fbf40bb"
+      }
+    ],
+    "interfaces": [
+      {
+        "facade": "GetCurErrLst",
+        "facade_rva": "0x68e90",
+        "command": "CGetCurErrLstCommand",
+        "execute_rva": "0xe0b0",
+        "read_rva": "0xe110",
+        "resolved_name": "_CurErrLst",
+        "csv_line": 76,
+        "csv_record": "_CurErrLst\t0X6200700\t当前错误列表\t4048",
+        "address_hex": "0x06200700",
+        "csv_width_bits": 4048,
+        "host_hardcoded_bits": 7696,
+        "host_hardcoded_buffer_bytes": 962,
+        "mismatch_rule": "Do not blindly copy generic H530962B length; selected project CSV and SysDataType42*12+2 describe506B",
+        "minimum_quantity": {
+          "symbol": "_CurErrLst.Quantity",
+          "type": "INT16",
+          "address_hex": "0x06200700",
+          "bits": 16,
+          "request_protocol": "selector3/op1 count1/address/bits",
+          "layout_basis": "SysDataType first INT member; total2+42*(2+2+4+4)=506 bytes matches CSV4048bits"
+        }
+      },
+      {
+        "facade": "GetCurErrInst",
+        "facade_rva": "0x68ec0",
+        "command": "CGetCurErrInstCommand",
+        "execute_rva": "0xdec0",
+        "read_rva": "0xdf20",
+        "resolved_name": "_CurErrInst",
+        "csv_line": 75,
+        "csv_record": "_CurErrInst\t0X6201900\t当前错误实例地址列表\t1344",
+        "address_hex": "0x06201900",
+        "width_bits": 1344,
+        "elements": "42*DINT"
+      }
+    ]
+  },
+  "profiles": [
+    {
+      "name": "cur-error-count",
+      "symbol": "_CurErrLst.Quantity",
+      "address_hex": "0x06200700",
+      "width_bits": 16,
+      "payload_bytes": 2,
+      "response_bytes": 24,
+      "type": "INT16",
+      "range": [
+        0,
+        42
+      ]
+    },
+    {
+      "name": "cur-error-list",
+      "symbol": "_CurErrLst",
+      "address_hex": "0x06200700",
+      "width_bits": 4048,
+      "payload_bytes": 506,
+      "response_bytes": 528,
+      "layout": "LE int16 Quantity followed by42 packed records int16 ErrorCode,int16 ComponentID,int32 Location,int32 Timestamp",
+      "active_entries": "first Quantity records only, all42 raw records retained; no pointer chasing"
+    },
+    {
+      "name": "cur-error-instances",
+      "symbol": "_CurErrInst",
+      "address_hex": "0x06201900",
+      "width_bits": 1344,
+      "payload_bytes": 168,
+      "response_bytes": 190,
+      "layout": "42 LE signedDINT values, values remain opaque and never dereferenced"
+    }
+  ],
+  "bounds": {
+    "request_bytes": 22,
+    "request_kind": "selector3 op1 count1 fixed opaque address and width",
+    "maximum_frame": "22+ceil(known_profile_width_bits/8), errors still14B; no caller address/width/offset",
+    "usb_chunk_bytes": 512,
+    "complete_list_chunks": [
+      512,
+      16
+    ],
+    "max_in_calls": 4,
+    "out_requests": 1,
+    "timeouts": "Original bounded send and shared receive deadline unchanged; no retry/reconnect/replay"
+  },
+  "source_limits": [
+    "GVT contains only19 business globals and does not independently verify these system symbols",
+    "CSV75/76, SysVarDef base/offset and SysDataType width/structure cross-check the chosen project",
+    "Generic H530 current-error-list hardcodes962B; this profile deliberately uses the selected project506B and does not blindly copy962B",
+    "All diagnostic response interpretations remain candidate/unverified until actual device data is captured",
+    "Raw bits field is null for structures; full raw bytes and signed/unsigned16-bit code values remain explicit",
+    "No device error clearing/acknowledging/reset/RUN/STOP is part of diagnostic reads"
+  ],
+  "wait_policy": {
+    "run": {
+      "single_write_call_va": "0x15f36b0",
+      "state": 1,
+      "poll_call_va": "0x15f37c9",
+      "limit": 500,
+      "sleep_ms": 10,
+      "success_value": 1,
+      "sleep_import_va": "0x1eb1868",
+      "import_name": "Sleep",
+      "approx_sleep_budget_ms": 5000,
+      "qualification": "Loop also spends communication time; this is host policy, not firmware guaranteed transition deadline; no repeat RUN"
+    },
+    "stop": {
+      "single_write_call_va": "0x44e49e",
+      "state": 0,
+      "poll_call_va": "0x44e4f7",
+      "limit": 10,
+      "sleep_ms": 100,
+      "success_value": 0
+    },
+    "implementation": "Documented host orchestration policy only; single-read API never adds hidden polls or repeats a writer"
+  },
+  "dictionary_candidates": [
+    {
+      "component_id": 0,
+      "code_decimal": 1502,
+      "label": "用户程序不完整，长度错误"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 1504,
+      "label": "用户程序为空的错误"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 1505,
+      "label": "程序块POU标志错误"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 1507,
+      "label": "PLC固件版本与Autoshop不匹配"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 3000,
+      "label": "单板ST版本与autoshop版本不匹配"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 3010,
+      "label": "后台配置的ECT或ETH驱动与单板实际运行的驱动不匹配，导致PLC无法运行"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 3012,
+      "label": "用户程序文件被损坏，导致PLC无法运行"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5040,
+      "label": "ST程序序号错误/超限"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5041,
+      "label": "ST程序数据错误"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5042,
+      "label": "ST程序的变量不存在/未初始化"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5050,
+      "label": "ELF文件加载失败"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5052,
+      "label": "ELF文件头校验失败"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5053,
+      "label": "ELF文件段加载失败"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5054,
+      "label": "ELF文件加载符号表失败"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5055,
+      "label": "ELF文件申请GOT失败"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5056,
+      "label": "ELF文件重定位失败"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5060,
+      "label": "符号表文件加载失败"
+    },
+    {
+      "component_id": 0,
+      "code_decimal": 5073,
+      "label": "ST调用LD的入口函数未初始化"
+    }
+  ],
+  "code": [
+    {
+      "path": "tools/easy521_memory_protocol.py",
+      "sha256": "d8d472464061822888ec1a69660e5567ba49eaaadc78e10e6e21808121543402"
+    },
+    {
+      "path": "tools/easy521_linux_usb.py",
+      "sha256": "d01c4aad3a799400214650ed98c2748c4e2b7375044579ab3f04e99f82e35261"
+    },
+    {
+      "path": "tools/read_easy521_usb_memory.py",
+      "sha256": "f6c21c3fb48f8ffe9b9e97f76d688dfb87848638857b2bc1658b6186713795e1"
+    },
+    {
+      "path": "plc/tools/read_easy521_usb_memory.ps1",
+      "sha256": "a6b86349ce6e1b17539e708d21a043d346401312b854ea33c842592bbe2c5ef6"
+    },
+    {
+      "path": "tools/tests/test_easy521_memory_protocol.py",
+      "sha256": "8425c39f2012713b9c4e3106dc49c5669de7ecb031eedf32cbc4375d2906ea9a"
+    },
+    {
+      "path": "tools/tests/test_easy521_linux_usb.py",
+      "sha256": "df3e1a2f74a77273e357b730861fb79cbbc23d1e3bfd61e42cd41b3933992152"
+    },
+    {
+      "path": "tools/tests/test_read_easy521_usb_memory.py",
+      "sha256": "097e95e0d64ccab2d90c26ce6bcd31a81f8b4d13c11c4cf182fe14742f158497"
+    }
+  ],
+  "previews": [
+    {
+      "profile": "cur-error-count",
+      "path": ".plcidf/research-41-fixed-diagnostics-20261019/cur-error-count-native-preview.json",
+      "sha256": "0f2826511be3d12a2ac1ed9e1ee2636523fe30436adfd39fe4e4595daf669864",
+      "request_hex": "16000103341200000100010000000007200610000000",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "symbol": {
+        "profile": "cur-error-count",
+        "symbol": "_CurErrLst.Quantity",
+        "iec_type": "INT",
+        "width_bits": 16,
+        "address_u32": 102762240,
+        "address_hex": "0x6200700",
+        "address_semantics": "opaque_vendor_symbol",
+        "allocation_source": "CSV line76+SysDataType",
+        "allocation_csv_sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+        "allocation_gvt_sha256": null
+      }
+    },
+    {
+      "profile": "cur-error-list",
+      "path": ".plcidf/research-41-fixed-diagnostics-20261019/cur-error-list-native-preview.json",
+      "sha256": "e7d0d9de9c8969379b380a321cf26ef75d85d58ff506e543b08346d7b44199ad",
+      "request_hex": "160001033412000001000100000000072006d00f0000",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "symbol": {
+        "profile": "cur-error-list",
+        "symbol": "_CurErrLst",
+        "iec_type": "_sERR_LST",
+        "width_bits": 4048,
+        "address_u32": 102762240,
+        "address_hex": "0x6200700",
+        "address_semantics": "opaque_vendor_symbol",
+        "allocation_source": "CSV line76+SysDataType",
+        "allocation_csv_sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+        "allocation_gvt_sha256": null
+      }
+    },
+    {
+      "profile": "cur-error-instances",
+      "path": ".plcidf/research-41-fixed-diagnostics-20261019/cur-error-instances-native-preview.json",
+      "sha256": "0d005387174643837ea8d9b9bab3d7d4f14f95e2138c33ff334f9691a34bc0e7",
+      "request_hex": "16000103341200000100010000000019200640050000",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "symbol": {
+        "profile": "cur-error-instances",
+        "symbol": "_CurErrInst",
+        "iec_type": "DINT[42]",
+        "width_bits": 1344,
+        "address_u32": 102766848,
+        "address_hex": "0x6201900",
+        "address_semantics": "opaque_vendor_symbol",
+        "allocation_source": "CSV line75+SysVarDef",
+        "allocation_csv_sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+        "allocation_gvt_sha256": null
+      }
+    }
+  ],
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q tools/tests/test_easy521_memory_protocol.py tools/tests/test_read_easy521_usb_memory.py tools/tests/test_easy521_linux_usb.py tools/tests/test_easy521_application_usb.py tools/tests/test_easy521_application_protocol.py --junitxml=.plcidf/research-41-fixed-diagnostics-20261019/tests-frozen.xml",
+    "total": 411,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "junit_sha256": "87bdbf3de8309afb8546bc69d27bf5247eb6fbdcf25b6d4f64f4bd23ca1cbf88",
+    "kind": "Synthetic diagnostic payloads and C-ABI/Windows runner substitutes, no real Windows or USB execution",
+    "covered": [
+      "Precise24/190/528 bounds",
+      "528 frame over512+16 with oneOUT",
+      "Missing/trailing tail stopsunknown without replay",
+      "Large frame cannot pass oldpcmd bounds",
+      "Quantity capacity and structure decoding",
+      "Opaque instance values not dereferenced",
+      "Windows raw helper schema/multichunk validation",
+      "PS profile/address/width table parity",
+      "All three native CLI previews zero device access"
+    ]
+  }
+}

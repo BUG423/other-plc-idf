@@ -206,7 +206,12 @@ class _Session:
                 raise native.NativeUsbError("Oversized application response")
             if len(response) >= 2:
                 expected = int.from_bytes(response[:2], "little")
-                if not 10 <= expected <= 512:
+                # Native20261019T080940Z and H530 RVA288c0 confirm a9B,
+                # header-only op6 ACK. Actual Download open2/write5 callers
+                # also use288c0's no-DWORD success branch. Only these explicit
+                # writers accept9B; read-open still requires a real file size.
+                minimum = 9 if metadata["action"] in codec.EMPTY_ACK_ACTIONS else 10
+                if not minimum <= expected <= 512:
                     raise native.NativeUsbError("Invalid bounded application frame length")
                 if len(response) >= expected:
                     if len(response) != expected:
@@ -343,6 +348,7 @@ def set_gcm_native(*, state, execute=False, linux_device=None, timeout_ms=2500,
             if report.get("release_rc") != 0 or report.get("close_called") is not True:
                 raise native.NativeUsbError("Cleanup failed after control request; state outcome remains unknown")
         report.update(ok=True, status="control-acknowledged", stage="complete", ack_u32=result["ack_u32"],
+                      ack_payload_present=result["ack_payload_present"], ack_format=result["ack_format"],
                       cpu_state_verified=False)
         return report
     except (Exception, KeyboardInterrupt) as error:
@@ -617,6 +623,149 @@ def download_manifest_native(*, manifest_path, credential, execute=False, linux_
     return report
 
 
+def _wait_target(target, requested, *, reference=None):
+    """Correlate fresh descriptor/location claims, never permanent identity."""
+    if (not isinstance(target, dict) or target.get("vidpid") != native.VIDPID
+            or native._location(target.get("linux_device")) != requested
+            or type(target.get("bcd_device")) is not int):
+        raise ValueError("State observation lacks the selected fresh USB location/product descriptor")
+    if reference is not None and target["bcd_device"] != reference["bcd_device"]:
+        raise ValueError("USB device release descriptor changed between control and state read")
+
+
+def set_gcm_and_wait_native(*, state, execute=False, linux_device=None, wait_timeout_s=None,
+                            timeout_ms=2500, session_timeout_s=30.0,
+                            lease_directory=None, backend_factory=None):
+    """Send RUN/STOP once, then explicitly wait for bounded independent reads.
+
+    state is0 STOP or1 RUN; other GCM writers have no polling mode. Default
+    wait_timeout_s is1/5s, explicitly0.1..10s, starting after the control ACK.
+    Every poll is a new fixed read, never a replay of the writer. Transfer
+    timeouts split the remaining wait budget over GET_CONFIG/OUT/shared IN;
+    libusb enumeration/cleanup have no timeout parameters. Deadline overruns
+    are recorded and never accepted as an on-time state confirmation.
+    Returns the full control report plus timestamped independent read reports;
+    a fresh matching location/VID/PID/release is correlation, not authentication.
+    Only an on-time target read marks cpu_state_verified; application execution
+    and causal attribution to this writer remain unverified. Preview has no
+    device/lease/nonce I/O; execute never prepares USB or clears faults.
+    """
+    report = _report("set-gcm-wait")
+    report.update(state_observations=[], cpu_state_verified=False,
+                  requested_linux_device=linux_device,
+                  permanent_target_identity="unknown", causal_transition_verified=False,
+                  exclusive_wait_session=False, automatic_write_retries=0)
+    writer_invoked = False
+    try:
+        _parameters(timeout_ms, session_timeout_s, execute)
+        if type(state) is not int or state not in (0, 1):
+            raise ValueError("Explicit wait supports only STOP0 or RUN1")
+        wait_timeout_s = (5.0 if state == 1 else 1.0) if wait_timeout_s is None else wait_timeout_s
+        if (type(wait_timeout_s) not in (int, float) or not math.isfinite(wait_timeout_s)
+                or not 0.1 <= wait_timeout_s <= 10.0):
+            raise ValueError("wait_timeout_s must be finite0.1..10 seconds")
+        interval_s = 0.01 if state == 1 else 0.1
+        initial_delay_s = interval_s if state == 0 and wait_timeout_s > interval_s else 0.0
+        maximum_reads = math.ceil(wait_timeout_s / interval_s)
+        report.update(requested_state=state, wait_timeout_s=wait_timeout_s,
+                      poll_interval_s=interval_s, initial_poll_delay_s=initial_delay_s,
+                      maximum_state_reads=maximum_reads,
+                      deadline_basis="one wait window starting after control ACK",
+                      location_correlation="fresh BUS:ADDRESS/VID:PID/bcdDevice per operation; no permanent identity",
+                      control_timeout_ms=timeout_ms, control_session_timeout_s=session_timeout_s)
+        if not execute:
+            control = set_gcm_native(state=state, execute=False, timeout_ms=timeout_ms,
+                                     session_timeout_s=session_timeout_s)
+            read_preview = native.read_fixed(kind="runtime", profile="gcm-state", execute=False,
+                                             timeout_ms=timeout_ms)
+            return {**report, "ok": True, "status": "preview", "stage": "preview",
+                    "control_result": control, "state_read_preview": read_preview}
+        requested = native._location(linux_device)
+        report.update(stage="control", device_access=None, request_outcome="unknown", plc_change_possible=True)
+        control_start, control_wall = time.monotonic(), time.time()
+        writer_invoked = True
+        control = set_gcm_native(state=state, execute=True, linux_device=linux_device,
+                                 timeout_ms=timeout_ms, session_timeout_s=session_timeout_s,
+                                 lease_directory=lease_directory, backend_factory=backend_factory)
+        report.update(control_result=control, control_started_monotonic_s=control_start,
+                      control_started_unix_s=control_wall, control_finished_monotonic_s=time.monotonic(),
+                      device_access=control.get("device_access"), plc_change_possible=control.get("plc_change_possible"),
+                      request_outcome=control.get("request_outcome"), control_request_outcome=control.get("request_outcome"))
+        if control.get("ok") is not True:
+            report.update(status=control.get("status", "failed"), stage="control-failed")
+            return report
+        if control.get("status") != "control-acknowledged" or control.get("request_outcome") != "correlated_response":
+            raise ValueError("State polling requires the single control request's correlated ACK")
+        _wait_target(control.get("target"), requested)
+        started = time.monotonic()
+        deadline = started + wait_timeout_s
+        report.update(stage="state-wait", wait_started_monotonic_s=started,
+                      wait_started_unix_s=time.time(), wait_deadline_monotonic_s=deadline,
+                      target=control["target"])
+        for index in range(maximum_reads):
+            # Default vendor STOP policy delays100ms; an explicitly chosen
+            # minimum100ms window starts immediately so that sleep cannot use
+            # its entire budget before even one independent observation.
+            delay_s = interval_s if index else initial_delay_s
+            if delay_s:
+                pause = min(delay_s, max(0.0, deadline - time.monotonic()))
+                if pause:
+                    time.sleep(pause)
+            remaining_ms = math.floor((deadline - time.monotonic()) * 1000)
+            # The unchanged fixed reader can independently block in standard
+            # GET_CONFIGURATION, OUT, and shared-deadline IN. Reserve all three
+            # within the remaining window instead of restarting a full timeout.
+            read_timeout_ms = min(timeout_ms, remaining_ms // 3)
+            if read_timeout_ms < 1:
+                break
+            observation = {"index": index + 1, "started_monotonic_s": time.monotonic(),
+                           "started_unix_s": time.time(), "timeout_ms": read_timeout_ms,
+                           "requested_linux_device": linux_device}
+            report["state_observations"].append(observation)
+            report["stage"] = "state-read"
+            result = native.read_fixed(kind="runtime", profile="gcm-state", execute=True,
+                                       device=linux_device, timeout_ms=read_timeout_ms,
+                                       lease_directory=lease_directory, backend_factory=backend_factory)
+            finished = time.monotonic()
+            observation.update(result=result, finished_monotonic_s=finished,
+                               finished_unix_s=time.time(), within_deadline=finished <= deadline)
+            report.update(wait_elapsed_s=finished-started, last_read_timeout_ms=read_timeout_ms)
+            if result.get("ok") is not True:
+                report.update(status="interrupted" if result.get("status") == "interrupted" else "state-read-failed",
+                              stage="state-read-failed", request_outcome="unknown")
+                return report
+            _wait_target(result.get("target"), requested, reference=control["target"])
+            if (result.get("transport_kind") != "linux-native-libusb1" or result.get("read_profile") != "gcm-state"
+                    or result.get("request_outcome") != "correlated_raw_data"
+                    or type(result.get("raw_value")) is not int or result["raw_value"] not in (0, 1, 2, 3)):
+                raise ValueError("State read lacks a correlated valid fixed GCM result")
+            report["last_observed_state"] = result["raw_value"]
+            if finished > deadline:
+                report["target_observed_after_deadline"] = result["raw_value"] == state
+                break
+            if result["raw_value"] == state:
+                report.update(ok=True, status="state-confirmed", stage="complete", cpu_state_verified=True,
+                              request_outcome="control_acknowledged_and_target_state_observed",
+                              state_verification={"raw_value": state, "observation_index": index + 1,
+                                  "observed_monotonic_s": finished, "target": result["target"],
+                                  "request_hex": result.get("request_hex"),
+                                  "scope": "this fresh location/descriptor observation only; no application execution proof"})
+                return report
+        finished = time.monotonic()
+        report.update(status="state-wait-timeout", stage="state-wait-timeout", request_outcome="unknown",
+                      wait_elapsed_s=finished-started, wait_deadline_overrun_s=max(0.0, finished-deadline))
+    except (Exception, KeyboardInterrupt) as error:
+        if report["state_observations"] and "finished_monotonic_s" not in report["state_observations"][-1]:
+            report["state_observations"][-1].update(finished_monotonic_s=time.monotonic(),
+                finished_unix_s=time.time(), read_outcome="unknown", error=str(error))
+        if isinstance(error, KeyboardInterrupt):
+            report.update(status="interrupted", interrupted_at_stage=report["stage"], stage="interrupted")
+        if writer_invoked:
+            report["request_outcome"] = "unknown"
+        report["diagnostics"].append({"code": "E_GCM_STATE_WAIT", "stage": report["stage"], "message": str(error)})
+    return report
+
+
 def main(argv=None):
     """Read-compatible CLI plus explicit preview-first run/stop/download actions."""
     argv = list(sys.argv[1:] if argv is None else argv)
@@ -637,6 +786,9 @@ def main(argv=None):
             command.add_argument("--output-path")
         elif action == "download":
             command.add_argument("--manifest", required=True)
+        else:
+            command.add_argument("--wait-state", action="store_true")
+            command.add_argument("--wait-timeout-s", type=float)
     args = parser.parse_args(argv)
     try:
         common = {"execute": args.execute, "linux_device": args.linux_device,
@@ -644,7 +796,13 @@ def main(argv=None):
         if args.action in ("run", "stop"):
             # Report26's H530 SetGCM mapping: raw0 STOP, raw1 RUN. ACK is not a
             # CPU-state readback; no automatic monitoring transaction follows.
-            report = set_gcm_native(state=1 if args.action == "run" else 0, **common)
+            if args.wait_timeout_s is not None and not args.wait_state:
+                raise ValueError("--wait-timeout-s requires explicit --wait-state")
+            if args.wait_state:
+                report = set_gcm_and_wait_native(state=1 if args.action == "run" else 0,
+                                                wait_timeout_s=args.wait_timeout_s, **common)
+            else:
+                report = set_gcm_native(state=1 if args.action == "run" else 0, **common)
         else:
             credential = bytes.fromhex(args.credential_hex)
             if args.action == "download":

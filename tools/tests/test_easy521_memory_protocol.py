@@ -111,3 +111,56 @@ def test_nonfinite_real_cannot_be_reported_as_json_value(data):
 
 def test_noncanonical_bool_padding_is_not_silently_discarded():
     with pytest.raises(codec.ProtocolError):candidate_reply("heartbeat",b"\x80")
+
+
+@pytest.mark.parametrize("profile,address,bits,frame_bytes", [
+    ("cur-error-count", 0x06200700, 16, 24), ("cur-error-list", 0x06200700, 4048, 528),
+    ("cur-error-instances", 0x06201900, 1344, 190)])
+def test_fixed_diagnostic_addresses_width_and_exact_frame_bounds(profile, address, bits, frame_bytes):
+    info = codec.profile_info(profile)
+    assert info["address_u32"] == address and info["width_bits"] == bits
+    assert info["allocation_gvt_sha256"] is None
+    assert codec.response_frame_bytes(profile) == frame_bytes
+    request = codec.build_read_request(profile=profile, sequence=7)
+    assert request[14:] == struct.pack("<II", address, bits)
+
+
+def diagnostic_list(quantity=2):
+    return struct.pack("<h", quantity) + struct.pack("<hhii", 5056, 0, 123, 456) + struct.pack("<hhii", 1502, 3, -1, 99) + b"\0" * (40 * 12)
+
+
+def test_full_error_list_parses_only_returned_bytes_and_preserves_raw_metadata():
+    raw = diagnostic_list()
+    result = candidate_reply("cur-error-list", raw)
+    value = result["value_candidate"]
+    assert len(raw) == 506 and result["data_hex"] == raw.hex() and result["raw_bits_u32"] is None
+    assert value["quantity"] == 2 and len(value["entries"]) == 2 and len(value["all_records"]) == 42
+    assert value["entries"][0]["error_code_u16"] == 5056 and value["entries"][0]["component_id_u16"] == 0
+    assert value["entries"][1]["location_i32"] == -1 and value["entries"][1]["timestamp_i32"] == 99
+    assert value["device_error_semantics_verified"] is False
+
+
+@pytest.mark.parametrize("quantity", [0, 42])
+def test_diagnostic_quantity_capacity_boundaries(quantity):
+    assert candidate_reply("cur-error-count", struct.pack("<h", quantity))["value_candidate"] == quantity
+    assert candidate_reply("cur-error-list", diagnostic_list(quantity))["value_candidate"]["quantity"] == quantity
+
+
+@pytest.mark.parametrize("quantity", [-1, 43])
+def test_bad_diagnostic_quantity_never_silently_clamps_or_invents_a_fault(quantity):
+    for profile, raw in [("cur-error-count", struct.pack("<h", quantity)), ("cur-error-list", diagnostic_list(quantity))]:
+        with pytest.raises(codec.ProtocolError) as error: candidate_reply(profile, raw)
+        assert error.value.code == "E_DIAGNOSTIC_COUNT"
+
+
+def test_fixed_instance_array_is_opaque_signed_dint_without_following_pointers():
+    raw = struct.pack("<42i", *range(-21, 21))
+    result = candidate_reply("cur-error-instances", raw)
+    assert result["value_candidate"]["instances_i32"] == list(range(-21, 21))
+    assert result["value_candidate"]["address_values_are_opaque"] and result["raw_bits_u32"] is None
+
+
+@pytest.mark.parametrize("profile,raw", [("cur-error-list", diagnostic_list()), ("cur-error-instances", b"\0" * 168)])
+@pytest.mark.parametrize("delta", [-1, 1])
+def test_diagnostic_frames_cannot_shrink_or_exceed_exact_fixed_width(profile, raw, delta):
+    with pytest.raises(codec.ProtocolError):candidate_reply(profile, raw[:-1] if delta < 0 else raw+b"\0")

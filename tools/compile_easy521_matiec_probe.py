@@ -12,6 +12,9 @@ vendor arithmetic equivalence, initialization/retention or task period support
 is claimed. MatIEC's external pointer/flags are initialized per invocation;
 the existing PLC REAL is never initialized by the wrapper. No device/Windows
 access exists. ARM ABI properties are structural checks, not runtime acceptance.
+The mapped external has no proved four-byte alignment. Its adapter uses align1
+and strict-align byte transfers, which are non-atomic: only one application
+writer is supported, and concurrent monitoring may observe a torn value.
 """
 
 from __future__ import annotations
@@ -53,7 +56,13 @@ WRAPPER = r'''/* MatIEC adapter: existing REAL allocation and caller scheduling 
  * ST behavior comes exclusively from the unmodified generated POUS.c below. */
 #include "iec_std_lib.h"
 #include "accessor.h"
-extern volatile IEC_REAL G_RBESS_PCMD;
+/* Opaque SInfo addresses are bit-addressed in the inspected reference loader;
+ * Pcmd's low bits map to byte offset30, not a four-byte alignment guarantee.
+ * Do not let a normal float declaration/cast reintroduce aligned VFP accesses.
+ * Strict-align codegen splits these volatile accesses into non-atomic bytes;
+ * concurrent writers/force are unsupported; readers can observe torn values. */
+typedef IEC_REAL PLCIDF_UNALIGNED_REAL __attribute__((aligned(1)));
+extern volatile PLCIDF_UNALIGNED_REAL G_RBESS_PCMD;
 static IEC_REAL *__GET_GLOBAL_G_RBESS_PCMD(void) {
     return (IEC_REAL *)&G_RBESS_PCMD;
 }
@@ -62,11 +71,11 @@ static IEC_BYTE __IS_GLOBAL_G_RBESS_PCMD_FORCED(void) { return 0; }
  * accesses while retaining MatIEC's force-flag tests (global force unsupported).
  * These accessor adapters do not translate the generated ST expressions. */
 #undef __GET_EXTERNAL
-#define __GET_EXTERNAL(name, ...) ((*(volatile IEC_REAL *)(name.value)) __VA_ARGS__)
+#define __GET_EXTERNAL(name, ...) ((*(volatile PLCIDF_UNALIGNED_REAL *)(name.value)) __VA_ARGS__)
 #undef __SET_EXTERNAL
 #define __SET_EXTERNAL(prefix,name,suffix,new_value) \
     { if (!(prefix name.flags & __IEC_FORCE_FLAG || __IS_GLOBAL_##name##_FORCED())) \
-        (*(volatile IEC_REAL *)(prefix name.value)) suffix = new_value; }
+        (*(volatile PLCIDF_UNALIGNED_REAL *)(prefix name.value)) suffix = new_value; }
 #include "POUS.h"
 #include "POUS.c"
 void MAIN(void) {
@@ -237,14 +246,15 @@ def compile_matiec_probe(*, source, matiec_root, clang, output_dir,
                 raise ValueError("Clang resource headers exceed32MiB")
             resource_snapshots[path] = _digest(data)
         report["clang_resource_headers"] = {"directory": str(resource_headers), "sha256": {str(p): h for p, h in resource_snapshots.items()}}
-        report["stage"] = "clang-arm"
-        argv = [str(compilers[0]), "--target=armv7a-none-eabi", "-mthumb", "-mcpu=cortex-a8", "-mfpu=neon",
-                "-mfloat-abi=softfp", "-ffixed-r9", "-ffreestanding", "-fno-builtin", "-fno-pic",
+        target_argv = [str(compilers[0]), "--target=armv7a-none-eabi", "-mthumb", "-mcpu=cortex-a8", "-mfpu=neon",
+                       "-mfloat-abi=softfp", "-ffixed-r9", "-mno-unaligned-access"]
+        report["stage"] = "clang-ir"
+        argv = target_argv + ["-ffreestanding", "-fno-builtin", "-fno-pic",
                 "-fno-unwind-tables", "-fno-asynchronous-unwind-tables", "-fno-stack-protector", "-O2", "-std=c11",
                 "-Werror=literal-range",
                 "-MD", "-MF", str(output / "MAIN.d"), "-MT", "PLCIDF_MAIN",
-                "-isystem", str(frozen_root / "lib/C"), "-I", str(generated), "-c", str(output / "wrapper.c"),
-                "-o", str(output / "MAIN.o")]
+                "-isystem", str(frozen_root / "lib/C"), "-I", str(generated),
+                "-S", "-emit-llvm", str(output / "wrapper.c"), "-o", str(output / "MAIN.ll")]
         _run(argv, cwd=output, timeout_s=timeout_s, runner=runner, report=report)
         report["stage"] = "compilation-dependencies"
         # -MD includes compiler system headers as well as project headers. Each
@@ -271,6 +281,31 @@ def compile_matiec_probe(*, source, matiec_root, clang, output_dir,
         report["compilation_dependencies"] = dependencies
         report["dependency_file_sha256"] = _digest(dependency_data)
         artifact_snapshots[output / "MAIN.d"] = dependency_data
+        report["stage"] = "alignment-ir"
+        ir_data = base._read(output / "MAIN.ll", base.MAX_OBJECT)
+        ir_alignment = base.inspect_alignment_ir(ir_data)
+        artifact_snapshots[output / "MAIN.ll"] = ir_data
+        (output / "MAIN.ll").chmod(0o444)
+        report["alignment_ir"] = {"path": str(output / "MAIN.ll"), "sha256": _digest(ir_data),
+                                   "inspection": ir_alignment, "used_for_arm_codegen": True}
+        # The inspected IR is the actual assembly input; the inspected assembly
+        # is then the actual object input. Neither is a parallel demonstration
+        # detached from the bytes handed to the linker.
+        report["stage"] = "clang-arm-assembly"
+        _run(target_argv + ["-O2", "-S", "-x", "ir", str(output / "MAIN.ll"),
+                            "-o", str(output / "MAIN.s")],
+             cwd=output, timeout_s=timeout_s, runner=runner, report=report)
+        report["stage"] = "assembly-audit"
+        assembly = base._read(output / "MAIN.s", base.MAX_OBJECT)
+        assembly_inspection = base.inspect_byte_transfer_assembly(assembly, ir_inspection=ir_alignment)
+        artifact_snapshots[output / "MAIN.s"] = assembly
+        (output / "MAIN.s").chmod(0o444)
+        report["arm_assembly"] = {"path": str(output / "MAIN.s"), "sha256": _digest(assembly),
+                                   "inspection": assembly_inspection, "used_for_object_assembly": True}
+        report["stage"] = "clang-arm"
+        _run(target_argv + ["-c", "-x", "assembler", str(output / "MAIN.s"),
+                            "-o", str(output / "MAIN.o")],
+             cwd=output, timeout_s=timeout_s, runner=runner, report=report)
         report["stage"] = "object-abi"
         data = base._read(output / "MAIN.o", base.MAX_OBJECT)
         artifact_snapshots[output / "MAIN.o"] = data
@@ -295,6 +330,8 @@ def compile_matiec_probe(*, source, matiec_root, clang, output_dir,
         report["generated"] = [{"path": str(p), "sha256": _digest(base._read(p, 1024 * 1024))}
                                for p in sorted(generated.iterdir()) if p.is_file()]
         report.update(ok=True, status="compiled", stage="complete", source_compiled=True,
+                      external_alignment_bytes=1, strict_align=True, access_atomic=False,
+                      concurrent_writer_supported=False, concurrent_reader_coherence_verified=False,
                       arithmetic="actual MatIEC REAL/C semantics; no fast-math; not vendor helper equivalence")
     except subprocess.TimeoutExpired as error:
         report["diagnostics"].append({"code": "E_TIMEOUT", "stage": report["stage"], "message": str(error)})

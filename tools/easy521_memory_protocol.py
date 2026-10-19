@@ -9,6 +9,9 @@ client strips the first 12 payload bytes. No live memory reply is assumed.
 Addresses below are existing opaque vendor symbols from the pinned GVT/CSV,
 never host pointers, byte offsets or Modbus registers. Public functions only
 select fixed profiles; none accepts an arbitrary address/index/write operation.
+Report41 adds fixed system diagnostics from the same-project CSV and vendor
+SysVarDef/SysDataType. Their bounded structures remain candidate interpretations;
+no error clearing, CPU transition or implicit fault diagnosis is performed.
 """
 
 from __future__ import annotations
@@ -19,7 +22,7 @@ from types import MappingProxyType
 
 GVT_SHA256 = "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
 CSV_SHA256 = "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
-# symbol, IEC scalar type, width in bits, opaque assigned address, source
+# symbol, IEC type, width in bits, opaque assigned address, source
 PROFILES = MappingProxyType({
     # Report26's native application acceptance reads the pre-existing Pcmd
     # allocation, not a newly guessed address. Frozen VarNameAndAddr.csv line275
@@ -35,6 +38,13 @@ PROFILES = MappingProxyType({
     "m8000": ("M8000", "BOOL", 1, 0x06201800, "CSV line3"),
     "m8001": ("M8001", "BOOL", 1, 0x06201801, "CSV line4"),
     "m8013": ("M8013", "BOOL", 1, 0x06201822, "CSV line9"),
+    # Report41: actual H530 GetCurErrLst/GetCurErrInst read these system
+    # symbols via selector3/op1. Selected project CSV75/76 and SysVarDef pin
+    # whole-symbol base addresses; SysDataType pins Quantity first INT16 and
+    # 42 records of INT/INT/DINT/DINT. No arithmetic on opaque addresses.
+    "cur-error-count": ("_CurErrLst.Quantity", "INT", 16, 0x06200700, "CSV line76+SysDataType"),
+    "cur-error-list": ("_CurErrLst", "_sERR_LST", 4048, 0x06200700, "CSV line76+SysDataType"),
+    "cur-error-instances": ("_CurErrInst", "DINT[42]", 1344, 0x06201900, "CSV line75+SysVarDef"),
 })
 _HEADER = struct.Struct("<HBBHHBB")
 _ITEM = struct.Struct("<III")
@@ -68,6 +78,16 @@ def _sequence(sequence):
     if type(sequence) is not int or not 0 <= sequence <= 65535:
         raise ProtocolError("E_SEQUENCE", "sequence must be an integer in 0..65535")
     return sequence
+
+
+def response_frame_bytes(profile: str) -> int:
+    """Return exact data-frame bytes for a fixed profile; no arbitrary length.
+
+    The22B memory header/item plus ceil(width_bits/8) includes payload. Error
+    frames remain14B. Diagnostics yield24/528/190 bytes respectively; transport
+    must retain one OUT and its bounded shared IN deadline across USB chunks.
+    """
+    return 22 + (profile_info(profile)["width_bits"] + 7) // 8
 
 
 def _header(frame, *, maximum=26):
@@ -115,18 +135,20 @@ def parse_read_request(frame: bytes, *, profile: str) -> dict:
 
 
 def parse_read_response(frame: bytes, *, request: bytes, profile: str) -> dict:
-    """Validate a complete candidate reply and decode a bounded scalar candidate.
+    """Validate a complete reply and decode one fixed scalar/diagnostic candidate.
 
     The original request is revalidated; version/selector/sequence, item count,
     address, bits and exact payload size must agree. Error op15 stays failed
     even with error code0/1; all other operations except candidate data op2 fail.
-    Returns raw bytes/bits and a little-endian BOOL/INT16/REAL32 candidate value,
+    Returns raw bytes plus a BOOL/INT16/REAL32 or fixed diagnostic candidate,
     explicitly uncalibrated/hardware-unverified. Non-finite REALs and noncanonical
     BOOL bytes are refused; no inferred value replaces raw evidence.
+    Diagnostic record offsets index returned bytes only, never opaque addresses.
+    Structured values use raw_bits_u32=None; no huge integer is named a u32.
     Raises ProtocolError on malformed, uncorrelated or unsupported input. No I/O.
     """
     expected = parse_read_request(request, profile=profile)
-    header = _header(frame)
+    header = _header(frame, maximum=response_frame_bytes(profile))
     if header["sequence"] != expected["sequence"]:
         raise ProtocolError("E_CORRELATION", "response sequence differs from request")
     common = {**header, **profile_info(profile), "hardware_verified": False,
@@ -145,13 +167,29 @@ def parse_read_response(frame: bytes, *, request: bytes, profile: str) -> dict:
     if _ITEM.unpack_from(frame, 10) != (1, expected["address_u32"], expected["width_bits"]):
         raise ProtocolError("E_ITEM", "reply count/address/bit-width does not echo request")
     raw = frame[22:]
-    bits = int.from_bytes(raw, "little", signed=False)
+    bits = int.from_bytes(raw, "little", signed=False) if len(raw) <= 4 else None
     if expected["iec_type"] == "BOOL":
         if bits not in (0, 1):
             raise ProtocolError("E_BOOL", "noncanonical candidate BOOL byte")
         value = bool(bits)
     elif expected["iec_type"] == "INT":
         value = struct.unpack("<h", raw)[0]
+        if profile == "cur-error-count" and not 0 <= value <= 42:
+            raise ProtocolError("E_DIAGNOSTIC_COUNT", "Current-error quantity is outside the documented0..42 capacity")
+    elif profile == "cur-error-list":
+        quantity = struct.unpack_from("<h", raw)[0]
+        if not 0 <= quantity <= 42:
+            raise ProtocolError("E_DIAGNOSTIC_COUNT", "Current-error quantity is outside the documented0..42 capacity")
+        records = [{"index": index, "error_code_i16": code, "error_code_u16": code & 0xFFFF,
+                    "component_id_i16": component, "component_id_u16": component & 0xFFFF,
+                    "location_i32": location, "timestamp_i32": timestamp}
+                   for index, (code, component, location, timestamp) in enumerate(struct.iter_unpack("<hhii", raw[2:]))]
+        value = {"quantity": quantity, "capacity": 42, "entries": records[:quantity],
+                 "all_records": records, "layout_source": "report41 SysDataType; matched selected CSV4048bits",
+                 "device_error_semantics_verified": False}
+    elif profile == "cur-error-instances":
+        value = {"instances_i32": list(struct.unpack("<42i", raw)),
+                 "address_values_are_opaque": True, "device_error_semantics_verified": False}
     else:
         value = struct.unpack("<f", raw)[0]
         if not math.isfinite(value):
