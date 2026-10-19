@@ -1,0 +1,285 @@
+{
+  "schema": "plcidf.native-usb-bench-session.v1",
+  "actions": [
+    {
+      "action": "temporary-node-owner",
+      "uid": 1000,
+      "at": "2026-10-19T06:54:19.788185+00:00"
+    },
+    {
+      "action": "unbind-selected-control-interface",
+      "interface": "1-1:2.0",
+      "at": "2026-10-19T06:54:19.910417+00:00"
+    }
+  ],
+  "observations": [
+    {
+      "index": 0,
+      "kind": "runtime",
+      "profile": "gcm-state",
+      "started_at": "2026-10-19T06:54:19.789169+00:00",
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "zss",
+        "--",
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+        "runtime",
+        "gcm-state",
+        "001:002"
+      ],
+      "timeout_s": 12,
+      "request_outcome": "not_sent",
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\"schema\":\"plcidf.usb-runtime-observation.v1\",\"ok\":false,\"status\":\"failed\",\"stage\":\"open\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"linux-native-libusb1\",\"linux_native_usb\":true,\"linux_hardware_acceptance\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"read_profile\":\"gcm-state\",\"requested_linux_device\":\"001:002\",\"scope\":\"one fixed read using Linux libusb-1.0; no PLC state/application write\",\"diagnostics\":[{\"code\":\"E_LINUX_USB_READ\",\"stage\":\"open\",\"message\":\"Data interface 1 must have no active kernel driver; drivers are never detached\"}],\"request_hex\":\"12000101321100000100000000ff01000000\",\"transfer_timeout_ms\":2500,\"sequence\":4402,\"request_outcome\":\"not_sent\",\"correlation_scope\":\"random u16; not authentication or guaranteed freshness\",\"lease_token\":\"07a926291e064e27bf344027b62de584\",\"transport_record\":{\"stage\":\"open\",\"request_hex\":\"12000101321100000100000000ff01000000\",\"write_calls\":0,\"request_outcome\":\"not_sent\",\"read_calls\":[],\"library_soname\":\"libusb-1.0.so.0\",\"transfer_timeout_ms\":2500,\"automatic_retries\":0,\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"descriptor\":{\"bLength\":18,\"bDescriptorType\":1,\"bcdUSB\":512,\"bDeviceClass\":2,\"bDeviceSubClass\":0,\"bDeviceProtocol\":0,\"bMaxPacketSize0\":64,\"idVendor\":1137,\"idProduct\":42289,\"bcdDevice\":784,\"iManufacturer\":1,\"iProduct\":2,\"iSerialNumber\":0,\"bNumConfigurations\":1},\"usb_contract\":{\"configuration\":2,\"control_interface\":0,\"data_interface\":1,\"interface\":1,\"alternate_setting\":0,\"endpoints\":[{\"address\":129,\"attributes\":2,\"max_packet_bytes\":512},{\"address\":2,\"attributes\":2,\"max_packet_bytes\":512}],\"control_endpoints\":[{\"address\":132,\"attributes\":3,\"max_packet_bytes\":10}],\"iad_hex\":\"080b000202020107\",\"cdc_union_hex\":\"0524060001\",\"contract_basis\":\"evidence/easy521-native-device-20261019T064323Z/native-descriptors.json\",\"windows_claim0_is_not_linux_bulk_interface\":true},\"configuration_read_rc\":1,\"kernel_driver_active_rc\":1,\"close_called\":true,\"device_list_freed\":true,\"context_exited\":true}}\n",
+      "finished_at": "2026-10-19T06:54:19.908926+00:00",
+      "report": "00-runtime-gcm-state.json"
+    },
+    {
+      "index": 1,
+      "kind": "runtime",
+      "profile": "gcm-state",
+      "started_at": "2026-10-19T06:54:19.911780+00:00",
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "zss",
+        "--",
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+        "runtime",
+        "gcm-state",
+        "001:002"
+      ],
+      "timeout_s": 12,
+      "request_outcome": "correlated_raw_data",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"schema\":\"plcidf.usb-runtime-observation.v1\",\"ok\":true,\"status\":\"observed\",\"stage\":\"complete\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"linux-native-libusb1\",\"linux_native_usb\":true,\"linux_hardware_acceptance\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"read_profile\":\"gcm-state\",\"requested_linux_device\":\"001:002\",\"scope\":\"one fixed read using Linux libusb-1.0; no PLC state/application write\",\"diagnostics\":[],\"request_hex\":\"12000101bdf100000100000000ff01000000\",\"transfer_timeout_ms\":2500,\"sequence\":61885,\"request_outcome\":\"correlated_raw_data\",\"correlation_scope\":\"random u16; not authentication or guaranteed freshness\",\"lease_token\":\"c4bd2f0eecb54c51a904a18830874858\",\"transport_record\":{\"stage\":\"raw-frame-only\",\"request_hex\":\"12000101bdf100000100000000ff01000000\",\"write_calls\":1,\"request_outcome\":\"unknown\",\"read_calls\":[{\"rc\":0,\"transferred\":11}],\"library_soname\":\"libusb-1.0.so.0\",\"transfer_timeout_ms\":2500,\"automatic_retries\":0,\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"descriptor\":{\"bLength\":18,\"bDescriptorType\":1,\"bcdUSB\":512,\"bDeviceClass\":2,\"bDeviceSubClass\":0,\"bDeviceProtocol\":0,\"bMaxPacketSize0\":64,\"idVendor\":1137,\"idProduct\":42289,\"bcdDevice\":784,\"iManufacturer\":1,\"iProduct\":2,\"iSerialNumber\":0,\"bNumConfigurations\":1},\"usb_contract\":{\"configuration\":2,\"control_interface\":0,\"data_interface\":1,\"interface\":1,\"alternate_setting\":0,\"endpoints\":[{\"address\":129,\"attributes\":2,\"max_packet_bytes\":512},{\"address\":2,\"attributes\":2,\"max_packet_bytes\":512}],\"control_endpoints\":[{\"address\":132,\"attributes\":3,\"max_packet_bytes\":10}],\"iad_hex\":\"080b000202020107\",\"cdc_union_hex\":\"0524060001\",\"contract_basis\":\"evidence/easy521-native-device-20261019T064323Z/native-descriptors.json\",\"windows_claim0_is_not_linux_bulk_interface\":true},\"configuration_read_rc\":1,\"kernel_driver_active_rc\":0,\"claim_rc\":0,\"bulk_out_rc\":0,\"bulk_out_transferred\":18,\"response_hex\":\"0b000101bdf10000050001\",\"release_rc\":0,\"close_called\":true,\"device_list_freed\":true,\"context_exited\":true},\"decoded\":{\"frame_bytes\":11,\"version\":1,\"selector\":1,\"sequence\":61885,\"reserved_u16\":0,\"operation\":5,\"flags_u8\":0,\"profile\":\"vendor_gcm_state\",\"index_u32\":4278190080,\"payload_hex\":\"01\",\"evidence_level\":\"static_contract_only\",\"device_verified\":false,\"state_semantics\":\"unknown\",\"ok\":true,\"status\":\"data\",\"raw_value\":1},\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"raw_value\":1,\"static_cpu_state_interpretation\":{\"value\":\"RUN\",\"basis\":\"vendor GetGCMState static mapping; report 18\",\"device_calibrated\":false}}\n",
+      "finished_at": "2026-10-19T06:54:20.007647+00:00",
+      "report": "01-runtime-gcm-state.json"
+    },
+    {
+      "index": 2,
+      "kind": "memory",
+      "profile": "m8000",
+      "started_at": "2026-10-19T06:54:20.008798+00:00",
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "zss",
+        "--",
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+        "memory",
+        "m8000",
+        "001:002"
+      ],
+      "timeout_s": 12,
+      "request_outcome": "correlated_candidate_data",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"schema\":\"plcidf.usb-memory-observation.v1\",\"ok\":true,\"status\":\"candidate-observed\",\"stage\":\"complete\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"linux-native-libusb1\",\"linux_native_usb\":true,\"linux_hardware_acceptance\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"read_profile\":\"m8000\",\"requested_linux_device\":\"001:002\",\"scope\":\"one fixed read using Linux libusb-1.0; no PLC state/application write\",\"diagnostics\":[],\"request_hex\":\"1600010314e300000100010000000018200601000000\",\"transfer_timeout_ms\":2500,\"symbol\":{\"profile\":\"m8000\",\"symbol\":\"M8000\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766592,\"address_hex\":\"0x6201800\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line3\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null},\"candidate_protocol\":true,\"hardware_verified\":false,\"scalar_interpretation_calibrated\":false,\"sequence\":58132,\"request_outcome\":\"correlated_candidate_data\",\"correlation_scope\":\"random u16; not authentication or guaranteed freshness\",\"lease_token\":\"b04127fc8e3241a39681e0a70b9ce36c\",\"transport_record\":{\"stage\":\"raw-frame-only\",\"request_hex\":\"1600010314e300000100010000000018200601000000\",\"write_calls\":1,\"request_outcome\":\"unknown\",\"read_calls\":[{\"rc\":0,\"transferred\":23}],\"library_soname\":\"libusb-1.0.so.0\",\"transfer_timeout_ms\":2500,\"automatic_retries\":0,\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"descriptor\":{\"bLength\":18,\"bDescriptorType\":1,\"bcdUSB\":512,\"bDeviceClass\":2,\"bDeviceSubClass\":0,\"bDeviceProtocol\":0,\"bMaxPacketSize0\":64,\"idVendor\":1137,\"idProduct\":42289,\"bcdDevice\":784,\"iManufacturer\":1,\"iProduct\":2,\"iSerialNumber\":0,\"bNumConfigurations\":1},\"usb_contract\":{\"configuration\":2,\"control_interface\":0,\"data_interface\":1,\"interface\":1,\"alternate_setting\":0,\"endpoints\":[{\"address\":129,\"attributes\":2,\"max_packet_bytes\":512},{\"address\":2,\"attributes\":2,\"max_packet_bytes\":512}],\"control_endpoints\":[{\"address\":132,\"attributes\":3,\"max_packet_bytes\":10}],\"iad_hex\":\"080b000202020107\",\"cdc_union_hex\":\"0524060001\",\"contract_basis\":\"evidence/easy521-native-device-20261019T064323Z/native-descriptors.json\",\"windows_claim0_is_not_linux_bulk_interface\":true},\"configuration_read_rc\":1,\"kernel_driver_active_rc\":0,\"claim_rc\":0,\"bulk_out_rc\":0,\"bulk_out_transferred\":22,\"response_hex\":\"1700010314e30000020001000000001820060100000001\",\"release_rc\":0,\"close_called\":true,\"device_list_freed\":true,\"context_exited\":true},\"decoded\":{\"frame_bytes\":23,\"version\":1,\"selector\":3,\"sequence\":58132,\"reserved_u16\":0,\"operation\":2,\"flags_u8\":0,\"profile\":\"m8000\",\"symbol\":\"M8000\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766592,\"address_hex\":\"0x6201800\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line3\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null,\"hardware_verified\":false,\"candidate_protocol\":true,\"scalar_interpretation_calibrated\":false,\"evidence_level\":\"vendor_request_static_and_simulator_reply_candidate\",\"ok\":true,\"status\":\"candidate_data\",\"data_hex\":\"01\",\"raw_bits_u32\":1,\"value_candidate\":true},\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"value_candidate\":true,\"data_hex\":\"01\"}\n",
+      "finished_at": "2026-10-19T06:54:20.114777+00:00",
+      "report": "02-memory-m8000.json"
+    },
+    {
+      "index": 3,
+      "kind": "memory",
+      "profile": "m8001",
+      "started_at": "2026-10-19T06:54:20.115839+00:00",
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "zss",
+        "--",
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+        "memory",
+        "m8001",
+        "001:002"
+      ],
+      "timeout_s": 12,
+      "request_outcome": "correlated_candidate_data",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"schema\":\"plcidf.usb-memory-observation.v1\",\"ok\":true,\"status\":\"candidate-observed\",\"stage\":\"complete\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"linux-native-libusb1\",\"linux_native_usb\":true,\"linux_hardware_acceptance\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"read_profile\":\"m8001\",\"requested_linux_device\":\"001:002\",\"scope\":\"one fixed read using Linux libusb-1.0; no PLC state/application write\",\"diagnostics\":[],\"request_hex\":\"16000103c6ea00000100010000000118200601000000\",\"transfer_timeout_ms\":2500,\"symbol\":{\"profile\":\"m8001\",\"symbol\":\"M8001\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766593,\"address_hex\":\"0x6201801\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line4\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null},\"candidate_protocol\":true,\"hardware_verified\":false,\"scalar_interpretation_calibrated\":false,\"sequence\":60102,\"request_outcome\":\"correlated_candidate_data\",\"correlation_scope\":\"random u16; not authentication or guaranteed freshness\",\"lease_token\":\"e5bc24678a9e44ba9e85daf9243c6a82\",\"transport_record\":{\"stage\":\"raw-frame-only\",\"request_hex\":\"16000103c6ea00000100010000000118200601000000\",\"write_calls\":1,\"request_outcome\":\"unknown\",\"read_calls\":[{\"rc\":0,\"transferred\":23}],\"library_soname\":\"libusb-1.0.so.0\",\"transfer_timeout_ms\":2500,\"automatic_retries\":0,\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"descriptor\":{\"bLength\":18,\"bDescriptorType\":1,\"bcdUSB\":512,\"bDeviceClass\":2,\"bDeviceSubClass\":0,\"bDeviceProtocol\":0,\"bMaxPacketSize0\":64,\"idVendor\":1137,\"idProduct\":42289,\"bcdDevice\":784,\"iManufacturer\":1,\"iProduct\":2,\"iSerialNumber\":0,\"bNumConfigurations\":1},\"usb_contract\":{\"configuration\":2,\"control_interface\":0,\"data_interface\":1,\"interface\":1,\"alternate_setting\":0,\"endpoints\":[{\"address\":129,\"attributes\":2,\"max_packet_bytes\":512},{\"address\":2,\"attributes\":2,\"max_packet_bytes\":512}],\"control_endpoints\":[{\"address\":132,\"attributes\":3,\"max_packet_bytes\":10}],\"iad_hex\":\"080b000202020107\",\"cdc_union_hex\":\"0524060001\",\"contract_basis\":\"evidence/easy521-native-device-20261019T064323Z/native-descriptors.json\",\"windows_claim0_is_not_linux_bulk_interface\":true},\"configuration_read_rc\":1,\"kernel_driver_active_rc\":0,\"claim_rc\":0,\"bulk_out_rc\":0,\"bulk_out_transferred\":22,\"response_hex\":\"17000103c6ea0000020001000000011820060100000000\",\"release_rc\":0,\"close_called\":true,\"device_list_freed\":true,\"context_exited\":true},\"decoded\":{\"frame_bytes\":23,\"version\":1,\"selector\":3,\"sequence\":60102,\"reserved_u16\":0,\"operation\":2,\"flags_u8\":0,\"profile\":\"m8001\",\"symbol\":\"M8001\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766593,\"address_hex\":\"0x6201801\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line4\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null,\"hardware_verified\":false,\"candidate_protocol\":true,\"scalar_interpretation_calibrated\":false,\"evidence_level\":\"vendor_request_static_and_simulator_reply_candidate\",\"ok\":true,\"status\":\"candidate_data\",\"data_hex\":\"00\",\"raw_bits_u32\":0,\"value_candidate\":false},\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"value_candidate\":false,\"data_hex\":\"00\"}\n",
+      "finished_at": "2026-10-19T06:54:20.239600+00:00",
+      "report": "03-memory-m8001.json"
+    },
+    {
+      "index": 4,
+      "kind": "memory",
+      "profile": "m8013",
+      "started_at": "2026-10-19T06:54:20.241956+00:00",
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "zss",
+        "--",
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+        "memory",
+        "m8013",
+        "001:002"
+      ],
+      "timeout_s": 12,
+      "request_outcome": "correlated_candidate_data",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"schema\":\"plcidf.usb-memory-observation.v1\",\"ok\":true,\"status\":\"candidate-observed\",\"stage\":\"complete\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"linux-native-libusb1\",\"linux_native_usb\":true,\"linux_hardware_acceptance\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"read_profile\":\"m8013\",\"requested_linux_device\":\"001:002\",\"scope\":\"one fixed read using Linux libusb-1.0; no PLC state/application write\",\"diagnostics\":[],\"request_hex\":\"16000103363f00000100010000002218200601000000\",\"transfer_timeout_ms\":2500,\"symbol\":{\"profile\":\"m8013\",\"symbol\":\"M8013\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766626,\"address_hex\":\"0x6201822\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line9\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null},\"candidate_protocol\":true,\"hardware_verified\":false,\"scalar_interpretation_calibrated\":false,\"sequence\":16182,\"request_outcome\":\"correlated_candidate_data\",\"correlation_scope\":\"random u16; not authentication or guaranteed freshness\",\"lease_token\":\"67a64e8ceb8e4ed7a679e13f2fbbb9fc\",\"transport_record\":{\"stage\":\"raw-frame-only\",\"request_hex\":\"16000103363f00000100010000002218200601000000\",\"write_calls\":1,\"request_outcome\":\"unknown\",\"read_calls\":[{\"rc\":0,\"transferred\":23}],\"library_soname\":\"libusb-1.0.so.0\",\"transfer_timeout_ms\":2500,\"automatic_retries\":0,\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"descriptor\":{\"bLength\":18,\"bDescriptorType\":1,\"bcdUSB\":512,\"bDeviceClass\":2,\"bDeviceSubClass\":0,\"bDeviceProtocol\":0,\"bMaxPacketSize0\":64,\"idVendor\":1137,\"idProduct\":42289,\"bcdDevice\":784,\"iManufacturer\":1,\"iProduct\":2,\"iSerialNumber\":0,\"bNumConfigurations\":1},\"usb_contract\":{\"configuration\":2,\"control_interface\":0,\"data_interface\":1,\"interface\":1,\"alternate_setting\":0,\"endpoints\":[{\"address\":129,\"attributes\":2,\"max_packet_bytes\":512},{\"address\":2,\"attributes\":2,\"max_packet_bytes\":512}],\"control_endpoints\":[{\"address\":132,\"attributes\":3,\"max_packet_bytes\":10}],\"iad_hex\":\"080b000202020107\",\"cdc_union_hex\":\"0524060001\",\"contract_basis\":\"evidence/easy521-native-device-20261019T064323Z/native-descriptors.json\",\"windows_claim0_is_not_linux_bulk_interface\":true},\"configuration_read_rc\":1,\"kernel_driver_active_rc\":0,\"claim_rc\":0,\"bulk_out_rc\":0,\"bulk_out_transferred\":22,\"response_hex\":\"17000103363f0000020001000000221820060100000001\",\"release_rc\":0,\"close_called\":true,\"device_list_freed\":true,\"context_exited\":true},\"decoded\":{\"frame_bytes\":23,\"version\":1,\"selector\":3,\"sequence\":16182,\"reserved_u16\":0,\"operation\":2,\"flags_u8\":0,\"profile\":\"m8013\",\"symbol\":\"M8013\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766626,\"address_hex\":\"0x6201822\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line9\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null,\"hardware_verified\":false,\"candidate_protocol\":true,\"scalar_interpretation_calibrated\":false,\"evidence_level\":\"vendor_request_static_and_simulator_reply_candidate\",\"ok\":true,\"status\":\"candidate_data\",\"data_hex\":\"01\",\"raw_bits_u32\":1,\"value_candidate\":true},\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"value_candidate\":true,\"data_hex\":\"01\"}\n",
+      "finished_at": "2026-10-19T06:54:20.362077+00:00",
+      "report": "04-memory-m8013.json"
+    },
+    {
+      "index": 5,
+      "kind": "memory",
+      "profile": "m8013",
+      "started_at": "2026-10-19T06:54:20.714017+00:00",
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "zss",
+        "--",
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+        "memory",
+        "m8013",
+        "001:002"
+      ],
+      "timeout_s": 12,
+      "request_outcome": "correlated_candidate_data",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"schema\":\"plcidf.usb-memory-observation.v1\",\"ok\":true,\"status\":\"candidate-observed\",\"stage\":\"complete\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"linux-native-libusb1\",\"linux_native_usb\":true,\"linux_hardware_acceptance\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"read_profile\":\"m8013\",\"requested_linux_device\":\"001:002\",\"scope\":\"one fixed read using Linux libusb-1.0; no PLC state/application write\",\"diagnostics\":[],\"request_hex\":\"16000103f46500000100010000002218200601000000\",\"transfer_timeout_ms\":2500,\"symbol\":{\"profile\":\"m8013\",\"symbol\":\"M8013\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766626,\"address_hex\":\"0x6201822\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line9\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null},\"candidate_protocol\":true,\"hardware_verified\":false,\"scalar_interpretation_calibrated\":false,\"sequence\":26100,\"request_outcome\":\"correlated_candidate_data\",\"correlation_scope\":\"random u16; not authentication or guaranteed freshness\",\"lease_token\":\"b7ef0754daa24eb3850be8e58839f70f\",\"transport_record\":{\"stage\":\"raw-frame-only\",\"request_hex\":\"16000103f46500000100010000002218200601000000\",\"write_calls\":1,\"request_outcome\":\"unknown\",\"read_calls\":[{\"rc\":0,\"transferred\":23}],\"library_soname\":\"libusb-1.0.so.0\",\"transfer_timeout_ms\":2500,\"automatic_retries\":0,\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"descriptor\":{\"bLength\":18,\"bDescriptorType\":1,\"bcdUSB\":512,\"bDeviceClass\":2,\"bDeviceSubClass\":0,\"bDeviceProtocol\":0,\"bMaxPacketSize0\":64,\"idVendor\":1137,\"idProduct\":42289,\"bcdDevice\":784,\"iManufacturer\":1,\"iProduct\":2,\"iSerialNumber\":0,\"bNumConfigurations\":1},\"usb_contract\":{\"configuration\":2,\"control_interface\":0,\"data_interface\":1,\"interface\":1,\"alternate_setting\":0,\"endpoints\":[{\"address\":129,\"attributes\":2,\"max_packet_bytes\":512},{\"address\":2,\"attributes\":2,\"max_packet_bytes\":512}],\"control_endpoints\":[{\"address\":132,\"attributes\":3,\"max_packet_bytes\":10}],\"iad_hex\":\"080b000202020107\",\"cdc_union_hex\":\"0524060001\",\"contract_basis\":\"evidence/easy521-native-device-20261019T064323Z/native-descriptors.json\",\"windows_claim0_is_not_linux_bulk_interface\":true},\"configuration_read_rc\":1,\"kernel_driver_active_rc\":0,\"claim_rc\":0,\"bulk_out_rc\":0,\"bulk_out_transferred\":22,\"response_hex\":\"17000103f4650000020001000000221820060100000000\",\"release_rc\":0,\"close_called\":true,\"device_list_freed\":true,\"context_exited\":true},\"decoded\":{\"frame_bytes\":23,\"version\":1,\"selector\":3,\"sequence\":26100,\"reserved_u16\":0,\"operation\":2,\"flags_u8\":0,\"profile\":\"m8013\",\"symbol\":\"M8013\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766626,\"address_hex\":\"0x6201822\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line9\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null,\"hardware_verified\":false,\"candidate_protocol\":true,\"scalar_interpretation_calibrated\":false,\"evidence_level\":\"vendor_request_static_and_simulator_reply_candidate\",\"ok\":true,\"status\":\"candidate_data\",\"data_hex\":\"00\",\"raw_bits_u32\":0,\"value_candidate\":false},\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"value_candidate\":false,\"data_hex\":\"00\"}\n",
+      "finished_at": "2026-10-19T06:54:20.809099+00:00",
+      "report": "05-memory-m8013.json"
+    },
+    {
+      "index": 6,
+      "kind": "memory",
+      "profile": "m8013",
+      "started_at": "2026-10-19T06:54:21.167611+00:00",
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "zss",
+        "--",
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+        "memory",
+        "m8013",
+        "001:002"
+      ],
+      "timeout_s": 12,
+      "request_outcome": "correlated_candidate_data",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"schema\":\"plcidf.usb-memory-observation.v1\",\"ok\":true,\"status\":\"candidate-observed\",\"stage\":\"complete\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"linux-native-libusb1\",\"linux_native_usb\":true,\"linux_hardware_acceptance\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"read_profile\":\"m8013\",\"requested_linux_device\":\"001:002\",\"scope\":\"one fixed read using Linux libusb-1.0; no PLC state/application write\",\"diagnostics\":[],\"request_hex\":\"160001035b3c00000100010000002218200601000000\",\"transfer_timeout_ms\":2500,\"symbol\":{\"profile\":\"m8013\",\"symbol\":\"M8013\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766626,\"address_hex\":\"0x6201822\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line9\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null},\"candidate_protocol\":true,\"hardware_verified\":false,\"scalar_interpretation_calibrated\":false,\"sequence\":15451,\"request_outcome\":\"correlated_candidate_data\",\"correlation_scope\":\"random u16; not authentication or guaranteed freshness\",\"lease_token\":\"fd276d9fb9514a43bd982086bf879bf8\",\"transport_record\":{\"stage\":\"raw-frame-only\",\"request_hex\":\"160001035b3c00000100010000002218200601000000\",\"write_calls\":1,\"request_outcome\":\"unknown\",\"read_calls\":[{\"rc\":0,\"transferred\":23}],\"library_soname\":\"libusb-1.0.so.0\",\"transfer_timeout_ms\":2500,\"automatic_retries\":0,\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"descriptor\":{\"bLength\":18,\"bDescriptorType\":1,\"bcdUSB\":512,\"bDeviceClass\":2,\"bDeviceSubClass\":0,\"bDeviceProtocol\":0,\"bMaxPacketSize0\":64,\"idVendor\":1137,\"idProduct\":42289,\"bcdDevice\":784,\"iManufacturer\":1,\"iProduct\":2,\"iSerialNumber\":0,\"bNumConfigurations\":1},\"usb_contract\":{\"configuration\":2,\"control_interface\":0,\"data_interface\":1,\"interface\":1,\"alternate_setting\":0,\"endpoints\":[{\"address\":129,\"attributes\":2,\"max_packet_bytes\":512},{\"address\":2,\"attributes\":2,\"max_packet_bytes\":512}],\"control_endpoints\":[{\"address\":132,\"attributes\":3,\"max_packet_bytes\":10}],\"iad_hex\":\"080b000202020107\",\"cdc_union_hex\":\"0524060001\",\"contract_basis\":\"evidence/easy521-native-device-20261019T064323Z/native-descriptors.json\",\"windows_claim0_is_not_linux_bulk_interface\":true},\"configuration_read_rc\":1,\"kernel_driver_active_rc\":0,\"claim_rc\":0,\"bulk_out_rc\":0,\"bulk_out_transferred\":22,\"response_hex\":\"170001035b3c0000020001000000221820060100000001\",\"release_rc\":0,\"close_called\":true,\"device_list_freed\":true,\"context_exited\":true},\"decoded\":{\"frame_bytes\":23,\"version\":1,\"selector\":3,\"sequence\":15451,\"reserved_u16\":0,\"operation\":2,\"flags_u8\":0,\"profile\":\"m8013\",\"symbol\":\"M8013\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766626,\"address_hex\":\"0x6201822\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line9\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null,\"hardware_verified\":false,\"candidate_protocol\":true,\"scalar_interpretation_calibrated\":false,\"evidence_level\":\"vendor_request_static_and_simulator_reply_candidate\",\"ok\":true,\"status\":\"candidate_data\",\"data_hex\":\"01\",\"raw_bits_u32\":1,\"value_candidate\":true},\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"value_candidate\":true,\"data_hex\":\"01\"}\n",
+      "finished_at": "2026-10-19T06:54:21.262450+00:00",
+      "report": "06-memory-m8013.json"
+    },
+    {
+      "index": 7,
+      "kind": "memory",
+      "profile": "m8013",
+      "started_at": "2026-10-19T06:54:21.614297+00:00",
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "zss",
+        "--",
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+        "memory",
+        "m8013",
+        "001:002"
+      ],
+      "timeout_s": 12,
+      "request_outcome": "correlated_candidate_data",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"schema\":\"plcidf.usb-memory-observation.v1\",\"ok\":true,\"status\":\"candidate-observed\",\"stage\":\"complete\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"linux-native-libusb1\",\"linux_native_usb\":true,\"linux_hardware_acceptance\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"read_profile\":\"m8013\",\"requested_linux_device\":\"001:002\",\"scope\":\"one fixed read using Linux libusb-1.0; no PLC state/application write\",\"diagnostics\":[],\"request_hex\":\"160001034fd700000100010000002218200601000000\",\"transfer_timeout_ms\":2500,\"symbol\":{\"profile\":\"m8013\",\"symbol\":\"M8013\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766626,\"address_hex\":\"0x6201822\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line9\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null},\"candidate_protocol\":true,\"hardware_verified\":false,\"scalar_interpretation_calibrated\":false,\"sequence\":55119,\"request_outcome\":\"correlated_candidate_data\",\"correlation_scope\":\"random u16; not authentication or guaranteed freshness\",\"lease_token\":\"b5360fb82fe94fe3a06667c1b40cfcae\",\"transport_record\":{\"stage\":\"raw-frame-only\",\"request_hex\":\"160001034fd700000100010000002218200601000000\",\"write_calls\":1,\"request_outcome\":\"unknown\",\"read_calls\":[{\"rc\":0,\"transferred\":23}],\"library_soname\":\"libusb-1.0.so.0\",\"transfer_timeout_ms\":2500,\"automatic_retries\":0,\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"descriptor\":{\"bLength\":18,\"bDescriptorType\":1,\"bcdUSB\":512,\"bDeviceClass\":2,\"bDeviceSubClass\":0,\"bDeviceProtocol\":0,\"bMaxPacketSize0\":64,\"idVendor\":1137,\"idProduct\":42289,\"bcdDevice\":784,\"iManufacturer\":1,\"iProduct\":2,\"iSerialNumber\":0,\"bNumConfigurations\":1},\"usb_contract\":{\"configuration\":2,\"control_interface\":0,\"data_interface\":1,\"interface\":1,\"alternate_setting\":0,\"endpoints\":[{\"address\":129,\"attributes\":2,\"max_packet_bytes\":512},{\"address\":2,\"attributes\":2,\"max_packet_bytes\":512}],\"control_endpoints\":[{\"address\":132,\"attributes\":3,\"max_packet_bytes\":10}],\"iad_hex\":\"080b000202020107\",\"cdc_union_hex\":\"0524060001\",\"contract_basis\":\"evidence/easy521-native-device-20261019T064323Z/native-descriptors.json\",\"windows_claim0_is_not_linux_bulk_interface\":true},\"configuration_read_rc\":1,\"kernel_driver_active_rc\":0,\"claim_rc\":0,\"bulk_out_rc\":0,\"bulk_out_transferred\":22,\"response_hex\":\"170001034fd70000020001000000221820060100000000\",\"release_rc\":0,\"close_called\":true,\"device_list_freed\":true,\"context_exited\":true},\"decoded\":{\"frame_bytes\":23,\"version\":1,\"selector\":3,\"sequence\":55119,\"reserved_u16\":0,\"operation\":2,\"flags_u8\":0,\"profile\":\"m8013\",\"symbol\":\"M8013\",\"iec_type\":\"BOOL\",\"width_bits\":1,\"address_u32\":102766626,\"address_hex\":\"0x6201822\",\"address_semantics\":\"opaque_vendor_symbol\",\"allocation_source\":\"CSV line9\",\"allocation_csv_sha256\":\"75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe\",\"allocation_gvt_sha256\":null,\"hardware_verified\":false,\"candidate_protocol\":true,\"scalar_interpretation_calibrated\":false,\"evidence_level\":\"vendor_request_static_and_simulator_reply_candidate\",\"ok\":true,\"status\":\"candidate_data\",\"data_hex\":\"00\",\"raw_bits_u32\":0,\"value_candidate\":false},\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"value_candidate\":false,\"data_hex\":\"00\"}\n",
+      "finished_at": "2026-10-19T06:54:21.703898+00:00",
+      "report": "07-memory-m8013.json"
+    },
+    {
+      "index": 8,
+      "kind": "runtime",
+      "profile": "gcm-state",
+      "started_at": "2026-10-19T06:54:21.705306+00:00",
+      "argv": [
+        "/usr/sbin/runuser",
+        "-u",
+        "zss",
+        "--",
+        "/home/zss/workspace/py2plc/.venv/bin/python",
+        "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+        "runtime",
+        "gcm-state",
+        "001:002"
+      ],
+      "timeout_s": 12,
+      "request_outcome": "correlated_raw_data",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"schema\":\"plcidf.usb-runtime-observation.v1\",\"ok\":true,\"status\":\"observed\",\"stage\":\"complete\",\"device_access\":true,\"gui_access\":false,\"transport_kind\":\"linux-native-libusb1\",\"linux_native_usb\":true,\"linux_hardware_acceptance\":false,\"cpu_identity_verified\":false,\"cpu_state_verified\":false,\"application_execution_verified\":false,\"state_semantics\":\"unknown\",\"read_profile\":\"gcm-state\",\"requested_linux_device\":\"001:002\",\"scope\":\"one fixed read using Linux libusb-1.0; no PLC state/application write\",\"diagnostics\":[],\"request_hex\":\"120001010a8200000100000000ff01000000\",\"transfer_timeout_ms\":2500,\"sequence\":33290,\"request_outcome\":\"correlated_raw_data\",\"correlation_scope\":\"random u16; not authentication or guaranteed freshness\",\"lease_token\":\"0e74339c191a468b96d082cf379e0eda\",\"transport_record\":{\"stage\":\"raw-frame-only\",\"request_hex\":\"120001010a8200000100000000ff01000000\",\"write_calls\":1,\"request_outcome\":\"unknown\",\"read_calls\":[{\"rc\":0,\"transferred\":11}],\"library_soname\":\"libusb-1.0.so.0\",\"transfer_timeout_ms\":2500,\"automatic_retries\":0,\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"descriptor\":{\"bLength\":18,\"bDescriptorType\":1,\"bcdUSB\":512,\"bDeviceClass\":2,\"bDeviceSubClass\":0,\"bDeviceProtocol\":0,\"bMaxPacketSize0\":64,\"idVendor\":1137,\"idProduct\":42289,\"bcdDevice\":784,\"iManufacturer\":1,\"iProduct\":2,\"iSerialNumber\":0,\"bNumConfigurations\":1},\"usb_contract\":{\"configuration\":2,\"control_interface\":0,\"data_interface\":1,\"interface\":1,\"alternate_setting\":0,\"endpoints\":[{\"address\":129,\"attributes\":2,\"max_packet_bytes\":512},{\"address\":2,\"attributes\":2,\"max_packet_bytes\":512}],\"control_endpoints\":[{\"address\":132,\"attributes\":3,\"max_packet_bytes\":10}],\"iad_hex\":\"080b000202020107\",\"cdc_union_hex\":\"0524060001\",\"contract_basis\":\"evidence/easy521-native-device-20261019T064323Z/native-descriptors.json\",\"windows_claim0_is_not_linux_bulk_interface\":true},\"configuration_read_rc\":1,\"kernel_driver_active_rc\":0,\"claim_rc\":0,\"bulk_out_rc\":0,\"bulk_out_transferred\":18,\"response_hex\":\"0b0001010a820000050001\",\"release_rc\":0,\"close_called\":true,\"device_list_freed\":true,\"context_exited\":true},\"decoded\":{\"frame_bytes\":11,\"version\":1,\"selector\":1,\"sequence\":33290,\"reserved_u16\":0,\"operation\":5,\"flags_u8\":0,\"profile\":\"vendor_gcm_state\",\"index_u32\":4278190080,\"payload_hex\":\"01\",\"evidence_level\":\"static_contract_only\",\"device_verified\":false,\"state_semantics\":\"unknown\",\"ok\":true,\"status\":\"data\",\"raw_value\":1},\"target\":{\"linux_device\":\"001:002\",\"vidpid\":\"0471:a531\",\"bcd_device\":784,\"serial\":null,\"identity_basis\":\"fresh USB location and product; no CPU/application identity\"},\"raw_value\":1,\"static_cpu_state_interpretation\":{\"value\":\"RUN\",\"basis\":\"vendor GetGCMState static mapping; report 18\",\"device_calibrated\":false}}\n",
+      "finished_at": "2026-10-19T06:54:21.797672+00:00",
+      "report": "08-runtime-gcm-state.json"
+    }
+  ],
+  "protocol_completed": true,
+  "plc_application_write_requested": false,
+  "cpu_mode_write_requested": false,
+  "temporary_host_preparation": true,
+  "automatic_retries": 0,
+  "started_at": "2026-10-19T06:54:19.750044+00:00",
+  "original_identity": {
+    "idVendor": "0471",
+    "idProduct": "a531",
+    "busnum": "1",
+    "devnum": "2",
+    "bConfigurationValue": "2"
+  },
+  "original_node": {
+    "uid": 0,
+    "gid": 0,
+    "mode": 436,
+    "rdev": 48385
+  },
+  "original_drivers": {
+    "1-1:2.0": "/sys/bus/usb/drivers/cdc_acm",
+    "1-1:2.1": "/sys/bus/usb/drivers/cdc_acm"
+  },
+  "source_sha256": {
+    "evidence/easy521-native-device-20261019T064323Z/run_native_read_session.py": "c4254a9ff56c23dd288b7a1656d704089076534f05bba903a8f668a0d40d8033",
+    "evidence/easy521-native-device-20261019T064323Z/guard_native_read.py": "71b55e23afc4c198a15472f645afa1e5a3a03c77ab03a23786d08e7acd458f19",
+    "tools/easy521_linux_usb.py": "e088e53bfd5f72d3546b77523e7c2a9a727d73b6b767356de0c2401315a1f8e3",
+    "tools/read_easy521_usb_runtime.py": "14bb81256e7b8b3c9eab1c40fa96a24b1f76af59f1c12fff306d0552e2da0de4",
+    "tools/read_easy521_usb_memory.py": "6b2e5a6aee488eac90bea9a639d4addf49d2399af10bd08b78f6c1e06f9e1c1c"
+  },
+  "verified_tty": "/dev/ttyACM0",
+  "tty_in_use_check": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "drivers_after_unbind": {
+    "1-1:2.0": null,
+    "1-1:2.1": null
+  },
+  "cleanup": {
+    "started_at": "2026-10-19T06:54:21.798492+00:00",
+    "errors": [],
+    "drivers": {
+      "1-1:2.0": "/sys/bus/usb/drivers/cdc_acm",
+      "1-1:2.1": "/sys/bus/usb/drivers/cdc_acm"
+    },
+    "drivers_restored": true,
+    "node_restored": true,
+    "finished_at": "2026-10-19T06:54:21.801007+00:00"
+  },
+  "finished_at": "2026-10-19T06:54:21.801015+00:00"
+}

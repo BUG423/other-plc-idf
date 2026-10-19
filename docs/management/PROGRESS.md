@@ -1,5 +1,13 @@
 # 进展记录
 
+## 2026-10-19共享后：原生Linux真机固定读取通过
+
+用户回复“已共享”后，统筹新鲜核对并单次附加WSL。真实描述符发现CDC控制接口0/数据接口1，原先Windows claim0到Linux的外推被纠正；新后端严格验证IAD/union/端点后只claim/release data1，旧24号记录保留。
+
+实际8次原生读取成功：GCM首尾1，M8000=true/M8001=false，M8013=true→false→true→false。普通用户读取进程有Python process/socket回退守卫；WSL接入仍由Windows usbipd提供。显式临时host准备后，两个CDC驱动及节点owner/mode实测恢复，设备保留WSL Attached。此前权限-3和driver occupied的not_sent拒绝均保留，没有将它们覆盖为成功。
+
+软件工具630顶层测试、分发守卫13项及仓库外安装真实场景通过；独立审阅的helper超时/TTY问题已修后才执行。详见[研究25](../research/firmware/25-native-linux-device-reads-2026-10-19.md)与[会话摘要](../../evidence/easy521-native-device-20261019T064323Z/session-summary.json)。本次只验原生固定读传输，精确周期、CPU永久身份、应用字节及物理输出仍未验收；未新增PLC变量/CPU模式写入、应用下载或清除。完整原生应用链和通用host onboarding继续开放，下列快照保留当时状态。
+
 ## 2026-10-19并行后续：受限ST原生编译、配置检查与原生USB
 
 用户要求并行继续。三个AI子代理分别交付[FOID检查与字段来源](../research/firmware/22-linux-foid-packaging-2026-10-19.md)、[受限ST→ARM探针](../research/firmware/23-linux-st-abi-2026-10-19.md)、[原生Linux USB只读后端](../research/firmware/24-linux-native-usb-2026-10-19.md)，另由独立代理审阅；统筹完成集成、真实编译/链接、主机准备与分发验证。

@@ -1,0 +1,155 @@
+{
+  "schema": "plcidf.usb-memory-observation.v1",
+  "ok": true,
+  "status": "candidate-observed",
+  "stage": "complete",
+  "device_access": true,
+  "gui_access": false,
+  "transport_kind": "linux-native-libusb1",
+  "linux_native_usb": true,
+  "linux_hardware_acceptance": false,
+  "cpu_identity_verified": false,
+  "cpu_state_verified": false,
+  "application_execution_verified": false,
+  "state_semantics": "unknown",
+  "read_profile": "m8013",
+  "requested_linux_device": "001:002",
+  "scope": "one fixed read using Linux libusb-1.0; no PLC state/application write",
+  "diagnostics": [],
+  "request_hex": "160001034fd700000100010000002218200601000000",
+  "transfer_timeout_ms": 2500,
+  "symbol": {
+    "profile": "m8013",
+    "symbol": "M8013",
+    "iec_type": "BOOL",
+    "width_bits": 1,
+    "address_u32": 102766626,
+    "address_hex": "0x6201822",
+    "address_semantics": "opaque_vendor_symbol",
+    "allocation_source": "CSV line9",
+    "allocation_csv_sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+    "allocation_gvt_sha256": null
+  },
+  "candidate_protocol": true,
+  "hardware_verified": false,
+  "scalar_interpretation_calibrated": false,
+  "sequence": 55119,
+  "request_outcome": "correlated_candidate_data",
+  "correlation_scope": "random u16; not authentication or guaranteed freshness",
+  "lease_token": "b5360fb82fe94fe3a06667c1b40cfcae",
+  "transport_record": {
+    "stage": "raw-frame-only",
+    "request_hex": "160001034fd700000100010000002218200601000000",
+    "write_calls": 1,
+    "request_outcome": "unknown",
+    "read_calls": [
+      {
+        "rc": 0,
+        "transferred": 23
+      }
+    ],
+    "library_soname": "libusb-1.0.so.0",
+    "transfer_timeout_ms": 2500,
+    "automatic_retries": 0,
+    "target": {
+      "linux_device": "001:002",
+      "vidpid": "0471:a531",
+      "bcd_device": 784,
+      "serial": null,
+      "identity_basis": "fresh USB location and product; no CPU/application identity"
+    },
+    "descriptor": {
+      "bLength": 18,
+      "bDescriptorType": 1,
+      "bcdUSB": 512,
+      "bDeviceClass": 2,
+      "bDeviceSubClass": 0,
+      "bDeviceProtocol": 0,
+      "bMaxPacketSize0": 64,
+      "idVendor": 1137,
+      "idProduct": 42289,
+      "bcdDevice": 784,
+      "iManufacturer": 1,
+      "iProduct": 2,
+      "iSerialNumber": 0,
+      "bNumConfigurations": 1
+    },
+    "usb_contract": {
+      "configuration": 2,
+      "control_interface": 0,
+      "data_interface": 1,
+      "interface": 1,
+      "alternate_setting": 0,
+      "endpoints": [
+        {
+          "address": 129,
+          "attributes": 2,
+          "max_packet_bytes": 512
+        },
+        {
+          "address": 2,
+          "attributes": 2,
+          "max_packet_bytes": 512
+        }
+      ],
+      "control_endpoints": [
+        {
+          "address": 132,
+          "attributes": 3,
+          "max_packet_bytes": 10
+        }
+      ],
+      "iad_hex": "080b000202020107",
+      "cdc_union_hex": "0524060001",
+      "contract_basis": "evidence/easy521-native-device-20261019T064323Z/native-descriptors.json",
+      "windows_claim0_is_not_linux_bulk_interface": true
+    },
+    "configuration_read_rc": 1,
+    "kernel_driver_active_rc": 0,
+    "claim_rc": 0,
+    "bulk_out_rc": 0,
+    "bulk_out_transferred": 22,
+    "response_hex": "170001034fd70000020001000000221820060100000000",
+    "release_rc": 0,
+    "close_called": true,
+    "device_list_freed": true,
+    "context_exited": true
+  },
+  "decoded": {
+    "frame_bytes": 23,
+    "version": 1,
+    "selector": 3,
+    "sequence": 55119,
+    "reserved_u16": 0,
+    "operation": 2,
+    "flags_u8": 0,
+    "profile": "m8013",
+    "symbol": "M8013",
+    "iec_type": "BOOL",
+    "width_bits": 1,
+    "address_u32": 102766626,
+    "address_hex": "0x6201822",
+    "address_semantics": "opaque_vendor_symbol",
+    "allocation_source": "CSV line9",
+    "allocation_csv_sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+    "allocation_gvt_sha256": null,
+    "hardware_verified": false,
+    "candidate_protocol": true,
+    "scalar_interpretation_calibrated": false,
+    "evidence_level": "vendor_request_static_and_simulator_reply_candidate",
+    "ok": true,
+    "status": "candidate_data",
+    "data_hex": "00",
+    "raw_bits_u32": 0,
+    "value_candidate": false
+  },
+  "target": {
+    "linux_device": "001:002",
+    "vidpid": "0471:a531",
+    "bcd_device": 784,
+    "serial": null,
+    "identity_basis": "fresh USB location and product; no CPU/application identity"
+  },
+  "value_candidate": false,
+  "data_hex": "00"
+}

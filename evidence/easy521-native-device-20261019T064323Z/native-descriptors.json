@@ -1,0 +1,124 @@
+{
+  "schema": "plcidf.native-usb-descriptors.v1",
+  "observed_at": "2026-10-19T06:44:50.499589+00:00",
+  "sysfs": "/sys/bus/usb/devices/1-1",
+  "sha256": "be0da4a2a37147d2e0068bb492bf0eb89ea067e2808ecdcf6a756b0ddbd51351",
+  "descriptors": [
+    {
+      "offset": 0,
+      "length": 18,
+      "type": 1,
+      "hex": "1201000202000040710431a5100301020001"
+    },
+    {
+      "offset": 18,
+      "length": 9,
+      "type": 2,
+      "hex": "09024b00020204c001"
+    },
+    {
+      "offset": 27,
+      "length": 8,
+      "type": 11,
+      "hex": "080b000202020107"
+    },
+    {
+      "offset": 35,
+      "length": 9,
+      "type": 4,
+      "hex": "090400000102020105"
+    },
+    {
+      "offset": 44,
+      "length": 5,
+      "type": 36,
+      "hex": "0524001001"
+    },
+    {
+      "offset": 49,
+      "length": 5,
+      "type": 36,
+      "hex": "0524010001"
+    },
+    {
+      "offset": 54,
+      "length": 4,
+      "type": 36,
+      "hex": "04240202"
+    },
+    {
+      "offset": 58,
+      "length": 5,
+      "type": 36,
+      "hex": "0524060001"
+    },
+    {
+      "offset": 63,
+      "length": 7,
+      "type": 5,
+      "hex": "070584030a0009"
+    },
+    {
+      "offset": 70,
+      "length": 9,
+      "type": 4,
+      "hex": "09040100020a000006"
+    },
+    {
+      "offset": 79,
+      "length": 7,
+      "type": 5,
+      "hex": "07058102000200"
+    },
+    {
+      "offset": 86,
+      "length": 7,
+      "type": 5,
+      "hex": "07050202000200"
+    }
+  ],
+  "interfaces": [
+    {
+      "interface": "1-1:2.1",
+      "bInterfaceNumber": "01",
+      "bInterfaceClass": "0a",
+      "bInterfaceSubClass": "00",
+      "bInterfaceProtocol": "00",
+      "bNumEndpoints": "02",
+      "endpoints": [
+        {
+          "bEndpointAddress": "02",
+          "bmAttributes": "02",
+          "wMaxPacketSize": "0200",
+          "type": "Bulk",
+          "direction": "out"
+        },
+        {
+          "bEndpointAddress": "81",
+          "bmAttributes": "02",
+          "wMaxPacketSize": "0200",
+          "type": "Bulk",
+          "direction": "in"
+        }
+      ]
+    },
+    {
+      "interface": "1-1:2.0",
+      "bInterfaceNumber": "00",
+      "bInterfaceClass": "02",
+      "bInterfaceSubClass": "02",
+      "bInterfaceProtocol": "01",
+      "bNumEndpoints": "01",
+      "endpoints": [
+        {
+          "bEndpointAddress": "84",
+          "bmAttributes": "03",
+          "wMaxPacketSize": "000a",
+          "type": "Interrupt",
+          "direction": "in"
+        }
+      ]
+    }
+  ],
+  "device_command_sent": false
+}

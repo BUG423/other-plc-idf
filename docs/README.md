@@ -9,7 +9,8 @@
 
 | 分区 | 路径 | 状态 | 一句话 |
 |---|---|---|---|
-| 原生并行开发 | [research/firmware/22-linux-foid-packaging-2026-10-19.md](research/firmware/22-linux-foid-packaging-2026-10-19.md) / [23](research/firmware/23-linux-st-abi-2026-10-19.md) / [24](research/firmware/24-linux-native-usb-2026-10-19.md) | FOID检查、受限ST→ARM和原生USB后端已实现 | 真机读取、完整配置生成/下装与ARM执行尚未验收 |
+| 原生USB真机读取 | [research/firmware/25-native-linux-device-reads-2026-10-19.md](research/firmware/25-native-linux-device-reads-2026-10-19.md) | 本设备8次固定读实测通过 | 接口1更正、状态/标志/变化时钟与host恢复；没有原生下载或CPU写操作 |
+| 原生并行开发初批 | [research/firmware/22-linux-foid-packaging-2026-10-19.md](research/firmware/22-linux-foid-packaging-2026-10-19.md) / [23](research/firmware/23-linux-st-abi-2026-10-19.md) / [24](research/firmware/24-linux-native-usb-2026-10-19.md) | FOID检查、受限ST→ARM和原生USB后端已实现 | 当批真机读取待共享，后续见25；完整配置生成/下装与ARM执行继续开放 |
 | 现场反馈 | [FEEDBACK_CAPTURE.md](FEEDBACK_CAPTURE.md) | 离线CLI已集成 | 人工记录、真实仪器记录校验、多轮摘要与未知身份 |
 | 负载接线 | [usage/EASY521_LOAD_WIRING.md](usage/EASY521_LOAD_WIRING.md) | 官方图已核对 | A9输入SS、B9输出COM、TN/TP极性与现有闪灯程序边界 |
 | 最新Linux验证 | [research/firmware/21-linux-existing-global-bindings-2026-10-19.md](research/firmware/21-linux-existing-global-bindings-2026-10-19.md) | 本地闭环及受限对象后处理已实测 | 真实编译/运行/监控/停止；固定8项绑定消除符号差异，完整Easy521原生下装仍开放 |

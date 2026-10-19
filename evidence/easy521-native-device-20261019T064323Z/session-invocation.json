@@ -1,0 +1,28 @@
+{
+  "schema": "plcidf.native-usb-session-invocation.v1",
+  "started_at": "2026-10-19T06:54:19.496085+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/wsl.exe",
+    "--distribution",
+    "Ubuntu",
+    "--user",
+    "root",
+    "--exec",
+    "/usr/bin/python3",
+    "/home/zss/workspace/py2plc/evidence/easy521-native-device-20261019T064323Z/run_native_read_session.py"
+  ],
+  "outer_timeout_s": 150,
+  "helper_sha256": "c4254a9ff56c23dd288b7a1656d704089076534f05bba903a8f668a0d40d8033",
+  "automatic_retries": 0,
+  "outcome": "helper_returned",
+  "windows_before": {
+    "returncode": 0,
+    "stdout": "Connected:\nBUSID  VID:PID    DEVICE                                                        STATE\n1-5    0489:e0cd  MediaTek Bluetooth Adapter                                    Not shared\n2-1    174f:181d  Integrated Camera, Integrated IR Camera, Camera DFU Device    Not shared\n6-1    046d:c52b  Logitech USB Input Device, USB 输入设备                           Not shared\n6-2    24ae:2015  USB 输入设备                                                      Not shared\n6-3    1ea7:0066  USB 输入设备                                                      Not shared\n6-4    1a2c:7fff  USB 输入设备                                                      Not shared\n7-2    0471:a531  H5U USB Device                                                Attached\n7-4    35bb:d00b  HECATE Co-Installer Device, USB 输入设备                          Not shared\n8-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared\n\nPersisted:\nGUID                                  DEVICE\n94ed4ff5-3008-47cf-9c47-6022b6832257  H5U USB Device\n\n",
+    "stderr": ""
+  },
+  "returncode": 0,
+  "stdout": "{\"protocol_completed\": true, \"error\": null, \"cleanup\": {\"started_at\": \"2026-10-19T06:54:21.798492+00:00\", \"errors\": [], \"drivers\": {\"1-1:2.0\": \"/sys/bus/usb/drivers/cdc_acm\", \"1-1:2.1\": \"/sys/bus/usb/drivers/cdc_acm\"}, \"drivers_restored\": true, \"node_restored\": true, \"finished_at\": \"2026-10-19T06:54:21.801007+00:00\"}}\n",
+  "stderr": "",
+  "finished_at": "2026-10-19T06:54:21.820790+00:00",
+  "helper_unchanged": true
+}

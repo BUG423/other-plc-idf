@@ -1,0 +1,17 @@
+{
+  "schema": "plcidf.native-read-invocation.v1",
+  "started_at": "2026-10-19T06:48:36.204302+00:00",
+  "argv": [
+    ".venv/bin/python",
+    "evidence/easy521-native-device-20261019T064323Z/guard_native_read.py",
+    "runtime",
+    "gcm-state",
+    "001:002"
+  ],
+  "timeout_s": 12,
+  "returncode": 1,
+  "stderr": "",
+  "native_source_sha256": "e088e53bfd5f72d3546b77523e7c2a9a727d73b6b767356de0c2401315a1f8e3",
+  "source_unchanged": true,
+  "purpose": "Validate actual libusb descriptor tree while original kernel driver and node permissions remain; request must be refused before protocol transmission"
+}

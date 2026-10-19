@@ -2,8 +2,12 @@
 
 Input is a fixed runtime/memory profile and an explicit Linux BUS:ADDRESS.
 Output preserves raw USB evidence plus the existing strict codec result. The
-device contract (0471:a531, configuration 2, interface 0, bulk OUT 02 / IN 81)
-comes from research reports 15, 18 and 19 and the existing Windows helpers.
+protocol contract comes from research reports 15, 18 and 19. The Linux USB
+profile is independently pinned to the 2026-10-19 native descriptor observation:
+evidence/easy521-native-device-20261019T064323Z/native-descriptors.json
+(raw descriptors SHA256 be0da4a2a37147d2e0068bb492bf0eb89ea067e2808ecdcf6a756b0ddbd51351).
+It has CDC control interface 0 and bulk data interface 1, linked by IAD/union;
+the Windows helper's claim0 must not be treated as a Linux bulk interface.
 Linux transport itself still requires hardware acceptance; memory response and
 scalar meanings remain candidates. This is not a downloader or a firmware API.
 
@@ -51,6 +55,7 @@ _RUNTIME_PROFILES = {"literal": _RUNTIME.VENDOR_LITERAL_FF010000_4,
 VID, PID = 0x0471, 0xA531
 VIDPID = "0471:a531"
 SONAME = "libusb-1.0.so.0"
+NATIVE_DESCRIPTOR_EVIDENCE = "evidence/easy521-native-device-20261019T064323Z/native-descriptors.json"
 
 # These are host-ABI C structures, not packed USB wire frames. Pointer alignment
 # and sizeof(int) must follow ctypes' native layout, as in libusb.h. Do not add
@@ -162,40 +167,88 @@ class Libusb1Transport:
         if rc != 0:
             raise NativeUsbError(f"{operation} failed with libusb code {rc}; no retry")
 
+    @staticmethod
+    def _extra_descriptors(pointer, length, owner):
+        """Parse bounded USB descriptor TLVs retained by libusb, without I/O.
+
+        IAD may be retained in configuration/interface extras by the libusb
+        parser. CDC functional descriptors must belong to the control interface.
+        Their byte values come from NATIVE_DESCRIPTOR_EVIDENCE, not an inferred
+        permission to send CDC class requests or change line coding.
+        """
+        if not 0 <= length <= 4096 or (length and not pointer):
+            raise NativeUsbError(f"Invalid {owner} extra descriptor buffer")
+        raw = C.string_at(pointer, length) if length else b""
+        descriptors, offset = [], 0
+        while offset < len(raw):
+            size = raw[offset]
+            if size < 2 or offset + size > len(raw):
+                raise NativeUsbError(f"Malformed {owner} extra descriptor TLV")
+            descriptors.append(raw[offset:offset + size])
+            offset += size
+        return descriptors
+
     def _configuration(self, device):
         descriptor = C.POINTER(_Configuration)()
         self._check(self.lib.libusb_get_active_config_descriptor(device, C.byref(descriptor)),
                     "get active configuration descriptor")
         try:
             config = descriptor.contents
-            if config.bConfigurationValue != 2 or not 1 <= config.bNumInterfaces <= 32:
-                raise NativeUsbError("Already-active configuration 2 is required; no configuration is changed")
-            selected = []
+            if (config.bConfigurationValue != 2 or config.bNumInterfaces != 2
+                    or config.bLength != 9 or config.bDescriptorType != 2):
+                raise NativeUsbError("Observed configuration 2 with two CDC interfaces is required; no setting changed")
+            extras = {"configuration": self._extra_descriptors(
+                config.extra, config.extra_length, "configuration")}
+            selected = {}
             for index in range(config.bNumInterfaces):
                 interface = config.interface[index]
-                if not 1 <= interface.num_altsetting <= 32:
-                    raise NativeUsbError("Unexpected alternate-setting descriptor count")
-                alternatives = [interface.altsetting[n] for n in range(interface.num_altsetting)]
-                if any(alt.bInterfaceNumber == 0 for alt in alternatives):
-                    if len(alternatives) != 1 or alternatives[0].bAlternateSetting != 0:
-                        raise NativeUsbError("Interface 0 must have only alternate setting 0; no alternate setting is changed")
-                    selected.extend(alternatives)
-            if len(selected) != 1:
-                raise NativeUsbError("Configuration must contain one unambiguous interface 0")
-            interface = selected[0]
-            if not 1 <= interface.bNumEndpoints <= 32:
-                raise NativeUsbError("Invalid endpoint descriptor count")
-            endpoints = [{"address": ep.bEndpointAddress, "attributes": ep.bmAttributes,
-                          "max_packet_bytes": ep.wMaxPacketSize}
-                         for ep in interface.endpoint[:interface.bNumEndpoints]]
-            for address in (0x02, 0x81):
-                matches = [ep for ep in endpoints if ep["address"] == address]
-                if (len(matches) != 1 or matches[0]["attributes"] & 3 != 2
-                        or not 1 <= matches[0]["max_packet_bytes"] <= 512):
-                    raise NativeUsbError("Expected bulk endpoints OUT 0x02 / IN 0x81 with packet size <=512")
-            return {"configuration": 2, "interface": 0, "alternate_setting": 0,
-                    "endpoints": endpoints,
-                    "contract_basis": "research report 15; descriptors checked at execution"}
+                if interface.num_altsetting != 1:
+                    raise NativeUsbError("Each observed CDC interface has only alternate setting 0")
+                alt = interface.altsetting[0]
+                number = alt.bInterfaceNumber
+                if (number not in (0, 1) or number in selected or alt.bAlternateSetting != 0
+                        or alt.bLength != 9 or alt.bDescriptorType != 4):
+                    raise NativeUsbError("Expected unique control0/data1 interfaces with alternate setting 0")
+                selected[number] = alt
+                extras[f"interface{number}"] = self._extra_descriptors(
+                    alt.extra, alt.extra_length, f"interface{number}")
+            if set(selected) != {0, 1}:
+                raise NativeUsbError("Expected both CDC control interface 0 and data interface 1")
+            control, data = selected[0], selected[1]
+            if ((control.bInterfaceClass, control.bInterfaceSubClass, control.bInterfaceProtocol) != (2, 2, 1)
+                    or (data.bInterfaceClass, data.bInterfaceSubClass, data.bInterfaceProtocol) != (10, 0, 0)):
+                raise NativeUsbError("CDC control/data interface classes differ from observed Easy521 profile")
+            associations = [item for items in extras.values() for item in items if item[1] == 11]
+            if associations != [bytes.fromhex("080b000202020107")]:
+                raise NativeUsbError("Expected the observed single CDC IAD linking interfaces 0 and 1")
+            unions = [(owner, item) for owner, items in extras.items() for item in items
+                      if item[1] == 0x24 and len(item) >= 3 and item[2] == 6]
+            if unions != [("interface0", bytes.fromhex("0524060001"))]:
+                raise NativeUsbError("Expected one control-interface CDC union with master0/slave1")
+            endpoints = {}
+            for number, alt in selected.items():
+                expected_count = 1 if number == 0 else 2
+                if alt.bNumEndpoints != expected_count:
+                    raise NativeUsbError("Unexpected CDC endpoint count or duplicated endpoints")
+                entries = []
+                for ep in alt.endpoint[:alt.bNumEndpoints]:
+                    if ep.bLength != 7 or ep.bDescriptorType != 5:
+                        raise NativeUsbError("Unexpected endpoint descriptor shape")
+                    entries.append({"address": ep.bEndpointAddress, "attributes": ep.bmAttributes,
+                                    "max_packet_bytes": ep.wMaxPacketSize})
+                endpoints[number] = entries
+            if endpoints[0] != [{"address": 0x84, "attributes": 3, "max_packet_bytes": 10}]:
+                raise NativeUsbError("Control interface 0 must expose only observed interrupt IN 0x84")
+            expected_bulk = [{"address": address, "attributes": 2, "max_packet_bytes": 512}
+                             for address in (0x02, 0x81)]
+            if sorted(endpoints[1], key=lambda ep: ep["address"]) != expected_bulk:
+                raise NativeUsbError("Data interface 1 must expose unique bulk OUT 0x02 / IN 0x81, 512 bytes")
+            return {"configuration": 2, "control_interface": 0, "data_interface": 1, "interface": 1,
+                    "alternate_setting": 0, "endpoints": endpoints[1],
+                    "control_endpoints": endpoints[0],
+                    "iad_hex": associations[0].hex(), "cdc_union_hex": unions[0][1].hex(),
+                    "contract_basis": NATIVE_DESCRIPTOR_EVIDENCE,
+                    "windows_claim0_is_not_linux_bulk_interface": True}
         finally:
             self.lib.libusb_free_config_descriptor(descriptor)
 
@@ -261,14 +314,15 @@ class Libusb1Transport:
             record["configuration_read_rc"] = rc
             if rc != 1 or configuration[0] != 2:
                 raise NativeUsbError("GET_CONFIGURATION must return active configuration 2; no setting changed")
-            active = self.lib.libusb_kernel_driver_active(handle, 0)
+            data_interface = record["usb_contract"]["interface"]
+            active = self.lib.libusb_kernel_driver_active(handle, data_interface)
             record["kernel_driver_active_rc"] = active
             if active != 0:
-                raise NativeUsbError("Interface 0 must have no active kernel driver; drivers are never detached")
+                raise NativeUsbError("Data interface 1 must have no active kernel driver; drivers are never detached")
             record["stage"] = "claim"
-            rc = self.lib.libusb_claim_interface(handle, 0)
+            rc = self.lib.libusb_claim_interface(handle, data_interface)
             record["claim_rc"] = rc
-            self._check(rc, "claim interface 0")
+            self._check(rc, "claim data interface 1")
             claimed = True
             record["stage"] = "send-read-request"
             out = (C.c_ubyte * len(request)).from_buffer_copy(request)
@@ -316,7 +370,7 @@ class Libusb1Transport:
             # Keep cleanup separate from protocol outcome. A valid raw frame
             # plus failed release is not reported as an accepted observation.
             if claimed:
-                record["release_rc"] = self.lib.libusb_release_interface(handle, 0)
+                record["release_rc"] = self.lib.libusb_release_interface(handle, data_interface)
             if handle:
                 self.lib.libusb_close(handle)
                 record["close_called"] = True  # libusb_close has void return.
@@ -363,7 +417,7 @@ def read_fixed(*, kind="runtime", profile="gcm-state", execute=False, device=Non
                           hardware_verified=False, scalar_interpretation_calibrated=False)
         if execute is False:
             return {**report, "ok": True, "status": "preview", "stage": "preview",
-                    "execution_requires": "--transport linux-native --execute --linux-device BUS:ADDRESS; existing configuration 2; free interface 0"}
+                    "execution_requires": "--transport linux-native --execute --linux-device BUS:ADDRESS; observed CDC configuration 2; free data interface 1"}
         bus, address = _location(device)
         sequence = secrets.randbits(16)
         request, _ = _contract(kind, profile, sequence)

@@ -1,0 +1,134 @@
+{
+  "schema": "plcidf.usb-runtime-observation.v1",
+  "ok": true,
+  "status": "observed",
+  "stage": "complete",
+  "device_access": true,
+  "gui_access": false,
+  "transport_kind": "linux-native-libusb1",
+  "linux_native_usb": true,
+  "linux_hardware_acceptance": false,
+  "cpu_identity_verified": false,
+  "cpu_state_verified": false,
+  "application_execution_verified": false,
+  "state_semantics": "unknown",
+  "read_profile": "gcm-state",
+  "requested_linux_device": "001:002",
+  "scope": "one fixed read using Linux libusb-1.0; no PLC state/application write",
+  "diagnostics": [],
+  "request_hex": "120001010a8200000100000000ff01000000",
+  "transfer_timeout_ms": 2500,
+  "sequence": 33290,
+  "request_outcome": "correlated_raw_data",
+  "correlation_scope": "random u16; not authentication or guaranteed freshness",
+  "lease_token": "0e74339c191a468b96d082cf379e0eda",
+  "transport_record": {
+    "stage": "raw-frame-only",
+    "request_hex": "120001010a8200000100000000ff01000000",
+    "write_calls": 1,
+    "request_outcome": "unknown",
+    "read_calls": [
+      {
+        "rc": 0,
+        "transferred": 11
+      }
+    ],
+    "library_soname": "libusb-1.0.so.0",
+    "transfer_timeout_ms": 2500,
+    "automatic_retries": 0,
+    "target": {
+      "linux_device": "001:002",
+      "vidpid": "0471:a531",
+      "bcd_device": 784,
+      "serial": null,
+      "identity_basis": "fresh USB location and product; no CPU/application identity"
+    },
+    "descriptor": {
+      "bLength": 18,
+      "bDescriptorType": 1,
+      "bcdUSB": 512,
+      "bDeviceClass": 2,
+      "bDeviceSubClass": 0,
+      "bDeviceProtocol": 0,
+      "bMaxPacketSize0": 64,
+      "idVendor": 1137,
+      "idProduct": 42289,
+      "bcdDevice": 784,
+      "iManufacturer": 1,
+      "iProduct": 2,
+      "iSerialNumber": 0,
+      "bNumConfigurations": 1
+    },
+    "usb_contract": {
+      "configuration": 2,
+      "control_interface": 0,
+      "data_interface": 1,
+      "interface": 1,
+      "alternate_setting": 0,
+      "endpoints": [
+        {
+          "address": 129,
+          "attributes": 2,
+          "max_packet_bytes": 512
+        },
+        {
+          "address": 2,
+          "attributes": 2,
+          "max_packet_bytes": 512
+        }
+      ],
+      "control_endpoints": [
+        {
+          "address": 132,
+          "attributes": 3,
+          "max_packet_bytes": 10
+        }
+      ],
+      "iad_hex": "080b000202020107",
+      "cdc_union_hex": "0524060001",
+      "contract_basis": "evidence/easy521-native-device-20261019T064323Z/native-descriptors.json",
+      "windows_claim0_is_not_linux_bulk_interface": true
+    },
+    "configuration_read_rc": 1,
+    "kernel_driver_active_rc": 0,
+    "claim_rc": 0,
+    "bulk_out_rc": 0,
+    "bulk_out_transferred": 18,
+    "response_hex": "0b0001010a820000050001",
+    "release_rc": 0,
+    "close_called": true,
+    "device_list_freed": true,
+    "context_exited": true
+  },
+  "decoded": {
+    "frame_bytes": 11,
+    "version": 1,
+    "selector": 1,
+    "sequence": 33290,
+    "reserved_u16": 0,
+    "operation": 5,
+    "flags_u8": 0,
+    "profile": "vendor_gcm_state",
+    "index_u32": 4278190080,
+    "payload_hex": "01",
+    "evidence_level": "static_contract_only",
+    "device_verified": false,
+    "state_semantics": "unknown",
+    "ok": true,
+    "status": "data",
+    "raw_value": 1
+  },
+  "target": {
+    "linux_device": "001:002",
+    "vidpid": "0471:a531",
+    "bcd_device": 784,
+    "serial": null,
+    "identity_basis": "fresh USB location and product; no CPU/application identity"
+  },
+  "raw_value": 1,
+  "static_cpu_state_interpretation": {
+    "value": "RUN",
+    "basis": "vendor GetGCMState static mapping; report 18",
+    "device_calibrated": false
+  }
+}

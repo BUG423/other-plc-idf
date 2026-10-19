@@ -1,0 +1,76 @@
+{
+  "schema": "plcidf.native-device-validation.v1",
+  "recorded_at": "2026-10-19T06:59:20.883223+00:00",
+  "source_revision_before_change": "947cf7eb374d07ddaecd518fabc13a5f57e5a18f",
+  "working_tree_dirty": true,
+  "source_sha256": {
+    "tools/easy521_linux_usb.py": "e088e53bfd5f72d3546b77523e7c2a9a727d73b6b767356de0c2401315a1f8e3",
+    "tools/tests/test_easy521_linux_usb.py": "47260ba0301e89333afda768e695c9ac924a2051dab238559e5adb99e2b199c1",
+    "tools/read_easy521_usb_runtime.py": "14bb81256e7b8b3c9eab1c40fa96a24b1f76af59f1c12fff306d0552e2da0de4",
+    "tools/read_easy521_usb_memory.py": "6b2e5a6aee488eac90bea9a639d4addf49d2399af10bd08b78f6c1e06f9e1c1c"
+  },
+  "software_checks": [
+    {
+      "scope": "tools",
+      "collected_top_level_tests": 630,
+      "junit_records": 1659,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_s": 5.112,
+      "junit_sha256": "3d199b7ceb125e07698fce9492e382a76dd9874c749b2fc0c6a22113ac0ad2f5"
+    },
+    {
+      "scope": "distribution",
+      "collected_top_level_tests": 13,
+      "junit_records": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_s": 0.82,
+      "junit_sha256": "3217316c260b4e141f7b5c4ced1d2273fa9013bf70d96ad45948a3998cb98c9d"
+    }
+  ],
+  "counting_note": "Tools: 630 top-level nodes + 1029 nested records in JUnit, not independent additive totals; 389 agent/81 native are overlapping subsets",
+  "commands": {
+    "tools": "PLCIDF_TEST_LLD=\"$PWD/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld\" PLCIDF_TEST_LLC=\"$PWD/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llc\" .venv/bin/python -m pytest tools/tests -q",
+    "distribution_guards": ".venv/bin/python -m pytest src/plc_idf/tests/test_distribution_config.py -q",
+    "installed": ".venv/bin/python tools/check_distribution.py --toolchain-dir /home/zss/.cache/plcidf/matiec --report evidence/easy521-native-device-20261019T064323Z/distribution-validation.json"
+  },
+  "installed_distribution": {
+    "result": "passed",
+    "report": "distribution-validation.json",
+    "sha256": "7957853b99d5d38fae3073cde4268b455b2e54e97af72c5b6a5f294f968b83d6",
+    "motor_scenarios": 6,
+    "motor_assertions": 56,
+    "hardware_accessed": false
+  },
+  "hardware": {
+    "separate_from_software_checks": true,
+    "summary": "session-summary.json",
+    "successful_native_read_count": 8,
+    "plc_cpu_or_variable_write_requested": false,
+    "application_downloaded": false,
+    "exact_scan_cycle_verified": false,
+    "application_identity": "unknown"
+  },
+  "independent_review": {
+    "agent": "/root/distribution",
+    "descriptor_and_native_fix": "no P0/P1",
+    "experiment_helper_initial_findings": [
+      "P1 termination/recovery budget",
+      "TTY selection not tied to control interface"
+    ],
+    "findings_fixed_before_execution": true,
+    "final_helper_review": "no remaining P0/P1",
+    "reviewer_device_access": false
+  },
+  "independent_post_session_review": {
+    "agent": "/root/distribution",
+    "blocking_p0_p1": 0,
+    "verified": "Independent struct decoding of all eight request/response frames, sequence/selector/index/operation/address/count/bits; hashes of nine per-observation reports and five execution sources; cleanup; all 34 distributed resource hashes",
+    "uses_project_codec_for_wire_recheck": false,
+    "reran_hardware": false,
+    "reader_scalar_calibration_promoted": false
+  }
+}

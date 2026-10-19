@@ -40,7 +40,7 @@ python tools/read_easy521_usb_runtime.py --transport linux-native --profile gcm-
 python tools/read_easy521_usb_memory.py --transport linux-native --profile m8013
 ```
 
-实际执行使用`--execute --linux-device BUS:ADDRESS`，而不是Windows的`--busid`。新鲜枚举、固定配置/接口/端点检查、只发送一次、超时保留unknown均独立实现，不调用Windows驱动、不自动共享/附加/重连。WSL中需先按微软流程共享设备；当前代码已通过mock及真实libusb无目标拒绝，尚未完成原生真机读取。主机准备、完整命令和限制见[研究24](research/firmware/24-linux-native-usb-2026-10-19.md)。
+实际执行使用`--execute --linux-device BUS:ADDRESS`，而不是Windows的`--busid`。新鲜枚举、固定配置/接口/端点检查、只发送一次、超时保留unknown均独立实现，不调用厂商Windows驱动、不自动共享/附加/重连。WSL中需先按微软流程共享设备。最新[研究25](research/firmware/25-native-linux-device-reads-2026-10-19.md)已在真机完成8次原生状态/标志/变化时钟读取，并将Linux bulk接口修正为实际CDC数据接口1；Windows claim0不能外推。设备节点权限和内核驱动占用需显式处理，读取器不自动解绑。测试后的临时host权限/驱动均恢复，设备保留WSL Attached；通用host onboarding和应用下载仍未完成。[研究24](research/firmware/24-linux-native-usb-2026-10-19.md)保留历史假设和前置实验，不以新事实覆盖。
 
 ## 历史验收与兼容后端
 

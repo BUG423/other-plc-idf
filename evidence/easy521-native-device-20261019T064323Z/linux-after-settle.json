@@ -1,0 +1,39 @@
+{
+  "schema": "plcidf.native-usb-enumeration-observation.v1",
+  "observed_at": "2026-10-19T06:44:07.976152+00:00",
+  "settle_budget_s": 8,
+  "targets": [
+    {
+      "sysfs": "/sys/bus/usb/devices/1-1",
+      "idVendor": "0471",
+      "idProduct": "a531",
+      "busnum": "1",
+      "devnum": "2",
+      "bConfigurationValue": "2",
+      "bNumConfigurations": "1",
+      "bcdDevice": "0310",
+      "manufacturer": "Linux 3.10.65 with sunxi_usb_udc",
+      "product": "Easy52x USB Device v2.4",
+      "serial": null,
+      "linux_device": "001:002",
+      "node": "/dev/bus/usb/001/002",
+      "permissions": {
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      },
+      "interfaces": [
+        {
+          "name": "1-1:2.1",
+          "driver": "/sys/bus/usb/drivers/cdc_acm"
+        },
+        {
+          "name": "1-1:2.0",
+          "driver": "/sys/bus/usb/drivers/cdc_acm"
+        }
+      ]
+    }
+  ],
+  "only_observation": true,
+  "native_selector": "001:002"
+}

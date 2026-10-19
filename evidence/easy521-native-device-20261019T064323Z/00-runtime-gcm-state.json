@@ -1,0 +1,99 @@
+{
+  "schema": "plcidf.usb-runtime-observation.v1",
+  "ok": false,
+  "status": "failed",
+  "stage": "open",
+  "device_access": true,
+  "gui_access": false,
+  "transport_kind": "linux-native-libusb1",
+  "linux_native_usb": true,
+  "linux_hardware_acceptance": false,
+  "cpu_identity_verified": false,
+  "cpu_state_verified": false,
+  "application_execution_verified": false,
+  "state_semantics": "unknown",
+  "read_profile": "gcm-state",
+  "requested_linux_device": "001:002",
+  "scope": "one fixed read using Linux libusb-1.0; no PLC state/application write",
+  "diagnostics": [
+    {
+      "code": "E_LINUX_USB_READ",
+      "stage": "open",
+      "message": "Data interface 1 must have no active kernel driver; drivers are never detached"
+    }
+  ],
+  "request_hex": "12000101321100000100000000ff01000000",
+  "transfer_timeout_ms": 2500,
+  "sequence": 4402,
+  "request_outcome": "not_sent",
+  "correlation_scope": "random u16; not authentication or guaranteed freshness",
+  "lease_token": "07a926291e064e27bf344027b62de584",
+  "transport_record": {
+    "stage": "open",
+    "request_hex": "12000101321100000100000000ff01000000",
+    "write_calls": 0,
+    "request_outcome": "not_sent",
+    "read_calls": [],
+    "library_soname": "libusb-1.0.so.0",
+    "transfer_timeout_ms": 2500,
+    "automatic_retries": 0,
+    "target": {
+      "linux_device": "001:002",
+      "vidpid": "0471:a531",
+      "bcd_device": 784,
+      "serial": null,
+      "identity_basis": "fresh USB location and product; no CPU/application identity"
+    },
+    "descriptor": {
+      "bLength": 18,
+      "bDescriptorType": 1,
+      "bcdUSB": 512,
+      "bDeviceClass": 2,
+      "bDeviceSubClass": 0,
+      "bDeviceProtocol": 0,
+      "bMaxPacketSize0": 64,
+      "idVendor": 1137,
+      "idProduct": 42289,
+      "bcdDevice": 784,
+      "iManufacturer": 1,
+      "iProduct": 2,
+      "iSerialNumber": 0,
+      "bNumConfigurations": 1
+    },
+    "usb_contract": {
+      "configuration": 2,
+      "control_interface": 0,
+      "data_interface": 1,
+      "interface": 1,
+      "alternate_setting": 0,
+      "endpoints": [
+        {
+          "address": 129,
+          "attributes": 2,
+          "max_packet_bytes": 512
+        },
+        {
+          "address": 2,
+          "attributes": 2,
+          "max_packet_bytes": 512
+        }
+      ],
+      "control_endpoints": [
+        {
+          "address": 132,
+          "attributes": 3,
+          "max_packet_bytes": 10
+        }
+      ],
+      "iad_hex": "080b000202020107",
+      "cdc_union_hex": "0524060001",
+      "contract_basis": "evidence/easy521-native-device-20261019T064323Z/native-descriptors.json",
+      "windows_claim0_is_not_linux_bulk_interface": true
+    },
+    "configuration_read_rc": 1,
+    "kernel_driver_active_rc": 1,
+    "close_called": true,
+    "device_list_freed": true,
+    "context_exited": true
+  }
+}

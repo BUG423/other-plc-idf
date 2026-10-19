@@ -1,0 +1,26 @@
+{
+  "schema": "plcidf.native-usb-post-session-host.v1",
+  "observed_at": "2026-10-19T06:59:20.880104+00:00",
+  "windows": {
+    "returncode": 0,
+    "targets": [
+      {
+        "busid": "7-2",
+        "vidpid": "0471:a531",
+        "state": "Attached"
+      }
+    ],
+    "stderr": ""
+  },
+  "linux": {
+    "vidpid": "0471:a531",
+    "node_uid": 0,
+    "node_gid": 0,
+    "node_mode": "0o664",
+    "drivers": {
+      "1-1:2.0": "/sys/bus/usb/drivers/cdc_acm",
+      "1-1:2.1": "/sys/bus/usb/drivers/cdc_acm"
+    }
+  },
+  "plc_protocol_request_sent": false
+}

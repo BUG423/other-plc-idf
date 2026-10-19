@@ -1,0 +1,132 @@
+{
+  "schema": "plcidf.native-usb-attach-observation.v1",
+  "started_at": "2026-10-19T06:43:23.719286+00:00",
+  "user_authorization": "已共享; prior explicit native read test and attach plan",
+  "requested_busid": "7-2",
+  "vidpid": "0471:a531",
+  "plc_application_write_requested": false,
+  "automatic_retries": 0,
+  "attach_outcome": "unknown",
+  "windows_before": {
+    "returncode": 0,
+    "stdout": "Connected:\nBUSID  VID:PID    DEVICE                                                        STATE\n1-5    0489:e0cd  MediaTek Bluetooth Adapter                                    Not shared\n2-1    174f:181d  Integrated Camera, Integrated IR Camera, Camera DFU Device    Not shared\n6-1    046d:c52b  Logitech USB Input Device, USB 输入设备                           Not shared\n6-2    24ae:2015  USB 输入设备                                                      Not shared\n6-3    1ea7:0066  USB 输入设备                                                      Not shared\n6-4    1a2c:7fff  USB 输入设备                                                      Not shared\n7-2    0471:a531  H5U USB Device                                                Shared\n7-4    35bb:d00b  HECATE Co-Installer Device, USB 输入设备                          Not shared\n8-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared\n\nPersisted:\nGUID                                  DEVICE\n94ed4ff5-3008-47cf-9c47-6022b6832257  H5U USB Device\n\n",
+    "stderr": "",
+    "observed_at": "2026-10-19T06:43:23.819857+00:00"
+  },
+  "autoshop_check": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "linux_before": [
+    {
+      "sysfs": "/sys/bus/usb/devices/usb1",
+      "idVendor": "1d6b",
+      "idProduct": "0002",
+      "busnum": "1",
+      "devnum": "1",
+      "bConfigurationValue": "1",
+      "bNumConfigurations": "1",
+      "bcdDevice": "0618",
+      "manufacturer": "Linux 6.18.33.2-microsoft-standard-WSL2 vhci_hcd",
+      "product": "USB/IP Virtual Host Controller",
+      "serial": "vhci_hcd.0",
+      "linux_device": "001:001",
+      "node": "/dev/bus/usb/001/001",
+      "permissions": {
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      },
+      "interfaces": []
+    },
+    {
+      "sysfs": "/sys/bus/usb/devices/usb2",
+      "idVendor": "1d6b",
+      "idProduct": "0003",
+      "busnum": "2",
+      "devnum": "1",
+      "bConfigurationValue": "1",
+      "bNumConfigurations": "1",
+      "bcdDevice": "0618",
+      "manufacturer": "Linux 6.18.33.2-microsoft-standard-WSL2 vhci_hcd",
+      "product": "USB/IP Virtual Host Controller",
+      "serial": "vhci_hcd.0",
+      "linux_device": "002:001",
+      "node": "/dev/bus/usb/002/001",
+      "permissions": {
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      },
+      "interfaces": []
+    }
+  ],
+  "attach_started_at": "2026-10-19T06:43:24.266821+00:00",
+  "argv": [
+    "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+    "attach",
+    "--wsl",
+    "Ubuntu",
+    "--busid",
+    "7-2"
+  ],
+  "timeout_s": 25,
+  "attach_result": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "usbipd: info: Selecting a specific distribution is no longer required. Please file an issue if you believe that the default selection mechanism is not working for you.\nusbipd: info: Using WSL distribution 'Ubuntu' to attach; the device will be available in all WSL 2 distributions.\nusbipd: info: Detected networking mode 'nat'.\nusbipd: info: Using IP address 172.18.96.1 to reach the host.\n"
+  },
+  "windows_after": {
+    "returncode": 0,
+    "stdout": "Connected:\nBUSID  VID:PID    DEVICE                                                        STATE\n1-5    0489:e0cd  MediaTek Bluetooth Adapter                                    Not shared\n2-1    174f:181d  Integrated Camera, Integrated IR Camera, Camera DFU Device    Not shared\n6-1    046d:c52b  Logitech USB Input Device, USB 输入设备                           Not shared\n6-2    24ae:2015  USB 输入设备                                                      Not shared\n6-3    1ea7:0066  USB 输入设备                                                      Not shared\n6-4    1a2c:7fff  USB 输入设备                                                      Not shared\n7-2    0471:a531  H5U USB Device                                                Attached\n7-4    35bb:d00b  HECATE Co-Installer Device, USB 输入设备                          Not shared\n8-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared\n\nPersisted:\nGUID                                  DEVICE\n94ed4ff5-3008-47cf-9c47-6022b6832257  H5U USB Device\n\n",
+    "stderr": "",
+    "observed_at": "2026-10-19T06:43:25.953963+00:00"
+  },
+  "linux_after": [
+    {
+      "sysfs": "/sys/bus/usb/devices/usb1",
+      "idVendor": "1d6b",
+      "idProduct": "0002",
+      "busnum": "1",
+      "devnum": "1",
+      "bConfigurationValue": "1",
+      "bNumConfigurations": "1",
+      "bcdDevice": "0618",
+      "manufacturer": "Linux 6.18.33.2-microsoft-standard-WSL2 vhci_hcd",
+      "product": "USB/IP Virtual Host Controller",
+      "serial": "vhci_hcd.0",
+      "linux_device": "001:001",
+      "node": "/dev/bus/usb/001/001",
+      "permissions": {
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      },
+      "interfaces": []
+    },
+    {
+      "sysfs": "/sys/bus/usb/devices/usb2",
+      "idVendor": "1d6b",
+      "idProduct": "0003",
+      "busnum": "2",
+      "devnum": "1",
+      "bConfigurationValue": "1",
+      "bNumConfigurations": "1",
+      "bcdDevice": "0618",
+      "manufacturer": "Linux 6.18.33.2-microsoft-standard-WSL2 vhci_hcd",
+      "product": "USB/IP Virtual Host Controller",
+      "serial": "vhci_hcd.0",
+      "linux_device": "002:001",
+      "node": "/dev/bus/usb/002/001",
+      "permissions": {
+        "mode": "0o664",
+        "uid": 0,
+        "gid": 0
+      },
+      "interfaces": []
+    }
+  ],
+  "native_target": null,
+  "finished_at": "2026-10-19T06:43:26.178995+00:00"
+}

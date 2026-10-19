@@ -18,6 +18,14 @@ spec = importlib.util.spec_from_file_location(
 usb = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(usb)
 
+# Literal USB configuration bytes from native-descriptors.json, observed on the
+# real 0471:a531 on 2026-10-19. They differ from the former Windows claim0-based
+# fake: interface0 is CDC control, while endpoints81/02 belong to interface1.
+OBSERVED_CONFIGURATION = bytes.fromhex(
+    "09024b00020204c001080b000202020107090400000102020105"
+    "05240010010524010001042402020524060001070584030a0009"
+    "09040100020a0000060705810200020007050202000200")
+
 
 def set_pointer(pointer, kind, value):
     C.cast(pointer, C.POINTER(kind))[0] = value
@@ -37,7 +45,7 @@ class FakeLibusb:
     def __init__(self, *, targets=1, bus=1, address=4, configuration=2,
                  kernel=0, claim=0, release=0, send_rc=0, send_bytes=None,
                  receive_rc=0, chunks=None, response=None, value=1,
-                 endpoints=(0x02, 0x81), attributes=2, packet=64,
+                 endpoints=(0x81, 0x02), attributes=2, packet=512,
                  alternative=0, alternate_count=1, configuration_read=None,
                  descriptor_rc=0, open_rc=0, init_rc=0, list_rc=None):
         self.targets, self.bus, self.address = targets, bus, address
@@ -50,24 +58,22 @@ class FakeLibusb:
         self.list_rc = list_rc
         self.calls, self.sent, self.received = [], [], 0
         self.devices = (C.c_void_p * (targets + 1))(*range(101, 101 + targets), None)
+        self._from_observed_configuration()
+        # Override specific fields for negative fixtures; all other control,
+        # data, IAD and union fields still come from the observed byte stream.
         self.endpoints = (usb._Endpoint * len(endpoints))()
         for endpoint, number in zip(self.endpoints, endpoints):
-            endpoint.bEndpointAddress = number
-            endpoint.bmAttributes = attributes
+            endpoint.bLength, endpoint.bDescriptorType = 7, 5
+            endpoint.bEndpointAddress, endpoint.bmAttributes = number, attributes
             endpoint.wMaxPacketSize = packet
         self.alternates = (usb._InterfaceDescriptor * alternate_count)()
         for alt in self.alternates:
-            alt.bInterfaceNumber = 0
-            alt.bAlternateSetting = alternative
-            alt.bNumEndpoints = len(endpoints)
+            C.memmove(C.byref(alt), C.byref(self.observed_interfaces[1]), C.sizeof(alt))
+            alt.bAlternateSetting, alt.bNumEndpoints = alternative, len(endpoints)
             alt.endpoint = self.endpoints
-        self.interfaces = (usb._Interface * 1)()
-        self.interfaces[0].num_altsetting = alternate_count
-        self.interfaces[0].altsetting = self.alternates
-        self.config = usb._Configuration()
+        self.interfaces[1].num_altsetting = alternate_count
+        self.interfaces[1].altsetting = self.alternates
         self.config.bConfigurationValue = configuration
-        self.config.bNumInterfaces = 1
-        self.config.interface = self.interfaces
         for name in (
             "init", "exit", "get_device_list", "free_device_list", "get_device_descriptor",
             "get_bus_number", "get_device_address", "get_active_config_descriptor",
@@ -78,6 +84,51 @@ class FakeLibusb:
                 self.calls.append((name, args))
                 return getattr(self, "_" + name)(*args)
             setattr(self, "libusb_" + name, FakeFunction(implementation))
+
+    def _from_observed_configuration(self):
+        """Decode independent captured descriptor bytes into a libusb C tree."""
+        raw, offset, descriptors = OBSERVED_CONFIGURATION, 0, []
+        while offset < len(raw):
+            size = raw[offset]
+            descriptors.append(raw[offset:offset + size])
+            offset += size
+        self.config = usb._Configuration()
+        (self.config.bLength, self.config.bDescriptorType, self.config.wTotalLength,
+         self.config.bNumInterfaces, self.config.bConfigurationValue, self.config.iConfiguration,
+         self.config.bmAttributes, self.config.MaxPower) = struct.unpack("<BBHBBBBB", descriptors[0])
+        self.observed_interfaces = (usb._InterfaceDescriptor * 2)()
+        self.interfaces = (usb._Interface * 2)()
+        self.endpoint_storage, self.extra_storage = [], []
+        config_extra, interface_extras, interface_endpoints = [], {0: [], 1: []}, {0: [], 1: []}
+        current = None
+        for descriptor in descriptors[1:]:
+            if descriptor[1] == 4:
+                current = descriptor[2]
+                for (name, _), value in zip(usb._InterfaceDescriptor._fields_[:9], descriptor):
+                    setattr(self.observed_interfaces[current], name, value)
+            elif descriptor[1] == 5:
+                endpoint = usb._Endpoint()
+                (endpoint.bLength, endpoint.bDescriptorType, endpoint.bEndpointAddress,
+                 endpoint.bmAttributes, endpoint.wMaxPacketSize, endpoint.bInterval) = struct.unpack("<BBBBHB", descriptor)
+                interface_endpoints[current].append(endpoint)
+            elif current is None:
+                config_extra.append(descriptor)
+            else:
+                interface_extras[current].append(descriptor)
+        for number, interface in enumerate(self.observed_interfaces):
+            endpoints = (usb._Endpoint * len(interface_endpoints[number]))(*interface_endpoints[number])
+            self.endpoint_storage.append(endpoints)
+            interface.endpoint = endpoints
+            self.set_extras(interface, b"".join(interface_extras[number]))
+            self.interfaces[number].num_altsetting = 1
+            self.interfaces[number].altsetting = C.pointer(interface)
+        self.config.interface = self.interfaces
+        self.set_extras(self.config, b"".join(config_extra))
+
+    def set_extras(self, owner, value):
+        raw = (C.c_ubyte * len(value)).from_buffer_copy(value)
+        self.extra_storage.append(raw)
+        owner.extra, owner.extra_length = raw, len(value)
 
     def _init(self, context):
         set_pointer(context, C.c_void_p, 301)
@@ -123,15 +174,15 @@ class FakeLibusb:
         pass
 
     def _kernel_driver_active(self, handle, interface):
-        assert interface == 0
+        assert interface == 1
         return self.kernel
 
     def _claim_interface(self, handle, interface):
-        assert interface == 0
+        assert interface == 1
         return self.claim
 
     def _release_interface(self, handle, interface):
-        assert interface == 0
+        assert interface == 1
         return self.release
 
     def _control_transfer(self, handle, direction, request, value, index, data, length, timeout):
@@ -223,6 +274,13 @@ def test_runtime_gcm_raw_result_and_static_mapping_are_not_calibrated(tmp_path):
     assert fake.names.index("free_config_descriptor") < fake.names.index("open")
     assert fake.libusb_close.restype is None
     assert fake.libusb_get_device_list.restype is C.c_ssize_t
+    contract = result["transport_record"]["usb_contract"]
+    assert contract["control_interface"] == 0 and contract["data_interface"] == contract["interface"] == 1
+    assert contract["cdc_union_hex"] == "0524060001" and contract["iad_hex"] == "080b000202020107"
+    assert contract["contract_basis"] == usb.NATIVE_DESCRIPTOR_EVIDENCE
+    ownership = [(name, args[1]) for name, args in fake.calls
+                 if name in ("kernel_driver_active", "claim_interface", "release_interface")]
+    assert ownership == [("kernel_driver_active", 1), ("claim_interface", 1), ("release_interface", 1)]
 
 
 @pytest.mark.parametrize("kind,profile,value", [("runtime", "literal", 0x12345678),
@@ -254,6 +312,71 @@ def test_identity_configuration_endpoint_or_ownership_failure_prevents_request(t
         "get_device_descriptor", "get_bus_number", "get_device_address",
         "get_active_config_descriptor", "free_config_descriptor", "open", "close",
         "control_transfer", "kernel_driver_active", "claim_interface"}
+
+
+@pytest.mark.parametrize("mutation", ["bulk-on-control", "missing-union", "wrong-union-master",
+    "wrong-union-slave", "duplicate-union", "union-on-data", "missing-iad", "wrong-iad-first",
+    "wrong-iad-count", "duplicate-iad", "duplicate-endpoint", "duplicate-interface",
+    "wrong-control-class", "wrong-data-class", "wrong-control-endpoint", "wrong-control-packet",
+    "malformed-extra", "missing-data-interface"])
+def test_cdc_association_and_endpoint_mismatch_never_claims_or_sends(tmp_path, mutation):
+    fake = FakeLibusb()
+    control, data = fake.observed_interfaces[0], fake.alternates[0]
+    control_raw = C.string_at(control.extra, control.extra_length)
+    iad = bytes.fromhex("080b000202020107")
+    union = bytes.fromhex("0524060001")
+    if mutation == "bulk-on-control":
+        control.bNumEndpoints, control.endpoint = data.bNumEndpoints, data.endpoint
+    elif mutation == "missing-union":
+        fake.set_extras(control, control_raw.replace(union, b""))
+    elif mutation == "wrong-union-master":
+        fake.set_extras(control, control_raw.replace(union, bytes.fromhex("0524060101")))
+    elif mutation == "wrong-union-slave":
+        fake.set_extras(control, control_raw.replace(union, bytes.fromhex("0524060000")))
+    elif mutation == "duplicate-union":
+        fake.set_extras(control, control_raw + union)
+    elif mutation == "union-on-data":
+        fake.set_extras(control, control_raw.replace(union, b""))
+        fake.set_extras(data, union)
+    elif mutation == "missing-iad":
+        fake.set_extras(fake.config, b"")
+    elif mutation == "wrong-iad-first":
+        fake.set_extras(fake.config, bytes.fromhex("080b010202020107"))
+    elif mutation == "wrong-iad-count":
+        fake.set_extras(fake.config, bytes.fromhex("080b000102020107"))
+    elif mutation == "duplicate-iad":
+        fake.set_extras(fake.config, iad + iad)
+    elif mutation == "duplicate-endpoint":
+        fake.endpoints[1].bEndpointAddress = fake.endpoints[0].bEndpointAddress
+    elif mutation == "duplicate-interface":
+        data.bInterfaceNumber = 0
+    elif mutation == "wrong-control-class":
+        control.bInterfaceClass = 10
+    elif mutation == "wrong-data-class":
+        data.bInterfaceClass = 2
+    elif mutation == "wrong-control-endpoint":
+        fake.endpoint_storage[0][0].bEndpointAddress = 0x83
+    elif mutation == "wrong-control-packet":
+        fake.endpoint_storage[0][0].wMaxPacketSize = 64
+    elif mutation == "malformed-extra":
+        fake.set_extras(control, control_raw + b"\x00\x24")
+    elif mutation == "missing-data-interface":
+        fake.config.bNumInterfaces = 1
+    result = execute(tmp_path, fake)
+    assert not result["ok"] and result["stage"] == "descriptors"
+    assert result["request_outcome"] == "not_sent" and not fake.sent
+    assert "claim_interface" not in fake.names and "open" not in fake.names
+    assert fake.names[-3:] == ["free_config_descriptor", "free_device_list", "exit"]
+
+
+def test_iad_parser_accepts_libusb_retention_with_control_interface_extras(tmp_path):
+    fake = FakeLibusb()
+    control = fake.observed_interfaces[0]
+    iad = C.string_at(fake.config.extra, fake.config.extra_length)
+    functions = C.string_at(control.extra, control.extra_length)
+    fake.set_extras(fake.config, b"")
+    fake.set_extras(control, iad + functions)
+    assert execute(tmp_path, fake)["ok"]
 
 
 @pytest.mark.parametrize("options", [{"send_rc": -7, "send_bytes": 5}, {"send_bytes": 17},
