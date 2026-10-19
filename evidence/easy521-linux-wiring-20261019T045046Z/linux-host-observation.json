@@ -1,0 +1,47 @@
+{
+  "schema": "plcidf.linux-host-observation.v1",
+  "recorded_at": "2026-10-19T04:52:24.901048+00:00",
+  "commands": [
+    {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "returncode": 0,
+      "stdout": "Linux zss 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ip",
+        "-brief",
+        "address"
+      ],
+      "returncode": 0,
+      "stdout": "lo               UNKNOWN        127.0.0.1/8 10.255.255.254/32 ::1/128 \neth0             UP             172.18.107.122/20 fe80::215:5dff:fe2c:8304/64 \n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ip",
+        "route"
+      ],
+      "returncode": 0,
+      "stdout": "default via 172.18.96.1 dev eth0 proto kernel \n172.18.96.0/20 dev eth0 proto kernel scope link src 172.18.107.122 \n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "lsusb",
+        "-d",
+        "0471:a531"
+      ],
+      "status": "not-installed",
+      "error": "[Errno 2] No such file or directory: 'lsusb'"
+    }
+  ],
+  "usb_sysfs_present": false,
+  "usb_device_nodes_present": false,
+  "scope": "Linux-host read-only observations; no Windows process, USB ownership change, vendor frame, PLC write or network scan",
+  "interpretation": "No native USB bus/device nodes visible in this WSL instance at observation; vendor device identity not enumerated here; does not prove unplugged physical USB."
+}

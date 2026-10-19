@@ -1,5 +1,7 @@
 # Easy521 的 WSL CLI 实验入口
 
+本体供电、A9输入公共端、B9输出公共端及TN/TP负载接法见[接线说明](usage/EASY521_LOAD_WIRING.md)。纯Linux本地闭环和既有ARM对象后处理见[21号验证](research/firmware/21-linux-existing-global-bindings-2026-10-19.md)，与下述Windows桥接分别验收。
+
 2026-10-19接入24 V后的实测：灯程序经现有`plcidf build`完整厂商编译零错误；统筹从WSL监督厂商桌面完成USB下装、独立程序比较和RUN。用户明确确认输出区Y0闪烁，STOP后熄灭。独立USB查询读到RUN时GCM=1、M8000=true及M8013变化；STOP时GCM=0、M8000=false、M8001=true。原始记录、人工反馈、构建失败和产物漂移见[20号报告](research/firmware/20-powered-led-bench-2026-10-19.md)。
 
 这轮下载采用精确项目/对话框的统筹操作，仍调用Windows AutoShop与libusb0驱动。现有`AutoShopVendorAdapter`只接受其3840×2160校准布局，本次1920×1080布局和RUN中下载的双提示尚未接入该严格适配器；不能把原语成功当作`plcidf flash`已通过。下一批任务见[当前桌面适配计划](architecture/EASY521_CURRENT_DESKTOP_ADAPTER_PLAN_2026-10-19.md)。完整Linux原生编译、包装和无界面下载仍未完成。

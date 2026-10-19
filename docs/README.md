@@ -10,6 +10,8 @@
 | 分区 | 路径 | 状态 | 一句话 |
 |---|---|---|---|
 | 现场反馈 | [FEEDBACK_CAPTURE.md](FEEDBACK_CAPTURE.md) | 离线CLI已集成 | 人工记录、真实仪器记录校验、多轮摘要与未知身份 |
+| 负载接线 | [usage/EASY521_LOAD_WIRING.md](usage/EASY521_LOAD_WIRING.md) | 官方图已核对 | A9输入SS、B9输出COM、TN/TP极性与现有闪灯程序边界 |
+| 最新Linux验证 | [research/firmware/21-linux-existing-global-bindings-2026-10-19.md](research/firmware/21-linux-existing-global-bindings-2026-10-19.md) | 本地闭环及受限对象后处理已实测 | 真实编译/运行/监控/停止；固定8项绑定消除符号差异，完整Easy521原生下装仍开放 |
 | Easy521 AI闭环 | [requirements/EASY521_AI_LOOP_2026-10-19.md](requirements/EASY521_AI_LOOP_2026-10-19.md) / [architecture/ADR-0005-easy521-ai-control-loop.md](architecture/ADR-0005-easy521-ai-control-loop.md) | 2026-10-19需求与设计 | Linux终态、Windows过渡、规范注释及人工观察/仪器反馈 |
 | 最新真机实验 | [research/firmware/20-powered-led-bench-2026-10-19.md](research/firmware/20-powered-led-bench-2026-10-19.md) | 24 V 台架灯程序已下装并校验 | 独立状态/时钟读取、用户确认Y0闪烁及STOP后熄灭；Windows桥接与字节追溯边界单列 |
 | 此前软件与协议交付 | [management/EASY521_AI_FOLLOWUP_2026-10-19.md](management/EASY521_AI_FOLLOWUP_2026-10-19.md) | 日期阶段快照 | GCM调用链更正、Linux链接、GVT解析与反馈工具；供电后的新事实见上行 |

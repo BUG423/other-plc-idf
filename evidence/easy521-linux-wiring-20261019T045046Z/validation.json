@@ -1,0 +1,30 @@
+{
+  "schema": "plcidf.linux-round-validation.v1",
+  "recorded_at": "2026-10-19T04:58:25.086841+00:00",
+  "software_base_revision": "a207e418a32ac04e2b48b653ab75adeb328e88d1",
+  "working_tree_dirty": true,
+  "tools_tests": {
+    "command": "PLCIDF_TEST_LLD=/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld .venv/bin/python -m pytest tools/tests -q",
+    "exit_code": 0,
+    "new_binding_tests": 17,
+    "scope": "offline/synthetic/loopback plus opt-in actual Linux LLD positive and duplicate-symbol negative; subset counts not additive",
+    "passed": 515,
+    "skipped": 0
+  },
+  "linux_cli_reports": [
+    "open-linux-validation.json",
+    "ai-workflow-validation.json"
+  ],
+  "binding_report": "binding-report.json",
+  "independent_comparison": "binding-reference-comparison.json",
+  "hardware_accessed": false,
+  "windows_processes_used": false,
+  "device_application_cleared": false,
+  "source_compilation_verified_for_vendor_objects": false,
+  "full_easy521_application_downloadable": false,
+  "tool_sha256": {
+    "tools/bind_vendor_globals.py": "626922058cbca6596484e811c3e01d17c6424094926aae3b13200e6fd2aa7f41",
+    "tools/inspect_vendor_variables.py": "108421e86cf05a74f91b91a3cd5e9ad5c68e4dc67c05190aab6a2b404a1472c3",
+    "tools/inspect_vendor_application.py": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+  }
+}

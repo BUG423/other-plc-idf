@@ -1,0 +1,27 @@
+{
+  "schema": "plcidf.global-binding-inputs.v1",
+  "profile": "easy521-eight-existing-globals-v1",
+  "source_sha256": "392ae08c3e1e2bbed430af326d287e042bf15d3dc8f674712a6ed748f40acc09",
+  "gvt_sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5",
+  "address_csv_sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+  "link_report_sha256": "4b81590c08feefdaae92bc6018171207a7c5a205d379a40fe698bfd955f70049",
+  "link_inputs": [
+    {
+      "role": "pou-000",
+      "sha256": "55cacc60c640b85b072555f21989ce49903e2eef38ca03d262a3f5ea073a18b5"
+    },
+    {
+      "role": "pou-001",
+      "sha256": "0427a175b83bd445b632a449e92fde9276b2a703737e7ceadaca08d4f1d6d411"
+    },
+    {
+      "role": "syslib",
+      "sha256": "2fde5706b01135ac15db5f17b6847dd361894c909ecaa6a3cf9cca2f132782d2"
+    },
+    {
+      "role": "stclib",
+      "sha256": "047dad6fa718170625f0a78d927df304f3a6f681970009324a7179397958d95e"
+    }
+  ],
+  "manifest_hash": "81a4106a0f2368948695d562ac64a56fbfeb3085fc61afffff468beabc8b071f"
+}

@@ -45,7 +45,7 @@ Linux 后端已能真实编译、执行与验收 ST。Easy521 接入 24 V 后，
 | 🤖 **AI 编程与需求验收** | AI 直接修改 ST 和场景文件；`verify` 执行真实编译与逐扫描 expected/actual 断言，支持电机逻辑和 REAL 滞回示例。 |
 | 🐧 **Linux 原生运行** | 固定 MatIEC 工具链，提供工程创建、构建、部署、本地运行、监测与停止；物理 I/O 和工业实时性另行验收。 |
 | 🎛️ **Easy521 工程兼容** | WSL 调用已安装 AutoShop，支持已有工程 MAIN 同步、真实编译、下载与证据记录；当前保留 Windows 依赖。 |
-| 🧩 **独立对象编译与链接** | 受限 MAIN 和基础全局表经 Windows StLang 生成 ARM 对象，Linux LLD 已可执行厂商顺序的两级链接；已有变量地址可独立解析，完整运行时绑定仍待完成。 |
+| 🧩 **独立对象编译与链接** | 受限 MAIN 和基础全局表经 Windows StLang 生成 ARM 对象；Linux LLD 两级链接、已有变量解析及固定 8 项全局符号后处理已实测，完整原生应用构建仍待完成。 |
 | 🔌 **数据控制与监测** | 独立 USB 状态、固定变量和时钟读取已有真机证据；D 区工具支持单次写入和读回，原 monitor 保持只读。业务变量须先绑定地址。 |
 | 📝 **现场反馈** | 人工记录、仪器记录校验及多轮摘要；关联需求/程序/目标，核对日期与附件哈希，未知项保留。 |
 | 📋 **可追溯记录** | 源码、构建产物、部署候选与验证结果分开记录；超时或无法核验时返回失败或 unknown，不自动重放设备写操作。 |
@@ -134,6 +134,7 @@ python -m pytest tools/tests -q
 | [Easy521 闭环需求](docs/requirements/EASY521_AI_LOOP_2026-10-19.md) / [任务分工](docs/management/EASY521_AI_TASKS_2026-10-19.md) | Linux 原生目标、人工观察记录、代码注释标准和本轮分派 |
 | [Easy521 操作说明](docs/EASY521_CLI.md) | 真实构建/下装记录、命令、当前限制与诊断 |
 | [Y0 真机实验](docs/research/firmware/20-powered-led-bench-2026-10-19.md) / [灯程序](examples/easy521_led_blink) | 接入 24 V 后的源码、编译、下载、独立读回和人工观察 |
+| [A9/B9 接线](docs/usage/EASY521_LOAD_WIRING.md) / [Linux 最新验证](docs/research/firmware/21-linux-existing-global-bindings-2026-10-19.md) | TN/TP 负载回路、真实本地闭环与 Easy521 原生构建进展 |
 | [直接控制研究](docs/management/EASY521_DIRECT_CONTROL_2026-10-18.md) | 数据协议、CPU 模式、应用下载和底层系统的证据边界 |
 | [实施计划](docs/management/PLAN.md) / [进展](docs/management/PROGRESS.md) | 任务、验收条件、分工与 GitHub 跟踪 |
 | [协议与固件研究](docs/research/README.md) | 手册核验、通信实现、链接/包装及芯片资料研究 |

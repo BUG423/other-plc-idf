@@ -1,0 +1,215 @@
+{
+  "schema": "plcidf.bound-object-reference-comparison.v1",
+  "recorded_at": "2026-10-19T04:57:25.005302+00:00",
+  "scope": "offline comparison to independently retained vendor reference; no source-to-POU compilation proof, runtime ABI or deployment",
+  "source_compilation_verified": false,
+  "downloadable": false,
+  "objects": [
+    {
+      "name": "stuserprog.o",
+      "bound_private": "/home/zss/workspace/py2plc/.plcidf/native-bind-20261019T045636Z/bound-objects/stuserprog.o",
+      "bound_sha256": "77962cdaace8b76dead573c6c6c2a0387e3e538db68f735f2d143269a4a1d0d1",
+      "input_sha256": "001ac7470ddbc3db378d554eb1c05016942bf333fa11f5e0f4e23444f1e233ff",
+      "reference_private": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stuserprog.o",
+      "reference_sha256": "09c96e5511da4e0035c4427a9635ec70134a2258c357c952788f7f7069f718f9",
+      "byte_identical_to_reference": false,
+      "symbol_count": 137,
+      "reference_symbol_count": 137,
+      "normalized_symbols_match": true,
+      "symbol_differences": {
+        "bound_only": [],
+        "reference_only": []
+      },
+      "sections": [
+        {
+          "name": ".text",
+          "type": 1,
+          "size": 1070,
+          "sha256": "1ded55358384173b464bfd12eb959ebd8b900a444f94424eb472012996d18a00",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".ARM.exidx",
+          "type": 1879048193,
+          "size": 88,
+          "sha256": "5cf556683efb53bd3ebaae54f6dda49a01f69f8e722f7d7d2cf5e3f4862f1888",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".rel.text",
+          "type": 9,
+          "size": 648,
+          "sha256": "d8fad064ed90fa593b7eaf1021c3997117f1f385f0403ab4c3d6372adbb4386c",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".rel.ARM.exidx",
+          "type": 9,
+          "size": 176,
+          "sha256": "acfb7295da9392f02a6d4d8e6530250b7fa7089ce5291cfadf65a35e77ab93c7",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".bss",
+          "type": 8,
+          "size": 776,
+          "sha256": null,
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".ARM.attributes",
+          "type": 1879048195,
+          "size": 52,
+          "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".debug_frame",
+          "type": 1,
+          "size": 276,
+          "sha256": "55faeec5a892d5ea0f8c2eba984521cbb10df0f4fb6b5cdc3066de35e4b3b13c",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".rel.debug_frame",
+          "type": 9,
+          "size": 176,
+          "sha256": "4393c0db7e9c6659967dbc50d47b6286a81459ce761f10a08faf35891be17f5a",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".note.GNU-stack",
+          "type": 1,
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".shstrtab",
+          "type": 3,
+          "size": 136,
+          "sha256": "26cca74ab9bb14d86041d13efd7c72707a4cbf14ccef79aad282f4149c31a99b",
+          "matches_vendor_reference": true
+        }
+      ],
+      "only_8_selected_symbol_fields_changed": true,
+      "changed_byte_count": 39,
+      "unchanged_original_input": true,
+      "remaining_undefined_names": [
+        "_HC_DINT_MOD",
+        "_HC_LD_DEV_MEM_READ_BITS",
+        "_HC_LD_DEV_MEM_WRITE_BITS",
+        "_HC_LD_ERROR_ADD",
+        "__aeabi_unwind_cpp_pr0"
+      ]
+    },
+    {
+      "name": "stprog.o",
+      "bound_private": "/home/zss/workspace/py2plc/.plcidf/native-bind-20261019T045636Z/bound-objects/stprog.o",
+      "bound_sha256": "7e5c54ece8b0aad28b9476ffb9d079f7249087438d9471e40d7c7d474eab89a0",
+      "input_sha256": "9ef1a87223b279b6a90b722beb6b86b6067b6255eee1fb23fd734adfe9b78b92",
+      "reference_private": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/Temp/stprog.o",
+      "reference_sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b",
+      "byte_identical_to_reference": false,
+      "symbol_count": 1676,
+      "reference_symbol_count": 1676,
+      "normalized_symbols_match": true,
+      "symbol_differences": {
+        "bound_only": [],
+        "reference_only": []
+      },
+      "sections": [
+        {
+          "name": ".text",
+          "type": 1,
+          "size": 63864,
+          "sha256": "fc671b56b99e4a5ca41eb83a34f8706793263033ad9bb0770e243ac8146e0eed",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".ARM.exidx",
+          "type": 1879048193,
+          "size": 432,
+          "sha256": "b7aec7625449b4bebad7f841abd767900af2911a65c52a2d995d62fe63d83a89",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".rel.text",
+          "type": 9,
+          "size": 29520,
+          "sha256": "b4805c82ae5a1a92f4cf80061f804416281361145fe5f4f38780317ad0c8643e",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".rel.ARM.exidx",
+          "type": 9,
+          "size": 864,
+          "sha256": "35a9556c91d092f78a5599c69bba385ce9f58bff84f67599ce65653e28d2d1b3",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".bss",
+          "type": 8,
+          "size": 13936,
+          "sha256": null,
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".ARM.attributes",
+          "type": 1879048195,
+          "size": 52,
+          "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".debug_frame",
+          "type": 1,
+          "size": 2816,
+          "sha256": "5e510eeed684ec1b7534cd08e37d526775a5d776aeb90157b79c6a3fa28ca309",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".rel.debug_frame",
+          "type": 9,
+          "size": 864,
+          "sha256": "ef38bacdb44c8d035555574e65d4cec1003c53f7a6f845c5bd9663ed6102154f",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".note.GNU-stack",
+          "type": 1,
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_vendor_reference": true
+        },
+        {
+          "name": ".shstrtab",
+          "type": 3,
+          "size": 136,
+          "sha256": "26cca74ab9bb14d86041d13efd7c72707a4cbf14ccef79aad282f4149c31a99b",
+          "matches_vendor_reference": true
+        }
+      ],
+      "only_8_selected_symbol_fields_changed": true,
+      "changed_byte_count": 39,
+      "unchanged_original_input": true,
+      "remaining_undefined_names": [
+        "_HC_DINT_MOD",
+        "_HC_EXPT",
+        "_HC_FLOAT_MIN",
+        "_HC_INT64TODOUBLE",
+        "_HC_LD_DEV_MEM_COPY_BITS",
+        "_HC_LD_DEV_MEM_READ_BITS",
+        "_HC_LD_DEV_MEM_WRITE_BITS",
+        "_HC_LD_ERROR_ADD",
+        "_HC_LOG10",
+        "_HC_NOROUND",
+        "_HC_ROUND",
+        "_HC_SHL",
+        "_HC_SHR",
+        "_HC_WATCHDOG",
+        "__aeabi_unwind_cpp_pr0"
+      ]
+    }
+  ]
+}

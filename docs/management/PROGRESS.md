@@ -1,5 +1,17 @@
 # 进展记录
 
+## 2026-10-19后续：A9/B9接线核对与Linux既有符号绑定
+
+用户澄清设备仍为Easy521。重新核对官方手册：A9是输入SS，B9是输出COM；TN的B9接负载0V，TP接+24V，铭牌后缀仍待确认。说明与来源见[负载接线](../usage/EASY521_LOAD_WIRING.md)。未追加设备操作或清除程序。
+
+[21号报告](../research/firmware/21-linux-existing-global-bindings-2026-10-19.md)记录本轮纯Linux实际结果：
+
+- 现有真实MatIEC/GCC CLI闭环及AI工作流均通过，覆盖编译、本地部署、监控、停止、+1→+2规则变化、语法/场景拒绝、REAL与延时边界；不是Easy521机内执行。
+- 新增受限`bind_vendor_globals.py`，仅从已解析GVT取得8项普通全局地址并核对CSV，消费旧厂商对象的Linux两级链接结果。两份新对象规范化137/1676项符号与独立参考全部一致，代码/重定位不变，仅所选字段各39字节变化；整个文件仍有表布局差异。
+- 绑定合同验证调用者声明的输入哈希，不补造source→POU编译证明；恒downloadable=false、source_compilation_verified=false。完整前端、分配、包装、事务与原生传输仍开放。
+- 新绑定工具17项合成正负例为完整tools 515项通过的子集；本轮启用真实Linux LLD条件正负例。两份真实Linux工作流及私有样本比较另有JSON证据，无Windows进程或设备访问。
+- WSL当前未见原生USB总线和设备节点；没有切换USB归属或猜测IP。当前`open-linux monitor`为单次快照，无clean子命令；用户“删除”含义待澄清，不将临时目录自动清理说成清除PLC程序。
+
 ## 2026-10-19接入24 V：Y0真机运行、停止与独立USB读回
 
 [20号实测报告](../research/firmware/20-powered-led-bench-2026-10-19.md)记录本轮结果，以下旧快照保留其当时结论。

@@ -1,0 +1,19 @@
+{
+  "schema": "plcidf.session-scope.v1",
+  "created_at": "2026-10-19T04:50:46.940115+00:00",
+  "device_model": "Easy521; user corrected EC121",
+  "exact_suffix": "awaiting TN/TP clarification",
+  "terminal_question_answered": {
+    "A9": "SS input common",
+    "B9": "COM output common",
+    "source": "official bundled Easy user manual pp151–154"
+  },
+  "requested_linux_operations": [
+    "compile",
+    "delete-or-flash ambiguous user wording",
+    "project monitoring"
+  ],
+  "device_mutations_authorized_this_round": false,
+  "device_operations_performed": false,
+  "clarification_policy": "No deletion of PLC program while user wording remains ambiguous; only isolated host operations and offline research."
+}
