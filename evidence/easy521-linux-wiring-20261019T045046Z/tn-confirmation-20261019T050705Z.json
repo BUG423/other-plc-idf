@@ -1,0 +1,34 @@
+{
+  "schema": "plcidf.field-clarification.v1",
+  "recorded_at": "2026-10-19T05:07:05.743920+00:00",
+  "observed_at": null,
+  "source": {
+    "kind": "human",
+    "actor": "用户本人；AI按本会话原意转录",
+    "literal": "我这是TN"
+  },
+  "target": {
+    "model_family": "Easy521",
+    "output_suffix_reported": "TN",
+    "full_nameplate_transcription": null,
+    "serial": null,
+    "identity_quality": "user-reported; not device readback"
+  },
+  "supersedes_unknown_field": {
+    "record": "session.json",
+    "record_sha256": "00175b6cb1dfe5cb53ac6459fb1ac06916672d4e72a5de356bff5fead87f3041",
+    "field": "exact_suffix",
+    "old_value": "awaiting TN/TP clarification"
+  },
+  "manual_interpretation": {
+    "output_type": "NPN / sink",
+    "B9_COM": "load power 0V",
+    "A9_SS": "input common; separate input circuit"
+  },
+  "load_type_and_rating": null,
+  "device_operation_performed": false,
+  "limitations": [
+    "型号后缀为用户声明，未读取设备身份。",
+    "没有推定负载类型、额定值或当前接线状态；没有追加输出或CPU操作。"
+  ]
+}
