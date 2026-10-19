@@ -26,9 +26,12 @@ ASSETS = (
     "wsl-tools/e521_regs.py",
     "plc/tools/autoshop_ui.ps1",
     "plc/tools/read_autoshop_online.ps1",
+    "plc/tools/read_easy521_usb_memory.ps1",
     "plc/tools/compile_vendor_st.ps1",
     "tools/prepare_vendor_st.py",
     "tools/compile_vendor_st.py",
+    "tools/easy521_memory_protocol.py",
+    "tools/read_easy521_usb_memory.py",
     "examples/easy521_native_probe/MAIN_plus1_body.st",
     "examples/easy521_native_probe/MAIN_plus2_body.st",
     "examples/easy521_native_probe/README.md",
@@ -70,6 +73,41 @@ def run(argv: list[str], *, cwd: Path, env: dict[str, str], timeout: float = 120
         raise RuntimeError(f"Unexpected exit {result.returncode}, expected "
                            f"{expected_returncode}: {argv!r}")
     return result
+
+
+def preview_usb_memory_reader(python: Path, reader: Path, *, cwd: Path,
+                              env: dict[str, str]) -> dict:
+    """Run a default preview under guards against processes, sockets and leases.
+
+    The local child interpreter imports the installed package and adjacent codec.
+    No execution arguments or helper calls are permitted. Return its JSON preview;
+    a guard violation or a false preview boundary raises RuntimeError. This checks
+    distribution/import behavior, never Windows transport or Easy521 compatibility.
+    """
+    code = "\n".join([
+        "import runpy, secrets, socket, subprocess, sys",
+        "import plc_idf.interop as interop",
+        "import plc_idf.lease as leases",
+        "def forbidden(*args, **kwargs):",
+        "    raise AssertionError('USB memory preview external access is forbidden')",
+        "subprocess.run = subprocess.Popen = forbidden",
+        "socket.socket = socket.create_connection = forbidden",
+        "interop.run_command = leases.ResourceLease = forbidden",
+        "secrets.randbits = forbidden",
+        "sys.argv = [sys.argv[1]]",
+        "runpy.run_path(sys.argv[0], run_name='__main__')",
+    ])
+    process = run([str(python), "-c", code, str(reader)], cwd=cwd, env=env)
+    preview = json.loads(process.stdout)
+    if (preview.get("schema") != "plcidf.usb-memory-observation.v1"
+            or preview.get("ok") is not True or preview.get("status") != "preview"
+            or preview.get("read_profile") != "revision"
+            or preview.get("device_access") is not False
+            or preview.get("gui_access") is not False
+            or preview.get("hardware_verified") is not False
+            or preview.get("application_execution_verified") is not False):
+        raise RuntimeError("Installed USB memory reader did not preserve default preview boundaries")
+    return preview
 
 
 def main() -> int:
@@ -129,6 +167,9 @@ def main() -> int:
             "vendor_compiler = runtime_asset(root, 'plc/tools/compile_vendor_st.ps1')",
             "prepare_worker = runtime_asset(root, 'tools/prepare_vendor_st.py')",
             "compile_worker = runtime_asset(root, 'tools/compile_vendor_st.py')",
+            "memory_reader = runtime_asset(root, 'tools/read_easy521_usb_memory.py')",
+            "memory_codec = runtime_asset(root, 'tools/easy521_memory_protocol.py')",
+            "memory_helper = runtime_asset(root, 'plc/tools/read_easy521_usb_memory.ps1')",
             "bootstrap = runtime_asset(root, 'tools/bootstrap_open_linux.py')",
             "template = runtime_asset(root, 'examples/open_linux/counter/main.st')",
             "motor = runtime_asset(root, 'examples/open_linux/motor/main.st').parent",
@@ -140,6 +181,9 @@ def main() -> int:
             "assert online_reader.is_file() and online_reader.is_relative_to(package)",
             "assert vendor_compiler.is_file() and vendor_compiler.is_relative_to(package)",
             "assert all(p.is_file() and p.is_relative_to(package) for p in (prepare_worker, compile_worker))",
+            "assert all(p.is_file() and p.is_relative_to(package) for p in (memory_reader, memory_codec, memory_helper))",
+            "assert memory_codec == memory_reader.with_name('easy521_memory_protocol.py')",
+            "assert runtime_asset(memory_reader.parents[1], 'plc/tools/read_easy521_usb_memory.ps1') == memory_helper",
             "assert bootstrap.is_file() and bootstrap.is_relative_to(package)",
             "assert template.is_file() and template.is_relative_to(package)",
             "probe_templates = [PROBE_DIRECTORY / ('MAIN_plus' + str(i) + '_body.st') for i in (1, 2)]",
@@ -154,6 +198,8 @@ def main() -> int:
             "'monitor_dir': cfg.paths.wsl_tools, 'bridge': str(bridge),",
             "'online_reader': str(online_reader), 'vendor_compiler': str(vendor_compiler),",
             "'prepare_vendor_worker': str(prepare_worker), 'compile_vendor_worker': str(compile_worker),",
+            "'usb_memory_reader': str(memory_reader), 'usb_memory_codec': str(memory_codec),",
+            "'usb_memory_helper': str(memory_helper),",
             "'vendor_adapter_metadata': vendor_metadata,",
             "'bridge_windows': cfg.bridge.tools_ps1_windows,",
             "'evidence_path': str(evidence_path(cfg)),",
@@ -165,6 +211,8 @@ def main() -> int:
         paths = json.loads(probe.stdout)
         if Path(paths["module"]).is_relative_to(ROOT):
             raise RuntimeError("Distribution test accidentally imported the checkout")
+        memory_preview = preview_usb_memory_reader(
+            python, Path(paths["usb_memory_reader"]), cwd=project, env=env)
         cli = venv / "bin/plcidf"
         for worker in ("prepare_vendor_worker", "compile_vendor_worker"):
             run([str(python), paths[worker], "--help"], cwd=project, env=env)
@@ -309,6 +357,12 @@ def main() -> int:
             "vendor_intermediate_preparation": prepared,
             "vendor_windows_compilation_executed": False,
             "easy521_offline_doctor": easy_doctor,
+            "usb_memory_preview": {
+                "result": memory_preview,
+                "guarded_access": ["subprocess", "socket", "interop", "device_lease",
+                                   "random_sequence"],
+                "windows_transport_executed": False,
+            },
             "open_linux_checks": {
                 "targets": targets, "new": created, "check": checked,
                 "complete_control_examples": control_checks,

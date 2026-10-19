@@ -1,0 +1,44 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "ui-inspect",
+  "started_at": "2026-10-19T04:32:27.008898+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "inspect",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": null,
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T04:32:30.083281+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "-Action",
+      "inspect",
+      "-ExpectedProject",
+      "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+    ],
+    "returncode": 0,
+    "stdout": "PID=18776|AutoShop V4.12.0.2\nControlType.Window|AutoShop V4.12.0.2|Afx:00400000:8:00010003:00000000:00061312|266976|True|26,26,1440,745\nControlType.Pane|正在加载中|Static|3347284|True|755,555,95,13\nControlType.Pane||SysTreeView32|266950|True|35,173,198,412\nControlType.Pane||Button|266886|True|37,723,13,13\nControlType.Pane||Button|266828|True|53,723,13,13\nControlType.Pane||Button|266954|True|69,723,13,13\nControlType.Pane||Button|266952|True|85,723,13,13\nControlType.Pane||ListBox|266824|True|37,620,1418,100\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

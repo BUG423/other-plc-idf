@@ -1,0 +1,11 @@
+{
+  "schema": "plcidf.local-device-location-update.v1",
+  "recorded_at": "2026-10-19T03:17:58.102006+00:00",
+  "reason": "fresh unique 0471:a531 location is7-2; old6-3 is unrelated input device",
+  "old_busid": "6-3",
+  "new_busid": "7-2",
+  "config_sha256_before": "2c36adc9b6710b6af0a180f4bb285866c329fa9239879fdff3118ca5c106bb57",
+  "config_sha256_after": "a5c8d39cfad4e726c10282e98e84c75cd444952f6256c05bc58686eed916583b",
+  "backup_private": ".plcidf/easy521-power-20261019T031500Z-config-before.toml",
+  "device_action": false
+}

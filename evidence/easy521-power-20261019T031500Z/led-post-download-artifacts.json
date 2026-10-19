@@ -1,0 +1,31 @@
+{
+  "recorded_at": "2026-10-19T03:38:37.686354+00:00",
+  "scope": "host artifacts only after vendor download log; no device binary readback",
+  "artifacts": [
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/Output.prg",
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "matches_pre_download_candidate": true
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/Output.sdt",
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+      "matches_pre_download_candidate": true
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/STTemp/MAIN.o",
+      "sha256": "8daf095e4d1d73f37abd4fe418e983ffda6b1c0c21f3da8b18bd94a1b44db42d",
+      "matches_pre_download_candidate": false
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/STTemp/MAIN.rst",
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+      "matches_pre_download_candidate": true
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/Temp/stprog.o",
+      "sha256": "69f3e60db59df3eae06cc96d9ad3716a08c114b8ffcb3a3bc369a56510b17fff",
+      "matches_pre_download_candidate": false
+    }
+  ]
+}

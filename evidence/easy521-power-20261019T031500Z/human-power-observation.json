@@ -1,0 +1,58 @@
+{
+  "schema": "plcidf.easy521-feedback.v1",
+  "record_kind": "observation",
+  "feedback_id": "human-power-connected-20261019-01",
+  "iteration_id": "easy521-power-20261019T031500Z",
+  "parent_iteration_id": null,
+  "requirement_revision": "EAI-R05-powered-runtime-20261019",
+  "program": {
+    "source_sha256": null,
+    "source_tree_sha256": null,
+    "build_hash": null,
+    "intent_hash": null,
+    "release_hash": null,
+    "device_binary_sha256": null,
+    "device_program_binding": "unknown"
+  },
+  "target": {
+    "profile_id": "easy521",
+    "observed_model": null,
+    "observed_firmware": null,
+    "observed_serial": null,
+    "identity_quality": "unknown",
+    "locator": {
+      "kind": "unknown",
+      "value": null
+    }
+  },
+  "observations": [
+    {
+      "recorded_at": "2026-10-19T03:17:20.375712+00:00",
+      "observed_at": null,
+      "source": {
+        "kind": "human",
+        "actor": "用户本人现场观察；AI按本会话原意转录",
+        "evidence": []
+      },
+      "action": {
+        "kind": "none",
+        "description": "仅记录反馈；采集工具未执行设备操作。",
+        "operation_id": null,
+        "result": "not-performed"
+      },
+      "expected": "接入额定24V主电源后观察面板灯，并核对CPU运行与程序行为。",
+      "actual": {
+        "quality": "observed",
+        "description": "用户报告24V直流电源已经接好，PWR以及其称为WAN的灯均亮；没有将WAN擅自改写为RUN。",
+        "value": null,
+        "unit": null
+      },
+      "outcome": "unknown",
+      "limitations": [
+        "用户没有提供精确观察时间，observed_at保持null；输出端当前接线与灯标签尚待确认。",
+        "面板人工观察不是程序身份或实际扫描计数的仪器读回。",
+        "采集工具只核对记录结构、时间与本地附件哈希；未核验来源、设备或现场事实。"
+      ]
+    }
+  ]
+}

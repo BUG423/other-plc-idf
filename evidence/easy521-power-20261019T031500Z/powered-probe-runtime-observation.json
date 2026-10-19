@@ -1,0 +1,27 @@
+{
+  "schema": "plcidf.powered-probe-observation.v1",
+  "assessed_at": "2026-10-19T03:31:10.026674+00:00",
+  "revision_candidate": 52102.0,
+  "expected_from_uploaded_source": 52102.0,
+  "marker_matches_uploaded_source": true,
+  "counter_values": [
+    9602,
+    735
+  ],
+  "counter_changed": true,
+  "wrap_compatible_with_source_range_1_9999": true,
+  "read_profiles_successful": [
+    "scan-counter",
+    "confidence",
+    "published-scan",
+    "published-value",
+    "heartbeat",
+    "scan-counter"
+  ],
+  "actual_scan_progress_observed": true,
+  "evidence_scope": "current USB device correlated replies match uploaded probe marker and demonstrate changing memory counter; not exact device binary identity or task timing guarantee",
+  "atomic_multi_variable_snapshot": false,
+  "published_pair_not_compared_atomically": true,
+  "device_binary_identity_verified": false,
+  "physical_io_verified": false
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "ui-button",
+  "started_at": "2026-10-19T03:37:38.933703+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "button",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV",
+    "-Value",
+    "确定",
+    "-ExpectedDialog",
+    "下载设置"
+  ],
+  "mutation_requested": true,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": null,
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T03:37:39.550482+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "-Action",
+      "button",
+      "-ExpectedProject",
+      "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV",
+      "-Value",
+      "确定",
+      "-ExpectedDialog",
+      "下载设置"
+    ],
+    "returncode": 0,
+    "stdout": "{\"outcome_verified\":false,\"dialog\":\"下载设置\",\"invocation_posted\":true,\"button\":\"确定\"}\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

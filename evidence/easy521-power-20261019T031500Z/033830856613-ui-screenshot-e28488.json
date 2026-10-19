@@ -1,0 +1,48 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "ui-screenshot",
+  "started_at": "2026-10-19T03:38:30.856613+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "screenshot",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV",
+    "-Value",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\plc-menu.png"
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": null,
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T03:38:32.148028+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "-Action",
+      "screenshot",
+      "-ExpectedProject",
+      "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV",
+      "-Value",
+      "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\plc-menu.png"
+    ],
+    "returncode": 0,
+    "stdout": "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\plc-menu.png\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

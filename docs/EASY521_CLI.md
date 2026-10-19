@@ -1,14 +1,33 @@
 # Easy521 的 WSL CLI 实验入口
 
-2026-10-19最新：独立USB GCM只读查询已绕开AutoShop进程收回原始u8=0，按厂商静态映射报告STOP，现场扫描仍未独立标定。此前ff010000/4B的u32=0属于另一条EtherCAT相关索引，不能解释为CPU状态；错误的静态调用链已另文更正。这仍是Windows驱动桥接，完整Linux原生部署和CPU执行闭环尚未完成。见[最新实测/更正/变量与反馈](management/EASY521_AI_FOLLOWUP_2026-10-19.md)。
+2026-10-19接入24 V后的实测：灯程序经现有`plcidf build`完整厂商编译零错误；统筹从WSL监督厂商桌面完成USB下装、独立程序比较和RUN。用户明确确认输出区Y0闪烁，STOP后熄灭。独立USB查询读到RUN时GCM=1、M8000=true及M8013变化；STOP时GCM=0、M8000=false、M8001=true。原始记录、人工反馈、构建失败和产物漂移见[20号报告](research/firmware/20-powered-led-bench-2026-10-19.md)。
+
+这轮下载采用精确项目/对话框的统筹操作，仍调用Windows AutoShop与libusb0驱动。现有`AutoShopVendorAdapter`只接受其3840×2160校准布局，本次1920×1080布局和RUN中下载的双提示尚未接入该严格适配器；不能把原语成功当作`plcidf flash`已通过。下一批任务见[当前桌面适配计划](architecture/EASY521_CURRENT_DESKTOP_ADAPTER_PLAN_2026-10-19.md)。完整Linux原生编译、包装和无界面下载仍未完成。
+
+## 固定状态与变量读取
+
+以下命令在源码仓库根目录运行。`7-2`是本次台架定位，执行前应重新核对。
+
+```bash
+# 默认preview，不调用Windows、不获取设备租约、不访问USB。
+python tools/read_easy521_usb_memory.py --profile revision
+python tools/read_easy521_usb_memory.py --profile m8013
+
+# AutoShop完整退出、fresh USB枚举唯一匹配后，显式做一次读取。
+python tools/read_easy521_usb_memory.py --profile m8013 --execute --busid 7-2
+```
+
+新工具只提供10个固定项：`revision`、`step`、`scan-counter`、`confidence`、`published-scan`、`published-value`、`heartbeat`、`m8000`、`m8001`、`m8013`。地址/类型绑定现有工程分配快照；不接受任意地址，不写变量或控制CPU。Y0没有加入固定表，Y0闪烁来自用户目视确认。工具返回`candidate-observed`、保留原始帧及`hardware_verified=false`：调用成功不自动校准标量含义、程序身份、物理输出或精确扫描周期。不同变量逐项读取不是原子快照。协议来源见[19号报告](research/firmware/19-existing-variable-read-2026-10-19.md)，实际观测另见20号。
+
+下面保留状态查询入口。此前ff010000/4B的u32=0属于另一条EtherCAT相关索引，不能解释为CPU状态；静态调用链已由[18号报告](research/firmware/18-runtime-mode-correction-2026-10-19.md)更正。
 
 ```bash
 # 默认纯预览。实际读取需确认当次BUSID、关闭AutoShop，再显式执行。
 .venv/bin/python tools/read_easy521_usb_runtime.py --profile gcm-state
-.venv/bin/python tools/read_easy521_usb_runtime.py --profile gcm-state --execute --busid 8-3
+.venv/bin/python tools/read_easy521_usb_runtime.py --profile gcm-state --execute --busid 7-2
 ```
 
-`8-3`是该轮实际位置，worker会在设备锁内重新枚举核对；不自动关闭AutoShop、不切换USB归属、不重试。成功为`observed`，提供raw_value及单独标记未实机校准的静态解释；型号、CPU扫描/程序执行仍未核验。默认`literal`保持历史ff010000/4B请求，不能当CPU状态。工具位于仓库，未添加为`plcidf`子命令。
+worker会在设备锁内重新枚举核对；不自动关闭AutoShop、不切换USB归属、不重试。成功为`observed`，提供raw_value及单独的厂商静态解释；通用工具不会因本轮台架证据而自动提升其他设备的身份或校准等级。默认`literal`保持历史ff010000/4B请求。上述读取工具随wheel作为资源分发，未添加为新的`plcidf`子命令。
 
 2026-10-17 已真实完成两个内存探针的应用下载、厂商程序一致性正反校验。当时 CPU RUN 被拒绝，未完成运行验收；用户报告额定 24V 主供电未连接。完整记录和证据见 [该轮设备报告](management/EASY521_APPLICATION_2026-10-17.md)，不代表今天重新观察了供电或 CPU 状态。
 
@@ -43,7 +62,7 @@ plcidf flash --build-record /tmp/easy521-build.json \
 
 上面默认预览。用户已授权的实际操作加 `--execute --i-have-authorized`。下载不自动 RUN，也不自动重试。`unknown` 或非零退出码不能推出设备未改变，必须先读回日志/设备状态。
 
-**本次真机生产流程返回 unknown。** 厂商下载完成后，会改变/重新生成本地文件；程序比较也会自动重编译，旧清单因此失效。后续独立厂商比较通过已经记录，但不能据此将原先选择的精确二进制部署追溯标成通过。解决自动重编译与实际下载对象绑定之前，这个入口仍为实验性，不能宣称完整部署闭环已验收。
+**2026-10-17的严格CLI真机流程返回 unknown，该边界仍保留。** 厂商下载及程序比较会重新生成本地文件，旧清单因此失效。独立厂商比较通过，不能将原先选择的精确二进制追溯标成通过。2026-10-19灯程序再次留下两项对象漂移证据；解决实际下载对象的字节绑定前，此严格入口仍为实验性。
 
 ## 只读变量快照
 

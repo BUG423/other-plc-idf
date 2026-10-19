@@ -1,0 +1,387 @@
+{
+  "schema": "plcidf.existing-variable-read-static.v1",
+  "observed_date": "2026-10-19",
+  "scope": "offline local files only; no Windows, GUI, USB, socket, PLC or Git operations",
+  "device_requests_sent": 0,
+  "current_poll_tools_modified": false,
+  "inputs": [
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/变量表.gvt",
+      "size": 1503,
+      "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/VarNameAndAddr.csv",
+      "size": 24548,
+      "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+    },
+    {
+      "path": "examples/easy521_native_probe/MAIN_plus2_body.st",
+      "size": 1060,
+      "sha256": "392ae08c3e1e2bbed430af326d287e042bf15d3dc8f674712a6ed748f40acc09"
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+      "size": 127464,
+      "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b"
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/userprog.prg",
+      "size": 294,
+      "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c"
+    }
+  ],
+  "variables": [
+    {
+      "index": 12,
+      "name": "g_iBESS_Mode",
+      "type": "INT",
+      "type_code": 4,
+      "width_bits": 16,
+      "initial_text": "0",
+      "comment": "Controller mode",
+      "address": 34603312,
+      "address_hex": "0x2100130",
+      "record_offset": 1025,
+      "name_length_offset": 1033,
+      "flags_offset": 1048,
+      "address_offset": 1052,
+      "tail_offset": 1072,
+      "record_end_offset": 1084,
+      "compiler_symbol_candidate": "G_IBESS_MODE",
+      "sinfo_type_candidate": 8,
+      "csv_line": 270,
+      "csv_match": true,
+      "synthetic_seq1234_request_hex": "16000103341200000100010000003001100210000000",
+      "response_data_bytes_candidate": 2,
+      "response_frame_bytes_candidate": 24
+    },
+    {
+      "index": 13,
+      "name": "g_rBESS_SensVP",
+      "type": "REAL",
+      "type_code": 32,
+      "width_bits": 32,
+      "initial_text": "0",
+      "comment": "Estimated dV per dPess",
+      "address": 34603328,
+      "address_hex": "0x2100140",
+      "record_offset": 1084,
+      "name_length_offset": 1092,
+      "flags_offset": 1109,
+      "address_offset": 1113,
+      "tail_offset": 1140,
+      "record_end_offset": 1152,
+      "compiler_symbol_candidate": "G_RBESS_SENSVP",
+      "sinfo_type_candidate": 8,
+      "csv_line": 282,
+      "csv_match": true,
+      "synthetic_seq1234_request_hex": "16000103341200000100010000004001100220000000",
+      "response_data_bytes_candidate": 4,
+      "response_frame_bytes_candidate": 26
+    },
+    {
+      "index": 14,
+      "name": "g_rBESS_SensVQ",
+      "type": "REAL",
+      "type_code": 32,
+      "width_bits": 32,
+      "initial_text": "0",
+      "comment": "Estimated dV per dQess",
+      "address": 34603360,
+      "address_hex": "0x2100160",
+      "record_offset": 1152,
+      "name_length_offset": 1160,
+      "flags_offset": 1177,
+      "address_offset": 1181,
+      "tail_offset": 1208,
+      "record_end_offset": 1220,
+      "compiler_symbol_candidate": "G_RBESS_SENSVQ",
+      "sinfo_type_candidate": 8,
+      "csv_line": 283,
+      "csv_match": true,
+      "synthetic_seq1234_request_hex": "16000103341200000100010000006001100220000000",
+      "response_data_bytes_candidate": 4,
+      "response_frame_bytes_candidate": 26
+    },
+    {
+      "index": 15,
+      "name": "g_rBESS_InfluenceP",
+      "type": "REAL",
+      "type_code": 32,
+      "width_bits": 32,
+      "initial_text": "0",
+      "comment": "Estimated P coupling",
+      "address": 34603392,
+      "address_hex": "0x2100180",
+      "record_offset": 1220,
+      "name_length_offset": 1228,
+      "flags_offset": 1249,
+      "address_offset": 1253,
+      "tail_offset": 1278,
+      "record_end_offset": 1290,
+      "compiler_symbol_candidate": "G_RBESS_INFLUENCEP",
+      "sinfo_type_candidate": 8,
+      "csv_line": 272,
+      "csv_match": true,
+      "synthetic_seq1234_request_hex": "16000103341200000100010000008001100220000000",
+      "response_data_bytes_candidate": 4,
+      "response_frame_bytes_candidate": 26
+    },
+    {
+      "index": 16,
+      "name": "g_rBESS_InfluenceQ",
+      "type": "REAL",
+      "type_code": 32,
+      "width_bits": 32,
+      "initial_text": "0",
+      "comment": "Estimated Q coupling",
+      "address": 34603424,
+      "address_hex": "0x21001a0",
+      "record_offset": 1290,
+      "name_length_offset": 1298,
+      "flags_offset": 1319,
+      "address_offset": 1323,
+      "tail_offset": 1348,
+      "record_end_offset": 1360,
+      "compiler_symbol_candidate": "G_RBESS_INFLUENCEQ",
+      "sinfo_type_candidate": 8,
+      "csv_line": 273,
+      "csv_match": true,
+      "synthetic_seq1234_request_hex": "1600010334120000010001000000a001100220000000",
+      "response_data_bytes_candidate": 4,
+      "response_frame_bytes_candidate": 26
+    },
+    {
+      "index": 17,
+      "name": "g_rBESS_Confidence",
+      "type": "REAL",
+      "type_code": 32,
+      "width_bits": 32,
+      "initial_text": "0",
+      "comment": "Estimator confidence",
+      "address": 34603456,
+      "address_hex": "0x21001c0",
+      "record_offset": 1360,
+      "name_length_offset": 1368,
+      "flags_offset": 1389,
+      "address_offset": 1393,
+      "tail_offset": 1418,
+      "record_end_offset": 1430,
+      "compiler_symbol_candidate": "G_RBESS_CONFIDENCE",
+      "sinfo_type_candidate": 8,
+      "csv_line": 271,
+      "csv_match": true,
+      "synthetic_seq1234_request_hex": "1600010334120000010001000000c001100220000000",
+      "response_data_bytes_candidate": 4,
+      "response_frame_bytes_candidate": 26
+    }
+  ],
+  "addresses_remain_opaque": true,
+  "address_divided_by_8": false,
+  "binary_evidence": [
+    {
+      "name": "InterfaceMgr.dll",
+      "size": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192",
+      "image_base": "0x10000000",
+      "selected_code": [
+        {
+          "label": "ReadMemoryEx_facade",
+          "start_rva": "0x68da0",
+          "end_rva_exclusive": "0x68de2",
+          "sha256": "2e75d81f5c37e590d12378089c9620ac83151c9c5dfdccd9fcf020d92294c820"
+        }
+      ]
+    },
+    {
+      "name": "H530Communicate.dll",
+      "size": 22864896,
+      "sha256": "df8a449e9e374e2e0deb1aa8ca14403641cd2076129857536eee26f4e20b9698",
+      "image_base": "0x10000000",
+      "selected_code": [
+        {
+          "label": "constructor",
+          "start_rva": "0x57c0",
+          "end_rva_exclusive": "0x585e",
+          "sha256": "86062ee0ce3894a73a253757d9d0b29c88bff3f8702741de9796d5f96c69bbfd"
+        },
+        {
+          "label": "vtable",
+          "start_rva": "0x7b304",
+          "end_rva_exclusive": "0x7b348",
+          "sha256": "f8b58fc4a0e5816a646f745398e7b194b106fc477045c9ef1307939e28faf2db"
+        },
+        {
+          "label": "configure",
+          "start_rva": "0x1b3f0",
+          "end_rva_exclusive": "0x1b46a",
+          "sha256": "8b08d8dd1c83ccc3a55ddfeb640381d733f47c98fdf04f4005970a8490b2994c"
+        },
+        {
+          "label": "execute_and_payload",
+          "start_rva": "0x1b470",
+          "end_rva_exclusive": "0x1b5eb",
+          "sha256": "d09dc253dfa1690796165d198330d4580e4329b27dbf2b498f89c8805505723d"
+        },
+        {
+          "label": "response_payload_reassembly",
+          "start_rva": "0x28a00",
+          "end_rva_exclusive": "0x28aa8",
+          "sha256": "19f70d929c5dfa48c47e6a8c7421b2f92a1873ba08f66687d4ed1db4e0d2d00d"
+        }
+      ]
+    },
+    {
+      "name": "AutoShop.exe",
+      "size": 55592960,
+      "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e",
+      "image_base": "0x400000",
+      "selected_code": [
+        {
+          "label": "symbol_addr_32bits_to_4bytes",
+          "start_rva": "0x49846f",
+          "end_rva_exclusive": "0x4984ce",
+          "sha256": "7bae6bb5d352072dee122e6302b1d87c119e109d8b20f7a664454b1fa2122361"
+        },
+        {
+          "label": "independent_32bits_to_4bytes",
+          "start_rva": "0x5f1a5f",
+          "end_rva_exclusive": "0x5f1abe",
+          "sha256": "5f246cd51424f83cb9e535a8f0ab8577044ecd2a57f5bd30f7f3911cd02f0b76"
+        }
+      ]
+    },
+    {
+      "name": "Simulator/mp_core.dll",
+      "size": 279698,
+      "sha256": "69770ad2b0c3f0bacf2cda5cdd1a320442e31a46a693b54404cb3125426b1e4f",
+      "image_base": "0x65900000",
+      "selected_code": [
+        {
+          "label": "mem_read_independent",
+          "start_rva": "0x82a8",
+          "end_rva_exclusive": "0x8438",
+          "sha256": "80f5155cf8b5eb59c7c6aa60e917f1071614dc73d61c90714f88294318cad1d1"
+        },
+        {
+          "label": "mp_mem_input",
+          "start_rva": "0xb91c",
+          "end_rva_exclusive": "0xb9c5",
+          "sha256": "214146751ce2806f8a5535c42a1d72aba74ebead090582c01c02cac898ec7098"
+        }
+      ]
+    }
+  ],
+  "vendor_chain": {
+    "facade": "InterfaceMgr RVA68da0",
+    "implementation_slot": "0xe4",
+    "implementation_constructor_rva": "0x57c0",
+    "vtable_write_rva": "0x57f1",
+    "rtti": "CReadMemoryCommandEx",
+    "vtable_rva": "0x7b304",
+    "execute_slot": "0x3c",
+    "execute_rva": "0x1b470",
+    "request_builder_rva": "0x1b4f0",
+    "argument_configure_rva": "0x1b3f0",
+    "protocol_dispatch_call_rva": "0x1b560",
+    "selector": 3,
+    "operation": 1,
+    "payload_bytes": 12,
+    "payload_fields": [
+      {
+        "offset": 0,
+        "bytes": 4,
+        "value": "count=1"
+      },
+      {
+        "offset": 4,
+        "bytes": 4,
+        "value": "address copied unchanged from first unsigned-long input"
+      },
+      {
+        "offset": 8,
+        "bytes": 4,
+        "value": "bit length copied unchanged from second unsigned-long input"
+      }
+    ]
+  },
+  "bit_length_independent_vendor_callers": [
+    {
+      "call_va": "0x8984b1",
+      "address_origin": "IH530SysResMgr::GetVarAddrByName, IAT0x1eb148c",
+      "second_argument": 32,
+      "copied_data_bytes": 4
+    },
+    {
+      "call_va": "0x9f1aa1",
+      "address_origin": "IH530SysResMgr::GetVarAddrByName, IAT0x1eb148c",
+      "second_argument": 32,
+      "copied_data_bytes": 4
+    }
+  ],
+  "vendor_response_facts": {
+    "merge": "sum frame_length-10; concatenate from byte10 via28a00/28a40",
+    "strip_bytes": 12,
+    "copy_data_from_merged_offset": 12,
+    "output_length": "merged payload bytes minus12",
+    "per_item_echo_validation_seen_in_selected_branch": false,
+    "normal_response_operation": "not established by selected vendor branches"
+  },
+  "simulator_crosscheck_only": {
+    "compatibility_with_real_device_proven": false,
+    "selector": 3,
+    "request_operation": 1,
+    "response_operation": 2,
+    "count_frame_offset": 10,
+    "address_frame_offset": 14,
+    "bits_frame_offset": 18,
+    "data_frame_offset": 22,
+    "bytes_per_item": "(bits+7)>>3",
+    "error_operation": 15,
+    "error_u32_frame_offset": 10,
+    "error_frame_bytes": 14
+  },
+  "minimum_future_acceptance": {
+    "fixed_variables_only": true,
+    "no_arbitrary_address_scanning": true,
+    "separate_from_existing_selector1_poll": true,
+    "check": [
+      "length",
+      "version",
+      "selector",
+      "fresh random u16 sequence",
+      "operation",
+      "count=1",
+      "address matches request",
+      "bits match request",
+      "exact data bytes",
+      "no trailing bytes"
+    ],
+    "proposed_order": [
+      "fixed SensVP marker candidate",
+      "same counter twice with bounded interval; raw evidence retained"
+    ],
+    "source_marker_candidate": {
+      "SensVP": 52102.0,
+      "SensVQ": 2.0
+    },
+    "source_change_candidate": {
+      "Mode_per_scan": 1,
+      "Confidence_per_scan": 2.0
+    },
+    "unknown": [
+      "real Easy521 selector3 response shape/operation",
+      "current application identity vs local allocation snapshot",
+      "address region semantics/byte-pointer model",
+      "wire scalar endian/REAL interpretation calibrated against known marker",
+      "arrays/instances/BOOL/retention ABI",
+      "actual counter variation not observed by this agent"
+    ]
+  }
+}

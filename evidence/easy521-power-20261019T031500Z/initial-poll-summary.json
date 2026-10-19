@@ -1,0 +1,130 @@
+{
+  "schema": "plcidf.power-poll-summary.v1",
+  "scheduled_interval_monotonic_s": 30,
+  "samples": [
+    {
+      "sample": 1,
+      "started_at": "2026-10-19T03:15:00.238289+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 2,
+      "started_at": "2026-10-19T03:15:29.312159+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 3,
+      "started_at": "2026-10-19T03:15:58.074830+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 4,
+      "started_at": "2026-10-19T03:16:27.073530+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 5,
+      "started_at": "2026-10-19T03:16:55.967103+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 6,
+      "started_at": "2026-10-19T03:17:24.687328+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 7,
+      "started_at": "2026-10-19T03:17:53.489254+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 8,
+      "started_at": "2026-10-19T03:18:22.282822+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 9,
+      "started_at": "2026-10-19T03:18:50.953396+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 10,
+      "started_at": "2026-10-19T03:19:19.909267+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "sample": 11,
+      "started_at": "2026-10-19T03:19:48.646369+00:00",
+      "status": "observed",
+      "raw": 1,
+      "interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    }
+  ],
+  "paused_for": "exclusive vendor upload/build/download session",
+  "observed_all_raw1": true,
+  "cpu_scan_progress_verified": false
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "plcidf.uploaded-main-check.v1",
+  "source": "fresh F9 upload succeeded; read current MAIN from exact disposable project",
+  "source_sha256": "392ae08c3e1e2bbed430af326d287e042bf15d3dc8f674712a6ed748f40acc09",
+  "matches_known_plus2_after_line_normalization": true,
+  "device_binary_verified": false,
+  "read_only": false,
+  "title": "AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV - [MAIN]"
+}

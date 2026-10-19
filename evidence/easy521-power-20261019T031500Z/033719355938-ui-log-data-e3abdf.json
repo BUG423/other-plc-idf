@@ -1,0 +1,44 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "ui-log-data",
+  "started_at": "2026-10-19T03:37:19.355938+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "log-data",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": null,
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T03:37:20.722278+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "-Action",
+      "log-data",
+      "-ExpectedProject",
+      "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+    ],
+    "returncode": 0,
+    "stdout": "----------------------------------  AutoShop :  工程（BESS_E521_DEV）  编译消息  ----------------------------------\n2026/10/19 11:36:58  开始编译\n2026/10/19 11:36:58  >>>开始变量地址分配\n2026/10/19 11:36:58  完成变量地址分配\n2026/10/19 11:36:58  >>>开始ECAT检查\n2026/10/19 11:36:58  当前工程轮廓轴0个;总线伺服轴0个;总线编码器轴0个;本地脉冲轴0个;本地编码器轴0个\n2026/10/19 11:36:58  完成ECAT检查\n2026/10/19 11:36:58  >>>开始本地模块检查\n2026/10/19 11:36:58  完成本地模块检查\n2026/10/19 11:36:58  >>>开始Modbus配置检查\n2026/10/19 11:36:58  完成Modbus配置检查\n2026/10/19 11:36:58  >>>开始OPCUA检查\n2026/10/19 11:36:58  完成OPCUA检查\n2026/10/19 11:36:58  >>>开始SFTP检查\n2026/10/19 11:36:58  完成SFTP检查\n2026/10/19 11:36:58  >>>开始EIP检查\n2026/10/19 11:36:58  完成EIP检查\n2026/10/19 11:36:58  >>开始WebServer配置检查\n2026/10/19 11:36:58  结束WebServer配置检查\n2026/10/19 11:36:58  >>>开始数据记录配置检查\n2026/10/19 11:36:58  完成数据记录配置检查\n2026/10/19 11:36:58  >>>开始程序文件工程密码检查\n2026/10/19 11:36:58  >>>结束程序文件工程密码检查\n2026/10/19 11:36:58  >>>开始程序编译\n2026/10/19 11:36:58  开始预处理\n信息  预处理时间: 16 ms\n2026/10/19 11:36:58  预处理结束\n开始编译...\n正在编译系统配置信息...\n正在生成UCODE文件...\nMAIN.ST\nSBR_001.ST\n合计符号数：5，STFunc符号数:2， 变量符号数:3， LD函数符号数：0\n统计 - (0)错误,(28)步占用/(200000)总容量,非保持变量区使用:0.25K/1920K,保持变量区使用:0.00K/128K\n总行数：7\n2026/10/19 11:36:59  完成程序编译\n2026/10/19 11:36:59  完成编译\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "plcidf.led-build-invocation.v1",
+  "started_at": "2026-10-19T03:31:32.417276+00:00",
+  "argv": [
+    ".venv/bin/plcidf",
+    "build",
+    "--source",
+    "examples/easy521_led_blink/MAIN_body.st",
+    "--working-project",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV",
+    "--build-record",
+    "evidence/easy521-power-20261019T031500Z/led-build-record.json",
+    "--compile-timeout",
+    "45",
+    "--execute",
+    "--i-have-authorized",
+    "--json"
+  ],
+  "source_sha256": "6c51789d485457f9fc64ff34c2f0101f6c10db61bce1bd2a0f529c2c0111e7ed",
+  "device_write": false
+}

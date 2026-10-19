@@ -1,0 +1,36 @@
+{
+  "schema": "plcidf.clock-samples.v1",
+  "samples": [
+    {
+      "path": "led-clock-sample-01.json",
+      "ok": true,
+      "value_candidate": true
+    },
+    {
+      "path": "led-clock-sample-02.json",
+      "ok": true,
+      "value_candidate": true
+    },
+    {
+      "path": "led-clock-sample-03.json",
+      "ok": true,
+      "value_candidate": false
+    },
+    {
+      "path": "led-clock-sample-04.json",
+      "ok": true,
+      "value_candidate": false
+    },
+    {
+      "path": "led-clock-sample-05.json",
+      "ok": true,
+      "value_candidate": true
+    },
+    {
+      "path": "led-clock-sample-06.json",
+      "ok": true,
+      "value_candidate": true
+    }
+  ],
+  "scope": "sequential fixed BOOL reads; no task period or physical output measurement"
+}

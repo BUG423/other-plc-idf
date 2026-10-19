@@ -1,0 +1,14 @@
+{
+  "schema": "plcidf.field-facts.v1",
+  "observed_at": "2026-10-19T03:22:23.935237+00:00",
+  "source": "user reports in current conversation: 24V connected, PWR and WAN lamps on; all output terminals floating and no loads",
+  "power_24v_connected": true,
+  "power_source": "user-reported external24VDC and USB",
+  "outputs_isolated": true,
+  "mode_switch": "RUN",
+  "mode_switch_source": "user previously set RUN; current physical position not reobserved; current independent GCM reads return1",
+  "physical_run_led": "unknown; user named other lit lamp WAN",
+  "application_scope": "isolated-output-y0-panel-led-bench",
+  "firmware_replacement_authorized": false,
+  "authorized_operations": "user requested live PLC test and visible lamp control after connecting24V; latest message confirms outputs all floating"
+}

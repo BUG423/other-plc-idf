@@ -1,0 +1,75 @@
+{
+  "completed_at": "2026-10-19T04:36:20.362555+00:00",
+  "reason": "maximum-samples",
+  "interval_s": 30,
+  "samples": [
+    {
+      "path": "led-restored-poll-0001.json",
+      "started_at": "2026-10-19T04:33:54.406963+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "path": "led-restored-poll-0002.json",
+      "started_at": "2026-10-19T04:34:24.410016+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "path": "led-restored-poll-0003.json",
+      "started_at": "2026-10-19T04:34:53.113843+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "path": "led-restored-poll-0004.json",
+      "started_at": "2026-10-19T04:35:21.913097+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "path": "led-restored-poll-0005.json",
+      "started_at": "2026-10-19T04:35:50.662008+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "path": "led-restored-poll-0006.json",
+      "started_at": "2026-10-19T04:36:19.361012+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    }
+  ],
+  "device_changes": false,
+  "device_state_calibration": "not established by this poll"
+}

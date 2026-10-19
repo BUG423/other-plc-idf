@@ -161,7 +161,7 @@
         "验证断连、异常值和陈旧数据；只用读功能码",
         "区分变量数采、CPU运行状态、故障与周期监控的实际覆盖范围"
       ],
-      "delivery": "历史USB UI读取12项探针量；2026-10-19独立GCM只读返回u8=0，按厂商静态映射报告STOP，现场扫描/程序身份仍unknown。此前ff010000/4B仅原始索引不是CPU状态；见18号更正及当日后续交付。Modbus、字序和网口仍未验收",
+      "delivery": "2026-10-19接24V：固定ReadMemoryEx首次真机op2读回revision52102及计数9602→735；LED后M8013变化，RUN/STOP/RUN的GCM及M8000/1交叉读回。名义30秒有界轮询与原始帧/人工观察分开留存。Modbus、字序及故障/陈旧质量验收仍开放；见20号报告。",
       "issue_number": 8,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/8"
     },
@@ -184,7 +184,7 @@
         "RUN/STOP、5ms任务周期和错误恢复各有真实证据；未测不写通过",
         "失败或未知状态停止，不自动重试下载、不推断恢复成功"
       ],
-      "delivery": "两个内存探针USB下载及厂商一致性正反校验通过；RUN请求拒绝。设备保留revision2，未恢复原BESS。需额定24V下复核、实际扫描/停止与规则变化、精确二进制追溯，详见EASY521_APPLICATION_2026-10-17.md",
+      "delivery": "2026-10-19接24V且所有输出无负载：灯MAIN经WSL调用完整厂商编译0错误，监督桌面USB下装/厂商比较通过；用户确认输出区Y0闪烁、STOP后熄灭；独立GCM及M8000/1记录RUN→STOP→RUN。保留灯程序RUN，原BESS未恢复。1920严格CLI适配、精确5ms/错误恢复/设备字节追溯仍开放，见20号报告。",
       "issue_number": 9,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/9"
     },
@@ -202,7 +202,7 @@
         "下载协议研究先离线分析合法样本，真实抓包与写操作另需现场授权",
         "最小原型或否决证据支持桥接保留/原生投入决定，未发现不等于不存在"
       ],
-      "delivery": "受限ST经Windows厂商编译器生成ARM对象；Linux两级LLD链接已实测。已有GVT的19项合法分配可独立解析，8项候选符号绑定吻合但未注入。18号纠正12/15错接链，独立GCM ff000000/1B已真机读回0（静态STOP，现场未校准）。完整包装/原生ST编译/传输/端侧身份仍开放",
+      "delivery": "受限ST厂商对象、Linux两级LLD及既有GVT解析已实测。19号追通固定ReadMemoryEx，20号取得真实op2/标记/计数/时钟响应；状态与应用/输出分别记录。完整原生ST编译、符号注入、应用包装、直接下装和设备字节身份仍开放。",
       "issue_number": 10,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/10"
     },
@@ -337,6 +337,28 @@
       "delivery": "create-human/validate/summary仓库工具及38项正负测试已交付；真实仪器记录与附件校验、多轮关联摘要集成通过。见FEEDBACK_CAPTURE.md和EASY521_AI_FOLLOWUP_2026-10-19.md；不执行AI/设备动作，不伪造人工观察",
       "issue_number": 18,
       "github_url": "https://github.com/BUG423/other-plc-idf/issues/18"
+    },
+    {
+      "id": "T15",
+      "title": "将当前桌面布局与下载双提示接入严格CLI",
+      "priority": "P1",
+      "milestone": "M2",
+      "role": "桌面部署AI代理实现、独立审计AI代理复核、统筹独占必要真机操作",
+      "depends_on": [
+        "T07",
+        "T09"
+      ],
+      "estimate": "下一批实现；真机验收按实际需要安排",
+      "acceptance": [
+        "保留旧3840配置，新增独立1920白名单并拒绝混合布局/焦点变化",
+        "下载停止确认与下载后RUN提示分开处理；默认不自动RUN",
+        "单次动作、有限超时和unknown不重放，精确项目/进程/正文绑定",
+        "保留不可变release、日志时窗和字节漂移边界",
+        "负向mock及适配器本身的单次真机验收分别留证"
+      ],
+      "delivery": "本轮仅完成增量设计与文件/测试任务分配，未修改adapter或追加设备写入；docs/architecture/EASY521_CURRENT_DESKTOP_ADAPTER_PLAN_2026-10-19.md",
+      "issue_number": 19,
+      "github_url": "https://github.com/BUG423/other-plc-idf/issues/19"
     }
   ],
   "tracking_issue": {

@@ -1,0 +1,855 @@
+{
+  "schema": "plcidf.led-working-copy.v1",
+  "recorded_at": "2026-10-19T03:19:15.596074+00:00",
+  "original": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV",
+  "working_copy": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV",
+  "files": [
+    {
+      "path": ".plcidf/quarantine/0e36af40963a441b82368ebc27a89ef3/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/0e36af40963a441b82368ebc27a89ef3/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/0e36af40963a441b82368ebc27a89ef3/STTemp/MAIN.rst",
+      "size": 229,
+      "sha256": "cdd6263f09aa44ecc23eebb4804e4845ffbb7f4560fc87397aa786250e495b56"
+    },
+    {
+      "path": ".plcidf/quarantine/0fcb0269bc4f4699aac36b7e3ba6e30e/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/0fcb0269bc4f4699aac36b7e3ba6e30e/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/0fcb0269bc4f4699aac36b7e3ba6e30e/STTemp/MAIN.o",
+      "size": 4472,
+      "sha256": "391ac85bffa6f5399c02fbe537bf98a2e32748c9c09cf0ec58936ea4b33643db"
+    },
+    {
+      "path": ".plcidf/quarantine/0fcb0269bc4f4699aac36b7e3ba6e30e/STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": ".plcidf/quarantine/0fcb0269bc4f4699aac36b7e3ba6e30e/Temp/stprog.o",
+      "size": 159012,
+      "sha256": "b95099a749ed9c96c4a7d16a8b391a6a0c87d7e63ea614b34ff6af123f33f8c6"
+    },
+    {
+      "path": ".plcidf/quarantine/15081990d0e146fdb530d8f8f68b9dee/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/15081990d0e146fdb530d8f8f68b9dee/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/15081990d0e146fdb530d8f8f68b9dee/STTemp/MAIN.o",
+      "size": 4472,
+      "sha256": "391ac85bffa6f5399c02fbe537bf98a2e32748c9c09cf0ec58936ea4b33643db"
+    },
+    {
+      "path": ".plcidf/quarantine/15081990d0e146fdb530d8f8f68b9dee/STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": ".plcidf/quarantine/15081990d0e146fdb530d8f8f68b9dee/Temp/stprog.o",
+      "size": 159012,
+      "sha256": "b95099a749ed9c96c4a7d16a8b391a6a0c87d7e63ea614b34ff6af123f33f8c6"
+    },
+    {
+      "path": ".plcidf/quarantine/4bcf578c76bc40e483ef3775b9174734/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/4bcf578c76bc40e483ef3775b9174734/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/4bcf578c76bc40e483ef3775b9174734/STTemp/MAIN.o",
+      "size": 3908,
+      "sha256": "1cfc3922835609a99474c92f422b7ac584df047a4edc18e34105252c26a919d8"
+    },
+    {
+      "path": ".plcidf/quarantine/4bcf578c76bc40e483ef3775b9174734/STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": ".plcidf/quarantine/4bcf578c76bc40e483ef3775b9174734/Temp/stprog.o",
+      "size": 127452,
+      "sha256": "df93b06dad69d06889bdca5905c0930e4665a6c7b2338e5b304ccabfaf235bdf"
+    },
+    {
+      "path": ".plcidf/quarantine/4c1c612c9e4340669c74df83e331bf6c/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/4c1c612c9e4340669c74df83e331bf6c/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/4c1c612c9e4340669c74df83e331bf6c/STTemp/MAIN.rst",
+      "size": 229,
+      "sha256": "cdd6263f09aa44ecc23eebb4804e4845ffbb7f4560fc87397aa786250e495b56"
+    },
+    {
+      "path": ".plcidf/quarantine/642f587ed65c4e0198274de663414444/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/642f587ed65c4e0198274de663414444/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/642f587ed65c4e0198274de663414444/STTemp/MAIN.o",
+      "size": 3948,
+      "sha256": "55cacc60c640b85b072555f21989ce49903e2eef38ca03d262a3f5ea073a18b5"
+    },
+    {
+      "path": ".plcidf/quarantine/642f587ed65c4e0198274de663414444/STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": ".plcidf/quarantine/642f587ed65c4e0198274de663414444/Temp/stprog.o",
+      "size": 127464,
+      "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b"
+    },
+    {
+      "path": ".plcidf/quarantine/71cfe143d06a407eb76bd1959beaf3d0/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/71cfe143d06a407eb76bd1959beaf3d0/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/71cfe143d06a407eb76bd1959beaf3d0/STTemp/MAIN.o",
+      "size": 3908,
+      "sha256": "f60cc63d95277d222863e4cacc56035919872bdea029132c03f2e96cfa197623"
+    },
+    {
+      "path": ".plcidf/quarantine/71cfe143d06a407eb76bd1959beaf3d0/STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": ".plcidf/quarantine/71cfe143d06a407eb76bd1959beaf3d0/Temp/stprog.o",
+      "size": 127452,
+      "sha256": "457a80f375c5d67548121f69104fc4dcbd94076ad93c8767c93d18873e87acb8"
+    },
+    {
+      "path": ".plcidf/quarantine/81c9f69f0cbf426eaa136639b2fd06f5/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/81c9f69f0cbf426eaa136639b2fd06f5/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/81c9f69f0cbf426eaa136639b2fd06f5/STTemp/MAIN.o",
+      "size": 3908,
+      "sha256": "1cfc3922835609a99474c92f422b7ac584df047a4edc18e34105252c26a919d8"
+    },
+    {
+      "path": ".plcidf/quarantine/81c9f69f0cbf426eaa136639b2fd06f5/STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": ".plcidf/quarantine/81c9f69f0cbf426eaa136639b2fd06f5/Temp/stprog.o",
+      "size": 127452,
+      "sha256": "df93b06dad69d06889bdca5905c0930e4665a6c7b2338e5b304ccabfaf235bdf"
+    },
+    {
+      "path": ".plcidf/quarantine/8fe49bb9de354940be596977623f5d34/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/8fe49bb9de354940be596977623f5d34/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/8fe49bb9de354940be596977623f5d34/STTemp/MAIN.o",
+      "size": 4472,
+      "sha256": "391ac85bffa6f5399c02fbe537bf98a2e32748c9c09cf0ec58936ea4b33643db"
+    },
+    {
+      "path": ".plcidf/quarantine/8fe49bb9de354940be596977623f5d34/STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": ".plcidf/quarantine/8fe49bb9de354940be596977623f5d34/Temp/stprog.o",
+      "size": 159012,
+      "sha256": "b95099a749ed9c96c4a7d16a8b391a6a0c87d7e63ea614b34ff6af123f33f8c6"
+    },
+    {
+      "path": ".plcidf/quarantine/ea684713b2704d22b0fef92128b530c2/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": ".plcidf/quarantine/ea684713b2704d22b0fef92128b530c2/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": ".plcidf/quarantine/ea684713b2704d22b0fef92128b530c2/STTemp/MAIN.o",
+      "size": 4472,
+      "sha256": "391ac85bffa6f5399c02fbe537bf98a2e32748c9c09cf0ec58936ea4b33643db"
+    },
+    {
+      "path": ".plcidf/quarantine/ea684713b2704d22b0fef92128b530c2/STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": ".plcidf/quarantine/ea684713b2704d22b0fef92128b530c2/Temp/stprog.o",
+      "size": 159012,
+      "sha256": "b95099a749ed9c96c4a7d16a8b391a6a0c87d7e63ea614b34ff6af123f33f8c6"
+    },
+    {
+      "path": "AXIS_CTRL-AXIS_CTRL.libtemp",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "AXIS_CTRL-SUSERAXIS.libtemp",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "AXIS_CTRL.flib",
+      "size": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "path": "BESS_E521_DEV.hcp",
+      "size": 55454,
+      "sha256": "d1f48371b66352cf8e0088e358c5160cb1a4c4d9bb360da8c273ba5a5ac2986c"
+    },
+    {
+      "path": "BESS_E521_DEV.hcpp",
+      "size": 52093,
+      "sha256": "42d6b319152f9cdd15abb4ac50a5ebb734c139058af79e9997479578371659a2"
+    },
+    {
+      "path": "Config.sdt",
+      "size": 371,
+      "sha256": "af9e01cb471c8c7d6b4c41605192adeed28f03f6b3570675bea97ae24760f664"
+    },
+    {
+      "path": "CrossTable.crs",
+      "size": 3199,
+      "sha256": "bbb948762666850dffcc2275b27d5ae9fbe8b1679ce9ce6bf8dcea521d0987eb"
+    },
+    {
+      "path": "EIP.dat",
+      "size": 340,
+      "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9"
+    },
+    {
+      "path": "EIP.datBAK",
+      "size": 340,
+      "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9"
+    },
+    {
+      "path": "EIPIns.dat",
+      "size": 24,
+      "sha256": "ded971312fd0d6636189f053bb70120ad8f783b028c5ae16da4253e63d6376f3"
+    },
+    {
+      "path": "Ecam.tr",
+      "size": 54,
+      "sha256": "854e0a3951bc4a773d684415ec8983c32c6f6cfc93f71b86344442379bcc688f"
+    },
+    {
+      "path": "ElemBitComm.gdtx",
+      "size": 209,
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf"
+    },
+    {
+      "path": "ElemUseInfo.esi",
+      "size": 214,
+      "sha256": "09fdbdc578dde7a0763b83b64eba98746e4208742cbb3b5487509b18b50816a8"
+    },
+    {
+      "path": "EtherCat.dat",
+      "size": 243,
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d"
+    },
+    {
+      "path": "EtherCat.datBAK",
+      "size": 243,
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d"
+    },
+    {
+      "path": "EtherCat.tmp",
+      "size": 243,
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d"
+    },
+    {
+      "path": "FBInstStep.dat",
+      "size": 12,
+      "sha256": "19f959c5c26cb28ad3869ffc64b33e5369a3996bcb2fe3369a7430cabdb68777"
+    },
+    {
+      "path": "FB_BESS_AdaptiveSupervisor_Easy521.FB",
+      "size": 10384,
+      "sha256": "0a9d9836c86594f2954a30432cbf3de745296f3ea2d2bc5ec9ee8e8f1ad3afdd"
+    },
+    {
+      "path": "FCInstTbl.fci",
+      "size": 221,
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80"
+    },
+    {
+      "path": "GL20ModuleCfg.data",
+      "size": 253,
+      "sha256": "b06bc7078c0e0df802d849839fd1b9e901814506be18785a81065f63ab079e13"
+    },
+    {
+      "path": "GetServoSN-GetServoSN.libtemp",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "GetServoSN.flib",
+      "size": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "path": "H530QUICKMONTABLE.qmt",
+      "size": 554,
+      "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773"
+    },
+    {
+      "path": "ILIndex.idx",
+      "size": 142,
+      "sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21"
+    },
+    {
+      "path": "INT_001.ST",
+      "size": 233,
+      "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935"
+    },
+    {
+      "path": "InteractiveFile/LabelConfig.xml",
+      "size": 141,
+      "sha256": "e7b0f64c0835386349582ef8c0049767b8c81aeb236d52bd76be198037f12c4b"
+    },
+    {
+      "path": "InteractiveFile/Temp/LabelConfig.xml",
+      "size": 141,
+      "sha256": "e7b0f64c0835386349582ef8c0049767b8c81aeb236d52bd76be198037f12c4b"
+    },
+    {
+      "path": "InteractiveFile/Temp/SharedLabelConfig.xml",
+      "size": 141,
+      "sha256": "e7b0f64c0835386349582ef8c0049767b8c81aeb236d52bd76be198037f12c4b"
+    },
+    {
+      "path": "LoginPassowrd.dat",
+      "size": 17,
+      "sha256": "4facbf88d978289015360dd932d58748d165a0bf8a3d01c40cef08ea134a0bb3"
+    },
+    {
+      "path": "MAIN.ST",
+      "size": 1757,
+      "sha256": "fd060d7ed31f43308eee554bc9a7077834815f0fae7be0b102efca5163a57d68"
+    },
+    {
+      "path": "MAIN.mon",
+      "size": 554,
+      "sha256": "50bcdeaa552629faa336ae854d09b91e346f091e94376ae25eed60592c232773"
+    },
+    {
+      "path": "ModifiedInsIndex.idx",
+      "size": 30,
+      "sha256": "0ef201cc3f9e03eaf99e0dc9752745e1d6667c0f58b8a6f968cf4fd1dbcf40f4"
+    },
+    {
+      "path": "OnlineVersion/V0/EIPIns.foid",
+      "size": 88,
+      "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26"
+    },
+    {
+      "path": "OnlineVersion/V0/stprog.o",
+      "size": 127452,
+      "sha256": "df93b06dad69d06889bdca5905c0930e4665a6c7b2338e5b304ccabfaf235bdf"
+    },
+    {
+      "path": "OnlineVersion/V0/stuserprog.o",
+      "size": 6228,
+      "sha256": "447dbee4ae2e2a62db151cdb2d264cfb665ff8173b2d63be274a9b53985381b1"
+    },
+    {
+      "path": "OnlineVersion/V0/symbol.sym",
+      "size": 218,
+      "sha256": "ae0ffdc0c43b2fcf74f200464c7dd4ab9a9b4f1856c357012c8ac9453ba08e5f"
+    },
+    {
+      "path": "OnlineVersion/V0/userprog.foid",
+      "size": 215,
+      "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396"
+    },
+    {
+      "path": "OnlineVersion/V0/varsinfo.foid",
+      "size": 173,
+      "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603"
+    },
+    {
+      "path": "OpcUAServer.dat",
+      "size": 307,
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b"
+    },
+    {
+      "path": "OpcUAServer.datBAK",
+      "size": 307,
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b"
+    },
+    {
+      "path": "OpcUAServer.tmp",
+      "size": 307,
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b"
+    },
+    {
+      "path": "Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": "Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b"
+    },
+    {
+      "path": "PID_AT-PID_AT.libtemp",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "PID_AT.flib",
+      "size": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "path": "PID_ATC-PID_ATC.libtemp",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "PID_ATC.flib",
+      "size": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "path": "PLC/PLCInsIndex.idx",
+      "size": 112,
+      "sha256": "ed8bb93782bf125bdfe0b7cd111d291d6f08ad07a5ce1382ff289f5e1dd0bbef"
+    },
+    {
+      "path": "PLC/PLCProg.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+    },
+    {
+      "path": "PLC/stuserprog.o",
+      "size": 6228,
+      "sha256": "447dbee4ae2e2a62db151cdb2d264cfb665ff8173b2d63be274a9b53985381b1"
+    },
+    {
+      "path": "PLC/symbol.sym",
+      "size": 218,
+      "sha256": "ae0ffdc0c43b2fcf74f200464c7dd4ab9a9b4f1856c357012c8ac9453ba08e5f"
+    },
+    {
+      "path": "PLC/userprog.foid",
+      "size": 215,
+      "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396"
+    },
+    {
+      "path": "PortConfig.cfg",
+      "size": 265,
+      "sha256": "06f8615e878e0fdc8dfd617f76e8b229d97e3878bb9a2ad88d198526652b3603"
+    },
+    {
+      "path": "ReAllocVarsInfo.vi",
+      "size": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    },
+    {
+      "path": "SBR_001.ST",
+      "size": 233,
+      "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935"
+    },
+    {
+      "path": "SFTPServer.dat",
+      "size": 171,
+      "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169"
+    },
+    {
+      "path": "SFTPServer.datBAK",
+      "size": 171,
+      "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169"
+    },
+    {
+      "path": "SFTPServer.tmp",
+      "size": 171,
+      "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169"
+    },
+    {
+      "path": "STTemp/MAIN.cl",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "STTemp/MAIN.o",
+      "size": 3948,
+      "sha256": "55cacc60c640b85b072555f21989ce49903e2eef38ca03d262a3f5ea073a18b5"
+    },
+    {
+      "path": "STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": "STTemp/MAIN.st",
+      "size": 1715,
+      "sha256": "c32e81927c28e6ad218668bcf174b53d7a36f4d369f7e30764aeba7ca0616c84"
+    },
+    {
+      "path": "STTemp/SBR_001.cl",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "STTemp/SBR_001.o",
+      "size": 1792,
+      "sha256": "0427a175b83bd445b632a449e92fde9276b2a703737e7ceadaca08d4f1d6d411"
+    },
+    {
+      "path": "STTemp/SBR_001.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7"
+    },
+    {
+      "path": "STTemp/SBR_001.st",
+      "size": 32,
+      "sha256": "a32f9150d6f465b494edab2c101298f7510bda5f6508cabec125ddc9533d05c4"
+    },
+    {
+      "path": "STsteps.dat",
+      "size": 918,
+      "sha256": "84f817788143a19bf7aece9df227badf819f438bcf32be904961e110e3598aaf"
+    },
+    {
+      "path": "SYS_EIP.eIPgvt",
+      "size": 221,
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80"
+    },
+    {
+      "path": "SYS_ETHERCAT.ecgvt",
+      "size": 221,
+      "sha256": "424c88308a1e98269211ed5dca47481a149f70fc39b9ac58d22749283de51f80"
+    },
+    {
+      "path": "TRIG-F_TRIG.libtemp",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "TRIG-R_TRIG.libtemp",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "TRIG.flib",
+      "size": 240,
+      "sha256": "ec8f3d392e93ee6ee8eaec5e0ec3ffc6e55f63caecfdfc8b87bc45ef85f51dbd"
+    },
+    {
+      "path": "TcpModbusConfig.cfg",
+      "size": 8,
+      "sha256": "2b4a11fa9359588975ca08fda63a08543abbde3f88753e01b523be7f804a4e83"
+    },
+    {
+      "path": "Temp/DownLoad/EIPIns.foid",
+      "size": 88,
+      "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26"
+    },
+    {
+      "path": "Temp/DownLoad/Ecam.foid",
+      "size": 118,
+      "sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80"
+    },
+    {
+      "path": "Temp/DownLoad/OpcUAServer.foid",
+      "size": 97,
+      "sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd"
+    },
+    {
+      "path": "Temp/DownLoad/canlink.foid",
+      "size": 72,
+      "sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81"
+    },
+    {
+      "path": "Temp/DownLoad/dataLog.foid",
+      "size": 261,
+      "sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4"
+    },
+    {
+      "path": "Temp/DownLoad/ecttrans.foid",
+      "size": 73,
+      "sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538"
+    },
+    {
+      "path": "Temp/DownLoad/ethercat.foid",
+      "size": 270,
+      "sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e"
+    },
+    {
+      "path": "Temp/DownLoad/ethip.foid",
+      "size": 301,
+      "sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac"
+    },
+    {
+      "path": "Temp/DownLoad/modbus.foid",
+      "size": 73,
+      "sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190"
+    },
+    {
+      "path": "Temp/DownLoad/modcfg.foid",
+      "size": 579,
+      "sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48"
+    },
+    {
+      "path": "Temp/DownLoad/sftpserver.foid",
+      "size": 146,
+      "sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2"
+    },
+    {
+      "path": "Temp/DownLoad/syscfg.foid",
+      "size": 789,
+      "sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c"
+    },
+    {
+      "path": "Temp/EIPIns.foid",
+      "size": 88,
+      "sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25"
+    },
+    {
+      "path": "Temp/stprog.o",
+      "size": 127464,
+      "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b"
+    },
+    {
+      "path": "Temp/stuserprog.o",
+      "size": 6240,
+      "sha256": "09c96e5511da4e0035c4427a9635ec70134a2258c357c952788f7f7069f718f9"
+    },
+    {
+      "path": "Temp/symbol.sym",
+      "size": 218,
+      "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92"
+    },
+    {
+      "path": "Temp/userprog.foid",
+      "size": 294,
+      "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c"
+    },
+    {
+      "path": "Temp/varsinfo.foid",
+      "size": 423,
+      "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d"
+    },
+    {
+      "path": "VarAddrMap.am",
+      "size": 1698,
+      "sha256": "9cbff9ffc24e59896d72156b1807187130ae5d9939448b573ff756894d9dc93d"
+    },
+    {
+      "path": "VarList.gdt",
+      "size": 209,
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf"
+    },
+    {
+      "path": "VarNameAndAddr.csv",
+      "size": 24548,
+      "sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+    },
+    {
+      "path": "VarsInfo.vi",
+      "size": 284,
+      "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95"
+    },
+    {
+      "path": "_SYS_CAN.svt",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "_SYS_COM.svt",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "_SYS_COM_SAVE.svt",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "_SYS_ECAT_MASTER.svt",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "_SYS_ECAT_SLAVE.svt",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "_SYS_ETHERNET.svt",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "_SYS_INFO.svt",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "_SYS_PN.svt",
+      "size": 207,
+      "sha256": "9090ebd800e6eb3febdd0e89fac02e7d6beb91fc89170393afbd0a8935afe17c"
+    },
+    {
+      "path": "config.ini",
+      "size": 29,
+      "sha256": "a2832fb685683a26344d61c567e7f58c8b947c76a9f84846a395ede84af8199c"
+    },
+    {
+      "path": "dataLog.data",
+      "size": 197,
+      "sha256": "f3a0abebf69ea2227363120c9ee1cc4576997c897edd826107eb37124087f7a2"
+    },
+    {
+      "path": "ecttrans.foid",
+      "size": 9,
+      "sha256": "11fe87bbabe3f9c7fe22e69a6abdfd0eafb2053d3e2a13c5a3491ea8298bc927"
+    },
+    {
+      "path": "etherCat.data",
+      "size": 2,
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "folder.txt",
+      "size": 259,
+      "sha256": "41a5af25c9341d009292d9d79d6ee1575036634ca736aec22c1f3dd11f285cc0"
+    },
+    {
+      "path": "h5u_moduleCfg.data",
+      "size": 225,
+      "sha256": "696bdab8fd3098aba68d0c18b6b35fdc552f7d14ec6739b1fdc39a98e3533c15"
+    },
+    {
+      "path": "h6u_expandCard.data",
+      "size": 209,
+      "sha256": "a6aaf38b9336260ddad3bd722d33eb9cc65860b8c5a0f3ec7499f5f39febdebf"
+    },
+    {
+      "path": "il_log.log",
+      "size": 48,
+      "sha256": "c2ab81378b383f093c7a37497b10dd03310c711633649369eca6be2c3eb79338"
+    },
+    {
+      "path": "newil_log.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "steps.dat",
+      "size": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    },
+    {
+      "path": "userprog.prg",
+      "size": 294,
+      "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c"
+    },
+    {
+      "path": "varid.vid",
+      "size": 256,
+      "sha256": "f10fdeb85027095a03ecc1ce50557a33bb3669d0f2a92f5fd6d3850bfc911824"
+    },
+    {
+      "path": "varsinfo.foid",
+      "size": 423,
+      "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d"
+    },
+    {
+      "path": "webserver.bin",
+      "size": 249,
+      "sha256": "6f29ed21f69172be9b1f5a5713299f2c5b286458de33823445ffe9f36fff586f"
+    },
+    {
+      "path": "webserver.dat",
+      "size": 88,
+      "sha256": "df466b859e5bde34d465bd523a3ef731ab30e4015d61ae3ac70fce2692f5f064"
+    },
+    {
+      "path": "功能块实例.fbi",
+      "size": 510,
+      "sha256": "a45ea7ff194093e45f9a4fa7b10961ebdf4f314b703ac06931582c9f0d9a15e6"
+    },
+    {
+      "path": "变量表.csv",
+      "size": 1296,
+      "sha256": "62f23b0ad6666da734f188412f5ed8ce49868abfbf4b8d0aca1f9172f1c4a5e3"
+    },
+    {
+      "path": "变量表.gvt",
+      "size": 1503,
+      "sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
+    }
+  ],
+  "source_snapshot_only": true,
+  "device_program_backup": false,
+  "device_action": false,
+  "field_facts": {
+    "source": "latest user messages",
+    "main_supply_24v_connected": true,
+    "pwr_lamp": "on",
+    "other_lamp_label_reported": "WAN",
+    "outputs_isolated": true,
+    "outputs_source": "user confirms all output terminals floating; no loads",
+    "mode_switch": "historically RUN, current position not reobserved; live GCM raw1"
+  }
+}

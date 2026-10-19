@@ -1,0 +1,17 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "after-empty-frame-close",
+  "started_at": "2026-10-19T03:39:59.641294+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-EncodedCommand",
+    "RwBlAHQALQBQAHIAbwBjAGUAcwBzACAAQQB1AHQAbwBTAGgAbwBwACAALQBFAHIAcgBvAHIAQQBjAHQAaQBvAG4AIABTAGkAbABlAG4AdABsAHkAQwBvAG4AdABpAG4AdQBlACAAfAAgAFMAZQBsAGUAYwB0AC0ATwBiAGoAZQBjAHQAIABJAGQALABQAGEAdABoACwATQBhAGkAbgBXAGkAbgBkAG8AdwBIAGEAbgBkAGwAZQAsAE0AYQBpAG4AVwBpAG4AZABvAHcAVABpAHQAbABlACwAQAB7AG4APQAnAFMAdABhAHIAdABUAGkAbQBlACcAOwBlAD0AewAkAF8ALgBTAHQAYQByAHQAVABpAG0AZQAuAFQAbwBTAHQAcgBpAG4AZwAoACcAbwAnACkAfQB9ACAAfAAgAEMAbwBuAHYAZQByAHQAVABvAC0ASgBzAG8AbgAgAC0AQwBvAG0AcAByAGUAcwBzAA=="
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": "Get-Process AutoShop -ErrorAction SilentlyContinue | Select-Object Id,Path,MainWindowHandle,MainWindowTitle,@{n='StartTime';e={$_.StartTime.ToString('o')}} | ConvertTo-Json -Compress",
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823"
+}

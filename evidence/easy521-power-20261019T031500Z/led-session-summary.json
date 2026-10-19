@@ -1,0 +1,66 @@
+{
+  "schema": "plcidf.powered-led-session-summary.v1",
+  "recorded_at": "2026-10-19T04:35:58.186857+00:00",
+  "source_sha256": "6c51789d485457f9fc64ff34c2f0101f6c10db61bce1bd2a0f529c2c0111e7ed",
+  "build_hash": "4d92b527829f8ca570d28127e6d080b8d5733a1af8d97fa136a9813946a657f8",
+  "target": {
+    "busid": "7-2",
+    "vidpid": "0471:a531",
+    "unique_cpu_serial": null
+  },
+  "vendor_transfer": {
+    "status": "completed",
+    "raw_record": "033752306315-ui-log-data-7d89a4.json",
+    "required_files": [
+      "project",
+      "userprog.foid",
+      "stprog.o",
+      "stuserprog.o"
+    ],
+    "classifier_scope": "post-hoc raw log classification; root action timeline separate; not strict adapter release acceptance"
+  },
+  "vendor_project_compare": {
+    "matches": true,
+    "raw_log": "033902005562-ui-log-data-f40777.json",
+    "exact_dialog": "033919989347-ui-dialog-90e2c2.json",
+    "verification_level": "project"
+  },
+  "physical_observation": {
+    "source": "human",
+    "y0_blink_confirmed": true,
+    "y0_off_after_stop_confirmed": true,
+    "restored_y0_blink_confirmed": null,
+    "observed_at": null
+  },
+  "cpu_states": {
+    "stop": {
+      "gcm_raw": 0,
+      "m8000_candidate": false,
+      "m8001_candidate": true,
+      "records": [
+        "led-after-stop-gcm.json",
+        "led-after-stop-m8000.json",
+        "led-after-stop-m8001.json"
+      ],
+      "scope": "sequential matching frames; vendor state mapping crosschecked in this bench only"
+    },
+    "restored_run": {
+      "gcm_raw": 1,
+      "m8000_candidate": true,
+      "m8001_candidate": false,
+      "records": [
+        "led-restored-run-gcm.json",
+        "led-restored-run-m8000.json",
+        "led-restored-run-m8001.json"
+      ],
+      "scope": "sequential matching frames; vendor state mapping crosschecked in this bench only"
+    }
+  },
+  "device_binary_identity_verified": false,
+  "strict_flash_adapter_1920_verified": false,
+  "strict_linux_native_deployment": false,
+  "retained_application": "Y0 blink example; original BESS not restored",
+  "final_state": "RUN independently observed; bounded read-only polling underway",
+  "no_external_loads": "user-confirmed all output terminals floating",
+  "tests_are_not_device_acceptance": true
+}

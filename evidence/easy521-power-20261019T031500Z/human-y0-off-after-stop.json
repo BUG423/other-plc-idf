@@ -1,0 +1,64 @@
+{
+  "schema": "plcidf.easy521-feedback.v1",
+  "record_kind": "observation",
+  "feedback_id": "easy521-y0-stop-20261019-01",
+  "iteration_id": "easy521-led-20261019T033737Z",
+  "parent_iteration_id": null,
+  "requirement_revision": "EAI-R05-isolated-y0-blink",
+  "program": {
+    "source_sha256": "6c51789d485457f9fc64ff34c2f0101f6c10db61bce1bd2a0f529c2c0111e7ed",
+    "source_tree_sha256": null,
+    "build_hash": "4d92b527829f8ca570d28127e6d080b8d5733a1af8d97fa136a9813946a657f8",
+    "intent_hash": null,
+    "release_hash": null,
+    "device_binary_sha256": null,
+    "device_program_binding": "unverified"
+  },
+  "target": {
+    "profile_id": "easy521",
+    "observed_model": "Easy521",
+    "observed_firmware": null,
+    "observed_serial": null,
+    "identity_quality": "unverified",
+    "locator": {
+      "kind": "vendor-usb",
+      "value": "7-2"
+    }
+  },
+  "observations": [
+    {
+      "recorded_at": "2026-10-19T04:31:40.822022+00:00",
+      "observed_at": null,
+      "source": {
+        "kind": "human",
+        "actor": "用户本人现场观察；AI按本会话原意转录",
+        "evidence": [
+          {
+            "path": "evidence/easy521-power-20261019T031500Z/034445460547-ui-log-data-f659d6.json",
+            "sha256": "80832d3fd7923a87109dfaf548194a05f28f37492d7ddd00ade0c5eaa9534105",
+            "source": "human-provided-file"
+          }
+        ]
+      },
+      "action": {
+        "kind": "observe",
+        "description": "在厂商报告停止命令执行正确之后观察Y0。",
+        "operation_id": "easy521-led-stop-20261019T034442Z",
+        "result": "performed"
+      },
+      "expected": "明确执行STOP后，输出区Y0熄灭并停止闪烁。",
+      "actual": {
+        "quality": "observed",
+        "description": "针对STOP后Y0是否熄灭的现场问题，用户明确答复：已经熄灭。",
+        "value": null,
+        "unit": null
+      },
+      "outcome": "unknown",
+      "limitations": [
+        "用户未提供精确观察时间，observed_at保持null，schema outcome保持unknown；Y0熄灭由用户现场明确观察。",
+        "面板灯观察不能单独证明CPU状态；CPU状态另存独立读回。",
+        "采集工具只核对记录结构、时间与本地附件哈希；未核验来源、设备或现场事实。"
+      ]
+    }
+  ]
+}

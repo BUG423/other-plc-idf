@@ -11,7 +11,8 @@
 |---|---|---|---|
 | 现场反馈 | [FEEDBACK_CAPTURE.md](FEEDBACK_CAPTURE.md) | 离线CLI已集成 | 人工记录、真实仪器记录校验、多轮摘要与未知身份 |
 | Easy521 AI闭环 | [requirements/EASY521_AI_LOOP_2026-10-19.md](requirements/EASY521_AI_LOOP_2026-10-19.md) / [architecture/ADR-0005-easy521-ai-control-loop.md](architecture/ADR-0005-easy521-ai-control-loop.md) | 2026-10-19需求与设计 | Linux终态、Windows过渡、规范注释及人工观察/仪器反馈 |
-| 最新实际交付 | [management/EASY521_AI_FOLLOWUP_2026-10-19.md](management/EASY521_AI_FOLLOWUP_2026-10-19.md) | GCM真机查询、Linux链接及GVT解析已实测 | 调用链更正、反馈采集/多轮摘要、1116项软件验证；完整下装/CPU执行仍未完成 |
+| 最新真机实验 | [research/firmware/20-powered-led-bench-2026-10-19.md](research/firmware/20-powered-led-bench-2026-10-19.md) | 24 V 台架灯程序已下装并校验 | 独立状态/时钟读取、用户确认Y0闪烁及STOP后熄灭；Windows桥接与字节追溯边界单列 |
+| 此前软件与协议交付 | [management/EASY521_AI_FOLLOWUP_2026-10-19.md](management/EASY521_AI_FOLLOWUP_2026-10-19.md) | 日期阶段快照 | GCM调用链更正、Linux链接、GVT解析与反馈工具；供电后的新事实见上行 |
 | WSL 可行性侦察（总纲） | [wsl-feasibility/00-synthesis-and-roadmap.md](wsl-feasibility/00-synthesis-and-roadmap.md) | ✅ 定稿 2026-10-16 | **先读这篇**：三条能力链可行性结论速览、关键事实、已建资产清单、P1~P4 路线图与安全红线 |
 | WSL 可行性侦察 · 协议 | [wsl-feasibility/01-protocol-facts.md](wsl-feasibility/01-protocol-facts.md) | ✅ 定稿 2026-10-16 | 官方手册硬事实：Modbus TCP 从站映射（D0-D7999 ↔ FC03）、USB CDC 端点拓扑、串口/以太网规格，全部标注页码出处 |
 | WSL 可行性侦察 · 生态 | [wsl-feasibility/02-opensource-ecosystem.md](wsl-feasibility/02-opensource-ecosystem.md) | ✅ 定稿 2026-10-16 | 联网开源生态调研：四条通道公开程度分级评级、autoshop-mcp 等可借鉴项目逐仓核实、可信度标注 |

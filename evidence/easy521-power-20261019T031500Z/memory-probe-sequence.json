@@ -1,0 +1,50 @@
+{
+  "schema": "plcidf.power-memory-sequence.v1",
+  "records": [
+    {
+      "sample": 1,
+      "profile": "scan-counter",
+      "recorded_at": "2026-10-19T03:29:45.921471+00:00",
+      "ok": true,
+      "value_candidate": 9602
+    },
+    {
+      "sample": 2,
+      "profile": "confidence",
+      "recorded_at": "2026-10-19T03:29:47.082382+00:00",
+      "ok": true,
+      "value_candidate": 19674.0
+    },
+    {
+      "sample": 3,
+      "profile": "published-scan",
+      "recorded_at": "2026-10-19T03:29:48.193004+00:00",
+      "ok": true,
+      "value_candidate": 0.0
+    },
+    {
+      "sample": 4,
+      "profile": "published-value",
+      "recorded_at": "2026-10-19T03:29:49.320562+00:00",
+      "ok": true,
+      "value_candidate": 400.0
+    },
+    {
+      "sample": 5,
+      "profile": "heartbeat",
+      "recorded_at": "2026-10-19T03:29:50.479696+00:00",
+      "ok": true,
+      "value_candidate": true
+    },
+    {
+      "sample": 6,
+      "profile": "scan-counter",
+      "recorded_at": "2026-10-19T03:29:51.568416+00:00",
+      "ok": true,
+      "value_candidate": 735
+    }
+  ],
+  "all_samples_individually_read": true,
+  "atomic_multi_variable_snapshot": false,
+  "no_device_write": true
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "ui-editor-read",
+  "started_at": "2026-10-19T03:36:33.898825+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "editor-read",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": null,
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T03:36:35.306140+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "-Action",
+      "editor-read",
+      "-ExpectedProject",
+      "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+    ],
+    "returncode": 0,
+    "stdout": "{\"read_only\":false,\"title\":\"AutoShop V4.12.0.2  E:\\\\PLCProjects\\\\PLCIDF_LED_20261019T031904Z\\\\BESS_E521_DEV - [MAIN]\",\"editor_handle\":5181588,\"source\":\"(* Easy521 / Easy52X: board Y0 indicator demonstration, MAIN BODY ONLY.\\n   BENCH ONLY: all physical outputs must be confirmed disconnected from loads.\\n   Y0 is a REAL OUTPUT command, not a memory-only probe or a separate LED GPIO.\\n\\n   Interface / task:\\n   - Replace MAIN statements in an explicit disposable vendor working project.\\n   - Reuse its existing MAIN task; historical DEV configuration is nominal 5 ms.\\n     Confirm the actual task before compilation. No TASK/VAR/PROGRAM is added.\\n   - Read-only inputs: M8002 BOOL (first RUN scan), M8013 BOOL (1 s clock).\\n   - Sole output: Y0 BOOL. No globals, timers, counters, retaining state, FBs,\\n     motion or communication calls are introduced. No other Y output is written.\\n   - Y0 must have a single writer and no pulse/axis/force assignment in the project.\\n\\n   Timing / initial state:\\n   - First RUN scan commands Y0 FALSE using M8002; this is only one task scan,\\n     not a visible startup delay and not a promise about pre-RUN hardware state.\\n   - Later scans copy the current M8013 state. Its documented full period is 1 s.\\n     The cited manual does not specify startup phase or exact high/low durations.\\n     Output refresh samples that clock at the existing task/IO timing.\\n   - On STOP this code no longer executes. The manual describes Y output stopped\\n     by the controller; this branch is NOT a software STOP-clear implementation.\\n     Confirm actual mode and indicator behavior separately; no safety guarantee.\\n\\n   Evidence: official bundled programming manual pp.90,168,248-249;\\n   instruction manual pp.27-28; Easy user manual pp.137,141,151.\\n   Exact source identities and limitations are in this directory\\u0027s README.\\n   Acceptance requires separate dated compiler/device records; this source\\n   alone does not establish compilation, download or actual hardware behavior.\\n*)\\n\\nIF M8002 THEN\\n    Y0 := FALSE;\\nELSE\\n    Y0 := M8013;\\nEND_IF;\\n\"}\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

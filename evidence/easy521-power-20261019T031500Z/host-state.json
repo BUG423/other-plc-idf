@@ -1,0 +1,18 @@
+{
+  "schema": "plcidf.power-host-state.v1",
+  "recorded_at": "2026-10-19T03:17:25.744639+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "[Console]::OutputEncoding=[Text.Encoding]::UTF8; [ordered]@{observed_at=[DateTimeOffset]::Now.ToString('o');autoshop=@(Get-Process AutoShop -ErrorAction SilentlyContinue|Select-Object Id,MainWindowTitle);network=@(Get-NetAdapter -Physical|Select-Object Name,InterfaceDescription,Status,LinkSpeed,ifIndex);ipv4=@(Get-NetIPAddress -AddressFamily IPv4|Where-Object {$_.InterfaceAlias -like '*以太网*'}|Select-Object InterfaceAlias,IPAddress,PrefixLength)}|ConvertTo-Json -Depth 5 -Compress"
+    ],
+    "returncode": 0,
+    "stdout": "{\"observed_at\":\"2026-10-19T11:17:19.9746776+08:00\",\"autoshop\":[],\"network\":[{\"Name\":\"以太网 2\",\"InterfaceDescription\":\"Realtek USB GbE Family Controller\",\"Status\":\"Disconnected\",\"LinkSpeed\":\"0 bps\",\"ifIndex\":10},{\"Name\":\"WLAN\",\"InterfaceDescription\":\"MediaTek Wi-Fi 6 MT7921 Wireless LAN Card\",\"Status\":\"Up\",\"LinkSpeed\":\"300 Mbps\",\"ifIndex\":6}],\"ipv4\":[{\"InterfaceAlias\":\"以太网 2\",\"IPAddress\":\"169.254.25.85\",\"PrefixLength\":16}]}\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

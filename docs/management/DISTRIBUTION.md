@@ -1,6 +1,8 @@
 # 独立安装与分发验收
 
-PLC-IDF 的普通安装现在包含运行依赖和四个运行资源，可在没有源码树的目录中运行 `monitor/sim`。Windows 桥接脚本也随包分发；AutoShop、Windows 交互桌面和设备驱动仍由目标电脑提供。
+PLC-IDF 的普通安装包含运行依赖和脚本资源，可在没有源码树的目录中运行 `monitor/sim`。Windows 桥接脚本也随包分发；AutoShop、Windows 交互桌面和设备驱动仍由目标电脑提供。
+
+2026-10-19新增固定内存读取的reader、相邻协议codec及PowerShell helper，均纳入sdist/wheel的逐字节资源核对。隔离安装的默认preview在禁止subprocess、socket、interop、设备租约和随机序列调用的guard下通过，验证不依赖源码树且预览不访问设备；真实USB执行证据另见[供电台架记录](../research/firmware/20-powered-led-bench-2026-10-19.md)。这些工具作为包内资源交付，尚未注册为新的`plcidf`子命令。
 
 ## 安装和运行
 

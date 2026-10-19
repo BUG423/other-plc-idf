@@ -1,0 +1,44 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "ui-inspect",
+  "started_at": "2026-10-19T03:22:22.783486+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "inspect",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": null,
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T03:22:25.205212+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "-Action",
+      "inspect",
+      "-ExpectedProject",
+      "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+    ],
+    "returncode": 0,
+    "stdout": "PID=27096|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV - [MAIN]\nControlType.Window|AutoShop V4.12.0.2  E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV - [MAIN]|Afx:00400000:8:00010003:00000000:00011293|70246|True|130,130,1440,745\nControlType.Pane||SysTreeView32|135846|True|139,277,198,412\nControlType.Pane||Button|70320|True|141,827,13,13\nControlType.Pane||Button|70322|True|157,827,13,13\nControlType.Pane||Button|70324|True|173,827,13,13\nControlType.Pane||Button|70326|True|189,827,13,13\nControlType.Pane||ListBox|70334|True|141,724,1418,100\nControlType.Window|MAIN|Afx:00400000:b:00010003:00000006:003E12DF|72090916|True|337,246,976,449\nControlType.Pane|<ST editor>|Scintilla|136104|True|354,279,949,406\nControlType.Pane||Button|70252|False|343,255,15,15\nControlType.Pane||Button|70254|False|1286,255,15,15\nControlType.Pane|本地|Button|136142|False|1077,224,42,20\nControlType.Pane|未登录::USB|Button|201616|False|1125,224,82,20\nControlType.Pane|变量共享:|Button|136148|False|1281,194,76,20\nControlType.Pane|未连接|Button|136146|False|1363,194,45,20\nControlType.Pane|智能问答|Static|70450|True|1324,284,83,16\nControlType.Pane||Button|70458|True|1405,291,172,25\nControlType.Pane||Button|70460|True|1329,281,60,46\nControlType.Pane|AI问答|Button|70468|True|1329,352,72,25\nControlType.Pane|指令指南|Button|70470|True|1411,352,70,25\nControlType.Pane|智能问答帮你快速上手|Button|70472|True|1329,384,192,25\nControlType.Pane|AI编程|Button|70478|True|1329,427,72,25\nControlType.Pane|一键同步|Button|70480|True|1411,427,70,25\nControlType.Pane|一拖即用实现高效开发|Button|70482|True|1329,459,192,25\nControlType.Pane||Button|70488|True|1329,494,124,30\nControlType.Pane||Button|70490|True|1329,532,199,30\nControlType.Pane||Button|70492|True|1329,570,199,30\nControlType.Pane||Button|70494|True|1329,608,199,30\nControlType.Pane||Button|70496|True|1461,496,67,28\nControlType.Pane||Button|70510|False|1423,630,100,20\nControlType.Pane||RichEdit20W|70500|True|1326,610,217,18\nControlType.Pane||Button|70502|True|1528,630,20,20\nControlType.Pane||Button|70516|True|1512,280,24,24\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

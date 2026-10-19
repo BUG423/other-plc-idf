@@ -1,0 +1,32 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "candidate-file-attributes",
+  "started_at": "2026-10-19T03:36:47.795859+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-EncodedCommand",
+    "JAByAG8AbwB0AD0AJwBFADoAXABQAEwAQwBQAHIAbwBqAGUAYwB0AHMAXABQAEwAQwBJAEQARgBfAEwARQBEAF8AMgAwADIANgAxADAAMQA5AFQAMAAzADEAOQAwADQAWgBcAEIARQBTAFMAXwBFADUAMgAxAF8ARABFAFYAJwA7ACAAQAAoACcATwB1AHQAcAB1AHQALgBwAHIAZwAnACwAJwBPAHUAdABwAHUAdAAuAHMAZAB0ACcALAAnAFMAVABUAGUAbQBwAFwATQBBAEkATgAuAG8AJwAsACcAUwBUAFQAZQBtAHAAXABNAEEASQBOAC4AcgBzAHQAJwAsACcAVABlAG0AcABcAHMAdABwAHIAbwBnAC4AbwAnACkAIAB8ACAARgBvAHIARQBhAGMAaAAtAE8AYgBqAGUAYwB0ACAAewAgACQAZgA9AEcAZQB0AC0ASQB0AGUAbQAgAC0ATABpAHQAZQByAGEAbABQAGEAdABoACAAKABKAG8AaQBuAC0AUABhAHQAaAAgACQAcgBvAG8AdAAgACQAXwApADsAIABbAHAAcwBjAHUAcwB0AG8AbQBvAGIAagBlAGMAdABdAEAAewBwAGEAdABoAD0AJABmAC4ARgB1AGwAbABOAGEAbQBlADsAYQB0AHQAcgBpAGIAdQB0AGUAcwA9AFsAcwB0AHIAaQBuAGcAXQAkAGYALgBBAHQAdAByAGkAYgB1AHQAZQBzADsAcgBlAGEAZABfAG8AbgBsAHkAPQAkAGYALgBJAHMAUgBlAGEAZABPAG4AbAB5ADsAcwBoAGEAMgA1ADYAPQAoAEcAZQB0AC0ARgBpAGwAZQBIAGEAcwBoACAALQBMAGkAdABlAHIAYQBsAFAAYQB0AGgAIAAkAGYALgBGAHUAbABsAE4AYQBtAGUAIAAtAEEAbABnAG8AcgBpAHQAaABtACAAUwBIAEEAMgA1ADYAKQAuAEgAYQBzAGgAfQAgAH0AIAB8ACAAQwBvAG4AdgBlAHIAdABUAG8ALQBKAHMAbwBuACAALQBEAGUAcAB0AGgAIAA0AA=="
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": "$root='E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV'; @('Output.prg','Output.sdt','STTemp\\MAIN.o','STTemp\\MAIN.rst','Temp\\stprog.o') | ForEach-Object { $f=Get-Item -LiteralPath (Join-Path $root $_); [pscustomobject]@{path=$f.FullName;attributes=[string]$f.Attributes;read_only=$f.IsReadOnly;sha256=(Get-FileHash -LiteralPath $f.FullName -Algorithm SHA256).Hash} } | ConvertTo-Json -Depth 4",
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T03:36:48.473930+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-EncodedCommand",
+      "JAByAG8AbwB0AD0AJwBFADoAXABQAEwAQwBQAHIAbwBqAGUAYwB0AHMAXABQAEwAQwBJAEQARgBfAEwARQBEAF8AMgAwADIANgAxADAAMQA5AFQAMAAzADEAOQAwADQAWgBcAEIARQBTAFMAXwBFADUAMgAxAF8ARABFAFYAJwA7ACAAQAAoACcATwB1AHQAcAB1AHQALgBwAHIAZwAnACwAJwBPAHUAdABwAHUAdAAuAHMAZAB0ACcALAAnAFMAVABUAGUAbQBwAFwATQBBAEkATgAuAG8AJwAsACcAUwBUAFQAZQBtAHAAXABNAEEASQBOAC4AcgBzAHQAJwAsACcAVABlAG0AcABcAHMAdABwAHIAbwBnAC4AbwAnACkAIAB8ACAARgBvAHIARQBhAGMAaAAtAE8AYgBqAGUAYwB0ACAAewAgACQAZgA9AEcAZQB0AC0ASQB0AGUAbQAgAC0ATABpAHQAZQByAGEAbABQAGEAdABoACAAKABKAG8AaQBuAC0AUABhAHQAaAAgACQAcgBvAG8AdAAgACQAXwApADsAIABbAHAAcwBjAHUAcwB0AG8AbQBvAGIAagBlAGMAdABdAEAAewBwAGEAdABoAD0AJABmAC4ARgB1AGwAbABOAGEAbQBlADsAYQB0AHQAcgBpAGIAdQB0AGUAcwA9AFsAcwB0AHIAaQBuAGcAXQAkAGYALgBBAHQAdAByAGkAYgB1AHQAZQBzADsAcgBlAGEAZABfAG8AbgBsAHkAPQAkAGYALgBJAHMAUgBlAGEAZABPAG4AbAB5ADsAcwBoAGEAMgA1ADYAPQAoAEcAZQB0AC0ARgBpAGwAZQBIAGEAcwBoACAALQBMAGkAdABlAHIAYQBsAFAAYQB0AGgAIAAkAGYALgBGAHUAbABsAE4AYQBtAGUAIAAtAEEAbABnAG8AcgBpAHQAaABtACAAUwBIAEEAMgA1ADYAKQAuAEgAYQBzAGgAfQAgAH0AIAB8ACAAQwBvAG4AdgBlAHIAdABUAG8ALQBKAHMAbwBuACAALQBEAGUAcAB0AGgAIAA0AA=="
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"path\":  \"E:\\\\PLCProjects\\\\PLCIDF_LED_20261019T031904Z\\\\BESS_E521_DEV\\\\Output.prg\",\n        \"attributes\":  \"Archive\",\n        \"read_only\":  false,\n        \"sha256\":  \"3BFE2324EBA14F55199D5BB4D0EE72D265A7453FC78B0C6E66D265AE21ADB63B\"\n    },\n    {\n        \"path\":  \"E:\\\\PLCProjects\\\\PLCIDF_LED_20261019T031904Z\\\\BESS_E521_DEV\\\\Output.sdt\",\n        \"attributes\":  \"Archive\",\n        \"read_only\":  false,\n        \"sha256\":  \"C07A72AFAE6F4CAC3E87308BAB17D0EEC1658A764B7E67102DE77EC984CA863B\"\n    },\n    {\n        \"path\":  \"E:\\\\PLCProjects\\\\PLCIDF_LED_20261019T031904Z\\\\BESS_E521_DEV\\\\STTemp\\\\MAIN.o\",\n        \"attributes\":  \"Archive\",\n        \"read_only\":  false,\n        \"sha256\":  \"D7703F4C9B4D76227A69474E913D4C0885181D866EE5E89B218C4795AADB5994\"\n    },\n    {\n        \"path\":  \"E:\\\\PLCProjects\\\\PLCIDF_LED_20261019T031904Z\\\\BESS_E521_DEV\\\\STTemp\\\\MAIN.rst\",\n        \"attributes\":  \"Archive\",\n        \"read_only\":  false,\n        \"sha256\":  \"80587217FC582EBB6CBA647BB021E9A749F89A0474642DECCBF1E04C4991DAC7\"\n    },\n    {\n        \"path\":  \"E:\\\\PLCProjects\\\\PLCIDF_LED_20261019T031904Z\\\\BESS_E521_DEV\\\\Temp\\\\stprog.o\",\n        \"attributes\":  \"Archive\",\n        \"read_only\":  false,\n        \"sha256\":  \"51D0174A3C6FAF0F219C5E15E54199AB3A75ED089E0673C826B4491B545E9886\"\n    }\n]\n",
+    "stderr": "#< CLIXML\n<Objs Version=\"1.1.0.1\" xmlns=\"http://schemas.microsoft.com/powershell/2004/04\"><Obj S=\"progress\" RefId=\"0\"><TN RefId=\"0\"><T>System.Management.Automation.PSCustomObject</T><T>System.Object</T></TN><MS><I64 N=\"SourceId\">1</I64><PR N=\"Record\"><AV>正在准备首次使用模块。</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj><Obj S=\"progress\" RefId=\"1\"><TNRef RefId=\"0\" /><MS><I64 N=\"SourceId\">2</I64><PR N=\"Record\"><AV>正在准备首次使用模块。</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj></Objs>",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

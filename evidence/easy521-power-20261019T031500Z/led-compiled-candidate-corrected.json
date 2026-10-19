@@ -1,0 +1,59 @@
+{
+  "schema": "plcidf.led-candidate-freeze-correction.v1",
+  "recorded_at": "2026-10-19T03:34:07.645930+00:00",
+  "corrects_record": "led-compiled-candidate.json",
+  "initial_error": "absolute manifest paths discarded the intended private prefix; original artifact bytes were rewritten identically and permissions changed, so that attempted freeze was invalid",
+  "correction": "explicit relative_to(project_root) before joining private directory; restored write permission on original artifacts; all original and frozen content hashes match the verified compile",
+  "no_download_confirmation_sent_at_correction": true,
+  "source_sha256": "6c51789d485457f9fc64ff34c2f0101f6c10db61bce1bd2a0f529c2c0111e7ed",
+  "build_hash": "d904440333d0c807df1fec826d03a346a6af1ea47d7033e659f777a5ed21b2a8",
+  "frozen_private_directory": "/home/zss/workspace/py2plc/.plcidf/led-candidate-corrected-20261019T033407Z",
+  "artifacts": [
+    {
+      "original": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/Output.prg",
+      "relative_path": "Output.prg",
+      "frozen_private": "/home/zss/workspace/py2plc/.plcidf/led-candidate-corrected-20261019T033407Z/Output.prg",
+      "size": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "original_mode_after_initial_error": "0o555",
+      "original_mode_restored": "0o777"
+    },
+    {
+      "original": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/Output.sdt",
+      "relative_path": "Output.sdt",
+      "frozen_private": "/home/zss/workspace/py2plc/.plcidf/led-candidate-corrected-20261019T033407Z/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+      "original_mode_after_initial_error": "0o555",
+      "original_mode_restored": "0o777"
+    },
+    {
+      "original": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/STTemp/MAIN.o",
+      "relative_path": "STTemp/MAIN.o",
+      "frozen_private": "/home/zss/workspace/py2plc/.plcidf/led-candidate-corrected-20261019T033407Z/STTemp/MAIN.o",
+      "size": 2200,
+      "sha256": "d7703f4c9b4d76227a69474e913d4c0885181d866ee5e89b218c4795aadb5994",
+      "original_mode_after_initial_error": "0o555",
+      "original_mode_restored": "0o777"
+    },
+    {
+      "original": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/STTemp/MAIN.rst",
+      "relative_path": "STTemp/MAIN.rst",
+      "frozen_private": "/home/zss/workspace/py2plc/.plcidf/led-candidate-corrected-20261019T033407Z/STTemp/MAIN.rst",
+      "size": 10,
+      "sha256": "80587217fc582ebb6cba647bb021e9a749f89a0474642deccbf1e04c4991dac7",
+      "original_mode_after_initial_error": "0o555",
+      "original_mode_restored": "0o777"
+    },
+    {
+      "original": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/Temp/stprog.o",
+      "relative_path": "Temp/stprog.o",
+      "frozen_private": "/home/zss/workspace/py2plc/.plcidf/led-candidate-corrected-20261019T033407Z/Temp/stprog.o",
+      "size": 125812,
+      "sha256": "51d0174a3c6faf0f219c5e15e54199ab3a75ed089e0673c826b4491b545e9886",
+      "original_mode_after_initial_error": "0o555",
+      "original_mode_restored": "0o777"
+    }
+  ],
+  "device_binary_identity_verified": false
+}

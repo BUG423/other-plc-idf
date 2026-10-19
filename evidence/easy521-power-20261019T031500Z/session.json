@@ -1,0 +1,15 @@
+{
+  "schema": "plcidf.power-poll-session.v1",
+  "recorded_at": "2026-10-19T03:15:00.090855+00:00",
+  "busid": "7-2",
+  "vidpid": "0471:a531",
+  "interval_s": 30,
+  "maximum_samples": 20,
+  "user_report": {
+    "main_supply": "24V DC connected, reported by user",
+    "pwr_lamp": "on",
+    "other_lamp": "user named WAN, on; not assumed to mean RUN",
+    "outputs": "not freshly confirmed"
+  },
+  "scope": "read-only fixed GCM state polling; no CPU/variable/application write; each sample is a distinct scheduled read, no failed write replay"
+}

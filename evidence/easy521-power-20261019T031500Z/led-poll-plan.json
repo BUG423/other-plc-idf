@@ -1,0 +1,8 @@
+{
+  "started_at": "2026-10-19T03:42:19.431501+00:00",
+  "interval_s": 30,
+  "maximum_samples": 8,
+  "busid": "7-2",
+  "profile": "gcm-state",
+  "scope": "bounded read-only observations, one attempt per sample; stop on failure"
+}

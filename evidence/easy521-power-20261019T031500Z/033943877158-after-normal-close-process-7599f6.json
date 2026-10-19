@@ -1,0 +1,32 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "after-normal-close-process",
+  "started_at": "2026-10-19T03:39:43.877158+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-EncodedCommand",
+    "RwBlAHQALQBQAHIAbwBjAGUAcwBzACAAQQB1AHQAbwBTAGgAbwBwACAALQBFAHIAcgBvAHIAQQBjAHQAaQBvAG4AIABTAGkAbABlAG4AdABsAHkAQwBvAG4AdABpAG4AdQBlACAAfAAgAFMAZQBsAGUAYwB0AC0ATwBiAGoAZQBjAHQAIABJAGQALABQAGEAdABoACwATQBhAGkAbgBXAGkAbgBkAG8AdwBIAGEAbgBkAGwAZQAsAE0AYQBpAG4AVwBpAG4AZABvAHcAVABpAHQAbABlACwAQAB7AG4APQAnAFMAdABhAHIAdABUAGkAbQBlACcAOwBlAD0AewAkAF8ALgBTAHQAYQByAHQAVABpAG0AZQAuAFQAbwBTAHQAcgBpAG4AZwAoACcAbwAnACkAfQB9ACAAfAAgAEMAbwBuAHYAZQByAHQAVABvAC0ASgBzAG8AbgAgAC0AQwBvAG0AcAByAGUAcwBzAA=="
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": "Get-Process AutoShop -ErrorAction SilentlyContinue | Select-Object Id,Path,MainWindowHandle,MainWindowTitle,@{n='StartTime';e={$_.StartTime.ToString('o')}} | ConvertTo-Json -Compress",
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T03:39:44.533516+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-EncodedCommand",
+      "RwBlAHQALQBQAHIAbwBjAGUAcwBzACAAQQB1AHQAbwBTAGgAbwBwACAALQBFAHIAcgBvAHIAQQBjAHQAaQBvAG4AIABTAGkAbABlAG4AdABsAHkAQwBvAG4AdABpAG4AdQBlACAAfAAgAFMAZQBsAGUAYwB0AC0ATwBiAGoAZQBjAHQAIABJAGQALABQAGEAdABoACwATQBhAGkAbgBXAGkAbgBkAG8AdwBIAGEAbgBkAGwAZQAsAE0AYQBpAG4AVwBpAG4AZABvAHcAVABpAHQAbABlACwAQAB7AG4APQAnAFMAdABhAHIAdABUAGkAbQBlACcAOwBlAD0AewAkAF8ALgBTAHQAYQByAHQAVABpAG0AZQAuAFQAbwBTAHQAcgBpAG4AZwAoACcAbwAnACkAfQB9ACAAfAAgAEMAbwBuAHYAZQByAHQAVABvAC0ASgBzAG8AbgAgAC0AQwBvAG0AcAByAGUAcwBzAA=="
+    ],
+    "returncode": 0,
+    "stdout": "{\"Id\":25004,\"Path\":\"E:\\\\Software\\\\AutoShop\\\\AutoShop.exe\",\"MainWindowHandle\":396780,\"MainWindowTitle\":\"AutoShop V4.12.0.2\",\"StartTime\":\"2026-10-19T11:30:49.2440861+08:00\"}\n",
+    "stderr": "#< CLIXML\n<Objs Version=\"1.1.0.1\" xmlns=\"http://schemas.microsoft.com/powershell/2004/04\"><Obj S=\"progress\" RefId=\"0\"><TN RefId=\"0\"><T>System.Management.Automation.PSCustomObject</T><T>System.Object</T></TN><MS><I64 N=\"SourceId\">1</I64><PR N=\"Record\"><AV>正在准备首次使用模块。</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj><Obj S=\"progress\" RefId=\"1\"><TNRef RefId=\"0\" /><MS><I64 N=\"SourceId\">1</I64><PR N=\"Record\"><AV>正在准备首次使用模块。</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj></Objs>",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

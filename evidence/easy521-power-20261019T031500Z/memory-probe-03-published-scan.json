@@ -1,0 +1,141 @@
+{
+  "schema": "plcidf.power-probe-memory-sample.v1",
+  "sample": 3,
+  "profile": "published-scan",
+  "recorded_at": "2026-10-19T03:29:48.193004+00:00",
+  "result": {
+    "schema": "plcidf.usb-memory-observation.v1",
+    "scope": "one fixed variable read through Windows libusb0 bridge; candidate only",
+    "ok": true,
+    "status": "candidate-observed",
+    "stage": "complete",
+    "device_access": true,
+    "gui_access": false,
+    "transport_kind": "wsl-windows-libusb0",
+    "linux_native_usb": false,
+    "cpu_identity_verified": false,
+    "cpu_state_verified": false,
+    "application_execution_verified": false,
+    "hardware_verified": false,
+    "candidate_protocol": true,
+    "scalar_interpretation_calibrated": false,
+    "read_profile": "published-scan",
+    "profile": "published-scan",
+    "request_hex": "16000103dffb00000100010000008001100220000000",
+    "diagnostics": [],
+    "symbol": {
+      "profile": "published-scan",
+      "symbol": "g_rBESS_InfluenceP",
+      "iec_type": "REAL",
+      "width_bits": 32,
+      "address_u32": 34603392,
+      "address_hex": "0x2100180",
+      "address_semantics": "opaque_vendor_symbol",
+      "allocation_source": "GVT+CSV",
+      "allocation_csv_sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+      "allocation_gvt_sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5"
+    },
+    "sequence": 64479,
+    "correlation_scope": "random u16; collision reduction only, not authentication or absolute freshness",
+    "lease_token": "ca213ee6307c4c36a65d7f4cce655d00",
+    "usbipd_snapshot": {
+      "argv": [
+        "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+        "list"
+      ],
+      "returncode": 0,
+      "stdout": "Connected:\nBUSID  VID:PID    DEVICE                                                        STATE\n1-5    0489:e0cd  MediaTek Bluetooth Adapter                                    Not shared\n2-1    174f:181d  Integrated Camera, Integrated IR Camera, Camera DFU Device    Not shared\n6-1    046d:c52b  Logitech USB Input Device, USB 输入设备                           Not shared\n6-2    24ae:2015  USB 输入设备                                                      Not shared\n6-3    1ea7:0066  USB 输入设备                                                      Not shared\n6-4    1a2c:7fff  USB 输入设备                                                      Not shared\n7-2    0471:a531  H5U USB Device                                                Not shared\n7-4    35bb:d00b  HECATE Co-Installer Device, USB 输入设备                          Not shared\n8-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared\n\nPersisted:\nGUID                                  DEVICE\n94ed4ff5-3008-47cf-9c47-6022b6832257  H5U USB Device\n\n",
+      "stderr": "",
+      "attempts": 1,
+      "timed_out": false
+    },
+    "target": {
+      "busid": "7-2",
+      "vidpid": "0471:a531",
+      "usbipd_state": "Not shared",
+      "identity_basis": "USB location and product, not CPU identity"
+    },
+    "helper": {
+      "path": "/home/zss/workspace/py2plc/plc/tools/read_easy521_usb_memory.ps1",
+      "sha256": "09ddfbbc70ff28af7eb127953418d43800481ab3f955027bef4abb8042156de2",
+      "library_sha256": "cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe54352520c",
+      "sha256_after": "09ddfbbc70ff28af7eb127953418d43800481ab3f955027bef4abb8042156de2"
+    },
+    "request_outcome": "correlated_candidate_data",
+    "raw_transport": {
+      "argv": [
+        "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\read_easy521_usb_memory.ps1",
+        "-Execute",
+        "-Sequence",
+        "64479",
+        "-ReadProfile",
+        "published-scan"
+      ],
+      "returncode": 0,
+      "stdout": "{\"schema\":\"plcidf.usb-memory-probe.v1\",\"observed_at\":\"2026-10-19T11:29:48.8593864+08:00\",\"scope\":\"single fixed memory read via Windows libusb0; no variable or application change\",\"read_profile\":\"published-scan\",\"library_sha256\":\"cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe54352520c\",\"result\":{\"ok\":true,\"stage\":\"raw-frame-only\",\"write_calls\":1,\"value_semantics\":\"candidate\",\"descriptor_hex\":\"1201000202000040710431a5100301020001\",\"configuration_rc\":1,\"claim_rc\":0,\"request_hex\":\"16000103dffb00000100010000008001100220000000\",\"bulk_write_rc\":22,\"read_rcs\":[26],\"response_hex\":\"1a000103dffb0000020001000000800110022000000000000000\",\"release_rc\":0,\"close_rc\":0}}\n",
+      "stderr": "",
+      "attempts": 1,
+      "timed_out": false
+    },
+    "transport_record": {
+      "schema": "plcidf.usb-memory-probe.v1",
+      "observed_at": "2026-10-19T11:29:48.8593864+08:00",
+      "scope": "single fixed memory read via Windows libusb0; no variable or application change",
+      "read_profile": "published-scan",
+      "library_sha256": "cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe54352520c",
+      "result": {
+        "ok": true,
+        "stage": "raw-frame-only",
+        "write_calls": 1,
+        "value_semantics": "candidate",
+        "descriptor_hex": "1201000202000040710431a5100301020001",
+        "configuration_rc": 1,
+        "claim_rc": 0,
+        "request_hex": "16000103dffb00000100010000008001100220000000",
+        "bulk_write_rc": 22,
+        "read_rcs": [
+          26
+        ],
+        "response_hex": "1a000103dffb0000020001000000800110022000000000000000",
+        "release_rc": 0,
+        "close_rc": 0
+      }
+    },
+    "decoded": {
+      "frame_bytes": 26,
+      "version": 1,
+      "selector": 3,
+      "sequence": 64479,
+      "reserved_u16": 0,
+      "operation": 2,
+      "flags_u8": 0,
+      "profile": "published-scan",
+      "symbol": "g_rBESS_InfluenceP",
+      "iec_type": "REAL",
+      "width_bits": 32,
+      "address_u32": 34603392,
+      "address_hex": "0x2100180",
+      "address_semantics": "opaque_vendor_symbol",
+      "allocation_source": "GVT+CSV",
+      "allocation_csv_sha256": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe",
+      "allocation_gvt_sha256": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5",
+      "hardware_verified": false,
+      "candidate_protocol": true,
+      "scalar_interpretation_calibrated": false,
+      "evidence_level": "vendor_request_static_and_simulator_reply_candidate",
+      "ok": true,
+      "status": "candidate_data",
+      "data_hex": "00000000",
+      "raw_bits_u32": 0,
+      "value_candidate": 0.0
+    },
+    "value_candidate": 0.0,
+    "data_hex": "00000000"
+  }
+}

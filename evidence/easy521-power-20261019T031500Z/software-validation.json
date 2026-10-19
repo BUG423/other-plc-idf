@@ -1,0 +1,40 @@
+{
+  "schema": "plcidf.software-validation.v1",
+  "recorded_at": "2026-10-19T04:35:58.188307+00:00",
+  "source_base_revision": "383824afa129cd4cd37bbce60a6edcfde7edbf03",
+  "working_tree_dirty": true,
+  "groups": [
+    {
+      "command": ".venv/bin/python -m pytest src/plc_idf/tests wsl-tools/tests -q -k 'not test_devices_real_readonly'",
+      "exit_code": 0,
+      "passed": 770,
+      "skipped": 51,
+      "deselected": 1,
+      "scope": "software tests; excludes Windows USB enumeration"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tools/tests -q",
+      "exit_code": 0,
+      "passed": 496,
+      "skipped": 2,
+      "scope": "offline files, codecs, mocks and loopback; real Linux LLD conditional tests skipped without opt-in"
+    },
+    {
+      "command": ".venv/bin/python -m pytest src/plc_idf/tests/test_distribution_config.py -q",
+      "passed": 9,
+      "exit_code": 0,
+      "scope": "agent run; subset of source tests, not additive"
+    }
+  ],
+  "new_memory_tests": {
+    "passed": 147,
+    "scope": "subset of tools; offline only"
+  },
+  "distribution_report": "distribution-validation.json",
+  "hardware_evidence": "led-session-summary.json",
+  "notes": [
+    "Counts exclude unittest subtests to avoid duplicate totals.",
+    "Real compiler, USB variable/state and vendor UI results are separate evidence, not unit-test outcomes.",
+    "Remote CI for the final commit is tracked on GitHub and not assumed green here."
+  ]
+}

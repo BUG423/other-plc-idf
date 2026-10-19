@@ -1,0 +1,48 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "ui-dialog",
+  "started_at": "2026-10-19T03:37:37.303331+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "dialog",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV",
+    "-ExpectedDialog",
+    "下载设置"
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": null,
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T03:37:38.932909+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "-Action",
+      "dialog",
+      "-ExpectedProject",
+      "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV",
+      "-ExpectedDialog",
+      "下载设置"
+    ],
+    "returncode": 0,
+    "stdout": "{\"title\":\"下载设置\",\"handle\":212931558,\"project\":\"AutoShop V4.12.0.2  E:\\\\PLCProjects\\\\PLCIDF_LED_20261019T031904Z\\\\BESS_E521_DEV - [MAIN]\",\"controls\":[{\"handle\":106042286,\"name\":\"确定\",\"class\":\"Button\",\"checked\":0,\"button_type\":1,\"enabled\":true},{\"handle\":57676130,\"name\":\"取消\",\"class\":\"Button\",\"checked\":0,\"button_type\":0,\"enabled\":true},{\"handle\":271125974,\"name\":\"\",\"class\":\"Button\",\"checked\":0,\"button_type\":7,\"enabled\":true},{\"handle\":235541434,\"name\":\"下载工程源码(不勾选则不能上载工程)\",\"class\":\"Button\",\"checked\":1,\"button_type\":3,\"enabled\":true},{\"handle\":58921906,\"name\":\"\",\"class\":\"Button\",\"checked\":0,\"button_type\":7,\"enabled\":true},{\"handle\":226497522,\"name\":\"下载时，保持型变量重新初始化\",\"class\":\"Button\",\"checked\":0,\"button_type\":9,\"enabled\":true},{\"handle\":287445824,\"name\":\"下载时，保持型变量保持现有值\",\"class\":\"Button\",\"checked\":1,\"button_type\":9,\"enabled\":true},{\"handle\":38540058,\"name\":\"每次下载提示\",\"class\":\"Button\",\"checked\":1,\"button_type\":3,\"enabled\":true},{\"handle\":89592684,\"name\":\"\",\"class\":\"Button\",\"checked\":0,\"button_type\":7,\"enabled\":true},{\"handle\":58004298,\"name\":\"保持型变量属性\",\"class\":\"Button\",\"checked\":0,\"button_type\":3,\"enabled\":true},{\"handle\":90772464,\"name\":\"下载配置在工程中的PLC登录密码\",\"class\":\"Button\",\"checked\":0,\"button_type\":3,\"enabled\":true},{\"handle\":122295202,\"name\":\"\",\"class\":\"Button\",\"checked\":0,\"button_type\":7,\"enabled\":true}]}\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "completed_at": "2026-10-19T03:44:22.551114+00:00",
+  "reason": "explicit-local-stop",
+  "interval_s": 30,
+  "samples": [
+    {
+      "path": "led-poll-0001.json",
+      "started_at": "2026-10-19T03:42:19.431780+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "path": "led-poll-0002.json",
+      "started_at": "2026-10-19T03:42:48.270717+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "path": "led-poll-0003.json",
+      "started_at": "2026-10-19T03:43:17.082189+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "path": "led-poll-0004.json",
+      "started_at": "2026-10-19T03:43:46.115266+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    },
+    {
+      "path": "led-poll-0005.json",
+      "started_at": "2026-10-19T03:44:14.969154+00:00",
+      "ok": true,
+      "raw_value": 1,
+      "static_cpu_state_interpretation": {
+        "value": "RUN",
+        "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+        "device_calibrated": false
+      }
+    }
+  ],
+  "device_changes": false,
+  "device_state_calibration": "not established by this poll"
+}

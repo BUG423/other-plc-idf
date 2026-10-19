@@ -1,0 +1,64 @@
+{
+  "schema": "plcidf.easy521-feedback.v1",
+  "record_kind": "observation",
+  "feedback_id": "easy521-y0-confirmed-20261019-01",
+  "iteration_id": "easy521-led-20261019T033737Z",
+  "parent_iteration_id": null,
+  "requirement_revision": "EAI-R05-isolated-y0-blink",
+  "program": {
+    "source_sha256": "6c51789d485457f9fc64ff34c2f0101f6c10db61bce1bd2a0f529c2c0111e7ed",
+    "source_tree_sha256": null,
+    "build_hash": "4d92b527829f8ca570d28127e6d080b8d5733a1af8d97fa136a9813946a657f8",
+    "intent_hash": null,
+    "release_hash": null,
+    "device_binary_sha256": null,
+    "device_program_binding": "unverified"
+  },
+  "target": {
+    "profile_id": "easy521",
+    "observed_model": "Easy521",
+    "observed_firmware": null,
+    "observed_serial": null,
+    "identity_quality": "unverified",
+    "locator": {
+      "kind": "vendor-usb",
+      "value": "7-2"
+    }
+  },
+  "observations": [
+    {
+      "recorded_at": "2026-10-19T03:44:22.419552+00:00",
+      "observed_at": null,
+      "source": {
+        "kind": "human",
+        "actor": "用户本人现场观察；AI按本会话原意转录",
+        "evidence": [
+          {
+            "path": "evidence/easy521-power-20261019T031500Z/human-visible-blink.json",
+            "sha256": "ebc6e8b9fdd45a0b74523dc7bbb3dcdefad155f391bbdb75a32ec2ddaa99eebd",
+            "source": "human-provided-file"
+          }
+        ]
+      },
+      "action": {
+        "kind": "observe",
+        "description": "完整灯程序下装并厂商程序校验通过后，用户明确确认输出区Y0闪烁。",
+        "operation_id": "easy521-led-20261019T033737Z",
+        "result": "performed"
+      },
+      "expected": "实际输出区Y0指示灯出现持续可见闪烁。",
+      "actual": {
+        "quality": "observed",
+        "description": "用户明确确认：输出区的Y0闪烁。此前用户也报告指示灯明显闪烁。",
+        "value": null,
+        "unit": null
+      },
+      "outcome": "unknown",
+      "limitations": [
+        "用户未提供精确观察时间，observed_at保持null；因此schema outcome保持unknown，但实际灯位和闪烁已由用户明确观察确认。",
+        "未测量端子电压电流、带载能力、任务精确周期或设备二进制字节身份。",
+        "采集工具只核对记录结构、时间与本地附件哈希；未核验来源、设备或现场事实。"
+      ]
+    }
+  ]
+}

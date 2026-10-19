@@ -1,0 +1,44 @@
+{
+  "schema": "plcidf.power-ui-action.v1",
+  "label": "ui-log-data",
+  "started_at": "2026-10-19T03:39:02.005562+00:00",
+  "argv": [
+    "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+    "-Action",
+    "log-data",
+    "-ExpectedProject",
+    "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+  ],
+  "mutation_requested": false,
+  "attempts": 1,
+  "timeout_s": 30,
+  "ps_source": null,
+  "helper_sha256": "5872c2760e364a7e024754b5edadcb1c7c4e54571ffb50f455be17be26d5d823",
+  "completed_at": "2026-10-19T03:39:03.326555+00:00",
+  "result": {
+    "argv": [
+      "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\autoshop_ui.ps1",
+      "-Action",
+      "log-data",
+      "-ExpectedProject",
+      "E:\\PLCProjects\\PLCIDF_LED_20261019T031904Z\\BESS_E521_DEV"
+    ],
+    "returncode": 0,
+    "stdout": "----------------------------------  AutoShop : 通讯消息  ----------------------------------\n信息  (2026-10-19 11:37:51)  开始下载\n信息  (2026-10-19 11:37:51)  下载project 成功\n信息  (2026-10-19 11:37:51)  下载userprog.foid 成功\n信息  (2026-10-19 11:37:51)  下载stprog.o 成功\n信息  (2026-10-19 11:37:51)  下载stuserprog.o 成功\n信息  (2026-10-19 11:37:51)  下载symbol.sym 成功\n信息  (2026-10-19 11:37:51)  下载varsinfo.foid 成功\n信息  (2026-10-19 11:37:51)  下载syscfg.foid 成功\n信息  (2026-10-19 11:37:51)  下载ethercat.foid 成功\n信息  (2026-10-19 11:37:51)  下载modbus.foid 成功\n信息  (2026-10-19 11:37:51)  下载canlink.foid 成功\n信息  (2026-10-19 11:37:51)  下载modcfg.foid 成功\n信息  (2026-10-19 11:37:51)  下载EIP.dat 成功\n信息  (2026-10-19 11:37:51)  下载EIPIns.foid 成功\n信息  (2026-10-19 11:37:51)  下载ecttrans.foid 成功\n信息  (2026-10-19 11:37:52)  下载dataLog.foid 成功\n信息  (2026-10-19 11:37:52)  下载OpcUAServer.dat 成功\n信息  (2026-10-19 11:37:52)  下载sftpserver.foid 成功\n信息  (2026-10-19 11:37:52)  下载Ecam.foid 成功\n信息  (2026-10-19 11:37:52)  下载成功！\n信息  (2026-10-19 11:39:01)  当前工程与PLC中程序校验一致！\n",
+    "stderr": "",
+    "attempts": 1,
+    "timed_out": false
+  }
+}

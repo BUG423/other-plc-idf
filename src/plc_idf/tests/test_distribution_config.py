@@ -1,8 +1,20 @@
 """Distribution-related path resolution; no Windows or PLC access."""
 
+import importlib.util
+import os
 from pathlib import Path
+import sys
+
+import pytest
 
 import plc_idf.config as config
+
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
+_spec = importlib.util.spec_from_file_location(
+    "_plcidf_check_distribution", REPO_ROOT / "tools/check_distribution.py")
+distribution_check = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(distribution_check)
 
 
 def test_installed_package_uses_workspace_and_bundled_assets(tmp_path, monkeypatch,
@@ -63,3 +75,26 @@ def test_loading_config_never_mutates_defaults(tmp_path, clean_env):
     assert config.DEFAULTS["paths"] == {"project_root": None, "wsl_tools": None}
     assert config.DEFAULTS["bridge"]["tools_ps1_windows"] is None
     assert first.paths.project_root != second.paths.project_root
+
+
+def test_usb_memory_preview_imports_companion_from_another_cwd(tmp_path):
+    preview = distribution_check.preview_usb_memory_reader(
+        Path(sys.executable), REPO_ROOT / "tools/read_easy521_usb_memory.py",
+        cwd=tmp_path, env=dict(os.environ))
+    assert preview["device_access"] is False and preview["status"] == "preview"
+    assert preview["symbol"]["address_semantics"] == "opaque_vendor_symbol"
+
+
+@pytest.mark.parametrize("access", [
+    "import subprocess; subprocess.run(['must-not-run'])",
+    "import socket; socket.socket()",
+    "from plc_idf.interop import run_command; run_command(['must-not-run'])",
+    "from plc_idf.lease import ResourceLease; ResourceLease('must-not-lock')",
+])
+def test_usb_memory_preview_guard_rejects_external_access(tmp_path, capsys, access):
+    reader = tmp_path / "bad_preview.py"
+    reader.write_text(access + "\n", encoding="utf-8")
+    with pytest.raises(RuntimeError, match="Unexpected exit"):
+        distribution_check.preview_usb_memory_reader(
+            Path(sys.executable), reader, cwd=tmp_path, env=dict(os.environ))
+    assert "preview external access is forbidden" in capsys.readouterr().err

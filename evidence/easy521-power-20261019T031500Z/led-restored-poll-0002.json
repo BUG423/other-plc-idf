@@ -1,0 +1,120 @@
+{
+  "started_at": "2026-10-19T04:34:24.410016+00:00",
+  "completed_at": "2026-10-19T04:34:24.080630+00:00",
+  "sample": 2,
+  "observation": {
+    "schema": "plcidf.usb-runtime-observation.v1",
+    "scope": "one fixed read through Windows libusb0 driver bridge; raw value only",
+    "ok": true,
+    "status": "observed",
+    "stage": "complete",
+    "device_access": true,
+    "gui_access": false,
+    "transport_kind": "wsl-windows-libusb0",
+    "linux_native_usb": false,
+    "cpu_identity_verified": false,
+    "cpu_state_verified": false,
+    "application_execution_verified": false,
+    "state_semantics": "unknown",
+    "read_profile": "gcm-state",
+    "profile": "vendor_gcm_state",
+    "request_hex": "12000101c71900000100000000ff01000000",
+    "diagnostics": [],
+    "sequence": 6599,
+    "correlation_scope": "random u16; collision reduction only, not authentication or absolute freshness",
+    "lease_token": "0f2ece78289c49aaab0b9e533b1319a9",
+    "usbipd_snapshot": {
+      "argv": [
+        "/mnt/c/Program Files/usbipd-win/usbipd.exe",
+        "list"
+      ],
+      "returncode": 0,
+      "stdout": "Connected:\nBUSID  VID:PID    DEVICE                                                        STATE\n1-5    0489:e0cd  MediaTek Bluetooth Adapter                                    Not shared\n2-1    174f:181d  Integrated Camera, Integrated IR Camera, Camera DFU Device    Not shared\n6-1    046d:c52b  Logitech USB Input Device, USB 输入设备                           Not shared\n6-2    24ae:2015  USB 输入设备                                                      Not shared\n6-3    1ea7:0066  USB 输入设备                                                      Not shared\n6-4    1a2c:7fff  USB 输入设备                                                      Not shared\n7-2    0471:a531  H5U USB Device                                                Not shared\n7-4    35bb:d00b  HECATE Co-Installer Device, USB 输入设备                          Not shared\n8-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared\n\nPersisted:\nGUID                                  DEVICE\n94ed4ff5-3008-47cf-9c47-6022b6832257  H5U USB Device\n\n",
+      "stderr": "",
+      "attempts": 1,
+      "timed_out": false
+    },
+    "target": {
+      "busid": "7-2",
+      "vidpid": "0471:a531",
+      "usbipd_state": "Not shared",
+      "identity_basis": "USB location and product, not CPU identity"
+    },
+    "helper": {
+      "path": "/home/zss/workspace/py2plc/plc/tools/read_easy521_usb_runtime.ps1",
+      "sha256": "237131365c2aae4ce96dcc9d17505637158dbab5397a59faea7c7f6eeaa712d7",
+      "library_sha256": "cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe54352520c",
+      "sha256_after": "237131365c2aae4ce96dcc9d17505637158dbab5397a59faea7c7f6eeaa712d7"
+    },
+    "request_outcome": "correlated_raw_data",
+    "raw_transport": {
+      "argv": [
+        "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "\\\\wsl.localhost\\Ubuntu\\home\\zss\\workspace\\py2plc\\plc\\tools\\read_easy521_usb_runtime.ps1",
+        "-Execute",
+        "-Sequence",
+        "6599",
+        "-ReadProfile",
+        "gcm-state"
+      ],
+      "returncode": 0,
+      "stdout": "{\"schema\":\"plcidf.usb-runtime-probe.v1\",\"observed_at\":\"2026-10-19T12:34:25.0506901+08:00\",\"scope\":\"single fixed read request via Windows libusb0; no CPU mode or application change\",\"read_profile\":\"gcm-state\",\"library_sha256\":\"cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe54352520c\",\"result\":{\"ok\":true,\"stage\":\"raw-frame-only\",\"write_calls\":1,\"state_semantics\":\"unknown\",\"descriptor_hex\":\"1201000202000040710431a5100301020001\",\"configuration_rc\":1,\"claim_rc\":0,\"request_hex\":\"12000101c71900000100000000ff01000000\",\"bulk_write_rc\":18,\"read_rcs\":[11],\"response_hex\":\"0b000101c7190000050001\",\"release_rc\":0,\"close_rc\":0}}\n",
+      "stderr": "",
+      "attempts": 1,
+      "timed_out": false
+    },
+    "transport_record": {
+      "schema": "plcidf.usb-runtime-probe.v1",
+      "observed_at": "2026-10-19T12:34:25.0506901+08:00",
+      "scope": "single fixed read request via Windows libusb0; no CPU mode or application change",
+      "read_profile": "gcm-state",
+      "library_sha256": "cb6ac96e9abf55586622af809b98af1c989b50d490b2e0770dd7fbe54352520c",
+      "result": {
+        "ok": true,
+        "stage": "raw-frame-only",
+        "write_calls": 1,
+        "state_semantics": "unknown",
+        "descriptor_hex": "1201000202000040710431a5100301020001",
+        "configuration_rc": 1,
+        "claim_rc": 0,
+        "request_hex": "12000101c71900000100000000ff01000000",
+        "bulk_write_rc": 18,
+        "read_rcs": [
+          11
+        ],
+        "response_hex": "0b000101c7190000050001",
+        "release_rc": 0,
+        "close_rc": 0
+      }
+    },
+    "decoded": {
+      "frame_bytes": 11,
+      "version": 1,
+      "selector": 1,
+      "sequence": 6599,
+      "reserved_u16": 0,
+      "operation": 5,
+      "flags_u8": 0,
+      "profile": "vendor_gcm_state",
+      "index_u32": 4278190080,
+      "payload_hex": "01",
+      "evidence_level": "static_contract_only",
+      "device_verified": false,
+      "state_semantics": "unknown",
+      "ok": true,
+      "status": "data",
+      "raw_value": 1
+    },
+    "raw_value": 1,
+    "static_cpu_state_interpretation": {
+      "value": "RUN",
+      "basis": "vendor GetGCMState caller/UI mapping; research report 18",
+      "device_calibrated": false
+    }
+  }
+}

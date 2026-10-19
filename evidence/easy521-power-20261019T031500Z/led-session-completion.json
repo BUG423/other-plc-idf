@@ -1,0 +1,19 @@
+{
+  "schema": "plcidf.powered-led-completion.v1",
+  "recorded_at": "2026-10-19T04:37:15.591818+00:00",
+  "session_summary": "led-session-summary.json",
+  "session_summary_sha256": "84a73ec272cec9cca1d607dfc8331541aad88f41ab2432d04290eb66420406f0",
+  "final_cpu_state": "RUN readback observed six further times",
+  "final_program": "compiled LED Y0 follows M8013; original BESS not restored",
+  "poll_summary": "led-restored-poll-summary.json",
+  "poll_completed": true,
+  "poll_count": 6,
+  "poll_interval_nominal_s": 30,
+  "unattended_polling_continues": false,
+  "device_writes_after_run_restoration": false,
+  "human_y0_blink_confirmed_before_stop": true,
+  "human_y0_off_after_stop_confirmed": true,
+  "human_y0_blink_after_restoration": "awaiting user response; do not infer",
+  "device_binary_identity_verified": false,
+  "next_task": "T15 / GitHub #19"
+}
