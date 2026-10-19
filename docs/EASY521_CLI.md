@@ -1,4 +1,4 @@
-# Easy521 的 WSL CLI 实验入口
+# Easy521 的 CLI 与原生 Linux 实验入口
 
 本体供电、A9输入公共端、B9输出公共端及TN/TP负载接法见[接线说明](usage/EASY521_LOAD_WIRING.md)。纯Linux本地闭环和既有ARM对象后处理见[21号验证](research/firmware/21-linux-existing-global-bindings-2026-10-19.md)，与下述Windows桥接分别验收。
 
@@ -29,7 +29,20 @@ python tools/read_easy521_usb_memory.py --profile m8013 --execute --busid 7-2
 .venv/bin/python tools/read_easy521_usb_runtime.py --profile gcm-state --execute --busid 7-2
 ```
 
-worker会在设备锁内重新枚举核对；不自动关闭AutoShop、不切换USB归属、不重试。成功为`observed`，提供raw_value及单独的厂商静态解释；通用工具不会因本轮台架证据而自动提升其他设备的身份或校准等级。默认`literal`保持历史ff010000/4B请求。固定内存读取的reader、codec和helper已随wheel作为资源分发；状态查询脚本当前仍从源码仓库运行。这些工具未添加为新的`plcidf`子命令。
+worker会在设备锁内重新枚举核对；不自动关闭AutoShop、不切换USB归属、不重试。成功为`observed`，提供raw_value及单独的厂商静态解释；通用工具不会因本轮台架证据而自动提升其他设备的身份或校准等级。默认`literal`保持历史ff010000/4B请求。两个reader、codec、helper及新增Linux原生module均随wheel作为资源分发；这些工具未添加为新的`plcidf`子命令。
+
+## 原生 Linux 只读 USB
+
+两个读取器新增显式后端，默认仅预览，不加载libusb或枚举：
+
+```bash
+python tools/read_easy521_usb_runtime.py --transport linux-native --profile gcm-state
+python tools/read_easy521_usb_memory.py --transport linux-native --profile m8013
+```
+
+实际执行使用`--execute --linux-device BUS:ADDRESS`，而不是Windows的`--busid`。新鲜枚举、固定配置/接口/端点检查、只发送一次、超时保留unknown均独立实现，不调用Windows驱动、不自动共享/附加/重连。WSL中需先按微软流程共享设备；当前代码已通过mock及真实libusb无目标拒绝，尚未完成原生真机读取。主机准备、完整命令和限制见[研究24](research/firmware/24-linux-native-usb-2026-10-19.md)。
+
+## 历史验收与兼容后端
 
 2026-10-17 已真实完成两个内存探针的应用下载、厂商程序一致性正反校验。当时 CPU RUN 被拒绝，未完成运行验收；用户报告额定 24V 主供电未连接。完整记录和证据见 [该轮设备报告](management/EASY521_APPLICATION_2026-10-17.md)，不代表今天重新观察了供电或 CPU 状态。
 
@@ -81,3 +94,5 @@ plcidf monitor --transport vendor-usb --timeout 20 --json
 独立 STLang worker 已将冻结的厂商 MAIN.st/MAIN.cl 转为新的 ARM `.o`，不访问设备。它仍依赖 Windows 厂商编译器，尚不接受普通 IEC 文本生成完整设备应用，见 [真实正负编译实验](research/firmware/10-stlang-headless-compiler-2026-10-17.md)。
 
 新增 `prepare_vendor_st.py` 可将普通 MAIN 正文及显式 BOOL/INT/DINT/REAL 全局表生成合法 MAIN.st/cl；已真实验证多语句、IF、规则变化及错误语法。仍只生成 ARM 可重定位对象，完整工程链接和下装不是该工具的交付范围。使用方法及隐式运行时声明见 [研究报告 11](research/firmware/11-plain-main-object-2026-10-18.md)。两个 worker 均随 wheel 分发，`doctor --json` 给出它们的实际路径和 argv。
+
+另有独立Linux工具`tools/compile_easy521_native_probe.py`，仅接受外部`COUNTER:DINT`和单句`COUNTER := COUNTER + 1..32767;`，真实生成LLVM IR及ARM对象；两种增量已接入两级Linux链接，但变量地址、任务/配置、ARM运行与下载均未验收。它不是通用ST编译器，也未注册成`plcidf build`后端，详见[研究23](research/firmware/23-linux-st-abi-2026-10-19.md)。配置FOID严格离线解析工具见[研究22](research/firmware/22-linux-foid-packaging-2026-10-19.md)，不能用结构解析成功代替应用生成。

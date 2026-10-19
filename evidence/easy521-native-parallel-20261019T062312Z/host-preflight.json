@@ -1,0 +1,58 @@
+{
+  "schema": "plcidf.native-linux-host-preflight.v1",
+  "observed_at": "2026-10-19T06:23:12.462922+00:00",
+  "kernel": "6.18.33.2-microsoft-standard-WSL2",
+  "distro": "Ubuntu",
+  "libusb": "libusb-1.0.so.0",
+  "before": {
+    "usb_sysfs": false,
+    "usb_devfs": false,
+    "usbip_modules_loaded": false
+  },
+  "host_action": {
+    "argv": [
+      "wsl.exe",
+      "--distribution",
+      "Ubuntu",
+      "--user",
+      "root",
+      "--exec",
+      "/sbin/modprobe",
+      "vhci-hcd"
+    ],
+    "returncode": 0,
+    "recorded_after_action": true,
+    "device_request_sent": false,
+    "source": "preceding root exec result"
+  },
+  "after": {
+    "usb_sysfs": true,
+    "usb_devfs": true,
+    "sysfs_devices": [
+      "usb1",
+      "usb2",
+      "1-0:1.0",
+      "2-0:1.0"
+    ],
+    "device_nodes": [
+      "/dev/bus/usb/002/001",
+      "/dev/bus/usb/001/001"
+    ]
+  },
+  "windows_preflight": {
+    "single_target_busid": "7-2",
+    "vidpid": "0471:a531",
+    "state": "Not shared",
+    "autoshop_running": false,
+    "administrator": false,
+    "source": "preceding root exec results; initial snapshots not device/CPU identity"
+  },
+  "device_access": false,
+  "application_downloaded": false,
+  "cpu_mode_changed": false,
+  "limitations": [
+    "No USB/IP bind/attach executed",
+    "USB bus/address cannot be inferred from Windows BUSID",
+    "No CPU/permanent identity claimed"
+  ]
+}

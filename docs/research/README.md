@@ -2,6 +2,9 @@
 
 > **2026-10-19供电后更新**：20号记录24 V台架的固定变量读回、灯程序真实编译/下载/比较、状态与时钟变化，以及用户确认Y0闪烁、STOP后熄灭。18号更正仍适用：旧ff010000/4B不是CPU状态。完整Linux原生包装、无GUI下装及设备字节绑定仍开放；历史报告保留其当时状态。
 
+- [原生Linux USB后端](firmware/24-linux-native-usb-2026-10-19.md)：单次固定读取实现、WSL主机模块准备与真实libusb无目标拒绝；真机读取仍待设备共享。
+- [受限ST到ARM对象](firmware/23-linux-st-abi-2026-10-19.md)：独立源码前端、真实LLVM ARM输出、局部ABI与同IR主机语义验证；不是完整应用。
+- [FOID头来源与严格检查](firmware/22-linux-foid-packaging-2026-10-19.md)：模块默认版本、opaque字段与配置payload对照，不提供猜测生成器。
 - [Linux既有全局绑定与真实本地闭环](firmware/21-linux-existing-global-bindings-2026-10-19.md)：8项字段后处理、全符号对照及当前原生编译/监控缺口。
 - [接入24 V后的Y0真机台架](firmware/20-powered-led-bench-2026-10-19.md)：实际运行、人工观察、历史失败与编译产物漂移。
 - [固定已有变量的ReadMemoryEx](firmware/19-existing-variable-read-2026-10-19.md)：静态来源、22字节读请求、固定项和响应候选；本机后续实测见20号。

@@ -1,0 +1,1285 @@
+{
+  "schema": "plcidf.offline-foid-packaging.v1",
+  "recorded_at_utc": "2026-10-19T06:27:42.319327+00:00",
+  "scope": {
+    "offline_static_vendor_files": true,
+    "linux_parser_execution": true,
+    "vendor_exe_dll_execution": false,
+    "windows_process_access": false,
+    "network_usb_plc_access": false,
+    "original_project_modified": false,
+    "configuration_generation": false,
+    "full_application_packaging": false,
+    "application_download": false,
+    "runtime_validation": false
+  },
+  "frozen_inputs": [
+    {
+      "source": "/mnt/e/Software/AutoShop/AutoShop.exe",
+      "frozen": ".plcidf/research-22-foid-20261019/vendor/AutoShop.exe",
+      "size": 55592960,
+      "sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/canlink.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/canlink.foid",
+      "size": 72,
+      "sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/dataLog.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/dataLog.foid",
+      "size": 261,
+      "sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/Ecam.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/Ecam.foid",
+      "size": 118,
+      "sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/ecttrans.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/ecttrans.foid",
+      "size": 73,
+      "sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/EIPIns.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/EIPIns.foid",
+      "size": 88,
+      "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/ethercat.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/ethercat.foid",
+      "size": 270,
+      "sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/ethip.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/ethip.foid",
+      "size": 301,
+      "sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/modbus.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/modbus.foid",
+      "size": 73,
+      "sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/modcfg.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/modcfg.foid",
+      "size": 579,
+      "sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/OpcUAServer.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/OpcUAServer.foid",
+      "size": 97,
+      "sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/sftpserver.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/sftpserver.foid",
+      "size": 146,
+      "sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/DownLoad/syscfg.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/DownLoad/syscfg.foid",
+      "size": 789,
+      "sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Output.sdt",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Output.sdt",
+      "size": 182,
+      "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/EtherCat.dat",
+      "frozen": ".plcidf/research-22-foid-20261019/project/EtherCat.dat",
+      "size": 243,
+      "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/TcpModbusConfig.cfg",
+      "frozen": ".plcidf/research-22-foid-20261019/project/TcpModbusConfig.cfg",
+      "size": 8,
+      "sha256": "2b4a11fa9359588975ca08fda63a08543abbde3f88753e01b523be7f804a4e83",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/h5u_moduleCfg.data",
+      "frozen": ".plcidf/research-22-foid-20261019/project/h5u_moduleCfg.data",
+      "size": 225,
+      "sha256": "696bdab8fd3098aba68d0c18b6b35fdc552f7d14ec6739b1fdc39a98e3533c15",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/EIP.dat",
+      "frozen": ".plcidf/research-22-foid-20261019/project/EIP.dat",
+      "size": 340,
+      "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/EIPIns.dat",
+      "frozen": ".plcidf/research-22-foid-20261019/project/EIPIns.dat",
+      "size": 24,
+      "sha256": "ded971312fd0d6636189f053bb70120ad8f783b028c5ae16da4253e63d6376f3",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/ecttrans.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/ecttrans.foid",
+      "size": 9,
+      "sha256": "11fe87bbabe3f9c7fe22e69a6abdfd0eafb2053d3e2a13c5a3491ea8298bc927",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/dataLog.data",
+      "frozen": ".plcidf/research-22-foid-20261019/project/dataLog.data",
+      "size": 197,
+      "sha256": "f3a0abebf69ea2227363120c9ee1cc4576997c897edd826107eb37124087f7a2",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/OpcUAServer.dat",
+      "frozen": ".plcidf/research-22-foid-20261019/project/OpcUAServer.dat",
+      "size": 307,
+      "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/SFTPServer.dat",
+      "frozen": ".plcidf/research-22-foid-20261019/project/SFTPServer.dat",
+      "size": 171,
+      "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Ecam.tr",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Ecam.tr",
+      "size": 54,
+      "sha256": "854e0a3951bc4a773d684415ec8983c32c6f6cfc93f71b86344442379bcc688f",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/Software/AutoShop/InterfaceMgr.dll",
+      "frozen": ".plcidf/research-22-foid-20261019/vendor/InterfaceMgr.dll",
+      "size": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/BESS_E521_DEV.hcpp",
+      "frozen": ".plcidf/research-22-foid-20261019/project/BESS_E521_DEV.hcpp",
+      "size": 52093,
+      "sha256": "42d6b319152f9cdd15abb4ac50a5ebb734c139058af79e9997479578371659a2",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/userprog.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/userprog.foid",
+      "size": 294,
+      "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stprog.o",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/stprog.o",
+      "size": 127464,
+      "sha256": "37364f661545fabb205a290d71ac0f2a18df432ea53c681ad0dd1d0ea0316e0b",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/stuserprog.o",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/stuserprog.o",
+      "size": 6240,
+      "sha256": "09c96e5511da4e0035c4427a9635ec70134a2258c357c952788f7f7069f718f9",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/symbol.sym",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/symbol.sym",
+      "size": 218,
+      "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    },
+    {
+      "source": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/varsinfo.foid",
+      "frozen": ".plcidf/research-22-foid-20261019/project/Temp/varsinfo.foid",
+      "size": 423,
+      "sha256": "af4e636e0119891cbf6be9db8686ce0fc775025556509a4fb7a6c932bcc0fb1d",
+      "original_rechecked_same_sha256": true,
+      "frozen_rechecked_same_sha256": true
+    }
+  ],
+  "snapshot_coherent_build_identity_established": false,
+  "writer": {
+    "image": "AutoShop.exe",
+    "writer_va": "0x15b2a90",
+    "header_generator_va": "0x15b2dd0",
+    "header_size": 64,
+    "metadata": {
+      "offset": 20,
+      "length": 32,
+      "literal_unicode_empty_va": "0x1eecfac",
+      "unicode_to_acp_call_va": "0x15b2ffa",
+      "unicode_to_acp_iat": "0x1eb179c",
+      "import": "InterfaceMgr.dll!EncodingManager::ConvertFromUnicode_ACPCStr",
+      "narrow_buffer_accessor_call_va": "0x15b300e",
+      "fixed_32_byte_copy_va": "0x15b301c",
+      "payload_argument_to_header_generator": false,
+      "observed_frozen_config_unique_hashes": [
+        "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55"
+      ],
+      "exact_32_bytes_generation_semantics_verified": false,
+      "not_claimed": [
+        "checksum",
+        "signature",
+        "timestamp",
+        "project UUID",
+        "safe zero-fill replacement"
+      ],
+      "note": "An empty string is converted, then the writer copies the declared 32 bytes from its narrow buffer. Bytes after the terminator and device acceptance rules remain unverified.",
+      "literal_push_va": "0x15b2fe0",
+      "CStringW_constructor_call_va": "0x15b2fe8"
+    },
+    "caller_dword": {
+      "offset": 60,
+      "length": 4,
+      "header_input_argument": "[ebp+0x10]",
+      "copy_va": "0x15b310c",
+      "default_version_import_iat": "0x1eb0aa4",
+      "default_version_import": "InterfaceMgr.dll!g_GetModuleDefaultVer(unsigned short)",
+      "default_version_export_va": "0x1004ed80",
+      "lookup_behavior": "WORD module key lookup in process table; found returns node+0x10 DWORD; absent returns zero",
+      "default_version_map_initialization_verified": false,
+      "device_compatibility_policy_verified": false,
+      "callers": [
+        {
+          "file": "syscfg.foid",
+          "module_id_hex": null,
+          "literal_value": 0,
+          "argument_prepare_va": "0xe7b5f2",
+          "writer_call_va": "0xe7b63e"
+        },
+        {
+          "file": "ethercat.foid",
+          "module_id_hex": "0x30",
+          "literal_value": null,
+          "argument_prepare_va": "0xe7ba3a",
+          "writer_call_va": "0xe7ba90"
+        },
+        {
+          "file": "modbus.foid",
+          "module_id_hex": "0x60",
+          "literal_value": null,
+          "argument_prepare_va": "0xe7befc",
+          "writer_call_va": "0xe7bf52"
+        },
+        {
+          "file": "canlink.foid",
+          "module_id_hex": "0x50",
+          "literal_value": null,
+          "argument_prepare_va": "0xe7c4c5",
+          "writer_call_va": "0xe7c51b"
+        },
+        {
+          "file": "modcfg.foid",
+          "module_id_hex": null,
+          "literal_value": 0,
+          "argument_prepare_va": "0xe7c931",
+          "writer_call_va": "0xe7c97d"
+        },
+        {
+          "file": "modcfg alternate model branch",
+          "module_id_hex": null,
+          "literal_value": 0,
+          "argument_prepare_va": "0xe7cdac",
+          "writer_call_va": "0xe7cdf8"
+        },
+        {
+          "file": "ethip.foid",
+          "module_id_hex": "0x80",
+          "literal_value": null,
+          "argument_prepare_va": "0xe7d222",
+          "writer_call_va": "0xe7d27b"
+        },
+        {
+          "file": "EIPIns.foid",
+          "module_id_hex": "0xb0",
+          "literal_value": null,
+          "argument_prepare_va": "0xe7d6e7",
+          "writer_call_va": "0xe7d740"
+        },
+        {
+          "file": "ecttrans.foid",
+          "module_id_hex": "0x90",
+          "literal_value": null,
+          "argument_prepare_va": "0xe7dbac",
+          "writer_call_va": "0xe7dc05"
+        },
+        {
+          "file": "dataLog.foid",
+          "module_id_hex": null,
+          "literal_value": 0,
+          "argument_prepare_va": "0xe7e039",
+          "writer_call_va": "0xe7e085"
+        },
+        {
+          "file": "webserver.foid",
+          "module_id_hex": "0xd0",
+          "literal_value": null,
+          "argument_prepare_va": "0xe7e4a1",
+          "writer_call_va": "0xe7e4fa"
+        },
+        {
+          "file": "OpcUAServer.foid",
+          "module_id_hex": "0xa0",
+          "literal_value": null,
+          "argument_prepare_va": "0xe7e858",
+          "writer_call_va": "0xe7e8b1"
+        },
+        {
+          "file": "sftpserver.foid",
+          "module_id_hex": "0xc0",
+          "literal_value": null,
+          "argument_prepare_va": "0xe7ed1d",
+          "writer_call_va": "0xe7ed76"
+        },
+        {
+          "file": "Ecam.foid",
+          "module_id_hex": null,
+          "literal_value": 0,
+          "argument_prepare_va": "0xe7f181",
+          "writer_call_va": "0xe7f1cd"
+        }
+      ]
+    },
+    "interface_helpers": {
+      "unicode_to_acp_export_va": "0x1005e550",
+      "HString_narrow_conversion_va": "0x1005ab00",
+      "HString_narrow_conversion_behavior": "returns the first pointer field of HString"
+    }
+  },
+  "real_configuration_inspection": {
+    "schema": "plcidf.easy521-foid-inspection.v1",
+    "tool": "inspect_easy521_foid",
+    "recorded_at_utc": "2026-10-19T06:29:40.538415+00:00",
+    "inspection_ok": true,
+    "scope": "offline_observed_configuration_envelope",
+    "complete_application": false,
+    "downloadable": false,
+    "signature_verified": false,
+    "limits": {
+      "max_file_bytes": 67108864,
+      "max_total_bytes": 134217728,
+      "max_files": 64,
+      "bytes_read": 4627
+    },
+    "files": [
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/EIPIns.foid",
+        "role": "foid",
+        "size": 88,
+        "sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "5bbb5f57baaba8b593e9ca5e99d5ec2e708690e9d0932ec2de5766bcf2d6a027",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 24,
+          "sha256": "ded971312fd0d6636189f053bb70120ad8f783b028c5ae16da4253e63d6376f3",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/Ecam.foid",
+        "role": "foid",
+        "size": 118,
+        "sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "5bbb5f57baaba8b593e9ca5e99d5ec2e708690e9d0932ec2de5766bcf2d6a027",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 54,
+          "sha256": "854e0a3951bc4a773d684415ec8983c32c6f6cfc93f71b86344442379bcc688f",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/OpcUAServer.foid",
+        "role": "foid",
+        "size": 97,
+        "sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "6a4f3317f2039b16991a94071fb694d545d7b9055646c6a95ab45d00856ff27c",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 1,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 33,
+          "sha256": "40ffc472d8dfdb1b95c27b3ec78a032cbd8d7ccaa2319f125fcba4d10c536984",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/canlink.foid",
+        "role": "foid",
+        "size": 72,
+        "sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "5bbb5f57baaba8b593e9ca5e99d5ec2e708690e9d0932ec2de5766bcf2d6a027",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 8,
+          "sha256": "0854082c3b0245f7e0f1cc127fe74d2efe6a72eaa875378afa350adba710186d",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/dataLog.foid",
+        "role": "foid",
+        "size": 261,
+        "sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "5bbb5f57baaba8b593e9ca5e99d5ec2e708690e9d0932ec2de5766bcf2d6a027",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 197,
+          "sha256": "f3a0abebf69ea2227363120c9ee1cc4576997c897edd826107eb37124087f7a2",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/ecttrans.foid",
+        "role": "foid",
+        "size": 73,
+        "sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "6a4f3317f2039b16991a94071fb694d545d7b9055646c6a95ab45d00856ff27c",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 1,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 9,
+          "sha256": "11fe87bbabe3f9c7fe22e69a6abdfd0eafb2053d3e2a13c5a3491ea8298bc927",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/ethercat.foid",
+        "role": "foid",
+        "size": 270,
+        "sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "5bbb5f57baaba8b593e9ca5e99d5ec2e708690e9d0932ec2de5766bcf2d6a027",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 206,
+          "sha256": "d0e57a4e2fd5147a6a1a92595417ea26d0cef7f72a258df2c34f3699af3f3b4e",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/ethip.foid",
+        "role": "foid",
+        "size": 301,
+        "sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "5bbb5f57baaba8b593e9ca5e99d5ec2e708690e9d0932ec2de5766bcf2d6a027",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 237,
+          "sha256": "2a0ea85a12e5beefcc1396848300d9c88f8523938bb22c3d98ddcf89c7563a62",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/modbus.foid",
+        "role": "foid",
+        "size": 73,
+        "sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "5bbb5f57baaba8b593e9ca5e99d5ec2e708690e9d0932ec2de5766bcf2d6a027",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 9,
+          "sha256": "e5da198f183c6390905db9b31a6091a26746d3c8e712d2492cfb35f4019180a5",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/modcfg.foid",
+        "role": "foid",
+        "size": 579,
+        "sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "5bbb5f57baaba8b593e9ca5e99d5ec2e708690e9d0932ec2de5766bcf2d6a027",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 515,
+          "sha256": "9c6828598f8243d14f480667314dadf2b323db94d475e1732435a4c1680f9557",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/sftpserver.foid",
+        "role": "foid",
+        "size": 146,
+        "sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "6a4f3317f2039b16991a94071fb694d545d7b9055646c6a95ab45d00856ff27c",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 1,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 82,
+          "sha256": "530af3bd3894465679bc8bf87f6398b2c4ba581a2a92fbdad7f6f3a2a2071288",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/syscfg.foid",
+        "role": "foid",
+        "size": 789,
+        "sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "5bbb5f57baaba8b593e9ca5e99d5ec2e708690e9d0932ec2de5766bcf2d6a027",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 725,
+          "sha256": "3533e7425bb127ce2300afb022b0274f54e3aa3e5bc21ce53849a8832a1c4d27",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Output.sdt",
+        "role": "source",
+        "size": 182,
+        "sha256": "c07a72afae6f4cac3e87308bab17d0eec1658a764b7e67102de77ec984ca863b",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/EtherCat.dat",
+        "role": "source",
+        "size": 243,
+        "sha256": "59dd1da9a8201fd64412f8cd18f1c9a82da4b7c33e997ec65bec2f7c57be774d",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/TcpModbusConfig.cfg",
+        "role": "source",
+        "size": 8,
+        "sha256": "2b4a11fa9359588975ca08fda63a08543abbde3f88753e01b523be7f804a4e83",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/h5u_moduleCfg.data",
+        "role": "source",
+        "size": 225,
+        "sha256": "696bdab8fd3098aba68d0c18b6b35fdc552f7d14ec6739b1fdc39a98e3533c15",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/EIP.dat",
+        "role": "source",
+        "size": 340,
+        "sha256": "820b454c2892e3c9afa576cc6b0bcac18d5e39ed27d33f7086061b099c0f49f9",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/EIPIns.dat",
+        "role": "source",
+        "size": 24,
+        "sha256": "ded971312fd0d6636189f053bb70120ad8f783b028c5ae16da4253e63d6376f3",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/ecttrans.foid",
+        "role": "source",
+        "size": 9,
+        "sha256": "11fe87bbabe3f9c7fe22e69a6abdfd0eafb2053d3e2a13c5a3491ea8298bc927",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/dataLog.data",
+        "role": "source",
+        "size": 197,
+        "sha256": "f3a0abebf69ea2227363120c9ee1cc4576997c897edd826107eb37124087f7a2",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/OpcUAServer.dat",
+        "role": "source",
+        "size": 307,
+        "sha256": "e0bf9b8261efe85263ccc9b427b75fca9481b8d2e6f5f3de522ee55ba7e1d94b",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/SFTPServer.dat",
+        "role": "source",
+        "size": 171,
+        "sha256": "1f427316f111f8a0addcdd67c436da5d86e282fc38275cfd048a5ef8dac3d169",
+        "inspection_status": "read"
+      },
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Ecam.tr",
+        "role": "source",
+        "size": 54,
+        "sha256": "854e0a3951bc4a773d684415ec8983c32c6f6cfc93f71b86344442379bcc688f",
+        "inspection_status": "read"
+      }
+    ],
+    "source_comparisons": [
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/syscfg.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Output.sdt",
+        "payload_semantics_verified": false,
+        "payload_equals_source": false,
+        "payload_is_source_prefix": false,
+        "source_is_payload_prefix": false,
+        "payload_bytes": 725,
+        "source_bytes": 182,
+        "source_bytes_after_payload_prefix": null
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/ethercat.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/EtherCat.dat",
+        "payload_semantics_verified": false,
+        "payload_equals_source": false,
+        "payload_is_source_prefix": true,
+        "source_is_payload_prefix": false,
+        "payload_bytes": 206,
+        "source_bytes": 243,
+        "source_bytes_after_payload_prefix": 37
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/modbus.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/TcpModbusConfig.cfg",
+        "payload_semantics_verified": false,
+        "payload_equals_source": false,
+        "payload_is_source_prefix": false,
+        "source_is_payload_prefix": false,
+        "payload_bytes": 9,
+        "source_bytes": 8,
+        "source_bytes_after_payload_prefix": null
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/modcfg.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/h5u_moduleCfg.data",
+        "payload_semantics_verified": false,
+        "payload_equals_source": false,
+        "payload_is_source_prefix": false,
+        "source_is_payload_prefix": false,
+        "payload_bytes": 515,
+        "source_bytes": 225,
+        "source_bytes_after_payload_prefix": null
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/ethip.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/EIP.dat",
+        "payload_semantics_verified": false,
+        "payload_equals_source": false,
+        "payload_is_source_prefix": true,
+        "source_is_payload_prefix": false,
+        "payload_bytes": 237,
+        "source_bytes": 340,
+        "source_bytes_after_payload_prefix": 103
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/EIPIns.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/EIPIns.dat",
+        "payload_semantics_verified": false,
+        "payload_equals_source": true,
+        "payload_is_source_prefix": true,
+        "source_is_payload_prefix": true,
+        "payload_bytes": 24,
+        "source_bytes": 24,
+        "source_bytes_after_payload_prefix": 0
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/ecttrans.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/ecttrans.foid",
+        "payload_semantics_verified": false,
+        "payload_equals_source": true,
+        "payload_is_source_prefix": true,
+        "source_is_payload_prefix": true,
+        "payload_bytes": 9,
+        "source_bytes": 9,
+        "source_bytes_after_payload_prefix": 0
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/dataLog.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/dataLog.data",
+        "payload_semantics_verified": false,
+        "payload_equals_source": true,
+        "payload_is_source_prefix": true,
+        "source_is_payload_prefix": true,
+        "payload_bytes": 197,
+        "source_bytes": 197,
+        "source_bytes_after_payload_prefix": 0
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/OpcUAServer.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/OpcUAServer.dat",
+        "payload_semantics_verified": false,
+        "payload_equals_source": false,
+        "payload_is_source_prefix": true,
+        "source_is_payload_prefix": false,
+        "payload_bytes": 33,
+        "source_bytes": 307,
+        "source_bytes_after_payload_prefix": 274
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/sftpserver.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/SFTPServer.dat",
+        "payload_semantics_verified": false,
+        "payload_equals_source": false,
+        "payload_is_source_prefix": true,
+        "source_is_payload_prefix": false,
+        "payload_bytes": 82,
+        "source_bytes": 171,
+        "source_bytes_after_payload_prefix": 89
+      },
+      {
+        "foid": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/DownLoad/Ecam.foid",
+        "source": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Ecam.tr",
+        "payload_semantics_verified": false,
+        "payload_equals_source": true,
+        "payload_is_source_prefix": true,
+        "source_is_payload_prefix": true,
+        "payload_bytes": 54,
+        "source_bytes": 54,
+        "source_bytes_after_payload_prefix": 0
+      }
+    ],
+    "limitations": [
+      "Only the observed 64-byte configuration envelope is parsed; other FOID formats are rejected.",
+      "Metadata is opaque and caller_dword is not a checked compatibility version.",
+      "Payload hashes and source-prefix equality do not validate payload semantics or build provenance.",
+      "Files are individually checked for read stability; a common build/session is not established.",
+      "No compilation, configuration generation, application closure, signature validation, download, or device access occurs."
+    ],
+    "tool_source_sha256": "8cd04f4416368c94b8a8cfceb413e98adc3ec663d011bf5dd85355bdf61f49ac"
+  },
+  "associated_userprog_structural_inspection": {
+    "schema": "plcidf.easy521-foid-inspection.v1",
+    "tool": "inspect_easy521_foid",
+    "recorded_at_utc": "2026-10-19T06:29:40.538943+00:00",
+    "inspection_ok": true,
+    "scope": "offline_observed_configuration_envelope",
+    "complete_application": false,
+    "downloadable": false,
+    "signature_verified": false,
+    "limits": {
+      "max_file_bytes": 67108864,
+      "max_total_bytes": 134217728,
+      "max_files": 64,
+      "bytes_read": 294
+    },
+    "files": [
+      {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-22-foid-20261019/project/Temp/userprog.foid",
+        "role": "foid",
+        "size": 294,
+        "sha256": "02d2a2c53d8f40fb1efcd97887eeddfe2a7c003e65b6f9a3747e13c73362167c",
+        "inspection_status": "parsed",
+        "format": "observed-easy521-configuration-foid-64",
+        "header": {
+          "size": 64,
+          "sha256": "c373a9bc18b305182ccc041ca7905a80eb97f41093217ba2c776ea270bd0ebad",
+          "records": [
+            {
+              "offset": 0,
+              "id": 256,
+              "length": 4,
+              "marker": "foid"
+            },
+            {
+              "offset": 12,
+              "id": 512,
+              "length": 32,
+              "value_offset": 20,
+              "value_sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+              "semantics": "opaque_metadata_origin_not_authenticated"
+            },
+            {
+              "offset": 52,
+              "id": 513,
+              "length": 4,
+              "value_offset": 60,
+              "caller_dword": 0,
+              "semantics": "raw_u32_origin_and_compatibility_unverified"
+            }
+          ]
+        },
+        "payload": {
+          "offset": 64,
+          "size": 230,
+          "sha256": "859b35bba3010ed8dd7377d52b55f1e45cd1dc0c2f6534a815291b8c0cebace8",
+          "semantics_verified": false
+        },
+        "complete_application": false,
+        "downloadable": false,
+        "signature_verified": false,
+        "writer_origin_verified": false
+      }
+    ],
+    "source_comparisons": [],
+    "limitations": [
+      "Only the observed 64-byte configuration envelope is parsed; other FOID formats are rejected.",
+      "Metadata is opaque and caller_dword is not a checked compatibility version.",
+      "Payload hashes and source-prefix equality do not validate payload semantics or build provenance.",
+      "Files are individually checked for read stability; a common build/session is not established.",
+      "No compilation, configuration generation, application closure, signature validation, download, or device access occurs."
+    ],
+    "tool_source_sha256": "8cd04f4416368c94b8a8cfceb413e98adc3ec663d011bf5dd85355bdf61f49ac"
+  },
+  "configuration_source_missing": [
+    "CANLink.prg",
+    "canopen.data"
+  ],
+  "associated_artifact_scope": "Six associated existing source/program/symbol artifacts were separately frozen. Presence and same-directory names do not establish one coherent build or the exact download closure. Conditional file-table logic and payload formats remain unimplemented.",
+  "tests": {
+    "command": ".venv/bin/python -m unittest discover -s tools/tests -p test_inspect_easy521_foid.py -v",
+    "actual_result": "16 passed",
+    "synthetic_only": true,
+    "windows_or_device": false
+  },
+  "limitations": [
+    "No FOID generator or complete application packager is implemented.",
+    "The 32-byte metadata is preserved by hash and not normalized or zero-filled.",
+    "The last DWORD source is recovered for these pinned call sites; no universal per-model defaults or device acceptance rule is claimed.",
+    "Exact/prefix comparisons are observations for these frozen files, not a generic source-to-payload generator.",
+    "Conditional model/version file selection, fresh ST-to-ARM compilation, and build/session identity remain required.",
+    "No captured transfer bytes or runtime acceptance are supplied by this inspection."
+  ]
+}

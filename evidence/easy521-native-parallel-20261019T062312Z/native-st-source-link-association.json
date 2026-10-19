@@ -1,0 +1,30 @@
+{
+  "schema": "plcidf.native-st-source-link-association.v1",
+  "observed_at": "2026-10-19T06:30:40.291789+00:00",
+  "runs": [
+    {
+      "step": 1,
+      "source_sha256": "5a6845b0f14c1ebb6038a8935038d0e2f7b92f24ba7745f6d022f59444497bf9",
+      "compile_report_sha256": "405305c0aaa43b2120333ebdb2a6050dde7146b3b1eb560f88a83f49d5fa34bb",
+      "link_report_sha256": "c1626f5283b5bc1a8655a160c9e1f016a74d845241c39aa5eb3c7e284519d1d1",
+      "compiled_object_sha256": "f09450c622d93eb3189594d28762aea73696807013051ef47e618c3818bcc00e",
+      "linked_pou_sha256": "f09450c622d93eb3189594d28762aea73696807013051ef47e618c3818bcc00e",
+      "source_to_link_input_bound": true
+    },
+    {
+      "step": 2,
+      "source_sha256": "aa86d53167088f1e6aefc5ebb126c0df3089b131ed677aeaef1d8ce4da60fe2b",
+      "compile_report_sha256": "6fbbc931d42a4e8fd559a5fc24780c4d28e3c0b3d64508e094dac4e27239f35e",
+      "link_report_sha256": "6c4cf62c808306cc9d3ada82322087396c8cc99180720a3077600b715c6f80f3",
+      "compiled_object_sha256": "50c39b9bf7717b22c9cb1fff7d74cead09fac2a05cd2dbce51dd7bb6b522bd57",
+      "linked_pou_sha256": "50c39b9bf7717b22c9cb1fff7d74cead09fac2a05cd2dbce51dd7bb6b522bd57",
+      "source_to_link_input_bound": true
+    }
+  ],
+  "passed": true,
+  "scope": "supplementary verification of nested link inputs[0].inspection.sha256; initial integration summary null values are preserved",
+  "source_to_full_application_verified": false,
+  "downloadable": false,
+  "runtime_abi_verified": false,
+  "device_access": false
+}

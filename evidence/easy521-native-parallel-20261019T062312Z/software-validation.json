@@ -1,0 +1,89 @@
+{
+  "schema": "plcidf.native-parallel-software-validation.v1",
+  "recorded_at": "2026-10-19T06:35:07.945614+00:00",
+  "source_revision": "895abb12dd07b43817a47f7e78a2bb6801751457",
+  "working_tree_dirty": true,
+  "checks": [
+    {
+      "scope": "tools",
+      "command": "PLCIDF_TEST_LLD=\"$PWD/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld\" PLCIDF_TEST_LLC=\"$PWD/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llc\" .venv/bin/python -m pytest tools/tests -q",
+      "process_returncode": 0,
+      "collected_top_level_tests": 611,
+      "junit_record_count": 1640,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_s": 5.158,
+      "junit_sha256": "cba8b0397a3421c0b9c5acbce42b4d999b0fba35a88d241a4353d406f4f2d4d0",
+      "stdout_sha256": "8276521e2be0c602ce7c48005a4c8a09a9bd9a6104890c6ee6f4debd65727393",
+      "counting_note": "611 collected top-level nodes; JUnit includes 1029 nested subtest records. Do not add the two counts or the individual agent subsets."
+    },
+    {
+      "scope": "source_monitor",
+      "command": "PLCIDF_OPEN_LINUX_TOOLCHAIN=/home/zss/.cache/plcidf/matiec .venv/bin/python -m pytest src/plc_idf/tests wsl-tools/tests -q -k \"not test_devices_real_readonly\"",
+      "process_returncode": 0,
+      "collected_top_level_tests": 825,
+      "junit_record_count": 825,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_s": 73.23,
+      "junit_sha256": "7e02adc5ce7059aa1e8b4cec0f491d926dec795428091674c4543ff4f0ba218e",
+      "stdout_sha256": "98ef34861d2bdbd59e252276ec297aa1270b029081bd94b8ec6258d43882a77e",
+      "deselected": 1,
+      "counting_note": "One real Windows enumeration test excluded; MatIEC toolchain explicitly enabled. No PLC operations."
+    }
+  ],
+  "source_sha256": {
+    "tools/easy521_linux_usb.py": "e77be497ef45e1734bd7a50fca468b744b792682c47d1b9079afe51d63c87999",
+    "tools/read_easy521_usb_runtime.py": "14bb81256e7b8b3c9eab1c40fa96a24b1f76af59f1c12fff306d0552e2da0de4",
+    "tools/read_easy521_usb_memory.py": "6b2e5a6aee488eac90bea9a639d4addf49d2399af10bd08b78f6c1e06f9e1c1c",
+    "tools/inspect_easy521_foid.py": "8cd04f4416368c94b8a8cfceb413e98adc3ec663d011bf5dd85355bdf61f49ac",
+    "tools/compile_easy521_native_probe.py": "1c4c2163d8960fca7d4d9b74526d8cc08e9601ef631396bc8efddb078faae57e",
+    "tools/check_distribution.py": "d98c4e025f858a074738c2641affc4bc3c3c3e060efd63b81736e3fda71cd0d6",
+    "setup.py": "92b70e7dc0d28a596b5d4b58870ab60227ec83a46ebffc11a3f85d8503176061",
+    "MANIFEST.in": "7f84833eab299be64133e8387681cc420e86671a6d732972c950cd4a3031951e",
+    ".github/workflows/software-tests.yml": "93f154fb112586755a7068e1cf29e71397eaf685b5d62a5a331f861521828f7c"
+  },
+  "distribution": {
+    "report": "distribution-validation.json",
+    "result": "passed",
+    "sha256": "465764d9205c15260c5b1ccd9575b214f529aaff49e38aa354932404bced57d2",
+    "installed_motor_scenarios": 6,
+    "installed_motor_assertions": 56,
+    "native_usb_previews_guarded": true,
+    "plc_accessed": false
+  },
+  "real_native_arm_compilation_and_link": {
+    "reports": [
+      "native-probe-plus1-compile.json",
+      "native-probe-plus1-link.json",
+      "native-probe-plus2-compile.json",
+      "native-probe-plus2-link.json",
+      "native-st-source-link-association.json"
+    ],
+    "runtime_abi_verified": false,
+    "downloadable": false,
+    "arm_code_executed": false
+  },
+  "native_usb_real_library_no_target": {
+    "report": "native-usb-no-target-final-validation.json",
+    "passed": true,
+    "plc_request_sent": false
+  },
+  "independent_review": {
+    "agent": "/root/distribution",
+    "scope": [
+      "Linux USB ABI and failure behavior",
+      "wheel assets and preview guards",
+      "restricted ST compiler/test/report",
+      "FOID checker/report",
+      "source to link input association"
+    ],
+    "blocking_p0_p1": 0,
+    "reran_software_tests": false,
+    "device_accessed": false
+  },
+  "device_application_changed": false,
+  "pure_linux_easy521_end_to_end_passed": false
+}

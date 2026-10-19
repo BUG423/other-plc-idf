@@ -1,5 +1,17 @@
 # 进展记录
 
+## 2026-10-19并行后续：受限ST原生编译、配置检查与原生USB
+
+用户要求并行继续。三个AI子代理分别交付[FOID检查与字段来源](../research/firmware/22-linux-foid-packaging-2026-10-19.md)、[受限ST→ARM探针](../research/firmware/23-linux-st-abi-2026-10-19.md)、[原生Linux USB只读后端](../research/firmware/24-linux-native-usb-2026-10-19.md)，另由独立代理审阅；统筹完成集成、真实编译/链接、主机准备与分发验证。
+
+- 原先的ARM对象来源缺口推进为限定源码独立编译：仅`COUNTER:DINT`单句自增，+1/+2/+32767真实生成不同ARM对象；同IR的x86主机45样本含溢出边界通过。ARM未执行、变量地址/任务未绑定、downloadable=false。统筹将新+1/+2对象实际接入两级LLD链接，补充报告哈希/源码/POU关联；不是完整应用包。
+- FOID末DWORD追到常量或模块默认版本表，32字节字段追到空字符串转换后的缓冲区复制并继续作为opaque；12配置/11源比较证明不能通用套头。工具只检查结构与字节关系。
+- 原生读取通过ctypes/libusb复用固定协议，不调用Windows，preview不加载库/枚举；一次OUT、有限分块IN、不重放。实际加载库/枚举/无目标拒绝已验证，尚未读取PLC。两个reader及全部依赖资源随sdist/wheel分发。
+- WSL原先USB模块未加载；本轮正常加载vhci-hcd后sysfs/devfs已出现，只有root hubs。Windows当前唯一目标7-2仍Not shared，AutoShop未运行，非管理员会话。已请求用户完成微软要求的管理员bind步骤；没有切换归属或发出PLC请求。
+- 独立审阅无P0/P1；安装包在仓库外通过guarded预览及真实motor场景。整轮软件验证和精确命令见[本批证据目录](../../evidence/easy521-native-parallel-20261019T062312Z/)，不同层次结果不相加、不冒充硬件验收。
+
+此前用户已明确确认TN，接线说明已记录。下列历史快照中的“后缀未知”“无USB节点”保留当时事实，由本段及新报告补充。Easy521原生完整构建/下载/运行闭环与设备字节身份仍开放，没有新增RUN/STOP、输出操作或应用清除。
+
 ## 2026-10-19后续：A9/B9接线核对与Linux既有符号绑定
 
 用户澄清设备仍为Easy521。重新核对官方手册：A9是输入SS，B9是输出COM；TN的B9接负载0V，TP接+24V，铭牌后缀仍待确认。说明与来源见[负载接线](../usage/EASY521_LOAD_WIRING.md)。未追加设备操作或清除程序。

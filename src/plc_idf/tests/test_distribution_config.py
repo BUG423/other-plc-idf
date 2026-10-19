@@ -85,11 +85,25 @@ def test_usb_memory_preview_imports_companion_from_another_cwd(tmp_path):
     assert preview["symbol"]["address_semantics"] == "opaque_vendor_symbol"
 
 
+@pytest.mark.parametrize("kind", ["memory", "runtime"])
+def test_native_usb_preview_imports_without_loading_libusb(tmp_path, kind):
+    reader = REPO_ROOT / f"tools/read_easy521_usb_{kind}.py"
+    check = (distribution_check.preview_usb_memory_reader if kind == "memory"
+             else distribution_check.preview_usb_runtime_reader)
+    preview = check(Path(sys.executable), reader, cwd=tmp_path,
+                    env=dict(os.environ), transport="linux-native")
+    assert preview["transport_kind"] == "linux-native-libusb1"
+    assert preview["linux_native_usb"] is True
+    assert preview["device_access"] is False
+
+
 @pytest.mark.parametrize("access", [
     "import subprocess; subprocess.run(['must-not-run'])",
     "import socket; socket.socket()",
     "from plc_idf.interop import run_command; run_command(['must-not-run'])",
     "from plc_idf.lease import ResourceLease; ResourceLease('must-not-lock')",
+    "import ctypes; ctypes.CDLL('must-not-load')",
+    "import ctypes.util; ctypes.util.find_library('must-not-discover')",
 ])
 def test_usb_memory_preview_guard_rejects_external_access(tmp_path, capsys, access):
     reader = tmp_path / "bad_preview.py"

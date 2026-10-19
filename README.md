@@ -19,8 +19,8 @@ flowchart LR
     CLI --> OPEN["🐧 Linux 本地后端<br/>MatIEC → C → GCC → ELF"]
     CLI --> VENDOR["🪟 Easy521 兼容后端<br/>已有 Windows AutoShop 工程"]
     AI --> DATA["🔌 Modbus TCP 工具<br/>D 区读写与读回"]
-    AI --> USB["🔎 独立 USB 只读查询<br/>Windows libusb0 驱动"]
-    AI --> OBJECT["🧩 独立厂商编译工具<br/>受限正文 → ARM 对象"]
+    AI --> USB["🔎 独立 USB 只读查询<br/>Windows 已实测 / Linux 待真机"]
+    AI --> OBJECT["🧩 ARM 对象研究<br/>厂商编译 / Linux 单句探针"]
     VENDOR --> PLC["🎛️ Easy521<br/>应用下装已有实测"]
     USB --> PLC
     DATA -.->|"真机数据控制待验收"| PLC
@@ -34,7 +34,7 @@ flowchart LR
     style PLC fill:#fff7ed,stroke:#f97316,color:#7c2d12
 ```
 
-Linux 后端已能真实编译、执行与验收 ST。Easy521 接入 24 V 后，已完成灯程序的厂商编译、USB 下装和程序一致性校验；独立 USB 读回 RUN 状态与时钟变化，用户现场确认输出区 Y0 闪烁、STOP 后熄灭。详见[本轮真机记录](docs/research/firmware/20-powered-led-bench-2026-10-19.md)。Easy521 当前仍使用 Windows 编译器、驱动及受监督的桌面操作；Linux 两级对象链接和已有变量解析已有实测，完整原生包装、无界面下装及设备字节身份仍在研究。
+Linux 后端已能真实编译、执行与验收 ST。Easy521 接入 24 V 后，已完成灯程序的厂商编译、USB 下装和程序一致性校验；独立 USB 读回 RUN 状态与时钟变化，用户现场确认输出区 Y0 闪烁、STOP 后熄灭。详见[本轮真机记录](docs/research/firmware/20-powered-led-bench-2026-10-19.md)。已验收的完整真机下装仍依赖 Windows 工具；新增 Linux 单 DINT 自增 ST→ARM 对象及两级链接实验、配置 FOID 检查和原生 libusb 只读后端。后者已通过离线测试和真实库无目标枚举，原生真机读取、完整应用包装与下装仍待验收，见[本批原生 USB 记录](docs/research/firmware/24-linux-native-usb-2026-10-19.md)。
 
 ---
 
@@ -45,8 +45,8 @@ Linux 后端已能真实编译、执行与验收 ST。Easy521 接入 24 V 后，
 | 🤖 **AI 编程与需求验收** | AI 直接修改 ST 和场景文件；`verify` 执行真实编译与逐扫描 expected/actual 断言，支持电机逻辑和 REAL 滞回示例。 |
 | 🐧 **Linux 原生运行** | 固定 MatIEC 工具链，提供工程创建、构建、部署、本地运行、监测与停止；物理 I/O 和工业实时性另行验收。 |
 | 🎛️ **Easy521 工程兼容** | WSL 调用已安装 AutoShop，支持已有工程 MAIN 同步、真实编译、下载与证据记录；当前保留 Windows 依赖。 |
-| 🧩 **独立对象编译与链接** | 受限 MAIN 和基础全局表经 Windows StLang 生成 ARM 对象；Linux LLD 两级链接、已有变量解析及固定 8 项全局符号后处理已实测，完整原生应用构建仍待完成。 |
-| 🔌 **数据控制与监测** | 独立 USB 状态、固定变量和时钟读取已有真机证据；D 区工具支持单次写入和读回，原 monitor 保持只读。业务变量须先绑定地址。 |
+| 🧩 **独立对象编译与链接** | Windows StLang 支持受限正文；Linux 已真实编译单 DINT 自增 ST 并完成两级链接，另有固定 8 项既有全局绑定与 FOID 结构检查。均不是完整原生应用。 |
+| 🔌 **数据控制与监测** | Windows USB 状态/变量/时钟已有真机证据；新增原生 Linux libusb 单次只读后端，待真机验收。D 区工具支持单次写入和读回，业务地址须先绑定。 |
 | 📝 **现场反馈** | 人工记录、仪器记录校验及多轮摘要；关联需求/程序/目标，核对日期与附件哈希，未知项保留。 |
 | 📋 **可追溯记录** | 源码、构建产物、部署候选与验证结果分开记录；超时或无法核验时返回失败或 unknown，不自动重放设备写操作。 |
 
@@ -96,6 +96,14 @@ python tools/read_easy521_usb_memory.py --profile m8013 --execute --busid 7-2
 
 执行前关闭 AutoShop，并用 `usbipd list` 核对本次设备位置；`7-2` 是本次供电台架的位置，不能直接沿用到其他连接。工具在设备锁内重新枚举，只发送一次固定读取请求，保留原始响应和解释边界。当前通过 WSL 调用 Windows libusb0 驱动。`gcm-state` 沿厂商 CPU 状态链读取；默认 `literal` 属于另一条原始索引查询。用法和当前布局限制见[Easy521 操作说明](docs/EASY521_CLI.md)。
 
+原生 Linux 后端可先离线预览：
+
+```bash
+python tools/read_easy521_usb_runtime.py --transport linux-native --profile gcm-state
+```
+
+实际读取另需将 USB 附加到 Linux、核对 Linux `BUS:ADDRESS` 并显式执行；默认不切换归属或回退 Windows，详见[原生 USB 使用与验收边界](docs/research/firmware/24-linux-native-usb-2026-10-19.md)。
+
 ### 4. 读取或预览 Modbus 数据操作
 
 确认真实 PLC IP 和寄存器用途后，在仓库内运行：
@@ -135,6 +143,7 @@ python -m pytest tools/tests -q
 | [Easy521 操作说明](docs/EASY521_CLI.md) | 真实构建/下装记录、命令、当前限制与诊断 |
 | [Y0 真机实验](docs/research/firmware/20-powered-led-bench-2026-10-19.md) / [灯程序](examples/easy521_led_blink) | 接入 24 V 后的源码、编译、下载、独立读回和人工观察 |
 | [A9/B9 接线](docs/usage/EASY521_LOAD_WIRING.md) / [Linux 最新验证](docs/research/firmware/21-linux-existing-global-bindings-2026-10-19.md) | TN/TP 负载回路、真实本地闭环与 Easy521 原生构建进展 |
+| [FOID 配置](docs/research/firmware/22-linux-foid-packaging-2026-10-19.md) / [原生 ST 探针](docs/research/firmware/23-linux-st-abi-2026-10-19.md) / [原生 USB](docs/research/firmware/24-linux-native-usb-2026-10-19.md) | 并行推进的严格离线检查、受限源码编译和只读通信后端，完整原生应用仍未通过 |
 | [直接控制研究](docs/management/EASY521_DIRECT_CONTROL_2026-10-18.md) | 数据协议、CPU 模式、应用下载和底层系统的证据边界 |
 | [实施计划](docs/management/PLAN.md) / [进展](docs/management/PROGRESS.md) | 任务、验收条件、分工与 GitHub 跟踪 |
 | [协议与固件研究](docs/research/README.md) | 手册核验、通信实现、链接/包装及芯片资料研究 |

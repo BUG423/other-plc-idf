@@ -1,0 +1,32 @@
+{
+  "schema": "plcidf.native-usb-no-target-validation.v1",
+  "observed_at": "2026-10-19T06:32:50.649593+00:00",
+  "argv": [
+    ".venv/bin/python",
+    "tools/read_easy521_usb_runtime.py",
+    "--transport",
+    "linux-native",
+    "--profile",
+    "gcm-state",
+    "--execute",
+    "--linux-device",
+    "255:127",
+    "--timeout-ms",
+    "1000"
+  ],
+  "process_timeout_s": 15,
+  "returncode": 1,
+  "stderr": "",
+  "passed": true,
+  "intent": "Revalidate after failure-stage correction; no Easy521 native device is present",
+  "source_sha256": {
+    "tools/easy521_linux_usb.py": "e77be497ef45e1734bd7a50fca468b744b792682c47d1b9079afe51d63c87999",
+    "tools/read_easy521_usb_runtime.py": "14bb81256e7b8b3c9eab1c40fa96a24b1f76af59f1c12fff306d0552e2da0de4",
+    "tools/easy521_protocol.py": "9073ac6d448420728a33668ce37da24757ad7ea0529b8d623a7597758980a2cc",
+    "tools/easy521_memory_protocol.py": "f13d72171c7187ef83568d458ec582d4783d675e3e9795c1cde15e7584243838"
+  },
+  "source_unchanged": true,
+  "hardware_protocol_accepted": false,
+  "plc_read_request_sent": false,
+  "evidence_file": "native-usb-no-target-final.json"
+}

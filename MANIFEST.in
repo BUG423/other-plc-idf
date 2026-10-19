@@ -5,11 +5,15 @@ include wsl-tools/e521_regs.py
 include plc/tools/autoshop_ui.ps1
 include plc/tools/read_autoshop_online.ps1
 include plc/tools/read_easy521_usb_memory.ps1
+include plc/tools/read_easy521_usb_runtime.ps1
 include plc/tools/compile_vendor_st.ps1
 include tools/prepare_vendor_st.py
 include tools/compile_vendor_st.py
 include tools/easy521_memory_protocol.py
 include tools/read_easy521_usb_memory.py
+include tools/easy521_protocol.py
+include tools/read_easy521_usb_runtime.py
+include tools/easy521_linux_usb.py
 include examples/easy521_native_probe/MAIN_plus1_body.st
 include examples/easy521_native_probe/MAIN_plus2_body.st
 include examples/easy521_native_probe/README.md

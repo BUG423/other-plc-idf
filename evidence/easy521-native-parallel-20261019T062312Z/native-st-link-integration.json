@@ -1,0 +1,58 @@
+{
+  "schema": "plcidf.native-st-two-stage-integration.v1",
+  "recorded_at": "2026-10-19T06:29:34.677308+00:00",
+  "runs": [
+    {
+      "step": 1,
+      "source_sha256": "5a6845b0f14c1ebb6038a8935038d0e2f7b92f24ba7745f6d022f59444497bf9",
+      "compile_report_sha256": "405305c0aaa43b2120333ebdb2a6050dde7146b3b1eb560f88a83f49d5fa34bb",
+      "object_sha256": "f09450c622d93eb3189594d28762aea73696807013051ef47e618c3818bcc00e",
+      "linked_outputs": [
+        {
+          "name": "stuserprog.o",
+          "sha256": "57bb5e48119ec08b16079a63c9601f95b5c784e9f75254dc83c39cdcdb5c0af7"
+        },
+        {
+          "name": "stprog.o",
+          "sha256": "b1f33f84db30b2a335e7ac373c5681022769812b461ecd20c341651b63d1eb52"
+        }
+      ],
+      "source_compiled": true,
+      "source_to_link_input_bound": null,
+      "downloadable": false,
+      "runtime_abi_verified": false,
+      "arm_code_executed": false
+    },
+    {
+      "step": 2,
+      "source_sha256": "aa86d53167088f1e6aefc5ebb126c0df3089b131ed677aeaef1d8ce4da60fe2b",
+      "compile_report_sha256": "6fbbc931d42a4e8fd559a5fc24780c4d28e3c0b3d64508e094dac4e27239f35e",
+      "object_sha256": "50c39b9bf7717b22c9cb1fff7d74cead09fac2a05cd2dbce51dd7bb6b522bd57",
+      "linked_outputs": [
+        {
+          "name": "stuserprog.o",
+          "sha256": "fee5c2f670bfe5b8e80034e0c9d07643aa4247ba14a6634eac08d8e1df7340eb"
+        },
+        {
+          "name": "stprog.o",
+          "sha256": "e02e723ea4577fc0eec42cd5ff8b9634e0280c121a00f6b216ad427c76fd7fde"
+        }
+      ],
+      "source_compiled": true,
+      "source_to_link_input_bound": null,
+      "downloadable": false,
+      "runtime_abi_verified": false,
+      "arm_code_executed": false
+    }
+  ],
+  "source_changes_object": true,
+  "scope": "restricted ST body -> LLVM IR -> native ARM object -> two relocatable links using existing vendor libraries",
+  "source_to_full_application_verified": false,
+  "windows_executed": false,
+  "plc_accessed": false,
+  "limitations": [
+    "COUNTER remains unbound; no allocation/task/I/O/FOID/download",
+    "No ARM code execution or Easy521 runtime ABI acceptance",
+    "Vendor libraries remain proprietary frozen inputs; no binary is published"
+  ]
+}

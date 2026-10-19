@@ -43,12 +43,18 @@ jobs:
       - name: Install Linux compiler build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends build-essential autoconf automake bison flex lld
+          sudo apt-get install -y --no-install-recommends build-essential autoconf automake bison flex lld llvm-20
           python -m pip install -r requirements-ci.txt -e .
       - name: Real Linux ARM relocatable linking and duplicate-symbol failure
         env:
           PLCIDF_TEST_LLD: /usr/bin/ld.lld
         run: python -m pytest tools/tests/test_link_vendor_application.py -q -k real_linux_lld
+      - name: Restricted ST to real ARM objects and host semantic boundary checks
+        env:
+          PLCIDF_TEST_LLC: /usr/lib/llvm-20/bin/llc
+        # ARM code is generated and structurally checked; only the separately
+        # lowered x86 harness executes. Neither step accesses a PLC.
+        run: python -m pytest tools/tests/test_compile_easy521_native_probe.py -q
       - name: Bootstrap pinned MatIEC without Windows
         run: python tools/bootstrap_open_linux.py --directory /tmp/plcidf-matiec --jobs 2
       - name: Real ST compiler and runtime regression

@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """Preview or perform one explicitly selected fixed index read via Windows libusb0.
 
+The historical default remains the Windows driver bridge. Explicit
+--transport linux-native selects adjacent easy521_linux_usb.py and Linux
+BUS:ADDRESS; no Windows process or ownership transition is invoked. Native
+preview performs no library load, enumeration or lease access. Linux transport
+hardware acceptance remains pending; existing protocol evidence is preserved.
+
 This is a WSL-to-Windows driver bridge, not a Linux-native USB transport.  The
 first real-device observation is recorded in
 evidence/easy521-ai-loop-20261019/single-usb-runtime-query.json: one 18-byte
@@ -130,7 +136,9 @@ def _validate_transport(record: dict, request: bytes, profile: str) -> dict:
 
 
 def read_runtime(*, execute: bool = False, busid: str | None = None, profile: str = "literal",
-                 runner=None, lease_directory: str | Path | None = None) -> dict:
+                 runner=None, lease_directory: str | Path | None = None,
+                 transport: str = "windows", linux_device: str | None = None,
+                 timeout_ms: int = 2500, native_backend_factory=None) -> dict:
     """Return one structured preview/observation/failure; never retry a request.
 
     Args:
@@ -138,7 +146,11 @@ def read_runtime(*, execute: bool = False, busid: str | None = None, profile: st
         busid: Required for execution, explicit Windows USB location (e.g. 8-3).
         profile: "literal" preserves the historical ff010000/4B read;
             "gcm-state" reads the separate vendor ff000000/1B CPU-state candidate.
-        runner: subprocess.run-shaped test injection used by run_command.
+        transport: "windows" (compatible default) or explicit "linux-native".
+        linux_device: Native Linux BUS:ADDRESS, distinct from Windows BUSID.
+        timeout_ms: Native send/shared receive budget in ms, integer 1..10000.
+        native_backend_factory: Offline-test injection; never used for preview.
+        runner: subprocess.run-shaped Windows test injection used by run_command.
         lease_directory: Optional cooperating-process lock directory for tests.
     Returns:
         JSON-compatible dict. ``status=observed`` means a correlated raw response,
@@ -150,6 +162,26 @@ def read_runtime(*, execute: bool = False, busid: str | None = None, profile: st
         The helper claims/releases interface 0 and makes one bulk READ request;
         it does not alter active configuration or close AutoShop.
     """
+    if transport == "linux-native":
+        if busid is not None:
+            return {"schema": SCHEMA, "ok": False, "status": "failed", "stage": "arguments",
+                    "device_access": False, "transport_kind": "linux-native-libusb1",
+                    "diagnostics": [{"code": "E_ARGUMENTS", "message":
+                                     "Use --linux-device BUS:ADDRESS for Linux; --busid is Windows-only"}]}
+        spec = importlib.util.spec_from_file_location(
+            "_plcidf_native_usb_transport", Path(__file__).with_name("easy521_linux_usb.py"))
+        if spec is None or spec.loader is None:
+            raise RuntimeError("The adjacent Linux USB transport is unavailable")
+        native = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(native)
+        return native.read_fixed(kind="runtime", profile=profile, execute=execute,
+                                 device=linux_device, timeout_ms=timeout_ms,
+                                 lease_directory=lease_directory,
+                                 backend_factory=native_backend_factory)
+    if transport != "windows" or linux_device is not None or timeout_ms != 2500:
+        return {"schema": SCHEMA, "ok": False, "status": "failed", "stage": "arguments",
+                "device_access": False, "diagnostics": [{"code": "E_ARGUMENTS", "message":
+                "Choose windows or linux-native; --linux-device/--timeout-ms are native-only"}]}
     request = codec.build_read_request(profile=PROFILES["literal"], sequence=PREVIEW_SEQUENCE)
     report = {
         "schema": SCHEMA, "scope": SCOPE, "ok": False, "status": "failed",
@@ -263,12 +295,19 @@ def main(argv=None) -> int:
             raise ValueError(message)
     parser = JsonArgumentParser(description=__doc__)
     parser.add_argument("--execute", action="store_true", help="perform the fixed read once; default is preview")
-    parser.add_argument("--busid", help="explicit Windows USB location required for execution")
+    parser.add_argument("--busid", help="explicit Windows USB location required for Windows execution")
+    parser.add_argument("--transport", choices=("windows", "linux-native"), default="windows",
+                        help="Windows driver bridge (default) or direct Linux libusb-1.0")
+    parser.add_argument("--linux-device", help="explicit Linux BUS:ADDRESS, e.g. 001:004; native transport only")
+    parser.add_argument("--timeout-ms", type=int, default=2500,
+                        help="native send/shared receive timeout in milliseconds, 1..10000")
     parser.add_argument("--profile", choices=tuple(PROFILES), default="literal",
                         help="fixed literal ff010000/4B (default), or vendor gcm-state ff000000/1B")
     try:
         args = parser.parse_args(argv)
-        report = read_runtime(execute=args.execute, busid=args.busid, profile=args.profile)
+        report = read_runtime(execute=args.execute, busid=args.busid, profile=args.profile,
+                              transport=args.transport, linux_device=args.linux_device,
+                              timeout_ms=args.timeout_ms)
         code = 0 if report["ok"] else 1
     except ValueError as error:
         report = {"schema": SCHEMA, "ok": False, "status": "failed", "stage": "arguments",

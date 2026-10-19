@@ -1,0 +1,245 @@
+{
+  "schema": "plcidf.easy521-native-memory-probe.v1",
+  "profile": "counter-dint-increment-v1",
+  "scope": "offline-native-st-memory-probe",
+  "ok": true,
+  "status": "restricted-source-compiled",
+  "stage": "complete",
+  "diagnostics": [],
+  "device_access": false,
+  "windows_access": false,
+  "source_compiled": true,
+  "runtime_abi_verified": false,
+  "downloadable": false,
+  "arm_code_executed": false,
+  "parsed": {
+    "profile": "counter-dint-increment-v1",
+    "symbol": "COUNTER",
+    "type": "DINT",
+    "increment_counts_per_scan": 1,
+    "overflow": "modulo-2**32",
+    "initial_value": null,
+    "retained": null,
+    "task_period_ms": null
+  },
+  "inputs": [
+    {
+      "path": "/home/zss/workspace/py2plc/evidence/easy521-native-parallel-20261019T062312Z/native-probe-plus1.st",
+      "bytes": 463,
+      "sha256": "5a6845b0f14c1ebb6038a8935038d0e2f7b92f24ba7745f6d022f59444497bf9"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/evidence/easy521-native-parallel-20261019T062312Z/native-probe-globals.json",
+      "bytes": 89,
+      "sha256": "ae911de48780fa28edbbb04c60a306f0c5afbb08efc3c3151adca05b5c2b3b0e"
+    }
+  ],
+  "compiler": {
+    "path": "/home/zss/workspace/py2plc/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llc",
+    "bytes": 176944,
+    "sha256": "994d679339b301a81bcc969d475bc1082da1cbfae40b2f3da9421cc85324a6d3",
+    "version": "Ubuntu LLVM version 20.1.2"
+  },
+  "output_directory": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/compile-plus1",
+  "frontend_components": [
+    {
+      "path": "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py",
+      "bytes": 14699,
+      "sha256": "1c4c2163d8960fca7d4d9b74526d8cc08e9601ef631396bc8efddb078faae57e"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+      "bytes": 10926,
+      "sha256": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py",
+      "bytes": 20708,
+      "sha256": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+    }
+  ],
+  "frozen_inputs": [
+    {
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/compile-plus1/body.st",
+      "bytes": 463,
+      "sha256": "5a6845b0f14c1ebb6038a8935038d0e2f7b92f24ba7745f6d022f59444497bf9"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/compile-plus1/globals.json",
+      "bytes": 89,
+      "sha256": "ae911de48780fa28edbbb04c60a306f0c5afbb08efc3c3151adca05b5c2b3b0e"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/compile-plus1/MAIN.ll",
+      "bytes": 273,
+      "sha256": "1fc4d77a37b5b40ac771d6783f851c5ec59a877251ac846f211056e63c8d303a"
+    }
+  ],
+  "command": {
+    "argv": [
+      "/home/zss/workspace/py2plc/.plcidf/research-tools/llvm20/extracted/usr/lib/llvm-20/bin/llc",
+      "-mtriple=thumbv7-none-eabi",
+      "-mattr=+v7,+thumb2,+vfp3,+neon,+reserve-r9",
+      "-float-abi=soft",
+      "-relocation-model=static",
+      "-filetype=obj",
+      "-O=2",
+      "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/compile-plus1/MAIN.ll",
+      "-o",
+      "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/compile-plus1/MAIN.o"
+    ],
+    "timeout_s": 10.0,
+    "attempts": 1,
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "object": {
+    "path": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/compile-plus1/MAIN.o",
+    "bytes": 732,
+    "sha256": "f09450c622d93eb3189594d28762aea73696807013051ef47e618c3818bcc00e",
+    "inspection": {
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000000",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 9,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 252,
+            "size": 117,
+            "flags": 0
+          },
+          {
+            "index": 2,
+            "name": ".text",
+            "type": 1,
+            "offset": 52,
+            "size": 16,
+            "flags": 6
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 228,
+            "size": 16,
+            "flags": 64
+          },
+          {
+            "index": 4,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 68,
+            "size": 8,
+            "flags": 130
+          },
+          {
+            "index": 5,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 244,
+            "size": 8,
+            "flags": 64
+          },
+          {
+            "index": 6,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 76,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 7,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 76,
+            "size": 54,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 132,
+            "size": 96,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 54,
+            "sha256": "b92a9129e2e56ad03dda5952d7006a01fe0148c7386bb506be1c528c5f21bccf",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "COUNTER"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "MAIN"
+          ]
+        },
+        "relocations": {
+          "entries": 3,
+          "types": {
+            "R_ARM_PREL31": 1,
+            "R_ARM_THM_MOVT_ABS": 1,
+            "R_ARM_THM_MOVW_ABS_NC": 1
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 2,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 1,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "COUNTER"
+          ]
+        }
+      },
+      "main": {
+        "value": 1,
+        "bytes": 16,
+        "section": 2
+      },
+      "arm_code_executed": false
+    }
+  }
+}

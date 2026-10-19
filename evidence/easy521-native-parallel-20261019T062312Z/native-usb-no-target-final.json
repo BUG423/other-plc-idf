@@ -1,0 +1,43 @@
+{
+  "schema": "plcidf.usb-runtime-observation.v1",
+  "ok": false,
+  "status": "failed",
+  "stage": "enumerate",
+  "device_access": true,
+  "gui_access": false,
+  "transport_kind": "linux-native-libusb1",
+  "linux_native_usb": true,
+  "linux_hardware_acceptance": false,
+  "cpu_identity_verified": false,
+  "cpu_state_verified": false,
+  "application_execution_verified": false,
+  "state_semantics": "unknown",
+  "read_profile": "gcm-state",
+  "requested_linux_device": "255:127",
+  "scope": "one fixed read using Linux libusb-1.0; no PLC state/application write",
+  "diagnostics": [
+    {
+      "code": "E_LINUX_USB_READ",
+      "stage": "enumerate",
+      "message": "Expected exactly one 0471:a531 at the explicitly selected Linux BUS:ADDRESS"
+    }
+  ],
+  "request_hex": "12000101c96500000100000000ff01000000",
+  "transfer_timeout_ms": 1000,
+  "sequence": 26057,
+  "request_outcome": "not_sent",
+  "correlation_scope": "random u16; not authentication or guaranteed freshness",
+  "lease_token": "2d143dc1cec84e9a9884721b06159268",
+  "transport_record": {
+    "stage": "enumerate",
+    "request_hex": "12000101c96500000100000000ff01000000",
+    "write_calls": 0,
+    "request_outcome": "not_sent",
+    "read_calls": [],
+    "library_soname": "libusb-1.0.so.0",
+    "transfer_timeout_ms": 1000,
+    "automatic_retries": 0,
+    "device_list_freed": true,
+    "context_exited": true
+  }
+}

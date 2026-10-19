@@ -1,0 +1,1180 @@
+{
+  "schema": "plcidf.vendor-relocatable-link.v1",
+  "ok": true,
+  "status": "linked",
+  "recorded_at_utc": "2026-10-19T06:29:34.330790+00:00",
+  "scope": "two-stage-relocatable-object-link",
+  "downloadable": false,
+  "st_compiled": false,
+  "runtime_verified": false,
+  "output_dir": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1",
+  "limitations": [
+    "Existing ARM objects are linked; ST compilation and complete application packaging are not implemented.",
+    "Vendor ST relocation/SInfo injection is not implemented: global-variable UND st_info/st_value address bindings remain unbound.",
+    "The caller supplies the POU order and exact library branch; no project option or library selection is inferred.",
+    "Unresolved runtime symbols are retained by relocatable linking; matching names do not establish runtime ABI compatibility.",
+    "No vendor executable/DLL, Windows process, network, USB, PLC, download, or CPU control is used.",
+    "A linked object is not evidence of a downloadable or executable PLC application.",
+    "Large projects needing AutoShop's 30000-character intermediate-chunk path are rejected rather than reordered."
+  ],
+  "linker": {
+    "path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+    "resolved_path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/lld",
+    "sha256": "5c8dc44318df21528d0456cae914061cdc30221e40445b8cef84ba57f352445b",
+    "version": "Ubuntu LLD 20.1.2 (compatible with GNU linkers)"
+  },
+  "inputs": [
+    {
+      "role": "pou-000",
+      "original": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/compile-plus1/MAIN.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/inputs/pou-000.o",
+      "inspection": {
+        "inspection_status": "parsed",
+        "size": 732,
+        "sha256": "f09450c622d93eb3189594d28762aea73696807013051ef47e618c3818bcc00e",
+        "format": "elf",
+        "observations": {
+          "prefix_hex": "7f454c46010101000000000000000000",
+          "prefix_bytes": 16,
+          "embedded_elf_magic_offsets": [
+            0
+          ],
+          "length_equalities": []
+        },
+        "elf": {
+          "class_bits": 32,
+          "endianness": "little",
+          "machine_id": 40,
+          "machine": "ARM",
+          "type_id": 1,
+          "type": "REL",
+          "osabi_id": 0,
+          "abi_version": 0,
+          "flags_hex": "0x5000000",
+          "arm_eabi_version": 5,
+          "entry_address": 0,
+          "program_header_count": 0,
+          "section_count": 9,
+          "sections": [
+            {
+              "index": 0,
+              "name": "",
+              "type": 0,
+              "offset": 0,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 1,
+              "name": ".strtab",
+              "type": 3,
+              "offset": 252,
+              "size": 117,
+              "flags": 0
+            },
+            {
+              "index": 2,
+              "name": ".text",
+              "type": 1,
+              "offset": 52,
+              "size": 16,
+              "flags": 6
+            },
+            {
+              "index": 3,
+              "name": ".rel.text",
+              "type": 9,
+              "offset": 228,
+              "size": 16,
+              "flags": 64
+            },
+            {
+              "index": 4,
+              "name": ".ARM.exidx",
+              "type": 1879048193,
+              "offset": 68,
+              "size": 8,
+              "flags": 130
+            },
+            {
+              "index": 5,
+              "name": ".rel.ARM.exidx",
+              "type": 9,
+              "offset": 244,
+              "size": 8,
+              "flags": 64
+            },
+            {
+              "index": 6,
+              "name": ".note.GNU-stack",
+              "type": 1,
+              "offset": 76,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 7,
+              "name": ".ARM.attributes",
+              "type": 1879048195,
+              "offset": 76,
+              "size": 54,
+              "flags": 0
+            },
+            {
+              "index": 8,
+              "name": ".symtab",
+              "type": 2,
+              "offset": 132,
+              "size": 96,
+              "flags": 0
+            }
+          ],
+          "arm_attribute_sections": [
+            {
+              "size": 54,
+              "sha256": "b92a9129e2e56ad03dda5952d7006a01fe0148c7386bb506be1c528c5f21bccf",
+              "decoded": false
+            }
+          ],
+          "undefined_global_weak": {
+            "entries": 1,
+            "unique_count": 1,
+            "names": [
+              "COUNTER"
+            ]
+          },
+          "defined_global_weak": {
+            "entries": 1,
+            "unique_count": 1,
+            "names": [
+              "MAIN"
+            ]
+          },
+          "relocations": {
+            "entries": 3,
+            "types": {
+              "R_ARM_PREL31": 1,
+              "R_ARM_THM_MOVT_ABS": 1,
+              "R_ARM_THM_MOVW_ABS_NC": 1
+            },
+            "sections": [
+              {
+                "name": ".rel.text",
+                "entries": 2,
+                "target_section": ".text",
+                "explicit_addends": false
+              },
+              {
+                "name": ".rel.ARM.exidx",
+                "entries": 1,
+                "target_section": ".ARM.exidx",
+                "explicit_addends": false
+              }
+            ],
+            "referenced_undefined_names": [
+              "COUNTER"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "role": "syslib",
+      "original": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_SysLib.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/inputs/syslib.o",
+      "inspection": {
+        "inspection_status": "parsed",
+        "size": 2808,
+        "sha256": "2fde5706b01135ac15db5f17b6847dd361894c909ecaa6a3cf9cca2f132782d2",
+        "format": "elf",
+        "observations": {
+          "prefix_hex": "7f454c46010101000000000000000000",
+          "prefix_bytes": 16,
+          "embedded_elf_magic_offsets": [
+            0
+          ],
+          "length_equalities": []
+        },
+        "elf": {
+          "class_bits": 32,
+          "endianness": "little",
+          "machine_id": 40,
+          "machine": "ARM",
+          "type_id": 1,
+          "type": "REL",
+          "osabi_id": 0,
+          "abi_version": 0,
+          "flags_hex": "0x5000000",
+          "arm_eabi_version": 5,
+          "entry_address": 0,
+          "program_header_count": 0,
+          "section_count": 12,
+          "sections": [
+            {
+              "index": 0,
+              "name": "",
+              "type": 0,
+              "offset": 0,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 1,
+              "name": ".strtab",
+              "type": 3,
+              "offset": 1624,
+              "size": 702,
+              "flags": 0
+            },
+            {
+              "index": 2,
+              "name": ".text",
+              "type": 1,
+              "offset": 52,
+              "size": 158,
+              "flags": 6
+            },
+            {
+              "index": 3,
+              "name": ".rel.text",
+              "type": 9,
+              "offset": 1320,
+              "size": 16,
+              "flags": 0
+            },
+            {
+              "index": 4,
+              "name": ".ARM.exidx",
+              "type": 1879048193,
+              "offset": 212,
+              "size": 72,
+              "flags": 130
+            },
+            {
+              "index": 5,
+              "name": ".rel.ARM.exidx",
+              "type": 9,
+              "offset": 1336,
+              "size": 144,
+              "flags": 0
+            },
+            {
+              "index": 6,
+              "name": ".bss",
+              "type": 8,
+              "offset": 288,
+              "size": 256,
+              "flags": 3
+            },
+            {
+              "index": 7,
+              "name": ".note.GNU-stack",
+              "type": 1,
+              "offset": 288,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 8,
+              "name": ".ARM.attributes",
+              "type": 1879048195,
+              "offset": 288,
+              "size": 52,
+              "flags": 0
+            },
+            {
+              "index": 9,
+              "name": ".debug_frame",
+              "type": 1,
+              "offset": 340,
+              "size": 180,
+              "flags": 0
+            },
+            {
+              "index": 10,
+              "name": ".rel.debug_frame",
+              "type": 9,
+              "offset": 1480,
+              "size": 144,
+              "flags": 0
+            },
+            {
+              "index": 11,
+              "name": ".symtab",
+              "type": 2,
+              "offset": 520,
+              "size": 800,
+              "flags": 0
+            }
+          ],
+          "arm_attribute_sections": [
+            {
+              "size": 52,
+              "sha256": "c2a5b84bf88fe0936d4b64ce696c31c98f1104baa2f5c122012dda0958690d3d",
+              "decoded": false
+            }
+          ],
+          "undefined_global_weak": {
+            "entries": 2,
+            "unique_count": 2,
+            "names": [
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ]
+          },
+          "defined_global_weak": {
+            "entries": 9,
+            "unique_count": 9,
+            "names": [
+              "_HC_EMPTYFUC",
+              "_ST_ARRAY_INDEX_CHECK",
+              "_ST_DOUBLE_ADD",
+              "_ST_DOUBLE_DIV",
+              "_ST_DOUBLE_MUL",
+              "_ST_DOUBLE_SUB",
+              "_ST_INT64_ADD",
+              "_ST_INT64_MUL",
+              "_ST_INT64_SUB"
+            ]
+          },
+          "relocations": {
+            "entries": 38,
+            "types": {
+              "R_ARM_ABS32": 20,
+              "R_ARM_NONE": 9,
+              "R_ARM_PREL31": 9
+            },
+            "sections": [
+              {
+                "name": ".rel.text",
+                "entries": 2,
+                "target_section": ".text",
+                "explicit_addends": false
+              },
+              {
+                "name": ".rel.ARM.exidx",
+                "entries": 18,
+                "target_section": ".ARM.exidx",
+                "explicit_addends": false
+              },
+              {
+                "name": ".rel.debug_frame",
+                "entries": 18,
+                "target_section": ".debug_frame",
+                "explicit_addends": false
+              }
+            ],
+            "referenced_undefined_names": [
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "role": "stclib",
+      "original": "/home/zss/workspace/py2plc/.plcidf/research-16-link-20261019T014840/inputs/SysLib_New/_STCLib.o",
+      "frozen": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/inputs/stclib.o",
+      "inspection": {
+        "inspection_status": "parsed",
+        "size": 122944,
+        "sha256": "047dad6fa718170625f0a78d927df304f3a6f681970009324a7179397958d95e",
+        "format": "elf",
+        "observations": {
+          "prefix_hex": "7f454c46010101000000000000000000",
+          "prefix_bytes": 16,
+          "embedded_elf_magic_offsets": [
+            0
+          ],
+          "length_equalities": []
+        },
+        "elf": {
+          "class_bits": 32,
+          "endianness": "little",
+          "machine_id": 40,
+          "machine": "ARM",
+          "type_id": 1,
+          "type": "REL",
+          "osabi_id": 0,
+          "abi_version": 0,
+          "flags_hex": "0x5000200",
+          "arm_eabi_version": 5,
+          "entry_address": 0,
+          "program_header_count": 0,
+          "section_count": 13,
+          "sections": [
+            {
+              "index": 0,
+              "name": "",
+              "type": 0,
+              "offset": 0,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 1,
+              "name": ".text",
+              "type": 1,
+              "offset": 52,
+              "size": 62792,
+              "flags": 6
+            },
+            {
+              "index": 2,
+              "name": ".ARM.exidx",
+              "type": 1879048193,
+              "offset": 62844,
+              "size": 344,
+              "flags": 130
+            },
+            {
+              "index": 3,
+              "name": ".rel.text",
+              "type": 9,
+              "offset": 63188,
+              "size": 28872,
+              "flags": 64
+            },
+            {
+              "index": 4,
+              "name": ".rel.ARM.exidx",
+              "type": 9,
+              "offset": 92060,
+              "size": 688,
+              "flags": 64
+            },
+            {
+              "index": 5,
+              "name": ".bss",
+              "type": 8,
+              "offset": 92748,
+              "size": 13152,
+              "flags": 3
+            },
+            {
+              "index": 6,
+              "name": ".ARM.attributes",
+              "type": 1879048195,
+              "offset": 92748,
+              "size": 52,
+              "flags": 0
+            },
+            {
+              "index": 7,
+              "name": ".debug_frame",
+              "type": 1,
+              "offset": 92800,
+              "size": 2540,
+              "flags": 0
+            },
+            {
+              "index": 8,
+              "name": ".rel.debug_frame",
+              "type": 9,
+              "offset": 95340,
+              "size": 688,
+              "flags": 64
+            },
+            {
+              "index": 9,
+              "name": ".note.GNU-stack",
+              "type": 1,
+              "offset": 96028,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 10,
+              "name": ".symtab",
+              "type": 2,
+              "offset": 96028,
+              "size": 24912,
+              "flags": 0
+            },
+            {
+              "index": 11,
+              "name": ".shstrtab",
+              "type": 3,
+              "offset": 120940,
+              "size": 136,
+              "flags": 0
+            },
+            {
+              "index": 12,
+              "name": ".strtab",
+              "type": 3,
+              "offset": 121076,
+              "size": 1347,
+              "flags": 0
+            }
+          ],
+          "arm_attribute_sections": [
+            {
+              "size": 52,
+              "sha256": "b409aef1884b714c9e37577e34d57a34576a80238ec1670aec6f392f67e98000",
+              "decoded": false
+            }
+          ],
+          "undefined_global_weak": {
+            "entries": 22,
+            "unique_count": 22,
+            "names": [
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "_ST_DOUBLE_ADD",
+              "_ST_DOUBLE_DIV",
+              "_ST_DOUBLE_MUL",
+              "_ST_DOUBLE_SUB",
+              "_ST_INT64_ADD",
+              "_ST_INT64_MUL",
+              "_ST_INT64_SUB",
+              "__aeabi_unwind_cpp_pr0"
+            ]
+          },
+          "defined_global_weak": {
+            "entries": 43,
+            "unique_count": 43,
+            "names": [
+              "ARYADDV",
+              "ARYAND",
+              "ARYBYTETO",
+              "ARYEXCHANGE",
+              "ARYMAX",
+              "ARYMEAN",
+              "ARYMIN",
+              "ARYMOVE",
+              "ARYOR",
+              "ARYSD",
+              "ARYSEARCH",
+              "ARYSHL",
+              "ARYSHR",
+              "ARYSUBV",
+              "ARYTOSTRING",
+              "ARYXOR",
+              "ARYXORN",
+              "CLEAR",
+              "CLEARSTRING",
+              "CONCAT",
+              "DELETE",
+              "FIND",
+              "INSERT",
+              "LEFT",
+              "LEN",
+              "REPLACE",
+              "RIGHT",
+              "STRINGTOARY",
+              "TOARYBYTE",
+              "_ST_BOOL_TO_STRING",
+              "_ST_BYTE_TO_STRING",
+              "_ST_DINT_TO_STRING",
+              "_ST_INT_TO_STRING",
+              "_ST_MEMCPY",
+              "_ST_MEMSET",
+              "_ST_REAL_TO_STRING",
+              "_ST_STRCOMPARE",
+              "_ST_STRING_CHECK",
+              "_ST_STRING_TO_BOOL",
+              "_ST_STRING_TO_BYTE",
+              "_ST_STRING_TO_DINT",
+              "_ST_STRING_TO_INT",
+              "_ST_STRING_TO_REAL"
+            ]
+          },
+          "relocations": {
+            "entries": 3781,
+            "types": {
+              "R_ARM_ABS32": 2013,
+              "R_ARM_NONE": 43,
+              "R_ARM_PREL31": 43,
+              "R_ARM_THM_MOVT_ABS": 841,
+              "R_ARM_THM_MOVW_ABS_NC": 841
+            },
+            "sections": [
+              {
+                "name": ".rel.text",
+                "entries": 3609,
+                "target_section": ".text",
+                "explicit_addends": false
+              },
+              {
+                "name": ".rel.ARM.exidx",
+                "entries": 86,
+                "target_section": ".ARM.exidx",
+                "explicit_addends": false
+              },
+              {
+                "name": ".rel.debug_frame",
+                "entries": 86,
+                "target_section": ".debug_frame",
+                "explicit_addends": false
+              }
+            ],
+            "referenced_undefined_names": [
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "_ST_DOUBLE_ADD",
+              "_ST_DOUBLE_DIV",
+              "_ST_DOUBLE_MUL",
+              "_ST_DOUBLE_SUB",
+              "_ST_INT64_ADD",
+              "_ST_INT64_MUL",
+              "_ST_INT64_SUB",
+              "__aeabi_unwind_cpp_pr0"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+        "--version"
+      ],
+      "timeout_s": 10,
+      "attempt": 1,
+      "returncode": 0,
+      "stdout": "Ubuntu LLD 20.1.2 (compatible with GNU linkers)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+        "-relocatable",
+        "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/inputs/pou-000.o",
+        "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/inputs/syslib.o",
+        "-o",
+        "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/stuserprog.o"
+      ],
+      "timeout_s": 10,
+      "attempt": 1,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+        "-relocatable",
+        "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/stuserprog.o",
+        "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/inputs/stclib.o",
+        "-o",
+        "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/stprog.o"
+      ],
+      "timeout_s": 10,
+      "attempt": 1,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "outputs": [
+    {
+      "stage": 1,
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/stuserprog.o",
+      "inspection": {
+        "inspection_status": "parsed",
+        "size": 3092,
+        "sha256": "57bb5e48119ec08b16079a63c9601f95b5c784e9f75254dc83c39cdcdb5c0af7",
+        "format": "elf",
+        "observations": {
+          "prefix_hex": "7f454c46010101000000000000000000",
+          "prefix_bytes": 16,
+          "embedded_elf_magic_offsets": [
+            0
+          ],
+          "length_equalities": []
+        },
+        "elf": {
+          "class_bits": 32,
+          "endianness": "little",
+          "machine_id": 40,
+          "machine": "ARM",
+          "type_id": 1,
+          "type": "REL",
+          "osabi_id": 0,
+          "abi_version": 0,
+          "flags_hex": "0x5000200",
+          "arm_eabi_version": 5,
+          "entry_address": 0,
+          "program_header_count": 0,
+          "section_count": 13,
+          "sections": [
+            {
+              "index": 0,
+              "name": "",
+              "type": 0,
+              "offset": 0,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 1,
+              "name": ".text",
+              "type": 1,
+              "offset": 52,
+              "size": 174,
+              "flags": 6
+            },
+            {
+              "index": 2,
+              "name": ".ARM.exidx",
+              "type": 1879048193,
+              "offset": 228,
+              "size": 80,
+              "flags": 130
+            },
+            {
+              "index": 3,
+              "name": ".rel.text",
+              "type": 9,
+              "offset": 308,
+              "size": 32,
+              "flags": 64
+            },
+            {
+              "index": 4,
+              "name": ".rel.ARM.exidx",
+              "type": 9,
+              "offset": 340,
+              "size": 152,
+              "flags": 64
+            },
+            {
+              "index": 5,
+              "name": ".ARM.attributes",
+              "type": 1879048195,
+              "offset": 492,
+              "size": 54,
+              "flags": 0
+            },
+            {
+              "index": 6,
+              "name": ".bss",
+              "type": 8,
+              "offset": 308,
+              "size": 256,
+              "flags": 3
+            },
+            {
+              "index": 7,
+              "name": ".debug_frame",
+              "type": 1,
+              "offset": 548,
+              "size": 180,
+              "flags": 0
+            },
+            {
+              "index": 8,
+              "name": ".rel.debug_frame",
+              "type": 9,
+              "offset": 728,
+              "size": 144,
+              "flags": 64
+            },
+            {
+              "index": 9,
+              "name": ".note.GNU-stack",
+              "type": 1,
+              "offset": 872,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 10,
+              "name": ".symtab",
+              "type": 2,
+              "offset": 872,
+              "size": 912,
+              "flags": 0
+            },
+            {
+              "index": 11,
+              "name": ".shstrtab",
+              "type": 3,
+              "offset": 1784,
+              "size": 136,
+              "flags": 0
+            },
+            {
+              "index": 12,
+              "name": ".strtab",
+              "type": 3,
+              "offset": 1920,
+              "size": 650,
+              "flags": 0
+            }
+          ],
+          "arm_attribute_sections": [
+            {
+              "size": 54,
+              "sha256": "b92a9129e2e56ad03dda5952d7006a01fe0148c7386bb506be1c528c5f21bccf",
+              "decoded": false
+            }
+          ],
+          "undefined_global_weak": {
+            "entries": 3,
+            "unique_count": 3,
+            "names": [
+              "COUNTER",
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ]
+          },
+          "defined_global_weak": {
+            "entries": 10,
+            "unique_count": 10,
+            "names": [
+              "MAIN",
+              "_HC_EMPTYFUC",
+              "_ST_ARRAY_INDEX_CHECK",
+              "_ST_DOUBLE_ADD",
+              "_ST_DOUBLE_DIV",
+              "_ST_DOUBLE_MUL",
+              "_ST_DOUBLE_SUB",
+              "_ST_INT64_ADD",
+              "_ST_INT64_MUL",
+              "_ST_INT64_SUB"
+            ]
+          },
+          "relocations": {
+            "entries": 41,
+            "types": {
+              "R_ARM_ABS32": 20,
+              "R_ARM_NONE": 9,
+              "R_ARM_PREL31": 10,
+              "R_ARM_THM_MOVT_ABS": 1,
+              "R_ARM_THM_MOVW_ABS_NC": 1
+            },
+            "sections": [
+              {
+                "name": ".rel.text",
+                "entries": 4,
+                "target_section": ".text",
+                "explicit_addends": false
+              },
+              {
+                "name": ".rel.ARM.exidx",
+                "entries": 19,
+                "target_section": ".ARM.exidx",
+                "explicit_addends": false
+              },
+              {
+                "name": ".rel.debug_frame",
+                "entries": 18,
+                "target_section": ".debug_frame",
+                "explicit_addends": false
+              }
+            ],
+            "referenced_undefined_names": [
+              "COUNTER",
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "stage": 2,
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-integrated-20261019T062934Z/link-plus1/stprog.o",
+      "inspection": {
+        "inspection_status": "parsed",
+        "size": 142612,
+        "sha256": "b1f33f84db30b2a335e7ac373c5681022769812b461ecd20c341651b63d1eb52",
+        "format": "elf",
+        "observations": {
+          "prefix_hex": "7f454c46010101000000000000000000",
+          "prefix_bytes": 16,
+          "embedded_elf_magic_offsets": [
+            0
+          ],
+          "length_equalities": []
+        },
+        "elf": {
+          "class_bits": 32,
+          "endianness": "little",
+          "machine_id": 40,
+          "machine": "ARM",
+          "type_id": 1,
+          "type": "REL",
+          "osabi_id": 0,
+          "abi_version": 0,
+          "flags_hex": "0x5000200",
+          "arm_eabi_version": 5,
+          "entry_address": 0,
+          "program_header_count": 0,
+          "section_count": 13,
+          "sections": [
+            {
+              "index": 0,
+              "name": "",
+              "type": 0,
+              "offset": 0,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 1,
+              "name": ".text",
+              "type": 1,
+              "offset": 52,
+              "size": 62968,
+              "flags": 6
+            },
+            {
+              "index": 2,
+              "name": ".ARM.exidx",
+              "type": 1879048193,
+              "offset": 63020,
+              "size": 424,
+              "flags": 130
+            },
+            {
+              "index": 3,
+              "name": ".rel.text",
+              "type": 9,
+              "offset": 63444,
+              "size": 28904,
+              "flags": 64
+            },
+            {
+              "index": 4,
+              "name": ".rel.ARM.exidx",
+              "type": 9,
+              "offset": 92348,
+              "size": 840,
+              "flags": 64
+            },
+            {
+              "index": 5,
+              "name": ".ARM.attributes",
+              "type": 1879048195,
+              "offset": 93188,
+              "size": 54,
+              "flags": 0
+            },
+            {
+              "index": 6,
+              "name": ".bss",
+              "type": 8,
+              "offset": 63444,
+              "size": 13408,
+              "flags": 3
+            },
+            {
+              "index": 7,
+              "name": ".debug_frame",
+              "type": 1,
+              "offset": 93244,
+              "size": 2720,
+              "flags": 0
+            },
+            {
+              "index": 8,
+              "name": ".rel.debug_frame",
+              "type": 9,
+              "offset": 95964,
+              "size": 832,
+              "flags": 64
+            },
+            {
+              "index": 9,
+              "name": ".note.GNU-stack",
+              "type": 1,
+              "offset": 96796,
+              "size": 0,
+              "flags": 0
+            },
+            {
+              "index": 10,
+              "name": ".symtab",
+              "type": 2,
+              "offset": 96796,
+              "size": 25584,
+              "flags": 0
+            },
+            {
+              "index": 11,
+              "name": ".shstrtab",
+              "type": 3,
+              "offset": 122380,
+              "size": 136,
+              "flags": 0
+            },
+            {
+              "index": 12,
+              "name": ".strtab",
+              "type": 3,
+              "offset": 122516,
+              "size": 19574,
+              "flags": 0
+            }
+          ],
+          "arm_attribute_sections": [
+            {
+              "size": 54,
+              "sha256": "b92a9129e2e56ad03dda5952d7006a01fe0148c7386bb506be1c528c5f21bccf",
+              "decoded": false
+            }
+          ],
+          "undefined_global_weak": {
+            "entries": 16,
+            "unique_count": 16,
+            "names": [
+              "COUNTER",
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "__aeabi_unwind_cpp_pr0"
+            ]
+          },
+          "defined_global_weak": {
+            "entries": 53,
+            "unique_count": 53,
+            "names": [
+              "ARYADDV",
+              "ARYAND",
+              "ARYBYTETO",
+              "ARYEXCHANGE",
+              "ARYMAX",
+              "ARYMEAN",
+              "ARYMIN",
+              "ARYMOVE",
+              "ARYOR",
+              "ARYSD",
+              "ARYSEARCH",
+              "ARYSHL",
+              "ARYSHR",
+              "ARYSUBV",
+              "ARYTOSTRING",
+              "ARYXOR",
+              "ARYXORN",
+              "CLEAR",
+              "CLEARSTRING",
+              "CONCAT",
+              "DELETE",
+              "FIND",
+              "INSERT",
+              "LEFT",
+              "LEN",
+              "MAIN",
+              "REPLACE",
+              "RIGHT",
+              "STRINGTOARY",
+              "TOARYBYTE",
+              "_HC_EMPTYFUC",
+              "_ST_ARRAY_INDEX_CHECK",
+              "_ST_BOOL_TO_STRING",
+              "_ST_BYTE_TO_STRING",
+              "_ST_DINT_TO_STRING",
+              "_ST_DOUBLE_ADD",
+              "_ST_DOUBLE_DIV",
+              "_ST_DOUBLE_MUL",
+              "_ST_DOUBLE_SUB",
+              "_ST_INT64_ADD",
+              "_ST_INT64_MUL",
+              "_ST_INT64_SUB",
+              "_ST_INT_TO_STRING",
+              "_ST_MEMCPY",
+              "_ST_MEMSET",
+              "_ST_REAL_TO_STRING",
+              "_ST_STRCOMPARE",
+              "_ST_STRING_CHECK",
+              "_ST_STRING_TO_BOOL",
+              "_ST_STRING_TO_BYTE",
+              "_ST_STRING_TO_DINT",
+              "_ST_STRING_TO_INT",
+              "_ST_STRING_TO_REAL"
+            ]
+          },
+          "relocations": {
+            "entries": 3822,
+            "types": {
+              "R_ARM_ABS32": 2033,
+              "R_ARM_NONE": 52,
+              "R_ARM_PREL31": 53,
+              "R_ARM_THM_MOVT_ABS": 842,
+              "R_ARM_THM_MOVW_ABS_NC": 842
+            },
+            "sections": [
+              {
+                "name": ".rel.text",
+                "entries": 3613,
+                "target_section": ".text",
+                "explicit_addends": false
+              },
+              {
+                "name": ".rel.ARM.exidx",
+                "entries": 105,
+                "target_section": ".ARM.exidx",
+                "explicit_addends": false
+              },
+              {
+                "name": ".rel.debug_frame",
+                "entries": 104,
+                "target_section": ".debug_frame",
+                "explicit_addends": false
+              }
+            ],
+            "referenced_undefined_names": [
+              "COUNTER",
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "__aeabi_unwind_cpp_pr0"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
