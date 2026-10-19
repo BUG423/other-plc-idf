@@ -1,0 +1,408 @@
+{
+  "schema": "plcidf.easy521-native-io-abi-research.v1",
+  "recorded_at_utc": "2026-10-19T07:47:11.403271+00:00",
+  "scope": "offline read-only object/disassembly/simulator comparison; no compilation/device/Windows/Git",
+  "sources": {
+    "release_MAIN": {
+      "source_path": ".plcidf/led-release-20261019T033737Z/STTemp/MAIN.o",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/release_MAIN.o",
+      "bytes": 2200,
+      "sha256": "d7703f4c9b4d76227a69474e913d4c0885181d866ee5e89b218c4795aadb5994"
+    },
+    "working_MAIN": {
+      "source_path": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/STTemp/MAIN.o",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/working_MAIN.o",
+      "bytes": 2200,
+      "sha256": "8daf095e4d1d73f37abd4fe418e983ffda6b1c0c21f3da8b18bd94a1b44db42d"
+    },
+    "device_stuserprog": {
+      "source_path": ".plcidf/native-execution-backup-zlp-20261019T072754Z/stuserprog.o",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/device_stuserprog.o",
+      "bytes": 4592,
+      "sha256": "1c948cd6ec7ba3d56e8daa1f59ae6ab5584711b462f038752696fcca15b32bc0"
+    },
+    "device_stprog": {
+      "source_path": ".plcidf/native-execution-backup-zlp-20261019T072754Z/stprog.o",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/device_stprog.o",
+      "bytes": 125848,
+      "sha256": "69f3e60db59df3eae06cc96d9ad3716a08c114b8ffcb3a3bc369a56510b17fff"
+    },
+    "working_stuserprog": {
+      "source_path": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/Temp/stuserprog.o",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/working_stuserprog.o",
+      "bytes": 4592,
+      "sha256": "1c948cd6ec7ba3d56e8daa1f59ae6ab5584711b462f038752696fcca15b32bc0"
+    },
+    "working_stprog": {
+      "source_path": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/Temp/stprog.o",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/working_stprog.o",
+      "bytes": 125848,
+      "sha256": "69f3e60db59df3eae06cc96d9ad3716a08c114b8ffcb3a3bc369a56510b17fff"
+    },
+    "source": {
+      "source_path": "examples/easy521_led_blink/MAIN_body.st",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/source.st",
+      "bytes": 1907,
+      "sha256": "6c51789d485457f9fc64ff34c2f0101f6c10db61bce1bd2a0f529c2c0111e7ed"
+    },
+    "address_csv": {
+      "source_path": "plc/easy521/autoshop/BESS_E521_DEV/VarNameAndAddr.csv",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/address_csv.csv",
+      "bytes": 24226,
+      "sha256": "ebdd331ebf5732c6377c09db368862d75ab73ad14b5f44d5a3776ee7a17e6e75"
+    },
+    "Simulator_CompileSystem": {
+      "source_path": "/mnt/e/Software/AutoShop/Simulator/CompileSystem.dll",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/Simulator_CompileSystem.dll",
+      "bytes": 245713,
+      "sha256": "3e45db3f69f1fa1b4d8f4a716dfbea76b7b33a8b1143b3fbf91c13b522a86a48"
+    },
+    "Simulator_CMD_EXECUTE": {
+      "source_path": "/mnt/e/Software/AutoShop/Simulator/CMD_EXECUTE.dll",
+      "frozen_path": ".plcidf/research-34-native-io-abi-20261019/Simulator_CMD_EXECUTE.dll",
+      "bytes": 337278,
+      "sha256": "29570602a1787a6f516fe2b919ecce1b90d5d8612b10e9729de6d9c957d0818e"
+    }
+  },
+  "objects": {
+    "release_MAIN": {
+      "MAIN": {
+        "name": "MAIN",
+        "value": 1,
+        "size": 112,
+        "type_raw": 18,
+        "section": 2
+      },
+      "MAIN_sha256": "b6e82f273ebb814a9fd28aafd85fe1931b62fea0b99fa2b90754fe7ecb3f028f",
+      "MAIN_relocations": [
+        {
+          "offset": 96,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_READ_BITS"
+        },
+        {
+          "offset": 100,
+          "type": 2,
+          "symbol": "_HC_EMPTYFUC"
+        },
+        {
+          "offset": 104,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_READ_BITS"
+        },
+        {
+          "offset": 108,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_WRITE_BITS"
+        }
+      ],
+      "selected_undefined": [
+        "_HC_EMPTYFUC",
+        "_HC_LD_DEV_MEM_READ_BITS",
+        "_HC_LD_DEV_MEM_WRITE_BITS"
+      ]
+    },
+    "working_MAIN": {
+      "MAIN": {
+        "name": "MAIN",
+        "value": 1,
+        "size": 108,
+        "type_raw": 18,
+        "section": 2
+      },
+      "MAIN_sha256": "eab3607bb81bce983293d84117546ec17992a73b14f2cabedf48a3ffa2f9f25c",
+      "MAIN_relocations": [
+        {
+          "offset": 92,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_READ_BITS"
+        },
+        {
+          "offset": 96,
+          "type": 2,
+          "symbol": "_HC_INTERRUPTFCBYST"
+        },
+        {
+          "offset": 100,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_READ_BITS"
+        },
+        {
+          "offset": 104,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_WRITE_BITS"
+        }
+      ],
+      "selected_undefined": [
+        "_HC_INTERRUPTFCBYST",
+        "_HC_LD_DEV_MEM_READ_BITS",
+        "_HC_LD_DEV_MEM_WRITE_BITS"
+      ]
+    },
+    "device_stuserprog": {
+      "MAIN": {
+        "name": "MAIN",
+        "value": 1,
+        "size": 108,
+        "type_raw": 18,
+        "section": 1
+      },
+      "MAIN_sha256": "eab3607bb81bce983293d84117546ec17992a73b14f2cabedf48a3ffa2f9f25c",
+      "MAIN_relocations": [
+        {
+          "offset": 92,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_READ_BITS"
+        },
+        {
+          "offset": 96,
+          "type": 2,
+          "symbol": "_HC_INTERRUPTFCBYST"
+        },
+        {
+          "offset": 100,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_READ_BITS"
+        },
+        {
+          "offset": 104,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_WRITE_BITS"
+        }
+      ],
+      "selected_undefined": [
+        "_HC_INTERRUPTFCBYST",
+        "_HC_LD_DEV_MEM_READ_BITS",
+        "_HC_LD_DEV_MEM_WRITE_BITS"
+      ]
+    },
+    "device_stprog": {
+      "MAIN": {
+        "name": "MAIN",
+        "value": 1,
+        "size": 108,
+        "type_raw": 18,
+        "section": 1
+      },
+      "MAIN_sha256": "eab3607bb81bce983293d84117546ec17992a73b14f2cabedf48a3ffa2f9f25c",
+      "MAIN_relocations": [
+        {
+          "offset": 92,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_READ_BITS"
+        },
+        {
+          "offset": 96,
+          "type": 2,
+          "symbol": "_HC_INTERRUPTFCBYST"
+        },
+        {
+          "offset": 100,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_READ_BITS"
+        },
+        {
+          "offset": 104,
+          "type": 2,
+          "symbol": "_HC_LD_DEV_MEM_WRITE_BITS"
+        }
+      ],
+      "selected_undefined": [
+        "_HC_INTERRUPTFCBYST",
+        "_HC_LD_DEV_MEM_READ_BITS",
+        "_HC_LD_DEV_MEM_WRITE_BITS"
+      ]
+    }
+  },
+  "equalities": {
+    "working_MAIN_and_device_MAIN_bytes_equal": true,
+    "working_MAIN_and_device_MAIN_name_relocations_equal": true,
+    "working_stprog_and_device_stprog_whole_file_equal": true,
+    "working_stuserprog_and_device_stuserprog_whole_file_equal": true
+  },
+  "device_MAIN_calls": [
+    {
+      "instruction_offset": "0x20",
+      "helper": "_HC_LD_DEV_MEM_READ_BITS",
+      "descriptor": "read M8002"
+    },
+    {
+      "instruction_offset": "0x26",
+      "helper": "_HC_INTERRUPTFCBYST",
+      "argument_setup": "none; return ignored"
+    },
+    {
+      "instruction_offset": "0x4a",
+      "helper": "_HC_LD_DEV_MEM_READ_BITS",
+      "descriptor": "read M8013 only if first-scan low byte is zero"
+    },
+    {
+      "instruction_offset": "0x54",
+      "helper": "_HC_LD_DEV_MEM_WRITE_BITS",
+      "descriptor": "write Y0; return ignored"
+    }
+  ],
+  "descriptor_profile": {
+    "read": {
+      "bytes_observed": 12,
+      "slots": [
+        {
+          "offset": 0,
+          "width": 4,
+          "raw_u32": "0xffffffff",
+          "semantics": "unknown leading control field; skipped by Simulator helper"
+        },
+        {
+          "offset": 4,
+          "width": 4,
+          "semantics": "encoded operand, not RAM pointer"
+        },
+        {
+          "offset": 8,
+          "width": 4,
+          "raw_u32": 1,
+          "semantics": "quantity1 matching one-bit use; general domain not reconstructed"
+        }
+      ],
+      "return": "caller uses low8 bits of r0 as Boolean"
+    },
+    "write": {
+      "slots": [
+        {
+          "offset": 0,
+          "width": 4,
+          "raw_u32": "0xffffffff"
+        },
+        {
+          "offset": 4,
+          "width": 4,
+          "raw_u32": "0x00080000"
+        },
+        {
+          "offset": 8,
+          "width": 4,
+          "raw_u32": 1
+        },
+        {
+          "offset": 12,
+          "arm_store_width": 1,
+          "Simulator_load_width": 2,
+          "semantics": "value low byte known; physical helper wider read/padding rules unknown"
+        }
+      ],
+      "return": "ignored by observed ARM caller"
+    }
+  },
+  "operands": [
+    {
+      "name": "M8002",
+      "raw_u32": "0x06201802",
+      "source": "ARM immediate and independent existing CSV line5",
+      "direction": "read"
+    },
+    {
+      "name": "M8013",
+      "raw_u32": "0x06201822",
+      "source": "ARM M8002 operand+0x20 and independent CSV line9",
+      "direction": "read"
+    },
+    {
+      "name": "Y0",
+      "raw_u32": "0x00080000",
+      "source": "sole output in known LED source and ARM write descriptor; no independent GVT/CSV row obtained",
+      "direction": "write"
+    }
+  ],
+  "Simulator_bindings": [
+    {
+      "helper": "_HC_LD_DEV_MEM_READ_BITS",
+      "module": "Simulator_CompileSystem",
+      "name_pointer_va": "0x6a74f33c",
+      "function_pointer_va": "0x6a74f340",
+      "function_va": "0x6a747564",
+      "coff_name": "_builtin_dev_mem_read_bits",
+      "section_end_exclusive_va": "0x6a7475e8",
+      "pointer_pair_sha256": "36c3a4df20b8099db9c85fbf9982017677edc58788a3f21577ea01f20adc0e23",
+      "function_sha256": "8890e9fe3b0da47ac07666ce1ee8aee7b1880224ef8b4048adf9343e7086f11a"
+    },
+    {
+      "helper": "_HC_LD_DEV_MEM_WRITE_BITS",
+      "module": "Simulator_CompileSystem",
+      "name_pointer_va": "0x6a74f394",
+      "function_pointer_va": "0x6a74f398",
+      "function_va": "0x6a7475e8",
+      "coff_name": "_builtin_dev_mem_write_bits",
+      "section_end_exclusive_va": "0x6a74766c",
+      "pointer_pair_sha256": "ebe2ffbed005df2cf70407073783819237c1802b4531f2e6566a04632bba541e",
+      "function_sha256": "441e2868a0b2a5920310857f30687a7e2bf65dc90dec62f2f0e129d7c60f8fbf"
+    },
+    {
+      "helper": "_HC_INTERRUPTFCBYST",
+      "module": "Simulator_CMD_EXECUTE",
+      "name_pointer_va": "0x67289844",
+      "function_pointer_va": "0x67289848",
+      "function_va": "0x6728346c",
+      "coff_name": "_INTPROG_RUN_in_stprog",
+      "section_end_exclusive_va": "0x672834b9",
+      "pointer_pair_sha256": "2df3cf14e691b4811dafceadeceb8532089c0f34f25e0aab314630c6432653fd",
+      "function_sha256": "1b6b03b121c5c488f8d98d85a97d7464c0f87a1437afc05c98b5f85830d21846"
+    }
+  ],
+  "Simulator_crosscheck": {
+    "read_result": "ucode_param_read_bits success returns local u32; failure path returns0; this is not a physical device error contract",
+    "write_value": "loads u16 at descriptor+12 then calls ucode_param_write_bits",
+    "hook": "conditional global guards then INTPROG_RUN call; physical implementation not read"
+  },
+  "next_adapter_scope": {
+    "source_parser": "real MatIEC IEC2C; no new ST regex compiler",
+    "fixed_source_signals": [
+      "M8002:BOOL input",
+      "M8013:BOOL input",
+      "Y0:BOOL output"
+    ],
+    "runtime_access": "encoded descriptor helper calls; no encoded-operand pointer casts",
+    "single_output_writer": "Y0 only",
+    "preserve_hook": "_HC_INTERRUPTFCBYST if following device code shape; full interrupt support remains unverified",
+    "new_variable_allocation": false,
+    "timers_motion_general_IO_support": false
+  },
+  "unknowns": [
+    "Physical helper implementation/signature beyond observed ARM call fields",
+    "First descriptor DWORD meaning and general quantity/value widths",
+    "Read/write failure reporting and force/refresh/output-ownership semantics",
+    "Required padding/alignment beyond observed stack layout",
+    "External-call relocation categories accepted by physical loader for newly compiled wrapper",
+    "Compilation option responsible for release EMPTYFUC vs current interrupt hook",
+    "Actual scheduling/IO refresh boundary and exact task period"
+  ],
+  "runtime_IO_adapter_implemented": false,
+  "new_ARM_compilation_executed": false,
+  "device_access": false,
+  "observed_C_call_shapes": {
+    "read_bits": {
+      "register_arguments": [
+        "r0: descriptor pointer"
+      ],
+      "r1": "callee address used for blx, not meaningful data argument",
+      "return": "r0 low8 consumed as Boolean; no descriptor+12 result read",
+      "candidate_declaration": "uint32_t read_bits(void *descriptor)",
+      "vendor_typedef_verified": false
+    },
+    "write_bits": {
+      "register_arguments": [
+        "r0: descriptor pointer"
+      ],
+      "return": "ignored by ARM caller; Simulator passes through ucode_param_write_bits EAX",
+      "status_code_meaning": "unknown",
+      "vendor_typedef_verified": false
+    },
+    "interrupt_hook": {
+      "argument_setup": "none meaningful in ARM; Simulator does not read arguments",
+      "Simulator_return": "explicit EAX=1 in all paths",
+      "ARM_return": "ignored",
+      "void_void_signature_proven": false,
+      "candidate_declaration": "uint32_t hook(void), return discarded",
+      "physical_vendor_typedef_verified": false
+    }
+  }
+}

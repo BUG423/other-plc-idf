@@ -1,4 +1,4 @@
-"""Bounded native Easy521 application-file transactions; preview is zero-I/O.
+"""Bounded native Easy521 transactions; preview performs no device I/O.
 
 Uses the verified CDC data-interface1 profile from easy521_linux_usb.py, without
 weakening its fixed read entry point. Application requests use the independently
@@ -10,7 +10,9 @@ functions are separate writers and never retry, reconnect or roll back.
 This module does not compile ST, generate a complete application manifest,
 verify password policy, infer remote directories or guarantee recovery after
 power loss. Transfer ACK is not application activation/execution verification.
-Preview never resolves output paths, loads libusb, enumerates, locks or writes.
+Read/control preview never resolves output paths or reads local files. Manifest
+download preview reads only explicit local files; no preview loads libusb,
+enumerates devices, locks, generates random sequences or writes.
 """
 
 from __future__ import annotations
@@ -21,9 +23,11 @@ import hashlib
 import importlib.util
 import json
 import math
+import os
 from pathlib import Path
 import re
 import secrets
+import stat
 import sys
 import time
 
@@ -435,29 +439,226 @@ def download_native(*, files, credential, source_sha256, build_sha256, execute=F
         return report
 
 
+# Exact candidate layouts from prepare_easy521_application.py/report28 and
+# inspect_easy521_live_application.py/report30. These are two reviewed file-set
+# profiles, not arbitrary remote path lists or a feature-selection algorithm.
+_CONFIG_FILES = ("syscfg.foid", "ethercat.foid", "modbus.foid", "canlink.foid",
+                 "modcfg.foid", "ethip.foid", "EIPIns.foid", "ecttrans.foid",
+                 "dataLog.foid", "OpcUAServer.foid", "sftpserver.foid", "Ecam.foid")
+_LIVE_FILES = ("userprog.foid", "stprog.o", "stuserprog.o", "symbol.sym", "varsinfo.foid", *_CONFIG_FILES)
+_FIXED_FILES = ("project.hcpp", *_LIVE_FILES)
+_MANIFEST_PROFILES = {
+    ("plcidf.easy521-fixed-application-candidate.v1", "easy521-bess-existing-interface-v1"):
+        (_FIXED_FILES, "association", "candidate-prepared"),
+    ("plcidf.easy521-live-application-inspection.v1", "easy521-observed-live-interface-v1"):
+        (_LIVE_FILES, "source_association", "live-derived-candidate-prepared"),
+}
+
+
+def _file_identity(info):
+    return (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns)
+
+
+def _candidate_read(path, *, limit):
+    """Snapshot a bounded regular local file without following final symlinks.
+
+    O_NONBLOCK prevents FIFO substitution from blocking before fstat. Original,
+    opened and final path identities must match. Returns immutable bytes and
+    identity for a later fresh recheck; no local file is created or modified.
+    """
+    for part in (path, *path.parents):
+        if part.is_symlink():
+            raise ValueError("Candidate paths cannot contain symlinks: " + str(path))
+    before = path.lstat()
+    if not stat.S_ISREG(before.st_mode) or not 1 <= before.st_size <= limit:
+        raise ValueError("Candidate input must be a nonempty bounded regular file: " + str(path))
+    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    with os.fdopen(fd, "rb") as stream:
+        opened = os.fstat(stream.fileno())
+        if not stat.S_ISREG(opened.st_mode) or _file_identity(before) != _file_identity(opened):
+            raise ValueError("Candidate input identity changed before reading")
+        raw = stream.read(limit + 1)
+        if (len(raw) != opened.st_size or _file_identity(opened) != _file_identity(os.fstat(stream.fileno()))
+                or _file_identity(opened) != _file_identity(path.lstat())):
+            raise ValueError("Candidate input changed during reading")
+    return raw, _file_identity(opened)
+
+
+def _json_object(pairs):
+    result = {}
+    for name, value in pairs:
+        if name in result:
+            raise ValueError("Duplicate JSON key: " + name)
+        result[name] = value
+    return result
+
+
+def _manifest_snapshot(path, *, linux_device, report):
+    """Validate one report28/30 candidate and recheck immutable payload bytes.
+
+    The source/object association is a candidate claim, not authenticated build
+    provenance. Source archive and inherited symbol policies remain explicit;
+    runtime, compatibility and device-acceptance claims are copied unchanged.
+    """
+    path = Path(path).absolute()
+    raw, identity = _candidate_read(path, limit=1024 * 1024)
+    report.update(candidate_manifest_path=str(path), candidate_manifest_sha256=hashlib.sha256(raw).hexdigest(),
+                  build_sha256_kind="candidate-manifest")
+    snapshots = [(path, raw, identity, 1024 * 1024)]
+    manifest = json.loads(raw, object_pairs_hook=_json_object,
+                          parse_constant=lambda value: (_ for _ in ()).throw(ValueError("Nonfinite JSON value: " + value)))
+    if not isinstance(manifest, dict):
+        raise ValueError("Candidate manifest must be an object")
+    key = (manifest.get("schema"), manifest.get("profile"))
+    if key not in _MANIFEST_PROFILES:
+        raise ValueError("Unsupported candidate manifest schema/profile")
+    names, association_key, status = _MANIFEST_PROFILES[key]
+    if manifest.get("ok") is not True or manifest.get("status") != status:
+        raise ValueError("Candidate must identify a successfully prepared file set")
+    listed = manifest.get("files")
+    if (not isinstance(listed, list) or len(listed) != len(names)
+            or type(manifest.get("file_count")) is not int or manifest["file_count"] != len(names)):
+        raise ValueError("Candidate file count differs from the fixed ordered profile")
+    association = manifest.get(association_key)
+    if not isinstance(association, dict) or any(not isinstance(association.get(name), str)
+            or not re.fullmatch(r"[0-9a-f]{64}", association[name])
+            for name in ("source.st", "stprog.o", "stuserprog.o")):
+        raise ValueError("Candidate lacks source/two-native-object SHA256 association")
+    if names == _LIVE_FILES:
+        target = manifest.get("readback_target")
+        if not isinstance(target, dict) or target.get("vidpid") != native.VIDPID:
+            raise ValueError("Live candidate needs the observed Easy521 readback target")
+        prior_location = native._location(target.get("linux_device"))
+        if linux_device is not None and native._location(linux_device) != prior_location:
+            raise ValueError("Selected Linux USB location differs from live candidate readback target")
+        if manifest.get("project_archive_included") is not False:
+            raise ValueError("Live17 profile must explicitly omit the unresolved source archive")
+    elif manifest.get("source_recovery_archive") != "vendor-Empty-marker":
+        raise ValueError("Fixed18 profile must identify the vendor Empty source-archive marker")
+    payloads, total, records = [], len(raw), []
+    for index, (name, entry) in enumerate(zip(names, listed)):
+        if (not isinstance(entry, dict) or type(entry.get("index")) is not int or entry["index"] != index
+                or entry.get("remote_name") != name or not isinstance(entry.get("path"), str)
+                or type(entry.get("size")) is not int or not 1 <= entry["size"] <= codec.MAX_APPLICATION_BYTES
+                or not isinstance(entry.get("sha256"), str) or not re.fullmatch(r"[0-9a-f]{64}", entry["sha256"])):
+            raise ValueError("Candidate file order/index/path/size/hash differs from the fixed profile")
+        total += entry["size"]
+        if total > 32 * 1024 * 1024:
+            raise ValueError("Candidate manifest/payload snapshot exceeds32MiB")
+        file_path = Path(entry["path"])
+        if not file_path.is_absolute():
+            file_path = path.parent / file_path
+        data, identity = _candidate_read(file_path, limit=codec.MAX_APPLICATION_BYTES)
+        if len(data) != entry["size"] or hashlib.sha256(data).hexdigest() != entry["sha256"]:
+            raise ValueError("Candidate payload differs from size/SHA256: " + name)
+        if name in ("stprog.o", "stuserprog.o") and association[name] != entry["sha256"]:
+            raise ValueError("Native object differs from candidate source association: " + name)
+        if name == "project.hcpp" and data != b"Empty":
+            raise ValueError("Fixed18 source archive must contain exactly the vendor Empty marker")
+        snapshots.append((file_path, data, identity, codec.MAX_APPLICATION_BYTES))
+        payloads.append({"remote_name": name, "data": data, "sha256": entry["sha256"]})
+        records.append(dict(entry))
+    report["stage"] = "snapshot-recheck"
+    for file_path, data, identity, limit in snapshots:
+        after, after_identity = _candidate_read(file_path, limit=limit)
+        if after != data or after_identity != identity:
+            raise ValueError("Candidate manifest/input drift after snapshot: " + str(file_path))
+    report.update(candidate_manifest_path=str(path), candidate_manifest_sha256=hashlib.sha256(raw).hexdigest(),
+                  build_sha256_kind="candidate-manifest", candidate_files=records,
+                  candidate_metadata={k: v for k, v in manifest.items() if k not in ("files", "inputs")},
+                  candidate_input_records=manifest.get("inputs"), local_snapshot_rechecked=True,
+                  local_snapshot_bytes=total,
+                  candidate_provenance_inputs_reopened=False,
+                  source_association_authenticated=False, permanent_target_identity="unknown",
+                  source_archive_policy={"included": names == _FIXED_FILES,
+                      "policy": "vendor-Empty-marker" if names == _FIXED_FILES else "omitted-unresolved-transfer-policy",
+                      "plc_source_recovery_verified": False},
+                  symbol_metadata_policy={"policy": "inherited-fixed-interface" if names == _FIXED_FILES else "inherited-device-readback",
+                      "regenerated_for_new_source": False, "device_enforcement_verified": False})
+    return payloads, association["source.st"], hashlib.sha256(raw).hexdigest()
+
+
+def download_manifest_native(*, manifest_path, credential, execute=False, linux_device=None,
+                             timeout_ms=2500, session_timeout_s=120.0,
+                             lease_directory=None, backend_factory=None):
+    """Snapshot a fixed18/live17 candidate, then call one explicit transaction.
+
+    Preview reads only bounded local manifest/payload files. Execution passes
+    immutable bytes once to download_native; no automatic RUN, readback, retry,
+    reconnect or rollback occurs. build_sha256 is the candidate manifest hash,
+    not a compiler-report hash. Candidate runtime/metadata limitations remain in
+    candidate_metadata; transfer ACK never promotes them to device acceptance.
+    """
+    report = _report("download-manifest")
+    try:
+        _parameters(timeout_ms, session_timeout_s, execute)
+        codec.build_file_open(remote_name="stprog.o", credential=credential, direction="write", file_bytes=1, sequence=0)
+        if linux_device is not None or execute:
+            native._location(linux_device)
+        report["stage"] = "snapshot"
+        files, source_sha256, build_sha256 = _manifest_snapshot(manifest_path, linux_device=linux_device, report=report)
+        report.update(stage="download", transaction_invoked=True,
+                      source_sha256=source_sha256, build_sha256=build_sha256)
+        if execute:
+            # If an unexpected interruption escapes the low-level API, do not
+            # claim that no device access or write occurred. Normally that API
+            # returns its own detailed interrupted/unknown report and cleanup.
+            report.update(device_access=None, request_outcome="unknown", plc_change_possible=True)
+        result = download_native(files=files, credential=credential, source_sha256=source_sha256,
+                                 build_sha256=build_sha256, execute=execute, linux_device=linux_device,
+                                 timeout_ms=timeout_ms, session_timeout_s=session_timeout_s,
+                                 lease_directory=lease_directory, backend_factory=backend_factory)
+        report.update(result)
+        report["action"] = "download-manifest"
+    except (Exception, KeyboardInterrupt) as error:
+        if isinstance(error, KeyboardInterrupt):
+            report.update(status="interrupted", interrupted_at_stage=report["stage"], stage="interrupted")
+        report["diagnostics"].append({"code": "E_APPLICATION_MANIFEST", "stage": report["stage"], "message": str(error)})
+    return report
+
+
 def main(argv=None):
-    """Read-file CLI only; CPU control and application writing are separate APIs."""
+    """Read-compatible CLI plus explicit preview-first run/stop/download actions."""
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] not in ("read", "run", "stop", "download", "-h", "--help"):
+        argv.insert(0, "read")  # Preserve the original --remote-name read CLI.
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--execute", action="store_true")
-    parser.add_argument("--remote-name", choices=codec.APPLICATION_FILES, required=True)
-    parser.add_argument("--credential-hex", required=True, help="exact8B credential; explicit0000000000000000 only for known empty credential")
-    parser.add_argument("--linux-device")
-    parser.add_argument("--output-path")
-    parser.add_argument("--timeout-ms", type=int, default=2500)
-    parser.add_argument("--session-timeout-s", type=float, default=30.0)
+    actions = parser.add_subparsers(dest="action", required=True)
+    for action in ("read", "run", "stop", "download"):
+        command = actions.add_parser(action)
+        command.add_argument("--execute", action="store_true")
+        command.add_argument("--linux-device")
+        command.add_argument("--timeout-ms", type=int, default=2500)
+        command.add_argument("--session-timeout-s", type=float, default=120.0 if action == "download" else 30.0)
+        if action in ("read", "download"):
+            command.add_argument("--credential-hex", required=True, help="exact8B credential; explicit0000000000000000 only for known empty credential")
+        if action == "read":
+            command.add_argument("--remote-name", choices=codec.APPLICATION_FILES, required=True)
+            command.add_argument("--output-path")
+        elif action == "download":
+            command.add_argument("--manifest", required=True)
     args = parser.parse_args(argv)
     try:
-        credential = bytes.fromhex(args.credential_hex)
-        report = upload_native(remote_name=args.remote_name, credential=credential,
-                               execute=args.execute, linux_device=args.linux_device,
-                               output_path=args.output_path, timeout_ms=args.timeout_ms,
-                               session_timeout_s=args.session_timeout_s)
+        common = {"execute": args.execute, "linux_device": args.linux_device,
+                  "timeout_ms": args.timeout_ms, "session_timeout_s": args.session_timeout_s}
+        if args.action in ("run", "stop"):
+            # Report26's H530 SetGCM mapping: raw0 STOP, raw1 RUN. ACK is not a
+            # CPU-state readback; no automatic monitoring transaction follows.
+            report = set_gcm_native(state=1 if args.action == "run" else 0, **common)
+        else:
+            credential = bytes.fromhex(args.credential_hex)
+            if args.action == "download":
+                report = download_manifest_native(manifest_path=args.manifest, credential=credential, **common)
+            else:
+                report = upload_native(remote_name=args.remote_name, credential=credential,
+                                       output_path=args.output_path, **common)
         code = 130 if report["status"] == "interrupted" else 0 if report["ok"] else 1
     except ValueError as error:
-        report = {**_report("upload-read"), "diagnostics": [{"code": "E_ARGUMENTS", "message": str(error)}]}
+        report = {**_report(args.action), "diagnostics": [{"code": "E_ARGUMENTS", "message": str(error)}]}
         code = 1
     except KeyboardInterrupt:
-        report = {**_report("upload-read"), "stage": "interrupted", "request_outcome": "unknown"}
+        report = {**_report(args.action), "status": "interrupted", "stage": "interrupted", "request_outcome": "unknown", "device_access": None,
+                  "plc_change_possible": args.execute and args.action in ("run", "stop", "download")}
         code = 130
     print(json.dumps(report, allow_nan=False, separators=(",", ":")))
     return code

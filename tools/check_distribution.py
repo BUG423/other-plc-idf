@@ -46,6 +46,8 @@ ASSETS = (
     "tools/inspect_easy521_foid.py",
     "tools/link_vendor_application.py",
     "tools/bind_vendor_globals.py",
+    "tools/inspect_easy521_live_application.py",
+    "tools/compile_easy521_matiec_probe.py",
     "examples/easy521_native_probe/MAIN_plus1_body.st",
     "examples/easy521_native_probe/MAIN_plus2_body.st",
     "examples/easy521_native_probe/README.md",
@@ -82,6 +84,7 @@ NATIVE_APPLICATION_TOOLS = (
     "easy521_application_usb.py", "inspect_vendor_application.py",
     "inspect_vendor_variables.py", "inspect_easy521_foid.py",
     "link_vendor_application.py", "bind_vendor_globals.py",
+    "inspect_easy521_live_application.py", "compile_easy521_matiec_probe.py",
 )
 
 
@@ -417,7 +420,8 @@ def main() -> int:
         for worker in ("prepare_vendor_worker", "compile_vendor_worker"):
             run([str(python), paths[worker], "--help"], cwd=project, env=env)
         for name in ("compile_easy521_native_probe.py", "bind_native_application.py",
-                     "prepare_easy521_application.py"):
+                     "prepare_easy521_application.py", "inspect_easy521_live_application.py",
+                     "compile_easy521_matiec_probe.py"):
             run([str(python), paths["native_application_assets"][name], "--help"], cwd=project, env=env)
         body, globals_file = project / "counter.st", project / "globals.json"
         body.write_text("COUNTER := COUNTER + 1;\n", encoding="utf-8")
@@ -578,7 +582,8 @@ def main() -> int:
                 "imports": application_imports,
                 "upload_preview": application_preview,
                 "worker_help_checked": ["compile_easy521_native_probe.py", "bind_native_application.py",
-                                         "prepare_easy521_application.py"],
+                                         "prepare_easy521_application.py", "inspect_easy521_live_application.py",
+                                         "compile_easy521_matiec_probe.py"],
                 "guarded_access": ["subprocess", "socket", "interop", "device_lease", "random_sequence",
                                    "libusb_load", "library_discovery", "output_path_probe", "filesystem_mutation"],
                 "native_compilation_executed": False,

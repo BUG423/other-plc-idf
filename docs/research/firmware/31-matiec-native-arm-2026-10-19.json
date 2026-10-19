@@ -1,0 +1,1154 @@
+{
+  "schema": "plcidf.matiec-native-arm-research.v1",
+  "recorded_at": "2026-10-19T07:44:03.097025+00:00",
+  "scope": "offline real Linux MatIEC/C/Clang ARM compilation and x86 semantic execution; no Windows or device operations",
+  "input_profiles": [
+    {
+      "name": "frozen-plus1",
+      "source_sha256": "19ed7d09071437d36aadbe993ff2720765ca098aa127389f54b084e11280b645",
+      "output_object_sha256": "ed414bd6e1f47818cdfd01407587c696ab237dc26d024cba37581f867a66e34f",
+      "main_bytes": 52,
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000000",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 11,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 369,
+            "size": 131,
+            "flags": 0
+          },
+          {
+            "index": 2,
+            "name": ".text",
+            "type": 1,
+            "offset": 52,
+            "size": 52,
+            "flags": 6
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 344,
+            "size": 16,
+            "flags": 64
+          },
+          {
+            "index": 4,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 104,
+            "size": 8,
+            "flags": 130
+          },
+          {
+            "index": 5,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 360,
+            "size": 8,
+            "flags": 64
+          },
+          {
+            "index": 6,
+            "name": ".comment",
+            "type": 1,
+            "offset": 112,
+            "size": 48,
+            "flags": 48
+          },
+          {
+            "index": 7,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 160,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 160,
+            "size": 71,
+            "flags": 0
+          },
+          {
+            "index": 9,
+            "name": ".llvm_addrsig",
+            "type": 1879002115,
+            "offset": 368,
+            "size": 1,
+            "flags": 2147483648
+          },
+          {
+            "index": 10,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 232,
+            "size": 112,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 71,
+            "sha256": "8fdf266eb011414b5a8c23bd2884a9d93ec6f9db40b28215180389ae61a7582f",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "G_RBESS_PCMD"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "MAIN"
+          ]
+        },
+        "relocations": {
+          "entries": 3,
+          "types": {
+            "R_ARM_PREL31": 1,
+            "R_ARM_THM_MOVT_ABS": 1,
+            "R_ARM_THM_MOVW_ABS_NC": 1
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 2,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 1,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "G_RBESS_PCMD"
+          ]
+        }
+      },
+      "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e",
+      "tool_hashes": {
+        "/home/zss/.cache/plcidf/matiec/bin/iec2c": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834",
+        "/usr/lib/llvm-20/bin/clang": "b15e7640bf3082f36ef14321711706b265df3058721e3c2caef3a4b83895d07d",
+        "/usr/bin/x86_64-linux-gnu-readelf": "871be389739ecf9924b052c2fde4d2a2068a54e882201b9c34897337a5a0a130"
+      },
+      "compiler_component_sha256": {
+        "/home/zss/workspace/py2plc/tools/compile_easy521_matiec_probe.py": "a56ae33dee14c425f92716ed6efb7593be3f6a55ca5e1c1c7eab5a5f2a045cae",
+        "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py": "cae1f517bf8c42fcfe0a20ee28899f17eeaf7267e4394a9454740045ca1368ce",
+        "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+      },
+      "toolchain_manifest_sha256": "2760251bb173c1dfe412566227c063300ad8b985495496918dcc49ce567b492a",
+      "generated": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/generated/GLOBALS.h",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/generated/LOCATED_VARIABLES.h",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/generated/POUS.c",
+          "sha256": "28e3eae37dde5c01980f3f81c22f45bb3496addfcea28e0938be1c74e583c227"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/generated/POUS.h",
+          "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8"
+        }
+      ],
+      "wrapper_sha256": "d2953a13fbdd112973659f79c0e77384424ee9125ac50683c271ae47d75846a8",
+      "compilation_dependencies": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/wrapper.c",
+          "sha256": "d2953a13fbdd112973659f79c0e77384424ee9125ac50683c271ae47d75846a8",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib/C/iec_std_lib.h",
+          "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/limits.h",
+          "sha256": "1a74119a871309deaabdc8081d43fdb274137838c9e2bb874890c120db7a673a",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/float.h",
+          "sha256": "a29019c5ba04f9bf55a46f9bf75c63039a6015921ddde7298e057b2a188bebec",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stdint.h",
+          "sha256": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stddef.h",
+          "sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_header_macro.h",
+          "sha256": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_ptrdiff_t.h",
+          "sha256": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_size_t.h",
+          "sha256": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wchar_t.h",
+          "sha256": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_null.h",
+          "sha256": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_max_align_t.h",
+          "sha256": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_offsetof.h",
+          "sha256": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stdarg.h",
+          "sha256": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_header_macro.h",
+          "sha256": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___gnuc_va_list.h",
+          "sha256": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_list.h",
+          "sha256": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_arg.h",
+          "sha256": "db0cca3b7768cf07807553fb88ea74e00cba4503e08a5f5504989fb3cc3e4cf1",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___va_copy.h",
+          "sha256": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_copy.h",
+          "sha256": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib/C/iec_types_all.h",
+          "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib/C/iec_types_list.h",
+          "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib/C/iec_types.h",
+          "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib/C/iec_std_functions.h",
+          "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib/C/accessor.h",
+          "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/generated/POUS.h",
+          "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib/C/iec_std_FB.h",
+          "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/generated/POUS.c",
+          "sha256": "28e3eae37dde5c01980f3f81c22f45bb3496addfcea28e0938be1c74e583c227",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib/C/iec_std_FB_impl.h",
+          "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd",
+          "origin": "frozen-generated-or-matiec"
+        }
+      ],
+      "dependency_file_sha256": "fc09a018ef53a8fa2376f04f8fcc3bbdb483082865f99998f984a2c8732d7e2c",
+      "arm_attributes": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n",
+      "private_report": ".plcidf/research-31-matiec-20261019/frozen-plus1/matiec-probe-report.json",
+      "private_report_sha256": "7744b3f7d864bb672d8f9a3cba42f7d7e41bf8a04a2e88e159047d28fd35c80e",
+      "commands": [
+        {
+          "argv": [
+            "/home/zss/.cache/plcidf/matiec/bin/iec2c",
+            "-I",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib",
+            "-T",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/generated",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/source.st"
+          ],
+          "returncode": 0,
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "-print-resource-dir"
+          ],
+          "returncode": 0,
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "--target=armv7a-none-eabi",
+            "-mthumb",
+            "-mcpu=cortex-a8",
+            "-mfpu=neon",
+            "-mfloat-abi=softfp",
+            "-ffixed-r9",
+            "-ffreestanding",
+            "-fno-builtin",
+            "-fno-pic",
+            "-fno-unwind-tables",
+            "-fno-asynchronous-unwind-tables",
+            "-fno-stack-protector",
+            "-O2",
+            "-std=c11",
+            "-Werror=literal-range",
+            "-MD",
+            "-MF",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/MAIN.d",
+            "-MT",
+            "PLCIDF_MAIN",
+            "-isystem",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/matiec/lib/C",
+            "-I",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/generated",
+            "-c",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/wrapper.c",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/MAIN.o"
+          ],
+          "returncode": 0,
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/bin/x86_64-linux-gnu-readelf",
+            "-A",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus1/MAIN.o"
+          ],
+          "returncode": 0,
+          "timeout_s": 10.0
+        }
+      ]
+    },
+    {
+      "name": "frozen-plus2",
+      "source_sha256": "ff424e2d859951bec0c8bca6be15992f95c9d28e9d5aedb0abab2877c8c4e7ff",
+      "output_object_sha256": "a72912acd3fbd11bcb57b215540775ce17119926f02d2a362053ca06f031068e",
+      "main_bytes": 52,
+      "elf": {
+        "class_bits": 32,
+        "endianness": "little",
+        "machine_id": 40,
+        "machine": "ARM",
+        "type_id": 1,
+        "type": "REL",
+        "osabi_id": 0,
+        "abi_version": 0,
+        "flags_hex": "0x5000000",
+        "arm_eabi_version": 5,
+        "entry_address": 0,
+        "program_header_count": 0,
+        "section_count": 11,
+        "sections": [
+          {
+            "index": 0,
+            "name": "",
+            "type": 0,
+            "offset": 0,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 1,
+            "name": ".strtab",
+            "type": 3,
+            "offset": 369,
+            "size": 131,
+            "flags": 0
+          },
+          {
+            "index": 2,
+            "name": ".text",
+            "type": 1,
+            "offset": 52,
+            "size": 52,
+            "flags": 6
+          },
+          {
+            "index": 3,
+            "name": ".rel.text",
+            "type": 9,
+            "offset": 344,
+            "size": 16,
+            "flags": 64
+          },
+          {
+            "index": 4,
+            "name": ".ARM.exidx",
+            "type": 1879048193,
+            "offset": 104,
+            "size": 8,
+            "flags": 130
+          },
+          {
+            "index": 5,
+            "name": ".rel.ARM.exidx",
+            "type": 9,
+            "offset": 360,
+            "size": 8,
+            "flags": 64
+          },
+          {
+            "index": 6,
+            "name": ".comment",
+            "type": 1,
+            "offset": 112,
+            "size": 48,
+            "flags": 48
+          },
+          {
+            "index": 7,
+            "name": ".note.GNU-stack",
+            "type": 1,
+            "offset": 160,
+            "size": 0,
+            "flags": 0
+          },
+          {
+            "index": 8,
+            "name": ".ARM.attributes",
+            "type": 1879048195,
+            "offset": 160,
+            "size": 71,
+            "flags": 0
+          },
+          {
+            "index": 9,
+            "name": ".llvm_addrsig",
+            "type": 1879002115,
+            "offset": 368,
+            "size": 1,
+            "flags": 2147483648
+          },
+          {
+            "index": 10,
+            "name": ".symtab",
+            "type": 2,
+            "offset": 232,
+            "size": 112,
+            "flags": 0
+          }
+        ],
+        "arm_attribute_sections": [
+          {
+            "size": 71,
+            "sha256": "8fdf266eb011414b5a8c23bd2884a9d93ec6f9db40b28215180389ae61a7582f",
+            "decoded": false
+          }
+        ],
+        "undefined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "G_RBESS_PCMD"
+          ]
+        },
+        "defined_global_weak": {
+          "entries": 1,
+          "unique_count": 1,
+          "names": [
+            "MAIN"
+          ]
+        },
+        "relocations": {
+          "entries": 3,
+          "types": {
+            "R_ARM_PREL31": 1,
+            "R_ARM_THM_MOVT_ABS": 1,
+            "R_ARM_THM_MOVW_ABS_NC": 1
+          },
+          "sections": [
+            {
+              "name": ".rel.text",
+              "entries": 2,
+              "target_section": ".text",
+              "explicit_addends": false
+            },
+            {
+              "name": ".rel.ARM.exidx",
+              "entries": 1,
+              "target_section": ".ARM.exidx",
+              "explicit_addends": false
+            }
+          ],
+          "referenced_undefined_names": [
+            "G_RBESS_PCMD"
+          ]
+        }
+      },
+      "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e",
+      "tool_hashes": {
+        "/home/zss/.cache/plcidf/matiec/bin/iec2c": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834",
+        "/usr/lib/llvm-20/bin/clang": "b15e7640bf3082f36ef14321711706b265df3058721e3c2caef3a4b83895d07d",
+        "/usr/bin/x86_64-linux-gnu-readelf": "871be389739ecf9924b052c2fde4d2a2068a54e882201b9c34897337a5a0a130"
+      },
+      "compiler_component_sha256": {
+        "/home/zss/workspace/py2plc/tools/compile_easy521_matiec_probe.py": "a56ae33dee14c425f92716ed6efb7593be3f6a55ca5e1c1c7eab5a5f2a045cae",
+        "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py": "cae1f517bf8c42fcfe0a20ee28899f17eeaf7267e4394a9454740045ca1368ce",
+        "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+      },
+      "toolchain_manifest_sha256": "2760251bb173c1dfe412566227c063300ad8b985495496918dcc49ce567b492a",
+      "generated": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/generated/GLOBALS.h",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/generated/LOCATED_VARIABLES.h",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/generated/POUS.c",
+          "sha256": "ee80a4001aa1054f0c8dd7371241af7f8198ac7438967f1c609995d5b47e9fac"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/generated/POUS.h",
+          "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8"
+        }
+      ],
+      "wrapper_sha256": "d2953a13fbdd112973659f79c0e77384424ee9125ac50683c271ae47d75846a8",
+      "compilation_dependencies": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/wrapper.c",
+          "sha256": "d2953a13fbdd112973659f79c0e77384424ee9125ac50683c271ae47d75846a8",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib/C/iec_std_lib.h",
+          "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/limits.h",
+          "sha256": "1a74119a871309deaabdc8081d43fdb274137838c9e2bb874890c120db7a673a",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/float.h",
+          "sha256": "a29019c5ba04f9bf55a46f9bf75c63039a6015921ddde7298e057b2a188bebec",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stdint.h",
+          "sha256": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stddef.h",
+          "sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_header_macro.h",
+          "sha256": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_ptrdiff_t.h",
+          "sha256": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_size_t.h",
+          "sha256": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wchar_t.h",
+          "sha256": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_null.h",
+          "sha256": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_max_align_t.h",
+          "sha256": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_offsetof.h",
+          "sha256": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/stdarg.h",
+          "sha256": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_header_macro.h",
+          "sha256": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___gnuc_va_list.h",
+          "sha256": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_list.h",
+          "sha256": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_arg.h",
+          "sha256": "db0cca3b7768cf07807553fb88ea74e00cba4503e08a5f5504989fb3cc3e4cf1",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___va_copy.h",
+          "sha256": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_copy.h",
+          "sha256": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+          "origin": "clang-resource-header"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib/C/iec_types_all.h",
+          "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib/C/iec_types_list.h",
+          "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib/C/iec_types.h",
+          "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib/C/iec_std_functions.h",
+          "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib/C/accessor.h",
+          "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/generated/POUS.h",
+          "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib/C/iec_std_FB.h",
+          "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/generated/POUS.c",
+          "sha256": "ee80a4001aa1054f0c8dd7371241af7f8198ac7438967f1c609995d5b47e9fac",
+          "origin": "frozen-generated-or-matiec"
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib/C/iec_std_FB_impl.h",
+          "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd",
+          "origin": "frozen-generated-or-matiec"
+        }
+      ],
+      "dependency_file_sha256": "a1d6ecd5b2ad2d1ac9ed48b3a7317aae405373ef4fa2d66e97e2ed9a1b56813b",
+      "arm_attributes": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n",
+      "private_report": ".plcidf/research-31-matiec-20261019/frozen-plus2/matiec-probe-report.json",
+      "private_report_sha256": "78225cd77a376e758c96035eafc8f998f913c0dac9c383e5289a82e4e62660e3",
+      "commands": [
+        {
+          "argv": [
+            "/home/zss/.cache/plcidf/matiec/bin/iec2c",
+            "-I",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib",
+            "-T",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/generated",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/source.st"
+          ],
+          "returncode": 0,
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "-print-resource-dir"
+          ],
+          "returncode": 0,
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/lib/llvm-20/bin/clang",
+            "--target=armv7a-none-eabi",
+            "-mthumb",
+            "-mcpu=cortex-a8",
+            "-mfpu=neon",
+            "-mfloat-abi=softfp",
+            "-ffixed-r9",
+            "-ffreestanding",
+            "-fno-builtin",
+            "-fno-pic",
+            "-fno-unwind-tables",
+            "-fno-asynchronous-unwind-tables",
+            "-fno-stack-protector",
+            "-O2",
+            "-std=c11",
+            "-Werror=literal-range",
+            "-MD",
+            "-MF",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/MAIN.d",
+            "-MT",
+            "PLCIDF_MAIN",
+            "-isystem",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/matiec/lib/C",
+            "-I",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/generated",
+            "-c",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/wrapper.c",
+            "-o",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/MAIN.o"
+          ],
+          "returncode": 0,
+          "timeout_s": 10.0
+        },
+        {
+          "argv": [
+            "/usr/bin/x86_64-linux-gnu-readelf",
+            "-A",
+            "/home/zss/workspace/py2plc/.plcidf/research-31-matiec-20261019/frozen-plus2/MAIN.o"
+          ],
+          "returncode": 0,
+          "timeout_s": 10.0
+        }
+      ]
+    }
+  ],
+  "wrapper_sha256": "d2953a13fbdd112973659f79c0e77384424ee9125ac50683c271ae47d75846a8",
+  "source_tools": [
+    {
+      "path": "tools/compile_easy521_matiec_probe.py",
+      "sha256": "a56ae33dee14c425f92716ed6efb7593be3f6a55ca5e1c1c7eab5a5f2a045cae"
+    },
+    {
+      "path": "tools/tests/test_compile_easy521_matiec_probe.py",
+      "sha256": "92c2fde3d823606271b167b4ac3f403d61c039a78c21d6f3d6320e17a678a0cf"
+    }
+  ],
+  "frontend_provenance": "Pinned actual MatIEC iec2c parses source and produces POUS.h/POUS.c; generated C compiled unmodified; no handwritten ST expression IR",
+  "interface": "void MAIN(void); only external G_RBESS_PCMD REAL32; GVT allocation and full app packaging are independent",
+  "memory_adapter": "Per invocation stack-only pointer/flags initialization; no write of external initial value; REAL accessor adapter uses volatile accesses; global force explicitly unsupported",
+  "abi": {
+    "target": "armv7a-none-eabi",
+    "mode": "Thumb2",
+    "float_abi": "softfp/base AAPCS",
+    "fpu": "VFPv3/NEON",
+    "r9": "reserved and attribute Unused",
+    "unresolved_runtime_helpers": [],
+    "arm_execution_verified": false
+  },
+  "host_semantics": {
+    "method": "Same generated POUS.c and wrapper.c compiled by real GCC for Linux/x86 and executed",
+    "cases": "start -1/0/9/10/100 -> 0/1/10/0/0; twelve scans from0 -> 1..10,0,1",
+    "scope": "Actual generated C behavior on x86 only; no proof ARM execution/vendor arithmetic equivalence"
+  },
+  "verification": {
+    "tests_command": "PLCIDF_TEST_MATIEC_ROOT=/home/zss/.cache/plcidf/matiec PLCIDF_TEST_CLANG=/usr/bin/clang-20 .venv/bin/python -m pytest -q tools/tests/test_compile_easy521_matiec_probe.py tools/tests/test_compile_easy521_native_probe.py --junitxml=.plcidf/research-31-matiec-20261019/tests-frozen.xml --basetemp=.plcidf/research-31-matiec-20261019/pytest-frozen",
+    "native_matiec_tests": 16,
+    "coverage": [
+      "Real ST IF/ELSE",
+      "Persistent external value across calls",
+      "Source rule change changes ARM object",
+      "Real MatIEC syntax/type/name rejection",
+      "Reject helper/local state/WHILE before ARM compile",
+      "No retry after frontend timeout",
+      "Frozen generated source drift detected",
+      "Clang -MD includes actual compiler system resource headers",
+      "Reject dependency not snapshotted before compile"
+    ],
+    "xml_sha256": "1081f79db3292f09cb1b7d50a08c9b0596d894dd7b2f96a8c16fd4b81944d522",
+    "total_passed": 31,
+    "total_skipped": 5,
+    "skipped_scope": "5 existing llc tests require their opt-in executable environment; all16 new MatIEC tests executed"
+  },
+  "toolchain_gap": "clang20 and resource headers installed by root from Ubuntu; actual -MD observed Clang built-in standard headers and pinned MatIEC headers, no ARM libc/sysroot in these builds. Unsupported helper/libc references are rejected. This does not make arbitrary IEC libraries freestanding.",
+  "limitations": [
+    "Only fixed existing external REAL; no arbitrary IEC program/variable allocator",
+    "No local persistent state, FB, timer, forcing, physical I/O or standalone scheduler",
+    "MatIEC uses actual C REAL f32 semantics; not promised byte-equivalent to vendor widening/helper arithmetic",
+    "No new compiler path hardware deployment/ABI acceptance",
+    "Bound objects and full model/version-specific application closure remain separate",
+    "MatIEC headers contain unused variadic helpers with Clang warnings; profile rejects generated helper calls and output requires only expected external symbol"
+  ],
+  "primary_sources": [
+    "https://github.com/beremiz/matiec/tree/3a41303bcb4e50403417bc39c63f88981d7d961e",
+    "https://clang.llvm.org/docs/CrossCompilation.html",
+    "https://github.com/ARM-software/abi-aa/blob/main/addenda32/addenda32.rst"
+  ],
+  "clang_resource_headers": {
+    "directory": "/usr/lib/llvm-20/lib/clang/20/include",
+    "sha256": {
+      "/usr/lib/llvm-20/lib/clang/20/include/ISO_Fortran_binding.h": "90c5ce1b885dcc9f4690370101e074f862167b9de558754e582130df0275784f",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_builtin_vars.h": "32d445ec643c5802efbd54d41e4e8bff952436586d992fc0f91258238cb6e115",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_cmath.h": "e44c1e33315864e0906e901d76257ed1c17c4ffc25cb944e4223248e59adb815",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_complex_builtins.h": "2030f2976a00a8894b1434d72c2108210a60b6726550c97e8f78c09445bccce9",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_device_functions.h": "e51d7dc42d8d35ebe73e12ae12aa353de5129680218a9290ce4460669575d46e",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_intrinsics.h": "fa27108769f5633c0632b925b565207d6691500dd5702d27ec672705e0f3f9e7",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_libdevice_declares.h": "ee16f6dab972b4c742e78676e1aa30c4292ef6e099099d9591ce6baf13b7f7c4",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_math.h": "debe73cf7191627b94fea9e1bfe13a4318b1616fed38b2e94f5eefe2a8637c72",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_math_forward_declares.h": "e8a11354786957de82d0887958cec963ee614d953dcbd1cfcee2376cda9fef64",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_runtime_wrapper.h": "f390e9f9eec612340becec729dce9a81edf28a262e58c75c18b8f23b1bcc08d7",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_cuda_texture_intrinsics.h": "2fe5e66298eb022571302cfff75fce249234b59b229d6d0b68b4d9e629f736de",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_hip_cmath.h": "b9eb6ebc237b29b5d0af269d1f29ca0140ca150e8d12514242bfd1cfa6d80b65",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_hip_libdevice_declares.h": "a50271d3960793d86c75dfdebc973cd060dcdffa960ce42086aa8b6f302adf05",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_hip_math.h": "d8181900089458221a28e5caf66f6fd827fdb19818741602c621e606d16af98e",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_hip_runtime_wrapper.h": "9372b41fa835c43544e598bce536eaa949138decea941b4c417d8fd6bd22e9ef",
+      "/usr/lib/llvm-20/lib/clang/20/include/__clang_hip_stdlib.h": "d9a92fd8cb4712d4bf51082cf094cd6ea83d00974ecb7471dc421574693e0398",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___gnuc_va_list.h": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___va_copy.h": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_header_macro.h": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_arg.h": "db0cca3b7768cf07807553fb88ea74e00cba4503e08a5f5504989fb3cc3e4cf1",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_copy.h": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_list.h": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_header_macro.h": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_max_align_t.h": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_null.h": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_nullptr_t.h": "898b4465c5d3040d27e760e82983a751b1b0cae23ba280b18a1b81451841f9eb",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_offsetof.h": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_ptrdiff_t.h": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_rsize_t.h": "132339d4f07e852bf2d879bc91c4ccdfcf08c581c7c97f6f3794510e0bdda7bd",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_size_t.h": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_unreachable.h": "bba07c327f8168f37b266a19aed625e0fa633a25cabef4f54f21faf3df5522b8",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wchar_t.h": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+      "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wint_t.h": "f2ededa38c5454397242aceaefa65b42b292a1b3cc258e7ca6e216f146e51f0d",
+      "/usr/lib/llvm-20/lib/clang/20/include/__wmmintrin_aes.h": "c72344a1e5874d3af7049ecdccae91304cc5c2b619776947434e49904f5f03a1",
+      "/usr/lib/llvm-20/lib/clang/20/include/__wmmintrin_pclmul.h": "0492aed7e0731e9d5d83bca76ef338223d3ae9c89d38f7600b7294465b6ebfdc",
+      "/usr/lib/llvm-20/lib/clang/20/include/adcintrin.h": "7a0a9ab238134ffeb5b05fe55dfd34daf00e372fc091761dbcaa07c4db044330",
+      "/usr/lib/llvm-20/lib/clang/20/include/adxintrin.h": "760d3d2d4fe278dd7e044a21bb60fdce73d7f1de2f896446c258bda0d78639b6",
+      "/usr/lib/llvm-20/lib/clang/20/include/altivec.h": "b4b62a17cf30a7cd1ac18f1ba2c83c660b9b469b7914fadfd227dd07ce4fbf19",
+      "/usr/lib/llvm-20/lib/clang/20/include/amdgpuintrin.h": "a43759ee576cf5cf689d6dd9695a4f068d03b84f91b1ac9c904094719f7b2313",
+      "/usr/lib/llvm-20/lib/clang/20/include/ammintrin.h": "4d5751058e2630a390ce53cbc8d360d794ca71acbf49eb85f177313c884dc2a6",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxavx512intrin.h": "6d44d136af8473ebf3d3bfda2f988bfc079009fd010832d35133b98dcbd04da4",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxbf16transposeintrin.h": "69c054259271212da8449b64aefb5cb1cd9294c24ffd91fbb24d52889f8ba411",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxcomplexintrin.h": "573736da7259cd04cda142815072832bb7486db2336a3eec59ee471ed90a61b6",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxcomplextransposeintrin.h": "ae6a6482c414fa5d0c94fde61288a1064018f05adbe4e051baad557913b44982",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxfp16intrin.h": "018df703a69c14621c56bf3af142a607fcd30fd25e295bd71ace5e9728cbe0c9",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxfp16transposeintrin.h": "d5210f303ea2582159e6712a02029efd7c93ec061148850b560f3be17773931c",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxfp8intrin.h": "7d4f7e3fd5bcf9f131fca2ef14935f894bdc9fa25dc042608f1cb1c3e3e03c46",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxintrin.h": "d9e9ced848f8a1f22b53f0aa5a1339bc5dc70c9280a98466c527195abba63e37",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxmovrsintrin.h": "ffa67cf3cacdcbcbb35864a8bfac382ae7e107b5f2fbc489ffd2899e761bf23a",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxmovrstransposeintrin.h": "88cc35f81bd052879bc6dbaa556e2917d7421b27221a8e2673f00ced5877218d",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxtf32intrin.h": "2f849389dc399c714cc1ff591f4d40c25533361bb0b06a0b98209789f15c95b2",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxtf32transposeintrin.h": "7b97d78141e27b0c3b16376747f1bf094d8f434544cff0a1ecce1357a5664313",
+      "/usr/lib/llvm-20/lib/clang/20/include/amxtransposeintrin.h": "2bbc2acdc418cfe284bcefcf6bce69829d6adabf4eb833e53a15d4668e3c3015",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm64intr.h": "183845bfa6f0bae53748d5706568fe3d8830c5c720823152eacb107e7c234046",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_acle.h": "f1ebcac29e960f817f20df029d353d543a97dd08de124036a5978e541b852126",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_bf16.h": "87f7bc1cb7aa53a85347bd4e1855cccd45599408bb106e66515519c1033a6a3d",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_cde.h": "486e75376c1cd42b4579d342fe776591520a50b1a8ae4b9ed005d7a895fdf490",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_cmse.h": "75b8a5a66726f8c4e8fc329b7b98b21977e2033ce2c95f362d624d0cc6d8a773",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_fp16.h": "38d9991c033c9669e742190024e5a5207ec696b7a9b189785799b7e09dde8e38",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_mve.h": "8e6fa1bb91c0e5403e6f6152380b4ff318833028b0d4e9c91911e4dd107bd762",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_neon.h": "dd8ec7811a72c76bd8737f710e9044e7705a62d78f187aa298f24cbf46e6495a",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_neon_sve_bridge.h": "9a0e636549d26df39bec2dfcb9eb1110744972ede03bab2a52187e1b7d87bfee",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_sme.h": "7795428d86ec432ad8933f8f6f271c3338bedafc80235a13e6f917d99980a42a",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_sve.h": "905b164771e642a705e82946dbdbc3c6c68065323fbf552d2226c1b49480696a",
+      "/usr/lib/llvm-20/lib/clang/20/include/arm_vector_types.h": "6fe5730cbf5b4760620d643e5b44c9abbb13969b168dd7733252158503003034",
+      "/usr/lib/llvm-20/lib/clang/20/include/armintr.h": "6bc077ccfe4c9f230f37a1b7803ca1706850d288a18d505323a520eebab57311",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2_512bf16intrin.h": "109b9600ec2f7891c45ecae8c04ebd4b3939a834a1daaee96d3881e75a4f238a",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2_512convertintrin.h": "e55703e8353aeac1d6db547106222545a328106515f6076effab17dc70f13f50",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2_512minmaxintrin.h": "ea0a028278b5e4dd92904163f308949efa38683d07d851d8f6a7ac27506d3674",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2_512niintrin.h": "b3772e3c0b7a422e49969e86f075c56337e8cd8a9f7ac92066bd8b3345502e63",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2_512satcvtdsintrin.h": "d0fb757ad80b80b598d21775ba03354277e37ac26eabe70a7f36ce441ee41e5d",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2_512satcvtintrin.h": "7c611f4003d98a543073452fdce7b2125f133b9c1cb30adbff1ef9d3bd2a25d9",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2bf16intrin.h": "ad15dd69fa956a8ae80cf0d865e2953ba7e8c30e3e7ccf5a6eda94151908e8ce",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2convertintrin.h": "dd919aeadf3ee49931d22663bbe76c66d468990fa7efb264cd8619415451d6ba",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2copyintrin.h": "273d16291b62626c7c4c863bb548ad0c29b19fdcff9a91685c474a41a373bb38",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2minmaxintrin.h": "60494a7ce1e9f29b6a20acc3254e76cba9a48b1479a64827e2801d1b66aa612f",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2niintrin.h": "bfe834e9c61dc8a79b66046a9209b5df2a505d7afd1b43f2b946352621cceb32",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2satcvtdsintrin.h": "139f5d6e5185066d977be1fb4d1c2f0165b20da717d520807776c5b29b042f88",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx10_2satcvtintrin.h": "56a773717fbbc00db6ee7bc5ba245ffa631de31ad5a9ecdb198934d5b922ac98",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx2intrin.h": "eb2a35ae03975e937db2be1c6f162c7172bf8e782cfe66296129585e7e619853",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512bf16intrin.h": "ea3ee83a8c95a6feba588d3d5de78f6dc24adbebd043f593efb974e93778b4e3",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512bitalgintrin.h": "92aa9707f67eafa6e0facf22e59d5d961ccafc60676e5594b1aede4a2ef87154",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512bwintrin.h": "394ee7f037ea129f9c363a88d73a091a15bca1d3b07476ceca0e562f8ab20c9b",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512cdintrin.h": "6f7d017bc978245c089c8caaa994156723fa5c49375ada07a221814cab6eb80f",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512dqintrin.h": "1d8d0ebf7276a50deee5bbb608cf7bbe4f0051902c07b907f0057eaff433cf2e",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512fintrin.h": "ae3f2f75e4f73a7527b0082669068e922551f36998a1c2b18a37d13cae5248f8",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512fp16intrin.h": "4653ea3f861401bcefaca6e59e9152f2f7233a5d9553cba1ed81a6159d70386c",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512ifmaintrin.h": "afa219631345315ee3f6c4c4d19858a971200e78723f190fc0f35756c6a46a0b",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512ifmavlintrin.h": "75d50b90a2d43190201007d92b30c504e76d944c7ba4fa36737e1704e9463076",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vbmi2intrin.h": "290796e7ac715b503ff5b0457fb706a74b1bd1d0375c8547a8b01a61f21fd400",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vbmiintrin.h": "2d38897f86b5a8d070641773e0d0df1aba8c4923e6432d0425ad170b1f86df35",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vbmivlintrin.h": "2a5b68a5b7816bbaaa0a6e21e753846825b048f7bef925939e3e441b68776bc5",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vlbf16intrin.h": "bef8b890d4ff7ad5ef4ef6124b62be83eb3f5da0a653cfff33568162924d7162",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vlbitalgintrin.h": "511bd6e58a25dbfed783d2a52d84f993890e6dff77225f9819761b969a6ddd6e",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vlbwintrin.h": "3ab5091ec9f6ed3d39dc617373678165e47d71c1288752a24980292c7c659543",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vlcdintrin.h": "cd14d673844dc0c1ff75df14029352dc7dc350b137f90156822ad53befe8e3c4",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vldqintrin.h": "30dedffcf21153addb581959e6f2ddf5f2a2e360719a8971bd48382dc1aa67d9",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vlfp16intrin.h": "f41282042043395f23c51bc9b13930ba2780b18fcd9c744d58aa2e847f3c65b9",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vlintrin.h": "43f8d7215141c5c27a9c82fce3d5c00285e6f4477924f8d18654ddf21b157b45",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vlvbmi2intrin.h": "7921fef1c74c75b1362aeb1c4c53374740585e98adabd4091a9de681d574cac2",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vlvnniintrin.h": "342a1b4843d42c8c92970ecb13c3e0ec585cc1c7799d13c8d96546fc25d9f12d",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vlvp2intersectintrin.h": "779724d5315664120b50eb627ccd75a061815474118903c260abe5e9996482c2",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vnniintrin.h": "21d10483bc80d4c6acc1fe1946d295e6244ef5bcee47ae7803dce2c0961e3ad5",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vp2intersectintrin.h": "840da01f3aa586b28b0f45359a4fbba3760c2e7c25ce0f96b493d425f1a829d8",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vpopcntdqintrin.h": "e940382006937a474c55c3e798d3d9eb010d81d6c580ee4b5acf8833c13e6d53",
+      "/usr/lib/llvm-20/lib/clang/20/include/avx512vpopcntdqvlintrin.h": "d833bc993eb724c9b0ebbf3758a20839f65e2e898ca223234155ab6250b1f12c",
+      "/usr/lib/llvm-20/lib/clang/20/include/avxifmaintrin.h": "67de2a399146be4d56423b1a1aa15792314db2fab075186c2dcb90d5d11719b6",
+      "/usr/lib/llvm-20/lib/clang/20/include/avxintrin.h": "368a9905c25ccf46014444fc88c54a15f9a5de3be31cef8e159ed9b58f7efbc6",
+      "/usr/lib/llvm-20/lib/clang/20/include/avxneconvertintrin.h": "05482a9fb775e9595b1bdcc0b822cde959296b6cdaf57d116d716df6a118c91a",
+      "/usr/lib/llvm-20/lib/clang/20/include/avxvnniint16intrin.h": "4f15eeaecb28ed881354939d0c571e0d3d22eb5cc9a73df60212fbb0e97ee646",
+      "/usr/lib/llvm-20/lib/clang/20/include/avxvnniint8intrin.h": "989d9bd736fd53166140d871dfe0d459e1799b6438c3955cf7189406f7e317fe",
+      "/usr/lib/llvm-20/lib/clang/20/include/avxvnniintrin.h": "0e8b2996074f83b42d62c49ab8333754d1d492dcae48908ab9fd7b4a0a05bc9d",
+      "/usr/lib/llvm-20/lib/clang/20/include/bmi2intrin.h": "fffd85faacca202b9539176a120cd5ca5ec9bafe91ebd234ad42eec4eb1dbcea",
+      "/usr/lib/llvm-20/lib/clang/20/include/bmiintrin.h": "bb23541f314cd994fe6cf6bccfda8855ade79781bfb2e3fd689a6b44ca79b209",
+      "/usr/lib/llvm-20/lib/clang/20/include/builtins.h": "a7d1f052d48c4e27d0ae1023b1cb2419e443c686193a3ab392adc776595ee23f",
+      "/usr/lib/llvm-20/lib/clang/20/include/cet.h": "23568727f480e5701af3f7371d38680952e33264d9f184843353b87f583a2a9a",
+      "/usr/lib/llvm-20/lib/clang/20/include/cetintrin.h": "ec1203e06e12b4a21944443330eab3a968b1048d429470c4ee0236b7ddfa39e7",
+      "/usr/lib/llvm-20/lib/clang/20/include/cldemoteintrin.h": "bc5d9530ed13a5fc22ddc26f72f695d225053462bf06783a95a3532e0fcebe0c",
+      "/usr/lib/llvm-20/lib/clang/20/include/clflushoptintrin.h": "930b1feb5f02450e0f75228cdaaf380f18557fee8ea64d7d8dd7268edfb50656",
+      "/usr/lib/llvm-20/lib/clang/20/include/clwbintrin.h": "c014c43c1fc700e529fa5f0df8504af8c03bf21609ded625526ada7a1833ca08",
+      "/usr/lib/llvm-20/lib/clang/20/include/clzerointrin.h": "3ae5138554f982a100b937124ec5bb914620e1a4dfd9e57fc89689428d5bb100",
+      "/usr/lib/llvm-20/lib/clang/20/include/cmpccxaddintrin.h": "223b48bdd9e567ed17b377040b81663d3baf7fa077676d49cf3f598fc7ebf825",
+      "/usr/lib/llvm-20/lib/clang/20/include/cpuid.h": "b348f951fd76c3f33a99eab9b5a8154faf90092bf73b47829066d5a27b0218fa",
+      "/usr/lib/llvm-20/lib/clang/20/include/crc32intrin.h": "0f73e381b39e4718f70159158faa3da510769bb16120ec23f35bdcff14d34cb1",
+      "/usr/lib/llvm-20/lib/clang/20/include/cuda_wrappers/bits/basic_string.h": "f9aacc58217e4d682054c9bc79a855f66484c7c4941049442823c4e2fc5911ff",
+      "/usr/lib/llvm-20/lib/clang/20/include/cuda_wrappers/bits/shared_ptr_base.h": "51984393c2035f289bf533c0539b40bb616833a4315380e9a7ca338282b272da",
+      "/usr/lib/llvm-20/lib/clang/20/include/emmintrin.h": "48ec3b11cc4a7c5f7af2f23229b1402440b2d89d53cf4ee023211fe957d466d4",
+      "/usr/lib/llvm-20/lib/clang/20/include/enqcmdintrin.h": "024a79176d11b3646aa6d3648c61cead39086228178ed1138990bd861c0818f5",
+      "/usr/lib/llvm-20/lib/clang/20/include/f16cintrin.h": "835f822dd6d88ad7f2b14b5c82255c1f124dc850e305df53f6edabe894280357",
+      "/usr/lib/llvm-20/lib/clang/20/include/float.h": "a29019c5ba04f9bf55a46f9bf75c63039a6015921ddde7298e057b2a188bebec",
+      "/usr/lib/llvm-20/lib/clang/20/include/fma4intrin.h": "c605b5d80947d945b925ca0ed79adc98c190ddc2b4e82fcee284caffe5288361",
+      "/usr/lib/llvm-20/lib/clang/20/include/fmaintrin.h": "648c377bcf8ca86b717eb695536c76e2206561751eacbfe285c9218767161664",
+      "/usr/lib/llvm-20/lib/clang/20/include/fxsrintrin.h": "892f1f63664e34c69497333eae7495f217db9ad0b4975d13c4967faec481ce04",
+      "/usr/lib/llvm-20/lib/clang/20/include/gfniintrin.h": "4f75e4256b395c02fffab1d6462d95c78fff66da4f3869cedf1ecdef85c8cb77",
+      "/usr/lib/llvm-20/lib/clang/20/include/gpuintrin.h": "bdf4279456a4aa67d324fe4f66ff71d3834fdb16acca09c4f48052b23519af78",
+      "/usr/lib/llvm-20/lib/clang/20/include/hexagon_circ_brev_intrinsics.h": "a1e5a7d54a47697707d54edf31b6c3eef0c3593cff2a15bb9319238b08d54be7",
+      "/usr/lib/llvm-20/lib/clang/20/include/hexagon_protos.h": "0b130e0b52feb7074551b2389648a0fdc790784bb875e4f21fe47c9b0899fc8b",
+      "/usr/lib/llvm-20/lib/clang/20/include/hexagon_types.h": "2ba756d62277f009ec853486a3f11fa63733a256a7bb1c6600aa9775d5970f31",
+      "/usr/lib/llvm-20/lib/clang/20/include/hresetintrin.h": "ea5012c0fe5e8818863fb65104783772f21dd278f5b4880e98451bb5d70f550a",
+      "/usr/lib/llvm-20/lib/clang/20/include/htmintrin.h": "8f422a3313386d8767bfb89955928e32687e5dbd0698c8451f52969b21ca4e2f",
+      "/usr/lib/llvm-20/lib/clang/20/include/htmxlintrin.h": "d42ffa98cdceb028ed7497e5245711d5667540b70f865697ffa5a1d42155807a",
+      "/usr/lib/llvm-20/lib/clang/20/include/hvx_hexagon_protos.h": "003ec9964fd0b572d85978c400338b19a3bdbe55fd0ec01a09bace5de1608517",
+      "/usr/lib/llvm-20/lib/clang/20/include/ia32intrin.h": "ab2cf5dda79d4fc65346ec85c5d776153440f7bc538386d419e0e0be230ac9e4",
+      "/usr/lib/llvm-20/lib/clang/20/include/immintrin.h": "523bb6dbaf85ccf72fbd81ca939f631de81fa81088f75097d234b1b4d6cf5c04",
+      "/usr/lib/llvm-20/lib/clang/20/include/intrin.h": "a2ea74eb96304792dc57a6bbd27464d5fdd2b64e708e39de9e7bda289208ce14",
+      "/usr/lib/llvm-20/lib/clang/20/include/intrin0.h": "085c456a603387cb0a7c19fbeba0d0f26237988c2346085b5916bee874830b3e",
+      "/usr/lib/llvm-20/lib/clang/20/include/inttypes.h": "5433291db785860ede1e69d234a77f0536e004d4f9b2db916def7748432fe84d",
+      "/usr/lib/llvm-20/lib/clang/20/include/invpcidintrin.h": "70f32ed90521d7135aa2b96e6fef366e9793ad99caf6fb5e0ec188be1fa6b7ed",
+      "/usr/lib/llvm-20/lib/clang/20/include/iso646.h": "3a190443022054d1fd72ec44316dce619b8f130bd10eacf906edf9486e8c270c",
+      "/usr/lib/llvm-20/lib/clang/20/include/keylockerintrin.h": "013f44c4bb8c13378c5a80a80c56a5bd09359c4c3630ed78030b312a456d9e30",
+      "/usr/lib/llvm-20/lib/clang/20/include/larchintrin.h": "e769cbd2b3bcdefd2cf996a499ba81b40e18cb6390658d56caff19ddf721dfaf",
+      "/usr/lib/llvm-20/lib/clang/20/include/lasxintrin.h": "e155828e0a8c7673599275233fa7ccd1b9bef42eb6b636f3ef44595808562db6",
+      "/usr/lib/llvm-20/lib/clang/20/include/limits.h": "1a74119a871309deaabdc8081d43fdb274137838c9e2bb874890c120db7a673a",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_libc_wrappers/assert.h": "9451a01129c66dc1b6ddb8f56aed139e0fdf3f9bf6da426292880d6ecea374b3",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_libc_wrappers/ctype.h": "370792f0d59714c9984865ce2f814679696f72407e4f0488ee80c6c7f6d77296",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_libc_wrappers/inttypes.h": "11cee61d1b4155f3ebc9a084dab327c6522a73fe6ebad86e819d4691e1a94724",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_libc_wrappers/stdio.h": "0267196669be2fccebe276b8b3f9c5eb7dfd2ce4a471675bdf63a95dde60b874",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_libc_wrappers/stdlib.h": "54638cb4e8cf3b5a6be332cf5c1b0823695cf2de4e556ea7cdd5e70b443fb31a",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_libc_wrappers/string.h": "3073516355e10451c97f06552aab2c2d582892cd948209f1f8c00df67d677cb8",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_libc_wrappers/time.h": "f9d4a45668e04014800613361d7f2f235a10ef6e4ca4b5fb772b8c0b2f87b55f",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_offload_wrappers/__llvm_offload.h": "e07f4bb61698a2e55d7fd2e8a7a39dd91c08f1a275363b045c3d4929153cec42",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_offload_wrappers/__llvm_offload_device.h": "5b246a387424b8ff24fbfc00091b148feb90514367fbc79713fbc95ee2759702",
+      "/usr/lib/llvm-20/lib/clang/20/include/llvm_offload_wrappers/__llvm_offload_host.h": "cc9e08884bbc2a41b77161776a7ca8e40900c7f98d13e2b6e69eb88352f5ccfd",
+      "/usr/lib/llvm-20/lib/clang/20/include/lsxintrin.h": "22b225744f28d416d29ad488bb4002efba9728400bea655b644b838d85e794cb",
+      "/usr/lib/llvm-20/lib/clang/20/include/lwpintrin.h": "485b84552e9163bd7362e6353d5b2a5a3bce9c45d385d0c3224ad1ec543e790c",
+      "/usr/lib/llvm-20/lib/clang/20/include/lzcntintrin.h": "e3a004220287c7f041cb470a11c7dc587dae8185f6d9dd781472874363b715c5",
+      "/usr/lib/llvm-20/lib/clang/20/include/mm3dnow.h": "9779205196471f01374264a25acdf50c6705c29db47bb180bfa4f549b33c5a51",
+      "/usr/lib/llvm-20/lib/clang/20/include/mm_malloc.h": "5cd8a3d288d469c9e5a2fc8a8ee624f50889dbcd06dea1262ef7aaf510a204af",
+      "/usr/lib/llvm-20/lib/clang/20/include/mmintrin.h": "b3a59c5b4bd653d0ea3b96b82fadc4a7adb97ae9dc7bb2abd8872e9348238a3b",
+      "/usr/lib/llvm-20/lib/clang/20/include/movdirintrin.h": "ae4691076535aefa2a2c465e13e3873d29e1dcf7a6d12faf5f631a54ae7c77f8",
+      "/usr/lib/llvm-20/lib/clang/20/include/movrs_avx10_2_512intrin.h": "28c9c2debd1adca64d953834571c8b5571ed47ee0fb2d25f6aca0e7a37dd3a16",
+      "/usr/lib/llvm-20/lib/clang/20/include/movrs_avx10_2intrin.h": "3b68f1e37ae9ac3ab84e0503a04d64f235a6f556ad97202318e007dd7ecefeac",
+      "/usr/lib/llvm-20/lib/clang/20/include/movrsintrin.h": "2895ccee336e54f9242d3d021e6a456dcfe41e1302437d901d027e5fe9b78e8b",
+      "/usr/lib/llvm-20/lib/clang/20/include/msa.h": "1283e2b1437a068ce0d0d287b541df50badb5ea1781d79c173db7a672c0e0d80",
+      "/usr/lib/llvm-20/lib/clang/20/include/mwaitxintrin.h": "e7dc6d77422aa1fcd6f26126dd98f6a88b2ff506ed75fd1538cc4b2aaf33ef8d",
+      "/usr/lib/llvm-20/lib/clang/20/include/nmmintrin.h": "cd7b51a1c33c7e7d710f070315e7bc034757ea6be9e6804864cf159c79f48d54",
+      "/usr/lib/llvm-20/lib/clang/20/include/nvptxintrin.h": "f2142174a4bf0de3f53445e364f1a2ea11802b3da75e3c49dafc4df78bef84bd",
+      "/usr/lib/llvm-20/lib/clang/20/include/opencl-c-base.h": "ae61f6d1343d53e96a7488fb78db5cc9719a8397babbce06dbb435e4ab531efd",
+      "/usr/lib/llvm-20/lib/clang/20/include/opencl-c.h": "579b58f482ab0b3dfd396cab32ea3e0537bc5cf4c1067377b83fe417cbcc513b",
+      "/usr/lib/llvm-20/lib/clang/20/include/openmp_wrappers/__clang_openmp_device_functions.h": "7e4ae115f8fe22dec814d39d4ba1e2ff20763fedc308e8955a8b706f767fc39b",
+      "/usr/lib/llvm-20/lib/clang/20/include/openmp_wrappers/complex.h": "5e0c4bd3e1165deaf1c557fa7fb9959772d476204507a42205099febd2232152",
+      "/usr/lib/llvm-20/lib/clang/20/include/openmp_wrappers/complex_cmath.h": "b904380d5094d97a7ae5daa6477773f172f8817457189c4b7d49cab4e3f88454",
+      "/usr/lib/llvm-20/lib/clang/20/include/openmp_wrappers/math.h": "74e192fa76f1648fc3081232fb4ebd6700ef92cde3a76ca4da30205ceea75277",
+      "/usr/lib/llvm-20/lib/clang/20/include/pconfigintrin.h": "c8090603fa18cca9af372a25de032695bc782e6480520a9da880907dc7f31679",
+      "/usr/lib/llvm-20/lib/clang/20/include/pkuintrin.h": "d103441f018b003a07117ad8ae662294cb59c9b457196d85d8ac4287f1c0d01b",
+      "/usr/lib/llvm-20/lib/clang/20/include/pmmintrin.h": "d339fc33b62cad78adcdf359c662c293e2e6c562d56104b1a9d5806dda9b85ca",
+      "/usr/lib/llvm-20/lib/clang/20/include/popcntintrin.h": "c10c93f79d0d2b61e9fa2340560c6bd331c7d977f9543d431e3756861e1ef8de",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/bmi2intrin.h": "0f0da0d31166135263adc3034475314536296ac0aa2ac45dac3ecfd75eac16b5",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/bmiintrin.h": "f5d485c66e0de5d881c7051432ec0e9b56e650d4a1c679877a62de3f287579cc",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/emmintrin.h": "3125e83d7fcdebda705ef1864aa1f765ba59ee2c3fb81b4dbdfb26dfdf258e8e",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/immintrin.h": "fd91e22fac3443525b0863eebe7db74381b8286e5dd6631ddcd12e40022839ca",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/mm_malloc.h": "6ff2b87659f5184f0655b6e83f59a230051e8f0ec2238fee07195dd5f3183417",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/mmintrin.h": "4211ef43a49c3f06ed33c9624adcb434cbb644078fb3e0f70bb766327efff2cd",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/nmmintrin.h": "93a42888efebb8de76b8fb963d688cc82e690893a36913f73f4b39eebc2123b4",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/pmmintrin.h": "37eca55a0d5db5a2aa0463fe4a31ccaac6441e15b38b08ca8bd8776acd57e39a",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/smmintrin.h": "4d38f5fe3dd49a3f125c147f4a3fec5d03f60bd97cc6168027be455efb8e16c0",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/tmmintrin.h": "1b58acbfe5f1d20dbc3f47909c2d73982ccafc9a0930b5127702e6c40d3e690f",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/x86gprintrin.h": "9d18b4b2272918636a78e865d2087387dbb0d2a25b588b036071ffbbb76586d5",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/x86intrin.h": "df147bbd99a860a79bae6ab7e8ae958b4a2634f2ae9fbc89e417252960c9fa9f",
+      "/usr/lib/llvm-20/lib/clang/20/include/ppc_wrappers/xmmintrin.h": "064a446bfbb110ff61ac79faad162ff52fbef02a1943aefb45007cdcb601975e",
+      "/usr/lib/llvm-20/lib/clang/20/include/prfchiintrin.h": "8dec1f9509fd459fc4d51bf5183e2672a7a3497681b322a36e78379c7e371af0",
+      "/usr/lib/llvm-20/lib/clang/20/include/prfchwintrin.h": "debbd15c33686e9d09f2acb4941fe60247a5a06e37df28067fa700dde32fceaf",
+      "/usr/lib/llvm-20/lib/clang/20/include/profile/instr_prof_interface.h": "d23481bd777bcd4fe25af9299866b58b4155faba9f4ede5e8f609bf444e3b8dc",
+      "/usr/lib/llvm-20/lib/clang/20/include/ptrauth.h": "118265e8bd745baa0cd7a946b44569ec468bb03c31e412d0f0e1431ed21bceb4",
+      "/usr/lib/llvm-20/lib/clang/20/include/ptwriteintrin.h": "549e44eef926d5bb1333c87d32d977270649a8fd7c7161093db600e472d23039",
+      "/usr/lib/llvm-20/lib/clang/20/include/raointintrin.h": "fcc60ade967bf5152675de42f9f48fe5b17b40ff432ab993159119ba2038c5e5",
+      "/usr/lib/llvm-20/lib/clang/20/include/rdpruintrin.h": "6d0b9af132bfbbc72f6a3821b9eedbbb7457fc43cd94ad73c08d1de72ed8b7f3",
+      "/usr/lib/llvm-20/lib/clang/20/include/rdseedintrin.h": "d936c47a6fd689a47acb819dd28ba4ad779e667116ae5002c1e06149c0804b14",
+      "/usr/lib/llvm-20/lib/clang/20/include/riscv_bitmanip.h": "736cee6955e7ed4e0ff4e17a5edb42591e1e28f083ca9f9c109085c7ac57f8aa",
+      "/usr/lib/llvm-20/lib/clang/20/include/riscv_corev_alu.h": "cc5f9eb70892d26e12731772d2832aaddcf2690f24dde8bf53edc9f90a17cb42",
+      "/usr/lib/llvm-20/lib/clang/20/include/riscv_crypto.h": "215fc9a87e37fe2d2c389e78895cccf2dca67f31964408da2b050c75c7e3b139",
+      "/usr/lib/llvm-20/lib/clang/20/include/riscv_ntlh.h": "a0a75c40f11a4910506c44a6c1bb44e568f0c90c34aeb715836380c9ae7f54e5",
+      "/usr/lib/llvm-20/lib/clang/20/include/riscv_vector.h": "0a54aad497015bba2e641866704b7bbc9463592501b79db1ddc64b4c9f460d18",
+      "/usr/lib/llvm-20/lib/clang/20/include/rtmintrin.h": "18fe263a76ad5970e47d2e8b9b5c99a4370f1a4f7258e2e197c4c8fab0cb2123",
+      "/usr/lib/llvm-20/lib/clang/20/include/s390intrin.h": "2c8bfec677cd371893070d06f06e2ed9a6657c8e7d1dbafb2d8e3054dd8fe7c5",
+      "/usr/lib/llvm-20/lib/clang/20/include/serializeintrin.h": "dd29ae159d83161dd61d6bfcd6a7a37aa3f5930f814e8d12bf15ae131a0c6ac6",
+      "/usr/lib/llvm-20/lib/clang/20/include/sgxintrin.h": "0e8dc78c7311b9dda1499587ac5eaa3e1c485b9c7df0fc54225b8425db5ae964",
+      "/usr/lib/llvm-20/lib/clang/20/include/sha512intrin.h": "094f1882a68f1511fec3d1145aef332ce75086cf194101dd5049e143ff771de0",
+      "/usr/lib/llvm-20/lib/clang/20/include/shaintrin.h": "29dc687117c543bc40f843702b60c3e71d581a567235f645a542740d4cc182fc",
+      "/usr/lib/llvm-20/lib/clang/20/include/sifive_vector.h": "9057e9337dd16700b9a24890628f62f9f372bebfc0d5d903e138f9cf3e2d1f15",
+      "/usr/lib/llvm-20/lib/clang/20/include/sm3intrin.h": "66680c0998f322f5ae97157dd422a735bcf32363fe382076d43cd669b3361d0c",
+      "/usr/lib/llvm-20/lib/clang/20/include/sm4evexintrin.h": "5cc2ed1df229d567a80937ec3321a2a27dacc90da8430bf0b9cda6e1301147ed",
+      "/usr/lib/llvm-20/lib/clang/20/include/sm4intrin.h": "1a56d69f3c2fdadbf81c67b6cf7b36efc3892777d7c64d55bacdfb31b21aa5e6",
+      "/usr/lib/llvm-20/lib/clang/20/include/smmintrin.h": "b471a91b7d3990d9bcbc82262510681b5b6d250e646bd8aa07894598d0cc951f",
+      "/usr/lib/llvm-20/lib/clang/20/include/stdalign.h": "0375392ce44c0bce9d2dda696b0b2e7129e2e58233e002f532d010c9ac02d27b",
+      "/usr/lib/llvm-20/lib/clang/20/include/stdarg.h": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+      "/usr/lib/llvm-20/lib/clang/20/include/stdatomic.h": "728b690f127fc85faa32b9031e3a0019da92f77db92ca91b749571e45617a9ea",
+      "/usr/lib/llvm-20/lib/clang/20/include/stdbool.h": "48655faf4ebd4ca0af26a1ee8e3e16f8dc68385c9cd550ffb3629320681305b3",
+      "/usr/lib/llvm-20/lib/clang/20/include/stdckdint.h": "808854b229028d66012bef0eb5f7cccb2d9a228edcdc5eb2bc710bc7cea4b25a",
+      "/usr/lib/llvm-20/lib/clang/20/include/stddef.h": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+      "/usr/lib/llvm-20/lib/clang/20/include/stdint.h": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247",
+      "/usr/lib/llvm-20/lib/clang/20/include/stdnoreturn.h": "53912b2e9a149a73fe58d88d6c41e69f49020eab7884c81ebf0b4f3607e96847",
+      "/usr/lib/llvm-20/lib/clang/20/include/tbmintrin.h": "5dbc7e08c1eb24436182fb9b2bf9bb157f944a20c3b88f4d975af12b7c02fb11",
+      "/usr/lib/llvm-20/lib/clang/20/include/tgmath.h": "7aa69dc82ec404a51295498cc4cb07d0441e5dcd891819247c14ccb3f9745e3b",
+      "/usr/lib/llvm-20/lib/clang/20/include/tmmintrin.h": "6fb2fa4dd65f56573b3c2f404b21095d7ecde88675cf08a6495f49b51bd56ec0",
+      "/usr/lib/llvm-20/lib/clang/20/include/tsxldtrkintrin.h": "c833bd7383b431a0b1bf65c864deef445a25fb7db2c924b4b83272957f2ceb51",
+      "/usr/lib/llvm-20/lib/clang/20/include/uintrintrin.h": "d34ec074087d3b827cdff359c4ce646f3563a94f335fab6ece28970e448d4bdb",
+      "/usr/lib/llvm-20/lib/clang/20/include/unwind.h": "599d8fdbd53622e99e91725c5e9fbf4ac26f34a23f02b94ed6e3405845432d3a",
+      "/usr/lib/llvm-20/lib/clang/20/include/usermsrintrin.h": "03c169539a584284e2eabb5230f98bdf7e85772a41f7d6e93fef11485499da32",
+      "/usr/lib/llvm-20/lib/clang/20/include/vadefs.h": "e338a8bbdbc40a9662d76a0a395313cf17a9541a0fadf3cf8bfa6ee6fa3db4ec",
+      "/usr/lib/llvm-20/lib/clang/20/include/vaesintrin.h": "2f2bb9eeb9bb63e519c6d5a9486a1e1a03b799254f1ad372dd7f60e3e0ec0dd2",
+      "/usr/lib/llvm-20/lib/clang/20/include/varargs.h": "41bf9afa7c9cf7e5eb5e4a42aab8eee3f5a97977a6d33094b2c8f6b3ef1943bb",
+      "/usr/lib/llvm-20/lib/clang/20/include/vecintrin.h": "00f64ef019d6724615b8dd7e40aa6fdcfcb237b6f14ce1d7733a06ff2a91e9b5",
+      "/usr/lib/llvm-20/lib/clang/20/include/velintrin.h": "7c2e001d36310ceaea4045d9cea1f227f491d0cdebf749959c852b44b217978f",
+      "/usr/lib/llvm-20/lib/clang/20/include/velintrin_approx.h": "6655c27881e5d1bb8d68f9aa3fee49576e22287f02e2cf422ed9dd3259727b57",
+      "/usr/lib/llvm-20/lib/clang/20/include/velintrin_gen.h": "d39909a5d140e00148cda92e485afccd02288db702b1dbb4b2eb38b2c61a7754",
+      "/usr/lib/llvm-20/lib/clang/20/include/vpclmulqdqintrin.h": "db240ad56ccfc14a7e29862b50c1214b1be5666cccecde1401d28afe075a606f",
+      "/usr/lib/llvm-20/lib/clang/20/include/waitpkgintrin.h": "8b036e6a2c20dca74fbc38b898dc32a36dc46bdb4c0a5a71d691096ca04f6ca3",
+      "/usr/lib/llvm-20/lib/clang/20/include/wasm_simd128.h": "93a4905ac462809f5a5d970286e0ef7cca11b27726c2e8461304e7bc701f9db7",
+      "/usr/lib/llvm-20/lib/clang/20/include/wbnoinvdintrin.h": "e22b8221209e1aeed8de50e81c6bfe84b378a8b92bdf018aea601bf1d3c4ac22",
+      "/usr/lib/llvm-20/lib/clang/20/include/wmmintrin.h": "eb4f03593063aa1c27cc306474814e3c3caeb6644379415e1104d299288a3231",
+      "/usr/lib/llvm-20/lib/clang/20/include/x86gprintrin.h": "e6584b89eab7b6fbdb19a68b467530f6825cecb2f1d737b5eac7d59ea4d8d82a",
+      "/usr/lib/llvm-20/lib/clang/20/include/x86intrin.h": "105eb1700585770276391f512f60fe9c22c94cdf66d2a4957ec7279cf4fdf062",
+      "/usr/lib/llvm-20/lib/clang/20/include/xmmintrin.h": "1170eca99f1c81888a66103da14e2c0c72d0a9c383f6c355db610a4e508e5ce9",
+      "/usr/lib/llvm-20/lib/clang/20/include/xopintrin.h": "dea8859bff1b74ad2ec860136168e907907dcbf793aab0bb8c0e6e8984db10ac",
+      "/usr/lib/llvm-20/lib/clang/20/include/xray/xray_interface.h": "993ef7fa0fc19671cfc4e45de56cab48452ae44a936da3cb6b91b0edd84201a9",
+      "/usr/lib/llvm-20/lib/clang/20/include/xray/xray_log_interface.h": "3efcbcfea596d61511f4e68ddb1932db502edb4a008e0f26d2cf4e7c15154711",
+      "/usr/lib/llvm-20/lib/clang/20/include/xray/xray_records.h": "2baf8d0f8097eee53eb5740196e0d33f0be75f8249ac32e2ca1fb2aa37c456db",
+      "/usr/lib/llvm-20/lib/clang/20/include/xsavecintrin.h": "b3d0b240cd59068ba5dd40f79a921e727815f0722d07051ec01aae09b91c4ac8",
+      "/usr/lib/llvm-20/lib/clang/20/include/xsaveintrin.h": "bb5b08b5b929d0a34b88230c7f5633071a05d17f0680332a30c4e1b607c3c164",
+      "/usr/lib/llvm-20/lib/clang/20/include/xsaveoptintrin.h": "3dee1885dff4d101804c273d87f98cdf37a5e0975d936a3683ffbe1d10ffda7e",
+      "/usr/lib/llvm-20/lib/clang/20/include/xsavesintrin.h": "cf3692a69c4c96e0b4c0d291c6aa09cba851dff1d82f8b266d08fee7bdeaa5ea",
+      "/usr/lib/llvm-20/lib/clang/20/include/xtestintrin.h": "05e7c974641109d1214f9016c3939787e2912e6990fd20bf5886fcca4c40e699",
+      "/usr/lib/llvm-20/lib/clang/20/include/yvals_core.h": "8f1033d2fc8cb786d7a6d3ff174aa819495c1c7d8948b5a94a9daca24d5ee3c2",
+      "/usr/lib/llvm-20/lib/clang/20/include/zos_wrappers/builtins.h": "fca65b1462b08910b24dbd2016425aa6f4b7b32f1ed2eaa8014c10f79f88fbd4"
+    }
+  },
+  "historical_private_builds_retained": [
+    "first",
+    "tool-first",
+    "verified-plus1",
+    "verified-plus2"
+  ]
+}

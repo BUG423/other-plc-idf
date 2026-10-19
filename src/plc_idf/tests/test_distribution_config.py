@@ -112,6 +112,7 @@ def test_native_application_dependencies_import_and_parse_without_compiler(tmp_p
         Path(sys.executable), REPO_ROOT / "tools", cwd=tmp_path, env=dict(os.environ))
     assert result["parsed_profiles"] == ["counter-dint-increment-v1", "bess-pcmd-real-increment-v1"]
     assert result["native_compilation_executed"] is False and result["device_access"] is False
+    assert {"inspect_easy521_live_application.py", "compile_easy521_matiec_probe.py"}.issubset(result["modules"])
 
 
 @pytest.mark.parametrize("access", [

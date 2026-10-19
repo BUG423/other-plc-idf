@@ -1,0 +1,1636 @@
+{
+  "schema": "plcidf.research.matiec-bound-application.v1",
+  "recorded_date": "2026-10-19",
+  "scope": "actual-native-MatIEC-C-Clang-ARM-two-links-existing-interface-binding",
+  "profile": "bess-easy521-existing-pcmd-v1",
+  "compiler_backend": "matiec-clang",
+  "compiler_profile": "matiec-existing-pcmd-stateless-real-v1",
+  "acceptance": {
+    "source_compilation_verified": true,
+    "existing_allocation_verified": true,
+    "source_to_bound_objects_verified": true,
+    "generated_c_modified": false,
+    "ir_metadata_fabricated": false,
+    "complete_application": false,
+    "downloadable": false,
+    "runtime_abi_verified": false,
+    "runtime_scheduling_verified": false,
+    "interrupt_dispatch_implemented": false,
+    "device_access": false,
+    "windows_access": false,
+    "target_identity": null
+  },
+  "matiec_commit": "3a41303bcb4e50403417bc39c63f88981d7d961e",
+  "tool_components": [
+    {
+      "path": "/home/zss/workspace/py2plc/tools/bind_native_application.py",
+      "sha256": "d1cb4fc65e99149204b70865c63db182aacbba611a03c1d96f80bafb9acee333"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/tools/bind_vendor_globals.py",
+      "sha256": "626922058cbca6596484e811c3e01d17c6424094926aae3b13200e6fd2aa7f41"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/tools/compile_easy521_matiec_probe.py",
+      "sha256": "a56ae33dee14c425f92716ed6efb7593be3f6a55ca5e1c1c7eab5a5f2a045cae"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py",
+      "sha256": "cae1f517bf8c42fcfe0a20ee28899f17eeaf7267e4394a9454740045ca1368ce"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py",
+      "sha256": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_variables.py",
+      "sha256": "108421e86cf05a74f91b91a3cd5e9ad5c68e4dc67c05190aab6a2b404a1472c3"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/tools/link_vendor_application.py",
+      "sha256": "b41f612085db21a581b7ee9813462505e0ffa753b21c834d4369be54a2e272ac"
+    },
+    {
+      "path": "/home/zss/workspace/py2plc/tools/prepare_vendor_st.py",
+      "sha256": "830d5dcc6a301bfcd56e7c2b1e27125476caf976235d4048800daf5305fb196d"
+    }
+  ],
+  "experiments": [
+    {
+      "increment_counts_per_invocation": 1,
+      "reset_threshold": 100.0,
+      "candidate_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/candidate-report.json",
+        "sha256": "3f3d55f24b223cc936b50ee287c34a858a799360a740ea9e22e2b8a26510dd8e"
+      },
+      "compiler_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec-probe-report.json",
+        "sha256": "e22631bdfab6bec819100f327a73d0323ec52ce6b299eb7e3fc45e6cf59b8704"
+      },
+      "link_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/linked/link-report.json",
+        "sha256": "0539a75787c3c2abec26ec04dba01e91ac0933f082045e91114a65457dc54982"
+      },
+      "source": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/sources/bounded-plus1.st",
+        "sha256": "9850281518c71aca26298e8fa3f4912b4dc4f388b071e6e8419ff3f2eec545d7"
+      },
+      "source_chain": {
+        "source_sha256": "9850281518c71aca26298e8fa3f4912b4dc4f388b071e6e8419ff3f2eec545d7",
+        "globals_sha256": "1470f5804e51d419e2f0f2e428f7b21e363630705f719bb2987e9128c5e23f34",
+        "pou_sha256": "421e94efdc684e601289c9bf1812a10d5f1f41e7d107def18fb9d3968cb238b0",
+        "compiler_report_sha256": "e22631bdfab6bec819100f327a73d0323ec52ce6b299eb7e3fc45e6cf59b8704",
+        "link_report_sha256": "0539a75787c3c2abec26ec04dba01e91ac0933f082045e91114a65457dc54982",
+        "association": "observed-native-compile-two-links-and-existing-GVT-binding",
+        "cryptographic_build_attestation": false,
+        "matiec_c": {
+          "generated": [
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/generated/GLOBALS.h",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/generated/LOCATED_VARIABLES.h",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/generated/POUS.c",
+              "sha256": "2add130ff8d9fda230a62685ca7e7e92715cf579c2865538df72c74584ead2dd"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/generated/POUS.h",
+              "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8"
+            }
+          ],
+          "adapter_c": {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/wrapper.c",
+            "sha256": "d2953a13fbdd112973659f79c0e77384424ee9125ac50683c271ae47d75846a8"
+          },
+          "wrapped_st": {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/source.st",
+            "sha256": "14b11ad4715d8c0d218f86074656c6d805df7c999fc8fa3cdf16cd099d0aebae"
+          },
+          "headers": [
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_std_lib.h",
+              "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/limits.h",
+              "sha256": "1a74119a871309deaabdc8081d43fdb274137838c9e2bb874890c120db7a673a",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/float.h",
+              "sha256": "a29019c5ba04f9bf55a46f9bf75c63039a6015921ddde7298e057b2a188bebec",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stdint.h",
+              "sha256": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stddef.h",
+              "sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_header_macro.h",
+              "sha256": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_ptrdiff_t.h",
+              "sha256": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_size_t.h",
+              "sha256": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wchar_t.h",
+              "sha256": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_null.h",
+              "sha256": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_max_align_t.h",
+              "sha256": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_offsetof.h",
+              "sha256": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stdarg.h",
+              "sha256": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_header_macro.h",
+              "sha256": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___gnuc_va_list.h",
+              "sha256": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_list.h",
+              "sha256": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_arg.h",
+              "sha256": "db0cca3b7768cf07807553fb88ea74e00cba4503e08a5f5504989fb3cc3e4cf1",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___va_copy.h",
+              "sha256": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_copy.h",
+              "sha256": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_types_all.h",
+              "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_types_list.h",
+              "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_types.h",
+              "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_std_functions.h",
+              "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/accessor.h",
+              "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/generated/POUS.h",
+              "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_std_FB.h",
+              "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_std_FB_impl.h",
+              "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd",
+              "origin": "frozen-generated-or-matiec"
+            }
+          ],
+          "compilation_dependencies": [
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/wrapper.c",
+              "sha256": "d2953a13fbdd112973659f79c0e77384424ee9125ac50683c271ae47d75846a8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_std_lib.h",
+              "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/limits.h",
+              "sha256": "1a74119a871309deaabdc8081d43fdb274137838c9e2bb874890c120db7a673a",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/float.h",
+              "sha256": "a29019c5ba04f9bf55a46f9bf75c63039a6015921ddde7298e057b2a188bebec",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stdint.h",
+              "sha256": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stddef.h",
+              "sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_header_macro.h",
+              "sha256": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_ptrdiff_t.h",
+              "sha256": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_size_t.h",
+              "sha256": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wchar_t.h",
+              "sha256": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_null.h",
+              "sha256": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_max_align_t.h",
+              "sha256": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_offsetof.h",
+              "sha256": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stdarg.h",
+              "sha256": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_header_macro.h",
+              "sha256": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___gnuc_va_list.h",
+              "sha256": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_list.h",
+              "sha256": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_arg.h",
+              "sha256": "db0cca3b7768cf07807553fb88ea74e00cba4503e08a5f5504989fb3cc3e4cf1",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___va_copy.h",
+              "sha256": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_copy.h",
+              "sha256": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_types_all.h",
+              "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_types_list.h",
+              "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_types.h",
+              "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_std_functions.h",
+              "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/accessor.h",
+              "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/generated/POUS.h",
+              "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_std_FB.h",
+              "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/generated/POUS.c",
+              "sha256": "2add130ff8d9fda230a62685ca7e7e92715cf579c2865538df72c74584ead2dd",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/matiec/lib/C/iec_std_FB_impl.h",
+              "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd",
+              "origin": "frozen-generated-or-matiec"
+            }
+          ],
+          "dependency_file": {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/MAIN.d",
+            "sha256": "2c4d927c711d8aca4ad5589b903d108d8d1b2b35454258281cfb2b5170d031ab"
+          },
+          "toolchain_manifest": {
+            "path": "/home/zss/.cache/plcidf/matiec/toolchain.json",
+            "sha256": "2760251bb173c1dfe412566227c063300ad8b985495496918dcc49ce567b492a"
+          },
+          "matiec_libraries": [
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/accessor.h",
+              "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/globals_instances_py.h",
+              "sha256": "3e927ed0dc93f815f1606eb761dd4a1927ac2bd918b9e304b59d431cc5f324f7"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/globals_proto_c.h",
+              "sha256": "7dd22192442dc8658c7582c3eedb0db3b906a7d866ea8545388f8a0f767415d6"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/globals_ticktime_py.h",
+              "sha256": "6dee0901a8614c487a0647b71a08dc60d20f21578f8ec9a54631e48817309076"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_FB.h",
+              "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_FB_impl.h",
+              "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_FB_no_ENENO.h",
+              "sha256": "7b252d645589083112a5c840c469785ca5a4ac7d84161ccffe82cf97e0986b39"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_FB_no_ENENO_impl.h",
+              "sha256": "db1da5770f0300bcf2abb9134866db215a98ca262631612841723ce7e27faa8b"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_functions.h",
+              "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_lib.h",
+              "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_types.h",
+              "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_types_all.h",
+              "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_types_list.h",
+              "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/pous_decl_py.h",
+              "sha256": "71b1aa32bfb54c189bb34c3049f9ef2403096bc40a1e37b39275f3c6397e484c"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/pous_flatcount_c.h",
+              "sha256": "a65318510a0f0aecc64da67e5043de2c029b43de477a5f96802ba1a114c44378"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/pous_flatcount_py.h",
+              "sha256": "23da12b046623dde1f276ba65f62b353534ae5691749e7a00a55a1512020f1ae"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/pous_recurse_c.h",
+              "sha256": "93808d9fd11be7884436755922890cb4ecf8c3a69741d91466b8ff6639f8b3e3"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/python_desc_template.pycpp",
+              "sha256": "037c44c0fed2f8e8b379766e33802fc908c7364f0fc604f71b78f3d4ed383955"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/undef_macros.h",
+              "sha256": "c86549de5a3b0730b45f33bf536e3bec1a5f9ed6e2bf76fae9da067d252cfaaa"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/COPYING.LESSER",
+              "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/bistable.txt",
+              "sha256": "691e1ef023a680cffd755d76229d6e67ba1cd50415b100f1f079480097d2a74a"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/counter.txt",
+              "sha256": "3e4da3a8cb0232c291d1a1f73ec8ceedf3bdd0ee236c1ee3408632bab7ca976a"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/create_standard_function_txt.sh",
+              "sha256": "a4fceb587730ff95d2293fa9ccf5f3eb9c43a37e0d5a25ff231fd10cd0c6fa10"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/derivative_st.txt",
+              "sha256": "94d8fd405b8ec8d039132f68d92bd047de6ddf864354856ffeb55d3032361630"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/edge_detection.txt",
+              "sha256": "13b4b04b175cfcf825ff7ca2c953196fb493ad4860628efb9e00ef51d81ec0de"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/hysteresis_st.txt",
+              "sha256": "5f04ed78aa1c44180e3fb0e0948b0d49526978d5c3ae7ae64a62033a8df42192"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/ieclib.txt",
+              "sha256": "3cf0d0afbbfcc3f19282be224be785f56259557d00391786db9c901f8b9303b8"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/integral_st.txt",
+              "sha256": "6d255e4b88d4ea29c92d46ce5ed5efab393c4b37baafcb131744046a7eebdca8"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/pid_st.txt",
+              "sha256": "c6c63ca2fce2b74cc66c4766f453867aabf709b2e0b227c536dd1b6f1a39c530"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/ramp_st.txt",
+              "sha256": "a9ee1e74b76b6d40416ab27e7e76bb042567c22c10609bf4c4599492e2191695"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/rtc.txt",
+              "sha256": "842861fb07a6cdf2cf18c53f3ee73584dd57be2b67ffc04851bec05a7e8fea76"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/sema.txt",
+              "sha256": "df75ef20875bfdf998f720b1d88b485491f91963cf1785eff5eadc44782e1be3"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/standard_FB.txt",
+              "sha256": "195bf96111506c879e02e33c24d0111d5f1905929fe4db017fa97aa6198e80ba"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/standard_functions.txt",
+              "sha256": "90b2131e872b2626403d3389c3c8ac5af5b31b74e38b85e55e300719db39a9f3"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/test_iec_std_lib.c",
+              "sha256": "82ea3d5428bcfc7ce75c3bf5408b22d10107a96b0a8ac7a9fa61a85958722840"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/timer.txt",
+              "sha256": "48ab29066eec0ba899c3bc2c99873ddd9211c1cbf627577efc18bf4a4e9bd5e1"
+            }
+          ],
+          "compiler_tools": [
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/bin/iec2c",
+              "sha256": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834"
+            },
+            {
+              "path": "/usr/lib/llvm-20/bin/clang",
+              "sha256": "b15e7640bf3082f36ef14321711706b265df3058721e3c2caef3a4b83895d07d"
+            },
+            {
+              "path": "/usr/bin/x86_64-linux-gnu-readelf",
+              "sha256": "871be389739ecf9924b052c2fde4d2a2068a54e882201b9c34897337a5a0a130"
+            }
+          ],
+          "compiler_components": [
+            {
+              "path": "/home/zss/workspace/py2plc/tools/compile_easy521_matiec_probe.py",
+              "sha256": "a56ae33dee14c425f92716ed6efb7593be3f6a55ca5e1c1c7eab5a5f2a045cae"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py",
+              "sha256": "cae1f517bf8c42fcfe0a20ee28899f17eeaf7267e4394a9454740045ca1368ce"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py",
+              "sha256": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+            }
+          ],
+          "generated_c_modified": false,
+          "arithmetic": "actual MatIEC REAL/C semantics; no fast-math; not vendor helper equivalence"
+        }
+      },
+      "interface": {
+        "gvt_records_checked": 19,
+        "csv_rows_checked": 19,
+        "binding": {
+          "gvt_name": "g_rBESS_Pcmd",
+          "elf_name": "G_RBESS_PCMD",
+          "iec_type": "REAL",
+          "width_bits": 32,
+          "address": 34603248,
+          "gvt_record_offset": 889,
+          "gvt_address_offset": 916,
+          "csv_line": 275,
+          "sinfo_type": 8
+        },
+        "initial_text": "0",
+        "opaque_gvt_flags_hex": "01010000",
+        "retained": null,
+        "task_period_ms": null,
+        "retention_check": "exact-existing-GVT-Config.sdt-VarsInfo.vi-hashes",
+        "period_check": "exact-existing-Config.sdt-Output.sdt-ILIndex.idx-hashes",
+        "index_values": [
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          0,
+          4294967295,
+          4294967295,
+          1,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          2,
+          4294967295,
+          4294967295,
+          4294967295
+        ],
+        "entry_symbols_preserved": [
+          "MAIN",
+          "SBR_001"
+        ],
+        "task_runtime_call_verified": false,
+        "baseline_build_origin_verified": false
+      },
+      "main": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/native-main/MAIN.o",
+        "sha256": "421e94efdc684e601289c9bf1812a10d5f1f41e7d107def18fb9d3968cb238b0",
+        "function_bytes": 56,
+        "defined": [
+          "MAIN"
+        ],
+        "undefined": [
+          "G_RBESS_PCMD"
+        ],
+        "relocations": {
+          "R_ARM_PREL31": 1,
+          "R_ARM_THM_MOVT_ABS": 1,
+          "R_ARM_THM_MOVW_ABS_NC": 1
+        },
+        "arm_attributes": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n"
+      },
+      "bound_outputs": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/bound/stuserprog.o",
+          "bytes": 4404,
+          "sha256": "b35394706136fdbdb7eef8bbb524918cba87d6c2db0f66905933fc3c255b78c7",
+          "input_sha256": "3f26d5c9def3b6ebe41b2f4f756eea6bd7bc79a7c77ade88efde54d51b5a8761",
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 82,
+                "symbol_entry_offset": 2368,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  2372,
+                  2373,
+                  2374,
+                  2375,
+                  2380
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 2372,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 2374,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 2375,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 2380,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          }
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus1/bound/stprog.o",
+          "bytes": 143924,
+          "sha256": "0ad1d636e56dceb2b0d4e6c37af104a215f44b6698fa73310478a249545dc95e",
+          "input_sha256": "7c72176f283e06c44aa0baa35f15a8b470fdf11b2671df9a18d294555c9f7ef3",
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 1568,
+                "symbol_entry_offset": 122068,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  122072,
+                  122073,
+                  122074,
+                  122075,
+                  122080
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 122072,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 122074,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 122075,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 122080,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          }
+        }
+      ],
+      "linker": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+        "resolved_path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/lld",
+        "sha256": "5c8dc44318df21528d0456cae914061cdc30221e40445b8cef84ba57f352445b",
+        "version": "Ubuntu LLD 20.1.2 (compatible with GNU linkers)"
+      },
+      "compiler_tool_hashes": {
+        "/home/zss/.cache/plcidf/matiec/bin/iec2c": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834",
+        "/usr/lib/llvm-20/bin/clang": "b15e7640bf3082f36ef14321711706b265df3058721e3c2caef3a4b83895d07d",
+        "/usr/bin/x86_64-linux-gnu-readelf": "871be389739ecf9924b052c2fde4d2a2068a54e882201b9c34897337a5a0a130"
+      },
+      "actual_dependency_count": 29
+    },
+    {
+      "increment_counts_per_invocation": 2,
+      "reset_threshold": 100.0,
+      "candidate_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/candidate-report.json",
+        "sha256": "6672f5eb405e3e724f5f67ac8aba3aa62e5ffbc433c7b18f37f32549825c8354"
+      },
+      "compiler_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec-probe-report.json",
+        "sha256": "5c84423ec5d1ab6416b8215735b57e4d38f044243fc89f8c3b6431659ec4901b"
+      },
+      "link_report": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/linked/link-report.json",
+        "sha256": "4eb346705ecf49ce8a43d55ef48809e484d195fe3b18301397667aec32c279a1"
+      },
+      "source": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/sources/bounded-plus2.st",
+        "sha256": "6fb117828fdf755affbfb1fc8ad384f2854129f0896006fbf631756cdbf06102"
+      },
+      "source_chain": {
+        "source_sha256": "6fb117828fdf755affbfb1fc8ad384f2854129f0896006fbf631756cdbf06102",
+        "globals_sha256": "1470f5804e51d419e2f0f2e428f7b21e363630705f719bb2987e9128c5e23f34",
+        "pou_sha256": "ec026bbf0f1165f2f6a1ce2c1e673f1ec38dc72d3c151be0edf5c181973c3b28",
+        "compiler_report_sha256": "5c84423ec5d1ab6416b8215735b57e4d38f044243fc89f8c3b6431659ec4901b",
+        "link_report_sha256": "4eb346705ecf49ce8a43d55ef48809e484d195fe3b18301397667aec32c279a1",
+        "association": "observed-native-compile-two-links-and-existing-GVT-binding",
+        "cryptographic_build_attestation": false,
+        "matiec_c": {
+          "generated": [
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/generated/GLOBALS.h",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/generated/LOCATED_VARIABLES.h",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/generated/POUS.c",
+              "sha256": "5da2a4cf5b62e9d5442e3785bcbe30366eeb9d560ce2553030fb2b0c49b463a3"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/generated/POUS.h",
+              "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8"
+            }
+          ],
+          "adapter_c": {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/wrapper.c",
+            "sha256": "d2953a13fbdd112973659f79c0e77384424ee9125ac50683c271ae47d75846a8"
+          },
+          "wrapped_st": {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/source.st",
+            "sha256": "a68d24ae1f898d6a0a1a2dd92fb39d6ae94638c8421fa2d745403fabe13ac23e"
+          },
+          "headers": [
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_std_lib.h",
+              "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/limits.h",
+              "sha256": "1a74119a871309deaabdc8081d43fdb274137838c9e2bb874890c120db7a673a",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/float.h",
+              "sha256": "a29019c5ba04f9bf55a46f9bf75c63039a6015921ddde7298e057b2a188bebec",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stdint.h",
+              "sha256": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stddef.h",
+              "sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_header_macro.h",
+              "sha256": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_ptrdiff_t.h",
+              "sha256": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_size_t.h",
+              "sha256": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wchar_t.h",
+              "sha256": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_null.h",
+              "sha256": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_max_align_t.h",
+              "sha256": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_offsetof.h",
+              "sha256": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stdarg.h",
+              "sha256": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_header_macro.h",
+              "sha256": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___gnuc_va_list.h",
+              "sha256": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_list.h",
+              "sha256": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_arg.h",
+              "sha256": "db0cca3b7768cf07807553fb88ea74e00cba4503e08a5f5504989fb3cc3e4cf1",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___va_copy.h",
+              "sha256": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_copy.h",
+              "sha256": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_types_all.h",
+              "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_types_list.h",
+              "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_types.h",
+              "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_std_functions.h",
+              "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/accessor.h",
+              "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/generated/POUS.h",
+              "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_std_FB.h",
+              "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_std_FB_impl.h",
+              "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd",
+              "origin": "frozen-generated-or-matiec"
+            }
+          ],
+          "compilation_dependencies": [
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/wrapper.c",
+              "sha256": "d2953a13fbdd112973659f79c0e77384424ee9125ac50683c271ae47d75846a8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_std_lib.h",
+              "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/limits.h",
+              "sha256": "1a74119a871309deaabdc8081d43fdb274137838c9e2bb874890c120db7a673a",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/float.h",
+              "sha256": "a29019c5ba04f9bf55a46f9bf75c63039a6015921ddde7298e057b2a188bebec",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stdint.h",
+              "sha256": "655616d8fcb2c92b38c039019685c658c2346b3dd0021aed4ea057b43f621247",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stddef.h",
+              "sha256": "b3e62a046ddf28d09eedebe6eb9461cb7060e47cad2c69964b222c4eea10347e",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_header_macro.h",
+              "sha256": "4cf46e8fbb809df048eecbbd63686fa741da27afa8db4245bd1f61c1fb1611dc",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_ptrdiff_t.h",
+              "sha256": "b4178a57f3711b7013cba747a72a2f178c29fa9364e77d75b2159754072ced43",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_size_t.h",
+              "sha256": "d86ddc0238da09b385846ebef814ffc50a44e40cf85d4e3793f485952b7e73ad",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_wchar_t.h",
+              "sha256": "1900d4998aef3698b06399ed686db0c21e26509b08638a25734fb97ae89b1001",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_null.h",
+              "sha256": "b1d71b08563ab3d2c22a1e4f8ddf4d9a1111c89e9404b859a45c307e8ebc6c69",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_max_align_t.h",
+              "sha256": "3c1e4de47f4f06b35e2c5890d670052e84f716760505ff51b022fc8b21a9400f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stddef_offsetof.h",
+              "sha256": "e5f0f4ff8ff5fc6a1cc8b535f5065f1728eadd2bf1e1401f021f803ec7b4222f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/stdarg.h",
+              "sha256": "ce6e43d79dc89b50208ecf259b1ffd519f5a78cd3a2c7fcaac6386f376b89fef",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_header_macro.h",
+              "sha256": "7b3fbcc442af2508f36bb2dc98d9ad2b8a1f5c0f5333394fb2159c8bd5ecd5b8",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___gnuc_va_list.h",
+              "sha256": "feca975bfdfb254d17458a8e3d51f8ad6d9bdc9fd6287727f0f8b2fb81fcb0b0",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_list.h",
+              "sha256": "81c3055f7033e26e7f53705653bc9d69b5202f25c2692e03b3a4f77ff44a7d76",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_arg.h",
+              "sha256": "db0cca3b7768cf07807553fb88ea74e00cba4503e08a5f5504989fb3cc3e4cf1",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg___va_copy.h",
+              "sha256": "f0a8d3c963338173f2d57b2cbc209dde38c90536107b15eb0cf78166d4caee1f",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/usr/lib/llvm-20/lib/clang/20/include/__stdarg_va_copy.h",
+              "sha256": "bb195f56cb08d4cee6a60bd9f62f34466e8ac4f89f6fed043b044cb2f7ead010",
+              "origin": "clang-resource-header"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_types_all.h",
+              "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_types_list.h",
+              "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_types.h",
+              "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_std_functions.h",
+              "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/accessor.h",
+              "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/generated/POUS.h",
+              "sha256": "9c5e2a717fdb8188b0e64024f9f72f7d465661e0240495445d548fcfff016ab8",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_std_FB.h",
+              "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/generated/POUS.c",
+              "sha256": "5da2a4cf5b62e9d5442e3785bcbe30366eeb9d560ce2553030fb2b0c49b463a3",
+              "origin": "frozen-generated-or-matiec"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/matiec/lib/C/iec_std_FB_impl.h",
+              "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd",
+              "origin": "frozen-generated-or-matiec"
+            }
+          ],
+          "dependency_file": {
+            "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/MAIN.d",
+            "sha256": "fd13e6edeb596598575b020888a87456d7886faf4a7bd232814ed2c597a85012"
+          },
+          "toolchain_manifest": {
+            "path": "/home/zss/.cache/plcidf/matiec/toolchain.json",
+            "sha256": "2760251bb173c1dfe412566227c063300ad8b985495496918dcc49ce567b492a"
+          },
+          "matiec_libraries": [
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/accessor.h",
+              "sha256": "66d0a77e1948f6a1cbc40bc592a478f59380001301d05a723b8618ed518cdd0a"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/globals_instances_py.h",
+              "sha256": "3e927ed0dc93f815f1606eb761dd4a1927ac2bd918b9e304b59d431cc5f324f7"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/globals_proto_c.h",
+              "sha256": "7dd22192442dc8658c7582c3eedb0db3b906a7d866ea8545388f8a0f767415d6"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/globals_ticktime_py.h",
+              "sha256": "6dee0901a8614c487a0647b71a08dc60d20f21578f8ec9a54631e48817309076"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_FB.h",
+              "sha256": "4101144861512e9516aea776cb48c7ac2a5176cbef0377ec4fe86a43b962c093"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_FB_impl.h",
+              "sha256": "af4950f4c81cd8c9523c3e8bc85585e5ecbf646143e7e202da3c9b5ac9478efd"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_FB_no_ENENO.h",
+              "sha256": "7b252d645589083112a5c840c469785ca5a4ac7d84161ccffe82cf97e0986b39"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_FB_no_ENENO_impl.h",
+              "sha256": "db1da5770f0300bcf2abb9134866db215a98ca262631612841723ce7e27faa8b"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_functions.h",
+              "sha256": "bbacc379a314c44517cfb0ce8c071f0998c8b55dc054855c467bf7b642e68f03"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_std_lib.h",
+              "sha256": "5f8fa363c2d928ab09a0c466a54da63441d0728665776fac1508b0bd8ecfb665"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_types.h",
+              "sha256": "1c4051622fb2c3f079a990a4a3c6f024efe6218d903c2769aa5349d77423eca4"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_types_all.h",
+              "sha256": "c3c6a35a5bb3c91b365ce418b2cd9403ff6aff85a56e59164f440a763870d004"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/iec_types_list.h",
+              "sha256": "475772696335f5577e5560a7a4e0f684b4c0a783b1393ba221c5b68b75634fe8"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/pous_decl_py.h",
+              "sha256": "71b1aa32bfb54c189bb34c3049f9ef2403096bc40a1e37b39275f3c6397e484c"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/pous_flatcount_c.h",
+              "sha256": "a65318510a0f0aecc64da67e5043de2c029b43de477a5f96802ba1a114c44378"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/pous_flatcount_py.h",
+              "sha256": "23da12b046623dde1f276ba65f62b353534ae5691749e7a00a55a1512020f1ae"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/pous_recurse_c.h",
+              "sha256": "93808d9fd11be7884436755922890cb4ecf8c3a69741d91466b8ff6639f8b3e3"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/python_desc_template.pycpp",
+              "sha256": "037c44c0fed2f8e8b379766e33802fc908c7364f0fc604f71b78f3d4ed383955"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/C/undef_macros.h",
+              "sha256": "c86549de5a3b0730b45f33bf536e3bec1a5f9ed6e2bf76fae9da067d252cfaaa"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/COPYING.LESSER",
+              "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/bistable.txt",
+              "sha256": "691e1ef023a680cffd755d76229d6e67ba1cd50415b100f1f079480097d2a74a"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/counter.txt",
+              "sha256": "3e4da3a8cb0232c291d1a1f73ec8ceedf3bdd0ee236c1ee3408632bab7ca976a"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/create_standard_function_txt.sh",
+              "sha256": "a4fceb587730ff95d2293fa9ccf5f3eb9c43a37e0d5a25ff231fd10cd0c6fa10"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/derivative_st.txt",
+              "sha256": "94d8fd405b8ec8d039132f68d92bd047de6ddf864354856ffeb55d3032361630"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/edge_detection.txt",
+              "sha256": "13b4b04b175cfcf825ff7ca2c953196fb493ad4860628efb9e00ef51d81ec0de"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/hysteresis_st.txt",
+              "sha256": "5f04ed78aa1c44180e3fb0e0948b0d49526978d5c3ae7ae64a62033a8df42192"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/ieclib.txt",
+              "sha256": "3cf0d0afbbfcc3f19282be224be785f56259557d00391786db9c901f8b9303b8"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/integral_st.txt",
+              "sha256": "6d255e4b88d4ea29c92d46ce5ed5efab393c4b37baafcb131744046a7eebdca8"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/pid_st.txt",
+              "sha256": "c6c63ca2fce2b74cc66c4766f453867aabf709b2e0b227c536dd1b6f1a39c530"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/ramp_st.txt",
+              "sha256": "a9ee1e74b76b6d40416ab27e7e76bb042567c22c10609bf4c4599492e2191695"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/rtc.txt",
+              "sha256": "842861fb07a6cdf2cf18c53f3ee73584dd57be2b67ffc04851bec05a7e8fea76"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/sema.txt",
+              "sha256": "df75ef20875bfdf998f720b1d88b485491f91963cf1785eff5eadc44782e1be3"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/standard_FB.txt",
+              "sha256": "195bf96111506c879e02e33c24d0111d5f1905929fe4db017fa97aa6198e80ba"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/standard_functions.txt",
+              "sha256": "90b2131e872b2626403d3389c3c8ac5af5b31b74e38b85e55e300719db39a9f3"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/test_iec_std_lib.c",
+              "sha256": "82ea3d5428bcfc7ce75c3bf5408b22d10107a96b0a8ac7a9fa61a85958722840"
+            },
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/lib/timer.txt",
+              "sha256": "48ab29066eec0ba899c3bc2c99873ddd9211c1cbf627577efc18bf4a4e9bd5e1"
+            }
+          ],
+          "compiler_tools": [
+            {
+              "path": "/home/zss/.cache/plcidf/matiec/bin/iec2c",
+              "sha256": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834"
+            },
+            {
+              "path": "/usr/lib/llvm-20/bin/clang",
+              "sha256": "b15e7640bf3082f36ef14321711706b265df3058721e3c2caef3a4b83895d07d"
+            },
+            {
+              "path": "/usr/bin/x86_64-linux-gnu-readelf",
+              "sha256": "871be389739ecf9924b052c2fde4d2a2068a54e882201b9c34897337a5a0a130"
+            }
+          ],
+          "compiler_components": [
+            {
+              "path": "/home/zss/workspace/py2plc/tools/compile_easy521_matiec_probe.py",
+              "sha256": "a56ae33dee14c425f92716ed6efb7593be3f6a55ca5e1c1c7eab5a5f2a045cae"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/tools/compile_easy521_native_probe.py",
+              "sha256": "cae1f517bf8c42fcfe0a20ee28899f17eeaf7267e4394a9454740045ca1368ce"
+            },
+            {
+              "path": "/home/zss/workspace/py2plc/tools/inspect_vendor_application.py",
+              "sha256": "36b6d6744e8351f9db3b7c05e2d1c68de9acd4c5d51b51e2ab351951b6ef6ea9"
+            }
+          ],
+          "generated_c_modified": false,
+          "arithmetic": "actual MatIEC REAL/C semantics; no fast-math; not vendor helper equivalence"
+        }
+      },
+      "interface": {
+        "gvt_records_checked": 19,
+        "csv_rows_checked": 19,
+        "binding": {
+          "gvt_name": "g_rBESS_Pcmd",
+          "elf_name": "G_RBESS_PCMD",
+          "iec_type": "REAL",
+          "width_bits": 32,
+          "address": 34603248,
+          "gvt_record_offset": 889,
+          "gvt_address_offset": 916,
+          "csv_line": 275,
+          "sinfo_type": 8
+        },
+        "initial_text": "0",
+        "opaque_gvt_flags_hex": "01010000",
+        "retained": null,
+        "task_period_ms": null,
+        "retention_check": "exact-existing-GVT-Config.sdt-VarsInfo.vi-hashes",
+        "period_check": "exact-existing-Config.sdt-Output.sdt-ILIndex.idx-hashes",
+        "index_values": [
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          0,
+          4294967295,
+          4294967295,
+          1,
+          4294967295,
+          4294967295,
+          4294967295,
+          4294967295,
+          2,
+          4294967295,
+          4294967295,
+          4294967295
+        ],
+        "entry_symbols_preserved": [
+          "MAIN",
+          "SBR_001"
+        ],
+        "task_runtime_call_verified": false,
+        "baseline_build_origin_verified": false
+      },
+      "main": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/native-main/MAIN.o",
+        "sha256": "ec026bbf0f1165f2f6a1ce2c1e673f1ec38dc72d3c151be0edf5c181973c3b28",
+        "function_bytes": 56,
+        "defined": [
+          "MAIN"
+        ],
+        "undefined": [
+          "G_RBESS_PCMD"
+        ],
+        "relocations": {
+          "R_ARM_PREL31": 1,
+          "R_ARM_THM_MOVT_ABS": 1,
+          "R_ARM_THM_MOVW_ABS_NC": 1
+        },
+        "arm_attributes": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-a8\"\n  Tag_CPU_arch: v7\n  Tag_CPU_arch_profile: Application\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv3\n  Tag_Advanced_SIMD_arch: NEONv1\n  Tag_ABI_PCS_R9_use: Unused\n  Tag_ABI_PCS_GOT_use: direct\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_optimization_goals: Prefer Speed\n  Tag_CPU_unaligned_access: v6\n  Tag_ABI_FP_16bit_format: IEEE 754\n  Tag_Virtualization_use: TrustZone\n"
+      },
+      "bound_outputs": [
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/bound/stuserprog.o",
+          "bytes": 4404,
+          "sha256": "57f810a38d7d81d63709efc215c1d928681bdcd7125166f92d9b1e679686da5a",
+          "input_sha256": "800e81f151cd131db576da504f27070b7972be2d9becbf0cf50c3dfe2ac0e0c1",
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 82,
+                "symbol_entry_offset": 2368,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  2372,
+                  2373,
+                  2374,
+                  2375,
+                  2380
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 2372,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 2374,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 2375,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 2380,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_LD_ERROR_ADD",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          }
+        },
+        {
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-33-matiec-bound-20261019/candidate-final-bounded-plus2/bound/stprog.o",
+          "bytes": 143924,
+          "sha256": "83de0d638d6005e77374061942589bea67e2e029ed2951f44d7a6f5192fd937b",
+          "input_sha256": "f9acaa69b30f2ca119fe14598ada48c059abe4861d82e1ab9e7375cef01863ae",
+          "mutation": {
+            "bindings": [
+              {
+                "gvt_name": "g_rBESS_Pcmd",
+                "elf_name": "G_RBESS_PCMD",
+                "iec_type": "REAL",
+                "width_bits": 32,
+                "address": 34603248,
+                "gvt_record_offset": 889,
+                "gvt_address_offset": 916,
+                "csv_line": 275,
+                "sinfo_type": 8,
+                "symbol_index": 1568,
+                "symbol_entry_offset": 122068,
+                "before": {
+                  "st_value": 0,
+                  "st_info": 16,
+                  "st_shndx": 0
+                },
+                "after": {
+                  "st_value": 34603248,
+                  "st_info": 24,
+                  "st_shndx": 0
+                },
+                "allowed_byte_offsets": [
+                  122072,
+                  122073,
+                  122074,
+                  122075,
+                  122080
+                ]
+              }
+            ],
+            "changed_bytes": [
+              {
+                "offset": 122072,
+                "before": 0,
+                "after": 240
+              },
+              {
+                "offset": 122074,
+                "before": 0,
+                "after": 16
+              },
+              {
+                "offset": 122075,
+                "before": 0,
+                "after": 2
+              },
+              {
+                "offset": 122080,
+                "before": 16,
+                "after": 24
+              }
+            ],
+            "only_allowed_symbol_fields_changed": true,
+            "vendor_bound_undefined_names": [
+              "G_RBESS_PCMD"
+            ],
+            "remaining_undefined_names": [
+              "_HC_DINT_MOD",
+              "_HC_EXPT",
+              "_HC_FLOAT_MIN",
+              "_HC_INT64TODOUBLE",
+              "_HC_LD_DEV_MEM_COPY_BITS",
+              "_HC_LD_DEV_MEM_READ_BITS",
+              "_HC_LD_DEV_MEM_WRITE_BITS",
+              "_HC_LD_ERROR_ADD",
+              "_HC_LOG10",
+              "_HC_NOROUND",
+              "_HC_ROUND",
+              "_HC_SHL",
+              "_HC_SHR",
+              "_HC_WATCHDOG",
+              "__aeabi_unwind_cpp_pr0"
+            ],
+            "all_nonselected_bytes_unchanged": true
+          }
+        }
+      ],
+      "linker": {
+        "path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/ld.lld",
+        "resolved_path": "/home/zss/workspace/py2plc/.plcidf/research-tools/lld20/extracted/usr/lib/llvm-20/bin/lld",
+        "sha256": "5c8dc44318df21528d0456cae914061cdc30221e40445b8cef84ba57f352445b",
+        "version": "Ubuntu LLD 20.1.2 (compatible with GNU linkers)"
+      },
+      "compiler_tool_hashes": {
+        "/home/zss/.cache/plcidf/matiec/bin/iec2c": "4bd3cd311d03954a7cb6b834dc848829f6d9fcc79054f592525eeb8c42df3834",
+        "/usr/lib/llvm-20/bin/clang": "b15e7640bf3082f36ef14321711706b265df3058721e3c2caef3a4b83895d07d",
+        "/usr/bin/x86_64-linux-gnu-readelf": "871be389739ecf9924b052c2fde4d2a2068a54e882201b9c34897337a5a0a130"
+      },
+      "actual_dependency_count": 29
+    }
+  ],
+  "verification": {
+    "pytest_command": "PLCIDF_TEST_LLC=<local llc20> PLCIDF_TEST_LLD=<local ld.lld20> PLCIDF_TEST_MATIEC_ROOT=/home/zss/.cache/plcidf/matiec PLCIDF_TEST_CLANG=/usr/bin/clang-20 .venv/bin/pytest -q tools/tests/test_compile_easy521_native_probe.py tools/tests/test_compile_easy521_matiec_probe.py tools/tests/test_bind_native_application.py",
+    "exit_code": 0,
+    "tests_passed": 52,
+    "binder_tests_passed": 16,
+    "coverage": [
+      "actual IF/ELSE ST changes generated C, ARM object and bound objects",
+      "MatIEC rejects unknown Y0 before linking",
+      "generated header mutation after compiler invalidates candidate",
+      "fixed REAL declaration and original library/task/config hashes remain mandatory",
+      "default restricted-llvm real compilation and linking remain successful"
+    ],
+    "environment_note": "An initial system-python unittest attempt could not import the pytest-based MatIEC module; the project .venv pytest run above completed all 52 tests."
+  },
+  "interrupt_mapping_observation": {
+    "INT_001_ST": {
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/INT_001.ST",
+      "bytes": 233,
+      "sha256": "dff2f73a81acd39e3667d0629d24e71c296f4c5427d1c1296817dd1a9b624935",
+      "equals_empty_SBR_001_ST": true
+    },
+    "STTemp_object_names": [
+      "MAIN.o",
+      "SBR_001.o"
+    ],
+    "symbol_named_pous": [
+      "MAIN",
+      "SBR_001"
+    ],
+    "ILIndex_slot_semantics": null,
+    "all_interrupts_disabled": null,
+    "conclusion": "No compiled/named interrupt POU mapping was found; unchanged configuration does not establish scheduler-hook preservation."
+  },
+  "limitations": [
+    "Only MAIN source is newly compiled; SBR_001 and pinned vendor libraries are reused precompiled inputs.",
+    "This bounded memory experiment is not BESS engineering power control. Startup initialization, retention and configured period remain unknown.",
+    "Both compilers omit vendor interrupt-dispatch hooks; full scan/interrupt semantics are unverified.",
+    "Candidate assembly, symbol source-MD5 consistency and actual device acceptance require independent records.",
+    "No device download, CPU control, hardware I/O or firmware replacement was performed by this worker."
+  ]
+}

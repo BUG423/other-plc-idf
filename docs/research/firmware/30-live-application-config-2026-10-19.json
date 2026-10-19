@@ -1,0 +1,820 @@
+{
+  "schema": "plcidf.easy521-live-config-research.v1",
+  "recorded_at_utc": "2026-10-19T07:37:05.575743+00:00",
+  "scope": "offline comparison of independently provided native readback evidence",
+  "new_device_access": false,
+  "windows_executed": false,
+  "git_invoked": false,
+  "source_readback_directory": ".plcidf/native-execution-backup-zlp-20261019T072754Z",
+  "source_session_sha256": "64b13f20924b5fc92d8d6c70e9252dd8ca3d5ecddaa15fb24c74379fa8817e50",
+  "comparison": {
+    "configuration_comparisons": [
+      {
+        "name": "syscfg.foid",
+        "template_bytes": 789,
+        "live_bytes": 789,
+        "template_sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c",
+        "live_sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 0,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "ethercat.foid",
+        "template_bytes": 270,
+        "live_bytes": 270,
+        "template_sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e",
+        "live_sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 0,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "modbus.foid",
+        "template_bytes": 73,
+        "live_bytes": 73,
+        "template_sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190",
+        "live_sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 0,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "canlink.foid",
+        "template_bytes": 72,
+        "live_bytes": 72,
+        "template_sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81",
+        "live_sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 0,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "modcfg.foid",
+        "template_bytes": 579,
+        "live_bytes": 579,
+        "template_sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48",
+        "live_sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 0,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "ethip.foid",
+        "template_bytes": 301,
+        "live_bytes": 301,
+        "template_sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac",
+        "live_sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 0,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "EIPIns.foid",
+        "template_bytes": 88,
+        "live_bytes": 88,
+        "template_sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+        "live_sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 0,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "ecttrans.foid",
+        "template_bytes": 73,
+        "live_bytes": 73,
+        "template_sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538",
+        "live_sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 1,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "dataLog.foid",
+        "template_bytes": 261,
+        "live_bytes": 261,
+        "template_sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4",
+        "live_sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 0,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "OpcUAServer.foid",
+        "template_bytes": 97,
+        "live_bytes": 97,
+        "template_sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd",
+        "live_sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 1,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "sftpserver.foid",
+        "template_bytes": 146,
+        "live_bytes": 146,
+        "template_sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2",
+        "live_sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 1,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      },
+      {
+        "name": "Ecam.foid",
+        "template_bytes": 118,
+        "live_bytes": 118,
+        "template_sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80",
+        "live_sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f",
+        "same_length": true,
+        "changed_overlap_bytes": 2,
+        "first_changed_offsets": [
+          26,
+          27
+        ],
+        "payload_equal": true,
+        "caller_u32_equal": true,
+        "caller_u32": 0,
+        "only_opaque_metadata_changed": true,
+        "template_metadata_sha256": "53f4d0899cf3d3a58777ac26d6a039c98e421e05dff499ce1031f54edc0d9f55",
+        "live_metadata_sha256": "9ed7671618565a83b4e43a2d239ae00b7a0d65c0cfa921cafbc59d59f7987f77"
+      }
+    ],
+    "configuration_payloads_and_versions_equal": true,
+    "userprog": {
+      "normalized_equal": true,
+      "length_table": [
+        34,
+        56,
+        23,
+        112,
+        0,
+        0
+      ],
+      "header_equal": true,
+      "expanded_sections": [
+        {
+          "bytes": 56,
+          "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+        },
+        {
+          "bytes": 112,
+          "sha256": "ed8bb93782bf125bdfe0b7cd111d291d6f08ad07a5ce1382ff289f5e1dd0bbef"
+        }
+      ],
+      "default_zlib_reproduces_live_bytes": true
+    },
+    "varsinfo": {
+      "normalized_equal": true,
+      "length_table": [
+        284,
+        26
+      ],
+      "expanded_bytes": 284,
+      "expanded_sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95",
+      "default_zlib_reproduces_live_bytes": true
+    },
+    "interface_payload_compatibility_observed": true,
+    "symbol_bytes_equal": false,
+    "symbol_vendor_md5_recomputed": false,
+    "runtime_abi_verified": false,
+    "device_acceptance_of_new_objects_verified": false
+  },
+  "readback_evidence": [
+    {
+      "name": "userprog.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/06-application-userprog.foid.json",
+      "sha256": "e6f7f45e7f74b0932cd3b990f7224d6e75c55391db169ad9937c4a847cb4d6dc",
+      "readback_sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396",
+      "bytes": 215
+    },
+    {
+      "name": "stprog.o",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/03-application-stprog.o.json",
+      "sha256": "0b3db243e88ea6ce0f1d2655e093f6957e74d5010923935bc23c64d0484c3872",
+      "readback_sha256": "69f3e60db59df3eae06cc96d9ad3716a08c114b8ffcb3a3bc369a56510b17fff",
+      "bytes": 125848
+    },
+    {
+      "name": "stuserprog.o",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/04-application-stuserprog.o.json",
+      "sha256": "e3bb6f2f1e98158aeaa3ab067855afde2dc0ef2e52d9c44878da5f9ebaad51c8",
+      "readback_sha256": "1c948cd6ec7ba3d56e8daa1f59ae6ab5584711b462f038752696fcca15b32bc0",
+      "bytes": 4592
+    },
+    {
+      "name": "symbol.sym",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/05-application-symbol.sym.json",
+      "sha256": "bc11c81973cad1e3afcd50ab8049226ec95c8be3aec3a64d8e008717bcef08c0",
+      "readback_sha256": "1852d6682398014c33e51596b38fac7bf976c3c3b5f6477670662c7d03a7e2fb",
+      "bytes": 218
+    },
+    {
+      "name": "varsinfo.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/07-application-varsinfo.foid.json",
+      "sha256": "20c24d7833e95b2ea1d6652a4d69f23aec2ad68de5f8ed6637b1f8bd19fc3249",
+      "readback_sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603",
+      "bytes": 173
+    },
+    {
+      "name": "syscfg.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/08-application-syscfg.foid.json",
+      "sha256": "95cb9de1aefe77e4eec953d007cfbc554a582fe23448a39729b8b52184bb0288",
+      "readback_sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560",
+      "bytes": 789
+    },
+    {
+      "name": "ethercat.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/09-application-ethercat.foid.json",
+      "sha256": "9118fefcdb0828b2d77e259eb4a459be95bb0533219ab119542ca42d72f838d5",
+      "readback_sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73",
+      "bytes": 270
+    },
+    {
+      "name": "modbus.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/10-application-modbus.foid.json",
+      "sha256": "51a912a990b3091a4440544f69a00d21bd2e4e989286a407c277c51839587f30",
+      "readback_sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f",
+      "bytes": 73
+    },
+    {
+      "name": "canlink.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/11-application-canlink.foid.json",
+      "sha256": "32d0bf76501f3f22084852b775efe4fc20d03442c907e8544893cad0ee42c106",
+      "readback_sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887",
+      "bytes": 72
+    },
+    {
+      "name": "modcfg.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/12-application-modcfg.foid.json",
+      "sha256": "bea90046be5966a1a506ab23a64ebd8272f793aa811f165d752da07dc85e3646",
+      "readback_sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab",
+      "bytes": 579
+    },
+    {
+      "name": "ethip.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/13-application-ethip.foid.json",
+      "sha256": "52c4fe53ec2cce73a1f7f8a71c0e3beec00c508a914ccb9bc6a82148e3fab342",
+      "readback_sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd",
+      "bytes": 301
+    },
+    {
+      "name": "EIPIns.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/14-application-EIPIns.foid.json",
+      "sha256": "cf70531d13307ed0639634bdd2dc5df07fda6cf6a669644791e5e30a573c4fd6",
+      "readback_sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25",
+      "bytes": 88
+    },
+    {
+      "name": "ecttrans.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/15-application-ecttrans.foid.json",
+      "sha256": "ec3c198415a70f10eb957b0933b3e2217671e2591175e208fee34dd6ade29166",
+      "readback_sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd",
+      "bytes": 73
+    },
+    {
+      "name": "dataLog.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/16-application-dataLog.foid.json",
+      "sha256": "cb21ef27ef0c2149d1de9bd32a7847f6283280fe13e0e1ccd33f7619ca17e9f9",
+      "readback_sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55",
+      "bytes": 261
+    },
+    {
+      "name": "OpcUAServer.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/17-application-OpcUAServer.foid.json",
+      "sha256": "6ae61cb249c010a6958f26522e9f8b5fd8de38a7d3bf8afcbfb368dcb16a35f5",
+      "readback_sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f",
+      "bytes": 97
+    },
+    {
+      "name": "sftpserver.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/18-application-sftpserver.foid.json",
+      "sha256": "d190f7cfbecfbd5fe15aa68580ac93b4eb4b67b265d2ac24265b7052f5b36b1f",
+      "readback_sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81",
+      "bytes": 146
+    },
+    {
+      "name": "Ecam.foid",
+      "path": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/19-application-Ecam.foid.json",
+      "sha256": "91b940d7e7a0474f87cdee2dd2a7518156a1b3089ead94ab03afcd11afa918c0",
+      "readback_sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f",
+      "bytes": 118
+    }
+  ],
+  "target": {
+    "linux_device": "001:002",
+    "vidpid": "0471:a531",
+    "serial": null,
+    "bcd_device": 784,
+    "application_identity": "unknown",
+    "cpu_identity": "unknown"
+  },
+  "static_evidence": {
+    "AutoShop.exe_sha256": "22efbe0e08e31f376fd83846ceaf66d9808386d75727facdf66da6242392031e",
+    "zlibwapi.dll_sha256": "21582b3a68e8753322a1b1c7e550ae7fd305de4935de68fbde9f87570f484d00",
+    "zlib_exports": {
+      "2": "compress",
+      "46": "compressBound",
+      "26": "uncompress"
+    },
+    "zlib_IAT": {
+      "0x1eb3e20": "ordinal46/compressBound",
+      "0x1eb3e24": "ordinal2/compress",
+      "0x1eb3e28": "ordinal26/uncompress"
+    },
+    "version_gate": {
+      "function": "0xe70170",
+      "info_object_field_offset": "0x64",
+      "threshold_raw_u32": "0x02030006",
+      "comparison": "unsigned greater-or-equal",
+      "semantic_version_field_not_independently_decoded": true
+    },
+    "ranges": [
+      {
+        "role": "compression_gate",
+        "start_va": "0xe70170",
+        "end_exclusive_va": "0xe7025a",
+        "sha256": "2cadaa2fe107ec6526b06b9079c4f83c169f7bf3e530771ea2edf63256b8cb2f"
+      },
+      {
+        "role": "varsinfo_compress",
+        "start_va": "0xe70260",
+        "end_exclusive_va": "0xe704c4",
+        "sha256": "aef6e94d27df8f0bf728b720b6404fe4928c0f6de7e836b415eccce5d780488b"
+      },
+      {
+        "role": "userprog_compress",
+        "start_va": "0xe70570",
+        "end_exclusive_va": "0xe70b9a",
+        "sha256": "7747da42431f24e167790b10a293d3a32bb6f3e3286ee2874529670352f01b37"
+      },
+      {
+        "role": "current_userprog_gate",
+        "start_va": "0xe7a75c",
+        "end_exclusive_va": "0xe7a7a6",
+        "sha256": "a5b875992e6980ebd26c2d7f4c41989b6bc99813c8f321e791b8fed861d1d632"
+      },
+      {
+        "role": "current_varsinfo_gate",
+        "start_va": "0xe7b269",
+        "end_exclusive_va": "0xe7b2b3",
+        "sha256": "1393c828ee6d288e867a48d62b8169dcf831aa1be64c067317611e7654e7a924"
+      }
+    ]
+  },
+  "opaque_metadata_difference": {
+    "absolute_offsets": [
+      26,
+      27
+    ],
+    "field_relative_offsets": [
+      6,
+      7
+    ],
+    "template_bytes_hex": "e56f",
+    "device_bytes_hex": "ad74",
+    "semantics": "unknown copied ACP string buffer content, not normalized or guessed padding"
+  },
+  "tool": "tools/inspect_easy521_live_application.py",
+  "tool_sha256": "485bb17105171e4189016bfc7709246db7ed78485e5c30405fc814e5f52ea889",
+  "zlib_runtime": "1.3",
+  "candidates": [
+    {
+      "increment": 1,
+      "manifest": ".plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/live-application-candidate.json",
+      "sha256": "8907007b01b6bc6c7be09ffb5ed3d2ef0ead3acffa9f1071742f7bd7f92bc0c3",
+      "file_count": 17,
+      "files": [
+        {
+          "index": 0,
+          "remote_name": "userprog.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/userprog.foid",
+          "size": 215,
+          "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 1,
+          "remote_name": "stprog.o",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/stprog.o",
+          "size": 143708,
+          "sha256": "318040ea24813ea691a6d7f17129a30fbbb1aa83bef3a30340d3ade2e370fb90",
+          "origin": "parent-native-object",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 2,
+          "remote_name": "stuserprog.o",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/stuserprog.o",
+          "size": 4188,
+          "sha256": "db68036ff92013340ffc1eb64b5a9ad9718be20d7df135b835c46d3b203e64a4",
+          "origin": "parent-native-object",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 3,
+          "remote_name": "symbol.sym",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/symbol.sym",
+          "size": 218,
+          "sha256": "1852d6682398014c33e51596b38fac7bf976c3c3b5f6477670662c7d03a7e2fb",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": true
+        },
+        {
+          "index": 4,
+          "remote_name": "varsinfo.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/varsinfo.foid",
+          "size": 173,
+          "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 5,
+          "remote_name": "syscfg.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/syscfg.foid",
+          "size": 789,
+          "sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 6,
+          "remote_name": "ethercat.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/ethercat.foid",
+          "size": 270,
+          "sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 7,
+          "remote_name": "modbus.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/modbus.foid",
+          "size": 73,
+          "sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 8,
+          "remote_name": "canlink.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/canlink.foid",
+          "size": 72,
+          "sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 9,
+          "remote_name": "modcfg.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/modcfg.foid",
+          "size": 579,
+          "sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 10,
+          "remote_name": "ethip.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/ethip.foid",
+          "size": 301,
+          "sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 11,
+          "remote_name": "EIPIns.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/EIPIns.foid",
+          "size": 88,
+          "sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 12,
+          "remote_name": "ecttrans.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/ecttrans.foid",
+          "size": 73,
+          "sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 13,
+          "remote_name": "dataLog.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/dataLog.foid",
+          "size": 261,
+          "sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 14,
+          "remote_name": "OpcUAServer.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/OpcUAServer.foid",
+          "size": 97,
+          "sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 15,
+          "remote_name": "sftpserver.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/sftpserver.foid",
+          "size": 146,
+          "sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 16,
+          "remote_name": "Ecam.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus1/files/Ecam.foid",
+          "size": 118,
+          "sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        }
+      ],
+      "symbol_metadata_policy_review_required": true,
+      "symbol_vendor_md5_for_new_source_verified": false,
+      "downloadable": false
+    },
+    {
+      "increment": 2,
+      "manifest": ".plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/live-application-candidate.json",
+      "sha256": "f98aa5af25e0113b164bd9fe2c9976c8eca6d6966d104157d9e703a521fc4c74",
+      "file_count": 17,
+      "files": [
+        {
+          "index": 0,
+          "remote_name": "userprog.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/userprog.foid",
+          "size": 215,
+          "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 1,
+          "remote_name": "stprog.o",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/stprog.o",
+          "size": 143708,
+          "sha256": "314ecb7828b691975b90814aa8ab7d04ce16c3236d0f0f5b0b83a09841c15332",
+          "origin": "parent-native-object",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 2,
+          "remote_name": "stuserprog.o",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/stuserprog.o",
+          "size": 4188,
+          "sha256": "4155b308cd15b3e74b1db46c6876d4ea9858b6175d61f3d3be07831cfb9e1c4b",
+          "origin": "parent-native-object",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 3,
+          "remote_name": "symbol.sym",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/symbol.sym",
+          "size": 218,
+          "sha256": "1852d6682398014c33e51596b38fac7bf976c3c3b5f6477670662c7d03a7e2fb",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": true
+        },
+        {
+          "index": 4,
+          "remote_name": "varsinfo.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/varsinfo.foid",
+          "size": 173,
+          "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 5,
+          "remote_name": "syscfg.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/syscfg.foid",
+          "size": 789,
+          "sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 6,
+          "remote_name": "ethercat.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/ethercat.foid",
+          "size": 270,
+          "sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 7,
+          "remote_name": "modbus.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/modbus.foid",
+          "size": 73,
+          "sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 8,
+          "remote_name": "canlink.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/canlink.foid",
+          "size": 72,
+          "sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 9,
+          "remote_name": "modcfg.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/modcfg.foid",
+          "size": 579,
+          "sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 10,
+          "remote_name": "ethip.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/ethip.foid",
+          "size": 301,
+          "sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 11,
+          "remote_name": "EIPIns.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/EIPIns.foid",
+          "size": 88,
+          "sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 12,
+          "remote_name": "ecttrans.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/ecttrans.foid",
+          "size": 73,
+          "sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 13,
+          "remote_name": "dataLog.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/dataLog.foid",
+          "size": 261,
+          "sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 14,
+          "remote_name": "OpcUAServer.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/OpcUAServer.foid",
+          "size": 97,
+          "sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 15,
+          "remote_name": "sftpserver.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/sftpserver.foid",
+          "size": 146,
+          "sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        },
+        {
+          "index": 16,
+          "remote_name": "Ecam.foid",
+          "path": "/home/zss/workspace/py2plc/.plcidf/research-30-live-config-20261019/candidate-reviewed-plus2/files/Ecam.foid",
+          "size": 118,
+          "sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f",
+          "origin": "this-device-readback-verbatim",
+          "symbol_metadata_inherited_from_device": false
+        }
+      ],
+      "symbol_metadata_policy_review_required": true,
+      "symbol_vendor_md5_for_new_source_verified": false,
+      "downloadable": false
+    }
+  ],
+  "tests": {
+    "passed": 16,
+    "skipped": 0,
+    "kind": "synthetic offline bounded expansion, provenance, payload comparison and candidate inheritance tests"
+  },
+  "blockers": [
+    "Symbol source-MD5 generation is not reproduced; enforcement by physical firmware is unknown. Device-inherited metadata needs explicit policy review, not a claimed proven regeneration requirement.",
+    "project.hcpp read error132 establishes neither absence nor optionality; transfer policy remains unresolved.",
+    "No new native object has been downloaded or executed in this research.",
+    "Task initialization semantics and complete target ABI remain unverified."
+  ]
+}

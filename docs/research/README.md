@@ -2,6 +2,11 @@
 
 > **2026-10-19供电后更新**：20号记录24 V台架的固定变量读回、灯程序真实编译/下载/比较、状态与时钟变化，以及用户确认Y0闪烁、STOP后熄灭。18号更正仍适用：旧ff010000/4B不是CPU状态。完整Linux原生包装、无GUI下装及设备字节绑定仍开放；历史报告保留其当时状态。
 
+- [原生条件ST与命令集成](firmware/36-native-linux-integration-2026-10-19.md)：统筹从公开源实际编译到现机17文件候选、主机分支验证及原生CLI预览；无新设备写入。
+- [原生RUN/STOP/下装CLI](firmware/35-cli-native-application-2026-10-19.md)：默认预览、固定清单快照、未知写结果与候选策略边界。
+- [灯程序I/O ABI](firmware/34-native-io-abi-2026-10-19.md)：READ_BITS/WRITE_BITS描述符、低字节返回和中断钩子，未猜成裸RAM映射。
+- [MatIEC绑定集成](firmware/33-matiec-bound-application-2026-10-19.md) / [真实MatIEC到ARM](firmware/31-matiec-native-arm-2026-10-19.md)：生成C不改写、实际依赖哈希、保留原有单句后端，完整调度语义另验。
+- [现机配置与压缩](firmware/30-live-application-config-2026-10-19.md) / [入口和符号审查](firmware/29-entry-symbol-and-readback-audit-2026-10-19.md)：压缩逐字复现、源码MD5/入口字段、设备配置继承策略。
 - [原生应用文件真机读回](firmware/32-native-application-readback-2026-10-19.md)：17个执行/配置文件的实际字节哈希、失败和ZLP修复；不冒充新程序运行或恢复演练。
 - [固定接口完整候选](firmware/28-fixed-application-config-2026-10-19.md)：18文件组合、任务/变量关联和合法Empty源码标记，原生下装另验。
 - [新ST到已绑定对象](firmware/27-native-bound-application-2026-10-19.md)：REAL +1/+2真实编译、两级链接、同工程GVT/CSV绑定，保持/周期语义保留unknown。

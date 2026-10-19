@@ -1,4 +1,4 @@
-"""Synthetic fixed-interface tests and opt-in genuine LLVM/LLD pipeline tests.
+"""Synthetic fixed-interface tests and opt-in genuine native pipeline tests.
 
 No proprietary fixture is embedded. Synthetic hashes and GVT preamble are
 explicitly substituted for tests; the private real-project experiment in report
@@ -166,6 +166,31 @@ class SyntheticProject(unittest.TestCase):
             self.assertFalse(self.call(timeout_s=timeout)['ok'])
         self.assertFalse((self.root / 'candidate').exists())
 
+    def test_backend_and_required_tools_fail_before_output_or_processes(self):
+        def forbidden(*args, **kwargs):
+            self.fail('Invalid backend/tool selection must not execute a process')
+        for extra in ({'compiler_backend': 'unknown'}, {'llc': None},
+                      {'compiler_backend': 'matiec-clang'},
+                      {'compiler_backend': 'matiec-clang', 'matiec_root': '/missing'}):
+            result = self.call(**extra, compiler_runner=forbidden, linker_runner=forbidden)
+            self.assertFalse(result['ok'])
+            self.assertFalse(result['source_compilation_verified'])
+        self.assertFalse((self.root / 'candidate').exists())
+
+    def test_matiec_does_not_relax_the_existing_global_interface(self):
+        def forbidden(*args, **kwargs):
+            self.fail('Unsupported external declarations must not execute a process')
+        for declarations in ({'g_rBESS_Pcmd': 'DINT'},
+                             {'g_rBESS_Pcmd': 'REAL', 'another': 'REAL'}):
+            self.globals.write_text(json.dumps({'schema': 'plcidf.vendor-main-source.v1',
+                                                'globals': declarations}))
+            result = self.call(compiler_backend='matiec-clang', matiec_root='/not/invoked',
+                               clang='/not/invoked', llc=None,
+                               compiler_runner=forbidden, linker_runner=forbidden)
+            self.assertFalse(result['ok'])
+            self.assertIn('fixed existing REAL interface', result['diagnostics'][0]['message'])
+        self.assertFalse((self.root / 'candidate').exists())
+
 
 @unittest.skipUnless(os.environ.get('PLCIDF_TEST_LLC') and os.environ.get('PLCIDF_TEST_LLD'),
                      'Set PLCIDF_TEST_LLC and PLCIDF_TEST_LLD for real synthetic pipeline')
@@ -219,6 +244,99 @@ class RealNativePipeline(unittest.TestCase):
         result = self.call(llc=self.llc, lld=self.lld, compiler_runner=runner)
         self.assertFalse(result['ok'])
         self.assertEqual(result['stage'], 'verify')
+        self.assertFalse(result['source_to_bound_objects_verified'])
+
+
+@unittest.skipUnless(all(os.environ.get(name) for name in
+                        ('PLCIDF_TEST_MATIEC_ROOT', 'PLCIDF_TEST_CLANG', 'PLCIDF_TEST_LLD')),
+                     'Set PLCIDF_TEST_MATIEC_ROOT/CLANG/LLD for real MatIEC pipeline')
+class RealMatiecPipeline(unittest.TestCase):
+    install_files = SyntheticProject.install_files
+    call = SyntheticProject.call
+
+    def setUp(self):
+        SyntheticProject.setUp(self)
+        self.clang = str(Path(os.environ['PLCIDF_TEST_CLANG']).absolute())
+        self.lld = str(Path(os.environ['PLCIDF_TEST_LLD']).absolute())
+        self.matiec = str(Path(os.environ['PLCIDF_TEST_MATIEC_ROOT']).absolute())
+        # Genuine ARM support objects contain only our tiny fixture functions;
+        # the production profile's proprietary object/library pins stay intact.
+        for name, path in (('SBR_001', self.project / 'STTemp/SBR_001.o'),
+                           ('test_syslib_entry', self.syslib), ('test_stclib_entry', self.stclib)):
+            source = self.root / (name + '.c')
+            source.write_text(f'void {name}(void) {{}}\n')
+            subprocess.run([self.clang, '--target=armv7a-none-eabi', '-mthumb',
+                            '-mcpu=cortex-a8', '-mfloat-abi=softfp', '-ffixed-r9',
+                            '-ffreestanding', '-fno-unwind-tables', '-c', str(source), '-o', str(path)],
+                           check=True, capture_output=True, text=True, timeout=10)
+        self.files['STTemp/SBR_001.o'] = (self.project / 'STTemp/SBR_001.o').read_bytes()
+        self.pins['STTemp/SBR_001.o'] = hashlib.sha256(self.files['STTemp/SBR_001.o']).hexdigest()
+        self.library_pins.update(syslib=hashlib.sha256(self.syslib.read_bytes()).hexdigest(),
+                                 stclib=hashlib.sha256(self.stclib.read_bytes()).hexdigest())
+
+    def run_matiec(self, **kwargs):
+        return self.call(compiler_backend='matiec-clang', llc=None,
+                         matiec_root=self.matiec, clang=self.clang, lld=self.lld, **kwargs)
+
+    def test_real_if_else_sources_reach_both_links_and_existing_gvt_binding(self):
+        object_hashes, final_hashes, generated_hashes = [], [], []
+        for step in (1, 2):
+            self.source.write_text('IF g_rBESS_Pcmd >= 100.0 THEN\n'
+                                   ' g_rBESS_Pcmd := 0.0;\nELSE\n'
+                                   f' g_rBESS_Pcmd := g_rBESS_Pcmd + {step}.0;\nEND_IF;\n')
+            result = self.run_matiec(output_dir=self.root / f'candidate-{step}')
+            self.assertTrue(result['ok'], result)
+            self.assertEqual(result['compiler_backend'], 'matiec-clang')
+            self.assertTrue(result['source_to_bound_objects_verified'])
+            self.assertFalse(result['runtime_abi_verified'])
+            self.assertFalse(result['downloadable'])
+            self.assertNotIn('ir_sha256', result['source_chain'])
+            chain = result['source_chain']['matiec_c']
+            self.assertFalse(chain['generated_c_modified'])
+            self.assertTrue(chain['headers'])
+            self.assertTrue(chain['compilation_dependencies'])
+            self.assertEqual(Path(chain['adapter_c']['path']).name, 'wrapper.c')
+            generated = next(row for row in chain['generated'] if Path(row['path']).name == 'POUS.c')
+            generated_hashes.append(generated['sha256'])
+            object_hashes.append(result['source_chain']['pou_sha256'])
+            final_hashes.append(result['outputs'][-1]['sha256'])
+            for entry in result['outputs']:
+                mutation = entry['mutation']['bindings'][0]
+                self.assertEqual(mutation['after']['st_value'], 0x02100320)
+                self.assertEqual(mutation['after']['st_info'], 0x18)
+                self.assertTrue(entry['mutation']['all_nonselected_bytes_unchanged'])
+        for hashes in (object_hashes, final_hashes, generated_hashes):
+            self.assertEqual(len(set(hashes)), 2)
+
+    def test_actual_matiec_rejects_unknown_st_and_never_calls_the_linker(self):
+        self.source.write_text('g_rBESS_Pcmd := g_rBESS_Pcmd + 1.0; Y0 := TRUE;')
+        def forbidden(*args, **kwargs):
+            self.fail('MatIEC rejection must not reach the linker')
+        result = self.run_matiec(linker_runner=forbidden)
+        self.assertFalse(result['ok'])
+        self.assertEqual(result['stage'], 'compile')
+        self.assertFalse(result['source_compilation_verified'])
+        compiled = json.loads(Path(result['compiler_report']).read_text())
+        self.assertFalse(compiled['source_compiled'])
+        self.assertFalse((self.root / 'candidate' / 'linked').exists())
+
+    def test_generated_header_drift_after_compile_is_rejected(self):
+        output = self.root / 'candidate'
+        changed = False
+        def runner(argv, **kwargs):
+            nonlocal changed
+            result = subprocess.run(argv, **kwargs)
+            if not changed:
+                header = output / 'native-main' / 'generated' / 'POUS.h'
+                header.chmod(0o644)
+                header.write_bytes(header.read_bytes() + b'\n/* changed after compile */\n')
+                changed = True
+            return result
+        result = self.run_matiec(linker_runner=runner)
+        self.assertTrue(changed)
+        self.assertFalse(result['ok'])
+        self.assertEqual(result['stage'], 'verify')
+        self.assertIn('compilation provenance changed', result['diagnostics'][0]['message'])
         self.assertFalse(result['source_to_bound_objects_verified'])
 
 

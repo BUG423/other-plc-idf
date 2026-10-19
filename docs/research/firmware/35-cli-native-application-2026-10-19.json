@@ -1,0 +1,354 @@
+{
+  "schema": "plcidf.native-application-cli-research.v1",
+  "recorded_at": "2026-10-19T07:53:27.268885+00:00",
+  "scope": "Offline CLI/snapshot validation and substitute transport tests only; no PLC or Windows access",
+  "files": [
+    {
+      "path": "tools/easy521_application_usb.py",
+      "sha256": "7337f0fbdc3c0b003f3d705887c0538bfee1345589fd40135020c799ee0328c8"
+    },
+    {
+      "path": "tools/tests/test_easy521_application_usb.py",
+      "sha256": "4e5327d199af54d6de1fe3d18aead96817bb66f96f43e7ab89d55b34f91f31dc"
+    }
+  ],
+  "commands": {
+    "read": "read --remote-name NAME --credential-hex HEX [--linux-device BUS:ADDRESS --output-path PATH --execute]",
+    "legacy_read": "--remote-name NAME --credential-hex HEX [same read options]",
+    "run": "run [--linux-device BUS:ADDRESS --execute]",
+    "stop": "stop [--linux-device BUS:ADDRESS --execute]",
+    "download": "download --manifest PATH --credential-hex HEX [--linux-device BUS:ADDRESS --execute]"
+  },
+  "control_mapping": {
+    "stop_raw": 0,
+    "run_raw": 1,
+    "ack_is_state_readback": false,
+    "automatic_readback": false
+  },
+  "candidate_profiles": [
+    {
+      "schema": "plcidf.easy521-fixed-application-candidate.v1",
+      "profile": "easy521-bess-existing-interface-v1",
+      "files": 18,
+      "association_field": "association",
+      "archive": "project.hcpp exactly five bytes Empty"
+    },
+    {
+      "schema": "plcidf.easy521-live-application-inspection.v1",
+      "profile": "easy521-observed-live-interface-v1",
+      "files": 17,
+      "association_field": "source_association",
+      "archive": "omitted, transfer policy unresolved",
+      "target": "readback_target.linux_device compared when caller supplies Linux location"
+    }
+  ],
+  "validation": [
+    "Exact schema/profile/status and success flag",
+    "Exact file count, order, index and basenames",
+    "Bounded manifest<=1MiB, individual payload<=8MiB, entire manifest+payload snapshot<=32MiB",
+    "Reject duplicate JSON keys and nonfinite constants",
+    "Read-only ordinary files, O_NOFOLLOW final path and O_NONBLOCK",
+    "Reject symlink components and nonregular files; before/open/after identity checks",
+    "Fresh re-read manifest and payloads with byte and identity comparison",
+    "Source SHA from association.source.st; both native-object file hashes must match association",
+    "Pass immutable bytes once; no retry/reconnect/rollback/automatic RUN",
+    "Preserve candidate metadata/runtime limitations verbatim; no downloadable promotion",
+    "Candidate manifest SHA labeled build_sha256_kind=candidate-manifest, not compiler-report hash",
+    "Input-provenance records are retained claims and not all reopened/authenticated",
+    "Unexpected escaped write interruption keeps device access unknown and PLC change possible"
+  ],
+  "previews": [
+    {
+      "name": "fixed18",
+      "private_path": ".plcidf/research-35-cli-native-application-20261019/fixed18-frozen-preview.json",
+      "sha256": "66f27c4721e2b9823f5986124f0ba5db3555d399c4fce07e1d36ba41df779a10",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "request_outcome": "not_sent",
+      "file_count": 18,
+      "candidate_manifest_sha256": "f6ed1d0e43b4521a237dc7f3fd5b3e7f8766f9ab0fc519b12b6a10395c29dbfe",
+      "source_sha256": "59e932425313c46c29086483faf00d618c3e6f54edf3097a61c06d341f115c6b",
+      "build_sha256": "f6ed1d0e43b4521a237dc7f3fd5b3e7f8766f9ab0fc519b12b6a10395c29dbfe",
+      "build_sha256_kind": "candidate-manifest",
+      "local_snapshot_bytes": 173892,
+      "permanent_target_identity": "unknown",
+      "source_archive_policy": {
+        "included": true,
+        "policy": "vendor-Empty-marker",
+        "plc_source_recovery_verified": false
+      },
+      "symbol_metadata_policy": {
+        "policy": "inherited-fixed-interface",
+        "regenerated_for_new_source": false,
+        "device_enforcement_verified": false
+      },
+      "candidate_claims_preserved": {
+        "schema": "plcidf.easy521-fixed-application-candidate.v1",
+        "ok": true,
+        "status": "candidate-prepared",
+        "profile": "easy521-bess-existing-interface-v1",
+        "scope": "fixed-existing-interface-application-candidate",
+        "interface": {
+          "userprog_records": [
+            {
+              "tag": 256,
+              "offset": 0,
+              "value_offset": 8,
+              "size": 4,
+              "sha256": "4455173f1f1df38b5dce03e1b53a4e740b04d29a0ae987cb7ab094f8470d3f4d"
+            },
+            {
+              "tag": 512,
+              "offset": 12,
+              "value_offset": 20,
+              "size": 32,
+              "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+            },
+            {
+              "tag": 513,
+              "offset": 52,
+              "value_offset": 60,
+              "size": 4,
+              "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+            },
+            {
+              "tag": 262144,
+              "offset": 64,
+              "value_offset": 72,
+              "size": 56,
+              "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b"
+            },
+            {
+              "tag": 262400,
+              "offset": 128,
+              "value_offset": 136,
+              "size": 112,
+              "sha256": "ed8bb93782bf125bdfe0b7cd111d291d6f08ad07a5ce1382ff289f5e1dd0bbef"
+            },
+            {
+              "tag": 640,
+              "offset": 248,
+              "value_offset": 256,
+              "size": 38,
+              "sha256": "0a246d054466858f56997768865f29f6087eb0ac0912d38c5f7849474998072d"
+            }
+          ],
+          "varsinfo_records": [
+            {
+              "tag": 163840,
+              "offset": 0,
+              "value_offset": 8,
+              "size": 38,
+              "sha256": "0a246d054466858f56997768865f29f6087eb0ac0912d38c5f7849474998072d"
+            },
+            {
+              "tag": 256,
+              "offset": 46,
+              "value_offset": 54,
+              "size": 4,
+              "sha256": "4455173f1f1df38b5dce03e1b53a4e740b04d29a0ae987cb7ab094f8470d3f4d"
+            },
+            {
+              "tag": 512,
+              "offset": 58,
+              "value_offset": 66,
+              "size": 32,
+              "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+            },
+            {
+              "tag": 513,
+              "offset": 98,
+              "value_offset": 106,
+              "size": 4,
+              "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+            },
+            {
+              "tag": 196608,
+              "offset": 110,
+              "value_offset": 118,
+              "size": 284,
+              "sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95"
+            },
+            {
+              "tag": 196623,
+              "offset": 402,
+              "value_offset": 410,
+              "size": 1,
+              "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+            },
+            {
+              "tag": 196640,
+              "offset": 411,
+              "value_offset": 419,
+              "size": 4,
+              "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+            }
+          ],
+          "project_identifier": "{48553A76-85E1-410b-BED3-04DAA47C2759}",
+          "instruction_index_count": 28,
+          "instruction_index_nonempty": [
+            {
+              "index": 16,
+              "value": 0
+            },
+            {
+              "index": 19,
+              "value": 1
+            },
+            {
+              "index": 24,
+              "value": 2
+            }
+          ],
+          "output_instruction_payload_equal": true,
+          "instruction_index_payload_equal": true,
+          "variable_allocation_payload_equal": true,
+          "entry_names": [
+            "MAIN",
+            "SBR_001"
+          ],
+          "task_period_us": null,
+          "retention_semantics": "unknown",
+          "runtime_instruction_to_entry_semantics_verified": false
+        },
+        "association": {
+          "source.st": "59e932425313c46c29086483faf00d618c3e6f54edf3097a61c06d341f115c6b",
+          "stuserprog.o": "db68036ff92013340ffc1eb64b5a9ad9718be20d7df135b835c46d3b203e64a4",
+          "stprog.o": "318040ea24813ea691a6d7f17129a30fbbb1aa83bef3a30340d3ade2e370fb90",
+          "变量表.gvt": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5",
+          "VarNameAndAddr.csv": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+        },
+        "source_recovery_archive": "vendor-Empty-marker",
+        "candidate_file_set_complete": true,
+        "file_count": 18,
+        "fixed_userprog_source_reconstruction_equal": true,
+        "template_same_original_vendor_build_verified": false,
+        "source_compilation_independently_verified": false,
+        "native_source_chain_report_checked": true,
+        "device_identity": null,
+        "device_feature_selection_verified": false,
+        "downloadable": false,
+        "runtime_abi_verified": false,
+        "device_accepted": false,
+        "device_executed": false,
+        "limitations": [
+          "Only this exact existing allocation/configuration is accepted.",
+          "Task period, retention, runtime entry-index interpretation and firmware compatibility remain unverified.",
+          "Unknown configuration and symbol metadata are inherited, not regenerated or authenticated.",
+          "The 18-file candidate follows observed order, not a device-calibrated feature-selection decision.",
+          "Source is retained on the host; PLC source recovery receives the vendor Empty marker."
+        ],
+        "tool_sha256": "fba6cd682938cbab12f1dd080bdc4dc6eb9eb6d146ab098c4a282109f7652a0b"
+      }
+    },
+    {
+      "name": "live17",
+      "private_path": ".plcidf/research-35-cli-native-application-20261019/live17-frozen-preview.json",
+      "sha256": "28327e52702a66bb045451b1430589bcf609d039c6f3b7eec3e2c6dadaaf8a36",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "request_outcome": "not_sent",
+      "file_count": 17,
+      "candidate_manifest_sha256": "8907007b01b6bc6c7be09ffb5ed3d2ef0ead3acffa9f1071742f7bd7f92bc0c3",
+      "source_sha256": "59e932425313c46c29086483faf00d618c3e6f54edf3097a61c06d341f115c6b",
+      "build_sha256": "8907007b01b6bc6c7be09ffb5ed3d2ef0ead3acffa9f1071742f7bd7f92bc0c3",
+      "build_sha256_kind": "candidate-manifest",
+      "local_snapshot_bytes": 189209,
+      "permanent_target_identity": "unknown",
+      "source_archive_policy": {
+        "included": false,
+        "policy": "omitted-unresolved-transfer-policy",
+        "plc_source_recovery_verified": false
+      },
+      "symbol_metadata_policy": {
+        "policy": "inherited-device-readback",
+        "regenerated_for_new_source": false,
+        "device_enforcement_verified": false
+      },
+      "candidate_claims_preserved": {
+        "schema": "plcidf.easy521-live-application-inspection.v1",
+        "ok": true,
+        "status": "live-derived-candidate-prepared",
+        "scope": "offline-file-payload-comparison",
+        "readback_target": {
+          "linux_device": "001:002",
+          "vidpid": "0471:a531",
+          "serial": null,
+          "bcd_device": 784,
+          "application_identity": "unknown",
+          "cpu_identity": "unknown"
+        },
+        "parent_candidate_sha256": "f6ed1d0e43b4521a237dc7f3fd5b3e7f8766f9ab0fc519b12b6a10395c29dbfe",
+        "candidate_directory": "/home/zss/workspace/py2plc/.plcidf/research-28-fixed-config-20261019/candidate-final-plus1",
+        "live_directory": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z",
+        "zlib_runtime_version": "1.3",
+        "new_device_access": false,
+        "device_origin_cryptographically_authenticated": false,
+        "snapshot_atomicity_verified": false,
+        "downloadable": false,
+        "symbol_metadata_policy_review_required": true,
+        "symbol_metadata_inherited_from_device": true,
+        "symbol_vendor_md5_for_new_source_verified": false,
+        "archive_transfer_policy_verified": false,
+        "tool_sha256": "485bb17105171e4189016bfc7709246db7ed78485e5c30405fc814e5f52ea889",
+        "profile": "easy521-observed-live-interface-v1",
+        "file_count": 17,
+        "source_association": {
+          "source.st": "59e932425313c46c29086483faf00d618c3e6f54edf3097a61c06d341f115c6b",
+          "stuserprog.o": "db68036ff92013340ffc1eb64b5a9ad9718be20d7df135b835c46d3b203e64a4",
+          "stprog.o": "318040ea24813ea691a6d7f17129a30fbbb1aa83bef3a30340d3ade2e370fb90",
+          "变量表.gvt": "63700c1f9b5a4b1201201442b1d614344d9b6346fd2ad913b2c22796560b95c5",
+          "VarNameAndAddr.csv": "75e89e3c7ef94dcb53129f4e4b1b0ef4bf72947ac4296633276c0f0ac29e44fe"
+        },
+        "project_archive_included": false,
+        "project_archive_reason": "read error132 does not establish absence, optionality or required write policy",
+        "candidate_device_acceptance_verified": false
+      }
+    },
+    {
+      "name": "run",
+      "private_path": ".plcidf/research-35-cli-native-application-20261019/run-frozen-preview.json",
+      "sha256": "67d87d208dce60921d0da9ec8adb4064f61459d3becf2e225069fa7c3cef3a90",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "request_outcome": "not_sent",
+      "file_count": 0,
+      "requested_state": 1
+    },
+    {
+      "name": "stop",
+      "private_path": ".plcidf/research-35-cli-native-application-20261019/stop-frozen-preview.json",
+      "sha256": "3fa73cf88c0f677263e586839226887b3261de949d113681444192700587522c",
+      "ok": true,
+      "status": "preview",
+      "device_access": false,
+      "request_outcome": "not_sent",
+      "file_count": 0,
+      "requested_state": 0
+    }
+  ],
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q tools/tests/test_easy521_application_usb.py tools/tests/test_easy521_application_protocol.py tools/tests/test_easy521_linux_usb.py --junitxml=.plcidf/research-35-cli-native-application-20261019/tests-frozen.xml",
+    "total": 213,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "application_usb": 90,
+    "protocol": 42,
+    "native_transport": 81,
+    "new_cli_snapshot_cases": 41,
+    "junit_sha256": "04f873f8c61a41e669533208d9e94802b524d0450c2cb17bc08fe15cf23ea866",
+    "kind": "Synthetic local manifests, mock low-level API and libusb C-ABI substitutes; four real local candidate/control CLI previews"
+  },
+  "limits": [
+    "This record does not execute any application/control writer on hardware.",
+    "The two candidate schemas retain model/version, task, symbol metadata, source archive and runtime acceptance limits.",
+    "Source/object association and readback target are claims, not cryptographically authenticated origin.",
+    "Linux BUS:ADDRESS is an ephemeral location; permanent target identity remains unknown.",
+    "Transfer acknowledgment is not full application compatibility, activation or execution proof.",
+    "No deletion, firmware update, feature selection, source allocator or automatic recovery implementation."
+  ]
+}

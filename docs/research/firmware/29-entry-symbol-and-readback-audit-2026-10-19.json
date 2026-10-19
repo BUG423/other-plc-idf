@@ -1,0 +1,417 @@
+{
+  "schema": "plcidf.native-entry-readback-audit.v1",
+  "observed_date": "2026-10-19",
+  "scope": "independent Linux offline examination of root-acquired device backup, old compiler and simulator runtime",
+  "agent_device_access": false,
+  "windows_executed": false,
+  "vendor_binaries_executed": false,
+  "device_runtime_abi_verified": false,
+  "userprog": {
+    "device_file": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/userprog.foid",
+    "bytes": 215,
+    "sha256": "d9c619c476576213030c0e3013ff05f44d576e129e95513c1ab80aedea594396",
+    "records": [
+      {
+        "tag": "0x100",
+        "offset": 0,
+        "bytes": 4,
+        "sha256": "4455173f1f1df38b5dce03e1b53a4e740b04d29a0ae987cb7ab094f8470d3f4d"
+      },
+      {
+        "tag": "0x200",
+        "offset": 12,
+        "bytes": 32,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+      },
+      {
+        "tag": "0x201",
+        "offset": 52,
+        "bytes": 4,
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+      },
+      {
+        "tag": "0x40000",
+        "offset": 64,
+        "bytes": 34,
+        "sha256": "7934a906dc1ed238d9509b6048e47e8a2be30d4e05476be89a56543e824613f0"
+      },
+      {
+        "tag": "0x40100",
+        "offset": 106,
+        "bytes": 23,
+        "sha256": "5324cbcb4d6bcbb584c1e2a06ca2dfc9f6d3f3b811d7fd368d056477ac21f51e"
+      },
+      {
+        "tag": "0x40200",
+        "offset": 137,
+        "bytes": 24,
+        "sha256": "92a7e7aba3cf5dffc81321c9819af1114e5d6c775d4e21ef4919834e64689f43"
+      },
+      {
+        "tag": "0x280",
+        "offset": 169,
+        "bytes": 38,
+        "sha256": "0a246d054466858f56997768865f29f6087eb0ac0912d38c5f7849474998072d"
+      }
+    ],
+    "compression_size_table": [
+      34,
+      56,
+      23,
+      112,
+      0,
+      0
+    ],
+    "decompressed_instruction": {
+      "bytes": 56,
+      "sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "equals_pinned_Output_prg": true
+    },
+    "decompressed_index": {
+      "bytes": 112,
+      "sha256": "ed8bb93782bf125bdfe0b7cd111d291d6f08ad07a5ce1382ff289f5e1dd0bbef",
+      "equals_pinned_ILIndex_array": true
+    }
+  },
+  "varsinfo": {
+    "device_file": "/home/zss/workspace/py2plc/.plcidf/native-execution-backup-zlp-20261019T072754Z/varsinfo.foid",
+    "bytes": 173,
+    "sha256": "cf47c37124e4ae0acab0f0f1a2415495a8d12b265a90f8676d82b3c8f6dbf603",
+    "records": [
+      {
+        "tag": "0x28000",
+        "offset": 0,
+        "bytes": 38,
+        "sha256": "0a246d054466858f56997768865f29f6087eb0ac0912d38c5f7849474998072d"
+      },
+      {
+        "tag": "0x100",
+        "offset": 46,
+        "bytes": 4,
+        "sha256": "4455173f1f1df38b5dce03e1b53a4e740b04d29a0ae987cb7ab094f8470d3f4d"
+      },
+      {
+        "tag": "0x200",
+        "offset": 58,
+        "bytes": 32,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+      },
+      {
+        "tag": "0x201",
+        "offset": 98,
+        "bytes": 4,
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+      },
+      {
+        "tag": "0x30001",
+        "offset": 110,
+        "bytes": 34,
+        "sha256": "4e2cf8a3f83e6484a45b2cc3e9a80709e0702dead5f707c7a0a7d6dcde618b3f"
+      },
+      {
+        "tag": "0x3000f",
+        "offset": 152,
+        "bytes": 1,
+        "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+      },
+      {
+        "tag": "0x30020",
+        "offset": 161,
+        "bytes": 4,
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+      }
+    ],
+    "compressed_tag": "0x30001",
+    "uncompressed_length": 284,
+    "compressed_length": 26,
+    "decompressed_sha256": "9c7cab9b340bbc5e5a352caa6fa54c3c8514b0c259b9691908995ca48ea1df95",
+    "equals_pinned_VarsInfo_vi": true
+  },
+  "configurations": [
+    {
+      "name": "syscfg.foid",
+      "device_sha256": "1d1671b9ceead1e81cb222a418eb05bfc6fcd736d8d77f0dce7120b32b32a560",
+      "template_sha256": "a1ee41467a27c3b9a956b378eb4b0096910d94ac14d3eb1f59100da8936cc70c",
+      "bytes": 789,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "ethercat.foid",
+      "device_sha256": "1efee9485248e4c6eb79a88cc845931e686c9f17af84cb4a1ebb97284ba7fc73",
+      "template_sha256": "36d2bb6061e52f0ffcc7bdc8bd1253ae0b5230be9d653e7ddbff77156dbbaf1e",
+      "bytes": 270,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "modbus.foid",
+      "device_sha256": "0a9431e744b36991b21e8690e3be6e7f4942b50615e1372533ca8f54306cd99f",
+      "template_sha256": "e0bd53529dac57e11ca837494f21c0f75d89fb5b19b03a53c4ad668aba0d5190",
+      "bytes": 73,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "canlink.foid",
+      "device_sha256": "8a27a7c5f08942c86add7d7ce8b67dbd7fdf6546e2e62ffbcdd3e18a81fb7887",
+      "template_sha256": "d592bea27b9ff13d5794745e4c1e20d0e510b68083a3d331b4f76010d2200c81",
+      "bytes": 72,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "modcfg.foid",
+      "device_sha256": "04ec6830caf013d5989cebfbea9cbc15494a92f8bfe16b9ca5e75325736c1cab",
+      "template_sha256": "2421e814e2b3f2f64f0d1017034a9acac603cc349ade037a39946476f2c3ae48",
+      "bytes": 579,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "ethip.foid",
+      "device_sha256": "9e178a01f2608d1c9b8888746eee73a1b1e7a7235c625108583e18e8a417a3bd",
+      "template_sha256": "ca4029c287a568de2a61710caa8c6ed804e9408238d527c383c484507793a8ac",
+      "bytes": 301,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "EIPIns.foid",
+      "device_sha256": "ebfde7783496700e30ae1e4a016946a0df0a668b8c6a2abc03bcd4785c839a25",
+      "template_sha256": "57813a42be8f39abc48e66c6e5c26751360e931c7555c9a8cb93a85dcf1dcb26",
+      "bytes": 88,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "ecttrans.foid",
+      "device_sha256": "6ac54a5dbb84c7471033fbbc776b176704fdc47c1bee409f3209498abaa6e4bd",
+      "template_sha256": "ba4bd8ac6fdd65984a812b82a41ab5bcdd3fc631da44e1038df06f7f00b2d538",
+      "bytes": 73,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "dataLog.foid",
+      "device_sha256": "db005a99b1102b20df66ec315f19f5f6931cf07663731c5b37e4007fa3285e55",
+      "template_sha256": "0b3e745e5f801f711a5f6a6d1e00e5c4dd9d049d8068a150def56277ac6d15d4",
+      "bytes": 261,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "OpcUAServer.foid",
+      "device_sha256": "0eee4035f021b8ae6295e9c6cf5b0a7e8d3dbe1b124aa8412fc092868078760f",
+      "template_sha256": "f99c783ca7b6dd0106e441f8209d318943461ea7b6ac0c274c18bf9265bbd0cd",
+      "bytes": 97,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "sftpserver.foid",
+      "device_sha256": "e691ad5c0681395ab341a0677e49264d07ba72c6a0feda5dae39f03710c6bc81",
+      "template_sha256": "b5b4c86bc9ed9ef8529a41e13d1f5a1a4d9c89b7b8a751dc8a7ba9df400a59a2",
+      "bytes": 146,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    },
+    {
+      "name": "Ecam.foid",
+      "device_sha256": "06db88cb1f9bcb2057dbe739a6f1b31f0a69de47cce9b9efb7d0aa3e38029d7f",
+      "template_sha256": "32938d9a01867d7cb0c3ab6a1256457588d5eefacf08cd07843089a5af5c6c80",
+      "bytes": 118,
+      "different_offsets": [
+        26,
+        27
+      ],
+      "payload_equal": true,
+      "caller_dword_equal": true
+    }
+  ],
+  "symbol_samples": [
+    {
+      "label": "LAB",
+      "path": "/mnt/e/PLCProjects/PLCIDF_LAB_20261017/BESS_E521_DEV/Temp/symbol.sym",
+      "sha256": "ded220922669b1c5f664cd09c39348ffc816de98fade506a74a0ac32672bef92",
+      "bytes": 218,
+      "segments": [
+        {
+          "offset": 0,
+          "kind": 1,
+          "source_md5_version": 7,
+          "source_md5_hex": "df6a8ca75fab7f0abdaa45ae40d66302",
+          "custom_function_base_plus_count": 100,
+          "caller_word_options": 3,
+          "next_segment": 109
+        },
+        {
+          "offset": 109,
+          "kind": 2,
+          "source_md5_version": 7,
+          "source_md5_hex": "df6a8ca75fab7f0abdaa45ae40d66302",
+          "custom_function_base_plus_count": 100,
+          "caller_word_options": 3,
+          "next_segment": 0
+        }
+      ],
+      "Output_prg_sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "ILIndex_sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21"
+    },
+    {
+      "label": "LED",
+      "path": "/mnt/e/PLCProjects/PLCIDF_LED_20261019T031904Z/BESS_E521_DEV/Temp/symbol.sym",
+      "sha256": "1852d6682398014c33e51596b38fac7bf976c3c3b5f6477670662c7d03a7e2fb",
+      "bytes": 218,
+      "segments": [
+        {
+          "offset": 0,
+          "kind": 1,
+          "source_md5_version": 7,
+          "source_md5_hex": "fae9727b679e9a2dbd0f0139153033f7",
+          "custom_function_base_plus_count": 100,
+          "caller_word_options": 5,
+          "next_segment": 109
+        },
+        {
+          "offset": 109,
+          "kind": 2,
+          "source_md5_version": 7,
+          "source_md5_hex": "fae9727b679e9a2dbd0f0139153033f7",
+          "custom_function_base_plus_count": 100,
+          "caller_word_options": 5,
+          "next_segment": 0
+        }
+      ],
+      "Output_prg_sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "ILIndex_sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21"
+    },
+    {
+      "label": "original-BESS",
+      "path": "/mnt/e/PLCProjects/BESS_E521_DEV/Temp/symbol.sym",
+      "sha256": "cf06b767a8f915125c0b630b9f248bc4656aa3d68efe722cb404a6082d981f90",
+      "bytes": 218,
+      "segments": [
+        {
+          "offset": 0,
+          "kind": 1,
+          "source_md5_version": 7,
+          "source_md5_hex": "4a2c93da2d891c070530ecf19bbafe06",
+          "custom_function_base_plus_count": 101,
+          "caller_word_options": 5,
+          "next_segment": 109
+        },
+        {
+          "offset": 109,
+          "kind": 2,
+          "source_md5_version": 7,
+          "source_md5_hex": "4a2c93da2d891c070530ecf19bbafe06",
+          "custom_function_base_plus_count": 101,
+          "caller_word_options": 5,
+          "next_segment": 0
+        }
+      ],
+      "Output_prg_sha256": "3bfe2324eba14f55199d5bb4d0ee72d265a7453fc78b0c6e66d265ae21adb63b",
+      "ILIndex_sha256": "d56b4f7edb98b3da1f9ef85166c5697fe8ae6c6c6987b59dc346e85c52cbde21"
+    }
+  ],
+  "components": [
+    {
+      "path": "/mnt/e/Software/AutoShop/H530Converter.dll",
+      "bytes": 24275456,
+      "sha256": "9cc9e49c969373fdb37694a22542d11a35b63d8f8a768dfed61a2d8557b639cf"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/STCompiler.dll",
+      "bytes": 960512,
+      "sha256": "148f15c3c0337afa433b1f090f634e6513b1d10975e1cc9d45d9d7c4abb2214b"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/InterfaceMgr.dll",
+      "bytes": 1372672,
+      "sha256": "44409d9b93024652bb092debc632fd0946d3ecf1027deafad9753b3285b14192"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/CompileCfg.ini",
+      "bytes": 24,
+      "sha256": "4e24a178e4c924d8d9da1c0c01b39c8831f147c09070e275382ff280a2ffcd5a"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Simulator/CompileSystem.dll",
+      "bytes": 245713,
+      "sha256": "3e45db3f69f1fa1b4d8f4a716dfbea76b7b33a8b1143b3fbf91c13b522a86a48"
+    },
+    {
+      "path": "/mnt/e/Software/AutoShop/Simulator/mp_core.dll",
+      "bytes": 279698,
+      "sha256": "69770ad2b0c3f0bacf2cda5cdd1a320442e31a46a693b54404cb3125426b1e4f"
+    }
+  ],
+  "static_evidence": {
+    "symbol_constructor": "H530Converter 0x1016a080 initializes 64B bmys header",
+    "symbol_metadata_producer": "H530Converter 0x1016c588..0x1016c5fc gets 20B from CSTCompiler virtual slots +0x14/+0x18; writer copies into +26..45",
+    "symbol_metadata_rtti": "STCompiler CSTCompiler_HC type descriptor 0x100d528c; COL0x100c0908; vtable0x100bcefc",
+    "source_md5_version_writer": "STCompiler 0x1003fc40 writes argument as LE DWORD to provided buffer",
+    "source_md5_producer": "STCompiler 0x1003fc30 adjusts this by0x5c4; 0x1009a8c0 initializes MD5 and iterates stored names and byte buffers; exact preprocessing/input closure not reproduced",
+    "custom_function_field": "H530Converter 0x1016a1b3 reads CompileCfg.ini [Symbol] CustomFunc, adds converter+0xa4; stores at symbol header+46",
+    "word_options_source": "H530Converter 0x10003dcd reads WORD from creator stack arg+0x2c, stores converter+0x64; 0x10013bbb carries to symbol writer; semantics unconfirmed",
+    "simulator_symbol_loading": "CompileSystem _st_loader_load_symb_file0x6a74cb74 verifies segment kind +8, loads id/name tables; no MD5/header+50 code-verification reads in inspected functions",
+    "simulator_function_mapping": "CompileSystem _sym_maps_from_module0x6a74e664 walks current ELF STT_FUNC, maps ELF names/st_value into id/name entries; no stale MAIN size field",
+    "simulator_signature_check": "CompileSystem _elf_module_sig_check0x6a74a184 is return0 stub; no physical firmware conclusion",
+    "SBR_001": "Pinned original SBR SHA0427a175b83bd445b632a449e92fde9276b2a703737e7ceadaca08d4f1d6d411 .text is only bx lr (2B), no text relocations/access/call",
+    "old_vendor_initialization": "Inspected minimal vendor DINT/REAL objects have .text/.bss/unwind/debug sections, no .init/.ctors/.init_array; MAIN needs no compulsory helper beyond its expression. New MAIN has no private mutable/static temporary storage, SBR/libs keep their own BSS."
+  },
+  "conclusions": {
+    "code_size_independent_name_mapping_supported_by_host_and_simulator": true,
+    "source_md5_regenerated": false,
+    "vendor_online_source_md5_matches_new_source": false,
+    "inherited_metadata_is_proven_physical_loader_blocker": false,
+    "physical_loader_acceptance": null,
+    "error132_meaning_verified": false,
+    "error132_simulator_observation": "_file_route_create returns0x84 for path creation failure, read precondition failure and fopen failure; cannot infer file absence from code alone."
+  }
+}

@@ -46,7 +46,7 @@ Linux 本地后端已能真实编译、执行与验收 ST。Easy521 已完成 Wi
 | 🤖 **AI 编程与需求验收** | AI 直接修改 ST 和场景文件；`verify` 执行真实编译与逐扫描 expected/actual 断言，支持电机逻辑和 REAL 滞回示例。 |
 | 🐧 **Linux 原生运行** | 固定 MatIEC 工具链，提供工程创建、构建、部署、本地运行、监测与停止；物理 I/O 和工业实时性另行验收。 |
 | 🎛️ **Easy521 工程兼容** | WSL 调用已安装 AutoShop，支持已有工程 MAIN 同步、真实编译、下载与证据记录；当前保留 Windows 依赖。 |
-| 🧩 **原生编译与应用候选** | Linux 受限 DINT/REAL ST 编译、两级链接、同工程 GVT/CSV 绑定；固定既有配置组合 18 文件候选。支持范围严格限定，候选不等于真机执行通过。 |
+| 🧩 **原生编译与应用候选** | 真实 MatIEC 条件 ST→C→ARM、两级链接、同工程 GVT/CSV 绑定，保留旧单句 LLVM 后端；可组合固定配置或继承本机读回配置。原生执行另验。 |
 | 🔌 **数据控制与监测** | 原生 Linux 已实测状态/时钟及应用文件读取，默认预览；需可访问节点和空闲接口，host 准备另列。原生写入 API 的设备接受和执行另验；D 区业务地址须先绑定。 |
 | 📝 **现场反馈** | 人工记录、仪器记录校验及多轮摘要；关联需求/程序/目标，核对日期与附件哈希，未知项保留。 |
 | 📋 **可追溯记录** | 源码、构建产物、部署候选与验证结果分开记录；超时或无法核验时返回失败或 unknown，不自动重放设备写操作。 |
@@ -114,6 +114,8 @@ python tools/easy521_application_usb.py \
 
 实际执行、私有输出、超时和大文件 USB 边界见[应用协议](docs/research/firmware/26-native-application-protocol-2026-10-19.md)。带完整注释的原生构建样例见 [easy521_native_memory](examples/easy521_native_memory)，仅适用于已固定的既有变量与任务接口。
 
+新增 `run`、`stop` 与 `download --manifest` 原生命令，默认预览。MatIEC 条件示例到本机配置候选的完整命令、主机语义验证及真机待验项见[Linux 原生集成](docs/research/firmware/36-native-linux-integration-2026-10-19.md)。
+
 ### 4. 读取或预览 Modbus 数据操作
 
 确认真实 PLC IP 和寄存器用途后，在仓库内运行：
@@ -157,6 +159,7 @@ python -m pytest tools/tests -q
 | [Linux USB 真机读取](docs/research/firmware/25-native-linux-device-reads-2026-10-19.md) | 控制/数据接口纠正、8次状态/时钟读取、审计守卫与host恢复，应用下载另验 |
 | [原生应用协议](docs/research/firmware/26-native-application-protocol-2026-10-19.md) / [编译绑定](docs/research/firmware/27-native-bound-application-2026-10-19.md) / [配置候选](docs/research/firmware/28-fixed-application-config-2026-10-19.md) | 单次原生文件事务、新 ST 实际编译及固定接口 18 文件组合；设备运行另验 |
 | [原生应用真机读回](docs/research/firmware/32-native-application-readback-2026-10-19.md) | 17 个执行/配置文件、设备哈希、USB 边界修复、历史失败和主机恢复 |
+| [Linux 原生集成](docs/research/firmware/36-native-linux-integration-2026-10-19.md) / [原生命令](docs/research/firmware/35-cli-native-application-2026-10-19.md) | 真实 MatIEC 条件程序、新对象与现机配置组合、run/stop/download 预览及验收边界 |
 | [直接控制研究](docs/management/EASY521_DIRECT_CONTROL_2026-10-18.md) | 数据协议、CPU 模式、应用下载和底层系统的证据边界 |
 | [实施计划](docs/management/PLAN.md) / [进展](docs/management/PROGRESS.md) | 任务、验收条件、分工与 GitHub 跟踪 |
 | [协议与固件研究](docs/research/README.md) | 手册核验、通信实现、链接/包装及芯片资料研究 |

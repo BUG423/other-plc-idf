@@ -36,6 +36,8 @@ ASSETS = (
     "tools/inspect_easy521_foid.py",
     "tools/link_vendor_application.py",
     "tools/bind_vendor_globals.py",
+    "tools/inspect_easy521_live_application.py",
+    "tools/compile_easy521_matiec_probe.py",
     "examples/easy521_native_probe/MAIN_plus1_body.st",
     "examples/easy521_native_probe/MAIN_plus2_body.st",
     "examples/easy521_native_probe/README.md",

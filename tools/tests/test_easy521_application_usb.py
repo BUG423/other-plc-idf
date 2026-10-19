@@ -2,6 +2,8 @@
 
 import importlib.util
 import hashlib
+import json
+import os
 from pathlib import Path
 import struct
 
@@ -319,3 +321,278 @@ def test_download_preview_never_loads_library_or_claims_device(tmp_path):
     fake = FileUsb()
     result = download(tmp_path, fake, execute=False)
     assert result["ok"] and result["status"] == "preview" and not fake.calls
+
+
+def candidate(tmp_path, *, live=False):
+    """Synthetic local manifest provenance, not a valid device application."""
+    root = tmp_path / "candidate"
+    root.mkdir()
+    names = app._LIVE_FILES if live else app._FIXED_FILES
+    files = []
+    for index, name in enumerate(names):
+        data = b"Empty" if name == "project.hcpp" else name.encode()
+        path = root / name
+        path.write_bytes(data)
+        files.append({"index": index, "remote_name": name, "path": str(path), "size": len(data),
+                      "sha256": hashlib.sha256(data).hexdigest(), "origin": "test-only-unverified"})
+    association = {"source.st": "1" * 64, **{x["remote_name"]: x["sha256"] for x in files
+                                            if x["remote_name"] in ("stprog.o", "stuserprog.o")}}
+    if live:
+        manifest = {"schema": "plcidf.easy521-live-application-inspection.v1",
+                    "profile": "easy521-observed-live-interface-v1", "status": "live-derived-candidate-prepared",
+                    "source_association": association, "project_archive_included": False,
+                    "archive_transfer_policy_verified": False,
+                    "readback_target": {"linux_device": "001:004", "vidpid": "0471:a531", "serial": None}}
+    else:
+        manifest = {"schema": "plcidf.easy521-fixed-application-candidate.v1",
+                    "profile": "easy521-bess-existing-interface-v1", "status": "candidate-prepared",
+                    "association": association, "source_recovery_archive": "vendor-Empty-marker"}
+    manifest.update(ok=True, file_count=len(files), files=files, downloadable=False, runtime_abi_verified=False,
+                    device_accepted=False, device_executed=False, symbol_metadata_inherited="test-opaque",
+                    inputs=[{"snapshot_path": "/must/not/be/opened", "sha256": "2" * 64}])
+    path = root / "manifest.json"
+    path.write_text(json.dumps(manifest))
+    return path, manifest
+
+
+@pytest.mark.parametrize("live", [False, True])
+def test_manifest_preview_snapshots_fixed_order_without_device_library_lease_random_or_writes(tmp_path, monkeypatch, live):
+    path, manifest = candidate(tmp_path, live=live)
+    def forbidden(*args, **kwargs): pytest.fail("preview accessed USB/lease/random")
+    monkeypatch.setattr(app.native.C, "CDLL", forbidden)
+    monkeypatch.setattr(app.native, "ResourceLease", forbidden)
+    monkeypatch.setattr(app.secrets, "randbits", forbidden)
+    before = {p: p.read_bytes() for p in path.parent.iterdir()}
+    result = app.download_manifest_native(manifest_path=path, credential=b"\0" * 8,
+                                          linux_device="001:004")
+    assert result["ok"] and result["status"] == "preview" and result["device_access"] is False
+    assert result["source_sha256"] == "1" * 64 and result["build_sha256"] == hashlib.sha256(before[path]).hexdigest()
+    assert result["build_sha256_kind"] == "candidate-manifest"
+    assert result["candidate_metadata"]["downloadable"] is False
+    assert result["candidate_metadata"]["runtime_abi_verified"] is False
+    assert result["candidate_metadata"]["symbol_metadata_inherited"] == "test-opaque"
+    assert result["candidate_provenance_inputs_reopened"] is False
+    assert result["permanent_target_identity"] == "unknown" and result["local_snapshot_rechecked"]
+    assert [x["remote_name"] for x in result["files"]] == list(app._LIVE_FILES if live else app._FIXED_FILES)
+    assert {p: p.read_bytes() for p in path.parent.iterdir()} == before
+
+
+@pytest.mark.parametrize("mutation", ["schema", "profile", "status", "count", "index", "order", "name", "size", "hash",
+                                       "association", "source", "archive", "missing", "duplicate-json", "nan", "oversize-manifest"])
+def test_invalid_candidate_manifest_never_invokes_low_level_writer(tmp_path, monkeypatch, mutation):
+    path, manifest = candidate(tmp_path)
+    if mutation == "schema": manifest["schema"] = "other"
+    elif mutation == "profile": manifest["profile"] = "other"
+    elif mutation == "status": manifest["status"] = "inspected"
+    elif mutation == "count": manifest["file_count"] = 17
+    elif mutation == "index": manifest["files"][0]["index"] = False
+    elif mutation == "order": manifest["files"][0], manifest["files"][1] = manifest["files"][1], manifest["files"][0]
+    elif mutation == "name": manifest["files"][0]["remote_name"] = "../project.hcpp"
+    elif mutation == "size": manifest["files"][0]["size"] += 1
+    elif mutation == "hash": manifest["files"][0]["sha256"] = "0" * 64
+    elif mutation == "association": manifest["association"]["stprog.o"] = "0" * 64
+    elif mutation == "source": manifest["association"]["source.st"] = "UNKNOWN"
+    elif mutation == "archive":
+        target = Path(manifest["files"][0]["path"])
+        target.write_bytes(b"Other")
+        manifest["files"][0]["sha256"] = hashlib.sha256(b"Other").hexdigest()
+    elif mutation == "missing": Path(manifest["files"][1]["path"]).unlink()
+    path.write_text(json.dumps(manifest))
+    if mutation == "duplicate-json": path.write_text('{"ok":true,"ok":false}')
+    elif mutation == "nan": path.write_text('{"ok":NaN}')
+    elif mutation == "oversize-manifest": path.write_bytes(b" " * (1024 * 1024 + 1))
+    def forbidden(**kwargs): pytest.fail("invalid candidate reached writer")
+    monkeypatch.setattr(app, "download_native", forbidden)
+    result = app.download_manifest_native(manifest_path=path, credential=b"\0" * 8,
+                                          execute=True, linux_device="001:004")
+    assert not result["ok"] and result["device_access"] is False and result["request_outcome"] == "not_sent"
+
+
+@pytest.mark.parametrize("target", ["001:005", "bad"])
+def test_live_candidate_location_mismatch_rejected_before_low_level_writer(tmp_path, monkeypatch, target):
+    path, _ = candidate(tmp_path, live=True)
+    monkeypatch.setattr(app, "download_native", lambda **kwargs: pytest.fail("wrong target reached writer"))
+    result = app.download_manifest_native(manifest_path=path, credential=b"\0" * 8,
+                                          execute=True, linux_device=target)
+    assert not result["ok"] and result["device_access"] is False
+
+
+@pytest.mark.parametrize("which,kind", [("manifest", "symlink"), ("payload", "symlink"), ("payload", "fifo"), ("payload", "directory")])
+def test_candidate_symlink_or_nonregular_input_cannot_block_or_reach_writer(tmp_path, monkeypatch, which, kind):
+    path, manifest = candidate(tmp_path)
+    selected = path if which == "manifest" else Path(manifest["files"][1]["path"])
+    raw = selected.read_bytes()
+    selected.unlink()
+    if kind == "symlink":
+        other = tmp_path / "other"
+        other.write_bytes(raw)
+        selected.symlink_to(other)
+    elif kind == "fifo": os.mkfifo(selected)
+    else: selected.mkdir()
+    monkeypatch.setattr(app, "download_native", lambda **kwargs: pytest.fail("nonregular reached writer"))
+    result = app.download_manifest_native(manifest_path=path, credential=b"\0" * 8)
+    assert not result["ok"] and not result.get("transaction_invoked", False)
+
+
+@pytest.mark.parametrize("which", ["manifest", "payload"])
+def test_candidate_input_drift_during_final_recheck_is_rejected(tmp_path, monkeypatch, which):
+    path, manifest = candidate(tmp_path)
+    selected = path if which == "manifest" else Path(manifest["files"][1]["path"])
+    original = app._candidate_read
+    counts = {}
+    def drift(file_path, **kwargs):
+        counts[file_path] = counts.get(file_path, 0) + 1
+        if file_path == selected and counts[file_path] == 2:
+            selected.write_bytes(selected.read_bytes() + b" ")
+        return original(file_path, **kwargs)
+    monkeypatch.setattr(app, "_candidate_read", drift)
+    monkeypatch.setattr(app, "download_native", lambda **kwargs: pytest.fail("drift reached writer"))
+    result = app.download_manifest_native(manifest_path=path, credential=b"\0" * 8)
+    assert not result["ok"] and result["stage"] == "snapshot-recheck"
+
+
+def test_candidate_execute_passes_one_immutable_snapshot_and_keeps_ack_separate_from_acceptance(tmp_path, monkeypatch):
+    path, manifest = candidate(tmp_path)
+    calls = []
+    def writer(**kwargs):
+        calls.append(kwargs)
+        Path(manifest["files"][1]["path"]).write_bytes(b"changed-after-snapshot")
+        return {**app._report("download-files"), "ok": True, "status": "transfer-acknowledged",
+                "device_access": True, "request_outcome": "all_transfer_requests_acknowledged"}
+    monkeypatch.setattr(app, "download_native", writer)
+    result = app.download_manifest_native(manifest_path=path, credential=b"\0" * 8,
+                                          execute=True, linux_device="001:004", timeout_ms=2222)
+    assert len(calls) == 1 and calls[0]["execute"] is True and calls[0]["timeout_ms"] == 2222
+    assert calls[0]["source_sha256"] == "1" * 64 and calls[0]["build_sha256"] == hashlib.sha256(path.read_bytes()).hexdigest()
+    assert calls[0]["files"][1]["data"] == b"userprog.foid" and type(calls[0]["files"][1]["data"]) is bytes
+    assert result["ok"] and result["status"] == "transfer-acknowledged" and result["device_access"]
+    assert result["candidate_metadata"]["downloadable"] is False and not result["application_execution_verified"]
+
+
+@pytest.mark.parametrize("action,state", [("run", 1), ("stop", 0)])
+def test_control_cli_default_preview_keeps_mapping_and_zero_device_access(monkeypatch, capsys, action, state):
+    def forbidden(*args, **kwargs): pytest.fail("preview accessed resource")
+    monkeypatch.setattr(app.native.C, "CDLL", forbidden)
+    monkeypatch.setattr(app.native, "ResourceLease", forbidden)
+    monkeypatch.setattr(app.secrets, "randbits", forbidden)
+    assert app.main([action]) == 0
+    report = json.loads(capsys.readouterr().out)
+    assert report["status"] == "preview" and report["requested_state"] == state and report["device_access"] is False
+
+
+def test_legacy_read_cli_preview_does_not_inspect_output(monkeypatch, capsys):
+    def forbidden(*args, **kwargs): pytest.fail("read preview inspected a path")
+    monkeypatch.setattr(app.Path, "exists", forbidden)
+    monkeypatch.setattr(app.Path, "lstat", forbidden)
+    assert app.main(["--remote-name", "stprog.o", "--credential-hex", "0000000000000000", "--output-path", "/unreadable/path"]) == 0
+    assert json.loads(capsys.readouterr().out)["status"] == "preview"
+
+
+def test_manifest_cli_execute_interrupt_preserves_low_level_evidence_without_retry(tmp_path, monkeypatch, capsys):
+    path, _ = candidate(tmp_path, live=True)
+    calls = []
+    def interrupted(**kwargs):
+        calls.append(kwargs)
+        return {**app._report("download-files"), "status": "interrupted", "device_access": True,
+                "stage": "interrupted", "interrupted_at_stage": "receive", "plc_change_possible": True,
+                "request_outcome": "unknown", "release_rc": 0, "close_called": True,
+                "requests": [{"write_calls": 1, "out_transferred": 20, "request_outcome": "unknown"}]}
+    monkeypatch.setattr(app, "download_native", interrupted)
+    code = app.main(["download", "--manifest", str(path), "--credential-hex", "0000000000000000",
+                     "--execute", "--linux-device", "001:004"])
+    report = json.loads(capsys.readouterr().out)
+    assert code == 130 and len(calls) == 1 and report["device_access"] is True
+    assert report["requests"][0]["out_transferred"] == 20 and report["request_outcome"] == "unknown"
+    assert report["release_rc"] == 0 and report["close_called"] is True
+    assert report["candidate_metadata"]["runtime_abi_verified"] is False
+
+
+def test_unexpected_writer_interrupt_does_not_invent_no_device_access(tmp_path, monkeypatch):
+    path, _ = candidate(tmp_path)
+    def interrupted(**kwargs): raise KeyboardInterrupt()
+    monkeypatch.setattr(app, "download_native", interrupted)
+    result = app.download_manifest_native(manifest_path=path, credential=b"\0" * 8, execute=True, linux_device="001:004")
+    assert result["status"] == "interrupted" and result["device_access"] is None and result["request_outcome"] == "unknown"
+    assert result["plc_change_possible"] is True
+
+
+def test_manifest_total_snapshot_budget_rejects_before_fourth_large_payload(tmp_path, monkeypatch):
+    path, manifest = candidate(tmp_path, live=True)
+    block = b"x" * (8 * 1024 * 1024)
+    digest = hashlib.sha256(block).hexdigest()
+    for record in manifest["files"][:5]:
+        record.update(size=len(block), sha256=digest)
+    manifest["source_association"].update({name: digest for name in ("stprog.o", "stuserprog.o")})
+    path.write_text(json.dumps(manifest))
+    original = app._candidate_read
+    large_reads = []
+    def synthetic_large(file_path, **kwargs):
+        if file_path != path:
+            large_reads.append(file_path.name)
+            return block, (0, 0, len(block), 0, 0)
+        return original(file_path, **kwargs)
+    monkeypatch.setattr(app, "_candidate_read", synthetic_large)
+    monkeypatch.setattr(app, "download_native", lambda **kwargs: pytest.fail("oversize reached writer"))
+    result = app.download_manifest_native(manifest_path=path, credential=b"\0" * 8)
+    assert not result["ok"] and "32MiB" in result["diagnostics"][0]["message"]
+    # The manifest itself consumes budget, so three8MiB payloads fit, four do not.
+    assert len(large_reads) == 3
+
+
+def test_snapshot_refuses_fifo_substitution_between_lstat_and_open(tmp_path, monkeypatch):
+    path, manifest = candidate(tmp_path)
+    selected = Path(manifest["files"][1]["path"])
+    original = app.os.open
+    flags_seen = []
+    def swapped(file_path, flags, *args, **kwargs):
+        if file_path == selected:
+            selected.unlink()
+            os.mkfifo(selected)
+            flags_seen.append(flags)
+        return original(file_path, flags, *args, **kwargs)
+    monkeypatch.setattr(app.os, "open", swapped)
+    monkeypatch.setattr(app, "download_native", lambda **kwargs: pytest.fail("FIFO reached writer"))
+    result = app.download_manifest_native(manifest_path=path, credential=b"\0" * 8)
+    assert not result["ok"] and flags_seen[0] & os.O_NONBLOCK and flags_seen[0] & os.O_NOFOLLOW
+
+
+@pytest.mark.parametrize("field,value", [("credential", b""), ("timeout_ms", 0), ("session_timeout_s", float("nan")), ("execute", 1)])
+def test_bad_manifest_transaction_arguments_do_not_even_open_local_manifest(tmp_path, monkeypatch, field, value):
+    monkeypatch.setattr(app, "_candidate_read", lambda *args, **kwargs: pytest.fail("bad args read files"))
+    arguments = {"manifest_path": tmp_path / "absent", "credential": b"\0" * 8}
+    arguments[field] = value
+    result = app.download_manifest_native(**arguments)
+    assert not result["ok"] and not result["device_access"] and result["stage"] == "arguments"
+
+
+def test_manifest_local_snapshot_interrupt_keeps_not_sent_and_no_device_access(tmp_path, monkeypatch):
+    def interrupted(*args, **kwargs): raise KeyboardInterrupt()
+    monkeypatch.setattr(app, "_candidate_read", interrupted)
+    result = app.download_manifest_native(manifest_path=tmp_path / "unused", credential=b"\0" * 8)
+    assert result["status"] == "interrupted" and result["request_outcome"] == "not_sent" and result["device_access"] is False
+
+
+@pytest.mark.parametrize("action,state", [("run", 1), ("stop", 0)])
+def test_control_cli_execute_calls_one_api_and_keeps_ack_without_state_readback(tmp_path, monkeypatch, capsys, action, state):
+    calls = []
+    def control(**kwargs):
+        calls.append(kwargs)
+        return {**app._report("gcm-set"), "ok": True, "status": "control-acknowledged",
+                "device_access": True, "ack_u32": 0, "cpu_state_verified": False}
+    monkeypatch.setattr(app, "set_gcm_native", control)
+    assert app.main([action, "--execute", "--linux-device", "001:004", "--timeout-ms", "2222"]) == 0
+    report = json.loads(capsys.readouterr().out)
+    assert calls == [{"state": state, "execute": True, "linux_device": "001:004", "timeout_ms": 2222, "session_timeout_s": 30.0}]
+    assert report["status"] == "control-acknowledged" and report["cpu_state_verified"] is False
+
+
+def test_unexpected_control_api_interrupt_keeps_possible_write_and_no_retry(monkeypatch, capsys):
+    calls = []
+    def interrupted(**kwargs):
+        calls.append(kwargs)
+        raise KeyboardInterrupt()
+    monkeypatch.setattr(app, "set_gcm_native", interrupted)
+    assert app.main(["run", "--execute", "--linux-device", "001:004"]) == 130
+    report = json.loads(capsys.readouterr().out)
+    assert len(calls) == 1 and report["plc_change_possible"] and report["device_access"] is None
+    assert report["request_outcome"] == "unknown"

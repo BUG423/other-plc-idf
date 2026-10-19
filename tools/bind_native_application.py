@@ -8,18 +8,24 @@ protect its existing allocation, task records, symbol ids and opaque retention/
 period configuration. These hashes do not establish its historical build origin
 or identity with any online PLC. No new variable allocator is implemented.
 
-Only g_rBESS_Pcmd:REAL += 1.0/2.0 is compiled. Address/type come from same-project
-GVT, all GVT addresses/widths are checked against its CSV, and only that global's
-st_value/st_info fields are patched. Original SBR_001 and two pinned libraries
-remain unchanged. Complete FOID/configuration assembly and device/runtime ABI
-are not verified. No Windows, network, USB, download or CPU-control API exists.
+The default restricted-llvm backend compiles only g_rBESS_Pcmd:REAL += 1.0/2.0.
+The explicit matiec-clang backend uses actual MatIEC ST parsing and unchanged
+generated C for stateless assignments/IF/ELSE on that same external REAL. It
+does not add variables, I/O, force, timers or retention. Address/type come from
+same-project GVT, all GVT addresses/widths are checked against its CSV, and only
+that global's st_value/st_info fields are patched. Original SBR_001 and two
+pinned libraries remain unchanged. Complete FOID/configuration assembly and
+device/runtime ABI are not verified. No Windows, network, USB, download or
+CPU-control API exists. See research 27/33 for the separate compiler evidence.
+Neither compiler inserts the vendor interrupt-dispatch hook. Unchanged task
+configuration bytes do not establish preservation of interrupt/scan scheduling.
 """
 from __future__ import annotations
 
 import argparse
 import importlib.util
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import struct
 import subprocess
 import sys
@@ -58,6 +64,80 @@ LIBRARIES = {
     'stclib': '047dad6fa718170625f0a78d927df304f3a6f681970009324a7179397958d95e',
 }
 MAX_INPUT = 4 * 1024 * 1024
+COMPILER_BACKENDS = ('restricted-llvm', 'matiec-clang')
+
+
+def _matiec_source_chain(compiled, directory, matiec_root):
+    """Recheck actual MatIEC/C/header/tool artifacts after both links.
+
+    The real compiler report provides expected identities, never invented LLVM
+    IR. Re-reading its bounded artifacts here catches drift after compilation
+    and before application binding completes. The returned records describe
+    observed local provenance; they are not a signed build attestation.
+    """
+    if (compiled.get('schema') != 'plcidf.easy521-matiec-probe.v1'
+            or compiled.get('profile') != 'matiec-existing-pcmd-stateless-real-v1'
+            or compiled.get('source_compiled') is not True):
+        raise ValueError('Unexpected MatIEC compiler report/profile')
+    checks = {}
+
+    def record(path, digest, limit=MAX_INPUT):
+        path = Path(path)
+        if not path.is_absolute():
+            raise ValueError('Compiler provenance paths must be absolute')
+        if path in checks and checks[path][0] != digest:
+            raise ValueError('Conflicting compiler provenance hash: ' + str(path))
+        checks[path] = (digest, limit)
+        return {'path': str(path), 'sha256': digest}
+
+    generated = []
+    for entry in compiled['generated']:
+        path = Path(entry['path'])
+        if path.parent != directory / 'generated':
+            raise ValueError('Generated C/header escaped the compiler output')
+        generated.append(record(path, entry['sha256']))
+    names = [Path(r['path']).name for r in generated]
+    if len(set(names)) != len(names) or not {'POUS.c', 'POUS.h'} <= set(names):
+        raise ValueError('Actual MatIEC POUS.c and POUS.h are required')
+    adapter = record(directory / 'wrapper.c', compiled['wrapper_sha256'])
+    dependencies = []
+    for entry in compiled['compilation_dependencies']:
+        if entry['origin'] not in ('frozen-generated-or-matiec', 'clang-resource-header'):
+            raise ValueError('Unknown MatIEC compilation dependency origin')
+        dependencies.append({**record(entry['path'], entry['sha256']), 'origin': entry['origin']})
+    dependency_paths = {row['path'] for row in dependencies}
+    if not {adapter['path'], str(directory / 'generated' / 'POUS.c'),
+            str(directory / 'generated' / 'POUS.h')} <= dependency_paths:
+        raise ValueError('Clang actual dependencies omit the C adapter or generated POU')
+    dependency_file = record(directory / 'MAIN.d', compiled['dependency_file_sha256'])
+    manifest = record(matiec_root / 'toolchain.json', compiled['toolchain_manifest_sha256'])
+    libraries = []
+    for name, digest in compiled['toolchain_manifest']['library_sha256'].items():
+        relative = PurePosixPath(name)
+        if relative.is_absolute() or '..' in relative.parts or not name.startswith('lib/'):
+            raise ValueError('Invalid MatIEC library provenance path')
+        libraries.append(record(matiec_root / name, digest))
+    tools = [record(path, digest, 256 * 1024 * 1024)
+             for path, digest in compiled['tool_hashes'].items()]
+    components = [record(path, digest)
+                  for path, digest in compiled['compiler_component_sha256'].items()]
+    for path, (digest, limit) in checks.items():
+        if _native._sha(_native._read(path, limit)) != digest:
+            raise ValueError('MatIEC compilation provenance changed: ' + str(path))
+    # The original statement body is distinct from the compiler's explicit
+    # PROGRAM/VAR_EXTERNAL wrapper; no synthetic LLVM IR record is substituted.
+    body = _native._read(directory / 'body.st', _native.MAX_SOURCE)
+    if _native._sha(body) != compiled['source_sha256']:
+        raise ValueError('MatIEC frozen ST body differs from the captured source')
+    return {'generated': generated, 'adapter_c': adapter,
+            'wrapped_st': {'path': str(directory / 'source.st'),
+                           'sha256': _native._sha(_native._read(directory / 'source.st', _native.MAX_SOURCE + 1024))},
+            'headers': [row for row in dependencies if Path(row['path']).suffix == '.h'],
+            'compilation_dependencies': dependencies, 'dependency_file': dependency_file,
+            'toolchain_manifest': manifest, 'matiec_libraries': libraries,
+            'compiler_tools': tools, 'compiler_components': components,
+            'generated_c_modified': False,
+            'arithmetic': compiled['arithmetic']}
 
 
 def inspect_existing_interface(files: dict[str, bytes]) -> dict:
@@ -111,13 +191,20 @@ def inspect_existing_interface(files: dict[str, bytes]) -> dict:
 
 
 def build_native_application(*, source, globals_path, project_dir, syslib, stclib,
-                             llc, lld, output_dir, timeout_s=10.0,
+                             lld, output_dir, llc=None, compiler_backend='restricted-llvm',
+                             matiec_root=None, clang=None, readelf='/usr/bin/readelf', timeout_s=10.0,
                              compiler_runner=subprocess.run, linker_runner=subprocess.run) -> dict:
     """Produce new source-linked and existing-global-bound ARM objects offline.
 
-    source/globals_path select the fixed REAL ST profile. project_dir supplies
+    source/globals_path select the fixed REAL interface. compiler_backend defaults
+    to restricted-llvm (requires llc); explicit matiec-clang requires matiec_root
+    and clang, uses actual ST-to-C compilation, and records C/adapter/header
+    provenance instead of LLVM IR. readelf inspects that backend's ARM attributes.
+    project_dir supplies
     the exact twelve existing interface files; syslib/stclib select the pinned
-    library branch. llc/lld are trusted Linux executables. output_dir must be
+    library branch. Compiler/linker parameters identify trusted Linux tools.
+    No vendor interrupt hook is inserted; scheduling semantics remain unverified.
+    output_dir must be
     new, outside all original input directories, with an existing parent. Each
     process is bounded by timeout_s (0.1..30 seconds), never replayed. Originals
     are read-only; the new directory preserves frozen inputs, compiler/link
@@ -131,11 +218,13 @@ def build_native_application(*, source, globals_path, project_dir, syslib, stcli
     """
     out = Path(output_dir).absolute()
     report = {'schema': 'plcidf.native-bound-application.v1', 'profile': PROFILE,
+              'compiler_backend': compiler_backend,
               'ok': False, 'status': 'failed', 'stage': 'preflight', 'diagnostics': [],
               'source_compilation_verified': False, 'existing_allocation_verified': False,
               'source_to_bound_objects_verified': False, 'runtime_abi_verified': False,
               'complete_application': False, 'downloadable': False, 'device_access': False,
-              'windows_access': False, 'target_identity': None, 'outputs': []}
+              'windows_access': False, 'target_identity': None, 'outputs': [],
+              'runtime_scheduling_verified': False, 'interrupt_dispatch_implemented': False}
     created = False
     snapshots = {}
     frozen = {}
@@ -143,10 +232,19 @@ def build_native_application(*, source, globals_path, project_dir, syslib, stcli
         if (isinstance(timeout_s, bool) or not isinstance(timeout_s, (int, float))
                 or not 0.1 <= timeout_s <= 30):
             raise ValueError('timeout_s must be finite and between 0.1 and 30')
+        if compiler_backend not in COMPILER_BACKENDS:
+            raise ValueError('Unsupported compiler_backend')
+        if compiler_backend == 'restricted-llvm' and not llc:
+            raise ValueError('restricted-llvm requires llc')
+        if compiler_backend == 'matiec-clang' and (not matiec_root or not clang):
+            raise ValueError('matiec-clang requires matiec_root and clang')
+        matiec = _load('compile_easy521_matiec_probe.py') if compiler_backend == 'matiec-clang' else None
         tool_paths = {Path(p).absolute() for p in (
             __file__, _native.__file__, _native._prepare.__file__,
             _native._inspect.__file__, _link.__file__, _binder.__file__,
             _binder._variables.__file__)}
+        if matiec is not None:
+            tool_paths.add(Path(matiec.__file__).absolute())
         tool_bytes = {p: _native._read(p, MAX_INPUT) for p in tool_paths}
         project = Path(project_dir).absolute()
         raw_files = {}
@@ -162,7 +260,12 @@ def build_native_application(*, source, globals_path, project_dir, syslib, stcli
         source_path, globals_file = Path(source).absolute(), Path(globals_path).absolute()
         source_bytes = snapshots[source_path] = _native._read(source_path, _native.MAX_SOURCE)
         globals_bytes = snapshots[globals_file] = _native._read(globals_file, _native.MAX_SOURCE)
-        _native.parse_probe(source_bytes, globals_bytes, profile=_native.REAL_PROFILE)
+        if compiler_backend == 'restricted-llvm':
+            _native.parse_probe(source_bytes, globals_bytes, profile=_native.REAL_PROFILE)
+        else:
+            declarations = _native._prepare.parse_globals(globals_bytes)
+            if [(name.upper(), kind) for name, kind in declarations.items()] != [('G_RBESS_PCMD', 'REAL')]:
+                raise ValueError('Declarations differ from the fixed existing REAL interface')
         if len({p.resolve() for p in snapshots}) != len(snapshots):
             raise ValueError('Input path aliases are unsupported')
         if out.exists() or out.is_symlink() or not out.parent.is_dir():
@@ -195,15 +298,33 @@ def build_native_application(*, source, globals_path, project_dir, syslib, stcli
                       tool_components=[{'path': str(p), 'sha256': _native._sha(b)}
                                        for p, b in sorted(tool_bytes.items())])
         report['stage'] = 'compile'
-        compiled = _native.compile_probe(source=source_path, globals_path=globals_file,
-                                        profile=_native.REAL_PROFILE, llc=llc,
-                                        output_dir=out / 'native-main', timeout_s=timeout_s,
-                                        runner=compiler_runner)
-        report['compiler_report'] = str(out / 'native-main' / 'probe-report.json')
+        if compiler_backend == 'restricted-llvm':
+            compiled = _native.compile_probe(source=source_path, globals_path=globals_file,
+                                            profile=_native.REAL_PROFILE, llc=llc,
+                                            output_dir=out / 'native-main', timeout_s=timeout_s,
+                                            runner=compiler_runner)
+            report['compiler_report'] = str(out / 'native-main' / 'probe-report.json')
+        else:
+            compiled = matiec.compile_matiec_probe(source=source_path, matiec_root=matiec_root,
+                                                 clang=clang, readelf=readelf,
+                                                 output_dir=out / 'native-main', timeout_s=timeout_s,
+                                                 runner=compiler_runner)
+            report['compiler_report'] = str(out / 'native-main' / 'matiec-probe-report.json')
         if not compiled['ok']:
             raise ValueError('Native compiler failed: ' + str(compiled['diagnostics']))
-        if [r['sha256'] for r in compiled['inputs']] != [_native._sha(source_bytes), _native._sha(globals_bytes)]:
-            raise ValueError('Compiler consumed different source/declarations than the captured batch')
+        if compiler_backend == 'restricted-llvm':
+            if [r['sha256'] for r in compiled['inputs']] != [_native._sha(source_bytes), _native._sha(globals_bytes)]:
+                raise ValueError('Compiler consumed different source/declarations than the captured batch')
+        else:
+            if compiled['source_sha256'] != _native._sha(source_bytes):
+                raise ValueError('MatIEC consumed a different source than the captured batch')
+            for name in ('body.st', 'source.st'):
+                path = out / 'native-main' / name
+                frozen[path] = _native._read(path, _native.MAX_SOURCE + 1024)
+            if frozen[out / 'native-main' / 'body.st'] != source_bytes:
+                raise ValueError('MatIEC frozen body differs from the captured source')
+        compiler_report = Path(report['compiler_report'])
+        frozen[compiler_report] = _native._read(compiler_report, MAX_INPUT)
         report['stage'] = 'link'
         linked = _link.link_application(pous=[out / 'native-main' / 'MAIN.o',
                                               out / 'project-interface' / 'STTemp' / 'SBR_001.o'],
@@ -243,12 +364,16 @@ def build_native_application(*, source, globals_path, project_dir, syslib, stcli
                 raise ValueError('Linked object changed after binding')
         report['source_chain'] = {'source_sha256': _native._sha(source_bytes),
                                   'globals_sha256': _native._sha(globals_bytes),
-                                  'ir_sha256': compiled['frozen_inputs'][2]['sha256'],
                                   'pou_sha256': compiled['object']['sha256'],
                                   'compiler_report_sha256': _native._sha(_native._read(Path(report['compiler_report']), MAX_INPUT)),
                                   'link_report_sha256': _native._sha(_native._read(Path(report['link_report']), MAX_INPUT)),
                                   'association': 'observed-native-compile-two-links-and-existing-GVT-binding',
                                   'cryptographic_build_attestation': False}
+        if compiler_backend == 'restricted-llvm':
+            report['source_chain']['ir_sha256'] = compiled['frozen_inputs'][2]['sha256']
+        else:
+            report['source_chain']['matiec_c'] = _matiec_source_chain(
+                compiled, out / 'native-main', Path(matiec_root).absolute())
         report.update(ok=True, status='existing-interface-native-candidate', stage='complete',
                       source_compilation_verified=True, existing_allocation_verified=True,
                       source_to_bound_objects_verified=True)
@@ -263,8 +388,13 @@ def build_native_application(*, source, globals_path, project_dir, syslib, stcli
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ('source', 'globals-path', 'project-dir', 'syslib', 'stclib', 'llc', 'lld', 'output-dir'):
+    for name in ('source', 'globals-path', 'project-dir', 'syslib', 'stclib', 'lld', 'output-dir'):
         parser.add_argument('--' + name, required=True)
+    parser.add_argument('--compiler-backend', choices=COMPILER_BACKENDS, default='restricted-llvm')
+    parser.add_argument('--llc', help='Required only for the default restricted-llvm backend')
+    parser.add_argument('--matiec-root', help='Required for the explicit matiec-clang backend')
+    parser.add_argument('--clang', help='Required for the explicit matiec-clang backend')
+    parser.add_argument('--readelf', default='/usr/bin/readelf')
     parser.add_argument('--timeout-s', type=float, default=10.0)
     result = build_native_application(**vars(parser.parse_args(argv)))
     print(json.dumps(result, ensure_ascii=False, allow_nan=False))

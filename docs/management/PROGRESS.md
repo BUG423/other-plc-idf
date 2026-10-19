@@ -1,5 +1,13 @@
 # 进展记录
 
+## 2026-10-19本轮后续：真实MatIEC条件程序到现机候选及原生命令
+
+统筹进一步从公开 `conditional_plus1.st`／`conditional_plus2.st` 真实执行MatIEC→C→Clang ARM→两级LLD→GVT绑定→18文件组合→17文件现机派生，并通过原生下装CLI预览。各52B MAIN不同、绑定对象/源/清单逐级哈希核对；同C/适配器x86各12次调用及NaN复位分支正确，没有把主机行为当ARM/PLC执行。见[36集成](../research/firmware/36-native-linux-integration-2026-10-19.md)与[元数据](../../evidence/easy521-native-matiec-20261019T075356Z/summary.json)。
+
+[31](../research/firmware/31-matiec-native-arm-2026-10-19.md)/[33](../research/firmware/33-matiec-bound-application-2026-10-19.md)交付真实MatIEC后端，[29](../research/firmware/29-entry-symbol-and-readback-audit-2026-10-19.md)/[30](../research/firmware/30-live-application-config-2026-10-19.md)恢复压缩并核对配置：15个非ARM文件逐字继承本台读回，不猜opaque头或源码MD5。[35](../research/firmware/35-cli-native-application-2026-10-19.md)增加默认预览的run/stop/download、固定清单与有界快照；独立审阅无阻断，213项替身测试通过。全工具回归、46资源独立安装及源哈希复核通过；前批266eaf6远端software/open-linux均成功，本批CI随提交另验。
+
+[34](../research/firmware/34-native-io-abi-2026-10-19.md)明确灯程序通过READ_BITS/WRITE_BITS描述符而非裸地址访问I/O，并含中断程序分发钩子。新memory MAIN没有该钩子，只限有界内存实验；保持配置字节不等于保持全部调度语义。设备写入、新ARM执行、归档策略、原厂源码MD5一致性和两轮真机行为仍未通过。当前现场负载确认尚待回复，统筹未执行新下装或RUN/STOP。
+
 ## 2026-10-19继续执行：新源码绑定、完整候选与原生应用读回
 
 用户要求“没有完成，就继续完成”。统筹继续组织编译/ABI、完整配置、原生传输三线，独占设备和仓库；未将子任务交付作为最终闭环完成。
