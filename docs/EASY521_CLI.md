@@ -27,7 +27,7 @@ python tools/read_easy521_usb_memory.py --profile m8013 --execute --busid 7-2
 .venv/bin/python tools/read_easy521_usb_runtime.py --profile gcm-state --execute --busid 7-2
 ```
 
-worker会在设备锁内重新枚举核对；不自动关闭AutoShop、不切换USB归属、不重试。成功为`observed`，提供raw_value及单独的厂商静态解释；通用工具不会因本轮台架证据而自动提升其他设备的身份或校准等级。默认`literal`保持历史ff010000/4B请求。上述读取工具随wheel作为资源分发，未添加为新的`plcidf`子命令。
+worker会在设备锁内重新枚举核对；不自动关闭AutoShop、不切换USB归属、不重试。成功为`observed`，提供raw_value及单独的厂商静态解释；通用工具不会因本轮台架证据而自动提升其他设备的身份或校准等级。默认`literal`保持历史ff010000/4B请求。固定内存读取的reader、codec和helper已随wheel作为资源分发；状态查询脚本当前仍从源码仓库运行。这些工具未添加为新的`plcidf`子命令。
 
 2026-10-17 已真实完成两个内存探针的应用下载、厂商程序一致性正反校验。当时 CPU RUN 被拒绝，未完成运行验收；用户报告额定 24V 主供电未连接。完整记录和证据见 [该轮设备报告](management/EASY521_APPLICATION_2026-10-17.md)，不代表今天重新观察了供电或 CPU 状态。
 
